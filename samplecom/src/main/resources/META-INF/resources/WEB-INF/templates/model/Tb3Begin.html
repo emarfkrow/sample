@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb3Begin.title}">当初</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb3BeginGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb3Begin.h2}">h2</h2>
+    <form name="Tb3BeginRegistForm" action="Tb3BeginRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb3Begin.legend}">legend</legend>
+        <div id="beginId">
+          <label for="Tb3Begin.beginId" th:text="#{Tb3Begin.beginId}">当初ID</label><input type="text" id="Tb3Begin.beginId" name="Tb3Begin.beginId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="beginInfo">
+          <label for="Tb3Begin.beginInfo" th:text="#{Tb3Begin.beginInfo}">当初情報</label><input type="text" id="Tb3Begin.beginInfo" name="Tb3Begin.beginInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb3Begin.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb3Begin.insertTs" class="meta"></span><input type="hidden" id="Tb3Begin.insertTs" name="Tb3Begin.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb3Begin.insertUserId}" class="meta">作成者</label><span id="Tb3Begin.insertUserId" class="meta"></span><input type="hidden" id="Tb3Begin.insertUserId" name="Tb3Begin.insertUserId" class="meta"/>
+          <span id="Tb3Begin.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb3Begin.insertUserId" data-destDef="Tb3Begin.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb3Begin.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb3Begin.updateTs" class="meta"></span><input type="hidden" id="Tb3Begin.updateTs" name="Tb3Begin.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb3Begin.updateUserId}" class="meta">更新者</label><span id="Tb3Begin.updateUserId" class="meta"></span><input type="hidden" id="Tb3Begin.updateUserId" name="Tb3Begin.updateUserId" class="meta"/>
+          <span id="Tb3Begin.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb3Begin.updateUserId" data-destDef="Tb3Begin.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb3Begin" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb3BeginGet.xlsx(baseMei=#{Tb3Begin.h2})}" id="Tb3BeginGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb3Begin" type="submit" class="delete" data-action="Tb3BeginDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb3Begin" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.historyReason(this)) { return false; }">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

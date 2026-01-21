@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb9FuriwakeS.title}">VIEW</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb9FuriwakeGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb9FuriwakeS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb9FuriwakeSearchForm" action="Tb9FuriwakeSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb9FuriwakeS.legend}">legend</legend>
+        <div id="srcIdDestId">
+          <label for="Tb9Furiwake.srcIdDestId" th:text="#{Tb9Furiwake.srcIdDestId}">SRC_ID$DEST_ID</label><input type="text" id="Tb9Furiwake.srcIdDestId" name="Tb9Furiwake.srcIdDestId" maxlength="10" />
+        </div>
+        <div id="info">
+          <label for="Tb9Furiwake.info" th:text="#{Tb9Furiwake.info}">INFO</label><input type="text" id="Tb9Furiwake.info" name="Tb9Furiwake.info" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb9Furiwake" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchTb9Furiwake" type="submit" class="search" data-gridId="Tb9FuriwakeGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb9FuriwakeSRegistForm" action="Tb9FuriwakeSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb9Furiwake.h3}">h3</h3>
+      <div id="Tb9FuriwakeGrid" data-selectionMode="checkbox" data-frozenColumn="-1" data-editable="false" th:data-href="@{/model/Tb9Furiwake.html}"></div>
+      <div id="Tb9FuriwakePager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb9FuriwakeS" th:text="#{common.reset}" onClick="Base.listReset('Tb9Furiwake');">reset</button>
+        <a th:href="@{Tb9FuriwakeSearch.xlsx(baseMei=#{Tb9FuriwakeS.h2})}" id="Tb9FuriwakeSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="RegistTb9FuriwakeS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb4OyaS.title}">親</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb4OyaGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoGridColumns.js}"></script>
+<script th:src="@{/model/Tb4MagoGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoOrphansGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoDinksGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb4OyaS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb4OyaSearchForm" action="Tb4OyaSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb4OyaS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb4Oya.oyaId" th:text="#{Tb4Oya.oyaId}">親ID</label><input type="text" id="Tb4Oya.oyaId" name="Tb4Oya.oyaId" maxlength="10" />
+        </div>
+        <div id="oyaInfo">
+          <label for="Tb4Oya.oyaInfo" th:text="#{Tb4Oya.oyaInfo}">親情報</label><input type="text" id="Tb4Oya.oyaInfo" name="Tb4Oya.oyaInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb4Oya" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb4Oya.html}" target="dialog" id="Tb4Oya" class="anew" th:text="#{Tb4Oya.add}" tabindex="-1">親</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb4Oya" type="submit" class="search" data-gridId="Tb4OyaGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb4OyaSRegistForm" action="Tb4OyaSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb4Oya.h3}">h3</h3>
+      <div id="Tb4OyaGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/Tb4Oya.html}"></div>
+      <div id="Tb4OyaPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb4OyaS" th:text="#{common.reset}" onClick="Base.listReset('Tb4Oya');">reset</button>
+        <a th:href="@{Tb4OyaSearch.xlsx(baseMei=#{Tb4OyaS.h2})}" id="Tb4OyaSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

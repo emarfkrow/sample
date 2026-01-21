@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MhrShokui.title}">職位マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MhrShokuiGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MhrShokui.h2}">h2</h2>
+    <form name="MhrShokuiRegistForm" action="MhrShokuiRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{MhrShokui.legend}">legend</legend>
+        <div id="shokuiId">
+          <label for="MhrShokui.shokuiId" th:text="#{MhrShokui.shokuiId}">職位ID</label><input type="text" id="MhrShokui.shokuiId" name="MhrShokui.shokuiId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="shokuiMei">
+          <label for="MhrShokui.shokuiMei" th:text="#{MhrShokui.shokuiMei}">職位名</label><input type="text" id="MhrShokui.shokuiMei" name="MhrShokui.shokuiMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="shokuiOn">
+          <label for="MhrShokui.shokuiOn" th:text="#{MhrShokui.shokuiOn}">職位順</label><input type="text" id="MhrShokui.shokuiOn" name="MhrShokui.shokuiOn" maxlength="10" class=" notblank" />
+        </div>
+        <div id="tekiyoBi">
+          <label for="MhrShokui.tekiyoBi" th:text="#{MhrShokui.tekiyoBi}">適用日</label><input type="text" id="MhrShokui.tekiyoBi" name="MhrShokui.tekiyoBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="MhrShokui.haishiBi" th:text="#{MhrShokui.haishiBi}">廃止日</label><input type="text" id="MhrShokui.haishiBi" name="MhrShokui.haishiBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MhrShokui.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrShokui.insertTs" class="meta"></span><input type="hidden" id="MhrShokui.insertTs" name="MhrShokui.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MhrShokui.insertUserId}" class="meta">作成者</label><span id="MhrShokui.insertUserId" class="meta"></span><input type="hidden" id="MhrShokui.insertUserId" name="MhrShokui.insertUserId" class="meta"/>
+          <span id="MhrShokui.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokui.insertUserId" data-destDef="MhrShokui.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MhrShokui.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrShokui.updateTs" class="meta"></span><input type="hidden" id="MhrShokui.updateTs" name="MhrShokui.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MhrShokui.updateUserId}" class="meta">更新者</label><span id="MhrShokui.updateUserId" class="meta"></span><input type="hidden" id="MhrShokui.updateUserId" name="MhrShokui.updateUserId" class="meta"/>
+          <span id="MhrShokui.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokui.updateUserId" data-destDef="MhrShokui.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshMhrShokui" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{MhrShokuiGet.xlsx(baseMei=#{MhrShokui.h2})}" id="MhrShokuiGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMhrShokui" type="submit" class="delete" data-action="MhrShokuiDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMhrShokui" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

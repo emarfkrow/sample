@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb9Src.title}">変換元</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb9SrcGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb9Src.h2}">h2</h2>
+    <form name="Tb9SrcRegistForm" action="Tb9SrcRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb9Src.legend}">legend</legend>
+        <div id="srcId">
+          <label for="Tb9Src.srcId" th:text="#{Tb9Src.srcId}">変換元ID</label><input type="text" id="Tb9Src.srcId" name="Tb9Src.srcId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="srcInfo">
+          <label for="Tb9Src.srcInfo" th:text="#{Tb9Src.srcInfo}">変換元情報</label><input type="text" id="Tb9Src.srcInfo" name="Tb9Src.srcInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb9Src.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb9Src.insertTs" class="meta"></span><input type="hidden" id="Tb9Src.insertTs" name="Tb9Src.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb9Src.insertUserId}" class="meta">作成者</label><span id="Tb9Src.insertUserId" class="meta"></span><input type="hidden" id="Tb9Src.insertUserId" name="Tb9Src.insertUserId" class="meta"/>
+          <span id="Tb9Src.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb9Src.insertUserId" data-destDef="Tb9Src.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb9Src.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb9Src.updateTs" class="meta"></span><input type="hidden" id="Tb9Src.updateTs" name="Tb9Src.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb9Src.updateUserId}" class="meta">更新者</label><span id="Tb9Src.updateUserId" class="meta"></span><input type="hidden" id="Tb9Src.updateUserId" name="Tb9Src.updateUserId" class="meta"/>
+          <span id="Tb9Src.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb9Src.updateUserId" data-destDef="Tb9Src.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb9Src" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb9SrcGet.xlsx(baseMei=#{Tb9Src.h2})}" id="Tb9SrcGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb9Src" type="submit" class="delete" data-action="Tb9SrcDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb9Src" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

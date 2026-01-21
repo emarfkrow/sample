@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb4Mago.title}">孫</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb4MagoGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoGridColumns.js}"></script>
+<script th:src="@{/model/Tb4OyaGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoDinksGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoOrphansGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb4Mago.h2}">h2</h2>
+    <form name="Tb4MagoRegistForm" action="Tb4MagoRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{Tb4Ko.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb4Ko.oyaId" th:text="#{Tb4Ko.oyaId}">親ID</label><input type="text" id="Tb4Ko.oyaId" name="Tb4Ko.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="Tb4Ko.koBn" th:text="#{Tb4Ko.koBn}">子枝番</label><input type="text" id="Tb4Ko.koBn" name="Tb4Ko.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koInfo">
+          <label for="Tb4Ko.koInfo" th:text="#{Tb4Ko.koInfo}">子情報</label><input type="text" id="Tb4Ko.koInfo" name="Tb4Ko.koInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb4Ko.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb4Ko.insertTs" class="meta"></span><input type="hidden" id="Tb4Ko.insertTs" name="Tb4Ko.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb4Ko.insertUserId}" class="meta">作成者</label><span id="Tb4Ko.insertUserId" class="meta"></span><input type="hidden" id="Tb4Ko.insertUserId" name="Tb4Ko.insertUserId" class="meta"/>
+          <span id="Tb4Ko.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4Ko.insertUserId" data-destDef="Tb4Ko.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb4Ko.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb4Ko.updateTs" class="meta"></span><input type="hidden" id="Tb4Ko.updateTs" name="Tb4Ko.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb4Ko.updateUserId}" class="meta">更新者</label><span id="Tb4Ko.updateUserId" class="meta"></span><input type="hidden" id="Tb4Ko.updateUserId" name="Tb4Ko.updateUserId" class="meta"/>
+          <span id="Tb4Ko.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4Ko.updateUserId" data-destDef="Tb4Ko.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset class="parent">
+        <legend th:text="#{Tb4KoOrphans.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb4KoOrphans.oyaId" th:text="#{Tb4KoOrphans.oyaId}">親ID</label><input type="text" id="Tb4KoOrphans.oyaId" name="Tb4KoOrphans.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="Tb4KoOrphans.koBn" th:text="#{Tb4KoOrphans.koBn}">子枝番</label><input type="text" id="Tb4KoOrphans.koBn" name="Tb4KoOrphans.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orphansInfo">
+          <label for="Tb4KoOrphans.orphansInfo" th:text="#{Tb4KoOrphans.orphansInfo}">孤児情報</label><input type="text" id="Tb4KoOrphans.orphansInfo" name="Tb4KoOrphans.orphansInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb4KoOrphans.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb4KoOrphans.insertTs" class="meta"></span><input type="hidden" id="Tb4KoOrphans.insertTs" name="Tb4KoOrphans.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb4KoOrphans.insertUserId}" class="meta">作成者</label><span id="Tb4KoOrphans.insertUserId" class="meta"></span><input type="hidden" id="Tb4KoOrphans.insertUserId" name="Tb4KoOrphans.insertUserId" class="meta"/>
+          <span id="Tb4KoOrphans.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4KoOrphans.insertUserId" data-destDef="Tb4KoOrphans.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb4KoOrphans.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb4KoOrphans.updateTs" class="meta"></span><input type="hidden" id="Tb4KoOrphans.updateTs" name="Tb4KoOrphans.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb4KoOrphans.updateUserId}" class="meta">更新者</label><span id="Tb4KoOrphans.updateUserId" class="meta"></span><input type="hidden" id="Tb4KoOrphans.updateUserId" name="Tb4KoOrphans.updateUserId" class="meta"/>
+          <span id="Tb4KoOrphans.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4KoOrphans.updateUserId" data-destDef="Tb4KoOrphans.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{Tb4Mago.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb4Mago.oyaId" th:text="#{Tb4Mago.oyaId}">親ID</label><input type="text" id="Tb4Mago.oyaId" name="Tb4Mago.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="Tb4Mago.koBn" th:text="#{Tb4Mago.koBn}">子枝番</label><input type="text" id="Tb4Mago.koBn" name="Tb4Mago.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="magoBn">
+          <label for="Tb4Mago.magoBn" th:text="#{Tb4Mago.magoBn}">孫枝番</label><input type="text" id="Tb4Mago.magoBn" name="Tb4Mago.magoBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="magoInfo">
+          <label for="Tb4Mago.magoInfo" th:text="#{Tb4Mago.magoInfo}">孫情報</label><input type="text" id="Tb4Mago.magoInfo" name="Tb4Mago.magoInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb4Mago.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb4Mago.insertTs" class="meta"></span><input type="hidden" id="Tb4Mago.insertTs" name="Tb4Mago.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb4Mago.insertUserId}" class="meta">作成者</label><span id="Tb4Mago.insertUserId" class="meta"></span><input type="hidden" id="Tb4Mago.insertUserId" name="Tb4Mago.insertUserId" class="meta"/>
+          <span id="Tb4Mago.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4Mago.insertUserId" data-destDef="Tb4Mago.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb4Mago.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb4Mago.updateTs" class="meta"></span><input type="hidden" id="Tb4Mago.updateTs" name="Tb4Mago.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb4Mago.updateUserId}" class="meta">更新者</label><span id="Tb4Mago.updateUserId" class="meta"></span><input type="hidden" id="Tb4Mago.updateUserId" name="Tb4Mago.updateUserId" class="meta"/>
+          <span id="Tb4Mago.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4Mago.updateUserId" data-destDef="Tb4Mago.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb4Mago" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb4MagoGet.xlsx(baseMei=#{Tb4Mago.h2})}" id="Tb4MagoGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb4Mago" type="submit" class="delete" data-action="Tb4MagoDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb4Mago" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyTax.title}">税マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyTaxGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyTax.h2}">h2</h2>
+    <form name="MsyTaxRegistForm" action="MsyTaxRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{MsyTax.legend}">legend</legend>
+        <div id="taxKb">
+          <fieldset id="MsyTax.taxKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:TAX_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" primaryKey notblank">
+            <legend th:text="#{MsyTax.taxKb}">税区分</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="MsyTax.tekiyoBi" th:text="#{MsyTax.tekiyoBi}">適用日</label><input type="text" id="MsyTax.tekiyoBi" name="MsyTax.tekiyoBi" maxlength="10" class=" primaryKey notblank datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="MsyTax.haishiBi" th:text="#{MsyTax.haishiBi}">廃止日</label><input type="text" id="MsyTax.haishiBi" name="MsyTax.haishiBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="taxRt">
+          <label for="MsyTax.taxRt" th:text="#{MsyTax.taxRt}">税率</label><input type="text" id="MsyTax.taxRt" name="MsyTax.taxRt" maxlength="5" class=" notblank" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MsyTax.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyTax.insertTs" class="meta"></span><input type="hidden" id="MsyTax.insertTs" name="MsyTax.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MsyTax.insertUserId}" class="meta">作成者</label><span id="MsyTax.insertUserId" class="meta"></span><input type="hidden" id="MsyTax.insertUserId" name="MsyTax.insertUserId" class="meta"/>
+          <span id="MsyTax.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyTax.insertUserId" data-destDef="MsyTax.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MsyTax.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyTax.updateTs" class="meta"></span><input type="hidden" id="MsyTax.updateTs" name="MsyTax.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MsyTax.updateUserId}" class="meta">更新者</label><span id="MsyTax.updateUserId" class="meta"></span><input type="hidden" id="MsyTax.updateUserId" name="MsyTax.updateUserId" class="meta"/>
+          <span id="MsyTax.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyTax.updateUserId" data-destDef="MsyTax.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshMsyTax" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{MsyTaxGet.xlsx(baseMei=#{MsyTax.h2})}" id="MsyTaxGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMsyTax" type="submit" class="delete" data-action="MsyTaxDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMsyTax" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

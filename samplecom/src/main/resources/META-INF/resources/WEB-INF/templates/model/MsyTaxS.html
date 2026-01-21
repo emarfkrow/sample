@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyTaxS.title}">税マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyTaxGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyTaxS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="MsyTaxSearchForm" action="MsyTaxSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{MsyTaxS.legend}">legend</legend>
+        <div id="taxKb">
+          <fieldset id="MsyTax.taxKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:TAX_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{MsyTax.taxKb}">税区分</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="MsyTax.tekiyoBi_1" th:text="#{MsyTax.tekiyoBi}">適用日</label><input type="text" id="MsyTax.tekiyoBi_1" name="MsyTax.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MsyTax.tekiyoBi_2" name="MsyTax.tekiyoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="MsyTax.haishiBi_1" th:text="#{MsyTax.haishiBi}">廃止日</label><input type="text" id="MsyTax.haishiBi_1" name="MsyTax.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MsyTax.haishiBi_2" name="MsyTax.haishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="taxRt">
+          <label for="MsyTax.taxRt" th:text="#{MsyTax.taxRt}">税率</label><input type="text" id="MsyTax.taxRt" name="MsyTax.taxRt" maxlength="5" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetMsyTax" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/MsyTax.html}" target="dialog" id="MsyTax" class="anew" th:text="#{MsyTax.add}" tabindex="-1">税マスタ</a>
+      </div>
+      <div class="submits">
+        <button id="SearchMsyTax" type="submit" class="search" data-gridId="MsyTaxGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="MsyTaxSRegistForm" action="MsyTaxSRegist.ajax" class="regist">
+      <h3 th:text="#{MsyTax.h3}">h3</h3>
+      <div id="MsyTaxGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/MsyTax.html}"></div>
+      <div id="MsyTaxPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetMsyTaxS" th:text="#{common.reset}" onClick="Base.listReset('MsyTax');">reset</button>
+        <a th:href="@{MsyTaxSearch.xlsx(baseMei=#{MsyTaxS.h2})}" id="MsyTaxSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteMsyTaxS" data-action="MsyTaxSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistMsyTaxS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title>ajax送信</title>
+<style type="text/css">
+</style>
+<script th:src="@{/model/MSansho1GridColumns.js}"></script>
+<script th:src="@{/model/MSansho2GridColumns.js}"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2>ajax送信</h2>
+    <form name="D0002RegistForm" action="D0002Regist.ajax">
+      <fieldset>
+        <legend>祖先</legend>
+        <div>
+          <label for="sosenId">祖先ID</label><span id="sosenId"></span><input type="hidden" id="sosenId" name="sosenId" class="primaryKey" />
+        </div>
+        <div>
+          <label for="sosenMei">祖先名</label><input type="text" id="sosenMei" name="sosenMei" />
+        </div>
+        <input type="hidden" name="TSosen.updateDt" />
+      </fieldset>
+      <fieldset>
+        <legend>親</legend>
+        <div>
+          <label for="oyaSn">親連番</label><span id="oyaSn"></span><input type="hidden" id="oyaSn" name="oyaSn" class="primaryKey" />
+        </div>
+        <div>
+          <label for="oyaMei">親名</label><input type="text" id="oyaMei" name="oyaMei" />
+        </div>
+        <input type="hidden" name="TOya.updateDt" />
+      </fieldset>
+      <fieldset>
+        <legend>エンティティ</legend>
+        <div>
+          <label for="entitySn">エンティティ連番</label><span id="entitySn"></span><input type="hidden" name="entitySn" />
+        </div>
+        <div>
+          <label for="entityMei">エンティティ名</label><input type="text" id="entityMei" name="entityMei" />
+        </div>
+        <div>
+          <label for="sansho1Id">参照１ID</label><input type="text" id="sansho1Id" name="sansho1Id" data-json="MSansho1Search.json" data-srcDef="SANSHO1_ID:sansho1Id" data-destDef="sansho1Mei:SANSHO1_MEI" /><a id="sansho1Id" th:href="@{/model/MSansho1S.html}" target="dialog" class="refer" tabindex="-1">...</a>
+        </div>
+        <div>
+          <label for="sansho1Mei">参照１名</label><input type="text" id="sansho1Mei" name="sansho1Mei" />
+        </div>
+        <div>
+          <label for="sansho2Id">参照２ID</label><input type="text" id="sansho2Id" name="sansho2Id" data-json="MSansho2Search.json" data-srcDef="SANSHO2_ID:sansho2Id" data-destDef="sansho2Mei:SANSHO2_MEI" /><a id="sansho2Id" th:href="@{/model/MSansho2S.html}" target="dialog" class="refer" tabindex="-1">...</a>
+        </div>
+        <div>
+          <label for="sansho2Mei">参照２名</label><input type="text" id="sansho2Mei" name="sansho2Mei" />
+        </div>
+        <div>
+          <label for="betsuSansho1Id">別参照１ID</label><input type="text" id="betsuSansho1Id" name="betsuSansho1Id" data-json="MSansho1Search.json" data-srcDef="SANSHO1_ID:betsuSansho1Id" data-destDef="betsuSansho1Mei:SANSHO1_MEI" /><a id="betsuSansho1Id" th:href="@{/model/MSansho1S.html}" target="dialog" class="refer" tabindex="-1">...</a>
+        </div>
+        <div>
+          <label for="betsuSansho1Mei">別参照１名</label><input type="text" id="betsuSansho1Mei" name="betsuSansho1Mei" />
+        </div>
+        <input type="hidden" name="TEntity.updateDt" />
+      </fieldset>
+      <fieldset>
+        <legend>エンティティ２</legend>
+        <div>
+          <label for="nullEntity2Mei">任意エンティティ２名</label><input type="text" id="nullEntity2Mei" name="nullEntity2Mei" />
+        </div>
+        <div>
+          <label for="entity2Mei">エンティティ２名</label><input type="text" id="entity2Mei" name="entity2Mei" />
+        </div>
+        <div>
+          <fieldset id="checkFList" data-options="MCodeValueSearch.json" data-optionParams="code_nm:check_f" data-optionValue="CODE_VALUE" data-optionLabel="CODE_VALUE_MEI">
+            <legend>チェックフラグ</legend>
+          </fieldset>
+        </div>
+        <div>
+          <fieldset id="radioKbList" data-options="MCodeValueSearch.json" data-optionParams="code_nm:radio_kb" data-optionValue="CODE_VALUE" data-optionLabel="CODE_VALUE_MEI">
+            <legend>ラジオ区分</legend>
+          </fieldset>
+        </div>
+        <div>
+          <fieldset id="pulldownKbList" data-options="MCodeValueSearch.json" data-optionParams="code_nm:pulldown_kb" data-optionValue="CODE_VALUE" data-optionLabel="CODE_VALUE_MEI">
+            <legend>プルダウン区分</legend>
+          </fieldset>
+        </div>
+        <div>
+          <label for="memoTx">メモ</label>
+          <textarea id="memoTx" name="memoTx"></textarea>
+        </div>
+        <div>
+          <label for="hidukeYmd">日付</label><input type="date" id="hidukeYmd" name="hidukeYmd" />
+        </div>
+        <div>
+          <label for="nengetsuYm">年月</label><input type="month" id="nengetsuYm" name="nengetsuYm" />
+        </div>
+        <div>
+          <label for="sampleY">年</label><input type="text" id="sampleY" name="sampleY" />
+        </div>
+        <div>
+          <label for="sampleM">月</label><input type="text" id="sampleM" name="sampleM" />
+        </div>
+        <div>
+          <label for="nichijiDt">日時</label><input type="datetime-local" id="nichijiDt" name="nichijiDt" />
+        </div>
+        <div>
+          <label for="jikokuHm">時刻</label><input type="time" id="jikokuHm" name="jikokuHm" />
+        </div>
+        <div>
+          <label for="jikanTm">時間</label><input type="text" id="jikanTm" name="jikanTm" />
+        </div>
+        <div>
+          <label for="suryoQt">数量</label><input type="text" id="suryoQt" name="suryoQt" />
+        </div>
+        <div>
+          <label for="tankaAm">単価</label><input type="text" id="tankaAm" name="tankaAm" />
+        </div>
+        <div>
+          <label for="kingakuAm">金額</label><input type="text" id="kingakuAm" name="kingakuAm" />
+        </div>
+        <input type="hidden" name="TEntity2.updateDt" />
+      </fieldset>
+      <div class="buttons">
+        <button type="button" onClick="Dialogate.refresh(event);">リセット</button>
+        <a th:href="@{D0002Get.xlsx(baseMei=詳細画面)}" id="D0002Get.xlsx" tabindex="-1">エクセル出力</a>
+        <button id="DeleteD0002" class="delete" data-action="D0002Delete.ajax" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistD0002" class="regist">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

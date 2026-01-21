@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6Org.title}">起源</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6OrgGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive1GridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive1DetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive2GridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive2DetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6Org.h2}">h2</h2>
+    <form name="Tb6OrgRegistForm" action="Tb6OrgRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb6Org.legend}">legend</legend>
+        <div id="orgId">
+          <label for="Tb6Org.orgId" th:text="#{Tb6Org.orgId}">起源ID</label><input type="text" id="Tb6Org.orgId" name="Tb6Org.orgId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orgInfo">
+          <label for="Tb6Org.orgInfo" th:text="#{Tb6Org.orgInfo}">起源情報</label><input type="text" id="Tb6Org.orgInfo" name="Tb6Org.orgInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb6Org.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6Org.insertTs" class="meta"></span><input type="hidden" id="Tb6Org.insertTs" name="Tb6Org.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb6Org.insertUserId}" class="meta">作成者</label><span id="Tb6Org.insertUserId" class="meta"></span><input type="hidden" id="Tb6Org.insertUserId" name="Tb6Org.insertUserId" class="meta"/>
+          <span id="Tb6Org.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6Org.insertUserId" data-destDef="Tb6Org.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb6Org.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb6Org.updateTs" class="meta"></span><input type="hidden" id="Tb6Org.updateTs" name="Tb6Org.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb6Org.updateUserId}" class="meta">更新者</label><span id="Tb6Org.updateUserId" class="meta"></span><input type="hidden" id="Tb6Org.updateUserId" name="Tb6Org.updateUserId" class="meta"/>
+          <span id="Tb6Org.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6Org.updateUserId" data-destDef="Tb6Org.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <h3 th:text="#{Tb6OrgDet.h3}">h3</h3>
+      <a th:href="@{/model/Tb6OrgDet.html}" id="Tb6OrgDet" target="dialog" th:text="#{Tb6OrgDet.add}" class="addChild" tabindex="-1">起源明細</a>
+      <div id="Tb6OrgDetGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/Tb6OrgDet.html}" class="childs"></div>
+      <div class="buttons">
+        <button type="button" id="RefreshTb6Org" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb6OrgGet.xlsx(baseMei=#{Tb6Org.h2})}" id="Tb6OrgGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{/model/Tb6Derive1.html}" id="Tb6Derive1" target="dialog" th:text="#{Tb6Derive1.add}" class="reborner" tabindex="-1">派生１</a>
+        <a th:href="@{/model/Tb6Derive2.html}" id="Tb6Derive2" target="dialog" th:text="#{Tb6Derive2.add}" class="reborner" tabindex="-1">派生２</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb6Org" type="submit" class="delete" data-action="Tb6OrgDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb6Org" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

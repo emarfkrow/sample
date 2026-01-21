@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb8ChoiceS.title}">選抜</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb8ChoiceGridColumns.js}"></script>
+<script th:src="@{/model/Tb7SumGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit1GridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Prev2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho1GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit3GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum3GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Reborn2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit4GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb8ChoiceS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb8ChoiceSearchForm" action="Tb8ChoiceSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb8ChoiceS.legend}">legend</legend>
+        <div id="choiceId">
+          <label for="Tb8Choice.choiceId" th:text="#{Tb8Choice.choiceId}">選抜ID</label><input type="text" id="Tb8Choice.choiceId" name="Tb8Choice.choiceId" maxlength="10" />
+        </div>
+        <div id="sumId">
+          <label for="Tb8Choice.sumId" th:text="#{Tb8Choice.sumId}">集約ID</label><input type="text" id="Tb8Choice.sumId" name="Tb8Choice.sumId" maxlength="10" /><a id="Tb8Choice.sumId" th:href="@{/model/Tb7SumS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="sumInfo">
+          <label for="Tb8Choice.sumInfo" th:text="#{Tb8Choice.sumInfo}">集約情報</label><input type="text" id="Tb8Choice.sumInfo" name="Tb8Choice.sumInfo" maxlength="300" />
+        </div>
+        <div id="sum2Id">
+          <label for="Tb8Choice.sum2Id" th:text="#{Tb8Choice.sum2Id}">集約２ID</label><input type="text" id="Tb8Choice.sum2Id" name="Tb8Choice.sum2Id" maxlength="10" /><a id="Tb8Choice.sum2Id" th:href="@{/model/Tb8Sum2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="sum2Info">
+          <label for="Tb8Choice.sum2Info" th:text="#{Tb8Choice.sum2Info}">集約２情報</label><input type="text" id="Tb8Choice.sum2Info" name="Tb8Choice.sum2Info" maxlength="300" />
+        </div>
+        <div id="sum3Id">
+          <label for="Tb8Choice.sum3Id" th:text="#{Tb8Choice.sum3Id}">集約３ID</label><input type="text" id="Tb8Choice.sum3Id" name="Tb8Choice.sum3Id" maxlength="10" /><a id="Tb8Choice.sum3Id" th:href="@{/model/Tb8Sum3S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="sum3Info">
+          <label for="Tb8Choice.sum3Info" th:text="#{Tb8Choice.sum3Info}">集約３情報</label><input type="text" id="Tb8Choice.sum3Info" name="Tb8Choice.sum3Info" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb8Choice" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb8Choice.html}" target="dialog" id="Tb8Choice" class="anew derive" th:text="#{Tb8Choice.add}" tabindex="-1">選抜</a>
+          <label for="Tb8Choice.deriveeSumId" th:text="#{Tb8Choice.deriveeSumId}">集約ID</label><input type="text" id="Tb8Choice.deriveeSumId" name="Tb8Choice.deriveeSumId" maxlength="10" />
+          <a id="Tb8Choice.deriveeSumId" th:href="@{/model/Tb7SumS.html?action=Tb7SumCorrect.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+          <label for="Tb8Choice.deriveeSum2Id" th:text="#{Tb8Choice.deriveeSum2Id}">集約２ID</label><input type="text" id="Tb8Choice.deriveeSum2Id" name="Tb8Choice.deriveeSum2Id" maxlength="10" />
+          <a id="Tb8Choice.deriveeSum2Id" th:href="@{/model/Tb8Sum2S.html?action=Tb8Sum2Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+          <label for="Tb8Choice.deriveeSum3Id" th:text="#{Tb8Choice.deriveeSum3Id}">集約３ID</label><input type="text" id="Tb8Choice.deriveeSum3Id" name="Tb8Choice.deriveeSum3Id" maxlength="10" />
+          <a id="Tb8Choice.deriveeSum3Id" th:href="@{/model/Tb8Sum3S.html?action=Tb8Sum3Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb8Choice" type="submit" class="search" data-gridId="Tb8ChoiceGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb8ChoiceSRegistForm" action="Tb8ChoiceSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb8Choice.h3}">h3</h3>
+      <div id="Tb8ChoiceGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Tb8Choice.html}"></div>
+      <div id="Tb8ChoicePager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb8ChoiceS" th:text="#{common.reset}" onClick="Base.listReset('Tb8Choice');">reset</button>
+        <a th:href="@{Tb8ChoiceSearch.xlsx(baseMei=#{Tb8ChoiceS.h2})}" id="Tb8ChoiceSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="Tb8ChoiceGrid.sumId" th:href="@{/model/Tb7SumS.html}" target="dialog" class="refer" th:text="'集約' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="Tb8ChoiceGrid.sum2Id" th:href="@{/model/Tb8Sum2S.html}" target="dialog" class="refer" th:text="'集約２' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="Tb8ChoiceGrid.sum3Id" th:href="@{/model/Tb8Sum3S.html}" target="dialog" class="refer" th:text="'集約３' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteTb8ChoiceS" data-action="Tb8ChoiceSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb8ChoiceS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyKbn.title}">区分マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyKbnGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/MsyKbnValGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyKbn.h2}">h2</h2>
+    <form name="MsyKbnRegistForm" action="MsyKbnRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{MsyKbn.legend}">legend</legend>
+        <div id="kbnNm">
+          <label for="MsyKbn.kbnNm" th:text="#{MsyKbn.kbnNm}">区分名称</label><input type="text" id="MsyKbn.kbnNm" name="MsyKbn.kbnNm" maxlength="20" class=" primaryKey notblank" />
+        </div>
+        <div id="kbnMei">
+          <label for="MsyKbn.kbnMei" th:text="#{MsyKbn.kbnMei}">区分名</label><input type="text" id="MsyKbn.kbnMei" name="MsyKbn.kbnMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MsyKbn.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyKbn.insertTs" class="meta"></span><input type="hidden" id="MsyKbn.insertTs" name="MsyKbn.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MsyKbn.insertUserId}" class="meta">作成者</label><span id="MsyKbn.insertUserId" class="meta"></span><input type="hidden" id="MsyKbn.insertUserId" name="MsyKbn.insertUserId" class="meta"/>
+          <span id="MsyKbn.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbn.insertUserId" data-destDef="MsyKbn.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MsyKbn.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyKbn.updateTs" class="meta"></span><input type="hidden" id="MsyKbn.updateTs" name="MsyKbn.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MsyKbn.updateUserId}" class="meta">更新者</label><span id="MsyKbn.updateUserId" class="meta"></span><input type="hidden" id="MsyKbn.updateUserId" name="MsyKbn.updateUserId" class="meta"/>
+          <span id="MsyKbn.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbn.updateUserId" data-destDef="MsyKbn.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <h3 th:text="#{MsyKbnVal.h3}">h3</h3>
+      <a th:href="@{/model/MsyKbnVal.html}" id="MsyKbnVal" target="dialog" th:text="#{MsyKbnVal.add}" class="addChild" tabindex="-1">区分値マスタ</a>
+      <div id="MsyKbnValGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/MsyKbnVal.html}" class="childs"></div>
+        <a id="MsyKbnValGrid.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class="refer" th:text="'区分マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+      <div class="buttons">
+        <button type="button" id="RefreshMsyKbn" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{MsyKbnGet.xlsx(baseMei=#{MsyKbn.h2})}" id="MsyKbnGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMsyKbn" type="submit" class="delete" data-action="MsyKbnDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMsyKbn" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

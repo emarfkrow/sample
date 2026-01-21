@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb2YoungerS.title}">弟</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb2YoungerGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb2YoungerS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb2YoungerSearchForm" action="Tb2YoungerSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb2YoungerS.legend}">legend</legend>
+        <div id="broId">
+          <label for="Tb2Younger.broId" th:text="#{Tb2Younger.broId}">兄弟ID</label><input type="text" id="Tb2Younger.broId" name="Tb2Younger.broId" maxlength="10" />
+        </div>
+        <div id="youngerInfo">
+          <label for="Tb2Younger.youngerInfo" th:text="#{Tb2Younger.youngerInfo}">弟情報</label><input type="text" id="Tb2Younger.youngerInfo" name="Tb2Younger.youngerInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb2Younger" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb2Younger.html}" target="dialog" id="Tb2Younger" class="anew" th:text="#{Tb2Younger.add}" tabindex="-1">弟</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb2Younger" type="submit" class="search" data-gridId="Tb2YoungerGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb2YoungerSRegistForm" action="Tb2YoungerSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb2Younger.h3}">h3</h3>
+      <div id="Tb2YoungerGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Tb2Younger.html}"></div>
+      <div id="Tb2YoungerPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb2YoungerS" th:text="#{common.reset}" onClick="Base.listReset('Tb2Younger');">reset</button>
+        <a th:href="@{Tb2YoungerSearch.xlsx(baseMei=#{Tb2YoungerS.h2})}" id="Tb2YoungerSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteTb2YoungerS" data-action="Tb2YoungerSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb2YoungerS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

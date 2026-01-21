@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title>複合検索画面</title>
+<style type="text/css">
+</style>
+<script src="./D0001GridColumns.js"></script>
+<script th:src="@{/model/TSosenGridColumns.js}"></script>
+<script th:src="@{/model/TOyaGridColumns.js}"></script>
+<script th:src="@{/model/TEntityGridColumns.js}"></script>
+<script th:src="@{/model/TKoGridColumns.js}"></script>
+<script th:src="@{/model/TShisonGridColumns.js}"></script>
+<script th:src="@{/model/TTenpuFileGridColumns.js}"></script>
+<script th:src="@{/model/MSansho1GridColumns.js}"></script>
+<script th:src="@{/model/MSansho2GridColumns.js}"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2>複合検索画面</h2>
+    <form name="D0001SearchForm" action="D0001Search.ajax" class="search">
+      <fieldset>
+        <legend>祖先</legend>
+        <div>
+          <label for="sosenId">祖先ID</label><input type="text" id="sosenId" name="sosenId" data-json="TSosenSearch.json" data-srcDef="SOSEN_ID:sosenId" data-destDef="sosenMei:SOSEN_MEI" /><a id="sosenId" th:href="@{/model/TSosenS.html}" target="dialog" class="refer" tabindex="-1">...</a><span id="sosenMei" class="refer" data-json="TSosenSearch.json" data-srcDef="SOSEN_ID:sosenId" data-destDef="sosenMei:SOSEN_MEI"></span>
+        </div>
+        <div>
+          <label for="sosenMei">祖先名</label><input type="text" id="sosenMei" name="sosenMei" />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>親</legend>
+        <div>
+          <label for="oyaSn">親連番</label><input type="text" id="oyaSn" name="oyaSn" />
+        </div>
+        <div>
+          <label for="oyaMei">親名</label><input type="text" id="oyaMei" name="oyaMei" />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>エンティティ</legend>
+        <div>
+          <label for="entitySn">エンティティ連番</label><input type="text" id="entitySn" name="entitySn" />
+        </div>
+        <div>
+          <label for="entityMei">エンティティ名</label><input type="text" id="entityMei" name="entityMei" />
+        </div>
+        <div>
+          <label for="sansho1Id">参照１ID</label><input type="text" id="sansho1Id" name="sansho1Id" data-json="MSansho1Search.json" data-srcDef="SANSHO1_ID:sansho1Id" data-destDef="sansho1Mei:SANSHO1_MEI" /><a id="sansho1Id" th:href="@{/model/MSansho1S.html}" target="dialog" class="refer" tabindex="-1">...</a>
+        </div>
+        <div>
+          <label for="sansho1Mei">参照１名</label><input type="text" id="sansho1Mei" name="sansho1Mei" />
+        </div>
+        <div>
+          <label for="sansho2Id">参照２ID</label><input type="text" id="sansho2Id" name="sansho2Id" data-json="MSansho2Search.json" data-srcDef="SANSHO2_ID:sansho2Id" data-destDef="sansho2Mei:SANSHO2_MEI" /><a id="sansho2Id" th:href="@{/model/MSansho2S.html}" target="dialog" class="refer" tabindex="-1">...</a>
+        </div>
+        <div>
+          <label for="sansho2Mei">参照２名</label><input type="text" id="sansho2Mei" name="sansho2Mei" />
+        </div>
+        <div>
+          <label for="betsuSansho1Id">別参照１ID</label><input type="text" id="betsuSansho1Id" name="betsuSansho1Id" data-json="MSansho1Search.json" data-srcDef="SANSHO1_ID:betsuSansho1Id" data-destDef="betsuSansho1Mei:SANSHO1_MEI" /><a id="betsuSansho1Id" th:href="@{/model/MSansho1S.html}" target="dialog" class="refer" tabindex="-1">...</a>
+        </div>
+        <div>
+          <label for="betsuSansho1Mei">別参照１名</label><input type="text" id="betsuSansho1Mei" name="betsuSansho1Mei" />
+        </div>
+        <div>
+          <fieldset id="deleteFList" data-options="MCodeValueSearch.json" data-optionParams="code_nm:delete_f" data-optionValue="CODE_VALUE" data-optionLabel="CODE_VALUE_MEI">
+            <legend>削除フラグ</legend>
+          </fieldset>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>エンティティ２</legend>
+        <div>
+          <label for="nullEntity2Mei">任意エンティティ２名</label><input type="text" id="nullEntity2Mei" name="nullEntity2Mei" />
+        </div>
+        <div>
+          <label for="entity2Mei">エンティティ２名</label><input type="text" id="entity2Mei" name="entity2Mei" />
+        </div>
+        <div>
+          <fieldset id="checkFList" data-options="MCodeValueSearch.json" data-optionParams="code_nm:check_f" data-optionValue="CODE_VALUE" data-optionLabel="CODE_VALUE_MEI">
+            <legend>チェックフラグ</legend>
+          </fieldset>
+        </div>
+        <div>
+          <fieldset id="radioKbList" data-options="MCodeValueSearch.json" data-optionParams="code_nm:radio_kb" data-optionValue="CODE_VALUE" data-optionLabel="CODE_VALUE_MEI">
+            <legend>ラジオ区分</legend>
+          </fieldset>
+        </div>
+        <div>
+          <fieldset id="pulldownKbList" data-options="MCodeValueSearch.json" data-optionParams="code_nm:pulldown_kb" data-optionValue="CODE_VALUE" data-optionLabel="CODE_VALUE_MEI">
+            <legend>プルダウン区分</legend>
+          </fieldset>
+        </div>
+        <div>
+          <label for="memoTx">メモ</label><input type="text" id="memoTx" name="memoTx" />
+        </div>
+        <div>
+          <label for="hidukeYmd_1">日付</label><input type="date" id="hidukeYmd_1" name="hidukeYmd_1" />～<input type="date" id="hidukeYmd_2" name="hidukeYmd_2" />
+        </div>
+        <div>
+          <label for="nengetsuYm_1">年月</label><input type="month" id="nengetsuYm_1" name="nengetsuYm_1" />～<input type="month" id="nengetsuYm_2" name="nengetsuYm_2" />
+        </div>
+        <div>
+          <label for="sampleY_1">年</label><input type="text" id="sampleY_1" name="sampleY_1" />～<input type="text" id="sampleY_2" name="sampleY_2" />
+        </div>
+        <div>
+          <label for="sampleM_1">月</label><input type="text" id="sampleM_1" name="sampleM_1" />～<input type="text" id="sampleM_2" name="sampleM_2" />
+        </div>
+        <div>
+          <label for="nichijiDt_1">日時</label><input type="datetime-local" id="nichijiDt_1" name="nichijiDt_1" />～<input type="datetime-local" id="nichijiDt_2" name="nichijiDt_2" />
+        </div>
+        <div>
+          <label for="jikokuHm_1">時刻</label><input type="time" id="jikokuHm_1" name="jikokuHm_1" />～<input type="time" id="jikokuHm_2" name="jikokuHm_2" />
+        </div>
+        <div>
+          <label for="jikanTm_1">時間</label><input type="text" id="jikanTm_1" name="jikanTm_1" />～<input type="text" id="jikanTm_2" name="jikanTm_2" />
+        </div>
+        <div>
+          <label for="suryoQt_1">数量</label><input type="text" id="suryoQt_1" name="suryoQt_1" />～<input type="text" id="suryoQt_2" name="suryoQt_2" />
+        </div>
+        <div>
+          <label for="tankaAm_1">単価</label><input type="text" id="tankaAm_1" name="tankaAm_1" />～<input type="text" id="tankaAm_2" name="tankaAm_2" />
+        </div>
+        <div>
+          <label for="kingakuAm_1">金額</label><input type="text" id="kingakuAm_1" name="kingakuAm_1" />～<input type="text" id="kingakuAm_2" name="kingakuAm_2" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset">リセット</button>
+      </div>
+      <div class="submits">
+        <button id="SearchD0001" class="search" data-gridId="D0001Grid">検索</button>
+      </div>
+    </form>
+    <form name="D0001RegistForm" action="D0001Regist.ajax" class="regist">
+      <h3>検索結果</h3>
+      <div id="D0001Grid" data-selectionMode="checkbox" data-frozenColumn="2" th:data-href="@{./D0002.html}"></div>
+      <div id="D0001Pager"></div>
+      <div class="buttons">
+        <button type="button" onClick="$('[id=&quot;SearchD0001&quot;]').click();">リセット</button>
+        <a th:href="@{D0001Search.xlsx(baseMei=検索画面)}" id="D0001Search.xlsx" tabindex="-1">エクセル出力</a>
+      </div>
+      <div class="submits">
+        <button id="RegistD0001" class="regist">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

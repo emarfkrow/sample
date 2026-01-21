@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6OrgDet.title}">起源明細</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6OrgDet.h2}">h2</h2>
+    <form name="Tb6OrgDetRegistForm" action="Tb6OrgDetRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{Tb6Org.legend}">legend</legend>
+        <div id="orgId">
+          <label for="Tb6Org.orgId" th:text="#{Tb6Org.orgId}">起源ID</label><input type="text" id="Tb6Org.orgId" name="Tb6Org.orgId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orgInfo">
+          <label for="Tb6Org.orgInfo" th:text="#{Tb6Org.orgInfo}">起源情報</label><input type="text" id="Tb6Org.orgInfo" name="Tb6Org.orgInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb6Org.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6Org.insertTs" class="meta"></span><input type="hidden" id="Tb6Org.insertTs" name="Tb6Org.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb6Org.insertUserId}" class="meta">作成者</label><span id="Tb6Org.insertUserId" class="meta"></span><input type="hidden" id="Tb6Org.insertUserId" name="Tb6Org.insertUserId" class="meta"/>
+          <span id="Tb6Org.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6Org.insertUserId" data-destDef="Tb6Org.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb6Org.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb6Org.updateTs" class="meta"></span><input type="hidden" id="Tb6Org.updateTs" name="Tb6Org.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb6Org.updateUserId}" class="meta">更新者</label><span id="Tb6Org.updateUserId" class="meta"></span><input type="hidden" id="Tb6Org.updateUserId" name="Tb6Org.updateUserId" class="meta"/>
+          <span id="Tb6Org.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6Org.updateUserId" data-destDef="Tb6Org.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{Tb6OrgDet.legend}">legend</legend>
+        <div id="orgId">
+          <label for="Tb6OrgDet.orgId" th:text="#{Tb6OrgDet.orgId}">起源ID</label><input type="text" id="Tb6OrgDet.orgId" name="Tb6OrgDet.orgId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orgBn">
+          <label for="Tb6OrgDet.orgBn" th:text="#{Tb6OrgDet.orgBn}">起源明細枝番</label><input type="text" id="Tb6OrgDet.orgBn" name="Tb6OrgDet.orgBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orgDetInfo">
+          <label for="Tb6OrgDet.orgDetInfo" th:text="#{Tb6OrgDet.orgDetInfo}">起源明細情報</label><input type="text" id="Tb6OrgDet.orgDetInfo" name="Tb6OrgDet.orgDetInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb6OrgDet.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6OrgDet.insertTs" class="meta"></span><input type="hidden" id="Tb6OrgDet.insertTs" name="Tb6OrgDet.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb6OrgDet.insertUserId}" class="meta">作成者</label><span id="Tb6OrgDet.insertUserId" class="meta"></span><input type="hidden" id="Tb6OrgDet.insertUserId" name="Tb6OrgDet.insertUserId" class="meta"/>
+          <span id="Tb6OrgDet.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6OrgDet.insertUserId" data-destDef="Tb6OrgDet.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb6OrgDet.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb6OrgDet.updateTs" class="meta"></span><input type="hidden" id="Tb6OrgDet.updateTs" name="Tb6OrgDet.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb6OrgDet.updateUserId}" class="meta">更新者</label><span id="Tb6OrgDet.updateUserId" class="meta"></span><input type="hidden" id="Tb6OrgDet.updateUserId" name="Tb6OrgDet.updateUserId" class="meta"/>
+          <span id="Tb6OrgDet.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6OrgDet.updateUserId" data-destDef="Tb6OrgDet.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb6OrgDet" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb6OrgDetGet.xlsx(baseMei=#{Tb6OrgDet.h2})}" id="Tb6OrgDetGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb6OrgDet" type="submit" class="delete" data-action="Tb6OrgDetDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb6OrgDet" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

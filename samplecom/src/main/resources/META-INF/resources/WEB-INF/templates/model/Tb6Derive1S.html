@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6Derive1S.title}">派生１</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6Derive1GridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive2GridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive2DetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive1DetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6Derive1S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb6Derive1SearchForm" action="Tb6Derive1Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb6Derive1S.legend}">legend</legend>
+        <div id="derive1Id">
+          <label for="Tb6Derive1.derive1Id" th:text="#{Tb6Derive1.derive1Id}">派生１ID</label><input type="text" id="Tb6Derive1.derive1Id" name="Tb6Derive1.derive1Id" maxlength="10" />
+        </div>
+        <div id="orgId">
+          <label for="Tb6Derive1.orgId" th:text="#{Tb6Derive1.orgId}">起源ID</label><input type="text" id="Tb6Derive1.orgId" name="Tb6Derive1.orgId" maxlength="10" /><a id="Tb6Derive1.orgId" th:href="@{/model/Tb6OrgS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="orgInfo">
+          <label for="Tb6Derive1.orgInfo" th:text="#{Tb6Derive1.orgInfo}">起源情報</label><input type="text" id="Tb6Derive1.orgInfo" name="Tb6Derive1.orgInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb6Derive1" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb6Derive1.html}" target="dialog" id="Tb6Derive1" class="anew derive" th:text="#{Tb6Derive1.add}" tabindex="-1">派生１</a>
+          <label for="Tb6Derive1.deriveeOrgId" th:text="#{Tb6Derive1.deriveeOrgId}">起源ID</label><input type="text" id="Tb6Derive1.deriveeOrgId" name="Tb6Derive1.deriveeOrgId" maxlength="10" />
+          <a id="Tb6Derive1.deriveeOrgId" th:href="@{/model/Tb6OrgS.html?action=Tb6OrgCorrect.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb6Derive1" type="submit" class="search" data-gridId="Tb6Derive1Grid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb6Derive1SRegistForm" action="Tb6Derive1SRegist.ajax" class="regist">
+      <h3 th:text="#{Tb6Derive1.h3}">h3</h3>
+      <div id="Tb6Derive1Grid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/Tb6Derive1.html}"></div>
+      <div id="Tb6Derive1Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb6Derive1S" th:text="#{common.reset}" onClick="Base.listReset('Tb6Derive1');">reset</button>
+        <a th:href="@{Tb6Derive1Search.xlsx(baseMei=#{Tb6Derive1S.h2})}" id="Tb6Derive1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="Tb6Derive1Grid.orgId" th:href="@{/model/Tb6OrgS.html}" target="dialog" class="refer" th:text="'起源' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

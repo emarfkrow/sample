@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb2Foster.title}">里子</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb2FosterGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb2Foster.h2}">h2</h2>
+    <form name="Tb2FosterRegistForm" action="Tb2FosterRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb2Foster.legend}">legend</legend>
+        <div id="broId">
+          <label for="Tb2Foster.broId" th:text="#{Tb2Foster.broId}">兄弟ID</label><input type="text" id="Tb2Foster.broId" name="Tb2Foster.broId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="fosterInfo">
+          <label for="Tb2Foster.fosterInfo" th:text="#{Tb2Foster.fosterInfo}">里子情報</label><input type="text" id="Tb2Foster.fosterInfo" name="Tb2Foster.fosterInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb2Foster.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb2Foster.insertTs" class="meta"></span><input type="hidden" id="Tb2Foster.insertTs" name="Tb2Foster.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb2Foster.insertUserId}" class="meta">作成者</label><span id="Tb2Foster.insertUserId" class="meta"></span><input type="hidden" id="Tb2Foster.insertUserId" name="Tb2Foster.insertUserId" class="meta"/>
+          <span id="Tb2Foster.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb2Foster.insertUserId" data-destDef="Tb2Foster.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb2Foster.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb2Foster.updateTs" class="meta"></span><input type="hidden" id="Tb2Foster.updateTs" name="Tb2Foster.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb2Foster.updateUserId}" class="meta">更新者</label><span id="Tb2Foster.updateUserId" class="meta"></span><input type="hidden" id="Tb2Foster.updateUserId" name="Tb2Foster.updateUserId" class="meta"/>
+          <span id="Tb2Foster.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb2Foster.updateUserId" data-destDef="Tb2Foster.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb2Foster" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb2FosterGet.xlsx(baseMei=#{Tb2Foster.h2})}" id="Tb2FosterGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb2Foster" type="submit" class="delete" data-action="Tb2FosterDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb2Foster" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

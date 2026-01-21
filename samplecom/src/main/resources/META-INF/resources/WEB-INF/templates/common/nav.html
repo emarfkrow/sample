@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<body>
+  <div class="nav" layout:fragment="nav" th:if="${#ctx.session != null && #ctx.session.get('AUTHN_KEY') != null}">
+    <dl>
+      <dt id="HR" style="clear: both;" th:text="#{nav.dt.HR}">HR</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="MhrBusho" th:href="@{/model/MhrBushoS.html}" th:text="#{nav.MhrBushoS}" class="table M">部署マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="MhrShokui" th:href="@{/model/MhrShokuiS.html}" th:text="#{nav.MhrShokuiS}" class="table M">職位マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="MhrShokuiNinka" th:href="@{/model/MhrShokuiNinkaS.html}" th:text="#{nav.MhrShokuiNinkaS}" class="table M">認可マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="MhrUser" th:href="@{/model/MhrUserS.html}" th:text="#{nav.MhrUserS}" class="table M">ユーザマスタ</a></li>
+          <li style="clear: both; float: left;"><a id="MhrUserPos" th:href="@{/model/MhrUserPosS.html}" th:text="#{nav.MhrUserPosS}" class="table M">所属マスタ</a></li>
+        </ul>
+      </dd>
+      <dt id="SY" style="clear: both;" th:text="#{nav.dt.SY}">SY</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="MsyKadobi" th:href="@{/model/MsyKadobiS.html}" th:text="#{nav.MsyKadobiS}" class="table M">稼働日マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="MsyKbn" th:href="@{/model/MsyKbnS.html}" th:text="#{nav.MsyKbnS}" class="table M">区分マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="MsyTax" th:href="@{/model/MsyTaxS.html}" th:text="#{nav.MsyTaxS}" class="table M">税マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="MsyTsuka" th:href="@{/model/MsyTsukaS.html}" th:text="#{nav.MsyTsukaS}" class="table M">通貨マスタ</a></li>
+        </ul>
+      </dd>
+      <dt id="TB0" style="clear: both;" th:text="#{nav.dt.TB0}">TB0</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb0Entity" th:href="@{/model/Tb0EntityS.html}" th:text="#{nav.Tb0EntityS}" class="table">エンティティ</a></li>
+          <li style="clear: both; float: left;"><a id="Tb0Nokey" th:href="@{/model/Tb0NokeyS.html}" th:text="#{nav.Tb0NokeyS}" class="table">主キーなし</a></li>
+        </ul>
+      </dd>
+      <dt id="TB1" style="clear: both;" th:text="#{nav.dt.TB1}">TB1</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb1Cdref" th:href="@{/model/Tb1CdrefS.html}" th:text="#{nav.Tb1CdrefS}" class="table">CD参照マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="Tb1Combo1" th:href="@{/model/Tb1Combo1S.html}" th:text="#{nav.Tb1Combo1S}" class="table">複合１</a></li>
+          <li style="clear: both; float: left;"><a id="Tb1Idbn" th:href="@{/model/Tb1IdbnS.html}" th:text="#{nav.Tb1IdbnS}" class="table">ID連番マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="Tb1Idref" th:href="@{/model/Tb1IdrefS.html}" th:text="#{nav.Tb1IdrefS}" class="table">ID参照マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="Tb1Noref" th:href="@{/model/Tb1NorefS.html}" th:text="#{nav.Tb1NorefS}" class="table">NO参照マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="Tb1Refer1" th:href="@{/model/Tb1Refer1S.html}" th:text="#{nav.Tb1Refer1S}" class="table">参照１マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="Tb1Refer2" th:href="@{/model/Tb1Refer2S.html}" th:text="#{nav.Tb1Refer2S}" class="table">参照２マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="Tb1Refer3" th:href="@{/model/Tb1Refer3S.html}" th:text="#{nav.Tb1Refer3S}" class="table">参照３マスタ</a></li>
+          <li style="clear: both; float: left;"><a id="Tb1Saiki" th:href="@{/model/Tb1SaikiS.html}" th:text="#{nav.Tb1SaikiS}" class="table">再帰</a></li>
+        </ul>
+      </dd>
+      <dt id="TB2" style="clear: both;" th:text="#{nav.dt.TB2}">TB2</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb2Eldest" th:href="@{/model/Tb2EldestS.html}" th:text="#{nav.Tb2EldestS}" class="table">長兄</a></li>
+          <li style="clear: both; float: left;"><a id="Tb2Foster" th:href="@{/model/Tb2FosterS.html}" th:text="#{nav.Tb2FosterS}" class="table">里子</a></li>
+          <li style="clear: both; float: left;"><a id="Tb2Younger" th:href="@{/model/Tb2YoungerS.html}" th:text="#{nav.Tb2YoungerS}" class="table">弟</a></li>
+          <li style="clear: both; float: left;"><a id="Tb2Youngest" th:href="@{/model/Tb2YoungestS.html}" th:text="#{nav.Tb2YoungestS}" class="table">末弟</a></li>
+        </ul>
+      </dd>
+      <dt id="TB3" style="clear: both;" th:text="#{nav.dt.TB3}">TB3</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb3Begin" th:href="@{/model/Tb3BeginS.html}" th:text="#{nav.Tb3BeginS}" class="table">当初</a></li>
+          <li style="clear: both;"><a id="Tb3BeginHis" th:href="@{/model/Tb3BeginHisS.html}" th:text="#{nav.Tb3BeginHisS}" class="history">履歴</a></li>
+        </ul>
+      </dd>
+      <dt id="TB4" style="clear: both;" th:text="#{nav.dt.TB4}">TB4</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb4KoOrphans" th:href="@{/model/Tb4KoOrphansS.html}" th:text="#{nav.Tb4KoOrphansS}" class="table">孤児</a></li>
+          <li style="clear: both; float: left;"><a id="Tb4Oya" th:href="@{/model/Tb4OyaS.html}" th:text="#{nav.Tb4OyaS}" class="table">親</a></li>
+        </ul>
+      </dd>
+      <dt id="TB5" style="clear: both;" th:text="#{nav.dt.TB5}">TB5</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb5Derive" th:href="@{/model/Tb5DeriveS.html}" th:text="#{nav.Tb5DeriveS}" class="table">派生</a></li>
+          <li style="clear: both; float: left;"><a id="Tb5Merge" th:href="@{/model/Tb5MergeS.html}" th:text="#{nav.Tb5MergeS}" class="table">統合</a></li>
+          <li style="clear: both; float: left;"><a id="Tb5Prev" th:href="@{/model/Tb5PrevS.html}" th:text="#{nav.Tb5PrevS}" class="table">前世</a></li>
+          <li style="clear: both; float: left;"><a id="Tb5Reborn" th:href="@{/model/Tb5RebornS.html}" th:text="#{nav.Tb5RebornS}" class="table">転生</a></li>
+        </ul>
+      </dd>
+      <dt id="TB6" style="clear: both;" th:text="#{nav.dt.TB6}">TB6</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb6Derive1" th:href="@{/model/Tb6Derive1S.html}" th:text="#{nav.Tb6Derive1S}" class="table">派生１</a></li>
+          <li style="clear: both; float: left;"><a id="Tb6Derive2" th:href="@{/model/Tb6Derive2S.html}" th:text="#{nav.Tb6Derive2S}" class="table">派生２</a></li>
+          <li style="clear: both; float: left;"><a id="Tb6Org" th:href="@{/model/Tb6OrgS.html}" th:text="#{nav.Tb6OrgS}" class="table">起源</a></li>
+        </ul>
+      </dd>
+      <dt id="TB7" style="clear: both;" th:text="#{nav.dt.TB7}">TB7</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb7Sum" th:href="@{/model/Tb7SumS.html}" th:text="#{nav.Tb7SumS}" class="table">集約</a></li>
+          <li style="clear: both; float: left;"><a id="Tb7Unit1" th:href="@{/model/Tb7Unit1S.html}" th:text="#{nav.Tb7Unit1S}" class="table">単位１</a></li>
+          <li style="clear: both; float: left;"><a id="Tb7Unit2" th:href="@{/model/Tb7Unit2S.html}" th:text="#{nav.Tb7Unit2S}" class="table">単位２</a></li>
+        </ul>
+      </dd>
+      <dt id="TB8" style="clear: both;" th:text="#{nav.dt.TB8}">TB8</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb8Choice" th:href="@{/model/Tb8ChoiceS.html}" th:text="#{nav.Tb8ChoiceS}" class="table">選抜</a></li>
+          <li style="clear: both; float: left;"><a id="Tb8Prev2" th:href="@{/model/Tb8Prev2S.html}" th:text="#{nav.Tb8Prev2S}" class="table">前世２</a></li>
+          <li style="clear: both; float: left;"><a id="Tb8Reborn2" th:href="@{/model/Tb8Reborn2S.html}" th:text="#{nav.Tb8Reborn2S}" class="table">転生２</a></li>
+          <li style="clear: both; float: left;"><a id="Tb8Sum2" th:href="@{/model/Tb8Sum2S.html}" th:text="#{nav.Tb8Sum2S}" class="table">集約２</a></li>
+          <li style="clear: both; float: left;"><a id="Tb8Sum3" th:href="@{/model/Tb8Sum3S.html}" th:text="#{nav.Tb8Sum3S}" class="table">集約３</a></li>
+          <li style="clear: both; float: left;"><a id="Tb8Tasho1" th:href="@{/model/Tb8Tasho1S.html}" th:text="#{nav.Tb8Tasho1S}" class="table">他生１</a></li>
+          <li style="clear: both; float: left;"><a id="Tb8Tasho2" th:href="@{/model/Tb8Tasho2S.html}" th:text="#{nav.Tb8Tasho2S}" class="table">他生２</a></li>
+          <li style="clear: both; float: left;"><a id="Tb8Unit3" th:href="@{/model/Tb8Unit3S.html}" th:text="#{nav.Tb8Unit3S}" class="table">単位３</a></li>
+          <li style="clear: both; float: left;"><a id="Tb8Unit4" th:href="@{/model/Tb8Unit4S.html}" th:text="#{nav.Tb8Unit4S}" class="table">単位４</a></li>
+        </ul>
+      </dd>
+      <dt id="TB9" style="clear: both;" th:text="#{nav.dt.TB9}">TB9</dt>
+      <dd>
+        <ul>
+          <li style="clear: both; float: left;"><a id="Tb9Dest" th:href="@{/model/Tb9DestS.html}" th:text="#{nav.Tb9DestS}" class="table">変換先</a></li>
+          <li style="clear: both; float: left;"><a id="Tb9Furiwake" th:href="@{/model/Tb9FuriwakeS.html}" th:text="#{nav.Tb9FuriwakeS}" class="view">VIEW</a></li>
+          <li style="clear: both; float: left;"><a id="Tb9Henkan" th:href="@{/model/Tb9HenkanS.html}" th:text="#{nav.Tb9HenkanS}" class="view">VIEW</a></li>
+          <li style="clear: both; float: left;"><a id="Tb9Src" th:href="@{/model/Tb9SrcS.html}" th:text="#{nav.Tb9SrcS}" class="table">変換元</a></li>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+</body>
+</html>

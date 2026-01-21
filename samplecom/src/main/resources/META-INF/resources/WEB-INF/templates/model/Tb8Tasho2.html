@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb8Tasho2.title}">他生２</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb8Tasho2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum3GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb8ChoiceGridColumns.js}"></script>
+<script th:src="@{/model/Tb7SumGridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit1GridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Prev2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho1GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit3GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit4GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Reborn2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb8Tasho2.h2}">h2</h2>
+    <form name="Tb8Tasho2RegistForm" action="Tb8Tasho2Regist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb8Tasho2.legend}">legend</legend>
+        <div id="tasho2Id">
+          <label for="Tb8Tasho2.tasho2Id" th:text="#{Tb8Tasho2.tasho2Id}">他生２ID</label><input type="text" id="Tb8Tasho2.tasho2Id" name="Tb8Tasho2.tasho2Id" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="sum3Id">
+          <label th:text="#{Tb8Tasho2.sum3Id}">集約３ID</label><span id="Tb8Tasho2.sum3Id" class="derivee"></span><input type="hidden" id="Tb8Tasho2.sum3Id" name="Tb8Tasho2.sum3Id" class="derivee" />
+          <a id="Tb8Tasho2.sum3Id" th:href="@{/model/Tb8Sum3S.html?action=Tb8Sum3Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb8Tasho2.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb8Tasho2.insertTs" class="meta"></span><input type="hidden" id="Tb8Tasho2.insertTs" name="Tb8Tasho2.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb8Tasho2.insertUserId}" class="meta">作成者</label><span id="Tb8Tasho2.insertUserId" class="meta"></span><input type="hidden" id="Tb8Tasho2.insertUserId" name="Tb8Tasho2.insertUserId" class="meta"/>
+          <span id="Tb8Tasho2.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb8Tasho2.insertUserId" data-destDef="Tb8Tasho2.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb8Tasho2.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb8Tasho2.updateTs" class="meta"></span><input type="hidden" id="Tb8Tasho2.updateTs" name="Tb8Tasho2.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb8Tasho2.updateUserId}" class="meta">更新者</label><span id="Tb8Tasho2.updateUserId" class="meta"></span><input type="hidden" id="Tb8Tasho2.updateUserId" name="Tb8Tasho2.updateUserId" class="meta"/>
+          <span id="Tb8Tasho2.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb8Tasho2.updateUserId" data-destDef="Tb8Tasho2.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb8Tasho2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb8Tasho2Get.xlsx(baseMei=#{Tb8Tasho2.h2})}" id="Tb8Tasho2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{/model/Tb8Reborn2.html}" id="Tb8Reborn2" target="dialog" th:text="#{Tb8Reborn2.add}" class="reborner" tabindex="-1">転生２</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb8Tasho2" type="submit" class="delete" data-action="Tb8Tasho2Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb8Tasho2" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+      <h3 th:text="#{Tb8Reborn2.h3}">h3</h3>
+      <div id="Tb8Reborn2Grid" data-selectionMode="link" data-frozenColumn="1" th:data-href="@{/model/Tb8Reborn2.html}" class="reborners"></div>
+    </form>
+  </div>
+</body>
+</html>

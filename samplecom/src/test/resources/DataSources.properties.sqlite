@@ -1,0 +1,13 @@
+# sqlite用データソース定義
+# JNDI名の場合
+JNDIName         java:/comp/env/jdbc/sqlite
+# コネクションプールの場合
+driverClassName  org.sqlite.JDBC
+url              jdbc:sqlite:src/test/resources/emarf.sqlite3
+username
+password
+initialSize      30
+maxActive        100
+maxIdle          30
+maxWait          5000
+#validationQuery SELECT COUNT(*) FROM DUAL

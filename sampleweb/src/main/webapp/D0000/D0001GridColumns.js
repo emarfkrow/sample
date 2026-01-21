@@ -1,0 +1,35 @@
+/**
+ *
+ */
+
+let D0001GridColumns = [
+	Column.refer('sosen_id', '祖先ID', 100, 'primaryKey', 'sosen_mei'),
+	Column.cell('sosen_mei', '祖先名', 100),
+	Column.cell('oya_sn', '親連番', 100, 'primaryKey'),
+	Column.cell('oya_mei', '親名', 100),
+	Column.cell('entity_sn', 'エンティティ連番', 100, 'primaryKey'),
+	Column.text('entity_mei', 'エンティティ名', 300),
+	Column.text('sansho1_id', '参照１ID', 100),
+	Column.text('sansho1_mei', '参照１名', 300),
+	Column.text('sansho2_id', '参照２ID', 100),
+	Column.text('sansho2_mei', '参照２名', 300),
+	Column.text('betsu_sansho1_id', '別参照１ID', 100),
+	Column.text('betsu_sansho1_mei', '別参照１名', 300),
+	Column.check('delete_f', '削除フラグ', 10),
+	Column.text('null_entity2_mei', '任意エンティティ２名', 200),
+	Column.text('entity2_mei', 'エンティティ２名', 300),
+	Column.check('check_f', 'チェックフラグ', 10, ''),
+	Column.select('radio_kb', 'ラジオ区分', 20, '', { json: 'MCodeValueSearch.json', paramkey: 'code_nm', value: 'CODE_VALUE', label: 'CODE_VALUE_MEI' }),
+	Column.select('pulldown_kb', 'プルダウン区分', 20, '', { json: 'MCodeValueSearch.json', paramkey: 'code_nm', value: 'CODE_VALUE', label: 'CODE_VALUE_MEI' }),
+	Column.longText('memo_tx', 'メモ', 300),
+	Column.date('hiduke_ymd', '日付', 100),
+	Column.month('nengetsu_ym', '年月', 70),
+	Column.text('sample_y', '年', 40),
+	Column.text('sample_m', '月', 20),
+	Column.dateTime('nichiji_dt', '日時', 230),
+	Column.time('jikoku_hm', '時刻', 60),
+	Column.text('jikan_tm', '時間', 60),
+	Column.dec2('suryo_qt', '数量', 90),
+	Column.dec3('tanka_am', '単価', 110),
+	Column.dec3('kingaku_am', '金額', 110),
+];

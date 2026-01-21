@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MhrBushoS.title}">部署マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MhrBushoGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MhrBushoS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="MhrBushoSearchForm" action="MhrBushoSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{MhrBushoS.legend}">legend</legend>
+        <div id="bushoId">
+          <label for="MhrBusho.bushoId" th:text="#{MhrBusho.bushoId}">部署ID</label><input type="text" id="MhrBusho.bushoId" name="MhrBusho.bushoId" maxlength="10" />
+        </div>
+        <div id="bushoMei">
+          <label for="MhrBusho.bushoMei" th:text="#{MhrBusho.bushoMei}">部署名</label><input type="text" id="MhrBusho.bushoMei" name="MhrBusho.bushoMei" maxlength="60" />
+        </div>
+        <div id="oyaBushoId">
+          <label for="MhrBusho.oyaBushoId" th:text="#{MhrBusho.oyaBushoId}">親部署ID</label><input type="text" id="MhrBusho.oyaBushoId" name="MhrBusho.oyaBushoId" maxlength="10" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI" /><a id="MhrBusho.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrBusho.oyaBushoMei" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI"></span>
+        </div>
+        <div id="tekiyoBi">
+          <label for="MhrBusho.tekiyoBi_1" th:text="#{MhrBusho.tekiyoBi}">適用日</label><input type="text" id="MhrBusho.tekiyoBi_1" name="MhrBusho.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrBusho.tekiyoBi_2" name="MhrBusho.tekiyoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="MhrBusho.haishiBi_1" th:text="#{MhrBusho.haishiBi}">廃止日</label><input type="text" id="MhrBusho.haishiBi_1" name="MhrBusho.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrBusho.haishiBi_2" name="MhrBusho.haishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetMhrBusho" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/MhrBusho.html}" target="dialog" id="MhrBusho" class="anew" th:text="#{MhrBusho.add}" tabindex="-1">部署マスタ</a>
+      </div>
+      <div class="submits">
+        <button id="SearchMhrBusho" type="submit" class="search" data-gridId="MhrBushoGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="MhrBushoSRegistForm" action="MhrBushoSRegist.ajax" class="regist">
+      <h3 th:text="#{MhrBusho.h3}">h3</h3>
+      <div id="MhrBushoGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/MhrBusho.html}"></div>
+      <div id="MhrBushoPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetMhrBushoS" th:text="#{common.reset}" onClick="Base.listReset('MhrBusho');">reset</button>
+        <a th:href="@{MhrBushoSearch.xlsx(baseMei=#{MhrBushoS.h2})}" id="MhrBushoSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="MhrBushoGrid.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer" th:text="'部署マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteMhrBushoS" data-action="MhrBushoSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistMhrBushoS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb2EldestS.title}">長兄</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb2EldestGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb2EldestS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb2EldestSearchForm" action="Tb2EldestSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb2EldestS.legend}">legend</legend>
+        <div id="broId">
+          <label for="Tb2Eldest.broId" th:text="#{Tb2Eldest.broId}">兄弟ID</label><input type="text" id="Tb2Eldest.broId" name="Tb2Eldest.broId" maxlength="10" />
+        </div>
+        <div id="eldestInfo">
+          <label for="Tb2Eldest.eldestInfo" th:text="#{Tb2Eldest.eldestInfo}">長兄情報</label><input type="text" id="Tb2Eldest.eldestInfo" name="Tb2Eldest.eldestInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb2Eldest" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb2Eldest.html}" target="dialog" id="Tb2Eldest" class="anew" th:text="#{Tb2Eldest.add}" tabindex="-1">長兄</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb2Eldest" type="submit" class="search" data-gridId="Tb2EldestGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb2EldestSRegistForm" action="Tb2EldestSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb2Eldest.h3}">h3</h3>
+      <div id="Tb2EldestGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Tb2Eldest.html}"></div>
+      <div id="Tb2EldestPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb2EldestS" th:text="#{common.reset}" onClick="Base.listReset('Tb2Eldest');">reset</button>
+        <a th:href="@{Tb2EldestSearch.xlsx(baseMei=#{Tb2EldestS.h2})}" id="Tb2EldestSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteTb2EldestS" data-action="Tb2EldestSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb2EldestS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

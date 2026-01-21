@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb0NokeyS.title}">主キーなし</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb0NokeyGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb0NokeyS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb0NokeySearchForm" action="Tb0NokeySearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb0NokeyS.legend}">legend</legend>
+        <div id="colA">
+          <label for="Tb0Nokey.colA" th:text="#{Tb0Nokey.colA}">列Ａ</label><input type="text" id="Tb0Nokey.colA" name="Tb0Nokey.colA" maxlength="60" />
+        </div>
+        <div id="colB">
+          <label for="Tb0Nokey.colB" th:text="#{Tb0Nokey.colB}">列Ｂ</label><input type="text" id="Tb0Nokey.colB" name="Tb0Nokey.colB" maxlength="60" />
+        </div>
+        <div id="colC">
+          <label for="Tb0Nokey.colC" th:text="#{Tb0Nokey.colC}">列Ｃ</label><input type="text" id="Tb0Nokey.colC" name="Tb0Nokey.colC" maxlength="60" />
+        </div>
+        <div id="colD">
+          <label for="Tb0Nokey.colD_1" th:text="#{Tb0Nokey.colD}">列Ｄ</label><input type="number" id="Tb0Nokey.colD_1" name="Tb0Nokey.colD_1" maxlength="60" />～<input type="number" id="Tb0Nokey.colD_2" name="Tb0Nokey.colD_2" maxlength="60" />
+        </div>
+        <div id="colE">
+          <label for="Tb0Nokey.colE" th:text="#{Tb0Nokey.colE}">列Ｅ</label><input type="text" id="Tb0Nokey.colE" name="Tb0Nokey.colE" maxlength="60" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb0Nokey" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb0Nokey.html}" target="dialog" id="Tb0Nokey" class="anew" th:text="#{Tb0Nokey.add}" tabindex="-1">主キーなし</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb0Nokey" type="submit" class="search" data-gridId="Tb0NokeyGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb0NokeySRegistForm" action="Tb0NokeySRegist.ajax" class="regist">
+      <h3 th:text="#{Tb0Nokey.h3}">h3</h3>
+      <div id="Tb0NokeyGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/Tb0Nokey.html}"></div>
+      <div id="Tb0NokeyPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb0NokeyS" th:text="#{common.reset}" onClick="Base.listReset('Tb0Nokey');">reset</button>
+        <a th:href="@{Tb0NokeySearch.xlsx(baseMei=#{Tb0NokeyS.h2})}" id="Tb0NokeySearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteTb0NokeyS" data-action="Tb0NokeySDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb0NokeyS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

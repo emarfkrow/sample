@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb8Sum2.title}">集約２</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb8Sum2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Prev2GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb8ChoiceGridColumns.js}"></script>
+<script th:src="@{/model/Tb7SumGridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit1GridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum3GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Reborn2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit4GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho1GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit3GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb8Sum2.h2}">h2</h2>
+    <form name="Tb8Sum2RegistForm" action="Tb8Sum2Regist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb8Sum2.legend}">legend</legend>
+        <div id="sum2Id">
+          <label for="Tb8Sum2.sum2Id" th:text="#{Tb8Sum2.sum2Id}">集約２ID</label><input type="text" id="Tb8Sum2.sum2Id" name="Tb8Sum2.sum2Id" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="sum2Info">
+          <label for="Tb8Sum2.sum2Info" th:text="#{Tb8Sum2.sum2Info}">集約２情報</label><input type="text" id="Tb8Sum2.sum2Info" name="Tb8Sum2.sum2Info" maxlength="300" />
+        </div>
+        <div id="prev2Id">
+          <label th:text="#{Tb8Sum2.prev2Id}">前世２ID</label><span id="Tb8Sum2.prev2Id" class="rebornee"></span><input type="hidden" id="Tb8Sum2.prev2Id" name="Tb8Sum2.prev2Id" class="rebornee" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb8Sum2.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb8Sum2.insertTs" class="meta"></span><input type="hidden" id="Tb8Sum2.insertTs" name="Tb8Sum2.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb8Sum2.insertUserId}" class="meta">作成者</label><span id="Tb8Sum2.insertUserId" class="meta"></span><input type="hidden" id="Tb8Sum2.insertUserId" name="Tb8Sum2.insertUserId" class="meta"/>
+          <span id="Tb8Sum2.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb8Sum2.insertUserId" data-destDef="Tb8Sum2.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb8Sum2.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb8Sum2.updateTs" class="meta"></span><input type="hidden" id="Tb8Sum2.updateTs" name="Tb8Sum2.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb8Sum2.updateUserId}" class="meta">更新者</label><span id="Tb8Sum2.updateUserId" class="meta"></span><input type="hidden" id="Tb8Sum2.updateUserId" name="Tb8Sum2.updateUserId" class="meta"/>
+          <span id="Tb8Sum2.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb8Sum2.updateUserId" data-destDef="Tb8Sum2.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb8Sum2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb8Sum2Get.xlsx(baseMei=#{Tb8Sum2.h2})}" id="Tb8Sum2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{/model/Tb8Choice.html}" id="Tb8Choice" target="dialog" th:text="#{Tb8Choice.add}" class="reborner" tabindex="-1">選抜</a>
+        <a th:href="@{/model/Tb8Tasho1.html}" id="Tb8Tasho1" target="dialog" th:text="#{Tb8Tasho1.add}" class="reborner" tabindex="-1">他生１</a>
+        <a th:href="@{/model/Tb8Unit3.html}" id="Tb8Unit3" target="dialog" th:text="#{Tb8Unit3.add}" class="reborner" tabindex="-1">単位３</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb8Sum2" type="submit" class="delete" data-action="Tb8Sum2Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb8Sum2" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyTsuka.title}">通貨マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyTsukaGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyTsuka.h2}">h2</h2>
+    <form name="MsyTsukaRegistForm" action="MsyTsukaRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{MsyTsuka.legend}">legend</legend>
+        <div id="tsukaKb">
+          <fieldset id="MsyTsuka.tsukaKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:TSUKA_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" primaryKey notblank">
+            <legend th:text="#{MsyTsuka.tsukaKb}">通貨区分</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="MsyTsuka.tekiyoBi" th:text="#{MsyTsuka.tekiyoBi}">適用日</label><input type="text" id="MsyTsuka.tekiyoBi" name="MsyTsuka.tekiyoBi" maxlength="10" class=" primaryKey notblank datepicker" />
+        </div>
+        <div id="tts">
+          <label for="MsyTsuka.tts" th:text="#{MsyTsuka.tts}">販売レート</label><input type="text" id="MsyTsuka.tts" name="MsyTsuka.tts" maxlength="5" class=" notblank" />
+        </div>
+        <div id="ttb">
+          <label for="MsyTsuka.ttb" th:text="#{MsyTsuka.ttb}">買取レート</label><input type="text" id="MsyTsuka.ttb" name="MsyTsuka.ttb" maxlength="5" class=" notblank" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MsyTsuka.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyTsuka.insertTs" class="meta"></span><input type="hidden" id="MsyTsuka.insertTs" name="MsyTsuka.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MsyTsuka.insertUserId}" class="meta">作成者</label><span id="MsyTsuka.insertUserId" class="meta"></span><input type="hidden" id="MsyTsuka.insertUserId" name="MsyTsuka.insertUserId" class="meta"/>
+          <span id="MsyTsuka.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyTsuka.insertUserId" data-destDef="MsyTsuka.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MsyTsuka.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyTsuka.updateTs" class="meta"></span><input type="hidden" id="MsyTsuka.updateTs" name="MsyTsuka.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MsyTsuka.updateUserId}" class="meta">更新者</label><span id="MsyTsuka.updateUserId" class="meta"></span><input type="hidden" id="MsyTsuka.updateUserId" name="MsyTsuka.updateUserId" class="meta"/>
+          <span id="MsyTsuka.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyTsuka.updateUserId" data-destDef="MsyTsuka.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshMsyTsuka" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{MsyTsukaGet.xlsx(baseMei=#{MsyTsuka.h2})}" id="MsyTsukaGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMsyTsuka" type="submit" class="delete" data-action="MsyTsukaDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMsyTsuka" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

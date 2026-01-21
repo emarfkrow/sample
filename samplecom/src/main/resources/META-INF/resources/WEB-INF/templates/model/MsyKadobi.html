@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyKadobi.title}">稼働日マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyKadobiGridColumns.js}"></script>
+<script th:src="@{/model/MhrBushoGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyKadobi.h2}">h2</h2>
+    <form name="MsyKadobiRegistForm" action="MsyKadobiRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{MsyKadobi.legend}">legend</legend>
+        <div id="kadoBi">
+          <label for="MsyKadobi.kadoBi" th:text="#{MsyKadobi.kadoBi}">稼働日</label><input type="text" id="MsyKadobi.kadoBi" name="MsyKadobi.kadoBi" maxlength="10" class=" primaryKey notblank datepicker" />
+        </div>
+        <div id="bushoId">
+          <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">部署ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" class=" primaryKey refer notblank" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" class=" primaryKey refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>
+        </div>
+        <div id="kadobiF">
+          <fieldset id="MsyKadobi.kadobiFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:KADOBI_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" notblank">
+            <legend th:text="#{MsyKadobi.kadobiF}">稼働日フラグ</legend>
+          </fieldset>
+        </div>
+        <div id="memo">
+          <label for="MsyKadobi.memo" th:text="#{MsyKadobi.memo}">メモ</label><input type="text" id="MsyKadobi.memo" name="MsyKadobi.memo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MsyKadobi.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyKadobi.insertTs" class="meta"></span><input type="hidden" id="MsyKadobi.insertTs" name="MsyKadobi.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MsyKadobi.insertUserId}" class="meta">作成者</label><span id="MsyKadobi.insertUserId" class="meta"></span><input type="hidden" id="MsyKadobi.insertUserId" name="MsyKadobi.insertUserId" class="meta"/>
+          <span id="MsyKadobi.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKadobi.insertUserId" data-destDef="MsyKadobi.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MsyKadobi.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyKadobi.updateTs" class="meta"></span><input type="hidden" id="MsyKadobi.updateTs" name="MsyKadobi.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MsyKadobi.updateUserId}" class="meta">更新者</label><span id="MsyKadobi.updateUserId" class="meta"></span><input type="hidden" id="MsyKadobi.updateUserId" name="MsyKadobi.updateUserId" class="meta"/>
+          <span id="MsyKadobi.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKadobi.updateUserId" data-destDef="MsyKadobi.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshMsyKadobi" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{MsyKadobiGet.xlsx(baseMei=#{MsyKadobi.h2})}" id="MsyKadobiGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMsyKadobi" type="submit" class="delete" data-action="MsyKadobiDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMsyKadobi" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

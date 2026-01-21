@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb1Idbn.title}">ID連番マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb1IdbnGridColumns.js}"></script>
+<script th:src="@{/model/Tb1IdrefGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb1Idbn.h2}">h2</h2>
+    <form name="Tb1IdbnRegistForm" action="Tb1IdbnRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb1Idbn.legend}">legend</legend>
+        <div id="idrefId">
+          <label for="Tb1Idbn.idrefId" th:text="#{Tb1Idbn.idrefId}">参照ID</label><input type="text" id="Tb1Idbn.idrefId" name="Tb1Idbn.idrefId" maxlength="10" class=" primaryKey numbering refer notblank" data-json="Tb1IdrefSearch.json" data-srcDef="IDREF_ID:Tb1Idbn.idrefId" data-destDef="Tb1Idbn.idrefMei:IDREF_MEI" /><a id="Tb1Idbn.idrefId" th:href="@{/model/Tb1IdrefS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb1Idbn.idrefMei" class=" primaryKey numbering refer" data-json="Tb1IdrefSearch.json" data-srcDef="IDREF_ID:Tb1Idbn.idrefId" data-destDef="Tb1Idbn.idrefMei:IDREF_MEI"></span>
+        </div>
+        <div id="idbnBn">
+          <label for="Tb1Idbn.idbnBn" th:text="#{Tb1Idbn.idbnBn}">参照ID連番</label><input type="text" id="Tb1Idbn.idbnBn" name="Tb1Idbn.idbnBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="idbnNo">
+          <label for="Tb1Idbn.idbnNo" th:text="#{Tb1Idbn.idbnNo}">ID連番NO</label><input type="text" id="Tb1Idbn.idbnNo" name="Tb1Idbn.idbnNo" maxlength="10" class=" notblank" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb1Idbn.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb1Idbn.insertTs" class="meta"></span><input type="hidden" id="Tb1Idbn.insertTs" name="Tb1Idbn.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb1Idbn.insertUserId}" class="meta">作成者</label><span id="Tb1Idbn.insertUserId" class="meta"></span><input type="hidden" id="Tb1Idbn.insertUserId" name="Tb1Idbn.insertUserId" class="meta"/>
+          <span id="Tb1Idbn.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Idbn.insertUserId" data-destDef="Tb1Idbn.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb1Idbn.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb1Idbn.updateTs" class="meta"></span><input type="hidden" id="Tb1Idbn.updateTs" name="Tb1Idbn.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb1Idbn.updateUserId}" class="meta">更新者</label><span id="Tb1Idbn.updateUserId" class="meta"></span><input type="hidden" id="Tb1Idbn.updateUserId" name="Tb1Idbn.updateUserId" class="meta"/>
+          <span id="Tb1Idbn.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Idbn.updateUserId" data-destDef="Tb1Idbn.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb1Idbn" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb1IdbnGet.xlsx(baseMei=#{Tb1Idbn.h2})}" id="Tb1IdbnGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb1Idbn" type="submit" class="delete" data-action="Tb1IdbnDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb1Idbn" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

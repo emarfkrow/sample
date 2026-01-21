@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb7Unit1.title}">単位１</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb7Unit1GridColumns.js}"></script>
+<script th:src="@{/model/Tb7SumGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb8ChoiceGridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Prev2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho1GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit3GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum3GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Reborn2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit4GridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb7Unit1.h2}">h2</h2>
+    <form name="Tb7Unit1RegistForm" action="Tb7Unit1Regist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb7Unit1.legend}">legend</legend>
+        <div id="unit1Id">
+          <label for="Tb7Unit1.unit1Id" th:text="#{Tb7Unit1.unit1Id}">単位１ID</label><input type="text" id="Tb7Unit1.unit1Id" name="Tb7Unit1.unit1Id" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="sumId">
+          <label th:text="#{Tb7Unit1.sumId}">集約ID</label><span id="Tb7Unit1.sumId" class="summary"></span><input type="hidden" id="Tb7Unit1.sumId" name="Tb7Unit1.sumId" class="summary" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb7Unit1.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb7Unit1.insertTs" class="meta"></span><input type="hidden" id="Tb7Unit1.insertTs" name="Tb7Unit1.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb7Unit1.insertUserId}" class="meta">作成者</label><span id="Tb7Unit1.insertUserId" class="meta"></span><input type="hidden" id="Tb7Unit1.insertUserId" name="Tb7Unit1.insertUserId" class="meta"/>
+          <span id="Tb7Unit1.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb7Unit1.insertUserId" data-destDef="Tb7Unit1.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb7Unit1.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb7Unit1.updateTs" class="meta"></span><input type="hidden" id="Tb7Unit1.updateTs" name="Tb7Unit1.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb7Unit1.updateUserId}" class="meta">更新者</label><span id="Tb7Unit1.updateUserId" class="meta"></span><input type="hidden" id="Tb7Unit1.updateUserId" name="Tb7Unit1.updateUserId" class="meta"/>
+          <span id="Tb7Unit1.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb7Unit1.updateUserId" data-destDef="Tb7Unit1.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb7Unit1" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb7Unit1Get.xlsx(baseMei=#{Tb7Unit1.h2})}" id="Tb7Unit1Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb7Unit1" type="submit" class="delete" data-action="Tb7Unit1Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb7Unit1" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

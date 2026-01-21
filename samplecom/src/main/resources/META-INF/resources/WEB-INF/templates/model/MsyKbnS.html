@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyKbnS.title}">区分マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyKbnGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/MsyKbnValGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyKbnS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="MsyKbnSearchForm" action="MsyKbnSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{MsyKbnS.legend}">legend</legend>
+        <div id="kbnNm">
+          <label for="MsyKbn.kbnNm" th:text="#{MsyKbn.kbnNm}">区分名称</label><input type="text" id="MsyKbn.kbnNm" name="MsyKbn.kbnNm" maxlength="20" />
+        </div>
+        <div id="kbnMei">
+          <label for="MsyKbn.kbnMei" th:text="#{MsyKbn.kbnMei}">区分名</label><input type="text" id="MsyKbn.kbnMei" name="MsyKbn.kbnMei" maxlength="60" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetMsyKbn" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/MsyKbn.html}" target="dialog" id="MsyKbn" class="anew" th:text="#{MsyKbn.add}" tabindex="-1">区分マスタ</a>
+      </div>
+      <div class="submits">
+        <button id="SearchMsyKbn" type="submit" class="search" data-gridId="MsyKbnGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="MsyKbnSRegistForm" action="MsyKbnSRegist.ajax" class="regist">
+      <h3 th:text="#{MsyKbn.h3}">h3</h3>
+      <div id="MsyKbnGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/MsyKbn.html}"></div>
+      <div id="MsyKbnPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetMsyKbnS" th:text="#{common.reset}" onClick="Base.listReset('MsyKbn');">reset</button>
+        <a th:href="@{MsyKbnSearch.xlsx(baseMei=#{MsyKbnS.h2})}" id="MsyKbnSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

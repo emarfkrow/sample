@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MhrUserPos.title}">所属マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MhrUserPosGridColumns.js}"></script>
+<script th:src="@{/model/MhrBushoGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/MhrShokuiGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MhrUserPos.h2}">h2</h2>
+    <form name="MhrUserPosRegistForm" action="MhrUserPosRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{MhrUserPos.legend}">legend</legend>
+        <div id="bushoId">
+          <label for="MhrUserPos.bushoId" th:text="#{MhrUserPos.bushoId}">部署ID</label><input type="text" id="MhrUserPos.bushoId" name="MhrUserPos.bushoId" maxlength="10" class=" primaryKey numbering refer notblank" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrUserPos.bushoId" data-destDef="MhrUserPos.bushoMei:BUSHO_MEI" /><a id="MhrUserPos.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.bushoMei" class=" primaryKey numbering refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrUserPos.bushoId" data-destDef="MhrUserPos.bushoMei:BUSHO_MEI"></span>
+        </div>
+        <div id="shokuiId">
+          <label for="MhrUserPos.shokuiId" th:text="#{MhrUserPos.shokuiId}">職位ID</label><input type="text" id="MhrUserPos.shokuiId" name="MhrUserPos.shokuiId" maxlength="10" class=" primaryKey numbering refer notblank" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrUserPos.shokuiId" data-destDef="MhrUserPos.shokuiMei:SHOKUI_MEI" /><a id="MhrUserPos.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.shokuiMei" class=" primaryKey numbering refer" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrUserPos.shokuiId" data-destDef="MhrUserPos.shokuiMei:SHOKUI_MEI"></span>
+        </div>
+        <div id="userId">
+          <label for="MhrUserPos.userId" th:text="#{MhrUserPos.userId}">ユーザID</label><input type="text" id="MhrUserPos.userId" name="MhrUserPos.userId" maxlength="10" class=" primaryKey refer notblank" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUserPos.userId" data-destDef="MhrUserPos.userSei:USER_SEI" /><a id="MhrUserPos.userId" th:href="@{/model/MhrUserS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.userSei" class=" primaryKey refer" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUserPos.userId" data-destDef="MhrUserPos.userSei:USER_SEI"></span>
+        </div>
+        <div id="tekiyoBi">
+          <label for="MhrUserPos.tekiyoBi" th:text="#{MhrUserPos.tekiyoBi}">適用日</label><input type="text" id="MhrUserPos.tekiyoBi" name="MhrUserPos.tekiyoBi" maxlength="10" class=" primaryKey notblank datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="MhrUserPos.haishiBi" th:text="#{MhrUserPos.haishiBi}">廃止日</label><input type="text" id="MhrUserPos.haishiBi" name="MhrUserPos.haishiBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MhrUserPos.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrUserPos.insertTs" class="meta"></span><input type="hidden" id="MhrUserPos.insertTs" name="MhrUserPos.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MhrUserPos.insertUserId}" class="meta">作成者</label><span id="MhrUserPos.insertUserId" class="meta"></span><input type="hidden" id="MhrUserPos.insertUserId" name="MhrUserPos.insertUserId" class="meta"/>
+          <span id="MhrUserPos.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUserPos.insertUserId" data-destDef="MhrUserPos.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MhrUserPos.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrUserPos.updateTs" class="meta"></span><input type="hidden" id="MhrUserPos.updateTs" name="MhrUserPos.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MhrUserPos.updateUserId}" class="meta">更新者</label><span id="MhrUserPos.updateUserId" class="meta"></span><input type="hidden" id="MhrUserPos.updateUserId" name="MhrUserPos.updateUserId" class="meta"/>
+          <span id="MhrUserPos.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUserPos.updateUserId" data-destDef="MhrUserPos.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshMhrUserPos" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{MhrUserPosGet.xlsx(baseMei=#{MhrUserPos.h2})}" id="MhrUserPosGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMhrUserPos" type="submit" class="delete" data-action="MhrUserPosDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMhrUserPos" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

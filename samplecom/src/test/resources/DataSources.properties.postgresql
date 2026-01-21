@@ -1,0 +1,13 @@
+# PostgreSQL用データソース定義
+# JNDI名の場合
+JNDIName         java:/comp/env/jdbc/postgresql
+# コネクションプールの場合
+driverClassName  org.postgresql.Driver
+url              jdbc:postgresql://localhost:5432/emarf
+username         emarf
+password         emarf
+initialSize      30
+maxActive        100
+maxIdle          30
+maxWait          5000
+#validationQuery SELECT COUNT(*) FROM DUAL

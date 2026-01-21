@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb0Entity.title}">エンティティ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb0EntityGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb0Entity.h2}">h2</h2>
+    <form name="Tb0EntityRegistForm" action="Tb0EntityRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb0Entity.legend}">legend</legend>
+        <div id="entityId">
+          <label for="Tb0Entity.entityId" th:text="#{Tb0Entity.entityId}">エンティティID</label><input type="text" id="Tb0Entity.entityId" name="Tb0Entity.entityId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="entityNm">
+          <label for="Tb0Entity.entityNm" th:text="#{Tb0Entity.entityNm}">エンティティ名称</label><input type="text" id="Tb0Entity.entityNm" name="Tb0Entity.entityNm" maxlength="20" class=" notblank" />
+        </div>
+        <div id="entityMei">
+          <label for="Tb0Entity.entityMei" th:text="#{Tb0Entity.entityMei}">エンティティ名</label><input type="text" id="Tb0Entity.entityMei" name="Tb0Entity.entityMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="checkF">
+          <fieldset id="Tb0Entity.checkFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:CHECK_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" notblank">
+            <legend th:text="#{Tb0Entity.checkF}">チェックフラグ</legend>
+          </fieldset>
+        </div>
+        <div id="radioKb">
+          <fieldset id="Tb0Entity.radioKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:RADIO_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" notblank">
+            <legend th:text="#{Tb0Entity.radioKb}">ラジオ区分</legend>
+          </fieldset>
+        </div>
+        <div id="pulldownKb">
+          <fieldset id="Tb0Entity.pulldownKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:PULLDOWN_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" notblank">
+            <legend th:text="#{Tb0Entity.pulldownKb}">プルダウン区分</legend>
+          </fieldset>
+        </div>
+        <div id="pulldownSb">
+          <fieldset id="Tb0Entity.pulldownSbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:PULLDOWN_SB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" notblank" data-force-pulldown="1">
+            <legend th:text="#{Tb0Entity.pulldownSb}">プルダウン種別</legend>
+          </fieldset>
+        </div>
+        <div id="memoTx">
+          <label for="Tb0Entity.memoTx" th:text="#{Tb0Entity.memoTx}">メモ</label>
+          <textarea id="Tb0Entity.memoTx" name="Tb0Entity.memoTx" class=" notblank"></textarea>
+        </div>
+        <div id="memo">
+          <label for="Tb0Entity.memo" th:text="#{Tb0Entity.memo}">１行メモ</label><input type="text" id="Tb0Entity.memo" name="Tb0Entity.memo" maxlength="300" class=" notblank" />
+        </div>
+        <div id="tenpuFile">
+          <label for="Tb0Entity.tenpuFile" th:text="#{Tb0Entity.tenpuFile}">添付ファイル</label><input type="file" id="Tb0Entity.tenpuFile" name="Tb0Entity.tenpuFile" maxlength="300" class=" notblank" /><a id="Tb0Entity.tenpuFile" target="blank" style="display: none;"></a><input type="hidden" id="Tb0Entity.tenpuFile" name="Tb0Entity.tenpuFile" disabled />
+        </div>
+        <div id="nengappiY">
+          <label for="Tb0Entity.nengappiY" th:text="#{Tb0Entity.nengappiY}">年月日年</label><input type="number" id="Tb0Entity.nengappiY" name="Tb0Entity.nengappiY" maxlength="4" class=" notblank" />
+        </div>
+        <div id="nengappiM">
+          <label for="Tb0Entity.nengappiM" th:text="#{Tb0Entity.nengappiM}">年月日月</label><input type="number" id="Tb0Entity.nengappiM" name="Tb0Entity.nengappiM" maxlength="2" class=" notblank" />
+        </div>
+        <div id="nengappiD">
+          <label for="Tb0Entity.nengappiD" th:text="#{Tb0Entity.nengappiD}">年月日日</label><input type="number" id="Tb0Entity.nengappiD" name="Tb0Entity.nengappiD" maxlength="2" class=" notblank" />
+        </div>
+        <div id="nengetsuYm">
+          <label for="Tb0Entity.nengetsuYm" th:text="#{Tb0Entity.nengetsuYm}">年月</label><input type="month" id="Tb0Entity.nengetsuYm" name="Tb0Entity.nengetsuYm" maxlength="6" class=" notblank" />
+        </div>
+        <div id="nengappiYmd">
+          <label for="Tb0Entity.nengappiYmd" th:text="#{Tb0Entity.nengappiYmd}">年月日</label><input type="text" id="Tb0Entity.nengappiYmd" name="Tb0Entity.nengappiYmd" maxlength="8" class=" notblank datepicker" data-format="yymmdd" />
+        </div>
+        <div id="timestampTs">
+          <label th:text="#{Tb0Entity.timestampTs}">タイムスタンプ</label><span id="Tb0Entity.timestampTs"></span><input type="hidden" id="Tb0Entity.timestampTs" name="Tb0Entity.timestampTs" />
+        </div>
+        <div id="nichijiDt">
+          <label for="Tb0Entity.nichijiDt" th:text="#{Tb0Entity.nichijiDt}">日時</label><input type="datetime-local" id="Tb0Entity.nichijiDt" name="Tb0Entity.nichijiDt" maxlength="19" class=" notblank" />
+        </div>
+        <div id="hidukeBi">
+          <label for="Tb0Entity.hidukeBi" th:text="#{Tb0Entity.hidukeBi}">日付</label><input type="text" id="Tb0Entity.hidukeBi" name="Tb0Entity.hidukeBi" maxlength="10" class=" notblank datepicker" />
+        </div>
+        <div id="jikokuHm">
+          <label for="Tb0Entity.jikokuHm" th:text="#{Tb0Entity.jikokuHm}">時刻</label><input type="time" id="Tb0Entity.jikokuHm" name="Tb0Entity.jikokuHm" maxlength="5" class=" notblank" />
+        </div>
+        <div id="jikanTm">
+          <label for="Tb0Entity.jikanTm" th:text="#{Tb0Entity.jikanTm}">時間</label><input type="text" id="Tb0Entity.jikanTm" name="Tb0Entity.jikanTm" maxlength="9" class=" notblank time" />
+        </div>
+        <div id="suryoQt">
+          <label for="Tb0Entity.suryoQt" th:text="#{Tb0Entity.suryoQt}">数量</label><input type="number" id="Tb0Entity.suryoQt" name="Tb0Entity.suryoQt" maxlength="11" class=" notblank" />
+        </div>
+        <div id="tsukaKb">
+          <fieldset id="Tb0Entity.tsukaKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:TSUKA_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" notblank">
+            <legend th:text="#{Tb0Entity.tsukaKb}">通貨区分</legend>
+          </fieldset>
+        </div>
+        <div id="juchuPr">
+          <label for="Tb0Entity.juchuPr" th:text="#{Tb0Entity.juchuPr}">受注単価</label><input type="number" id="Tb0Entity.juchuPr" name="Tb0Entity.juchuPr" maxlength="11" class=" notblank" />
+        </div>
+        <div id="juchuAm">
+          <label th:text="#{Tb0Entity.juchuAm}">受注金額</label><span id="Tb0Entity.juchuAm"></span><input type="hidden" id="Tb0Entity.juchuAm" name="Tb0Entity.juchuAm" />
+        </div>
+        <div id="hachuPr">
+          <label for="Tb0Entity.hachuPr" th:text="#{Tb0Entity.hachuPr}">発注単価</label><input type="number" id="Tb0Entity.hachuPr" name="Tb0Entity.hachuPr" maxlength="11" class=" notblank" />
+        </div>
+        <div id="hachuAm">
+          <label th:text="#{Tb0Entity.hachuAm}">発注金額</label><span id="Tb0Entity.hachuAm"></span><input type="hidden" id="Tb0Entity.hachuAm" name="Tb0Entity.hachuAm" />
+        </div>
+        <div id="deleteF">
+          <fieldset id="Tb0Entity.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{Tb0Entity.deleteF}">削除フラグ</legend>
+          </fieldset>
+        </div>
+        <div id="statusKb">
+          <fieldset id="Tb0Entity.statusKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:STATUS_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{Tb0Entity.statusKb}">ステータス区分</legend>
+          </fieldset>
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb0Entity.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb0Entity.insertTs" class="meta"></span><input type="hidden" id="Tb0Entity.insertTs" name="Tb0Entity.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb0Entity.insertUserId}" class="meta">作成者</label><span id="Tb0Entity.insertUserId" class="meta"></span><input type="hidden" id="Tb0Entity.insertUserId" name="Tb0Entity.insertUserId" class="meta"/>
+          <span id="Tb0Entity.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb0Entity.insertUserId" data-destDef="Tb0Entity.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb0Entity.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb0Entity.updateTs" class="meta"></span><input type="hidden" id="Tb0Entity.updateTs" name="Tb0Entity.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb0Entity.updateUserId}" class="meta">更新者</label><span id="Tb0Entity.updateUserId" class="meta"></span><input type="hidden" id="Tb0Entity.updateUserId" name="Tb0Entity.updateUserId" class="meta"/>
+          <span id="Tb0Entity.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb0Entity.updateUserId" data-destDef="Tb0Entity.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb0Entity" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb0EntityGet.xlsx(baseMei=#{Tb0Entity.h2})}" id="Tb0EntityGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="PermitTb0Entity" type="submit" class="permit" data-action="Tb0EntityPermit.ajax" th:text="#{common.permit}" tabindex="-1">承認</button>
+        <button id="ForbidTb0Entity" type="submit" class="forbid" data-action="Tb0EntityForbid.ajax" th:text="#{common.forbid}" tabindex="-1">否認</button>
+        <button id="RegistTb0Entity" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

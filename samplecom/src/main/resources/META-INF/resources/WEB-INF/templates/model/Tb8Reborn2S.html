@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb8Reborn2S.title}">転生２</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb8Reborn2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum3GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb8ChoiceGridColumns.js}"></script>
+<script th:src="@{/model/Tb7SumGridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit1GridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Prev2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho1GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit3GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit4GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb8Reborn2S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb8Reborn2SearchForm" action="Tb8Reborn2Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb8Reborn2S.legend}">legend</legend>
+        <div id="reborn2Id">
+          <label for="Tb8Reborn2.reborn2Id" th:text="#{Tb8Reborn2.reborn2Id}">転生２ID</label><input type="text" id="Tb8Reborn2.reborn2Id" name="Tb8Reborn2.reborn2Id" maxlength="10" />
+        </div>
+        <div id="tasho2Id">
+          <label for="Tb8Reborn2.tasho2Id" th:text="#{Tb8Reborn2.tasho2Id}">他生２ID</label><input type="text" id="Tb8Reborn2.tasho2Id" name="Tb8Reborn2.tasho2Id" maxlength="10" /><a id="Tb8Reborn2.tasho2Id" th:href="@{/model/Tb8Tasho2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb8Reborn2" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb8Reborn2.html}" target="dialog" id="Tb8Reborn2" class="anew" th:text="#{Tb8Reborn2.add}" tabindex="-1">転生２</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb8Reborn2" type="submit" class="search" data-gridId="Tb8Reborn2Grid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb8Reborn2SRegistForm" action="Tb8Reborn2SRegist.ajax" class="regist">
+      <h3 th:text="#{Tb8Reborn2.h3}">h3</h3>
+      <div id="Tb8Reborn2Grid" data-selectionMode="checkbox" data-frozenColumn="0" th:data-href="@{/model/Tb8Reborn2.html}"></div>
+      <div id="Tb8Reborn2Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb8Reborn2S" th:text="#{common.reset}" onClick="Base.listReset('Tb8Reborn2');">reset</button>
+        <a th:href="@{Tb8Reborn2Search.xlsx(baseMei=#{Tb8Reborn2S.h2})}" id="Tb8Reborn2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="Tb8Reborn2Grid.tasho2Id" th:href="@{/model/Tb8Tasho2S.html}" target="dialog" class="refer" th:text="'他生２' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteTb8Reborn2S" data-action="Tb8Reborn2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb8Reborn2S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6OrgDetS.title}">起源明細</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6OrgDetS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb6OrgDetSearchForm" action="Tb6OrgDetSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb6OrgDetS.legend}">legend</legend>
+        <div id="orgId">
+          <label for="Tb6OrgDet.orgId" th:text="#{Tb6OrgDet.orgId}">起源ID</label><input type="text" id="Tb6OrgDet.orgId" name="Tb6OrgDet.orgId" maxlength="10" />
+        </div>
+        <div id="orgBn">
+          <label for="Tb6OrgDet.orgBn" th:text="#{Tb6OrgDet.orgBn}">起源明細枝番</label><input type="text" id="Tb6OrgDet.orgBn" name="Tb6OrgDet.orgBn" maxlength="10" />
+        </div>
+        <div id="orgDetInfo">
+          <label for="Tb6OrgDet.orgDetInfo" th:text="#{Tb6OrgDet.orgDetInfo}">起源明細情報</label><input type="text" id="Tb6OrgDet.orgDetInfo" name="Tb6OrgDet.orgDetInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb6OrgDet" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchTb6OrgDet" type="submit" class="search" data-gridId="Tb6OrgDetGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb6OrgDetSRegistForm" action="Tb6OrgDetSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb6OrgDet.h3}">h3</h3>
+      <div id="Tb6OrgDetGrid" data-selectionMode="checkbox" data-frozenColumn="1" th:data-href="@{/model/Tb6OrgDet.html}"></div>
+      <div id="Tb6OrgDetPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb6OrgDetS" th:text="#{common.reset}" onClick="Base.listReset('Tb6OrgDet');">reset</button>
+        <a th:href="@{Tb6OrgDetSearch.xlsx(baseMei=#{Tb6OrgDetS.h2})}" id="Tb6OrgDetSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteTb6OrgDetS" data-action="Tb6OrgDetSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb6OrgDetS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

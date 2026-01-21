@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyKbnValS.title}">区分値マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyKbnValGridColumns.js}"></script>
+<script th:src="@{/model/MsyKbnGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyKbnValS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="MsyKbnValSearchForm" action="MsyKbnValSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{MsyKbnValS.legend}">legend</legend>
+        <div id="kbnNm">
+          <label for="MsyKbnVal.kbnNm" th:text="#{MsyKbnVal.kbnNm}">区分名称</label><input type="text" id="MsyKbnVal.kbnNm" name="MsyKbnVal.kbnNm" maxlength="20" data-json="MsyKbnSearch.json" data-srcDef="KBN_NM:MsyKbnVal.kbnNm" data-destDef="MsyKbnVal.kbnMei:KBN_MEI" /><a id="MsyKbnVal.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKbnVal.kbnMei" data-json="MsyKbnSearch.json" data-srcDef="KBN_NM:MsyKbnVal.kbnNm" data-destDef="MsyKbnVal.kbnMei:KBN_MEI"></span>
+        </div>
+        <div id="kbnVal">
+          <label for="MsyKbnVal.kbnVal" th:text="#{MsyKbnVal.kbnVal}">区分値</label><input type="text" id="MsyKbnVal.kbnVal" name="MsyKbnVal.kbnVal" maxlength="2" />
+        </div>
+        <div id="kbnValMei">
+          <label for="MsyKbnVal.kbnValMei" th:text="#{MsyKbnVal.kbnValMei}">区分値名</label><input type="text" id="MsyKbnVal.kbnValMei" name="MsyKbnVal.kbnValMei" maxlength="60" />
+        </div>
+        <div id="hyojiOn">
+          <label for="MsyKbnVal.hyojiOn" th:text="#{MsyKbnVal.hyojiOn}">表示順</label><input type="text" id="MsyKbnVal.hyojiOn" name="MsyKbnVal.hyojiOn" maxlength="10" />
+        </div>
+        <div id="criteria">
+          <label for="MsyKbnVal.criteria" th:text="#{MsyKbnVal.criteria}">取得条件</label><input type="text" id="MsyKbnVal.criteria" name="MsyKbnVal.criteria" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetMsyKbnVal" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchMsyKbnVal" type="submit" class="search" data-gridId="MsyKbnValGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="MsyKbnValSRegistForm" action="MsyKbnValSRegist.ajax" class="regist">
+      <h3 th:text="#{MsyKbnVal.h3}">h3</h3>
+      <div id="MsyKbnValGrid" data-selectionMode="checkbox" data-frozenColumn="1" th:data-href="@{/model/MsyKbnVal.html}"></div>
+      <div id="MsyKbnValPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetMsyKbnValS" th:text="#{common.reset}" onClick="Base.listReset('MsyKbnVal');">reset</button>
+        <a th:href="@{MsyKbnValSearch.xlsx(baseMei=#{MsyKbnValS.h2})}" id="MsyKbnValSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="MsyKbnValGrid.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class="refer" th:text="'区分マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteMsyKbnValS" data-action="MsyKbnValSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistMsyKbnValS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

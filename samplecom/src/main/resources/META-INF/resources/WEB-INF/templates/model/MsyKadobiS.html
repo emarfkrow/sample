@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyKadobiS.title}">稼働日マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyKadobiGridColumns.js}"></script>
+<script th:src="@{/model/MhrBushoGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyKadobiS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="MsyKadobiSearchForm" action="MsyKadobiSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{MsyKadobiS.legend}">legend</legend>
+        <div id="kadoBi">
+          <label for="MsyKadobi.kadoBi_1" th:text="#{MsyKadobi.kadoBi}">稼働日</label><input type="text" id="MsyKadobi.kadoBi_1" name="MsyKadobi.kadoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MsyKadobi.kadoBi_2" name="MsyKadobi.kadoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="bushoId">
+          <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">部署ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>
+        </div>
+        <div id="kadobiF">
+          <fieldset id="MsyKadobi.kadobiFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:KADOBI_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{MsyKadobi.kadobiF}">稼働日フラグ</legend>
+          </fieldset>
+        </div>
+        <div id="memo">
+          <label for="MsyKadobi.memo" th:text="#{MsyKadobi.memo}">メモ</label><input type="text" id="MsyKadobi.memo" name="MsyKadobi.memo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetMsyKadobi" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/MsyKadobi.html}" target="dialog" id="MsyKadobi" class="anew" th:text="#{MsyKadobi.add}" tabindex="-1">稼働日マスタ</a>
+      </div>
+      <div class="submits">
+        <button id="SearchMsyKadobi" type="submit" class="search" data-gridId="MsyKadobiGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="MsyKadobiSRegistForm" action="MsyKadobiSRegist.ajax" class="regist">
+      <h3 th:text="#{MsyKadobi.h3}">h3</h3>
+      <div id="MsyKadobiGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/MsyKadobi.html}"></div>
+      <div id="MsyKadobiPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetMsyKadobiS" th:text="#{common.reset}" onClick="Base.listReset('MsyKadobi');">reset</button>
+        <a th:href="@{MsyKadobiSearch.xlsx(baseMei=#{MsyKadobiS.h2})}" id="MsyKadobiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="MsyKadobiGrid.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer" th:text="'部署マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteMsyKadobiS" data-action="MsyKadobiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistMsyKadobiS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

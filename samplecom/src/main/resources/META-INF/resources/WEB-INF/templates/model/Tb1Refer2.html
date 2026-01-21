@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb1Refer2.title}">参照２マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb1Refer2GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb1Refer2.h2}">h2</h2>
+    <form name="Tb1Refer2RegistForm" action="Tb1Refer2Regist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb1Refer2.legend}">legend</legend>
+        <div id="refer2Id">
+          <label for="Tb1Refer2.refer2Id" th:text="#{Tb1Refer2.refer2Id}">参照２ID</label><input type="text" id="Tb1Refer2.refer2Id" name="Tb1Refer2.refer2Id" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="refer2Mei">
+          <label for="Tb1Refer2.refer2Mei" th:text="#{Tb1Refer2.refer2Mei}">参照２名</label><input type="text" id="Tb1Refer2.refer2Mei" name="Tb1Refer2.refer2Mei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="deleteF">
+          <fieldset id="Tb1Refer2.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{Tb1Refer2.deleteF}">削除フラグ</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="Tb1Refer2.tekiyoBi" th:text="#{Tb1Refer2.tekiyoBi}">適用日</label><input type="text" id="Tb1Refer2.tekiyoBi" name="Tb1Refer2.tekiyoBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="Tb1Refer2.haishiBi" th:text="#{Tb1Refer2.haishiBi}">廃止日</label><input type="text" id="Tb1Refer2.haishiBi" name="Tb1Refer2.haishiBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb1Refer2.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb1Refer2.insertTs" class="meta"></span><input type="hidden" id="Tb1Refer2.insertTs" name="Tb1Refer2.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb1Refer2.insertUserId}" class="meta">作成者</label><span id="Tb1Refer2.insertUserId" class="meta"></span><input type="hidden" id="Tb1Refer2.insertUserId" name="Tb1Refer2.insertUserId" class="meta"/>
+          <span id="Tb1Refer2.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Refer2.insertUserId" data-destDef="Tb1Refer2.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb1Refer2.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb1Refer2.updateTs" class="meta"></span><input type="hidden" id="Tb1Refer2.updateTs" name="Tb1Refer2.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb1Refer2.updateUserId}" class="meta">更新者</label><span id="Tb1Refer2.updateUserId" class="meta"></span><input type="hidden" id="Tb1Refer2.updateUserId" name="Tb1Refer2.updateUserId" class="meta"/>
+          <span id="Tb1Refer2.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Refer2.updateUserId" data-destDef="Tb1Refer2.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb1Refer2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb1Refer2Get.xlsx(baseMei=#{Tb1Refer2.h2})}" id="Tb1Refer2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="RegistTb1Refer2" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

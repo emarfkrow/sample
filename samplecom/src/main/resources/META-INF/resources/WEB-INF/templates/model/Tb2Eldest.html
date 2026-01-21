@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb2Eldest.title}">長兄</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb2EldestGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb2Eldest.h2}">h2</h2>
+    <form name="Tb2EldestRegistForm" action="Tb2EldestRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb2Eldest.legend}">legend</legend>
+        <div id="broId">
+          <label for="Tb2Eldest.broId" th:text="#{Tb2Eldest.broId}">兄弟ID</label><input type="text" id="Tb2Eldest.broId" name="Tb2Eldest.broId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="eldestInfo">
+          <label for="Tb2Eldest.eldestInfo" th:text="#{Tb2Eldest.eldestInfo}">長兄情報</label><input type="text" id="Tb2Eldest.eldestInfo" name="Tb2Eldest.eldestInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb2Eldest.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb2Eldest.insertTs" class="meta"></span><input type="hidden" id="Tb2Eldest.insertTs" name="Tb2Eldest.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb2Eldest.insertUserId}" class="meta">作成者</label><span id="Tb2Eldest.insertUserId" class="meta"></span><input type="hidden" id="Tb2Eldest.insertUserId" name="Tb2Eldest.insertUserId" class="meta"/>
+          <span id="Tb2Eldest.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb2Eldest.insertUserId" data-destDef="Tb2Eldest.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb2Eldest.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb2Eldest.updateTs" class="meta"></span><input type="hidden" id="Tb2Eldest.updateTs" name="Tb2Eldest.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb2Eldest.updateUserId}" class="meta">更新者</label><span id="Tb2Eldest.updateUserId" class="meta"></span><input type="hidden" id="Tb2Eldest.updateUserId" name="Tb2Eldest.updateUserId" class="meta"/>
+          <span id="Tb2Eldest.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb2Eldest.updateUserId" data-destDef="Tb2Eldest.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{Tb2Younger.legend}">legend</legend>
+        <div id="youngerInfo">
+          <label for="Tb2Younger.youngerInfo" th:text="#{Tb2Younger.youngerInfo}">弟情報</label><input type="text" id="Tb2Younger.youngerInfo" name="Tb2Younger.youngerInfo" maxlength="300" />
+        </div>
+        <input type="hidden" name="Tb2Younger.updateTs" />
+      </fieldset>
+      <fieldset class="youngest">
+        <legend th:text="#{Tb2Youngest.legend}">legend</legend>
+        <div id="youngestInfo">
+          <label for="Tb2Youngest.youngestInfo" th:text="#{Tb2Youngest.youngestInfo}">末弟情報</label><input type="text" id="Tb2Youngest.youngestInfo" name="Tb2Youngest.youngestInfo" maxlength="300" />
+        </div>
+        <input type="hidden" name="Tb2Youngest.updateTs" />
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb2Eldest" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb2EldestGet.xlsx(baseMei=#{Tb2Eldest.h2})}" id="Tb2EldestGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb2Eldest" type="submit" class="delete" data-action="Tb2EldestDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb2Eldest" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MhrShokuiNinka.title}">認可マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MhrShokuiNinkaGridColumns.js}"></script>
+<script th:src="@{/model/MhrBushoGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/MhrShokuiGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MhrShokuiNinka.h2}">h2</h2>
+    <form name="MhrShokuiNinkaRegistForm" action="MhrShokuiNinkaRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{MhrShokuiNinka.legend}">legend</legend>
+        <div id="bushoId">
+          <label for="MhrShokuiNinka.bushoId" th:text="#{MhrShokuiNinka.bushoId}">部署ID</label><input type="text" id="MhrShokuiNinka.bushoId" name="MhrShokuiNinka.bushoId" maxlength="10" class=" primaryKey numbering refer notblank" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI" /><a id="MhrShokuiNinka.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.bushoMei" class=" primaryKey numbering refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI"></span>
+        </div>
+        <div id="shokuiId">
+          <label for="MhrShokuiNinka.shokuiId" th:text="#{MhrShokuiNinka.shokuiId}">職位ID</label><input type="text" id="MhrShokuiNinka.shokuiId" name="MhrShokuiNinka.shokuiId" maxlength="10" class=" primaryKey numbering refer notblank" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI" /><a id="MhrShokuiNinka.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.shokuiMei" class=" primaryKey numbering refer" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI"></span>
+        </div>
+        <div id="kinoNm">
+          <label for="MhrShokuiNinka.kinoNm" th:text="#{MhrShokuiNinka.kinoNm}">機能名称</label><input type="text" id="MhrShokuiNinka.kinoNm" name="MhrShokuiNinka.kinoNm" maxlength="20" class=" primaryKey notblank" />
+        </div>
+        <div id="kengenKb">
+          <fieldset id="MhrShokuiNinka.kengenKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:KENGEN_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" notblank">
+            <legend th:text="#{MhrShokuiNinka.kengenKb}">権限区分</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="MhrShokuiNinka.tekiyoBi" th:text="#{MhrShokuiNinka.tekiyoBi}">適用日</label><input type="text" id="MhrShokuiNinka.tekiyoBi" name="MhrShokuiNinka.tekiyoBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="MhrShokuiNinka.haishiBi" th:text="#{MhrShokuiNinka.haishiBi}">廃止日</label><input type="text" id="MhrShokuiNinka.haishiBi" name="MhrShokuiNinka.haishiBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MhrShokuiNinka.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrShokuiNinka.insertTs" class="meta"></span><input type="hidden" id="MhrShokuiNinka.insertTs" name="MhrShokuiNinka.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MhrShokuiNinka.insertUserId}" class="meta">作成者</label><span id="MhrShokuiNinka.insertUserId" class="meta"></span><input type="hidden" id="MhrShokuiNinka.insertUserId" name="MhrShokuiNinka.insertUserId" class="meta"/>
+          <span id="MhrShokuiNinka.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokuiNinka.insertUserId" data-destDef="MhrShokuiNinka.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MhrShokuiNinka.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrShokuiNinka.updateTs" class="meta"></span><input type="hidden" id="MhrShokuiNinka.updateTs" name="MhrShokuiNinka.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MhrShokuiNinka.updateUserId}" class="meta">更新者</label><span id="MhrShokuiNinka.updateUserId" class="meta"></span><input type="hidden" id="MhrShokuiNinka.updateUserId" name="MhrShokuiNinka.updateUserId" class="meta"/>
+          <span id="MhrShokuiNinka.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokuiNinka.updateUserId" data-destDef="MhrShokuiNinka.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshMhrShokuiNinka" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{MhrShokuiNinkaGet.xlsx(baseMei=#{MhrShokuiNinka.h2})}" id="MhrShokuiNinkaGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMhrShokuiNinka" type="submit" class="delete" data-action="MhrShokuiNinkaDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMhrShokuiNinka" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

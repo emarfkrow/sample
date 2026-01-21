@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<body>
+  <div class="nav" layout:fragment="nav" th:if="${#session != null && #session.getAttribute('AUTHN_KEY') != null}">
+    <dl>
+      <dt>画面ID</dt>
+      <dd>
+        <ul>
+          <li><a id="D0001" th:href="@{/D0000/D0001.html}" th:text="#{nav.D0001}"></a></li>
+          <li><a id="D0002" th:href="@{/D0000/D0002.html}" th:text="#{nav.D0002}"></a></li>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>検索画面</dt>
+      <dd>
+        <ul>
+          <li><a id="TSosenS"     th:href="@{/model/TSosenS.html}" th:text="#{nav.TSosenS}"></a></li>
+          <li><a id="TEntityS"    th:href="@{/model/TEntityS.html}" th:text="#{nav.TEntityS}"></a></li>
+          <li><a id="TEntityHisS" th:href="@{/model/TEntityHisS.html}" th:text="#{nav.TEntityHisS}"></a></li>
+          <li><a id="TEntity2S"   th:href="@{/model/TEntity2S.html}" th:text="#{nav.TEntity2S}"></a></li>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>登録画面</dt>
+      <dd>
+        <ul>
+          <li><a id="TSosen" th:href="@{/model/TSosen.html}" th:text="#{nav.TSosen}"></a></li>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>マスタメンテ</dt>
+      <dd>
+        <ul>
+          <li><a id="MCodeS"    th:href="@{/model/MCodeS.html}" th:text="#{nav.MCodeS}"></a></li>
+          <li><a id="MSansho1S" th:href="@{/model/MSansho1S.html}" th:text="#{nav.MSansho1S}"></a></li>
+          <li><a id="MSansho2S" th:href="@{/model/MSansho2S.html}" th:text="#{nav.MSansho2S}"></a></li>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>認証・認可</dt>
+      <dd>
+        <ul>
+          <li><a id="MUserS"    th:href="@{/model/MUserS.html}" th:text="#{nav.MUserS}"></a></li>
+          <li><a id="MBushoS"   th:href="@{/model/MBushoS.html}" th:text="#{nav.MBushoS}"></a></li>
+          <li><a id="MShokuiS"  th:href="@{/model/MShokuiS.html}" th:text="#{nav.MShokuiS}"></a></li>
+          <li><a id="MShozokuS" th:href="@{/model/MShozokuS.html}" th:text="#{nav.MShozokuS}"></a></li>
+          <li><a id="MNinkaS"   th:href="@{/model/MNinkaS.html}" th:text="#{nav.MNinkaS}"></a></li>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+</body>
+</html>

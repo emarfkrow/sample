@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb8Tasho2S.title}">他生２</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb8Tasho2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum3GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb8ChoiceGridColumns.js}"></script>
+<script th:src="@{/model/Tb7SumGridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit1GridColumns.js}"></script>
+<script th:src="@{/model/Tb7Unit2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Sum2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Prev2GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Tasho1GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit3GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Unit4GridColumns.js}"></script>
+<script th:src="@{/model/Tb8Reborn2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb8Tasho2S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb8Tasho2SearchForm" action="Tb8Tasho2Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb8Tasho2S.legend}">legend</legend>
+        <div id="tasho2Id">
+          <label for="Tb8Tasho2.tasho2Id" th:text="#{Tb8Tasho2.tasho2Id}">他生２ID</label><input type="text" id="Tb8Tasho2.tasho2Id" name="Tb8Tasho2.tasho2Id" maxlength="10" />
+        </div>
+        <div id="sum3Id">
+          <label for="Tb8Tasho2.sum3Id" th:text="#{Tb8Tasho2.sum3Id}">集約３ID</label><input type="text" id="Tb8Tasho2.sum3Id" name="Tb8Tasho2.sum3Id" maxlength="10" /><a id="Tb8Tasho2.sum3Id" th:href="@{/model/Tb8Sum3S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb8Tasho2" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb8Tasho2.html}" target="dialog" id="Tb8Tasho2" class="anew derive" th:text="#{Tb8Tasho2.add}" tabindex="-1">他生２</a>
+          <label for="Tb8Tasho2.deriveeSum3Id" th:text="#{Tb8Tasho2.deriveeSum3Id}">集約３ID</label><input type="text" id="Tb8Tasho2.deriveeSum3Id" name="Tb8Tasho2.deriveeSum3Id" maxlength="10" />
+          <a id="Tb8Tasho2.deriveeSum3Id" th:href="@{/model/Tb8Sum3S.html?action=Tb8Sum3Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb8Tasho2" type="submit" class="search" data-gridId="Tb8Tasho2Grid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb8Tasho2SRegistForm" action="Tb8Tasho2SRegist.ajax" class="regist">
+      <h3 th:text="#{Tb8Tasho2.h3}">h3</h3>
+      <div id="Tb8Tasho2Grid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Tb8Tasho2.html}"></div>
+      <div id="Tb8Tasho2Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb8Tasho2S" th:text="#{common.reset}" onClick="Base.listReset('Tb8Tasho2');">reset</button>
+        <a th:href="@{Tb8Tasho2Search.xlsx(baseMei=#{Tb8Tasho2S.h2})}" id="Tb8Tasho2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="Tb8Tasho2Grid.sum3Id" th:href="@{/model/Tb8Sum3S.html}" target="dialog" class="refer" th:text="'集約３' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteTb8Tasho2S" data-action="Tb8Tasho2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb8Tasho2S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

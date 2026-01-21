@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb4MagoS.title}">孫</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb4MagoGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoGridColumns.js}"></script>
+<script th:src="@{/model/Tb4OyaGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoDinksGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoOrphansGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb4MagoS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb4MagoSearchForm" action="Tb4MagoSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb4MagoS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb4Mago.oyaId" th:text="#{Tb4Mago.oyaId}">親ID</label><input type="text" id="Tb4Mago.oyaId" name="Tb4Mago.oyaId" maxlength="10" />
+        </div>
+        <div id="koBn">
+          <label for="Tb4Mago.koBn" th:text="#{Tb4Mago.koBn}">子枝番</label><input type="text" id="Tb4Mago.koBn" name="Tb4Mago.koBn" maxlength="10" />
+        </div>
+        <div id="magoBn">
+          <label for="Tb4Mago.magoBn" th:text="#{Tb4Mago.magoBn}">孫枝番</label><input type="text" id="Tb4Mago.magoBn" name="Tb4Mago.magoBn" maxlength="10" />
+        </div>
+        <div id="magoInfo">
+          <label for="Tb4Mago.magoInfo" th:text="#{Tb4Mago.magoInfo}">孫情報</label><input type="text" id="Tb4Mago.magoInfo" name="Tb4Mago.magoInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb4Mago" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchTb4Mago" type="submit" class="search" data-gridId="Tb4MagoGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb4MagoSRegistForm" action="Tb4MagoSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb4Mago.h3}">h3</h3>
+      <div id="Tb4MagoGrid" data-selectionMode="checkbox" data-frozenColumn="2" th:data-href="@{/model/Tb4Mago.html}"></div>
+      <div id="Tb4MagoPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb4MagoS" th:text="#{common.reset}" onClick="Base.listReset('Tb4Mago');">reset</button>
+        <a th:href="@{Tb4MagoSearch.xlsx(baseMei=#{Tb4MagoS.h2})}" id="Tb4MagoSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteTb4MagoS" data-action="Tb4MagoSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb4MagoS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+  <logger name="org.jboss" level="INFO" />
+  <logger name="org.hibernate.validator" level="INFO" />
+  <logger name="org.thymeleaf" level="INFO" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %-50logger{50} [L:%-4line] %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="EXTOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <append>true</append>
+    <file>./log/running.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>./log/running.%i.log</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>9</maxIndex>
+    </rollingPolicy>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>10MB</maxFileSize>
+    </triggeringPolicy>
+    <encoder>
+      <pattern>%d %-5level [%20.20thread] %-50logger{50} [L:%-4line] %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="all">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="EXTOUT" />
+  </root>
+
+</configuration>

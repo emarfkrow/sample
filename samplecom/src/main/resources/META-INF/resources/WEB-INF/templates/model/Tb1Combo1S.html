@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb1Combo1S.title}">複合１</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb1Combo1GridColumns.js}"></script>
+<script th:src="@{/model/Tb1Refer1GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb1Refer2GridColumns.js}"></script>
+<script th:src="@{/model/Tb1Combo2GridColumns.js}"></script>
+<script th:src="@{/model/Tb1Refer3GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb1Combo1S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb1Combo1SearchForm" action="Tb1Combo1Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb1Combo1S.legend}">legend</legend>
+        <div id="refer1Id">
+          <label for="Tb1Combo1.refer1Id" th:text="#{Tb1Combo1.refer1Id}">参照１ID</label><input type="text" id="Tb1Combo1.refer1Id" name="Tb1Combo1.refer1Id" maxlength="10" data-json="Tb1Refer1Search.json" data-srcDef="REFER1_ID:Tb1Combo1.refer1Id" data-destDef="Tb1Combo1.refer1Mei:REFER1_MEI" /><a id="Tb1Combo1.refer1Id" th:href="@{/model/Tb1Refer1S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb1Combo1.refer1Mei" data-json="Tb1Refer1Search.json" data-srcDef="REFER1_ID:Tb1Combo1.refer1Id" data-destDef="Tb1Combo1.refer1Mei:REFER1_MEI"></span>
+        </div>
+        <div id="refer2Id">
+          <label for="Tb1Combo1.refer2Id" th:text="#{Tb1Combo1.refer2Id}">参照２ID</label><input type="text" id="Tb1Combo1.refer2Id" name="Tb1Combo1.refer2Id" maxlength="10" data-json="Tb1Refer2Search.json" data-srcDef="REFER2_ID:Tb1Combo1.refer2Id" data-destDef="Tb1Combo1.refer2Mei:REFER2_MEI" /><a id="Tb1Combo1.refer2Id" th:href="@{/model/Tb1Refer2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb1Combo1.refer2Mei" data-json="Tb1Refer2Search.json" data-srcDef="REFER2_ID:Tb1Combo1.refer2Id" data-destDef="Tb1Combo1.refer2Mei:REFER2_MEI"></span>
+        </div>
+        <div id="combo1Info">
+          <label for="Tb1Combo1.combo1Info" th:text="#{Tb1Combo1.combo1Info}">複合１情報</label><input type="text" id="Tb1Combo1.combo1Info" name="Tb1Combo1.combo1Info" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb1Combo1" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb1Combo1.html}" target="dialog" id="Tb1Combo1" class="anew" th:text="#{Tb1Combo1.add}" tabindex="-1">複合１</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb1Combo1" type="submit" class="search" data-gridId="Tb1Combo1Grid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb1Combo1SRegistForm" action="Tb1Combo1SRegist.ajax" class="regist">
+      <h3 th:text="#{Tb1Combo1.h3}">h3</h3>
+      <div id="Tb1Combo1Grid" data-selectionMode="checkbox" data-frozenColumn="1" data-editable="false" th:data-href="@{/model/Tb1Combo1.html}"></div>
+      <div id="Tb1Combo1Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb1Combo1S" th:text="#{common.reset}" onClick="Base.listReset('Tb1Combo1');">reset</button>
+        <a th:href="@{Tb1Combo1Search.xlsx(baseMei=#{Tb1Combo1S.h2})}" id="Tb1Combo1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="Tb1Combo1Grid.refer1Id" th:href="@{/model/Tb1Refer1S.html}" target="dialog" class="refer" th:text="'参照１マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="Tb1Combo1Grid.refer2Id" th:href="@{/model/Tb1Refer2S.html}" target="dialog" class="refer" th:text="'参照２マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

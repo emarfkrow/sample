@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb9DestS.title}">変換先</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb9DestGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb9DestS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb9DestSearchForm" action="Tb9DestSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb9DestS.legend}">legend</legend>
+        <div id="destId">
+          <label for="Tb9Dest.destId" th:text="#{Tb9Dest.destId}">変換先ID</label><input type="text" id="Tb9Dest.destId" name="Tb9Dest.destId" maxlength="10" />
+        </div>
+        <div id="destInfo">
+          <label for="Tb9Dest.destInfo" th:text="#{Tb9Dest.destInfo}">変換先情報</label><input type="text" id="Tb9Dest.destInfo" name="Tb9Dest.destInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb9Dest" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb9Dest.html}" target="dialog" id="Tb9Dest" class="anew" th:text="#{Tb9Dest.add}" tabindex="-1">変換先</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb9Dest" type="submit" class="search" data-gridId="Tb9DestGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb9DestSRegistForm" action="Tb9DestSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb9Dest.h3}">h3</h3>
+      <div id="Tb9DestGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Tb9Dest.html}"></div>
+      <div id="Tb9DestPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb9DestS" th:text="#{common.reset}" onClick="Base.listReset('Tb9Dest');">reset</button>
+        <a th:href="@{Tb9DestSearch.xlsx(baseMei=#{Tb9DestS.h2})}" id="Tb9DestSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteTb9DestS" data-action="Tb9DestSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb9DestS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

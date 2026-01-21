@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb1Combo2.title}">複合２</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb1Combo2GridColumns.js}"></script>
+<script th:src="@{/model/Tb1Refer1GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb1Refer2GridColumns.js}"></script>
+<script th:src="@{/model/Tb1Refer3GridColumns.js}"></script>
+<script th:src="@{/model/Tb1Combo1GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb1Combo2.h2}">h2</h2>
+    <form name="Tb1Combo2RegistForm" action="Tb1Combo2Regist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{Tb1Combo1.legend}">legend</legend>
+        <div id="refer1Id">
+          <label for="Tb1Combo1.refer1Id" th:text="#{Tb1Combo1.refer1Id}">参照１ID</label><input type="text" id="Tb1Combo1.refer1Id" name="Tb1Combo1.refer1Id" maxlength="10" class=" primaryKey numbering refer notblank" data-json="Tb1Refer1Search.json" data-srcDef="REFER1_ID:Tb1Combo1.refer1Id" data-destDef="Tb1Combo1.refer1Mei:REFER1_MEI" /><a id="Tb1Combo1.refer1Id" th:href="@{/model/Tb1Refer1S.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb1Combo1.refer1Mei" class=" primaryKey numbering refer" data-json="Tb1Refer1Search.json" data-srcDef="REFER1_ID:Tb1Combo1.refer1Id" data-destDef="Tb1Combo1.refer1Mei:REFER1_MEI"></span>
+        </div>
+        <div id="refer2Id">
+          <label for="Tb1Combo1.refer2Id" th:text="#{Tb1Combo1.refer2Id}">参照２ID</label><input type="text" id="Tb1Combo1.refer2Id" name="Tb1Combo1.refer2Id" maxlength="10" class=" primaryKey refer notblank" data-json="Tb1Refer2Search.json" data-srcDef="REFER2_ID:Tb1Combo1.refer2Id" data-destDef="Tb1Combo1.refer2Mei:REFER2_MEI" /><a id="Tb1Combo1.refer2Id" th:href="@{/model/Tb1Refer2S.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb1Combo1.refer2Mei" class=" primaryKey refer" data-json="Tb1Refer2Search.json" data-srcDef="REFER2_ID:Tb1Combo1.refer2Id" data-destDef="Tb1Combo1.refer2Mei:REFER2_MEI"></span>
+        </div>
+        <div id="combo1Info">
+          <label for="Tb1Combo1.combo1Info" th:text="#{Tb1Combo1.combo1Info}">複合１情報</label><input type="text" id="Tb1Combo1.combo1Info" name="Tb1Combo1.combo1Info" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb1Combo1.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb1Combo1.insertTs" class="meta"></span><input type="hidden" id="Tb1Combo1.insertTs" name="Tb1Combo1.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb1Combo1.insertUserId}" class="meta">作成者</label><span id="Tb1Combo1.insertUserId" class="meta"></span><input type="hidden" id="Tb1Combo1.insertUserId" name="Tb1Combo1.insertUserId" class="meta"/>
+          <span id="Tb1Combo1.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Combo1.insertUserId" data-destDef="Tb1Combo1.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb1Combo1.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb1Combo1.updateTs" class="meta"></span><input type="hidden" id="Tb1Combo1.updateTs" name="Tb1Combo1.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb1Combo1.updateUserId}" class="meta">更新者</label><span id="Tb1Combo1.updateUserId" class="meta"></span><input type="hidden" id="Tb1Combo1.updateUserId" name="Tb1Combo1.updateUserId" class="meta"/>
+          <span id="Tb1Combo1.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Combo1.updateUserId" data-destDef="Tb1Combo1.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{Tb1Combo2.legend}">legend</legend>
+        <div id="refer1Id">
+          <label for="Tb1Combo2.refer1Id" th:text="#{Tb1Combo2.refer1Id}">参照１ID</label><input type="text" id="Tb1Combo2.refer1Id" name="Tb1Combo2.refer1Id" maxlength="10" class=" primaryKey numbering refer notblank" data-json="Tb1Refer1Search.json" data-srcDef="REFER1_ID:Tb1Combo2.refer1Id" data-destDef="Tb1Combo2.refer1Mei:REFER1_MEI" /><a id="Tb1Combo2.refer1Id" th:href="@{/model/Tb1Refer1S.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb1Combo2.refer1Mei" class=" primaryKey numbering refer" data-json="Tb1Refer1Search.json" data-srcDef="REFER1_ID:Tb1Combo2.refer1Id" data-destDef="Tb1Combo2.refer1Mei:REFER1_MEI"></span>
+        </div>
+        <div id="refer2Id">
+          <label for="Tb1Combo2.refer2Id" th:text="#{Tb1Combo2.refer2Id}">参照２ID</label><input type="text" id="Tb1Combo2.refer2Id" name="Tb1Combo2.refer2Id" maxlength="10" class=" primaryKey numbering refer correct notblank" data-json="Tb1Refer2Search.json" data-srcDef="REFER2_ID:Tb1Combo2.refer2Id" data-destDef="Tb1Combo2.refer2Mei:REFER2_MEI" /><a id="Tb1Combo2.refer2Id" th:href="@{/model/Tb1Refer2S.html?action=Tb1Refer2Correct.ajax}" target="dialog" class=" primaryKey numbering refer correct" th:text="#{common.correct}" tabindex="-1">...</a><span id="Tb1Combo2.refer2Mei" class=" primaryKey numbering refer correct" data-json="Tb1Refer2Search.json" data-srcDef="REFER2_ID:Tb1Combo2.refer2Id" data-destDef="Tb1Combo2.refer2Mei:REFER2_MEI"></span>
+        </div>
+        <div id="refer3Id">
+          <label for="Tb1Combo2.refer3Id" th:text="#{Tb1Combo2.refer3Id}">参照３ID</label><input type="text" id="Tb1Combo2.refer3Id" name="Tb1Combo2.refer3Id" maxlength="10" class=" primaryKey refer notblank" data-json="Tb1Refer3Search.json" data-srcDef="REFER3_ID:Tb1Combo2.refer3Id" data-destDef="Tb1Combo2.refer3Mei:REFER3_MEI" /><a id="Tb1Combo2.refer3Id" th:href="@{/model/Tb1Refer3S.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb1Combo2.refer3Mei" class=" primaryKey refer" data-json="Tb1Refer3Search.json" data-srcDef="REFER3_ID:Tb1Combo2.refer3Id" data-destDef="Tb1Combo2.refer3Mei:REFER3_MEI"></span>
+        </div>
+        <div id="tekiyoBi">
+          <label for="Tb1Combo2.tekiyoBi" th:text="#{Tb1Combo2.tekiyoBi}">適用日</label><input type="text" id="Tb1Combo2.tekiyoBi" name="Tb1Combo2.tekiyoBi" maxlength="10" class=" primaryKey notblank datepicker" />
+        </div>
+        <div id="combo2Info">
+          <label for="Tb1Combo2.combo2Info" th:text="#{Tb1Combo2.combo2Info}">複合２情報</label><input type="text" id="Tb1Combo2.combo2Info" name="Tb1Combo2.combo2Info" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb1Combo2.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb1Combo2.insertTs" class="meta"></span><input type="hidden" id="Tb1Combo2.insertTs" name="Tb1Combo2.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb1Combo2.insertUserId}" class="meta">作成者</label><span id="Tb1Combo2.insertUserId" class="meta"></span><input type="hidden" id="Tb1Combo2.insertUserId" name="Tb1Combo2.insertUserId" class="meta"/>
+          <span id="Tb1Combo2.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Combo2.insertUserId" data-destDef="Tb1Combo2.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb1Combo2.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb1Combo2.updateTs" class="meta"></span><input type="hidden" id="Tb1Combo2.updateTs" name="Tb1Combo2.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb1Combo2.updateUserId}" class="meta">更新者</label><span id="Tb1Combo2.updateUserId" class="meta"></span><input type="hidden" id="Tb1Combo2.updateUserId" name="Tb1Combo2.updateUserId" class="meta"/>
+          <span id="Tb1Combo2.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Combo2.updateUserId" data-destDef="Tb1Combo2.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb1Combo2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb1Combo2Get.xlsx(baseMei=#{Tb1Combo2.h2})}" id="Tb1Combo2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb1Combo2" type="submit" class="delete" data-action="Tb1Combo2Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb1Combo2" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

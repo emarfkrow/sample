@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb2FosterS.title}">里子</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb2FosterGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb2FosterS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb2FosterSearchForm" action="Tb2FosterSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb2FosterS.legend}">legend</legend>
+        <div id="broId">
+          <label for="Tb2Foster.broId" th:text="#{Tb2Foster.broId}">兄弟ID</label><input type="text" id="Tb2Foster.broId" name="Tb2Foster.broId" maxlength="10" />
+        </div>
+        <div id="fosterInfo">
+          <label for="Tb2Foster.fosterInfo" th:text="#{Tb2Foster.fosterInfo}">里子情報</label><input type="text" id="Tb2Foster.fosterInfo" name="Tb2Foster.fosterInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb2Foster" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb2Foster.html}" target="dialog" id="Tb2Foster" class="anew" th:text="#{Tb2Foster.add}" tabindex="-1">里子</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb2Foster" type="submit" class="search" data-gridId="Tb2FosterGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb2FosterSRegistForm" action="Tb2FosterSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb2Foster.h3}">h3</h3>
+      <div id="Tb2FosterGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Tb2Foster.html}"></div>
+      <div id="Tb2FosterPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb2FosterS" th:text="#{common.reset}" onClick="Base.listReset('Tb2Foster');">reset</button>
+        <a th:href="@{Tb2FosterSearch.xlsx(baseMei=#{Tb2FosterS.h2})}" id="Tb2FosterSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteTb2FosterS" data-action="Tb2FosterSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb2FosterS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb2Younger.title}">弟</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb2YoungerGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb2Younger.h2}">h2</h2>
+    <form name="Tb2YoungerRegistForm" action="Tb2YoungerRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb2Younger.legend}">legend</legend>
+        <div id="broId">
+          <label for="Tb2Younger.broId" th:text="#{Tb2Younger.broId}">兄弟ID</label><input type="text" id="Tb2Younger.broId" name="Tb2Younger.broId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="youngerInfo">
+          <label for="Tb2Younger.youngerInfo" th:text="#{Tb2Younger.youngerInfo}">弟情報</label><input type="text" id="Tb2Younger.youngerInfo" name="Tb2Younger.youngerInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb2Younger.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb2Younger.insertTs" class="meta"></span><input type="hidden" id="Tb2Younger.insertTs" name="Tb2Younger.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb2Younger.insertUserId}" class="meta">作成者</label><span id="Tb2Younger.insertUserId" class="meta"></span><input type="hidden" id="Tb2Younger.insertUserId" name="Tb2Younger.insertUserId" class="meta"/>
+          <span id="Tb2Younger.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb2Younger.insertUserId" data-destDef="Tb2Younger.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb2Younger.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb2Younger.updateTs" class="meta"></span><input type="hidden" id="Tb2Younger.updateTs" name="Tb2Younger.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb2Younger.updateUserId}" class="meta">更新者</label><span id="Tb2Younger.updateUserId" class="meta"></span><input type="hidden" id="Tb2Younger.updateUserId" name="Tb2Younger.updateUserId" class="meta"/>
+          <span id="Tb2Younger.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb2Younger.updateUserId" data-destDef="Tb2Younger.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset class="youngest">
+        <legend th:text="#{Tb2Youngest.legend}">legend</legend>
+        <div id="youngestInfo">
+          <label for="Tb2Youngest.youngestInfo" th:text="#{Tb2Youngest.youngestInfo}">末弟情報</label><input type="text" id="Tb2Youngest.youngestInfo" name="Tb2Youngest.youngestInfo" maxlength="300" />
+        </div>
+        <input type="hidden" name="Tb2Youngest.updateTs" />
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb2Younger" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb2YoungerGet.xlsx(baseMei=#{Tb2Younger.h2})}" id="Tb2YoungerGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb2Younger" type="submit" class="delete" data-action="Tb2YoungerDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb2Younger" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

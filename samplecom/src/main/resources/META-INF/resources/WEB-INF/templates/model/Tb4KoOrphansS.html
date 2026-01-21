@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb4KoOrphansS.title}">孤児</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb4KoOrphansGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb4MagoGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoGridColumns.js}"></script>
+<script th:src="@{/model/Tb4OyaGridColumns.js}"></script>
+<script th:src="@{/model/Tb4KoDinksGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb4KoOrphansS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb4KoOrphansSearchForm" action="Tb4KoOrphansSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb4KoOrphansS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb4KoOrphans.oyaId" th:text="#{Tb4KoOrphans.oyaId}">親ID</label><input type="text" id="Tb4KoOrphans.oyaId" name="Tb4KoOrphans.oyaId" maxlength="10" />
+        </div>
+        <div id="koBn">
+          <label for="Tb4KoOrphans.koBn" th:text="#{Tb4KoOrphans.koBn}">子枝番</label><input type="text" id="Tb4KoOrphans.koBn" name="Tb4KoOrphans.koBn" maxlength="10" />
+        </div>
+        <div id="orphansInfo">
+          <label for="Tb4KoOrphans.orphansInfo" th:text="#{Tb4KoOrphans.orphansInfo}">孤児情報</label><input type="text" id="Tb4KoOrphans.orphansInfo" name="Tb4KoOrphans.orphansInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb4KoOrphans" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchTb4KoOrphans" type="submit" class="search" data-gridId="Tb4KoOrphansGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb4KoOrphansSRegistForm" action="Tb4KoOrphansSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb4KoOrphans.h3}">h3</h3>
+      <div id="Tb4KoOrphansGrid" data-selectionMode="checkbox" data-frozenColumn="1" data-editable="false" th:data-href="@{/model/Tb4KoOrphans.html}"></div>
+      <div id="Tb4KoOrphansPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb4KoOrphansS" th:text="#{common.reset}" onClick="Base.listReset('Tb4KoOrphans');">reset</button>
+        <a th:href="@{Tb4KoOrphansSearch.xlsx(baseMei=#{Tb4KoOrphansS.h2})}" id="Tb4KoOrphansSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

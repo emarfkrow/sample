@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MhrShokuiS.title}">職位マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MhrShokuiGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MhrShokuiS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="MhrShokuiSearchForm" action="MhrShokuiSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{MhrShokuiS.legend}">legend</legend>
+        <div id="shokuiId">
+          <label for="MhrShokui.shokuiId" th:text="#{MhrShokui.shokuiId}">職位ID</label><input type="text" id="MhrShokui.shokuiId" name="MhrShokui.shokuiId" maxlength="10" />
+        </div>
+        <div id="shokuiMei">
+          <label for="MhrShokui.shokuiMei" th:text="#{MhrShokui.shokuiMei}">職位名</label><input type="text" id="MhrShokui.shokuiMei" name="MhrShokui.shokuiMei" maxlength="60" />
+        </div>
+        <div id="shokuiOn">
+          <label for="MhrShokui.shokuiOn" th:text="#{MhrShokui.shokuiOn}">職位順</label><input type="text" id="MhrShokui.shokuiOn" name="MhrShokui.shokuiOn" maxlength="10" />
+        </div>
+        <div id="tekiyoBi">
+          <label for="MhrShokui.tekiyoBi_1" th:text="#{MhrShokui.tekiyoBi}">適用日</label><input type="text" id="MhrShokui.tekiyoBi_1" name="MhrShokui.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrShokui.tekiyoBi_2" name="MhrShokui.tekiyoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="MhrShokui.haishiBi_1" th:text="#{MhrShokui.haishiBi}">廃止日</label><input type="text" id="MhrShokui.haishiBi_1" name="MhrShokui.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrShokui.haishiBi_2" name="MhrShokui.haishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetMhrShokui" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/MhrShokui.html}" target="dialog" id="MhrShokui" class="anew" th:text="#{MhrShokui.add}" tabindex="-1">職位マスタ</a>
+      </div>
+      <div class="submits">
+        <button id="SearchMhrShokui" type="submit" class="search" data-gridId="MhrShokuiGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="MhrShokuiSRegistForm" action="MhrShokuiSRegist.ajax" class="regist">
+      <h3 th:text="#{MhrShokui.h3}">h3</h3>
+      <div id="MhrShokuiGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/MhrShokui.html}"></div>
+      <div id="MhrShokuiPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetMhrShokuiS" th:text="#{common.reset}" onClick="Base.listReset('MhrShokui');">reset</button>
+        <a th:href="@{MhrShokuiSearch.xlsx(baseMei=#{MhrShokuiS.h2})}" id="MhrShokuiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteMhrShokuiS" data-action="MhrShokuiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistMhrShokuiS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

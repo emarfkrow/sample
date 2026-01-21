@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{MsyKbnVal.title}">区分値マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/MsyKbnValGridColumns.js}"></script>
+<script th:src="@{/model/MsyKbnGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{MsyKbnVal.h2}">h2</h2>
+    <form name="MsyKbnValRegistForm" action="MsyKbnValRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{MsyKbn.legend}">legend</legend>
+        <div id="kbnNm">
+          <label for="MsyKbn.kbnNm" th:text="#{MsyKbn.kbnNm}">区分名称</label><input type="text" id="MsyKbn.kbnNm" name="MsyKbn.kbnNm" maxlength="20" class=" primaryKey notblank" />
+        </div>
+        <div id="kbnMei">
+          <label for="MsyKbn.kbnMei" th:text="#{MsyKbn.kbnMei}">区分名</label><input type="text" id="MsyKbn.kbnMei" name="MsyKbn.kbnMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MsyKbn.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyKbn.insertTs" class="meta"></span><input type="hidden" id="MsyKbn.insertTs" name="MsyKbn.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MsyKbn.insertUserId}" class="meta">作成者</label><span id="MsyKbn.insertUserId" class="meta"></span><input type="hidden" id="MsyKbn.insertUserId" name="MsyKbn.insertUserId" class="meta"/>
+          <span id="MsyKbn.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbn.insertUserId" data-destDef="MsyKbn.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MsyKbn.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyKbn.updateTs" class="meta"></span><input type="hidden" id="MsyKbn.updateTs" name="MsyKbn.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MsyKbn.updateUserId}" class="meta">更新者</label><span id="MsyKbn.updateUserId" class="meta"></span><input type="hidden" id="MsyKbn.updateUserId" name="MsyKbn.updateUserId" class="meta"/>
+          <span id="MsyKbn.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbn.updateUserId" data-destDef="MsyKbn.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{MsyKbnVal.legend}">legend</legend>
+        <div id="kbnNm">
+          <label for="MsyKbnVal.kbnNm" th:text="#{MsyKbnVal.kbnNm}">区分名称</label><input type="text" id="MsyKbnVal.kbnNm" name="MsyKbnVal.kbnNm" maxlength="20" class=" primaryKey refer notblank" data-json="MsyKbnSearch.json" data-srcDef="KBN_NM:MsyKbnVal.kbnNm" data-destDef="MsyKbnVal.kbnMei:KBN_MEI" /><a id="MsyKbnVal.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKbnVal.kbnMei" class=" primaryKey refer" data-json="MsyKbnSearch.json" data-srcDef="KBN_NM:MsyKbnVal.kbnNm" data-destDef="MsyKbnVal.kbnMei:KBN_MEI"></span>
+        </div>
+        <div id="kbnVal">
+          <label for="MsyKbnVal.kbnVal" th:text="#{MsyKbnVal.kbnVal}">区分値</label><input type="text" id="MsyKbnVal.kbnVal" name="MsyKbnVal.kbnVal" maxlength="2" class=" primaryKey notblank" />
+        </div>
+        <div id="kbnValMei">
+          <label for="MsyKbnVal.kbnValMei" th:text="#{MsyKbnVal.kbnValMei}">区分値名</label><input type="text" id="MsyKbnVal.kbnValMei" name="MsyKbnVal.kbnValMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="hyojiOn">
+          <label for="MsyKbnVal.hyojiOn" th:text="#{MsyKbnVal.hyojiOn}">表示順</label><input type="text" id="MsyKbnVal.hyojiOn" name="MsyKbnVal.hyojiOn" maxlength="10" />
+        </div>
+        <div id="criteria">
+          <label for="MsyKbnVal.criteria" th:text="#{MsyKbnVal.criteria}">取得条件</label><input type="text" id="MsyKbnVal.criteria" name="MsyKbnVal.criteria" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{MsyKbnVal.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyKbnVal.insertTs" class="meta"></span><input type="hidden" id="MsyKbnVal.insertTs" name="MsyKbnVal.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{MsyKbnVal.insertUserId}" class="meta">作成者</label><span id="MsyKbnVal.insertUserId" class="meta"></span><input type="hidden" id="MsyKbnVal.insertUserId" name="MsyKbnVal.insertUserId" class="meta"/>
+          <span id="MsyKbnVal.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbnVal.insertUserId" data-destDef="MsyKbnVal.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{MsyKbnVal.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyKbnVal.updateTs" class="meta"></span><input type="hidden" id="MsyKbnVal.updateTs" name="MsyKbnVal.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{MsyKbnVal.updateUserId}" class="meta">更新者</label><span id="MsyKbnVal.updateUserId" class="meta"></span><input type="hidden" id="MsyKbnVal.updateUserId" name="MsyKbnVal.updateUserId" class="meta"/>
+          <span id="MsyKbnVal.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbnVal.updateUserId" data-destDef="MsyKbnVal.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshMsyKbnVal" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{MsyKbnValGet.xlsx(baseMei=#{MsyKbnVal.h2})}" id="MsyKbnValGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMsyKbnVal" type="submit" class="delete" data-action="MsyKbnValDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMsyKbnVal" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

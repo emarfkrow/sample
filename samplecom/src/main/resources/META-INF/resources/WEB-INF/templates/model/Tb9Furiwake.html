@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb9Furiwake.title}">VIEW</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb9FuriwakeGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb9Furiwake.h2}">h2</h2>
+    <form name="Tb9FuriwakeRegistForm" action="Tb9FuriwakeRegist.ajax" class="regist">
+      <fieldset class="view">
+        <legend th:text="#{Tb9Furiwake.legend}">legend</legend>
+        <div id="srcIdDestId">
+          <label for="Tb9Furiwake.srcIdDestId" th:text="#{Tb9Furiwake.srcIdDestId}">SRC_ID$DEST_ID</label><input type="text" id="Tb9Furiwake.srcIdDestId" name="Tb9Furiwake.srcIdDestId" maxlength="10" class=" notblank" />
+        </div>
+        <div id="info">
+          <label for="Tb9Furiwake.info" th:text="#{Tb9Furiwake.info}">INFO</label><input type="text" id="Tb9Furiwake.info" name="Tb9Furiwake.info" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <a th:href="@{Tb9FuriwakeGet.xlsx(baseMei=#{Tb9Furiwake.h2})}" id="Tb9FuriwakeGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

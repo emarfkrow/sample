@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb5RebornS.title}">転生</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb5RebornGridColumns.js}"></script>
+<script th:src="@{/model/Tb5PrevGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb5PrevDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb5DeriveGridColumns.js}"></script>
+<script th:src="@{/model/Tb5RebornDetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb5RebornS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb5RebornSearchForm" action="Tb5RebornSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb5RebornS.legend}">legend</legend>
+        <div id="rebornId">
+          <label for="Tb5Reborn.rebornId" th:text="#{Tb5Reborn.rebornId}">転生ID</label><input type="text" id="Tb5Reborn.rebornId" name="Tb5Reborn.rebornId" maxlength="10" />
+        </div>
+        <div id="prevId">
+          <label for="Tb5Reborn.prevId" th:text="#{Tb5Reborn.prevId}">前世ID</label><input type="text" id="Tb5Reborn.prevId" name="Tb5Reborn.prevId" maxlength="10" /><a id="Tb5Reborn.prevId" th:href="@{/model/Tb5PrevS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="prevInfo">
+          <label for="Tb5Reborn.prevInfo" th:text="#{Tb5Reborn.prevInfo}">前世情報</label><input type="text" id="Tb5Reborn.prevInfo" name="Tb5Reborn.prevInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb5Reborn" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb5Reborn.html}" target="dialog" id="Tb5Reborn" class="anew" th:text="#{Tb5Reborn.add}" tabindex="-1">転生</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb5Reborn" type="submit" class="search" data-gridId="Tb5RebornGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb5RebornSRegistForm" action="Tb5RebornSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb5Reborn.h3}">h3</h3>
+      <div id="Tb5RebornGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/Tb5Reborn.html}"></div>
+      <div id="Tb5RebornPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb5RebornS" th:text="#{common.reset}" onClick="Base.listReset('Tb5Reborn');">reset</button>
+        <a th:href="@{Tb5RebornSearch.xlsx(baseMei=#{Tb5RebornS.h2})}" id="Tb5RebornSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="Tb5RebornGrid.prevId" th:href="@{/model/Tb5PrevS.html}" target="dialog" class="refer" th:text="'前世' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

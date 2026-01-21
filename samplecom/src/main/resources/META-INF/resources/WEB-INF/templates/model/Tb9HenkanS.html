@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb9HenkanS.title}">VIEW</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb9HenkanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb9HenkanS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb9HenkanSearchForm" action="Tb9HenkanSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb9HenkanS.legend}">legend</legend>
+        <div id="srcId">
+          <label for="Tb9Henkan.srcId" th:text="#{Tb9Henkan.srcId}">変換元ID</label><input type="text" id="Tb9Henkan.srcId" name="Tb9Henkan.srcId" maxlength="10" />
+        </div>
+        <div id="destInfo">
+          <label for="Tb9Henkan.destInfo" th:text="#{Tb9Henkan.destInfo}">変換元情報</label><input type="text" id="Tb9Henkan.destInfo" name="Tb9Henkan.destInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb9Henkan" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchTb9Henkan" type="submit" class="search" data-gridId="Tb9HenkanGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb9HenkanSRegistForm" action="Tb9HenkanSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb9Henkan.h3}">h3</h3>
+      <div id="Tb9HenkanGrid" data-selectionMode="checkbox" data-frozenColumn="-1" data-editable="false" th:data-href="@{/model/Tb9Henkan.html}"></div>
+      <div id="Tb9HenkanPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb9HenkanS" th:text="#{common.reset}" onClick="Base.listReset('Tb9Henkan');">reset</button>
+        <a th:href="@{Tb9HenkanSearch.xlsx(baseMei=#{Tb9HenkanS.h2})}" id="Tb9HenkanSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="RegistTb9HenkanS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

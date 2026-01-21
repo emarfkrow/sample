@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb0Nokey.title}">主キーなし</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb0NokeyGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb0Nokey.h2}">h2</h2>
+    <form name="Tb0NokeyRegistForm" action="Tb0NokeyRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb0Nokey.legend}">legend</legend>
+        <div id="colA">
+          <label for="Tb0Nokey.colA" th:text="#{Tb0Nokey.colA}">列Ａ</label><input type="text" id="Tb0Nokey.colA" name="Tb0Nokey.colA" maxlength="60" class=" uniqueKey" />
+        </div>
+        <div id="colB">
+          <label for="Tb0Nokey.colB" th:text="#{Tb0Nokey.colB}">列Ｂ</label><input type="text" id="Tb0Nokey.colB" name="Tb0Nokey.colB" maxlength="60" class=" uniqueKey" />
+        </div>
+        <div id="colC">
+          <label for="Tb0Nokey.colC" th:text="#{Tb0Nokey.colC}">列Ｃ</label><input type="text" id="Tb0Nokey.colC" name="Tb0Nokey.colC" maxlength="60" class=" uniqueKey" />
+        </div>
+        <div id="colD">
+          <label for="Tb0Nokey.colD" th:text="#{Tb0Nokey.colD}">列Ｄ</label><input type="number" id="Tb0Nokey.colD" name="Tb0Nokey.colD" maxlength="60" class=" primaryKey" />
+        </div>
+        <div id="colE">
+          <label for="Tb0Nokey.colE" th:text="#{Tb0Nokey.colE}">列Ｅ</label><input type="text" id="Tb0Nokey.colE" name="Tb0Nokey.colE" maxlength="60" class=" primaryKey" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb0Nokey.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb0Nokey.insertTs" class="meta"></span><input type="hidden" id="Tb0Nokey.insertTs" name="Tb0Nokey.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb0Nokey.insertUserId}" class="meta">作成者</label><span id="Tb0Nokey.insertUserId" class="meta"></span><input type="hidden" id="Tb0Nokey.insertUserId" name="Tb0Nokey.insertUserId" class="meta"/>
+          <span id="Tb0Nokey.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb0Nokey.insertUserId" data-destDef="Tb0Nokey.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb0Nokey.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb0Nokey.updateTs" class="meta"></span><input type="hidden" id="Tb0Nokey.updateTs" name="Tb0Nokey.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb0Nokey.updateUserId}" class="meta">更新者</label><span id="Tb0Nokey.updateUserId" class="meta"></span><input type="hidden" id="Tb0Nokey.updateUserId" name="Tb0Nokey.updateUserId" class="meta"/>
+          <span id="Tb0Nokey.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb0Nokey.updateUserId" data-destDef="Tb0Nokey.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb0Nokey" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb0NokeyGet.xlsx(baseMei=#{Tb0Nokey.h2})}" id="Tb0NokeyGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb0Nokey" type="submit" class="delete" data-action="Tb0NokeyDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb0Nokey" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

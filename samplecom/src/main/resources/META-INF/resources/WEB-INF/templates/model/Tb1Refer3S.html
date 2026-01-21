@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb1Refer3S.title}">参照３マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb1Refer3GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb1Refer3S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb1Refer3SearchForm" action="Tb1Refer3Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb1Refer3S.legend}">legend</legend>
+        <div id="refer3Id">
+          <label for="Tb1Refer3.refer3Id" th:text="#{Tb1Refer3.refer3Id}">参照３ID</label><input type="text" id="Tb1Refer3.refer3Id" name="Tb1Refer3.refer3Id" maxlength="10" />
+        </div>
+        <div id="refer3Mei">
+          <label for="Tb1Refer3.refer3Mei" th:text="#{Tb1Refer3.refer3Mei}">参照３名</label><input type="text" id="Tb1Refer3.refer3Mei" name="Tb1Refer3.refer3Mei" maxlength="60" />
+        </div>
+        <div id="deleteF">
+          <fieldset id="Tb1Refer3.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{Tb1Refer3.deleteF}">削除フラグ</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="Tb1Refer3.tekiyoBi_1" th:text="#{Tb1Refer3.tekiyoBi}">適用日</label><input type="text" id="Tb1Refer3.tekiyoBi_1" name="Tb1Refer3.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="Tb1Refer3.tekiyoBi_2" name="Tb1Refer3.tekiyoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="Tb1Refer3.haishiBi_1" th:text="#{Tb1Refer3.haishiBi}">廃止日</label><input type="text" id="Tb1Refer3.haishiBi_1" name="Tb1Refer3.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="Tb1Refer3.haishiBi_2" name="Tb1Refer3.haishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb1Refer3" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb1Refer3.html}" target="dialog" id="Tb1Refer3" class="anew" th:text="#{Tb1Refer3.add}" tabindex="-1">参照３マスタ</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb1Refer3" type="submit" class="search" data-gridId="Tb1Refer3Grid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb1Refer3SRegistForm" action="Tb1Refer3SRegist.ajax" class="regist">
+      <h3 th:text="#{Tb1Refer3.h3}">h3</h3>
+      <div id="Tb1Refer3Grid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Tb1Refer3.html}"></div>
+      <div id="Tb1Refer3Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb1Refer3S" th:text="#{common.reset}" onClick="Base.listReset('Tb1Refer3');">reset</button>
+        <a th:href="@{Tb1Refer3Search.xlsx(baseMei=#{Tb1Refer3S.h2})}" id="Tb1Refer3Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="RegistTb1Refer3S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
