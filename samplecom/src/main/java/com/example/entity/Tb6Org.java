@@ -415,7 +415,7 @@ public class Tb6Org implements IEntity {
         String sql = "SELECT ";
         sql += "`ORG_ID`";
         sql += ", `ORG_BN`";
-        sql += ", `ORG_DET_INFO`";
+        sql += ", `DET_INFO`";
         sql += ", `INSERT_TS` AS INSERT_TS";
         sql += ", `INSERT_USER_ID`";
         sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
@@ -432,5 +432,66 @@ public class Tb6Org implements IEntity {
             return list;
         }
         return new ArrayList<Tb6OrgDet>();
+    }
+
+    /*
+     * 集約元：寄生
+     */
+
+    /** 寄生のリスト */
+    private List<Tb6Kisei2> tb6Kisei2s;
+
+    /** @return 寄生のリスト */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "Tb6Kisei2s", index = 11)
+    public List<Tb6Kisei2> getTb6Kisei2s() {
+        return this.tb6Kisei2s;
+    }
+
+    /** @param list 寄生のリスト */
+    public void setTb6Kisei2s(final List<Tb6Kisei2> list) {
+        this.tb6Kisei2s = list;
+    }
+
+    /** @param tb6Kisei2 */
+    public void addTb6Kisei2s(final Tb6Kisei2 tb6Kisei2) {
+        if (this.tb6Kisei2s == null) {
+            this.tb6Kisei2s = new ArrayList<Tb6Kisei2>();
+        }
+        this.tb6Kisei2s.add(tb6Kisei2);
+    }
+
+    /** @return 寄生のリスト */
+    public List<Tb6Kisei2> referTb6Kisei2s() {
+        this.tb6Kisei2s = Tb6Org.referTb6Kisei2s(this.orgId);
+        return this.tb6Kisei2s;
+    }
+
+    /**
+     * @param param1 orgId
+     * @return List<Tb6Kisei2>
+     */
+    public static List<Tb6Kisei2> referTb6Kisei2s(final Integer param1) {
+        List<String> whereList = new ArrayList<String>();
+        whereList.add("ORG_ID = :org_id");
+        String sql = "SELECT ";
+        sql += "`KISEI2_ID`";
+        sql += ", `ORG_INFO`";
+        sql += ", `ORG_ID`";
+        sql += ", `INSERT_TS` AS INSERT_TS";
+        sql += ", `INSERT_USER_ID`";
+        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
+        sql += ", `UPDATE_TS` AS UPDATE_TS";
+        sql += ", `UPDATE_USER_ID`";
+        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
+        sql += " FROM TB6_KISEI2 a WHERE " + String.join(" AND ", whereList);
+        sql += " ORDER BY ";
+        sql += "KISEI2_ID";
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("org_id", param1);
+        List<Tb6Kisei2> list = Queries.select(sql, map, Tb6Kisei2.class, null, null);
+        if (list != null) {
+            return list;
+        }
+        return new ArrayList<Tb6Kisei2>();
     }
 }

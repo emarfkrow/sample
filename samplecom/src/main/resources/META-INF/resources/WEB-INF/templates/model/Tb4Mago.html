@@ -10,65 +10,91 @@
 </script>
 <script th:src="@{/model/Tb4MagoGridColumns.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/model/Tb4KoGridColumns.js}"></script>
-<script th:src="@{/model/Tb4OyaGridColumns.js}"></script>
-<script th:src="@{/model/Tb4KoDinksGridColumns.js}"></script>
-<script th:src="@{/model/Tb4KoOrphansGridColumns.js}"></script>
+<script th:src="@{/model/Tb1DinksGridColumns.js}"></script>
+<script th:src="@{/model/Tb1OyaGridColumns.js}"></script>
+<script th:src="@{/model/Tb1KoGridColumns.js}"></script>
+<script th:src="@{/model/Tb1OrphanGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
     <h2 th:text="#{Tb4Mago.h2}">h2</h2>
     <form name="Tb4MagoRegistForm" action="Tb4MagoRegist.ajax" class="regist">
       <fieldset class="parent">
-        <legend th:text="#{Tb4Ko.legend}">legend</legend>
+        <legend th:text="#{Tb1Dinks.legend}">legend</legend>
         <div id="oyaId">
-          <label for="Tb4Ko.oyaId" th:text="#{Tb4Ko.oyaId}">親ID</label><input type="text" id="Tb4Ko.oyaId" name="Tb4Ko.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="Tb1Dinks.oyaId" th:text="#{Tb1Dinks.oyaId}">親ID</label><input type="text" id="Tb1Dinks.oyaId" name="Tb1Dinks.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="koBn">
-          <label for="Tb4Ko.koBn" th:text="#{Tb4Ko.koBn}">子枝番</label><input type="text" id="Tb4Ko.koBn" name="Tb4Ko.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="Tb1Dinks.koBn" th:text="#{Tb1Dinks.koBn}">子枝番</label><input type="text" id="Tb1Dinks.koBn" name="Tb1Dinks.koBn" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
-        <div id="koInfo">
-          <label for="Tb4Ko.koInfo" th:text="#{Tb4Ko.koInfo}">子情報</label><input type="text" id="Tb4Ko.koInfo" name="Tb4Ko.koInfo" maxlength="300" />
+        <div id="dinksInfo">
+          <label for="Tb1Dinks.dinksInfo" th:text="#{Tb1Dinks.dinksInfo}">子なし情報</label><input type="text" id="Tb1Dinks.dinksInfo" name="Tb1Dinks.dinksInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{Tb4Ko.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb4Ko.insertTs" class="meta"></span><input type="hidden" id="Tb4Ko.insertTs" name="Tb4Ko.insertTs" class="meta"/>
+          <label th:text="#{Tb1Dinks.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb1Dinks.insertTs" class="meta"></span><input type="hidden" id="Tb1Dinks.insertTs" name="Tb1Dinks.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
-          <label th:text="#{Tb4Ko.insertUserId}" class="meta">作成者</label><span id="Tb4Ko.insertUserId" class="meta"></span><input type="hidden" id="Tb4Ko.insertUserId" name="Tb4Ko.insertUserId" class="meta"/>
-          <span id="Tb4Ko.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4Ko.insertUserId" data-destDef="Tb4Ko.insertUserSei:USER_SEI"></span>
+          <label th:text="#{Tb1Dinks.insertUserId}" class="meta">作成者</label><span id="Tb1Dinks.insertUserId" class="meta"></span><input type="hidden" id="Tb1Dinks.insertUserId" name="Tb1Dinks.insertUserId" class="meta"/>
+          <span id="Tb1Dinks.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Dinks.insertUserId" data-destDef="Tb1Dinks.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{Tb4Ko.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb4Ko.updateTs" class="meta"></span><input type="hidden" id="Tb4Ko.updateTs" name="Tb4Ko.updateTs" class="meta"/>
+          <label th:text="#{Tb1Dinks.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb1Dinks.updateTs" class="meta"></span><input type="hidden" id="Tb1Dinks.updateTs" name="Tb1Dinks.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
-          <label th:text="#{Tb4Ko.updateUserId}" class="meta">更新者</label><span id="Tb4Ko.updateUserId" class="meta"></span><input type="hidden" id="Tb4Ko.updateUserId" name="Tb4Ko.updateUserId" class="meta"/>
-          <span id="Tb4Ko.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4Ko.updateUserId" data-destDef="Tb4Ko.updateUserSei:USER_SEI"></span>
+          <label th:text="#{Tb1Dinks.updateUserId}" class="meta">更新者</label><span id="Tb1Dinks.updateUserId" class="meta"></span><input type="hidden" id="Tb1Dinks.updateUserId" name="Tb1Dinks.updateUserId" class="meta"/>
+          <span id="Tb1Dinks.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Dinks.updateUserId" data-destDef="Tb1Dinks.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <fieldset class="parent">
-        <legend th:text="#{Tb4KoOrphans.legend}">legend</legend>
+        <legend th:text="#{Tb1Ko.legend}">legend</legend>
         <div id="oyaId">
-          <label for="Tb4KoOrphans.oyaId" th:text="#{Tb4KoOrphans.oyaId}">親ID</label><input type="text" id="Tb4KoOrphans.oyaId" name="Tb4KoOrphans.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="Tb1Ko.oyaId" th:text="#{Tb1Ko.oyaId}">親ID</label><input type="text" id="Tb1Ko.oyaId" name="Tb1Ko.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="koBn">
-          <label for="Tb4KoOrphans.koBn" th:text="#{Tb4KoOrphans.koBn}">子枝番</label><input type="text" id="Tb4KoOrphans.koBn" name="Tb4KoOrphans.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="Tb1Ko.koBn" th:text="#{Tb1Ko.koBn}">子枝番</label><input type="text" id="Tb1Ko.koBn" name="Tb1Ko.koBn" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
-        <div id="orphansInfo">
-          <label for="Tb4KoOrphans.orphansInfo" th:text="#{Tb4KoOrphans.orphansInfo}">孤児情報</label><input type="text" id="Tb4KoOrphans.orphansInfo" name="Tb4KoOrphans.orphansInfo" maxlength="300" />
+        <div id="koInfo">
+          <label for="Tb1Ko.koInfo" th:text="#{Tb1Ko.koInfo}">子情報</label><input type="text" id="Tb1Ko.koInfo" name="Tb1Ko.koInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{Tb4KoOrphans.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb4KoOrphans.insertTs" class="meta"></span><input type="hidden" id="Tb4KoOrphans.insertTs" name="Tb4KoOrphans.insertTs" class="meta"/>
+          <label th:text="#{Tb1Ko.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb1Ko.insertTs" class="meta"></span><input type="hidden" id="Tb1Ko.insertTs" name="Tb1Ko.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
-          <label th:text="#{Tb4KoOrphans.insertUserId}" class="meta">作成者</label><span id="Tb4KoOrphans.insertUserId" class="meta"></span><input type="hidden" id="Tb4KoOrphans.insertUserId" name="Tb4KoOrphans.insertUserId" class="meta"/>
-          <span id="Tb4KoOrphans.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4KoOrphans.insertUserId" data-destDef="Tb4KoOrphans.insertUserSei:USER_SEI"></span>
+          <label th:text="#{Tb1Ko.insertUserId}" class="meta">作成者</label><span id="Tb1Ko.insertUserId" class="meta"></span><input type="hidden" id="Tb1Ko.insertUserId" name="Tb1Ko.insertUserId" class="meta"/>
+          <span id="Tb1Ko.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Ko.insertUserId" data-destDef="Tb1Ko.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{Tb4KoOrphans.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb4KoOrphans.updateTs" class="meta"></span><input type="hidden" id="Tb4KoOrphans.updateTs" name="Tb4KoOrphans.updateTs" class="meta"/>
+          <label th:text="#{Tb1Ko.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb1Ko.updateTs" class="meta"></span><input type="hidden" id="Tb1Ko.updateTs" name="Tb1Ko.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
-          <label th:text="#{Tb4KoOrphans.updateUserId}" class="meta">更新者</label><span id="Tb4KoOrphans.updateUserId" class="meta"></span><input type="hidden" id="Tb4KoOrphans.updateUserId" name="Tb4KoOrphans.updateUserId" class="meta"/>
-          <span id="Tb4KoOrphans.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb4KoOrphans.updateUserId" data-destDef="Tb4KoOrphans.updateUserSei:USER_SEI"></span>
+          <label th:text="#{Tb1Ko.updateUserId}" class="meta">更新者</label><span id="Tb1Ko.updateUserId" class="meta"></span><input type="hidden" id="Tb1Ko.updateUserId" name="Tb1Ko.updateUserId" class="meta"/>
+          <span id="Tb1Ko.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Ko.updateUserId" data-destDef="Tb1Ko.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset class="parent">
+        <legend th:text="#{Tb1Orphan.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb1Orphan.oyaId" th:text="#{Tb1Orphan.oyaId}">親ID</label><input type="text" id="Tb1Orphan.oyaId" name="Tb1Orphan.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="Tb1Orphan.koBn" th:text="#{Tb1Orphan.koBn}">子枝番</label><input type="text" id="Tb1Orphan.koBn" name="Tb1Orphan.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orphanInfo">
+          <label for="Tb1Orphan.orphanInfo" th:text="#{Tb1Orphan.orphanInfo}">孤児情報</label><input type="text" id="Tb1Orphan.orphanInfo" name="Tb1Orphan.orphanInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb1Orphan.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb1Orphan.insertTs" class="meta"></span><input type="hidden" id="Tb1Orphan.insertTs" name="Tb1Orphan.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb1Orphan.insertUserId}" class="meta">作成者</label><span id="Tb1Orphan.insertUserId" class="meta"></span><input type="hidden" id="Tb1Orphan.insertUserId" name="Tb1Orphan.insertUserId" class="meta"/>
+          <span id="Tb1Orphan.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Orphan.insertUserId" data-destDef="Tb1Orphan.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb1Orphan.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb1Orphan.updateTs" class="meta"></span><input type="hidden" id="Tb1Orphan.updateTs" name="Tb1Orphan.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb1Orphan.updateUserId}" class="meta">更新者</label><span id="Tb1Orphan.updateUserId" class="meta"></span><input type="hidden" id="Tb1Orphan.updateUserId" name="Tb1Orphan.updateUserId" class="meta"/>
+          <span id="Tb1Orphan.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Orphan.updateUserId" data-destDef="Tb1Orphan.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <fieldset>

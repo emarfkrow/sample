@@ -14,6 +14,7 @@
 <script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
 <script th:src="@{/model/Tb6Derive1GridColumns.js}"></script>
 <script th:src="@{/model/Tb6Derive1DetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Kisei2GridColumns.js}"></script>
 <script th:src="@{/model/Tb6Derive2DetGridColumns.js}"></script>
 </head>
 <body>
@@ -28,11 +29,11 @@
         <div id="derive2Id">
           <label for="Tb6Derive2.derive2Id" th:text="#{Tb6Derive2.derive2Id}">派生２ID</label><input type="text" id="Tb6Derive2.derive2Id" name="Tb6Derive2.derive2Id" maxlength="10" />
         </div>
-        <div id="orgId">
-          <label for="Tb6Derive2.orgId" th:text="#{Tb6Derive2.orgId}">起源ID</label><input type="text" id="Tb6Derive2.orgId" name="Tb6Derive2.orgId" maxlength="10" /><a id="Tb6Derive2.orgId" th:href="@{/model/Tb6OrgS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
-        </div>
         <div id="orgInfo">
           <label for="Tb6Derive2.orgInfo" th:text="#{Tb6Derive2.orgInfo}">起源情報</label><input type="text" id="Tb6Derive2.orgInfo" name="Tb6Derive2.orgInfo" maxlength="300" />
+        </div>
+        <div id="orgId">
+          <label for="Tb6Derive2.orgId" th:text="#{Tb6Derive2.orgId}">起源ID</label><input type="text" id="Tb6Derive2.orgId" name="Tb6Derive2.orgId" maxlength="10" /><a id="Tb6Derive2.orgId" th:href="@{/model/Tb6OrgS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">

@@ -15,6 +15,7 @@
 <script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
 <script th:src="@{/model/Tb6Derive1GridColumns.js}"></script>
 <script th:src="@{/model/Tb6Derive1DetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Kisei2GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -25,11 +26,11 @@
         <div id="derive2Id">
           <label for="Tb6Derive2.derive2Id" th:text="#{Tb6Derive2.derive2Id}">派生２ID</label><input type="text" id="Tb6Derive2.derive2Id" name="Tb6Derive2.derive2Id" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
-        <div id="orgId">
-          <label th:text="#{Tb6Derive2.orgId}">起源ID</label><span id="Tb6Derive2.orgId" class="derivee"></span><input type="hidden" id="Tb6Derive2.orgId" name="Tb6Derive2.orgId" class="derivee" />
-        </div>
         <div id="orgInfo">
           <label for="Tb6Derive2.orgInfo" th:text="#{Tb6Derive2.orgInfo}">起源情報</label><input type="text" id="Tb6Derive2.orgInfo" name="Tb6Derive2.orgInfo" maxlength="300" />
+        </div>
+        <div id="orgId">
+          <label th:text="#{Tb6Derive2.orgId}">起源ID</label><span id="Tb6Derive2.orgId" class="derivee"></span><input type="hidden" id="Tb6Derive2.orgId" name="Tb6Derive2.orgId" class="derivee" />
         </div>
         <div id="insertTs">
           <label th:text="#{Tb6Derive2.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6Derive2.insertTs" class="meta"></span><input type="hidden" id="Tb6Derive2.insertTs" name="Tb6Derive2.insertTs" class="meta"/>
@@ -54,8 +55,8 @@
         <div id="derive2Bn">
           <label for="Tb6Derive2Det.derive2Bn" th:text="#{Tb6Derive2Det.derive2Bn}">派生２枝番</label><input type="text" id="Tb6Derive2Det.derive2Bn" name="Tb6Derive2Det.derive2Bn" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
-        <div id="orgDetInfo">
-          <label for="Tb6Derive2Det.orgDetInfo" th:text="#{Tb6Derive2Det.orgDetInfo}">起源明細情報</label><input type="text" id="Tb6Derive2Det.orgDetInfo" name="Tb6Derive2Det.orgDetInfo" maxlength="300" />
+        <div id="detInfo">
+          <label for="Tb6Derive2Det.detInfo" th:text="#{Tb6Derive2Det.detInfo}">明細情報</label><input type="text" id="Tb6Derive2Det.detInfo" name="Tb6Derive2Det.detInfo" maxlength="300" />
         </div>
         <div id="insertTs">
           <label th:text="#{Tb6Derive2Det.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6Derive2Det.insertTs" class="meta"></span><input type="hidden" id="Tb6Derive2Det.insertTs" name="Tb6Derive2Det.insertTs" class="meta"/>

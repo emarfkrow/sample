@@ -50,10 +50,12 @@ public class Tb4MagoGetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.Tb4Ko tb4Ko = com.example.entity.Tb4Ko.get(oyaId, koBn);
-        map.put("Tb4Ko", tb4Ko);
-        com.example.entity.Tb4KoOrphans tb4KoOrphans = com.example.entity.Tb4KoOrphans.get(oyaId, koBn);
-        map.put("Tb4KoOrphans", tb4KoOrphans);
+        com.example.entity.Tb1Dinks tb1Dinks = com.example.entity.Tb1Dinks.get(oyaId, koBn);
+        map.put("Tb1Dinks", tb1Dinks);
+        com.example.entity.Tb1Ko tb1Ko = com.example.entity.Tb1Ko.get(oyaId, koBn);
+        map.put("Tb1Ko", tb1Ko);
+        com.example.entity.Tb1Orphan tb1Orphan = com.example.entity.Tb1Orphan.get(oyaId, koBn);
+        map.put("Tb1Orphan", tb1Orphan);
 
         // 主キーが不足していたら終了
         if (!isAllKey) {

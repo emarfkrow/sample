@@ -55,29 +55,11 @@ public class Tb6Derive1 implements IEntity {
         }
     }
 
-    /** 起源ID */
-    private Integer orgId;
-
-    /** @return 起源ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "ORG_ID", index = 3)
-    public Integer getOrgId() {
-        return this.orgId;
-    }
-
-    /** @param o 起源ID */
-    public void setOrgId(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.orgId = Integer.valueOf(o.toString());
-        } else {
-            this.orgId = null;
-        }
-    }
-
     /** 起源情報 */
     private String orgInfo;
 
     /** @return 起源情報 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "ORG_INFO", index = 4)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "ORG_INFO", index = 3)
     public String getOrgInfo() {
         return this.orgInfo;
     }
@@ -88,6 +70,24 @@ public class Tb6Derive1 implements IEntity {
             this.orgInfo = o.toString();
         } else {
             this.orgInfo = null;
+        }
+    }
+
+    /** 起源ID */
+    private Integer orgId;
+
+    /** @return 起源ID */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "ORG_ID", index = 4)
+    public Integer getOrgId() {
+        return this.orgId;
+    }
+
+    /** @param o 起源ID */
+    public void setOrgId(final Object o) {
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
+            this.orgId = Integer.valueOf(o.toString());
+        } else {
+            this.orgId = null;
         }
     }
 
@@ -233,8 +233,8 @@ public class Tb6Derive1 implements IEntity {
         String sql = "";
         sql += "SELECT \n";
         sql += "      a.`DERIVE1_ID` \n";
-        sql += "    , a.`ORG_ID` \n";
         sql += "    , a.`ORG_INFO` \n";
+        sql += "    , a.`ORG_ID` \n";
         sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
         sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
@@ -278,8 +278,8 @@ public class Tb6Derive1 implements IEntity {
     private String names() {
         List<String> nameList = new ArrayList<String>();
         nameList.add("`DERIVE1_ID` -- :derive_1_id");
-        nameList.add("`ORG_ID` -- :org_id");
         nameList.add("`ORG_INFO` -- :org_info");
+        nameList.add("`ORG_ID` -- :org_id");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -291,8 +291,8 @@ public class Tb6Derive1 implements IEntity {
     private String values() {
         List<String> valueList = new ArrayList<String>();
         valueList.add(":derive_1_id");
-        valueList.add(":org_id");
         valueList.add(":org_info");
+        valueList.add(":org_id");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -344,8 +344,8 @@ public class Tb6Derive1 implements IEntity {
     private String getSet() {
         List<String> setList = new ArrayList<String>();
         setList.add("`DERIVE1_ID` = :derive_1_id");
-        setList.add("`ORG_ID` = :org_id");
         setList.add("`ORG_INFO` = :org_info");
+        setList.add("`ORG_ID` = :org_id");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
@@ -387,8 +387,8 @@ public class Tb6Derive1 implements IEntity {
     private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("derive_1_id", this.derive1Id);
-        map.put("org_id", this.orgId);
         map.put("org_info", this.orgInfo);
+        map.put("org_id", this.orgId);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);
@@ -438,7 +438,7 @@ public class Tb6Derive1 implements IEntity {
         String sql = "SELECT ";
         sql += "`DERIVE1_ID`";
         sql += ", `DERIVE1_BN`";
-        sql += ", `ORG_DET_INFO`";
+        sql += ", `DET_INFO`";
         sql += ", `INSERT_TS` AS INSERT_TS";
         sql += ", `INSERT_USER_ID`";
         sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";

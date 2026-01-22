@@ -35,6 +35,20 @@ public class Tb6Derive1RegistForm implements IForm {
         this.derive1Id = p;
     }
 
+    /** 起源情報 */
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 300)
+    private String orgInfo;
+
+    /** @return 起源情報 */
+    public String getOrgInfo() {
+        return orgInfo;
+    }
+
+    /** @param p 起源情報 */
+    public void setOrgInfo(final String p) {
+        this.orgInfo = p;
+    }
+
     /** 起源ID */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
@@ -48,20 +62,6 @@ public class Tb6Derive1RegistForm implements IForm {
     /** @param p 起源ID */
     public void setOrgId(final String p) {
         this.orgId = p;
-    }
-
-    /** 起源情報 */
-    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 300)
-    private String orgInfo;
-
-    /** @return 起源情報 */
-    public String getOrgInfo() {
-        return orgInfo;
-    }
-
-    /** @param p 起源情報 */
-    public void setOrgInfo(final String p) {
-        this.orgInfo = p;
     }
 
     /** 更新タイムスタンプ */

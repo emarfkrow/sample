@@ -47,7 +47,7 @@ public class Tb6Derive2GetAction extends BaseAction {
                 for (com.example.entity.Tb6OrgDet tb6OrgDet : tb6Org.referTb6OrgDets()) {
                     com.example.entity.Tb6Derive2Det tb6Derive2Det = new com.example.entity.Tb6Derive2Det();
                     tb6Derive2Det.setId(tb6OrgDet.getId());
-                    tb6Derive2Det.setOrgDetInfo(tb6OrgDet.getOrgDetInfo());
+                    tb6Derive2Det.setDetInfo(tb6OrgDet.getDetInfo());
                     tb6Derive2.getTb6Derive2Dets().add(tb6Derive2Det);
                 }
 

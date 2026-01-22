@@ -11,6 +11,7 @@
 <script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 <script th:src="@{/model/Tb6OrgGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Kisei2GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -45,10 +46,10 @@
           <label for="Tb6OrgDet.orgId" th:text="#{Tb6OrgDet.orgId}">起源ID</label><input type="text" id="Tb6OrgDet.orgId" name="Tb6OrgDet.orgId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="orgBn">
-          <label for="Tb6OrgDet.orgBn" th:text="#{Tb6OrgDet.orgBn}">起源明細枝番</label><input type="text" id="Tb6OrgDet.orgBn" name="Tb6OrgDet.orgBn" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="Tb6OrgDet.orgBn" th:text="#{Tb6OrgDet.orgBn}">起源枝番</label><input type="text" id="Tb6OrgDet.orgBn" name="Tb6OrgDet.orgBn" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
-        <div id="orgDetInfo">
-          <label for="Tb6OrgDet.orgDetInfo" th:text="#{Tb6OrgDet.orgDetInfo}">起源明細情報</label><input type="text" id="Tb6OrgDet.orgDetInfo" name="Tb6OrgDet.orgDetInfo" maxlength="300" />
+        <div id="detInfo">
+          <label for="Tb6OrgDet.detInfo" th:text="#{Tb6OrgDet.detInfo}">明細情報</label><input type="text" id="Tb6OrgDet.detInfo" name="Tb6OrgDet.detInfo" maxlength="300" />
         </div>
         <div id="insertTs">
           <label th:text="#{Tb6OrgDet.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6OrgDet.insertTs" class="meta"></span><input type="hidden" id="Tb6OrgDet.insertTs" name="Tb6OrgDet.insertTs" class="meta"/>

@@ -1,7 +1,7 @@
 SELECT
       a.`DERIVE2_ID`
-    , a.`ORG_ID`
     , a.`ORG_INFO`
+    , a.`ORG_ID`
     , a.`INSERT_TS` AS `INSERT_TS`
     , a.`INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
@@ -13,8 +13,8 @@ FROM
 WHERE
     1 = 1 
     AND a.`DERIVE2_ID` = :derive_2_id 
-    AND a.`ORG_ID` = :org_id 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`ORG_INFO`)) LIKE UPPER (CONCAT ('%', :org_info, '%')) 
+    AND a.`ORG_ID` = :org_id 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 

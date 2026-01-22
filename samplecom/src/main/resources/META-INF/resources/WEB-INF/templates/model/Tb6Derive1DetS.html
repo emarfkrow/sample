@@ -15,6 +15,7 @@
 <script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
 <script th:src="@{/model/Tb6Derive2GridColumns.js}"></script>
 <script th:src="@{/model/Tb6Derive2DetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Kisei2GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -31,8 +32,8 @@
         <div id="derive1Bn">
           <label for="Tb6Derive1Det.derive1Bn" th:text="#{Tb6Derive1Det.derive1Bn}">派生１枝番</label><input type="text" id="Tb6Derive1Det.derive1Bn" name="Tb6Derive1Det.derive1Bn" maxlength="10" />
         </div>
-        <div id="orgDetInfo">
-          <label for="Tb6Derive1Det.orgDetInfo" th:text="#{Tb6Derive1Det.orgDetInfo}">起源明細情報</label><input type="text" id="Tb6Derive1Det.orgDetInfo" name="Tb6Derive1Det.orgDetInfo" maxlength="300" />
+        <div id="detInfo">
+          <label for="Tb6Derive1Det.detInfo" th:text="#{Tb6Derive1Det.detInfo}">明細情報</label><input type="text" id="Tb6Derive1Det.detInfo" name="Tb6Derive1Det.detInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">

@@ -40,8 +40,6 @@ public class Tb8Sum3GetAction extends BaseAction {
 
         try {
             Tb8Sum3 tb8Sum3 = Tb8Sum3.get(sum3Id);
-            // 集約元
-            tb8Sum3.referTb8Unit4s();
             map.put("Tb8Sum3", tb8Sum3);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

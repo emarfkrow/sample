@@ -76,21 +76,21 @@ public class Tb6Derive1Det implements IEntity {
         }
     }
 
-    /** 起源明細情報 */
-    private String orgDetInfo;
+    /** 明細情報 */
+    private String detInfo;
 
-    /** @return 起源明細情報 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "ORG_DET_INFO", index = 4)
-    public String getOrgDetInfo() {
-        return this.orgDetInfo;
+    /** @return 明細情報 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "DET_INFO", index = 4)
+    public String getDetInfo() {
+        return this.detInfo;
     }
 
-    /** @param o 起源明細情報 */
-    public void setOrgDetInfo(final Object o) {
+    /** @param o 明細情報 */
+    public void setDetInfo(final Object o) {
         if (o != null) {
-            this.orgDetInfo = o.toString();
+            this.detInfo = o.toString();
         } else {
-            this.orgDetInfo = null;
+            this.detInfo = null;
         }
     }
 
@@ -239,7 +239,7 @@ public class Tb6Derive1Det implements IEntity {
         sql += "SELECT \n";
         sql += "      a.`DERIVE1_ID` \n";
         sql += "    , a.`DERIVE1_BN` \n";
-        sql += "    , a.`ORG_DET_INFO` \n";
+        sql += "    , a.`DET_INFO` \n";
         sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
         sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
@@ -275,7 +275,7 @@ public class Tb6Derive1Det implements IEntity {
         List<String> nameList = new ArrayList<String>();
         nameList.add("`DERIVE1_ID` -- :derive_1_id");
         nameList.add("`DERIVE1_BN` -- :derive_1_bn");
-        nameList.add("`ORG_DET_INFO` -- :org_det_info");
+        nameList.add("`DET_INFO` -- :det_info");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -288,7 +288,7 @@ public class Tb6Derive1Det implements IEntity {
         List<String> valueList = new ArrayList<String>();
         valueList.add(":derive_1_id");
         valueList.add(":derive_1_bn");
-        valueList.add(":org_det_info");
+        valueList.add(":det_info");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -330,7 +330,7 @@ public class Tb6Derive1Det implements IEntity {
         List<String> setList = new ArrayList<String>();
         setList.add("`DERIVE1_ID` = :derive_1_id");
         setList.add("`DERIVE1_BN` = :derive_1_bn");
-        setList.add("`ORG_DET_INFO` = :org_det_info");
+        setList.add("`DET_INFO` = :det_info");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
@@ -365,7 +365,7 @@ public class Tb6Derive1Det implements IEntity {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("derive_1_id", this.derive1Id);
         map.put("derive_1_bn", this.derive1Bn);
-        map.put("org_det_info", this.orgDetInfo);
+        map.put("det_info", this.detInfo);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);

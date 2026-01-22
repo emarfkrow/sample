@@ -52,18 +52,18 @@ public class Tb6Derive2DetRegistForm implements IForm {
         this.derive2Bn = p;
     }
 
-    /** 起源明細情報 */
+    /** 明細情報 */
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 300)
-    private String orgDetInfo;
+    private String detInfo;
 
-    /** @return 起源明細情報 */
-    public String getOrgDetInfo() {
-        return orgDetInfo;
+    /** @return 明細情報 */
+    public String getDetInfo() {
+        return detInfo;
     }
 
-    /** @param p 起源明細情報 */
-    public void setOrgDetInfo(final String p) {
-        this.orgDetInfo = p;
+    /** @param p 明細情報 */
+    public void setDetInfo(final String p) {
+        this.detInfo = p;
     }
 
     /** 更新タイムスタンプ */

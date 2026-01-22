@@ -1,7 +1,7 @@
 SELECT
       a.`ORG_ID`
     , a.`ORG_BN`
-    , a.`ORG_DET_INFO`
+    , a.`DET_INFO`
     , a.`INSERT_TS` AS `INSERT_TS`
     , a.`INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
@@ -14,7 +14,7 @@ WHERE
     1 = 1 
     AND a.`ORG_ID` = :org_id 
     AND a.`ORG_BN` = :org_bn 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`ORG_DET_INFO`)) LIKE UPPER (CONCAT ('%', :org_det_info, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`DET_INFO`)) LIKE UPPER (CONCAT ('%', :det_info, '%')) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 

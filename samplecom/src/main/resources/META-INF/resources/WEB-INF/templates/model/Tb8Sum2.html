@@ -18,9 +18,7 @@
 <script th:src="@{/model/Tb8Sum3GridColumns.js}"></script>
 <script th:src="@{/model/Tb8Tasho2GridColumns.js}"></script>
 <script th:src="@{/model/Tb8Reborn2GridColumns.js}"></script>
-<script th:src="@{/model/Tb8Unit4GridColumns.js}"></script>
 <script th:src="@{/model/Tb8Tasho1GridColumns.js}"></script>
-<script th:src="@{/model/Tb8Unit3GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -57,7 +55,6 @@
         <a th:href="@{Tb8Sum2Get.xlsx(baseMei=#{Tb8Sum2.h2})}" id="Tb8Sum2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
         <a th:href="@{/model/Tb8Choice.html}" id="Tb8Choice" target="dialog" th:text="#{Tb8Choice.add}" class="reborner" tabindex="-1">選抜</a>
         <a th:href="@{/model/Tb8Tasho1.html}" id="Tb8Tasho1" target="dialog" th:text="#{Tb8Tasho1.add}" class="reborner" tabindex="-1">他生１</a>
-        <a th:href="@{/model/Tb8Unit3.html}" id="Tb8Unit3" target="dialog" th:text="#{Tb8Unit3.add}" class="reborner" tabindex="-1">単位３</a>
       </div>
       <div class="submits">
         <button id="DeleteTb8Sum2" type="submit" class="delete" data-action="Tb8Sum2Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>

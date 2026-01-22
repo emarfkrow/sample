@@ -42,6 +42,8 @@ public class Tb6OrgGetAction extends BaseAction {
             Tb6Org tb6Org = Tb6Org.get(orgId);
             // 子
             tb6Org.referTb6OrgDets();
+            // 集約元
+            tb6Org.referTb6Kisei2s();
             map.put("Tb6Org", tb6Org);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
