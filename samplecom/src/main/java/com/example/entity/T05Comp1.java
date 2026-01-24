@@ -114,21 +114,21 @@ public class T05Comp1 implements IEntity {
         }
     }
 
-    /** 複合１情報 */
-    private String comp1Info;
+    /** 複合１名 */
+    private String comp1Mei;
 
-    /** @return 複合１情報 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "COMP1_INFO", index = 6)
-    public String getComp1Info() {
-        return this.comp1Info;
+    /** @return 複合１名 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "COMP1_MEI", index = 6)
+    public String getComp1Mei() {
+        return this.comp1Mei;
     }
 
-    /** @param o 複合１情報 */
-    public void setComp1Info(final Object o) {
+    /** @param o 複合１名 */
+    public void setComp1Mei(final Object o) {
         if (o != null) {
-            this.comp1Info = o.toString();
+            this.comp1Mei = o.toString();
         } else {
-            this.comp1Info = null;
+            this.comp1Mei = null;
         }
     }
 
@@ -277,7 +277,7 @@ public class T05Comp1 implements IEntity {
         sql += "SELECT \n";
         sql += "      a.`REF1_ID` \n";
         sql += "    , a.`REF2_ID` \n";
-        sql += "    , a.`COMP1_INFO` \n";
+        sql += "    , a.`COMP1_MEI` \n";
         sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
         sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
@@ -321,7 +321,7 @@ public class T05Comp1 implements IEntity {
         List<String> nameList = new ArrayList<String>();
         nameList.add("`REF1_ID` -- :ref_1_id");
         nameList.add("`REF2_ID` -- :ref_2_id");
-        nameList.add("`COMP1_INFO` -- :comp_1_info");
+        nameList.add("`COMP1_MEI` -- :comp_1_mei");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -334,7 +334,7 @@ public class T05Comp1 implements IEntity {
         List<String> valueList = new ArrayList<String>();
         valueList.add(":ref_1_id");
         valueList.add(":ref_2_id");
-        valueList.add(":comp_1_info");
+        valueList.add(":comp_1_mei");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -376,7 +376,7 @@ public class T05Comp1 implements IEntity {
         List<String> setList = new ArrayList<String>();
         setList.add("`REF1_ID` = :ref_1_id");
         setList.add("`REF2_ID` = :ref_2_id");
-        setList.add("`COMP1_INFO` = :comp_1_info");
+        setList.add("`COMP1_MEI` = :comp_1_mei");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
@@ -420,7 +420,7 @@ public class T05Comp1 implements IEntity {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("ref_1_id", this.ref1Id);
         map.put("ref_2_id", this.ref2Id);
-        map.put("comp_1_info", this.comp1Info);
+        map.put("comp_1_mei", this.comp1Mei);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);

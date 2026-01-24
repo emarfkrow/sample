@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.entity.T04Saiki;
+import com.example.entity.M04Saiki;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.NoDataError;
@@ -14,7 +14,7 @@ import jp.co.golorp.emarf.exception.NoDataError;
  *
  * @author emarfkrow
  */
-public class T04SaikiGetAction extends BaseAction {
+public class M04SaikiGetAction extends BaseAction {
 
     /** 再帰照会処理 */
     @Override
@@ -27,7 +27,7 @@ public class T04SaikiGetAction extends BaseAction {
 
         Object saikiId = postJson.get("saikiId");
         if (saikiId == null) {
-            saikiId = postJson.get("T04Saiki.saikiId");
+            saikiId = postJson.get("M04Saiki.saikiId");
         }
         if (saikiId == null) {
             isAllKey = false;
@@ -39,8 +39,8 @@ public class T04SaikiGetAction extends BaseAction {
         }
 
         try {
-            T04Saiki t04Saiki = T04Saiki.get(saikiId);
-            map.put("T04Saiki", t04Saiki);
+            M04Saiki m04Saiki = M04Saiki.get(saikiId);
+            map.put("M04Saiki", m04Saiki);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
                 throw e;

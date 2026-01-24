@@ -15,38 +15,38 @@ import jp.co.golorp.emarf.validation.IForm;
  *
  * @author emarfkrow
  */
-public class T04SaikiSRegistForm implements IForm {
+public class M04SaikiSRegistForm implements IForm {
 
     // /** logger */
-    // private static final Logger LOG = LoggerFactory.getLogger(T04SaikiRegistForm.class);
+    // private static final Logger LOG = LoggerFactory.getLogger(M04SaikiRegistForm.class);
 
     /** 再帰登録フォームのリスト */
     @Valid
-    private List<T04SaikiRegistForm> t04SaikiGrid;
+    private List<M04SaikiRegistForm> m04SaikiGrid;
 
     /**
      * @return 再帰登録フォームのリスト
      */
-    public List<T04SaikiRegistForm> getT04SaikiGrid() {
-        return t04SaikiGrid;
+    public List<M04SaikiRegistForm> getM04SaikiGrid() {
+        return m04SaikiGrid;
     }
 
     /**
      * @param p 再帰登録フォームのリスト
      */
-    public void setT04SaikiGrid(final List<T04SaikiRegistForm> p) {
-        this.t04SaikiGrid = p;
+    public void setM04SaikiGrid(final List<M04SaikiRegistForm> p) {
+        this.m04SaikiGrid = p;
     }
 
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t04SaikiGrid.size(); i++) {
-            T04SaikiRegistForm form = this.t04SaikiGrid.get(i);
+        for (int i = 0; i < this.m04SaikiGrid.size(); i++) {
+            M04SaikiRegistForm form = this.m04SaikiGrid.get(i);
             if (form != null) {
                 Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
                 form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T04SaikiGrid", i, gridErrors);
+                BaseProcess.copyGridErrors(errors, "M04SaikiGrid", i, gridErrors);
             }
         }
     }

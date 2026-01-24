@@ -13,7 +13,7 @@ import jp.co.golorp.emarf.sql.Queries;
  * 再帰
  * @author emarfkrow
  */
-public class T04Saiki implements IEntity {
+public class M04Saiki implements IEntity {
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
@@ -393,7 +393,7 @@ public class T04Saiki implements IEntity {
      * @param param1 再帰ID
      * @return 再帰
      */
-    public static T04Saiki get(final Object param1) {
+    public static M04Saiki get(final Object param1) {
         List<String> whereList = new ArrayList<String>();
         whereList.add("`SAIKI_ID` = :saiki_id");
         String sql = "";
@@ -411,12 +411,12 @@ public class T04Saiki implements IEntity {
         sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
         sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
-        sql += "    T04_SAIKI a \n";
+        sql += "    M04_SAIKI a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("saiki_id", param1);
-        return Queries.get(sql, map, T04Saiki.class);
+        return Queries.get(sql, map, M04Saiki.class);
     }
 
     /**
@@ -431,7 +431,7 @@ public class T04Saiki implements IEntity {
         numbering();
 
         // 再帰の登録
-        String sql = "INSERT INTO T04_SAIKI(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
+        String sql = "INSERT INTO M04_SAIKI(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return Queries.regist(sql, toMap(now, execId));
     }
 
@@ -476,7 +476,7 @@ public class T04Saiki implements IEntity {
         if (this.saikiId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`SAIKI_ID`) IS NULL THEN 0 ELSE MAX(e.`SAIKI_ID`) * 1 END + 1 AS `SAIKI_ID` FROM T04_SAIKI e";
+        String sql = "SELECT CASE WHEN MAX(e.`SAIKI_ID`) IS NULL THEN 0 ELSE MAX(e.`SAIKI_ID`) * 1 END + 1 AS `SAIKI_ID` FROM M04_SAIKI e";
         Map<String, Object> map = new HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("SAIKI_ID");
@@ -492,7 +492,7 @@ public class T04Saiki implements IEntity {
     public int update(final LocalDateTime now, final String execId) {
 
         // 再帰の登録
-        String sql = "UPDATE T04_SAIKI\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
+        String sql = "UPDATE M04_SAIKI\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return Queries.regist(sql, toMap(now, execId));
     }
 
@@ -519,7 +519,7 @@ public class T04Saiki implements IEntity {
     public int delete() {
 
         // 再帰の削除
-        String sql = "DELETE FROM T04_SAIKI WHERE " + getWhere();
+        String sql = "DELETE FROM M04_SAIKI WHERE " + getWhere();
         return Queries.regist(sql, toMap(null, null));
     }
 

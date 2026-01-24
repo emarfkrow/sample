@@ -3,7 +3,7 @@ SELECT
     , (SELECT r0.`REF1_MEI` FROM M05_REF1 r0 WHERE r0.`REF1_ID` = a.`REF1_ID`) AS `REF1_MEI`
     , a.`REF2_ID`
     , (SELECT r1.`REF2_MEI` FROM M05_REF2 r1 WHERE r1.`REF2_ID` = a.`REF2_ID`) AS `REF2_MEI`
-    , a.`COMP1_INFO`
+    , a.`COMP1_MEI`
     , a.`INSERT_TS` AS `INSERT_TS`
     , a.`INSERT_USER_ID`
     , (SELECT r2.`USER_SEI` FROM MHR_USER r2 WHERE r2.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
@@ -16,7 +16,7 @@ WHERE
     1 = 1 
     AND a.`REF1_ID` = :ref_1_id 
     AND a.`REF2_ID` = :ref_2_id 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`COMP1_INFO`)) LIKE UPPER (CONCAT ('%', :comp_1_info, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`COMP1_MEI`)) LIKE UPPER (CONCAT ('%', :comp_1_mei, '%')) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 

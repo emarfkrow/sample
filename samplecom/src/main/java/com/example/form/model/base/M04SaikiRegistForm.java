@@ -13,10 +13,10 @@ import jp.co.golorp.emarf.validation.IForm;
  *
  * @author emarfkrow
  */
-public class T04SaikiRegistForm implements IForm {
+public class M04SaikiRegistForm implements IForm {
 
     /** logger */
-    private static final Logger LOG = LoggerFactory.getLogger(T04SaikiRegistForm.class);
+    private static final Logger LOG = LoggerFactory.getLogger(M04SaikiRegistForm.class);
 
     /** 再帰ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
@@ -159,27 +159,27 @@ public class T04SaikiRegistForm implements IForm {
         // 参照ID のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> idrefIdParams = new java.util.HashMap<String, Object>();
         idrefIdParams.put("idrefId", this.getIdrefId());
-        baseProcess.masterCheck(errors, "M04IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("T04Saiki.idrefId"));
+        baseProcess.masterCheck(errors, "M04IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.idrefId"));
 
         // 参照CD のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> cdrefCdParams = new java.util.HashMap<String, Object>();
         cdrefCdParams.put("cdrefCdFull", this.getCdrefCd());
-        baseProcess.masterCheck(errors, "M04CdSearch", "cdrefCd", cdrefCdParams, jp.co.golorp.emarf.util.Messages.get("T04Saiki.cdrefCd"));
+        baseProcess.masterCheck(errors, "M04CdSearch", "cdrefCd", cdrefCdParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.cdrefCd"));
 
         // 参照NO のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> norefNoParams = new java.util.HashMap<String, Object>();
         norefNoParams.put("norefNoFull", this.getNorefNo());
-        baseProcess.masterCheck(errors, "M04NoSearch", "norefNo", norefNoParams, jp.co.golorp.emarf.util.Messages.get("T04Saiki.norefNo"));
+        baseProcess.masterCheck(errors, "M04NoSearch", "norefNo", norefNoParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.norefNo"));
 
         // ID連番 のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> m04IdbnParams = new java.util.HashMap<String, Object>();
         m04IdbnParams.put("idbnId", this.getIdbnId());
         m04IdbnParams.put("idbnBn", this.getIdbnBn());
-        baseProcess.masterCheck(errors, "M04IdbnSearch", "idbnBn", m04IdbnParams, jp.co.golorp.emarf.util.Messages.get("T04Saiki.idbnBn"));
+        baseProcess.masterCheck(errors, "M04IdbnSearch", "idbnBn", m04IdbnParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.idbnBn"));
 
         // 親再帰ID のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> oyaSaikiIdParams = new java.util.HashMap<String, Object>();
         oyaSaikiIdParams.put("oyaSaikiId", this.getOyaSaikiId());
-        baseProcess.masterCheck(errors, "T04SaikiSearch", "oyaSaikiId", oyaSaikiIdParams, jp.co.golorp.emarf.util.Messages.get("T04Saiki.oyaSaikiId"));
+        baseProcess.masterCheck(errors, "M04SaikiSearch", "oyaSaikiId", oyaSaikiIdParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.oyaSaikiId"));
     }
 }

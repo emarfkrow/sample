@@ -1,5 +1,5 @@
 -- Project Name : emarf
--- Date/Time    : 2026/01/24 8:40:28
+-- Date/Time    : 2026/01/24 21:52:00
 -- Author       : t_fuk
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
@@ -48,6 +48,23 @@ create table M04_NO (
   , UPDATE_USER_ID INT not null comment '更新者'
   , constraint M04_NO_PKC primary key (NOREF_NO)
 ) comment 'NOマスタ' ;
+
+-- 再帰
+create table M04_SAIKI (
+  SAIKI_ID INT comment '再帰ID'
+  , SAIKI_MEI VARCHAR(60) not null comment '再帰名'
+  , IDREF_ID INT comment '参照ID'
+  , CDREF_CD CHAR(10) comment '参照CD'
+  , NOREF_NO CHAR(10) comment '参照NO'
+  , IDBN_ID INT comment 'ID連番ID'
+  , IDBN_BN INT comment 'ID連番'
+  , OYA_SAIKI_ID INT comment '親再帰ID'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint M04_SAIKI_PKC primary key (SAIKI_ID)
+) comment '再帰' ;
 
 -- マスタ参照１
 create table M05_REF1 (
@@ -412,28 +429,11 @@ create table T03_TRANS_HIS (
   , constraint T03_TRANS_HIS_PKC primary key (TRANS_ID,TRANS_BN)
 ) comment '変遷履歴' ;
 
--- 再帰
-create table T04_SAIKI (
-  SAIKI_ID INT comment '再帰ID'
-  , SAIKI_MEI VARCHAR(60) not null comment '再帰名'
-  , IDREF_ID INT comment '参照ID'
-  , CDREF_CD CHAR(10) comment '参照CD'
-  , NOREF_NO CHAR(10) comment '参照NO'
-  , IDBN_ID INT comment 'ID連番ID'
-  , IDBN_BN INT comment 'ID連番'
-  , OYA_SAIKI_ID INT comment '親再帰ID'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint T04_SAIKI_PKC primary key (SAIKI_ID)
-) comment '再帰' ;
-
 -- 複合１
 create table T05_COMP1 (
   REF1_ID INT comment '参照１ID'
   , REF2_ID INT comment '参照２ID'
-  , COMP1_INFO VARCHAR(300) comment '複合１情報'
+  , COMP1_MEI VARCHAR(300) comment '複合１名'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.entity.T04Saiki;
+import com.example.entity.M04Saiki;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.OptLockError;
@@ -17,7 +17,7 @@ import jp.co.golorp.emarf.validation.FormValidator;
  *
  * @author emarfkrow
  */
-public class T04SaikiSDeleteAction extends BaseAction {
+public class M04SaikiSDeleteAction extends BaseAction {
 
     /** 再帰一覧削除処理 */
     @Override
@@ -28,7 +28,7 @@ public class T04SaikiSDeleteAction extends BaseAction {
         int count = 0;
 
         @SuppressWarnings("unchecked")
-        List<Map<String, Object>> data = (List<Map<String, Object>>) form.get("T04SaikiGrid");
+        List<Map<String, Object>> data = (List<Map<String, Object>>) form.get("M04SaikiGrid");
         if (data != null) {
             for (Map<String, Object> row : data) {
 
@@ -41,7 +41,7 @@ public class T04SaikiSDeleteAction extends BaseAction {
                     throw new OptLockError("error.cant.delete", "再帰");
                 }
 
-                T04Saiki e = FormValidator.toBean(T04Saiki.class.getName(), row);
+                M04Saiki e = FormValidator.toBean(M04Saiki.class.getName(), row);
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "再帰");
                 }

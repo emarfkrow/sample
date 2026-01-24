@@ -53,18 +53,18 @@ public class T05Comp1RegistForm implements IForm {
         this.ref2Id = p;
     }
 
-    /** 複合１情報 */
+    /** 複合１名 */
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 300)
-    private String comp1Info;
+    private String comp1Mei;
 
-    /** @return 複合１情報 */
-    public String getComp1Info() {
-        return comp1Info;
+    /** @return 複合１名 */
+    public String getComp1Mei() {
+        return comp1Mei;
     }
 
-    /** @param p 複合１情報 */
-    public void setComp1Info(final String p) {
-        this.comp1Info = p;
+    /** @param p 複合１名 */
+    public void setComp1Mei(final String p) {
+        this.comp1Mei = p;
     }
 
     /** 更新タイムスタンプ */

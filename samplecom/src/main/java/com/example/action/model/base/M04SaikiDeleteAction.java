@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.entity.T04Saiki;
+import com.example.entity.M04Saiki;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.OptLockError;
@@ -16,7 +16,7 @@ import jp.co.golorp.emarf.validation.FormValidator;
  *
  * @author emarfkrow
  */
-public class T04SaikiDeleteAction extends BaseAction {
+public class M04SaikiDeleteAction extends BaseAction {
 
     /** 再帰削除処理 */
     @Override
@@ -25,13 +25,13 @@ public class T04SaikiDeleteAction extends BaseAction {
         // 主キーが不足していたらエラー
         Object saikiId = postJson.get("saikiId");
         if (saikiId == null) {
-            saikiId = postJson.get("T04Saiki.saikiId");
+            saikiId = postJson.get("M04Saiki.saikiId");
         }
         if (saikiId == null) {
             throw new OptLockError("error.cant.delete", "再帰");
         }
 
-        T04Saiki e = FormValidator.toBean(T04Saiki.class.getName(), postJson);
+        M04Saiki e = FormValidator.toBean(M04Saiki.class.getName(), postJson);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "再帰");
         }
