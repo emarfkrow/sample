@@ -94,16 +94,16 @@ public class M04SaikiRegistForm implements IForm {
 
     /** ID連番ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
-    private String idbnId;
+    private String idbnIdrefId;
 
     /** @return ID連番ID */
-    public String getIdbnId() {
-        return idbnId;
+    public String getIdbnIdrefId() {
+        return idbnIdrefId;
     }
 
     /** @param p ID連番ID */
-    public void setIdbnId(final String p) {
-        this.idbnId = p;
+    public void setIdbnIdrefId(final String p) {
+        this.idbnIdrefId = p;
     }
 
     /** ID連番 */
@@ -171,9 +171,14 @@ public class M04SaikiRegistForm implements IForm {
         norefNoParams.put("norefNoFull", this.getNorefNo());
         baseProcess.masterCheck(errors, "M04NoSearch", "norefNo", norefNoParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.norefNo"));
 
+        // ID連番ID のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> idbnIdrefIdParams = new java.util.HashMap<String, Object>();
+        idbnIdrefIdParams.put("idbnIdrefId", this.getIdbnIdrefId());
+        baseProcess.masterCheck(errors, "M04IdSearch", "idbnIdrefId", idbnIdrefIdParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.idbnIdrefId"));
+
         // ID連番 のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> m04IdbnParams = new java.util.HashMap<String, Object>();
-        m04IdbnParams.put("idbnId", this.getIdbnId());
+        m04IdbnParams.put("idrefId", this.getIdrefId());
         m04IdbnParams.put("idbnBn", this.getIdbnBn());
         baseProcess.masterCheck(errors, "M04IdbnSearch", "idbnBn", m04IdbnParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.idbnBn"));
 

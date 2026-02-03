@@ -21,18 +21,18 @@ public class M04IdbnRegistForm implements IForm {
     /** 参照ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String idbnId;
+    private String idrefId;
 
     /** @return 参照ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getIdbnId() {
-        return idbnId;
+    public String getIdrefId() {
+        return idrefId;
     }
 
     /** @param p 参照ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setIdbnId(final String p) {
-        this.idbnId = p;
+    public void setIdrefId(final String p) {
+        this.idrefId = p;
     }
 
     /** 参照連番 */
@@ -88,5 +88,10 @@ public class M04IdbnRegistForm implements IForm {
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
+
+        // 参照ID のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> idrefIdParams = new java.util.HashMap<String, Object>();
+        idrefIdParams.put("idrefId", this.getIdrefId());
+        baseProcess.masterCheck(errors, "M04IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("M04Idbn.idrefId"));
     }
 }

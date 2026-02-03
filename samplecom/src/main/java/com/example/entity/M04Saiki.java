@@ -185,20 +185,39 @@ public class M04Saiki implements IEntity {
     }
 
     /** ID連番ID */
-    private Integer idbnId;
+    private Integer idbnIdrefId;
 
     /** @return ID連番ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_ID", index = 10)
-    public Integer getIdbnId() {
-        return this.idbnId;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_IDREF_ID", index = 10)
+    public Integer getIdbnIdrefId() {
+        return this.idbnIdrefId;
     }
 
     /** @param o ID連番ID */
-    public void setIdbnId(final Object o) {
+    public void setIdbnIdrefId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.idbnId = Integer.valueOf(o.toString());
+            this.idbnIdrefId = Integer.valueOf(o.toString());
         } else {
-            this.idbnId = null;
+            this.idbnIdrefId = null;
+        }
+    }
+
+    /** ID連番ID参照 */
+    @jp.co.golorp.emarf.validation.ReferMei
+    private String idbnIdrefMei;
+
+    /** @return ID連番ID参照 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_IDREF_MEI", index = 11)
+    public String getIdbnIdrefMei() {
+        return this.idbnIdrefMei;
+    }
+
+    /** @param o ID連番ID参照 */
+    public void setIdbnIdrefMei(final Object o) {
+        if (o != null) {
+            this.idbnIdrefMei = o.toString();
+        } else {
+            this.idbnIdrefMei = null;
         }
     }
 
@@ -206,7 +225,7 @@ public class M04Saiki implements IEntity {
     private Integer idbnBn;
 
     /** @return ID連番 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_BN", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_BN", index = 12)
     public Integer getIdbnBn() {
         return this.idbnBn;
     }
@@ -224,7 +243,7 @@ public class M04Saiki implements IEntity {
     private Integer oyaSaikiId;
 
     /** @return 親再帰ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_ID", index = 12)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_ID", index = 13)
     public Integer getOyaSaikiId() {
         return this.oyaSaikiId;
     }
@@ -243,7 +262,7 @@ public class M04Saiki implements IEntity {
     private String oyaSaikiMei;
 
     /** @return 親再帰ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_MEI", index = 13)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_MEI", index = 14)
     public String getOyaSaikiMei() {
         return this.oyaSaikiMei;
     }
@@ -264,7 +283,7 @@ public class M04Saiki implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return 作成タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 14)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 15)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -288,7 +307,7 @@ public class M04Saiki implements IEntity {
     private Integer insertUserId;
 
     /** @return 作成者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 15)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 16)
     public Integer getInsertUserId() {
         return this.insertUserId;
     }
@@ -307,7 +326,7 @@ public class M04Saiki implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 16)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 17)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -329,7 +348,7 @@ public class M04Saiki implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return 更新タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 17)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 18)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -355,7 +374,7 @@ public class M04Saiki implements IEntity {
     private Integer updateUserId;
 
     /** @return 更新者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 18)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 19)
     public Integer getUpdateUserId() {
         return this.updateUserId;
     }
@@ -374,7 +393,7 @@ public class M04Saiki implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 19)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 20)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -403,7 +422,7 @@ public class M04Saiki implements IEntity {
         sql += "    , a.`IDREF_ID` \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`CDREF_CD`) AS CDREF_CD \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`NOREF_NO`) AS NOREF_NO \n";
-        sql += "    , a.`IDBN_ID` \n";
+        sql += "    , a.`IDBN_IDREF_ID` \n";
         sql += "    , a.`IDBN_BN` \n";
         sql += "    , a.`OYA_SAIKI_ID` \n";
         sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
@@ -443,7 +462,7 @@ public class M04Saiki implements IEntity {
         nameList.add("`IDREF_ID` -- :idref_id");
         nameList.add("`CDREF_CD` -- :cdref_cd");
         nameList.add("`NOREF_NO` -- :noref_no");
-        nameList.add("`IDBN_ID` -- :idbn_id");
+        nameList.add("`IDBN_IDREF_ID` -- :idbn_idref_id");
         nameList.add("`IDBN_BN` -- :idbn_bn");
         nameList.add("`OYA_SAIKI_ID` -- :oya_saiki_id");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -461,7 +480,7 @@ public class M04Saiki implements IEntity {
         valueList.add(":idref_id");
         valueList.add(":cdref_cd");
         valueList.add(":noref_no");
-        valueList.add(":idbn_id");
+        valueList.add(":idbn_idref_id");
         valueList.add(":idbn_bn");
         valueList.add(":oya_saiki_id");
         valueList.add(":insert_ts");
@@ -504,7 +523,7 @@ public class M04Saiki implements IEntity {
         setList.add("`IDREF_ID` = :idref_id");
         setList.add("`CDREF_CD` = :cdref_cd");
         setList.add("`NOREF_NO` = :noref_no");
-        setList.add("`IDBN_ID` = :idbn_id");
+        setList.add("`IDBN_IDREF_ID` = :idbn_idref_id");
         setList.add("`IDBN_BN` = :idbn_bn");
         setList.add("`OYA_SAIKI_ID` = :oya_saiki_id");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -543,7 +562,7 @@ public class M04Saiki implements IEntity {
         map.put("idref_id", this.idrefId);
         map.put("cdref_cd", this.cdrefCd);
         map.put("noref_no", this.norefNo);
-        map.put("idbn_id", this.idbnId);
+        map.put("idbn_idref_id", this.idbnIdrefId);
         map.put("idbn_bn", this.idbnBn);
         map.put("oya_saiki_id", this.oyaSaikiId);
         map.put("insert_ts", now);

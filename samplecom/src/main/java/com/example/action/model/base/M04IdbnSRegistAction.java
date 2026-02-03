@@ -40,7 +40,7 @@ public class M04IdbnSRegistAction extends BaseAction {
 
                 // 主キーが不足していたらINSERT
                 boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getIdbnId())) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getIdrefId())) {
                     isNew = true;
                 }
                 if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getIdbnBn())) {

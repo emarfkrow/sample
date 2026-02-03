@@ -41,8 +41,8 @@ public class T09SumGetAction extends BaseAction {
         try {
             T09Sum t09Sum = T09Sum.get(sumId);
             // 集約元
-            t09Sum.referT09Grp1s();
             t09Sum.referT09Grp2s();
+            t09Sum.referT09Grp1s();
             map.put("T09Sum", t09Sum);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

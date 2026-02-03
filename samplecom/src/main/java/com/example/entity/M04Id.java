@@ -240,6 +240,16 @@ public class M04Id implements IEntity {
         // 参照IDの採番処理
         numbering();
 
+        // ID連番マスタの登録
+        if (this.m04Idbns != null) {
+            for (M04Idbn m04Idbn : this.m04Idbns) {
+                if (m04Idbn != null) {
+                    m04Idbn.setIdrefId(this.getIdrefId());
+                }
+                m04Idbn.insert(now, execId);
+            }
+        }
+
         // IDマスタの登録
         String sql = "INSERT INTO M04_ID(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return Queries.regist(sql, toMap(now, execId));
@@ -289,6 +299,21 @@ public class M04Id implements IEntity {
      */
     public int update(final LocalDateTime now, final String execId) {
 
+        // ID連番マスタの登録
+        if (this.m04Idbns != null) {
+            for (M04Idbn m04Idbn : this.m04Idbns) {
+                if (m04Idbn == null) {
+                    continue;
+                }
+                m04Idbn.setIdrefId(this.idrefId);
+                try {
+                    m04Idbn.insert(now, execId);
+                } catch (Exception e) {
+                    m04Idbn.update(now, execId);
+                }
+            }
+        }
+
         // IDマスタの登録
         String sql = "UPDATE M04_ID\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return Queries.regist(sql, toMap(now, execId));
@@ -309,6 +334,15 @@ public class M04Id implements IEntity {
      * @return 削除件数
      */
     public int delete() {
+
+        // ID連番マスタの削除
+        if (this.m04Idbns != null) {
+            for (M04Idbn m04Idbn : this.m04Idbns) {
+                if (m04Idbn.delete() != 1) {
+                    throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "ID連番マスタ");
+                }
+            }
+        }
 
         // IDマスタの削除
         String sql = "DELETE FROM M04_ID WHERE " + getWhere();
@@ -337,5 +371,66 @@ public class M04Id implements IEntity {
         map.put("update_ts", now);
         map.put("update_user_id", execId);
         return map;
+    }
+
+    /*
+     * 子モデル：ID連番マスタ
+     */
+
+    /** ID連番マスタのリスト */
+    private List<M04Idbn> m04Idbns;
+
+    /** @return ID連番マスタのリスト */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "M04Idbns", index = 10)
+    public List<M04Idbn> getM04Idbns() {
+        return this.m04Idbns;
+    }
+
+    /** @param list ID連番マスタのリスト */
+    public void setM04Idbns(final List<M04Idbn> list) {
+        this.m04Idbns = list;
+    }
+
+    /** @param m04Idbn */
+    public void addM04Idbns(final M04Idbn m04Idbn) {
+        if (this.m04Idbns == null) {
+            this.m04Idbns = new ArrayList<M04Idbn>();
+        }
+        this.m04Idbns.add(m04Idbn);
+    }
+
+    /** @return ID連番マスタのリスト */
+    public List<M04Idbn> referM04Idbns() {
+        this.m04Idbns = M04Id.referM04Idbns(this.idrefId);
+        return this.m04Idbns;
+    }
+
+    /**
+     * @param param1 idrefId
+     * @return List<M04Idbn>
+     */
+    public static List<M04Idbn> referM04Idbns(final Integer param1) {
+        List<String> whereList = new ArrayList<String>();
+        whereList.add("IDREF_ID = :idref_id");
+        String sql = "SELECT ";
+        sql += "`IDREF_ID`";
+        sql += ", `IDBN_BN`";
+        sql += ", `IDBN_NO`";
+        sql += ", `INSERT_TS` AS INSERT_TS";
+        sql += ", `INSERT_USER_ID`";
+        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
+        sql += ", `UPDATE_TS` AS UPDATE_TS";
+        sql += ", `UPDATE_USER_ID`";
+        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
+        sql += " FROM M04_IDBN a WHERE " + String.join(" AND ", whereList);
+        sql += " ORDER BY ";
+        sql += "IDREF_ID, IDBN_BN";
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("idref_id", param1);
+        List<M04Idbn> list = Queries.select(sql, map, M04Idbn.class, null, null);
+        if (list != null) {
+            return list;
+        }
+        return new ArrayList<M04Idbn>();
     }
 }

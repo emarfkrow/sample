@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/M04IdGridColumns.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/M04IdbnGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -38,15 +39,13 @@
     <!-- 一覧フォーム -->
     <form name="M04IdSRegistForm" action="M04IdSRegist.ajax" class="regist">
       <h3 th:text="#{M04Id.h3}">h3</h3>
-      <div id="M04IdGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/M04Id.html}"></div>
+      <div id="M04IdGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/M04Id.html}"></div>
       <div id="M04IdPager"></div>
       <div class="buttons">
         <button type="button" class="reset" id="ResetM04IdS" th:text="#{common.reset}" onClick="Base.listReset('M04Id');">reset</button>
         <a th:href="@{M04IdSearch.xlsx(baseMei=#{M04IdS.h2})}" id="M04IdSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteM04IdS" data-action="M04IdSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
       </div>
       <div class="submits">
-        <button id="RegistM04IdS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
       </div>
     </form>
   </div>

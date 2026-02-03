@@ -40,6 +40,8 @@ public class M04IdGetAction extends BaseAction {
 
         try {
             M04Id m04Id = M04Id.get(idrefId);
+            // 子
+            m04Id.referM04Idbns();
             map.put("M04Id", m04Id);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

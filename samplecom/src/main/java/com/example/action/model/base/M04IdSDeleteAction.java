@@ -42,6 +42,17 @@ public class M04IdSDeleteAction extends BaseAction {
                 }
 
                 M04Id e = FormValidator.toBean(M04Id.class.getName(), row);
+
+                java.util.List<com.example.entity.M04Idbn> m04Idbns = e.referM04Idbns();
+                if (m04Idbns != null) {
+                    for (com.example.entity.M04Idbn m04Idbn : m04Idbns) {
+
+                        if (m04Idbn.delete() != 1) {
+                            throw new OptLockError("error.cant.delete", "ID連番マスタ");
+                        }
+                    }
+                }
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "IDマスタ");
                 }

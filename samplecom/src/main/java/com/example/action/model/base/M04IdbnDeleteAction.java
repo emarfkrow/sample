@@ -23,11 +23,11 @@ public class M04IdbnDeleteAction extends BaseAction {
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
         // 主キーが不足していたらエラー
-        Object idbnId = postJson.get("idbnId");
-        if (idbnId == null) {
-            idbnId = postJson.get("M04Idbn.idbnId");
+        Object idrefId = postJson.get("idrefId");
+        if (idrefId == null) {
+            idrefId = postJson.get("M04Idbn.idrefId");
         }
-        if (idbnId == null) {
+        if (idrefId == null) {
             throw new OptLockError("error.cant.delete", "ID連番マスタ");
         }
         Object idbnBn = postJson.get("idbnBn");

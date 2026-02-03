@@ -25,11 +25,11 @@ public class M04IdbnGetAction extends BaseAction {
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object idbnId = postJson.get("idbnId");
-        if (idbnId == null) {
-            idbnId = postJson.get("M04Idbn.idbnId");
+        Object idrefId = postJson.get("idrefId");
+        if (idrefId == null) {
+            idrefId = postJson.get("M04Idbn.idrefId");
         }
-        if (idbnId == null) {
+        if (idrefId == null) {
             isAllKey = false;
         }
 
@@ -41,13 +41,17 @@ public class M04IdbnGetAction extends BaseAction {
             isAllKey = false;
         }
 
+        // 親モデルの取得
+        com.example.entity.M04Id m04Id = com.example.entity.M04Id.get(idrefId);
+        map.put("M04Id", m04Id);
+
         // 主キーが不足していたら終了
         if (!isAllKey) {
             return map;
         }
 
         try {
-            M04Idbn m04Idbn = M04Idbn.get(idbnId, idbnBn);
+            M04Idbn m04Idbn = M04Idbn.get(idrefId, idbnBn);
             map.put("M04Idbn", m04Idbn);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

@@ -67,6 +67,24 @@ public class M04IdRegistForm implements IForm {
         this.updateTs = p;
     }
 
+    /** ID連番マスタ */
+    @jakarta.validation.Valid
+    private java.util.List<M04IdbnRegistForm> m04IdbnGrid;
+
+    /**
+     * @return ID連番マスタ
+     */
+    public java.util.List<M04IdbnRegistForm> getM04IdbnGrid() {
+        return m04IdbnGrid;
+    }
+
+    /**
+     * @param p
+     */
+    public void setM04IdbnGrid(final java.util.List<M04IdbnRegistForm> p) {
+        this.m04IdbnGrid = p;
+    }
+
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {

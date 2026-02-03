@@ -9,6 +9,7 @@
 
 </script>
 <script th:src="@{/model/M04IdbnGridColumns.js}"></script>
+<script th:src="@{/model/M04IdGridColumns.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
 <body>
@@ -20,8 +21,8 @@
       <input type="hidden" name="page" value="0" />
       <fieldset>
         <legend th:text="#{M04IdbnS.legend}">legend</legend>
-        <div id="idbnId">
-          <label for="M04Idbn.idbnId" th:text="#{M04Idbn.idbnId}">参照ID</label><input type="text" id="M04Idbn.idbnId" name="M04Idbn.idbnId" maxlength="10" />
+        <div id="idrefId">
+          <label for="M04Idbn.idrefId" th:text="#{M04Idbn.idrefId}">参照ID</label><input type="text" id="M04Idbn.idrefId" name="M04Idbn.idrefId" maxlength="10" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI" /><a id="M04Idbn.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Idbn.idrefMei" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI"></span>
         </div>
         <div id="idbnBn">
           <label for="M04Idbn.idbnBn" th:text="#{M04Idbn.idbnBn}">参照連番</label><input type="text" id="M04Idbn.idbnBn" name="M04Idbn.idbnBn" maxlength="10" />
@@ -45,6 +46,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetM04IdbnS" th:text="#{common.reset}" onClick="Base.listReset('M04Idbn');">reset</button>
         <a th:href="@{M04IdbnSearch.xlsx(baseMei=#{M04IdbnS.h2})}" id="M04IdbnSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="M04IdbnGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="'IDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <button type="submit" id="DeleteM04IdbnS" data-action="M04IdbnSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
       </div>
       <div class="submits">
