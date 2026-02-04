@@ -65,7 +65,7 @@ public class MhrBushoRegistForm implements IForm {
     }
 
     /** 適用日 */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
     private String tekiyoBi;
 
     /** @return 適用日 */
@@ -79,7 +79,7 @@ public class MhrBushoRegistForm implements IForm {
     }
 
     /** 廃止日 */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
     private String haishiBi;
 
     /** @return 廃止日 */
@@ -93,7 +93,7 @@ public class MhrBushoRegistForm implements IForm {
     }
 
     /** 更新タイムスタンプ */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3})?)?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3})?)?)?")
     @jp.co.golorp.emarf.validation.OptLock
     private String updateTs;
 
@@ -116,7 +116,7 @@ public class MhrBushoRegistForm implements IForm {
 
         // 親部署ID のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> oyaBushoIdParams = new java.util.HashMap<String, Object>();
-        oyaBushoIdParams.put("oyaBushoId", this.getOyaBushoId());
+        oyaBushoIdParams.put("bushoId", this.getOyaBushoId());
         baseProcess.masterCheck(errors, "MhrBushoSearch", "oyaBushoId", oyaBushoIdParams, jp.co.golorp.emarf.util.Messages.get("MhrBusho.oyaBushoId"));
     }
 }

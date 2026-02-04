@@ -95,7 +95,7 @@ public class V13Furiwake implements IEntity {
     public static V13Furiwake get() {
         List<String> whereList = new ArrayList<String>();
         whereList.add("`TABLE_NAME` = :table_name");
-        whereList.add("`SRC_ID$DEST_ID` = :src_id$dest_id");
+        whereList.add("`SRC_ID$DEST_ID` = :src_id_dest_id");
         whereList.add("`INFO` = :info");
         String sql = "";
         sql += "SELECT \n";
@@ -127,7 +127,7 @@ public class V13Furiwake implements IEntity {
     private String names() {
         List<String> nameList = new ArrayList<String>();
         nameList.add("`TABLE_NAME` -- :table_name");
-        nameList.add("`SRC_ID$DEST_ID` -- :src_id$dest_id");
+        nameList.add("`SRC_ID$DEST_ID` -- :src_id_dest_id");
         nameList.add("`INFO` -- :info");
         return String.join("\r\n    , ", nameList);
     }
@@ -136,7 +136,7 @@ public class V13Furiwake implements IEntity {
     private String values() {
         List<String> valueList = new ArrayList<String>();
         valueList.add(":table_name");
-        valueList.add(":src_id$dest_id");
+        valueList.add(":src_id_dest_id");
         valueList.add(":info");
         return String.join("\r\n    , ", valueList);
     }
@@ -158,7 +158,7 @@ public class V13Furiwake implements IEntity {
     private String getSet() {
         List<String> setList = new ArrayList<String>();
         setList.add("`TABLE_NAME` = :table_name");
-        setList.add("`SRC_ID$DEST_ID` = :src_id$dest_id");
+        setList.add("`SRC_ID$DEST_ID` = :src_id_dest_id");
         setList.add("`INFO` = :info");
         return String.join("\r\n    , ", setList);
     }

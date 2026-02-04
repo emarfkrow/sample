@@ -185,57 +185,57 @@ public class M04Saiki implements IEntity {
     }
 
     /** ID連番ID */
-    private Integer idbnIdrefId;
+    private Integer exIdrefId;
 
     /** @return ID連番ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_IDREF_ID", index = 10)
-    public Integer getIdbnIdrefId() {
-        return this.idbnIdrefId;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_IDREF_ID", index = 10)
+    public Integer getExIdrefId() {
+        return this.exIdrefId;
     }
 
     /** @param o ID連番ID */
-    public void setIdbnIdrefId(final Object o) {
+    public void setExIdrefId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.idbnIdrefId = Integer.valueOf(o.toString());
+            this.exIdrefId = Integer.valueOf(o.toString());
         } else {
-            this.idbnIdrefId = null;
+            this.exIdrefId = null;
         }
     }
 
     /** ID連番ID参照 */
     @jp.co.golorp.emarf.validation.ReferMei
-    private String idbnIdrefMei;
+    private String exIdrefMei;
 
     /** @return ID連番ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_IDREF_MEI", index = 11)
-    public String getIdbnIdrefMei() {
-        return this.idbnIdrefMei;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_IDREF_MEI", index = 11)
+    public String getExIdrefMei() {
+        return this.exIdrefMei;
     }
 
     /** @param o ID連番ID参照 */
-    public void setIdbnIdrefMei(final Object o) {
+    public void setExIdrefMei(final Object o) {
         if (o != null) {
-            this.idbnIdrefMei = o.toString();
+            this.exIdrefMei = o.toString();
         } else {
-            this.idbnIdrefMei = null;
+            this.exIdrefMei = null;
         }
     }
 
     /** ID連番 */
-    private Integer idbnBn;
+    private Integer exIdbnBn;
 
     /** @return ID連番 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_BN", index = 12)
-    public Integer getIdbnBn() {
-        return this.idbnBn;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_IDBN_BN", index = 12)
+    public Integer getExIdbnBn() {
+        return this.exIdbnBn;
     }
 
     /** @param o ID連番 */
-    public void setIdbnBn(final Object o) {
+    public void setExIdbnBn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.idbnBn = Integer.valueOf(o.toString());
+            this.exIdbnBn = Integer.valueOf(o.toString());
         } else {
-            this.idbnBn = null;
+            this.exIdbnBn = null;
         }
     }
 
@@ -422,8 +422,8 @@ public class M04Saiki implements IEntity {
         sql += "    , a.`IDREF_ID` \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`CDREF_CD`) AS CDREF_CD \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`NOREF_NO`) AS NOREF_NO \n";
-        sql += "    , a.`IDBN_IDREF_ID` \n";
-        sql += "    , a.`IDBN_BN` \n";
+        sql += "    , a.`EX_IDREF_ID` \n";
+        sql += "    , a.`EX_IDBN_BN` \n";
         sql += "    , a.`OYA_SAIKI_ID` \n";
         sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
@@ -462,8 +462,8 @@ public class M04Saiki implements IEntity {
         nameList.add("`IDREF_ID` -- :idref_id");
         nameList.add("`CDREF_CD` -- :cdref_cd");
         nameList.add("`NOREF_NO` -- :noref_no");
-        nameList.add("`IDBN_IDREF_ID` -- :idbn_idref_id");
-        nameList.add("`IDBN_BN` -- :idbn_bn");
+        nameList.add("`EX_IDREF_ID` -- :ex_idref_id");
+        nameList.add("`EX_IDBN_BN` -- :ex_idbn_bn");
         nameList.add("`OYA_SAIKI_ID` -- :oya_saiki_id");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
@@ -480,8 +480,8 @@ public class M04Saiki implements IEntity {
         valueList.add(":idref_id");
         valueList.add(":cdref_cd");
         valueList.add(":noref_no");
-        valueList.add(":idbn_idref_id");
-        valueList.add(":idbn_bn");
+        valueList.add(":ex_idref_id");
+        valueList.add(":ex_idbn_bn");
         valueList.add(":oya_saiki_id");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
@@ -523,8 +523,8 @@ public class M04Saiki implements IEntity {
         setList.add("`IDREF_ID` = :idref_id");
         setList.add("`CDREF_CD` = :cdref_cd");
         setList.add("`NOREF_NO` = :noref_no");
-        setList.add("`IDBN_IDREF_ID` = :idbn_idref_id");
-        setList.add("`IDBN_BN` = :idbn_bn");
+        setList.add("`EX_IDREF_ID` = :ex_idref_id");
+        setList.add("`EX_IDBN_BN` = :ex_idbn_bn");
         setList.add("`OYA_SAIKI_ID` = :oya_saiki_id");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
@@ -562,8 +562,8 @@ public class M04Saiki implements IEntity {
         map.put("idref_id", this.idrefId);
         map.put("cdref_cd", this.cdrefCd);
         map.put("noref_no", this.norefNo);
-        map.put("idbn_idref_id", this.idbnIdrefId);
-        map.put("idbn_bn", this.idbnBn);
+        map.put("ex_idref_id", this.exIdrefId);
+        map.put("ex_idbn_bn", this.exIdbnBn);
         map.put("oya_saiki_id", this.oyaSaikiId);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);

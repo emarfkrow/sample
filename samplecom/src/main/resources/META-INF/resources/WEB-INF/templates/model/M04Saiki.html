@@ -8,11 +8,17 @@
 <script type="text/javascript">
 
 </script>
+<script th:src="@{/js/M04Saiki.js}"></script>
 <script th:src="@{/model/M04SaikiGridColumns.js}"></script>
+<script th:src="@{/js/M04Id.js}"></script>
 <script th:src="@{/model/M04IdGridColumns.js}"></script>
+<script th:src="@{/js/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/js/M04Idbn.js}"></script>
 <script th:src="@{/model/M04IdbnGridColumns.js}"></script>
+<script th:src="@{/js/M04Cd.js}"></script>
 <script th:src="@{/model/M04CdGridColumns.js}"></script>
+<script th:src="@{/js/M04No.js}"></script>
 <script th:src="@{/model/M04NoGridColumns.js}"></script>
 </head>
 <body>
@@ -36,11 +42,11 @@
         <div id="norefNo">
           <label for="M04Saiki.norefNo" th:text="#{M04Saiki.norefNo}">参照NO</label><input type="text" id="M04Saiki.norefNo" name="M04Saiki.norefNo" maxlength="10" class=" refer" data-json="M04NoSearch.json" data-srcDef="NOREF_NO:M04Saiki.norefNo" data-destDef="M04Saiki.norefMei:NOREF_MEI" /><a id="M04Saiki.norefNo" th:href="@{/model/M04NoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Saiki.norefMei" class=" refer" data-json="M04NoSearch.json" data-srcDef="NOREF_NO:M04Saiki.norefNo" data-destDef="M04Saiki.norefMei:NOREF_MEI"></span>
         </div>
-        <div id="idbnIdrefId">
-          <label for="M04Saiki.idbnIdrefId" th:text="#{M04Saiki.idbnIdrefId}">ID連番ID</label><input type="text" id="M04Saiki.idbnIdrefId" name="M04Saiki.idbnIdrefId" maxlength="10" class=" refer" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Saiki.idbnIdrefId" data-destDef="M04Saiki.idbnIdrefMei:IDREF_MEI" /><a id="M04Saiki.idbnIdrefId" th:href="@{/model/M04IdS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Saiki.idbnIdrefMei" class=" refer" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Saiki.idbnIdrefId" data-destDef="M04Saiki.idbnIdrefMei:IDREF_MEI"></span>
+        <div id="exIdrefId">
+          <label for="M04Saiki.exIdrefId" th:text="#{M04Saiki.exIdrefId}">ID連番ID</label><input type="text" id="M04Saiki.exIdrefId" name="M04Saiki.exIdrefId" maxlength="10" class=" refer" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Saiki.exIdrefId" data-destDef="M04Saiki.exIdrefMei:IDREF_MEI" /><a id="M04Saiki.exIdrefId" th:href="@{/model/M04IdS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Saiki.exIdrefMei" class=" refer" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Saiki.exIdrefId" data-destDef="M04Saiki.exIdrefMei:IDREF_MEI"></span>
         </div>
-        <div id="idbnBn">
-          <label for="M04Saiki.idbnBn" th:text="#{M04Saiki.idbnBn}">ID連番</label><input type="text" id="M04Saiki.idbnBn" name="M04Saiki.idbnBn" maxlength="10" class=" refer" /><a id="M04Saiki.idbnBn" th:href="@{/model/M04IdbnS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Saiki.idbnNo" class=" refer"></span>
+        <div id="exIdbnBn">
+          <label for="M04Saiki.exIdbnBn" th:text="#{M04Saiki.exIdbnBn}">ID連番</label><input type="text" id="M04Saiki.exIdbnBn" name="M04Saiki.exIdbnBn" maxlength="10" class=" refer" /><a id="M04Saiki.exIdbnBn" th:href="@{/model/M04IdbnS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Saiki.exIdbnNo" class=" refer"></span>
         </div>
         <div id="oyaSaikiId">
           <label for="M04Saiki.oyaSaikiId" th:text="#{M04Saiki.oyaSaikiId}">親再帰ID</label><input type="text" id="M04Saiki.oyaSaikiId" name="M04Saiki.oyaSaikiId" maxlength="10" class=" refer" data-json="M04SaikiSearch.json" data-srcDef="SAIKI_ID:M04Saiki.oyaSaikiId" data-destDef="M04Saiki.oyaSaikiMei:SAIKI_MEI" /><a id="M04Saiki.oyaSaikiId" th:href="@{/model/M04SaikiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Saiki.oyaSaikiMei" class=" refer" data-json="M04SaikiSearch.json" data-srcDef="SAIKI_ID:M04Saiki.oyaSaikiId" data-destDef="M04Saiki.oyaSaikiMei:SAIKI_MEI"></span>

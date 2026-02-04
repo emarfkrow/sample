@@ -7,9 +7,9 @@ SELECT
     , (SELECT r1.`CDREF_MEI` FROM M04_CD r1 WHERE r1.`CDREF_CD` = a.`CDREF_CD`) AS `CDREF_MEI`
     , TRIM(TRAILING ' ' FROM a.`NOREF_NO`) AS `NOREF_NO`
     , (SELECT r2.`NOREF_MEI` FROM M04_NO r2 WHERE r2.`NOREF_NO` = a.`NOREF_NO`) AS `NOREF_MEI`
-    , a.`IDBN_IDREF_ID`
-    , (SELECT r3.`IDREF_MEI` FROM M04_ID r3 WHERE r3.`IDREF_ID` = a.`IDBN_IDREF_ID`) AS `IDBN_IDREF_MEI`
-    , a.`IDBN_BN`
+    , a.`EX_IDREF_ID`
+    , (SELECT r3.`IDREF_MEI` FROM M04_ID r3 WHERE r3.`IDREF_ID` = a.`EX_IDREF_ID`) AS `EX_IDREF_MEI`
+    , a.`EX_IDBN_BN`
     , a.`OYA_SAIKI_ID`
     , (SELECT r4.`SAIKI_MEI` FROM M04_SAIKI r4 WHERE r4.`SAIKI_ID` = a.`OYA_SAIKI_ID`) AS `OYA_SAIKI_MEI`
     , a.`INSERT_TS` AS `INSERT_TS`
@@ -27,8 +27,8 @@ WHERE
     AND a.`IDREF_ID` = :idref_id 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`CDREF_CD`)) LIKE UPPER (CONCAT ('%', :cdref_cd, '%')) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`NOREF_NO`)) LIKE UPPER (CONCAT ('%', :noref_no, '%')) 
-    AND a.`IDBN_IDREF_ID` = :idbn_idref_id 
-    AND a.`IDBN_BN` = :idbn_bn 
+    AND a.`EX_IDREF_ID` = :ex_idref_id 
+    AND a.`EX_IDBN_BN` = :ex_idbn_bn 
     AND a.`OYA_SAIKI_ID` = :oya_saiki_id 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 

@@ -1,5 +1,5 @@
 -- Project Name : emarf
--- Date/Time    : 2026/01/24 21:52:00
+-- Date/Time    : 2026/02/04 19:51:20
 -- Author       : t_fuk
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
@@ -28,14 +28,14 @@ create table M04_ID (
 
 -- ID連番マスタ
 create table M04_IDBN (
-  IDBN_ID INT comment '参照ID'
+  IDREF_ID INT comment '参照ID'
   , IDBN_BN INT comment '参照連番'
   , IDBN_NO CHAR(10) not null comment 'ID連番NO'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint M04_IDBN_PKC primary key (IDBN_ID,IDBN_BN)
+  , constraint M04_IDBN_PKC primary key (IDREF_ID,IDBN_BN)
 ) comment 'ID連番マスタ' ;
 
 -- NOマスタ
@@ -56,8 +56,8 @@ create table M04_SAIKI (
   , IDREF_ID INT comment '参照ID'
   , CDREF_CD CHAR(10) comment '参照CD'
   , NOREF_NO CHAR(10) comment '参照NO'
-  , IDBN_ID INT comment 'ID連番ID'
-  , IDBN_BN INT comment 'ID連番'
+  , EX_IDREF_ID INT comment 'ID連番ID'
+  , EX_IDBN_BN INT comment 'ID連番'
   , OYA_SAIKI_ID INT comment '親再帰ID'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
@@ -140,8 +140,8 @@ create table MHR_SHOKUI (
 create table MHR_SHOKUI_NINKA (
   BUSHO_ID INT not null comment '部署ID'
   , SHOKUI_ID INT not null comment '職位ID'
-  , KINO_NM VARCHAR(20) not null comment '機能名称'
-  , KENGEN_KB VARCHAR(2) not null comment '権限区分'
+  , KINO_NM VARCHAR(20) not null comment '機能名称:機能名の正規表現'
+  , KENGEN_KB VARCHAR(2) not null comment '権限区分:1:参照,2:出力,3:更新削除,4:追加,5:承認,6:否認'
   , TEKIYO_BI DATE comment '適用日'
   , HAISHI_BI DATE comment '廃止日'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
@@ -771,19 +771,19 @@ create table T13_SRC (
 create view V13_FURIWAKE as 
 SELECT
     a.table_name                                -- テーブル名
-    , a.src_id$dest_id                          -- 振分ID
+    , a."SRC_ID$DEST_ID"                        -- 振分ID
     , a.info                                    -- 情報
 FROM
     ( 
         SELECT
-            'TB9_SRC' AS table_name
-            , s.src_id AS src_id$dest_id
+            'T13_SRC' AS table_name
+            , s.src_id AS "SRC_ID$DEST_ID"
             , s.src_info AS info 
         FROM
             t13_src s 
         UNION 
         SELECT
-            'TB9_DEST'
+            'T13_DEST'
             , s.dest_id
             , s.dest_info 
         FROM
@@ -795,7 +795,7 @@ FROM
 -- 変換ビュー
 create view V13_HENKAN as 
 SELECT
-    'TB9_DEST' AS table_name                    -- テーブル名
+    'T13_DEST' AS table_name                    -- テーブル名
     , s.src_id                                  -- 変換元ID
     , s.src_info AS dest_info                   -- 変換元情報
 FROM

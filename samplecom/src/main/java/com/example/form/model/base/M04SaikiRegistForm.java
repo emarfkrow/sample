@@ -94,30 +94,30 @@ public class M04SaikiRegistForm implements IForm {
 
     /** ID連番ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
-    private String idbnIdrefId;
+    private String exIdrefId;
 
     /** @return ID連番ID */
-    public String getIdbnIdrefId() {
-        return idbnIdrefId;
+    public String getExIdrefId() {
+        return exIdrefId;
     }
 
     /** @param p ID連番ID */
-    public void setIdbnIdrefId(final String p) {
-        this.idbnIdrefId = p;
+    public void setExIdrefId(final String p) {
+        this.exIdrefId = p;
     }
 
     /** ID連番 */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
-    private String idbnBn;
+    private String exIdbnBn;
 
     /** @return ID連番 */
-    public String getIdbnBn() {
-        return idbnBn;
+    public String getExIdbnBn() {
+        return exIdbnBn;
     }
 
     /** @param p ID連番 */
-    public void setIdbnBn(final String p) {
-        this.idbnBn = p;
+    public void setExIdbnBn(final String p) {
+        this.exIdbnBn = p;
     }
 
     /** 親再帰ID */
@@ -135,7 +135,7 @@ public class M04SaikiRegistForm implements IForm {
     }
 
     /** 更新タイムスタンプ */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3})?)?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3})?)?)?")
     @jp.co.golorp.emarf.validation.OptLock
     private String updateTs;
 
@@ -172,19 +172,19 @@ public class M04SaikiRegistForm implements IForm {
         baseProcess.masterCheck(errors, "M04NoSearch", "norefNo", norefNoParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.norefNo"));
 
         // ID連番ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> idbnIdrefIdParams = new java.util.HashMap<String, Object>();
-        idbnIdrefIdParams.put("idbnIdrefId", this.getIdbnIdrefId());
-        baseProcess.masterCheck(errors, "M04IdSearch", "idbnIdrefId", idbnIdrefIdParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.idbnIdrefId"));
+        Map<String, Object> exIdrefIdParams = new java.util.HashMap<String, Object>();
+        exIdrefIdParams.put("idrefId", this.getExIdrefId());
+        baseProcess.masterCheck(errors, "M04IdSearch", "exIdrefId", exIdrefIdParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.exIdrefId"));
 
         // ID連番 のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> m04IdbnParams = new java.util.HashMap<String, Object>();
-        m04IdbnParams.put("idrefId", this.getIdrefId());
-        m04IdbnParams.put("idbnBn", this.getIdbnBn());
-        baseProcess.masterCheck(errors, "M04IdbnSearch", "idbnBn", m04IdbnParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.idbnBn"));
+        Map<String, Object> exIdbnBnParams = new java.util.HashMap<String, Object>();
+        exIdbnBnParams.put("idrefId", this.getExIdrefId());
+        exIdbnBnParams.put("idbnBn", this.getExIdbnBn());
+        baseProcess.masterCheck(errors, "M04IdbnSearch", "exIdbnBn", exIdbnBnParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.exIdbnBn"));
 
         // 親再帰ID のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> oyaSaikiIdParams = new java.util.HashMap<String, Object>();
-        oyaSaikiIdParams.put("oyaSaikiId", this.getOyaSaikiId());
+        oyaSaikiIdParams.put("saikiId", this.getOyaSaikiId());
         baseProcess.masterCheck(errors, "M04SaikiSearch", "oyaSaikiId", oyaSaikiIdParams, jp.co.golorp.emarf.util.Messages.get("M04Saiki.oyaSaikiId"));
     }
 }
