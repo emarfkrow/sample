@@ -8,14 +8,14 @@
 <script type="text/javascript">
 
 </script>
-<script th:src="@{/js/T09Sum.js}"></script>
+<script th:src="@{/model/T09Sum.js}"></script>
 <script th:src="@{/model/T09SumGridColumns.js}"></script>
-<script th:src="@{/js/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/js/T09Grp2.js}"></script>
-<script th:src="@{/model/T09Grp2GridColumns.js}"></script>
-<script th:src="@{/js/T09Grp1.js}"></script>
+<script th:src="@{/model/T09Grp1.js}"></script>
 <script th:src="@{/model/T09Grp1GridColumns.js}"></script>
+<script th:src="@{/model/T09Grp2.js}"></script>
+<script th:src="@{/model/T09Grp2GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -47,15 +47,15 @@
       <div class="buttons">
         <button type="button" id="RefreshT09Sum" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T09SumGet.xlsx(baseMei=#{T09Sum.h2})}" id="T09SumGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <div class="summary T09Grp2s">
-          <label>集団２ID: </label>
-          <span id="T09Grp2.grp2Id"></span>
-          <input type="hidden" id="T09Grp2.grp2Id" name="T09Grp2.grp2Id"/>
-        </div>
         <div class="summary T09Grp1s">
           <label>集団１ID: </label>
           <span id="T09Grp1.grp1Id"></span>
           <input type="hidden" id="T09Grp1.grp1Id" name="T09Grp1.grp1Id"/>
+        </div>
+        <div class="summary T09Grp2s">
+          <label>集団２ID: </label>
+          <span id="T09Grp2.grp2Id"></span>
+          <input type="hidden" id="T09Grp2.grp2Id" name="T09Grp2.grp2Id"/>
         </div>
       </div>
       <div class="submits">

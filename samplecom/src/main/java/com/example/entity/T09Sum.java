@@ -340,66 +340,6 @@ public class T09Sum implements IEntity {
     }
 
     /*
-     * 集約元：集団２
-     */
-
-    /** 集団２のリスト */
-    private List<T09Grp2> t09Grp2s;
-
-    /** @return 集団２のリスト */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T09Grp2s", index = 10)
-    public List<T09Grp2> getT09Grp2s() {
-        return this.t09Grp2s;
-    }
-
-    /** @param list 集団２のリスト */
-    public void setT09Grp2s(final List<T09Grp2> list) {
-        this.t09Grp2s = list;
-    }
-
-    /** @param t09Grp2 */
-    public void addT09Grp2s(final T09Grp2 t09Grp2) {
-        if (this.t09Grp2s == null) {
-            this.t09Grp2s = new ArrayList<T09Grp2>();
-        }
-        this.t09Grp2s.add(t09Grp2);
-    }
-
-    /** @return 集団２のリスト */
-    public List<T09Grp2> referT09Grp2s() {
-        this.t09Grp2s = T09Sum.referT09Grp2s(this.sumId);
-        return this.t09Grp2s;
-    }
-
-    /**
-     * @param param1 sumId
-     * @return List<T09Grp2>
-     */
-    public static List<T09Grp2> referT09Grp2s(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
-        whereList.add("SUM_ID = :sum_id");
-        String sql = "SELECT ";
-        sql += "`GRP2_ID`";
-        sql += ", `SUM_ID`";
-        sql += ", `INSERT_TS` AS INSERT_TS";
-        sql += ", `INSERT_USER_ID`";
-        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", `UPDATE_TS` AS UPDATE_TS";
-        sql += ", `UPDATE_USER_ID`";
-        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
-        sql += " FROM T09_GRP2 a WHERE " + String.join(" AND ", whereList);
-        sql += " ORDER BY ";
-        sql += "GRP2_ID";
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("sum_id", param1);
-        List<T09Grp2> list = Queries.select(sql, map, T09Grp2.class, null, null);
-        if (list != null) {
-            return list;
-        }
-        return new ArrayList<T09Grp2>();
-    }
-
-    /*
      * 集約元：集団１
      */
 
@@ -407,7 +347,7 @@ public class T09Sum implements IEntity {
     private List<T09Grp1> t09Grp1s;
 
     /** @return 集団１のリスト */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T09Grp1s", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "T09Grp1s", index = 10)
     public List<T09Grp1> getT09Grp1s() {
         return this.t09Grp1s;
     }
@@ -457,5 +397,65 @@ public class T09Sum implements IEntity {
             return list;
         }
         return new ArrayList<T09Grp1>();
+    }
+
+    /*
+     * 集約元：集団２
+     */
+
+    /** 集団２のリスト */
+    private List<T09Grp2> t09Grp2s;
+
+    /** @return 集団２のリスト */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "T09Grp2s", index = 11)
+    public List<T09Grp2> getT09Grp2s() {
+        return this.t09Grp2s;
+    }
+
+    /** @param list 集団２のリスト */
+    public void setT09Grp2s(final List<T09Grp2> list) {
+        this.t09Grp2s = list;
+    }
+
+    /** @param t09Grp2 */
+    public void addT09Grp2s(final T09Grp2 t09Grp2) {
+        if (this.t09Grp2s == null) {
+            this.t09Grp2s = new ArrayList<T09Grp2>();
+        }
+        this.t09Grp2s.add(t09Grp2);
+    }
+
+    /** @return 集団２のリスト */
+    public List<T09Grp2> referT09Grp2s() {
+        this.t09Grp2s = T09Sum.referT09Grp2s(this.sumId);
+        return this.t09Grp2s;
+    }
+
+    /**
+     * @param param1 sumId
+     * @return List<T09Grp2>
+     */
+    public static List<T09Grp2> referT09Grp2s(final Integer param1) {
+        List<String> whereList = new ArrayList<String>();
+        whereList.add("SUM_ID = :sum_id");
+        String sql = "SELECT ";
+        sql += "`GRP2_ID`";
+        sql += ", `SUM_ID`";
+        sql += ", `INSERT_TS` AS INSERT_TS";
+        sql += ", `INSERT_USER_ID`";
+        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
+        sql += ", `UPDATE_TS` AS UPDATE_TS";
+        sql += ", `UPDATE_USER_ID`";
+        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
+        sql += " FROM T09_GRP2 a WHERE " + String.join(" AND ", whereList);
+        sql += " ORDER BY ";
+        sql += "GRP2_ID";
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("sum_id", param1);
+        List<T09Grp2> list = Queries.select(sql, map, T09Grp2.class, null, null);
+        if (list != null) {
+            return list;
+        }
+        return new ArrayList<T09Grp2>();
     }
 }
