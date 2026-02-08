@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jp.co.golorp.emarf.action.base.LoginActionBase;
 import jp.co.golorp.emarf.form.LoginForm;
+import jp.co.golorp.emarf.servlet.http.ServletUtil;
 import jp.co.golorp.emarf.sql.Queries;
 import jp.co.golorp.emarf.time.DateTimeUtil;
 
@@ -44,7 +45,7 @@ public class LoginAction extends LoginActionBase {
             //ログイン名
             loginForm.setAuthnMei(mUser.getUserSei() + " " + mUser.getUserMei());
 
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = ServletUtil.getMapper();
 
             //認証情報
             @SuppressWarnings("unchecked")
@@ -76,7 +77,8 @@ public class LoginAction extends LoginActionBase {
                     mNinkaParam.put("shokuiId", mShozoku.getShokuiId());
                     mNinkaParam.put("kaishiYmd2", DateTimeUtil.format("yyyy-MM-dd"));
                     mNinkaParam.put("shuryoYmd1", DateTimeUtil.format("yyyy-MM-dd"));
-                    List<MhrShokuiNinka> mNinkas = Queries.select(mNinkaSql, mNinkaParam, MhrShokuiNinka.class, null, null);
+                    List<MhrShokuiNinka> mNinkas = Queries.select(mNinkaSql, mNinkaParam, MhrShokuiNinka.class, null,
+                            null);
 
                     //認可情報でループ
                     if (mNinkas != null) {
