@@ -68,7 +68,7 @@ public class T00EntityRegistForm implements IForm {
     /** チェックフラグ */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 1)
-    private String checkF;
+    private String checkF = "0";
 
     /** @return チェックフラグ */
     public String getCheckF() {

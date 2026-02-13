@@ -65,7 +65,6 @@
         <a th:href="@{MhrShokuiNinkaSearch.xlsx(baseMei=#{MhrShokuiNinkaS.h2})}" id="MhrShokuiNinkaSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
         <a id="MhrShokuiNinkaGrid.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer" th:text="'部署マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <a id="MhrShokuiNinkaGrid.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class="refer" th:text="'職位マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <button type="submit" id="DeleteMhrShokuiNinkaS" data-action="MhrShokuiNinkaSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
       </div>
       <div class="submits">
         <button id="RegistMhrShokuiNinkaS" type="submit" class="regist" th:text="#{common.regist}">submit</button>

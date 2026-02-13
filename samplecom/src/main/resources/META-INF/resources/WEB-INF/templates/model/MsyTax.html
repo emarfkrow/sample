@@ -53,7 +53,6 @@
         <a th:href="@{MsyTaxGet.xlsx(baseMei=#{MsyTax.h2})}" id="MsyTaxGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteMsyTax" type="submit" class="delete" data-action="MsyTaxDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
         <button id="RegistMsyTax" type="submit" class="regist" th:text="#{common.regist}">登録</button>
       </div>
     </form>
