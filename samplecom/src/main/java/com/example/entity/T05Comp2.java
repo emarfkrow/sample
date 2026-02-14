@@ -348,9 +348,9 @@ public class T05Comp2 implements IEntity {
         sql += "    , a.`REF3_ID` \n";
         sql += "    , a.`TEKIYO_BI` AS TEKIYO_BI \n";
         sql += "    , a.`COMP2_INFO` \n";
-        sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
         sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T05_COMP2 a \n";

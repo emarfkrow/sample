@@ -725,8 +725,8 @@ public class T00Entity implements IEntity {
         sql += "    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_D`) AS NENGAPPI_D \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`NENGETSU_YM`) AS NENGETSU_YM \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_YMD`) AS NENGAPPI_YMD \n";
-        sql += "    , a.`TIMESTAMP_TS` AS TIMESTAMP_TS \n";
-        sql += "    , a.`NICHIJI_DT` AS NICHIJI_DT \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`TIMESTAMP_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS TIMESTAMP_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`NICHIJI_DT`, '%Y-%m-%dT%H:%i:%s'), 19) AS NICHIJI_DT \n";
         sql += "    , a.`HIDUKE_BI` AS HIDUKE_BI \n";
         sql += "    , a.`JIKOKU_HM` \n";
         sql += "    , a.`JIKAN_TM` \n";
@@ -738,9 +738,9 @@ public class T00Entity implements IEntity {
         sql += "    , a.`HACHU_AM` \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`DELETE_F`) AS DELETE_F \n";
         sql += "    , a.`STATUS_KB` \n";
-        sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
         sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T00_ENTITY a \n";
@@ -823,7 +823,7 @@ public class T00Entity implements IEntity {
         valueList.add(":nengappi_d");
         valueList.add(":nengetsu_ym");
         valueList.add(":nengappi_ymd");
-        valueList.add("now(3)");
+        valueList.add("LEFT(DATE_FORMAT (now(3), '%Y-%m-%dT%H:%i:%s.%f'), 23)");
         valueList.add(":nichiji_dt");
         valueList.add(":hiduke_bi");
         valueList.add(":jikoku_hm");

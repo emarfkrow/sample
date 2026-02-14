@@ -425,9 +425,9 @@ public class M04Saiki implements IEntity {
         sql += "    , a.`EX_IDREF_ID` \n";
         sql += "    , a.`EX_IDBN_BN` \n";
         sql += "    , a.`OYA_SAIKI_ID` \n";
-        sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
         sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    M04_SAIKI a \n";

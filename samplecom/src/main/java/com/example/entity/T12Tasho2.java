@@ -216,9 +216,9 @@ public class T12Tasho2 implements IEntity {
         sql += "SELECT \n";
         sql += "      a.`TASHO2_ID` \n";
         sql += "    , a.`KOHO3_ID` \n";
-        sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
         sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T12_TASHO2 a \n";
@@ -381,10 +381,10 @@ public class T12Tasho2 implements IEntity {
         String sql = "SELECT ";
         sql += "`REBORN3_ID`";
         sql += ", `TASHO2_ID`";
-        sql += ", `INSERT_TS` AS INSERT_TS";
+        sql += ", LEFT(DATE_FORMAT (`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS";
         sql += ", `INSERT_USER_ID`";
         sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", `UPDATE_TS` AS UPDATE_TS";
+        sql += ", LEFT(DATE_FORMAT (`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS";
         sql += ", `UPDATE_USER_ID`";
         sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
         sql += " FROM T12_REBORN3 a WHERE " + String.join(" AND ", whereList);

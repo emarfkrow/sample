@@ -278,9 +278,9 @@ public class T00Nokey implements IEntity {
         sql += "    , a.`COL_C` \n";
         sql += "    , a.`COL_D` \n";
         sql += "    , a.`COL_E` \n";
-        sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
         sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T00_NOKEY a \n";

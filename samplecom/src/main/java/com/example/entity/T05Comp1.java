@@ -278,9 +278,9 @@ public class T05Comp1 implements IEntity {
         sql += "      a.`REF1_ID` \n";
         sql += "    , a.`REF2_ID` \n";
         sql += "    , a.`COMP1_MEI` \n";
-        sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
         sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T05_COMP1 a \n";
@@ -478,10 +478,10 @@ public class T05Comp1 implements IEntity {
         sql += ", (SELECT r2.`REF3_MEI` FROM M05_REF3 r2 WHERE r2.`REF3_ID` = a.`REF3_ID`) AS `REF3_MEI`";
         sql += ", `TEKIYO_BI` AS TEKIYO_BI";
         sql += ", `COMP2_INFO`";
-        sql += ", `INSERT_TS` AS INSERT_TS";
+        sql += ", LEFT(DATE_FORMAT (`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS";
         sql += ", `INSERT_USER_ID`";
         sql += ", (SELECT r3.`USER_SEI` FROM MHR_USER r3 WHERE r3.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", `UPDATE_TS` AS UPDATE_TS";
+        sql += ", LEFT(DATE_FORMAT (`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS";
         sql += ", `UPDATE_USER_ID`";
         sql += ", (SELECT r4.`USER_SEI` FROM MHR_USER r4 WHERE r4.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
         sql += " FROM T05_COMP2 a WHERE " + String.join(" AND ", whereList);
