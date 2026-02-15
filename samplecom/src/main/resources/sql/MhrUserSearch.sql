@@ -1,16 +1,16 @@
 SELECT
-      a.`USER_ID`
-    , a.`USER_SEI`
-    , a.`USER_MEI`
-    , a.`E_MAIL`
-    , a.`PASSWORD`
+      a.`USER_ID` AS `USER_ID`
+    , a.`USER_SEI` AS `USER_SEI`
+    , a.`USER_MEI` AS `USER_MEI`
+    , a.`E_MAIL` AS `E_MAIL`
+    , a.`PASSWORD` AS `PASSWORD`
     , a.`TEKIYO_BI` AS `TEKIYO_BI`
     , a.`HAISHI_BI` AS `HAISHI_BI`
     , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , a.`INSERT_USER_ID`
+    , a.`INSERT_USER_ID` AS `INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
     , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , a.`UPDATE_USER_ID`
+    , a.`UPDATE_USER_ID` AS `UPDATE_USER_ID`
     , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
 FROM
     MHR_USER a 

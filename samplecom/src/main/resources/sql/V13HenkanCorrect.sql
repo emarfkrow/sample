@@ -1,7 +1,7 @@
 SELECT
-      a.`TABLE_NAME`
-    , a.`SRC_ID`
-    , a.`DEST_INFO`
+      a.`TABLE_NAME` AS `TABLE_NAME`
+    , a.`SRC_ID` AS `SRC_ID`
+    , a.`DEST_INFO` AS `DEST_INFO`
 FROM
     V13_HENKAN a 
 WHERE

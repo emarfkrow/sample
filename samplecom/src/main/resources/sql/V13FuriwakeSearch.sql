@@ -1,7 +1,7 @@
 SELECT
-      a.`TABLE_NAME`
-    , a.`SRC_ID$DEST_ID`
-    , a.`INFO`
+      a.`TABLE_NAME` AS `TABLE_NAME`
+    , a.`SRC_ID$DEST_ID` AS `SRC_ID$DEST_ID`
+    , a.`INFO` AS `INFO`
 FROM
     V13_FURIWAKE a 
 WHERE

@@ -1,15 +1,15 @@
 SELECT
-      a.`KBN_NM`
+      a.`KBN_NM` AS `KBN_NM`
     , (SELECT r0.`KBN_MEI` FROM MSY_KBN r0 WHERE r0.`KBN_NM` = a.`KBN_NM`) AS `KBN_MEI`
-    , a.`KBN_VAL`
-    , a.`KBN_VAL_MEI`
-    , a.`HYOJI_ON`
-    , a.`CRITERIA`
+    , a.`KBN_VAL` AS `KBN_VAL`
+    , a.`KBN_VAL_MEI` AS `KBN_VAL_MEI`
+    , a.`HYOJI_ON` AS `HYOJI_ON`
+    , a.`CRITERIA` AS `CRITERIA`
     , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , a.`INSERT_USER_ID`
+    , a.`INSERT_USER_ID` AS `INSERT_USER_ID`
     , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
     , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , a.`UPDATE_USER_ID`
+    , a.`UPDATE_USER_ID` AS `UPDATE_USER_ID`
     , (SELECT r2.`USER_SEI` FROM MHR_USER r2 WHERE r2.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
 FROM
     MSY_KBN_VAL a 

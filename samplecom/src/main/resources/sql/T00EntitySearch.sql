@@ -1,14 +1,14 @@
 SELECT
-      a.`ENTITY_ID`
-    , a.`ENTITY_NM`
-    , a.`ENTITY_MEI`
+      a.`ENTITY_ID` AS `ENTITY_ID`
+    , a.`ENTITY_NM` AS `ENTITY_NM`
+    , a.`ENTITY_MEI` AS `ENTITY_MEI`
     , TRIM(TRAILING ' ' FROM a.`CHECK_F`) AS `CHECK_F`
-    , a.`RADIO_KB`
-    , a.`PULLDOWN_KB`
-    , a.`PULLDOWN_SB`
-    , a.`MEMO_TX`
-    , a.`MEMO`
-    , a.`TENPU_FILE`
+    , a.`RADIO_KB` AS `RADIO_KB`
+    , a.`PULLDOWN_KB` AS `PULLDOWN_KB`
+    , a.`PULLDOWN_SB` AS `PULLDOWN_SB`
+    , a.`MEMO_TX` AS `MEMO_TX`
+    , a.`MEMO` AS `MEMO`
+    , a.`TENPU_FILE` AS `TENPU_FILE`
     , TRIM(TRAILING ' ' FROM a.`NENGAPPI_Y`) AS `NENGAPPI_Y`
     , TRIM(TRAILING ' ' FROM a.`NENGAPPI_M`) AS `NENGAPPI_M`
     , TRIM(TRAILING ' ' FROM a.`NENGAPPI_D`) AS `NENGAPPI_D`
@@ -17,21 +17,21 @@ SELECT
     , LEFT(DATE_FORMAT (a.`TIMESTAMP_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `TIMESTAMP_TS`
     , LEFT(DATE_FORMAT (a.`NICHIJI_DT`, '%Y-%m-%dT%H:%i:%s'), 19) AS `NICHIJI_DT`
     , a.`HIDUKE_BI` AS `HIDUKE_BI`
-    , a.`JIKOKU_HM`
-    , a.`JIKAN_TM`
-    , a.`SURYO_QT`
-    , a.`TSUKA_KB`
-    , a.`JUCHU_PR`
-    , a.`JUCHU_AM`
-    , a.`HACHU_PR`
-    , a.`HACHU_AM`
+    , a.`JIKOKU_HM` AS `JIKOKU_HM`
+    , a.`JIKAN_TM` AS `JIKAN_TM`
+    , a.`SURYO_QT` AS `SURYO_QT`
+    , a.`TSUKA_KB` AS `TSUKA_KB`
+    , a.`JUCHU_PR` AS `JUCHU_PR`
+    , a.`JUCHU_AM` AS `JUCHU_AM`
+    , a.`HACHU_PR` AS `HACHU_PR`
+    , a.`HACHU_AM` AS `HACHU_AM`
     , TRIM(TRAILING ' ' FROM a.`DELETE_F`) AS `DELETE_F`
-    , a.`STATUS_KB`
+    , a.`STATUS_KB` AS `STATUS_KB`
     , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , a.`INSERT_USER_ID`
+    , a.`INSERT_USER_ID` AS `INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
     , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , a.`UPDATE_USER_ID`
+    , a.`UPDATE_USER_ID` AS `UPDATE_USER_ID`
     , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
 FROM
     T00_ENTITY a 
