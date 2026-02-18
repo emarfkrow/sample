@@ -136,20 +136,20 @@ public class MhrShokuiNinka implements IEntity {
     }
 
     /** 権限区分 */
-    private String kengenKb;
+    private Integer kengenBf;
 
     /** @return 権限区分 */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KENGEN_KB", index = 7)
-    public String getKengenKb() {
-        return this.kengenKb;
+    public Integer getKengenKb() {
+        return this.kengenBf;
     }
 
     /** @param o 権限区分 */
     public void setKengenKb(final Object o) {
-        if (o != null) {
-            this.kengenKb = o.toString();
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
+            this.kengenBf = Integer.valueOf(o.toString());
         } else {
-            this.kengenKb = null;
+            this.kengenBf = null;
         }
     }
 
@@ -370,7 +370,8 @@ public class MhrShokuiNinka implements IEntity {
     public int insert(final LocalDateTime now, final String execId) {
 
         // 認可マスタの登録
-        String sql = "INSERT INTO MHR_SHOKUI_NINKA(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
+        String sql = "INSERT INTO MHR_SHOKUI_NINKA(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values()
+                + "\r\n)";
         return Queries.regist(sql, toMap(now, execId));
     }
 
@@ -464,7 +465,7 @@ public class MhrShokuiNinka implements IEntity {
         map.put("busho_id", this.bushoId);
         map.put("shokui_id", this.shokuiId);
         map.put("kino_nm", this.kinoNm);
-        map.put("kengen_kb", this.kengenKb);
+        map.put("kengen_kb", this.kengenBf);
         map.put("tekiyo_bi", this.tekiyoBi);
         map.put("haishi_bi", this.haishiBi);
         map.put("insert_ts", now);

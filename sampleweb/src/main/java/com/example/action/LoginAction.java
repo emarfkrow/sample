@@ -7,10 +7,11 @@ import java.util.Map;
 import com.example.entity.MhrShokuiNinka;
 import com.example.entity.MhrUser;
 import com.example.entity.MhrUserPos;
+import com.example.form.LoginForm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jp.co.golorp.emarf.action.base.LoginActionBase;
-import jp.co.golorp.emarf.form.LoginForm;
+import jp.co.golorp.emarf.form.base.LoginFormBase;
 import jp.co.golorp.emarf.servlet.http.ServletUtil;
 import jp.co.golorp.emarf.sql.Queries;
 import jp.co.golorp.emarf.time.DateTimeUtil;
@@ -23,9 +24,9 @@ import jp.co.golorp.emarf.time.DateTimeUtil;
 public class LoginAction extends LoginActionBase {
 
     @Override
-    protected final LoginForm getLoginForm(final String userId) {
+    protected final LoginFormBase getLoginForm(final String userId) {
 
-        LoginForm loginForm = null;
+        LoginFormBase loginForm = null;
 
         //現在有効なユーザマスタ取得
         String mUserSql = this.loadSqlFile("MhrUserSearch");
@@ -56,7 +57,7 @@ public class LoginAction extends LoginActionBase {
              * 認可情報
              */
 
-            Map<String, String> authzInfo = new HashMap<String, String>();
+            Map<String, Integer> authzInfo = new HashMap<String, Integer>();
 
             //現在有効な全ての所属情報を取得
             String mShozokuSql = this.loadSqlFile("MhrUserPosSearch");
@@ -84,15 +85,17 @@ public class LoginAction extends LoginActionBase {
                     if (mNinkas != null) {
                         for (MhrShokuiNinka mNinka : mNinkas) {
 
-                            //機能ごとに、最大の権限を取得
-                            if (!authzInfo.containsKey(mNinka.getKinoNm())) {
-                                authzInfo.put(mNinka.getKinoNm(), mNinka.getKengenKb());
-                            } else {
-                                String orgKengenKb = authzInfo.get(mNinka.getKinoNm());
-                                if (Integer.valueOf(orgKengenKb) < Integer.valueOf(mNinka.getKengenKb())) {
-                                    authzInfo.put(mNinka.getKinoNm(), mNinka.getKengenKb());
-                                }
-                            }
+                            //                            //機能ごとに、最大の権限を取得
+                            //                            if (!authzInfo.containsKey(mNinka.getKinoNm())) {
+                            //                                authzInfo.put(mNinka.getKinoNm(), mNinka.getKengenKb());
+                            //                            } else {
+                            //                                String orgKengenKb = authzInfo.get(mNinka.getKinoNm());
+                            //                                if (Integer.valueOf(orgKengenKb) < Integer.valueOf(mNinka.getKengenKb())) {
+                            //                                    authzInfo.put(mNinka.getKinoNm(), mNinka.getKengenKb());
+                            //                                }
+                            //                            }
+
+                            authzInfo.put(mNinka.getKinoNm(), mNinka.getKengenKb());
                         }
                     }
                 }

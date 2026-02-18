@@ -1,9 +1,10 @@
 package com.example.action;
 
 import com.example.entity.MhrUser;
+import com.example.form.LoginForm;
 
 import jp.co.golorp.emarf.action.base.PassmailActionBase;
-import jp.co.golorp.emarf.form.LoginForm;
+import jp.co.golorp.emarf.form.base.LoginFormBase;
 
 /**
  * パスワードリセットメール送信
@@ -13,11 +14,11 @@ import jp.co.golorp.emarf.form.LoginForm;
 public class PassmailAction extends PassmailActionBase {
 
     @Override
-    protected final LoginForm getLoginForm(final String userId) {
+    protected final LoginFormBase getLoginForm(final String userId) {
 
         MhrUser mhrUser = MhrUser.get(userId);
 
-        LoginForm loginForm = new LoginForm();
+        LoginFormBase loginForm = new LoginForm();
         loginForm.setEmail(mhrUser.getEMail());
         loginForm.setAuthnMei(mhrUser.getUserSei() + mhrUser.getUserMei());
 
