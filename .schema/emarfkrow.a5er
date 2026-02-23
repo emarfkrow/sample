@@ -350,14 +350,14 @@ Left=1300
 Top=250
 Field="部署ID","BUSHO_ID","*ID","NOT NULL",0,"","",$FFFFFFFF,""
 Field="職位ID","SHOKUI_ID","*ID","NOT NULL",1,"","",$FFFFFFFF,""
-Field="機能名称","KINO_NM","*NM","NOT NULL",2,"","機能名の正規表現",$FFFFFFFF,""
+Field="テーブル正規表現","TABLE_REGEX","*NM","NOT NULL",2,"","テーブル名の正規表現",$FFFFFFFF,""
 Field="権限ビット","KENGEN_BF","@INT","NOT NULL",,"","",$FFFFFFFF,""
 Field="適用日","TEKIYO_BI","*BI",,,"","",$00808080,""
 Field="廃止日","HAISHI_BI","*BI",,,"","",$00808080,""
 EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
-ModifiedDateTime=20260218093135
+ModifiedDateTime=20260223103825
 Position="MAIN",1300,250
 ZOrder=-10
 

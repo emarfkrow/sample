@@ -11,7 +11,7 @@ import jp.co.golorp.emarf.form.base.LoginFormBase;
 public class LoginForm extends LoginFormBase {
 
     @Override
-    public final String getAuthZ(final String requestURI) {
+    public final String getTableAuthZ(final String requestURI) {
 
         Set<String> errorIds = new LinkedHashSet<String>();
 
