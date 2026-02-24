@@ -10,18 +10,24 @@
 </script>
 <script th:src="@{/model/T06Derive2.js}"></script>
 <script th:src="@{/model/T06Derive2GridColumns.js}"></script>
+<!-- 派生２の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T06Org.js}"></script>
 <script th:src="@{/model/T06OrgGridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/model/T06OrgDet.js}"></script>
-<script th:src="@{/model/T06OrgDetGridColumns.js}"></script>
-<script th:src="@{/model/T06Derive1.js}"></script>
-<script th:src="@{/model/T06Derive1GridColumns.js}"></script>
-<script th:src="@{/model/T06Derive1Det.js}"></script>
-<script th:src="@{/model/T06Derive1DetGridColumns.js}"></script>
+  <!-- 起源の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 派生２の子モデルのグリッド定義 -->
 <script th:src="@{/model/T06Derive2Det.js}"></script>
 <script th:src="@{/model/T06Derive2DetGridColumns.js}"></script>
+  <!-- 起源の子モデルのグリッド定義 -->
+  <script th:src="@{/model/T06OrgDet.js}"></script>
+  <script th:src="@{/model/T06OrgDetGridColumns.js}"></script>
+  <!-- 起源の派生先モデルのグリッド定義 -->
+  <script th:src="@{/model/T06Derive1.js}"></script>
+  <script th:src="@{/model/T06Derive1GridColumns.js}"></script>
+    <!-- 派生１の子モデルのグリッド定義 -->
+    <script th:src="@{/model/T06Derive1Det.js}"></script>
+    <script th:src="@{/model/T06Derive1DetGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -39,12 +45,12 @@
           <label for="T06Derive2.orgInfo" th:text="#{T06Derive2.orgInfo}">起源情報</label><input type="text" id="T06Derive2.orgInfo" name="T06Derive2.orgInfo" maxlength="300" />
         </div>
         <div id="orgId">
-          <label for="T06Derive2.orgId" th:text="#{T06Derive2.orgId}">起源ID</label><input type="text" id="T06Derive2.orgId" name="T06Derive2.orgId" maxlength="10" /><a id="T06Derive2.orgId" th:href="@{/model/T06OrgS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T06Derive2.orgId" th:text="#{T06Derive2.orgId}">起源ID</label><input type="text" id="T06Derive2.orgId" name="T06Derive2.orgId" maxlength="10" class=" refer" /><a id="T06Derive2.orgId" th:href="@{/model/T06OrgS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT06Derive2" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T06Derive2.html}" target="dialog" id="T06Derive2" class="anew derive" th:text="#{T06Derive2.add}" tabindex="-1">派生２</a>
+        <a th:href="@{/model/T06Derive2.html(anew)}" target="dialog" id="T06Derive2" class="anew derive" th:text="#{T06Derive2.add}" tabindex="-1">派生２</a>
           <label for="T06Derive2.deriveeOrgId" th:text="#{T06Derive2.deriveeOrgId}">起源ID</label><input type="text" id="T06Derive2.deriveeOrgId" name="T06Derive2.deriveeOrgId" maxlength="10" />
           <a id="T06Derive2.deriveeOrgId" th:href="@{/model/T06OrgS.html?action=T06OrgCorrect.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
       </div>

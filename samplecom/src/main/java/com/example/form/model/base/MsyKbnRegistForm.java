@@ -19,7 +19,7 @@ public class MsyKbnRegistForm implements IForm {
     private static final Logger LOG = LoggerFactory.getLogger(MsyKbnRegistForm.class);
 
     /** 区分名称 */
-    @jakarta.validation.constraints.NotBlank
+    @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 20)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String kbnNm;

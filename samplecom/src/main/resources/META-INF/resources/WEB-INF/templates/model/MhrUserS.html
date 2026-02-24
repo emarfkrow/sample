@@ -44,7 +44,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetMhrUser" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/MhrUser.html}" target="dialog" id="MhrUser" class="anew" th:text="#{MhrUser.add}" tabindex="-1">ユーザマスタ</a>
+        <a th:href="@{/model/MhrUser.html(anew)}" target="dialog" id="MhrUser" class="anew" th:text="#{MhrUser.add}" tabindex="-1">ユーザマスタ</a>
       </div>
       <div class="submits">
         <button id="SearchMhrUser" type="submit" class="search" data-gridId="MhrUserGrid" th:text="#{common.search}">submit</button>

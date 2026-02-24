@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/T02Foster.js}"></script>
 <script th:src="@{/model/T02FosterGridColumns.js}"></script>
+<!-- 里子の参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -31,7 +32,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT02Foster" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T02Foster.html}" target="dialog" id="T02Foster" class="anew" th:text="#{T02Foster.add}" tabindex="-1">里子</a>
+        <a th:href="@{/model/T02Foster.html(anew)}" target="dialog" id="T02Foster" class="anew" th:text="#{T02Foster.add}" tabindex="-1">里子</a>
       </div>
       <div class="submits">
         <button id="SearchT02Foster" type="submit" class="search" data-gridId="T02FosterGrid" th:text="#{common.search}">submit</button>

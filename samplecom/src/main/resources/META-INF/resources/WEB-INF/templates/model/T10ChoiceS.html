@@ -10,10 +10,13 @@
 </script>
 <script th:src="@{/model/T10Choice.js}"></script>
 <script th:src="@{/model/T10ChoiceGridColumns.js}"></script>
+<!-- 選抜の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T10Koho1.js}"></script>
 <script th:src="@{/model/T10Koho1GridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 候補１の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 選抜の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T10Koho2.js}"></script>
 <script th:src="@{/model/T10Koho2GridColumns.js}"></script>
 </head>
@@ -30,13 +33,13 @@
           <label for="T10Choice.choiceId" th:text="#{T10Choice.choiceId}">選抜ID</label><input type="text" id="T10Choice.choiceId" name="T10Choice.choiceId" maxlength="10" />
         </div>
         <div id="koho1Id">
-          <label for="T10Choice.koho1Id" th:text="#{T10Choice.koho1Id}">候補１ID</label><input type="text" id="T10Choice.koho1Id" name="T10Choice.koho1Id" maxlength="10" /><a id="T10Choice.koho1Id" th:href="@{/model/T10Koho1S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T10Choice.koho1Id" th:text="#{T10Choice.koho1Id}">候補１ID</label><input type="text" id="T10Choice.koho1Id" name="T10Choice.koho1Id" maxlength="10" class=" refer" /><a id="T10Choice.koho1Id" th:href="@{/model/T10Koho1S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
         <div id="koho1Info">
           <label for="T10Choice.koho1Info" th:text="#{T10Choice.koho1Info}">候補１情報</label><input type="text" id="T10Choice.koho1Info" name="T10Choice.koho1Info" maxlength="300" />
         </div>
         <div id="koho2Id">
-          <label for="T10Choice.koho2Id" th:text="#{T10Choice.koho2Id}">候補２ID</label><input type="text" id="T10Choice.koho2Id" name="T10Choice.koho2Id" maxlength="10" /><a id="T10Choice.koho2Id" th:href="@{/model/T10Koho2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T10Choice.koho2Id" th:text="#{T10Choice.koho2Id}">候補２ID</label><input type="text" id="T10Choice.koho2Id" name="T10Choice.koho2Id" maxlength="10" class=" refer" /><a id="T10Choice.koho2Id" th:href="@{/model/T10Koho2S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
         <div id="koho2Info">
           <label for="T10Choice.koho2Info" th:text="#{T10Choice.koho2Info}">候補２情報</label><input type="text" id="T10Choice.koho2Info" name="T10Choice.koho2Info" maxlength="300" />
@@ -44,7 +47,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT10Choice" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T10Choice.html}" target="dialog" id="T10Choice" class="anew derive" th:text="#{T10Choice.add}" tabindex="-1">選抜</a>
+        <a th:href="@{/model/T10Choice.html(anew)}" target="dialog" id="T10Choice" class="anew derive" th:text="#{T10Choice.add}" tabindex="-1">選抜</a>
           <label for="T10Choice.deriveeKoho1Id" th:text="#{T10Choice.deriveeKoho1Id}">候補１ID</label><input type="text" id="T10Choice.deriveeKoho1Id" name="T10Choice.deriveeKoho1Id" maxlength="10" />
           <a id="T10Choice.deriveeKoho1Id" th:href="@{/model/T10Koho1S.html?action=T10Koho1Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
           <label for="T10Choice.deriveeKoho2Id" th:text="#{T10Choice.deriveeKoho2Id}">候補２ID</label><input type="text" id="T10Choice.deriveeKoho2Id" name="T10Choice.deriveeKoho2Id" maxlength="10" />

@@ -10,10 +10,12 @@
 </script>
 <script th:src="@{/model/MsyKadobi.js}"></script>
 <script th:src="@{/model/MsyKadobiGridColumns.js}"></script>
+<!-- 稼働日マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrBusho.js}"></script>
 <script th:src="@{/model/MhrBushoGridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 部署マスタの参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -28,7 +30,7 @@
           <label for="MsyKadobi.kadoBi_1" th:text="#{MsyKadobi.kadoBi}">稼働日</label><input type="text" id="MsyKadobi.kadoBi_1" name="MsyKadobi.kadoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MsyKadobi.kadoBi_2" name="MsyKadobi.kadoBi_2" maxlength="10" class=" datepicker" />
         </div>
         <div id="bushoId">
-          <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">部署ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>
+          <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">部署ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>
         </div>
         <div id="kadobiF">
           <fieldset id="MsyKadobi.kadobiFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:KADOBI_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
@@ -41,7 +43,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetMsyKadobi" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/MsyKadobi.html}" target="dialog" id="MsyKadobi" class="anew" th:text="#{MsyKadobi.add}" tabindex="-1">稼働日マスタ</a>
+        <a th:href="@{/model/MsyKadobi.html(anew)}" target="dialog" id="MsyKadobi" class="anew" th:text="#{MsyKadobi.add}" tabindex="-1">稼働日マスタ</a>
       </div>
       <div class="submits">
         <button id="SearchMsyKadobi" type="submit" class="search" data-gridId="MsyKadobiGrid" th:text="#{common.search}">submit</button>

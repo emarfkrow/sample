@@ -10,16 +10,21 @@
 </script>
 <script th:src="@{/model/T05Comp1.js}"></script>
 <script th:src="@{/model/T05Comp1GridColumns.js}"></script>
+<!-- 複合１の参照モデルのグリッド定義 -->
 <script th:src="@{/model/M05Ref1.js}"></script>
 <script th:src="@{/model/M05Ref1GridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- マスタ参照１の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 複合１の参照モデルのグリッド定義 -->
 <script th:src="@{/model/M05Ref2.js}"></script>
 <script th:src="@{/model/M05Ref2GridColumns.js}"></script>
+<!-- 複合１の子モデルのグリッド定義 -->
 <script th:src="@{/model/T05Comp2.js}"></script>
 <script th:src="@{/model/T05Comp2GridColumns.js}"></script>
-<script th:src="@{/model/M05Ref3.js}"></script>
-<script th:src="@{/model/M05Ref3GridColumns.js}"></script>
+  <!-- 複合２の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/M05Ref3.js}"></script>
+  <script th:src="@{/model/M05Ref3GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -31,10 +36,10 @@
       <fieldset>
         <legend th:text="#{T05Comp1S.legend}">legend</legend>
         <div id="ref1Id">
-          <label for="T05Comp1.ref1Id" th:text="#{T05Comp1.ref1Id}">参照１ID</label><input type="text" id="T05Comp1.ref1Id" name="T05Comp1.ref1Id" maxlength="10" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:T05Comp1.ref1Id" data-destDef="T05Comp1.ref1Mei:REF1_MEI" /><a id="T05Comp1.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="T05Comp1.ref1Mei" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:T05Comp1.ref1Id" data-destDef="T05Comp1.ref1Mei:REF1_MEI"></span>
+          <label for="T05Comp1.ref1Id" th:text="#{T05Comp1.ref1Id}">参照１ID</label><input type="text" id="T05Comp1.ref1Id" name="T05Comp1.ref1Id" maxlength="10" class=" refer" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:T05Comp1.ref1Id" data-destDef="T05Comp1.ref1Mei:REF1_MEI" /><a id="T05Comp1.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T05Comp1.ref1Mei" class=" refer" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:T05Comp1.ref1Id" data-destDef="T05Comp1.ref1Mei:REF1_MEI"></span>
         </div>
         <div id="ref2Id">
-          <label for="T05Comp1.ref2Id" th:text="#{T05Comp1.ref2Id}">参照２ID</label><input type="text" id="T05Comp1.ref2Id" name="T05Comp1.ref2Id" maxlength="10" data-json="M05Ref2Search.json" data-srcDef="REF2_ID:T05Comp1.ref2Id" data-destDef="T05Comp1.ref2Mei:REF2_MEI" /><a id="T05Comp1.ref2Id" th:href="@{/model/M05Ref2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="T05Comp1.ref2Mei" data-json="M05Ref2Search.json" data-srcDef="REF2_ID:T05Comp1.ref2Id" data-destDef="T05Comp1.ref2Mei:REF2_MEI"></span>
+          <label for="T05Comp1.ref2Id" th:text="#{T05Comp1.ref2Id}">参照２ID</label><input type="text" id="T05Comp1.ref2Id" name="T05Comp1.ref2Id" maxlength="10" class=" refer" data-json="M05Ref2Search.json" data-srcDef="REF2_ID:T05Comp1.ref2Id" data-destDef="T05Comp1.ref2Mei:REF2_MEI" /><a id="T05Comp1.ref2Id" th:href="@{/model/M05Ref2S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T05Comp1.ref2Mei" class=" refer" data-json="M05Ref2Search.json" data-srcDef="REF2_ID:T05Comp1.ref2Id" data-destDef="T05Comp1.ref2Mei:REF2_MEI"></span>
         </div>
         <div id="comp1Mei">
           <label for="T05Comp1.comp1Mei" th:text="#{T05Comp1.comp1Mei}">複合１名</label><input type="text" id="T05Comp1.comp1Mei" name="T05Comp1.comp1Mei" maxlength="300" />
@@ -42,7 +47,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT05Comp1" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T05Comp1.html}" target="dialog" id="T05Comp1" class="anew" th:text="#{T05Comp1.add}" tabindex="-1">複合１</a>
+        <a th:href="@{/model/T05Comp1.html(anew)}" target="dialog" id="T05Comp1" class="anew" th:text="#{T05Comp1.add}" tabindex="-1">複合１</a>
       </div>
       <div class="submits">
         <button id="SearchT05Comp1" type="submit" class="search" data-gridId="T05Comp1Grid" th:text="#{common.search}">submit</button>

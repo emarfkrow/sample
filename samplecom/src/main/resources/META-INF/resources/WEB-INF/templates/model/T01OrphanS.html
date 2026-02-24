@@ -10,16 +10,15 @@
 </script>
 <script th:src="@{/model/T01Orphan.js}"></script>
 <script th:src="@{/model/T01OrphanGridColumns.js}"></script>
+<!-- 孤児の参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 孤児の子モデルのグリッド定義 -->
 <script th:src="@{/model/T01Mago.js}"></script>
 <script th:src="@{/model/T01MagoGridColumns.js}"></script>
-<script th:src="@{/model/T01Ko.js}"></script>
-<script th:src="@{/model/T01KoGridColumns.js}"></script>
-<script th:src="@{/model/T01Oya.js}"></script>
-<script th:src="@{/model/T01OyaGridColumns.js}"></script>
-<script th:src="@{/model/T01Dinks.js}"></script>
-<script th:src="@{/model/T01DinksGridColumns.js}"></script>
+  <!-- 孫の親モデルのグリッド定義 -->
+  <script th:src="@{/model/T01Ko.js}"></script>
+  <script th:src="@{/model/T01KoGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">

@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/T02Youngest.js}"></script>
 <script th:src="@{/model/T02YoungestGridColumns.js}"></script>
+<!-- 末弟の参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -31,7 +32,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT02Youngest" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T02Youngest.html}" target="dialog" id="T02Youngest" class="anew" th:text="#{T02Youngest.add}" tabindex="-1">末弟</a>
+        <a th:href="@{/model/T02Youngest.html(anew)}" target="dialog" id="T02Youngest" class="anew" th:text="#{T02Youngest.add}" tabindex="-1">末弟</a>
       </div>
       <div class="submits">
         <button id="SearchT02Youngest" type="submit" class="search" data-gridId="T02YoungestGrid" th:text="#{common.search}">submit</button>

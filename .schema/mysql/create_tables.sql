@@ -1,10 +1,12 @@
 -- Project Name : emarf
--- Date/Time    : 2026/02/04 19:51:20
+-- Date/Time    : 2026/02/24 20:53:38
 -- Author       : t_fuk
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
 
 -- CDマスタ
+drop table M04_CD cascade;
+
 create table M04_CD (
   CDREF_CD CHAR(10) comment '参照CD'
   , CDREF_MEI VARCHAR(60) not null comment 'CD参照名'
@@ -16,6 +18,8 @@ create table M04_CD (
 ) comment 'CDマスタ' ;
 
 -- IDマスタ
+drop table M04_ID cascade;
+
 create table M04_ID (
   IDREF_ID INT comment '参照ID'
   , IDREF_MEI VARCHAR(60) not null comment 'ID参照名'
@@ -27,6 +31,8 @@ create table M04_ID (
 ) comment 'IDマスタ' ;
 
 -- ID連番マスタ
+drop table M04_IDBN cascade;
+
 create table M04_IDBN (
   IDREF_ID INT comment '参照ID'
   , IDBN_BN INT comment '参照連番'
@@ -39,6 +45,8 @@ create table M04_IDBN (
 ) comment 'ID連番マスタ' ;
 
 -- NOマスタ
+drop table M04_NO cascade;
+
 create table M04_NO (
   NOREF_NO CHAR(10) comment '参照NO'
   , NOREF_MEI VARCHAR(60) not null comment 'NO参照名'
@@ -50,6 +58,8 @@ create table M04_NO (
 ) comment 'NOマスタ' ;
 
 -- 再帰
+drop table M04_SAIKI cascade;
+
 create table M04_SAIKI (
   SAIKI_ID INT comment '再帰ID'
   , SAIKI_MEI VARCHAR(60) not null comment '再帰名'
@@ -67,6 +77,8 @@ create table M04_SAIKI (
 ) comment '再帰' ;
 
 -- マスタ参照１
+drop table M05_REF1 cascade;
+
 create table M05_REF1 (
   REF1_ID INT comment '参照１ID'
   , REF1_MEI VARCHAR(60) not null comment '参照１名'
@@ -81,6 +93,8 @@ create table M05_REF1 (
 ) comment 'マスタ参照１' ;
 
 -- マスタ参照２
+drop table M05_REF2 cascade;
+
 create table M05_REF2 (
   REF2_ID INT comment '参照２ID'
   , REF2_MEI VARCHAR(60) not null comment '参照２名'
@@ -95,6 +109,8 @@ create table M05_REF2 (
 ) comment 'マスタ参照２' ;
 
 -- マスタ参照３
+drop table M05_REF3 cascade;
+
 create table M05_REF3 (
   REF3_ID INT comment '参照３ID'
   , REF3_MEI VARCHAR(60) not null comment '参照３名'
@@ -109,6 +125,8 @@ create table M05_REF3 (
 ) comment 'マスタ参照３' ;
 
 -- 部署マスタ
+drop table MHR_BUSHO cascade;
+
 create table MHR_BUSHO (
   BUSHO_ID INT not null comment '部署ID'
   , BUSHO_MEI VARCHAR(60) not null comment '部署名'
@@ -123,6 +141,8 @@ create table MHR_BUSHO (
 ) comment '部署マスタ' ;
 
 -- 職位マスタ
+drop table MHR_SHOKUI cascade;
+
 create table MHR_SHOKUI (
   SHOKUI_ID INT not null comment '職位ID'
   , SHOKUI_MEI VARCHAR(60) not null comment '職位名'
@@ -137,21 +157,25 @@ create table MHR_SHOKUI (
 ) comment '職位マスタ' ;
 
 -- 認可マスタ
+drop table MHR_SHOKUI_NINKA cascade;
+
 create table MHR_SHOKUI_NINKA (
   BUSHO_ID INT not null comment '部署ID'
   , SHOKUI_ID INT not null comment '職位ID'
-  , KINO_NM VARCHAR(20) not null comment '機能名称:機能名の正規表現'
-  , KENGEN_KB VARCHAR(2) not null comment '権限区分:1:参照,2:出力,3:更新削除,4:追加,5:承認,6:否認'
+  , TABLE_REGEX VARCHAR(20) not null comment 'テーブル正規表現:テーブル名の正規表現'
+  , KENGEN_B INT not null comment '権限ビット'
   , TEKIYO_BI DATE comment '適用日'
   , HAISHI_BI DATE comment '廃止日'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MHR_SHOKUI_NINKA_PKC primary key (BUSHO_ID,SHOKUI_ID,KINO_NM)
+  , constraint MHR_SHOKUI_NINKA_PKC primary key (BUSHO_ID,SHOKUI_ID,TABLE_REGEX)
 ) comment '認可マスタ' ;
 
 -- ユーザマスタ
+drop table MHR_USER cascade;
+
 create table MHR_USER (
   USER_ID INT not null comment 'ユーザID'
   , USER_SEI VARCHAR(60) not null comment 'ユーザ姓'
@@ -168,6 +192,8 @@ create table MHR_USER (
 ) comment 'ユーザマスタ' ;
 
 -- 所属マスタ
+drop table MHR_USER_POS cascade;
+
 create table MHR_USER_POS (
   BUSHO_ID INT not null comment '部署ID'
   , SHOKUI_ID INT not null comment '職位ID'
@@ -182,6 +208,8 @@ create table MHR_USER_POS (
 ) comment '所属マスタ' ;
 
 -- 稼働日マスタ
+drop table MSY_KADOBI cascade;
+
 create table MSY_KADOBI (
   KADO_BI DATE comment '稼働日'
   , BUSHO_ID INT comment '部署ID'
@@ -195,6 +223,8 @@ create table MSY_KADOBI (
 ) comment '稼働日マスタ' ;
 
 -- 区分マスタ
+drop table MSY_KBN cascade;
+
 create table MSY_KBN (
   KBN_NM VARCHAR(20) not null comment '区分名称'
   , KBN_MEI VARCHAR(60) not null comment '区分名'
@@ -206,6 +236,8 @@ create table MSY_KBN (
 ) comment '区分マスタ' ;
 
 -- 区分値マスタ
+drop table MSY_KBN_VAL cascade;
+
 create table MSY_KBN_VAL (
   KBN_NM VARCHAR(20) not null comment '区分名称'
   , KBN_VAL VARCHAR(2) not null comment '区分値'
@@ -220,6 +252,8 @@ create table MSY_KBN_VAL (
 ) comment '区分値マスタ' ;
 
 -- 税マスタ
+drop table MSY_TAX cascade;
+
 create table MSY_TAX (
   TAX_KB VARCHAR(2) comment '税区分'
   , TEKIYO_BI DATE comment '適用日'
@@ -233,6 +267,8 @@ create table MSY_TAX (
 ) comment '税マスタ' ;
 
 -- 通貨マスタ
+drop table MSY_TSUKA cascade;
+
 create table MSY_TSUKA (
   TSUKA_KB VARCHAR(2) comment '通貨区分'
   , TEKIYO_BI DATE comment '適用日'
@@ -246,10 +282,13 @@ create table MSY_TSUKA (
 ) comment '通貨マスタ' ;
 
 -- エンティティ
+drop table T00_ENTITY cascade;
+
 create table T00_ENTITY (
   ENTITY_ID INT not null comment 'エンティティID'
   , ENTITY_NM VARCHAR(20) not null comment 'エンティティ名称'
   , ENTITY_MEI VARCHAR(60) not null comment 'エンティティ名'
+  , BIT_B INT not null comment 'ビットフラグ'
   , CHECK_F CHAR(1) not null comment 'チェックフラグ'
   , RADIO_KB VARCHAR(2) not null comment 'ラジオ区分'
   , PULLDOWN_KB VARCHAR(2) not null comment 'プルダウン区分'
@@ -283,6 +322,8 @@ create table T00_ENTITY (
 ) comment 'エンティティ' ;
 
 -- 主キーなし
+drop table T00_NOKEY cascade;
+
 create table T00_NOKEY (
   COL_A VARCHAR(60) comment '列Ａ'
   , COL_B VARCHAR(60) comment '列Ｂ'
@@ -302,6 +343,8 @@ create unique index T00_NOKEY_IX2
   on T00_NOKEY(COL_D,COL_E);
 
 -- 子なし
+drop table T01_DINKS cascade;
+
 create table T01_DINKS (
   OYA_ID INT not null comment '親ID'
   , KO_BN INT comment '子枝番'
@@ -314,6 +357,8 @@ create table T01_DINKS (
 ) comment '子なし' ;
 
 -- 子
+drop table T01_KO cascade;
+
 create table T01_KO (
   OYA_ID INT comment '親ID'
   , KO_BN INT comment '子枝番'
@@ -326,6 +371,8 @@ create table T01_KO (
 ) comment '子' ;
 
 -- 孫
+drop table T01_MAGO cascade;
+
 create table T01_MAGO (
   OYA_ID INT comment '親ID'
   , KO_BN INT comment '子枝番'
@@ -339,6 +386,8 @@ create table T01_MAGO (
 ) comment '孫' ;
 
 -- 孤児
+drop table T01_ORPHAN cascade;
+
 create table T01_ORPHAN (
   OYA_ID INT comment '親ID'
   , KO_BN INT comment '子枝番'
@@ -351,6 +400,8 @@ create table T01_ORPHAN (
 ) comment '孤児' ;
 
 -- 親
+drop table T01_OYA cascade;
+
 create table T01_OYA (
   OYA_ID INT comment '親ID'
   , OYA_INFO VARCHAR(300) comment '親情報'
@@ -362,6 +413,8 @@ create table T01_OYA (
 ) comment '親' ;
 
 -- 長兄
+drop table T02_ELDEST cascade;
+
 create table T02_ELDEST (
   BRO_ID INT comment '兄弟ID'
   , ELDEST_INFO VARCHAR(300) comment '長兄情報'
@@ -373,6 +426,8 @@ create table T02_ELDEST (
 ) comment '長兄' ;
 
 -- 里子
+drop table T02_FOSTER cascade;
+
 create table T02_FOSTER (
   BRO_ID INT comment '兄弟ID'
   , FOSTER_INFO VARCHAR(300) comment '里子情報'
@@ -384,6 +439,8 @@ create table T02_FOSTER (
 ) comment '里子' ;
 
 -- 弟
+drop table T02_YOUNGER cascade;
+
 create table T02_YOUNGER (
   BRO_ID INT comment '兄弟ID'
   , YOUNGER_INFO VARCHAR(300) comment '弟情報'
@@ -395,6 +452,8 @@ create table T02_YOUNGER (
 ) comment '弟' ;
 
 -- 末弟
+drop table T02_YOUNGEST cascade;
+
 create table T02_YOUNGEST (
   BRO_ID INT comment '兄弟ID'
   , YOUNGEST_INFO VARCHAR(300) comment '末弟情報'
@@ -406,6 +465,8 @@ create table T02_YOUNGEST (
 ) comment '末弟' ;
 
 -- 変遷
+drop table T03_TRANS cascade;
+
 create table T03_TRANS (
   TRANS_ID INT comment '変遷ID'
   , TRANS_INFO VARCHAR(300) comment '変遷情報'
@@ -417,6 +478,8 @@ create table T03_TRANS (
 ) comment '変遷' ;
 
 -- 変遷履歴
+drop table T03_TRANS_HIS cascade;
+
 create table T03_TRANS_HIS (
   TRANS_ID INT comment '変遷ID'
   , TRANS_BN INT comment '変遷枝番'
@@ -430,6 +493,8 @@ create table T03_TRANS_HIS (
 ) comment '変遷履歴' ;
 
 -- 複合１
+drop table T05_COMP1 cascade;
+
 create table T05_COMP1 (
   REF1_ID INT comment '参照１ID'
   , REF2_ID INT comment '参照２ID'
@@ -442,6 +507,8 @@ create table T05_COMP1 (
 ) comment '複合１' ;
 
 -- 複合２
+drop table T05_COMP2 cascade;
+
 create table T05_COMP2 (
   REF1_ID INT comment '参照１ID'
   , REF2_ID INT comment '参照２ID'
@@ -456,6 +523,8 @@ create table T05_COMP2 (
 ) comment '複合２' ;
 
 -- 派生１
+drop table T06_DERIVE1 cascade;
+
 create table T06_DERIVE1 (
   DERIVE1_ID INT comment '派生１ID'
   , ORG_INFO VARCHAR(300) comment '起源情報'
@@ -468,6 +537,8 @@ create table T06_DERIVE1 (
 ) comment '派生１' ;
 
 -- 派生１明細
+drop table T06_DERIVE1_DET cascade;
+
 create table T06_DERIVE1_DET (
   DERIVE1_ID INT comment '派生１ID'
   , DERIVE1_BN INT comment '派生１枝番'
@@ -480,6 +551,8 @@ create table T06_DERIVE1_DET (
 ) comment '派生１明細' ;
 
 -- 派生２
+drop table T06_DERIVE2 cascade;
+
 create table T06_DERIVE2 (
   DERIVE2_ID INT comment '派生２ID'
   , ORG_INFO VARCHAR(300) comment '起源情報'
@@ -492,6 +565,8 @@ create table T06_DERIVE2 (
 ) comment '派生２' ;
 
 -- 派生２明細
+drop table T06_DERIVE2_DET cascade;
+
 create table T06_DERIVE2_DET (
   DERIVE2_ID INT comment '派生２ID'
   , DERIVE2_BN INT comment '派生２枝番'
@@ -504,6 +579,8 @@ create table T06_DERIVE2_DET (
 ) comment '派生２明細' ;
 
 -- 起源
+drop table T06_ORG cascade;
+
 create table T06_ORG (
   ORG_ID INT comment '起源ID'
   , ORG_INFO VARCHAR(300) comment '起源情報'
@@ -515,6 +592,8 @@ create table T06_ORG (
 ) comment '起源' ;
 
 -- 起源明細
+drop table T06_ORG_DET cascade;
+
 create table T06_ORG_DET (
   ORG_ID INT comment '起源ID'
   , ORG_BN INT comment '起源枝番'
@@ -527,6 +606,8 @@ create table T06_ORG_DET (
 ) comment '起源明細' ;
 
 -- 前世
+drop table T07_PREV cascade;
+
 create table T07_PREV (
   PREV_ID INT comment '前世ID'
   , PREV_INFO VARCHAR(300) comment '前世情報'
@@ -538,6 +619,8 @@ create table T07_PREV (
 ) comment '前世' ;
 
 -- 前世明細
+drop table T07_PREV_DET cascade;
+
 create table T07_PREV_DET (
   PREV_ID INT comment '前世ID'
   , PREV_BN INT comment '前世枝番'
@@ -550,6 +633,8 @@ create table T07_PREV_DET (
 ) comment '前世明細' ;
 
 -- 転生
+drop table T07_REBORN cascade;
+
 create table T07_REBORN (
   REBORN_ID INT comment '転生ID'
   , PREV_INFO VARCHAR(300) comment '前世情報'
@@ -562,6 +647,8 @@ create table T07_REBORN (
 ) comment '転生' ;
 
 -- 転生明細
+drop table T07_REBORN_DET cascade;
+
 create table T07_REBORN_DET (
   REBORN_ID INT comment '転生ID'
   , REBORN_BN INT comment '転生枝番'
@@ -574,6 +661,8 @@ create table T07_REBORN_DET (
 ) comment '転生明細' ;
 
 -- 寄生１
+drop table T08_KISEI1 cascade;
+
 create table T08_KISEI1 (
   KISEI1_ID INT comment '寄生１ID'
   , KISEI1_INFO VARCHAR(300) comment '寄生１情報'
@@ -585,6 +674,8 @@ create table T08_KISEI1 (
 ) comment '寄生１' ;
 
 -- 寄生２
+drop table T08_KISEI2 cascade;
+
 create table T08_KISEI2 (
   KISEI2_ID INT comment '寄生２ID'
   , KISEI2_INFO VARCHAR(300) comment '寄生２情報'
@@ -596,6 +687,8 @@ create table T08_KISEI2 (
 ) comment '寄生２' ;
 
 -- 共生
+drop table T08_KYOSEI cascade;
+
 create table T08_KYOSEI (
   KYOSEI_ID INT comment '共生ID'
   , KISEI1_ID INT not null comment '寄生１ID'
@@ -610,6 +703,8 @@ create table T08_KYOSEI (
 ) comment '共生' ;
 
 -- 集団１
+drop table T09_GRP1 cascade;
+
 create table T09_GRP1 (
   GRP1_ID INT comment '集団１ID'
   , SUM_ID INT comment '集約ID'
@@ -621,6 +716,8 @@ create table T09_GRP1 (
 ) comment '集団１' ;
 
 -- 集団２
+drop table T09_GRP2 cascade;
+
 create table T09_GRP2 (
   GRP2_ID INT comment '集団２ID'
   , SUM_ID INT comment '集約ID'
@@ -632,6 +729,8 @@ create table T09_GRP2 (
 ) comment '集団２' ;
 
 -- 集約
+drop table T09_SUM cascade;
+
 create table T09_SUM (
   SUM_ID INT comment '集約ID'
   , SUM_INFO VARCHAR(300) comment '集約情報'
@@ -643,6 +742,8 @@ create table T09_SUM (
 ) comment '集約' ;
 
 -- 選抜
+drop table T10_CHOICE cascade;
+
 create table T10_CHOICE (
   CHOICE_ID INT comment '選抜ID'
   , KOHO1_ID INT comment '候補１ID'
@@ -657,6 +758,8 @@ create table T10_CHOICE (
 ) comment '選抜' ;
 
 -- 候補１
+drop table T10_KOHO1 cascade;
+
 create table T10_KOHO1 (
   KOHO1_ID INT comment '候補１ID'
   , KOHO1_INFO VARCHAR(300) comment '候補１情報'
@@ -668,6 +771,8 @@ create table T10_KOHO1 (
 ) comment '候補１' ;
 
 -- 候補２
+drop table T10_KOHO2 cascade;
+
 create table T10_KOHO2 (
   KOHO2_ID INT comment '候補２ID'
   , KOHO2_INFO VARCHAR(300) comment '候補２情報'
@@ -679,6 +784,8 @@ create table T10_KOHO2 (
 ) comment '候補２' ;
 
 -- 前世２
+drop table T11_PREV2 cascade;
+
 create table T11_PREV2 (
   PREV2_ID INT comment '前世２ID'
   , PREV2_INFO VARCHAR(300) comment '前世２情報'
@@ -690,6 +797,8 @@ create table T11_PREV2 (
 ) comment '前世２' ;
 
 -- 転生２
+drop table T11_REBORN2 cascade;
+
 create table T11_REBORN2 (
   REBORN2_ID INT comment '転生２ID'
   , PREV2_INFO VARCHAR(300) comment '前世２情報'
@@ -702,6 +811,8 @@ create table T11_REBORN2 (
 ) comment '転生２' ;
 
 -- 他生１
+drop table T11_TASHO1 cascade;
+
 create table T11_TASHO1 (
   TASHO1_ID INT comment '他生１ID'
   , REBORN2_ID INT comment '転生２ID'
@@ -713,6 +824,8 @@ create table T11_TASHO1 (
 ) comment '他生１' ;
 
 -- 候補３
+drop table T12_KOHO3 cascade;
+
 create table T12_KOHO3 (
   KOHO3_ID INT comment '候補３ID'
   , KOHO3_INFO VARCHAR(300) comment '候補３情報'
@@ -724,6 +837,8 @@ create table T12_KOHO3 (
 ) comment '候補３' ;
 
 -- 転生３
+drop table T12_REBORN3 cascade;
+
 create table T12_REBORN3 (
   REBORN3_ID INT comment '転生３ID'
   , TASHO2_ID INT not null comment '他生２ID'
@@ -735,6 +850,8 @@ create table T12_REBORN3 (
 ) comment '転生３' ;
 
 -- 他生２
+drop table T12_TASHO2 cascade;
+
 create table T12_TASHO2 (
   TASHO2_ID INT comment '他生２ID'
   , KOHO3_ID INT comment '候補３ID'
@@ -746,6 +863,8 @@ create table T12_TASHO2 (
 ) comment '他生２' ;
 
 -- 変換先
+drop table T13_DEST cascade;
+
 create table T13_DEST (
   DEST_ID INT comment '変換先ID'
   , DEST_INFO VARCHAR(300) comment '変換先情報'
@@ -757,6 +876,8 @@ create table T13_DEST (
 ) comment '変換先' ;
 
 -- 変換元
+drop table T13_SRC cascade;
+
 create table T13_SRC (
   SRC_ID INT comment '変換元ID'
   , SRC_INFO VARCHAR(300) comment '変換元情報'
@@ -768,10 +889,12 @@ create table T13_SRC (
 ) comment '変換元' ;
 
 -- 振分ビュー
+drop view V13_FURIWAKE;
+
 create view V13_FURIWAKE as 
 SELECT
     a.table_name                                -- テーブル名
-    , a."SRC_ID$DEST_ID"                        -- 振分ID
+    , a.`SRC_ID$DEST_ID`                        -- 振分ID
     , a.info                                    -- 情報
 FROM
     ( 
@@ -793,6 +916,8 @@ FROM
 ;
 
 -- 変換ビュー
+drop view V13_HENKAN;
+
 create view V13_HENKAN as 
 SELECT
     'T13_DEST' AS table_name                    -- テーブル名

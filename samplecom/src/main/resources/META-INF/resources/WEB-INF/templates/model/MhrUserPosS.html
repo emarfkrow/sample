@@ -10,10 +10,13 @@
 </script>
 <script th:src="@{/model/MhrUserPos.js}"></script>
 <script th:src="@{/model/MhrUserPosGridColumns.js}"></script>
+<!-- 所属マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrBusho.js}"></script>
 <script th:src="@{/model/MhrBushoGridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 部署マスタの参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 所属マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrShokui.js}"></script>
 <script th:src="@{/model/MhrShokuiGridColumns.js}"></script>
 </head>
@@ -27,13 +30,13 @@
       <fieldset>
         <legend th:text="#{MhrUserPosS.legend}">legend</legend>
         <div id="bushoId">
-          <label for="MhrUserPos.bushoId" th:text="#{MhrUserPos.bushoId}">部署ID</label><input type="text" id="MhrUserPos.bushoId" name="MhrUserPos.bushoId" maxlength="10" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrUserPos.bushoId" data-destDef="MhrUserPos.bushoMei:BUSHO_MEI" /><a id="MhrUserPos.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.bushoMei" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrUserPos.bushoId" data-destDef="MhrUserPos.bushoMei:BUSHO_MEI"></span>
+          <label for="MhrUserPos.bushoId" th:text="#{MhrUserPos.bushoId}">部署ID</label><input type="text" id="MhrUserPos.bushoId" name="MhrUserPos.bushoId" maxlength="10" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrUserPos.bushoId" data-destDef="MhrUserPos.bushoMei:BUSHO_MEI" /><a id="MhrUserPos.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.bushoMei" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrUserPos.bushoId" data-destDef="MhrUserPos.bushoMei:BUSHO_MEI"></span>
         </div>
         <div id="shokuiId">
-          <label for="MhrUserPos.shokuiId" th:text="#{MhrUserPos.shokuiId}">職位ID</label><input type="text" id="MhrUserPos.shokuiId" name="MhrUserPos.shokuiId" maxlength="10" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrUserPos.shokuiId" data-destDef="MhrUserPos.shokuiMei:SHOKUI_MEI" /><a id="MhrUserPos.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.shokuiMei" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrUserPos.shokuiId" data-destDef="MhrUserPos.shokuiMei:SHOKUI_MEI"></span>
+          <label for="MhrUserPos.shokuiId" th:text="#{MhrUserPos.shokuiId}">職位ID</label><input type="text" id="MhrUserPos.shokuiId" name="MhrUserPos.shokuiId" maxlength="10" class=" refer" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrUserPos.shokuiId" data-destDef="MhrUserPos.shokuiMei:SHOKUI_MEI" /><a id="MhrUserPos.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.shokuiMei" class=" refer" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrUserPos.shokuiId" data-destDef="MhrUserPos.shokuiMei:SHOKUI_MEI"></span>
         </div>
         <div id="userId">
-          <label for="MhrUserPos.userId" th:text="#{MhrUserPos.userId}">ユーザID</label><input type="text" id="MhrUserPos.userId" name="MhrUserPos.userId" maxlength="10" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUserPos.userId" data-destDef="MhrUserPos.userSei:USER_SEI" /><a id="MhrUserPos.userId" th:href="@{/model/MhrUserS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.userSei" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUserPos.userId" data-destDef="MhrUserPos.userSei:USER_SEI"></span>
+          <label for="MhrUserPos.userId" th:text="#{MhrUserPos.userId}">ユーザID</label><input type="text" id="MhrUserPos.userId" name="MhrUserPos.userId" maxlength="10" class=" refer" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUserPos.userId" data-destDef="MhrUserPos.userSei:USER_SEI" /><a id="MhrUserPos.userId" th:href="@{/model/MhrUserS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrUserPos.userSei" class=" refer" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUserPos.userId" data-destDef="MhrUserPos.userSei:USER_SEI"></span>
         </div>
         <div id="tekiyoBi">
           <label for="MhrUserPos.tekiyoBi_1" th:text="#{MhrUserPos.tekiyoBi}">適用日</label><input type="text" id="MhrUserPos.tekiyoBi_1" name="MhrUserPos.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrUserPos.tekiyoBi_2" name="MhrUserPos.tekiyoBi_2" maxlength="10" class=" datepicker" />
@@ -44,7 +47,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetMhrUserPos" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/MhrUserPos.html}" target="dialog" id="MhrUserPos" class="anew" th:text="#{MhrUserPos.add}" tabindex="-1">所属マスタ</a>
+        <a th:href="@{/model/MhrUserPos.html(anew)}" target="dialog" id="MhrUserPos" class="anew" th:text="#{MhrUserPos.add}" tabindex="-1">所属マスタ</a>
       </div>
       <div class="submits">
         <button id="SearchMhrUserPos" type="submit" class="search" data-gridId="MhrUserPosGrid" th:text="#{common.search}">submit</button>

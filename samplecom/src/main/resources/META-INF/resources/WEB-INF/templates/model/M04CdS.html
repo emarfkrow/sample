@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/M04Cd.js}"></script>
 <script th:src="@{/model/M04CdGridColumns.js}"></script>
+<!-- CDマスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -31,7 +32,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetM04Cd" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/M04Cd.html}" target="dialog" id="M04Cd" class="anew" th:text="#{M04Cd.add}" tabindex="-1">CDマスタ</a>
+        <a th:href="@{/model/M04Cd.html(anew)}" target="dialog" id="M04Cd" class="anew" th:text="#{M04Cd.add}" tabindex="-1">CDマスタ</a>
       </div>
       <div class="submits">
         <button id="SearchM04Cd" type="submit" class="search" data-gridId="M04CdGrid" th:text="#{common.search}">submit</button>

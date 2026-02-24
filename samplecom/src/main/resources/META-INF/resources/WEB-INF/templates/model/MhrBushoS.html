@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/MhrBusho.js}"></script>
 <script th:src="@{/model/MhrBushoGridColumns.js}"></script>
+<!-- 部署マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -29,7 +30,7 @@
           <label for="MhrBusho.bushoMei" th:text="#{MhrBusho.bushoMei}">部署名</label><input type="text" id="MhrBusho.bushoMei" name="MhrBusho.bushoMei" maxlength="60" />
         </div>
         <div id="oyaBushoId">
-          <label for="MhrBusho.oyaBushoId" th:text="#{MhrBusho.oyaBushoId}">親部署ID</label><input type="text" id="MhrBusho.oyaBushoId" name="MhrBusho.oyaBushoId" maxlength="10" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI" /><a id="MhrBusho.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrBusho.oyaBushoMei" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI"></span>
+          <label for="MhrBusho.oyaBushoId" th:text="#{MhrBusho.oyaBushoId}">親部署ID</label><input type="text" id="MhrBusho.oyaBushoId" name="MhrBusho.oyaBushoId" maxlength="10" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI" /><a id="MhrBusho.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrBusho.oyaBushoMei" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI"></span>
         </div>
         <div id="tekiyoBi">
           <label for="MhrBusho.tekiyoBi_1" th:text="#{MhrBusho.tekiyoBi}">適用日</label><input type="text" id="MhrBusho.tekiyoBi_1" name="MhrBusho.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrBusho.tekiyoBi_2" name="MhrBusho.tekiyoBi_2" maxlength="10" class=" datepicker" />
@@ -40,7 +41,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetMhrBusho" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/MhrBusho.html}" target="dialog" id="MhrBusho" class="anew" th:text="#{MhrBusho.add}" tabindex="-1">部署マスタ</a>
+        <a th:href="@{/model/MhrBusho.html(anew)}" target="dialog" id="MhrBusho" class="anew" th:text="#{MhrBusho.add}" tabindex="-1">部署マスタ</a>
       </div>
       <div class="submits">
         <button id="SearchMhrBusho" type="submit" class="search" data-gridId="MhrBushoGrid" th:text="#{common.search}">submit</button>

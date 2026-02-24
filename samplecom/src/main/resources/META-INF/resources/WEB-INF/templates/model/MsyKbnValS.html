@@ -10,10 +10,12 @@
 </script>
 <script th:src="@{/model/MsyKbnVal.js}"></script>
 <script th:src="@{/model/MsyKbnValGridColumns.js}"></script>
+<!-- 区分値マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MsyKbn.js}"></script>
 <script th:src="@{/model/MsyKbnGridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 区分マスタの参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -25,7 +27,7 @@
       <fieldset>
         <legend th:text="#{MsyKbnValS.legend}">legend</legend>
         <div id="kbnNm">
-          <label for="MsyKbnVal.kbnNm" th:text="#{MsyKbnVal.kbnNm}">区分名称</label><input type="text" id="MsyKbnVal.kbnNm" name="MsyKbnVal.kbnNm" maxlength="20" data-json="MsyKbnSearch.json" data-srcDef="KBN_NM:MsyKbnVal.kbnNm" data-destDef="MsyKbnVal.kbnMei:KBN_MEI" /><a id="MsyKbnVal.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKbnVal.kbnMei" data-json="MsyKbnSearch.json" data-srcDef="KBN_NM:MsyKbnVal.kbnNm" data-destDef="MsyKbnVal.kbnMei:KBN_MEI"></span>
+          <label for="MsyKbnVal.kbnNm" th:text="#{MsyKbnVal.kbnNm}">区分名称</label><input type="text" id="MsyKbnVal.kbnNm" name="MsyKbnVal.kbnNm" maxlength="20" class=" refer" data-json="MsyKbnSearch.json" data-srcDef="KBN_NM:MsyKbnVal.kbnNm" data-destDef="MsyKbnVal.kbnMei:KBN_MEI" /><a id="MsyKbnVal.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKbnVal.kbnMei" class=" refer" data-json="MsyKbnSearch.json" data-srcDef="KBN_NM:MsyKbnVal.kbnNm" data-destDef="MsyKbnVal.kbnMei:KBN_MEI"></span>
         </div>
         <div id="kbnVal">
           <label for="MsyKbnVal.kbnVal" th:text="#{MsyKbnVal.kbnVal}">区分値</label><input type="text" id="MsyKbnVal.kbnVal" name="MsyKbnVal.kbnVal" maxlength="2" />

@@ -19,7 +19,7 @@ public class M04NoRegistForm implements IForm {
     private static final Logger LOG = LoggerFactory.getLogger(M04NoRegistForm.class);
 
     /** 参照NO */
-    @jakarta.validation.constraints.NotBlank
+    @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,10})?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String norefNo;

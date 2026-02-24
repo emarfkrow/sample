@@ -10,10 +10,13 @@
 </script>
 <script th:src="@{/model/MhrShokuiNinka.js}"></script>
 <script th:src="@{/model/MhrShokuiNinkaGridColumns.js}"></script>
+<!-- 認可マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrBusho.js}"></script>
 <script th:src="@{/model/MhrBushoGridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 部署マスタの参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 認可マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrShokui.js}"></script>
 <script th:src="@{/model/MhrShokuiGridColumns.js}"></script>
 </head>
@@ -27,18 +30,16 @@
       <fieldset>
         <legend th:text="#{MhrShokuiNinkaS.legend}">legend</legend>
         <div id="bushoId">
-          <label for="MhrShokuiNinka.bushoId" th:text="#{MhrShokuiNinka.bushoId}">部署ID</label><input type="text" id="MhrShokuiNinka.bushoId" name="MhrShokuiNinka.bushoId" maxlength="10" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI" /><a id="MhrShokuiNinka.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.bushoMei" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI"></span>
+          <label for="MhrShokuiNinka.bushoId" th:text="#{MhrShokuiNinka.bushoId}">部署ID</label><input type="text" id="MhrShokuiNinka.bushoId" name="MhrShokuiNinka.bushoId" maxlength="10" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI" /><a id="MhrShokuiNinka.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.bushoMei" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI"></span>
         </div>
         <div id="shokuiId">
-          <label for="MhrShokuiNinka.shokuiId" th:text="#{MhrShokuiNinka.shokuiId}">職位ID</label><input type="text" id="MhrShokuiNinka.shokuiId" name="MhrShokuiNinka.shokuiId" maxlength="10" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI" /><a id="MhrShokuiNinka.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.shokuiMei" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI"></span>
+          <label for="MhrShokuiNinka.shokuiId" th:text="#{MhrShokuiNinka.shokuiId}">職位ID</label><input type="text" id="MhrShokuiNinka.shokuiId" name="MhrShokuiNinka.shokuiId" maxlength="10" class=" refer" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI" /><a id="MhrShokuiNinka.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.shokuiMei" class=" refer" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI"></span>
         </div>
-        <div id="kinoNm">
-          <label for="MhrShokuiNinka.kinoNm" th:text="#{MhrShokuiNinka.kinoNm}">機能名称</label><input type="text" id="MhrShokuiNinka.kinoNm" name="MhrShokuiNinka.kinoNm" maxlength="20" />
+        <div id="tableRegex">
+          <label for="MhrShokuiNinka.tableRegex" th:text="#{MhrShokuiNinka.tableRegex}">テーブル正規表現</label><input type="text" id="MhrShokuiNinka.tableRegex" name="MhrShokuiNinka.tableRegex" maxlength="20" />
         </div>
-        <div id="kengenKb">
-          <fieldset id="MhrShokuiNinka.kengenKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:KENGEN_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
-            <legend th:text="#{MhrShokuiNinka.kengenKb}">権限区分</legend>
-          </fieldset>
+        <div id="kengenB">
+          <label for="MhrShokuiNinka.kengenB" th:text="#{MhrShokuiNinka.kengenB}">権限ビット</label><input type="text" id="MhrShokuiNinka.kengenB" name="MhrShokuiNinka.kengenB" maxlength="10" />
         </div>
         <div id="tekiyoBi">
           <label for="MhrShokuiNinka.tekiyoBi_1" th:text="#{MhrShokuiNinka.tekiyoBi}">適用日</label><input type="text" id="MhrShokuiNinka.tekiyoBi_1" name="MhrShokuiNinka.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrShokuiNinka.tekiyoBi_2" name="MhrShokuiNinka.tekiyoBi_2" maxlength="10" class=" datepicker" />
@@ -49,7 +50,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetMhrShokuiNinka" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/MhrShokuiNinka.html}" target="dialog" id="MhrShokuiNinka" class="anew" th:text="#{MhrShokuiNinka.add}" tabindex="-1">認可マスタ</a>
+        <a th:href="@{/model/MhrShokuiNinka.html(anew)}" target="dialog" id="MhrShokuiNinka" class="anew" th:text="#{MhrShokuiNinka.add}" tabindex="-1">認可マスタ</a>
       </div>
       <div class="submits">
         <button id="SearchMhrShokuiNinka" type="submit" class="search" data-gridId="MhrShokuiNinkaGrid" th:text="#{common.search}">submit</button>

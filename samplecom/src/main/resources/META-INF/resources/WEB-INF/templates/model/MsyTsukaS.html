@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/MsyTsuka.js}"></script>
 <script th:src="@{/model/MsyTsukaGridColumns.js}"></script>
+<!-- 通貨マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -39,7 +40,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetMsyTsuka" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/MsyTsuka.html}" target="dialog" id="MsyTsuka" class="anew" th:text="#{MsyTsuka.add}" tabindex="-1">通貨マスタ</a>
+        <a th:href="@{/model/MsyTsuka.html(anew)}" target="dialog" id="MsyTsuka" class="anew" th:text="#{MsyTsuka.add}" tabindex="-1">通貨マスタ</a>
       </div>
       <div class="submits">
         <button id="SearchMsyTsuka" type="submit" class="search" data-gridId="MsyTsukaGrid" th:text="#{common.search}">submit</button>

@@ -10,12 +10,15 @@
 </script>
 <script th:src="@{/model/T11Tasho1.js}"></script>
 <script th:src="@{/model/T11Tasho1GridColumns.js}"></script>
+<!-- 他生１の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T11Reborn2.js}"></script>
 <script th:src="@{/model/T11Reborn2GridColumns.js}"></script>
-<script th:src="@{/model/T11Prev2.js}"></script>
-<script th:src="@{/model/T11Prev2GridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 転生２の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/T11Prev2.js}"></script>
+  <script th:src="@{/model/T11Prev2GridColumns.js}"></script>
+    <!-- 前世２の参照モデルのグリッド定義 -->
+    <script th:src="@{/model/MhrUser.js}"></script>
+    <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -30,12 +33,12 @@
           <label for="T11Tasho1.tasho1Id" th:text="#{T11Tasho1.tasho1Id}">他生１ID</label><input type="text" id="T11Tasho1.tasho1Id" name="T11Tasho1.tasho1Id" maxlength="10" />
         </div>
         <div id="reborn2Id">
-          <label for="T11Tasho1.reborn2Id" th:text="#{T11Tasho1.reborn2Id}">転生２ID</label><input type="text" id="T11Tasho1.reborn2Id" name="T11Tasho1.reborn2Id" maxlength="10" /><a id="T11Tasho1.reborn2Id" th:href="@{/model/T11Reborn2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T11Tasho1.reborn2Id" th:text="#{T11Tasho1.reborn2Id}">転生２ID</label><input type="text" id="T11Tasho1.reborn2Id" name="T11Tasho1.reborn2Id" maxlength="10" class=" refer" /><a id="T11Tasho1.reborn2Id" th:href="@{/model/T11Reborn2S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT11Tasho1" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T11Tasho1.html}" target="dialog" id="T11Tasho1" class="anew derive" th:text="#{T11Tasho1.add}" tabindex="-1">他生１</a>
+        <a th:href="@{/model/T11Tasho1.html(anew)}" target="dialog" id="T11Tasho1" class="anew derive" th:text="#{T11Tasho1.add}" tabindex="-1">他生１</a>
           <label for="T11Tasho1.deriveeReborn2Id" th:text="#{T11Tasho1.deriveeReborn2Id}">転生２ID</label><input type="text" id="T11Tasho1.deriveeReborn2Id" name="T11Tasho1.deriveeReborn2Id" maxlength="10" />
           <a id="T11Tasho1.deriveeReborn2Id" th:href="@{/model/T11Reborn2S.html?action=T11Reborn2Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
       </div>

@@ -2,6 +2,7 @@ SELECT
       a.`ENTITY_ID` AS `ENTITY_ID`
     , a.`ENTITY_NM` AS `ENTITY_NM`
     , a.`ENTITY_MEI` AS `ENTITY_MEI`
+    , a.`BIT_B` AS `BIT_B`
     , TRIM(TRAILING ' ' FROM a.`CHECK_F`) AS `CHECK_F`
     , a.`RADIO_KB` AS `RADIO_KB`
     , a.`PULLDOWN_KB` AS `PULLDOWN_KB`
@@ -40,6 +41,7 @@ WHERE
     AND a.`ENTITY_ID` = :entity_id 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`ENTITY_NM`)) LIKE UPPER (CONCAT ('%', :entity_nm, '%')) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`ENTITY_MEI`)) LIKE UPPER (CONCAT ('%', :entity_mei, '%')) 
+    AND a.`BIT_B` = :bit_b 
     AND CASE WHEN TRIM(TRAILING ' ' FROM a.`CHECK_F`) IS NULL THEN '0' ELSE TO_CHAR (a.`CHECK_F`) END IN (:check_f) 
     AND TRIM(TRAILING ' ' FROM a.`RADIO_KB`) IN (:radio_kb) 
     AND TRIM(TRAILING ' ' FROM a.`PULLDOWN_KB`) IN (:pulldown_kb) 

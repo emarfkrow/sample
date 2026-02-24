@@ -10,14 +10,18 @@
 </script>
 <script th:src="@{/model/T07Prev.js}"></script>
 <script th:src="@{/model/T07PrevGridColumns.js}"></script>
+<!-- 前世の参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 前世の子モデルのグリッド定義 -->
 <script th:src="@{/model/T07PrevDet.js}"></script>
 <script th:src="@{/model/T07PrevDetGridColumns.js}"></script>
+<!-- 前世の転生先モデルのグリッド定義 -->
 <script th:src="@{/model/T07Reborn.js}"></script>
 <script th:src="@{/model/T07RebornGridColumns.js}"></script>
-<script th:src="@{/model/T07RebornDet.js}"></script>
-<script th:src="@{/model/T07RebornDetGridColumns.js}"></script>
+  <!-- 転生の子モデルのグリッド定義 -->
+  <script th:src="@{/model/T07RebornDet.js}"></script>
+  <script th:src="@{/model/T07RebornDetGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -37,7 +41,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT07Prev" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T07Prev.html}" target="dialog" id="T07Prev" class="anew" th:text="#{T07Prev.add}" tabindex="-1">前世</a>
+        <a th:href="@{/model/T07Prev.html(anew)}" target="dialog" id="T07Prev" class="anew" th:text="#{T07Prev.add}" tabindex="-1">前世</a>
       </div>
       <div class="submits">
         <button id="SearchT07Prev" type="submit" class="search" data-gridId="T07PrevGrid" th:text="#{common.search}">submit</button>

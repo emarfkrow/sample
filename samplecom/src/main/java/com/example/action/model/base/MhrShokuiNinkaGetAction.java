@@ -41,11 +41,11 @@ public class MhrShokuiNinkaGetAction extends BaseAction {
             isAllKey = false;
         }
 
-        Object kinoNm = postJson.get("kinoNm");
-        if (kinoNm == null) {
-            kinoNm = postJson.get("MhrShokuiNinka.kinoNm");
+        Object tableRegex = postJson.get("tableRegex");
+        if (tableRegex == null) {
+            tableRegex = postJson.get("MhrShokuiNinka.tableRegex");
         }
-        if (kinoNm == null) {
+        if (tableRegex == null) {
             isAllKey = false;
         }
 
@@ -55,7 +55,7 @@ public class MhrShokuiNinkaGetAction extends BaseAction {
         }
 
         try {
-            MhrShokuiNinka mhrShokuiNinka = MhrShokuiNinka.get(bushoId, shokuiId, kinoNm);
+            MhrShokuiNinka mhrShokuiNinka = MhrShokuiNinka.get(bushoId, shokuiId, tableRegex);
             map.put("MhrShokuiNinka", mhrShokuiNinka);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

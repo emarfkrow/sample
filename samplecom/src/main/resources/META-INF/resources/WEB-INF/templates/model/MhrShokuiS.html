@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/MhrShokui.js}"></script>
 <script th:src="@{/model/MhrShokuiGridColumns.js}"></script>
+<!-- 職位マスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -40,7 +41,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetMhrShokui" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/MhrShokui.html}" target="dialog" id="MhrShokui" class="anew" th:text="#{MhrShokui.add}" tabindex="-1">職位マスタ</a>
+        <a th:href="@{/model/MhrShokui.html(anew)}" target="dialog" id="MhrShokui" class="anew" th:text="#{MhrShokui.add}" tabindex="-1">職位マスタ</a>
       </div>
       <div class="submits">
         <button id="SearchMhrShokui" type="submit" class="search" data-gridId="MhrShokuiGrid" th:text="#{common.search}">submit</button>

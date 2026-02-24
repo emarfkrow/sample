@@ -10,12 +10,15 @@
 </script>
 <script th:src="@{/model/T12Reborn3.js}"></script>
 <script th:src="@{/model/T12Reborn3GridColumns.js}"></script>
+<!-- 転生３の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T12Tasho2.js}"></script>
 <script th:src="@{/model/T12Tasho2GridColumns.js}"></script>
-<script th:src="@{/model/T12Koho3.js}"></script>
-<script th:src="@{/model/T12Koho3GridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 他生２の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/T12Koho3.js}"></script>
+  <script th:src="@{/model/T12Koho3GridColumns.js}"></script>
+    <!-- 候補３の参照モデルのグリッド定義 -->
+    <script th:src="@{/model/MhrUser.js}"></script>
+    <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -30,12 +33,12 @@
           <label for="T12Reborn3.reborn3Id" th:text="#{T12Reborn3.reborn3Id}">転生３ID</label><input type="text" id="T12Reborn3.reborn3Id" name="T12Reborn3.reborn3Id" maxlength="10" />
         </div>
         <div id="tasho2Id">
-          <label for="T12Reborn3.tasho2Id" th:text="#{T12Reborn3.tasho2Id}">他生２ID</label><input type="text" id="T12Reborn3.tasho2Id" name="T12Reborn3.tasho2Id" maxlength="10" /><a id="T12Reborn3.tasho2Id" th:href="@{/model/T12Tasho2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T12Reborn3.tasho2Id" th:text="#{T12Reborn3.tasho2Id}">他生２ID</label><input type="text" id="T12Reborn3.tasho2Id" name="T12Reborn3.tasho2Id" maxlength="10" class=" refer" /><a id="T12Reborn3.tasho2Id" th:href="@{/model/T12Tasho2S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT12Reborn3" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T12Reborn3.html}" target="dialog" id="T12Reborn3" class="anew" th:text="#{T12Reborn3.add}" tabindex="-1">転生３</a>
+        <a th:href="@{/model/T12Reborn3.html(anew)}" target="dialog" id="T12Reborn3" class="anew" th:text="#{T12Reborn3.add}" tabindex="-1">転生３</a>
       </div>
       <div class="submits">
         <button id="SearchT12Reborn3" type="submit" class="search" data-gridId="T12Reborn3Grid" th:text="#{common.search}">submit</button>

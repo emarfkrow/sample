@@ -19,7 +19,7 @@ public class MsyTsukaRegistForm implements IForm {
     private static final Logger LOG = LoggerFactory.getLogger(MsyTsukaRegistForm.class);
 
     /** 通貨区分 */
-    @jakarta.validation.constraints.NotBlank
+    @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String tsukaKb;
@@ -37,7 +37,7 @@ public class MsyTsukaRegistForm implements IForm {
     }
 
     /** 適用日 */
-    @jakarta.validation.constraints.NotBlank
+    @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String tekiyoBi;

@@ -10,10 +10,13 @@
 </script>
 <script th:src="@{/model/T08Kyosei.js}"></script>
 <script th:src="@{/model/T08KyoseiGridColumns.js}"></script>
+<!-- 共生の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T08Kisei1.js}"></script>
 <script th:src="@{/model/T08Kisei1GridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 寄生１の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 共生の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T08Kisei2.js}"></script>
 <script th:src="@{/model/T08Kisei2GridColumns.js}"></script>
 </head>
@@ -30,13 +33,13 @@
           <label for="T08Kyosei.kyoseiId" th:text="#{T08Kyosei.kyoseiId}">共生ID</label><input type="text" id="T08Kyosei.kyoseiId" name="T08Kyosei.kyoseiId" maxlength="10" />
         </div>
         <div id="kisei1Id">
-          <label for="T08Kyosei.kisei1Id" th:text="#{T08Kyosei.kisei1Id}">寄生１ID</label><input type="text" id="T08Kyosei.kisei1Id" name="T08Kyosei.kisei1Id" maxlength="10" /><a id="T08Kyosei.kisei1Id" th:href="@{/model/T08Kisei1S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T08Kyosei.kisei1Id" th:text="#{T08Kyosei.kisei1Id}">寄生１ID</label><input type="text" id="T08Kyosei.kisei1Id" name="T08Kyosei.kisei1Id" maxlength="10" class=" refer" /><a id="T08Kyosei.kisei1Id" th:href="@{/model/T08Kisei1S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
         <div id="kisei1Info">
           <label for="T08Kyosei.kisei1Info" th:text="#{T08Kyosei.kisei1Info}">寄生１情報</label><input type="text" id="T08Kyosei.kisei1Info" name="T08Kyosei.kisei1Info" maxlength="300" />
         </div>
         <div id="kisei2Id">
-          <label for="T08Kyosei.kisei2Id" th:text="#{T08Kyosei.kisei2Id}">寄生２ID</label><input type="text" id="T08Kyosei.kisei2Id" name="T08Kyosei.kisei2Id" maxlength="10" /><a id="T08Kyosei.kisei2Id" th:href="@{/model/T08Kisei2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T08Kyosei.kisei2Id" th:text="#{T08Kyosei.kisei2Id}">寄生２ID</label><input type="text" id="T08Kyosei.kisei2Id" name="T08Kyosei.kisei2Id" maxlength="10" class=" refer" /><a id="T08Kyosei.kisei2Id" th:href="@{/model/T08Kisei2S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
         <div id="kisei2Info">
           <label for="T08Kyosei.kisei2Info" th:text="#{T08Kyosei.kisei2Info}">寄生２情報</label><input type="text" id="T08Kyosei.kisei2Info" name="T08Kyosei.kisei2Info" maxlength="300" />
@@ -44,7 +47,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT08Kyosei" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T08Kyosei.html}" target="dialog" id="T08Kyosei" class="anew" th:text="#{T08Kyosei.add}" tabindex="-1">共生</a>
+        <a th:href="@{/model/T08Kyosei.html(anew)}" target="dialog" id="T08Kyosei" class="anew" th:text="#{T08Kyosei.add}" tabindex="-1">共生</a>
       </div>
       <div class="submits">
         <button id="SearchT08Kyosei" type="submit" class="search" data-gridId="T08KyoseiGrid" th:text="#{common.search}">submit</button>

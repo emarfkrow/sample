@@ -10,18 +10,24 @@
 </script>
 <script th:src="@{/model/T06Org.js}"></script>
 <script th:src="@{/model/T06OrgGridColumns.js}"></script>
+<!-- 起源の参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 起源の子モデルのグリッド定義 -->
 <script th:src="@{/model/T06OrgDet.js}"></script>
 <script th:src="@{/model/T06OrgDetGridColumns.js}"></script>
+<!-- 起源の派生先モデルのグリッド定義 -->
 <script th:src="@{/model/T06Derive1.js}"></script>
 <script th:src="@{/model/T06Derive1GridColumns.js}"></script>
-<script th:src="@{/model/T06Derive1Det.js}"></script>
-<script th:src="@{/model/T06Derive1DetGridColumns.js}"></script>
+  <!-- 派生１の子モデルのグリッド定義 -->
+  <script th:src="@{/model/T06Derive1Det.js}"></script>
+  <script th:src="@{/model/T06Derive1DetGridColumns.js}"></script>
+<!-- 起源の派生先モデルのグリッド定義 -->
 <script th:src="@{/model/T06Derive2.js}"></script>
 <script th:src="@{/model/T06Derive2GridColumns.js}"></script>
-<script th:src="@{/model/T06Derive2Det.js}"></script>
-<script th:src="@{/model/T06Derive2DetGridColumns.js}"></script>
+  <!-- 派生２の子モデルのグリッド定義 -->
+  <script th:src="@{/model/T06Derive2Det.js}"></script>
+  <script th:src="@{/model/T06Derive2DetGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -41,7 +47,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT06Org" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T06Org.html}" target="dialog" id="T06Org" class="anew" th:text="#{T06Org.add}" tabindex="-1">起源</a>
+        <a th:href="@{/model/T06Org.html(anew)}" target="dialog" id="T06Org" class="anew" th:text="#{T06Org.add}" tabindex="-1">起源</a>
       </div>
       <div class="submits">
         <button id="SearchT06Org" type="submit" class="search" data-gridId="T06OrgGrid" th:text="#{common.search}">submit</button>

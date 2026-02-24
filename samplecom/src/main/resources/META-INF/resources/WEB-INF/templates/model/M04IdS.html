@@ -10,8 +10,10 @@
 </script>
 <script th:src="@{/model/M04Id.js}"></script>
 <script th:src="@{/model/M04IdGridColumns.js}"></script>
+<!-- IDマスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- IDマスタの子モデルのグリッド定義 -->
 <script th:src="@{/model/M04Idbn.js}"></script>
 <script th:src="@{/model/M04IdbnGridColumns.js}"></script>
 </head>
@@ -33,7 +35,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetM04Id" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/M04Id.html}" target="dialog" id="M04Id" class="anew" th:text="#{M04Id.add}" tabindex="-1">IDマスタ</a>
+        <a th:href="@{/model/M04Id.html(anew)}" target="dialog" id="M04Id" class="anew" th:text="#{M04Id.add}" tabindex="-1">IDマスタ</a>
       </div>
       <div class="submits">
         <button id="SearchM04Id" type="submit" class="search" data-gridId="M04IdGrid" th:text="#{common.search}">submit</button>

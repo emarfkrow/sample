@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/T00Entity.js}"></script>
 <script th:src="@{/model/T00EntityGridColumns.js}"></script>
+<!-- エンティティの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -30,6 +31,9 @@
         </div>
         <div id="entityMei">
           <label for="T00Entity.entityMei" th:text="#{T00Entity.entityMei}">エンティティ名</label><input type="text" id="T00Entity.entityMei" name="T00Entity.entityMei" maxlength="60" />
+        </div>
+        <div id="bitB">
+          <label for="T00Entity.bitB" th:text="#{T00Entity.bitB}">ビットフラグ</label><input type="text" id="T00Entity.bitB" name="T00Entity.bitB" maxlength="10" />
         </div>
         <div id="checkF">
           <fieldset id="T00Entity.checkFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:CHECK_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
@@ -117,7 +121,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT00Entity" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T00Entity.html}" target="dialog" id="T00Entity" class="anew" th:text="#{T00Entity.add}" tabindex="-1">エンティティ</a>
+        <a th:href="@{/model/T00Entity.html(anew)}" target="dialog" id="T00Entity" class="anew" th:text="#{T00Entity.add}" tabindex="-1">エンティティ</a>
       </div>
       <div class="submits">
         <button id="SearchT00Entity" type="submit" class="search" data-gridId="T00EntityGrid" th:text="#{common.search}">submit</button>

@@ -65,6 +65,21 @@ public class T00EntityRegistForm implements IForm {
         this.entityMei = p;
     }
 
+    /** ビットフラグ */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    private String bitB;
+
+    /** @return ビットフラグ */
+    public String getBitB() {
+        return bitB;
+    }
+
+    /** @param p ビットフラグ */
+    public void setBitB(final String p) {
+        this.bitB = p;
+    }
+
     /** チェックフラグ */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 1)

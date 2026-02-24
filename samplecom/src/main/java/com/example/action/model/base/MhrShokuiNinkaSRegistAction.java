@@ -46,7 +46,7 @@ public class MhrShokuiNinkaSRegistAction extends BaseAction {
                 if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getShokuiId())) {
                     isNew = true;
                 }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getKinoNm())) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getTableRegex())) {
                     isNew = true;
                 }
                 // 楽観ロック値がなくてもINSERT

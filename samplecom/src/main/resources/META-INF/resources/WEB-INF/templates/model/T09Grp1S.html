@@ -10,12 +10,15 @@
 </script>
 <script th:src="@{/model/T09Grp1.js}"></script>
 <script th:src="@{/model/T09Grp1GridColumns.js}"></script>
+<!-- 集団１の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T09Sum.js}"></script>
 <script th:src="@{/model/T09SumGridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/model/T09Grp2.js}"></script>
-<script th:src="@{/model/T09Grp2GridColumns.js}"></script>
+  <!-- 集約の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 集約の集約元モデルのグリッド定義 -->
+  <script th:src="@{/model/T09Grp2.js}"></script>
+  <script th:src="@{/model/T09Grp2GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -30,12 +33,12 @@
           <label for="T09Grp1.grp1Id" th:text="#{T09Grp1.grp1Id}">集団１ID</label><input type="text" id="T09Grp1.grp1Id" name="T09Grp1.grp1Id" maxlength="10" />
         </div>
         <div id="sumId">
-          <label for="T09Grp1.sumId" th:text="#{T09Grp1.sumId}">集約ID</label><input type="text" id="T09Grp1.sumId" name="T09Grp1.sumId" maxlength="10" /><a id="T09Grp1.sumId" th:href="@{/model/T09SumS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T09Grp1.sumId" th:text="#{T09Grp1.sumId}">集約ID</label><input type="text" id="T09Grp1.sumId" name="T09Grp1.sumId" maxlength="10" class=" refer" /><a id="T09Grp1.sumId" th:href="@{/model/T09SumS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT09Grp1" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T09Grp1.html}" target="dialog" id="T09Grp1" class="anew" th:text="#{T09Grp1.add}" tabindex="-1">集団１</a>
+        <a th:href="@{/model/T09Grp1.html(anew)}" target="dialog" id="T09Grp1" class="anew" th:text="#{T09Grp1.add}" tabindex="-1">集団１</a>
       </div>
       <div class="submits">
         <button id="SearchT09Grp1" type="submit" class="search" data-gridId="T09Grp1Grid" th:text="#{common.search}">submit</button>

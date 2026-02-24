@@ -3,8 +3,8 @@ SELECT
     , (SELECT r0.`BUSHO_MEI` FROM MHR_BUSHO r0 WHERE r0.`BUSHO_ID` = a.`BUSHO_ID`) AS `BUSHO_MEI`
     , a.`SHOKUI_ID` AS `SHOKUI_ID`
     , (SELECT r1.`SHOKUI_MEI` FROM MHR_SHOKUI r1 WHERE r1.`SHOKUI_ID` = a.`SHOKUI_ID`) AS `SHOKUI_MEI`
-    , a.`KINO_NM` AS `KINO_NM`
-    , a.`KENGEN_KB` AS `KENGEN_KB`
+    , a.`TABLE_REGEX` AS `TABLE_REGEX`
+    , a.`KENGEN_B` AS `KENGEN_B`
     , a.`TEKIYO_BI` AS `TEKIYO_BI`
     , a.`HAISHI_BI` AS `HAISHI_BI`
     , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
@@ -19,9 +19,9 @@ WHERE
     1 = 1 
     AND a.`BUSHO_ID` = :busho_id 
     AND a.`SHOKUI_ID` = :shokui_id 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`KINO_NM`)) = UPPER (:kino_nm_full) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`KINO_NM`)) LIKE UPPER (CONCAT ('%', :kino_nm, '%')) 
-    AND TRIM(TRAILING ' ' FROM a.`KENGEN_KB`) IN (:kengen_kb) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`TABLE_REGEX`)) = UPPER (:table_regex_full) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`TABLE_REGEX`)) LIKE UPPER (CONCAT ('%', :table_regex, '%')) 
+    AND a.`KENGEN_B` = :kengen_b 
     AND a.`TEKIYO_BI` = :tekiyo_bi 
     AND a.`TEKIYO_BI` >= :tekiyo_bi_1 
     AND a.`TEKIYO_BI` <= :tekiyo_bi_2 
@@ -39,4 +39,4 @@ WHERE
 ORDER BY
     a.`BUSHO_ID`
     , a.`SHOKUI_ID`
-    , a.`KINO_NM`
+    , a.`TABLE_REGEX`

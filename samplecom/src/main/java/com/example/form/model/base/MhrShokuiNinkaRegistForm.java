@@ -52,37 +52,37 @@ public class MhrShokuiNinkaRegistForm implements IForm {
         this.shokuiId = p;
     }
 
-    /** 機能名称 */
-    @jakarta.validation.constraints.NotBlank
+    /** テーブル正規表現 */
+    @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 20)
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String kinoNm;
+    private String tableRegex;
 
-    /** @return 機能名称 */
+    /** @return テーブル正規表現 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getKinoNm() {
-        return kinoNm;
+    public String getTableRegex() {
+        return tableRegex;
     }
 
-    /** @param p 機能名称 */
+    /** @param p テーブル正規表現 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setKinoNm(final String p) {
-        this.kinoNm = p;
+    public void setTableRegex(final String p) {
+        this.tableRegex = p;
     }
 
-    /** 権限区分 */
+    /** 権限ビット */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 2)
-    private String kengenKb;
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    private String kengenB;
 
-    /** @return 権限区分 */
-    public String getKengenKb() {
-        return kengenKb;
+    /** @return 権限ビット */
+    public String getKengenB() {
+        return kengenB;
     }
 
-    /** @param p 権限区分 */
-    public void setKengenKb(final String p) {
-        this.kengenKb = p;
+    /** @param p 権限ビット */
+    public void setKengenB(final String p) {
+        this.kengenB = p;
     }
 
     /** 適用日 */

@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/M04No.js}"></script>
 <script th:src="@{/model/M04NoGridColumns.js}"></script>
+<!-- NOマスタの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -31,7 +32,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetM04No" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/M04No.html}" target="dialog" id="M04No" class="anew" th:text="#{M04No.add}" tabindex="-1">NOマスタ</a>
+        <a th:href="@{/model/M04No.html(anew)}" target="dialog" id="M04No" class="anew" th:text="#{M04No.add}" tabindex="-1">NOマスタ</a>
       </div>
       <div class="submits">
         <button id="SearchM04No" type="submit" class="search" data-gridId="M04NoGrid" th:text="#{common.search}">submit</button>

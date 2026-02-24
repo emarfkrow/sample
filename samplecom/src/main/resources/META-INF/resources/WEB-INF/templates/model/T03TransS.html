@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/T03Trans.js}"></script>
 <script th:src="@{/model/T03TransGridColumns.js}"></script>
+<!-- 変遷の参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -31,7 +32,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT03Trans" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T03Trans.html}" target="dialog" id="T03Trans" class="anew" th:text="#{T03Trans.add}" tabindex="-1">変遷</a>
+        <a th:href="@{/model/T03Trans.html(anew)}" target="dialog" id="T03Trans" class="anew" th:text="#{T03Trans.add}" tabindex="-1">変遷</a>
       </div>
       <div class="submits">
         <button id="SearchT03Trans" type="submit" class="search" data-gridId="T03TransGrid" th:text="#{common.search}">submit</button>

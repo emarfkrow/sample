@@ -114,42 +114,42 @@ public class MhrShokuiNinka implements IEntity {
         }
     }
 
-    /** 機能名称 */
+    /** テーブル正規表現 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String kinoNm;
+    private String tableRegex;
 
-    /** @return 機能名称 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KINO_NM", index = 6)
+    /** @return テーブル正規表現 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_REGEX", index = 6)
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getKinoNm() {
-        return this.kinoNm;
+    public String getTableRegex() {
+        return this.tableRegex;
     }
 
-    /** @param o 機能名称 */
+    /** @param o テーブル正規表現 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setKinoNm(final Object o) {
+    public void setTableRegex(final Object o) {
         if (o != null) {
-            this.kinoNm = o.toString();
+            this.tableRegex = o.toString();
         } else {
-            this.kinoNm = null;
+            this.tableRegex = null;
         }
     }
 
-    /** 権限区分 */
-    private Integer kengenBf;
+    /** 権限ビット */
+    private Integer kengenB;
 
-    /** @return 権限区分 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KENGEN_KB", index = 7)
-    public Integer getKengenKb() {
-        return this.kengenBf;
+    /** @return 権限ビット */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KENGEN_B", index = 7)
+    public Integer getKengenB() {
+        return this.kengenB;
     }
 
-    /** @param o 権限区分 */
-    public void setKengenKb(final Object o) {
+    /** @param o 権限ビット */
+    public void setKengenB(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.kengenBf = Integer.valueOf(o.toString());
+            this.kengenB = Integer.valueOf(o.toString());
         } else {
-            this.kengenBf = null;
+            this.kengenB = null;
         }
     }
 
@@ -330,20 +330,20 @@ public class MhrShokuiNinka implements IEntity {
      * 認可マスタ照会
      * @param param1 部署ID
      * @param param2 職位ID
-     * @param param3 機能名称
+     * @param param3 テーブル正規表現
      * @return 認可マスタ
      */
     public static MhrShokuiNinka get(final Object param1, final Object param2, final Object param3) {
         List<String> whereList = new ArrayList<String>();
         whereList.add("`BUSHO_ID` = :busho_id");
         whereList.add("`SHOKUI_ID` = :shokui_id");
-        whereList.add("`KINO_NM` = :kino_nm");
+        whereList.add("`TABLE_REGEX` = :table_regex");
         String sql = "";
         sql += "SELECT \n";
         sql += "      a.`BUSHO_ID` \n";
         sql += "    , a.`SHOKUI_ID` \n";
-        sql += "    , a.`KINO_NM` \n";
-        sql += "    , a.`KENGEN_KB` \n";
+        sql += "    , a.`TABLE_REGEX` \n";
+        sql += "    , a.`KENGEN_B` \n";
         sql += "    , a.`TEKIYO_BI` AS TEKIYO_BI \n";
         sql += "    , a.`HAISHI_BI` AS HAISHI_BI \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
@@ -357,7 +357,7 @@ public class MhrShokuiNinka implements IEntity {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("busho_id", param1);
         map.put("shokui_id", param2);
-        map.put("kino_nm", param3);
+        map.put("table_regex", param3);
         return Queries.get(sql, map, MhrShokuiNinka.class);
     }
 
@@ -370,8 +370,7 @@ public class MhrShokuiNinka implements IEntity {
     public int insert(final LocalDateTime now, final String execId) {
 
         // 認可マスタの登録
-        String sql = "INSERT INTO MHR_SHOKUI_NINKA(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values()
-                + "\r\n)";
+        String sql = "INSERT INTO MHR_SHOKUI_NINKA(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return Queries.regist(sql, toMap(now, execId));
     }
 
@@ -380,8 +379,8 @@ public class MhrShokuiNinka implements IEntity {
         List<String> nameList = new ArrayList<String>();
         nameList.add("`BUSHO_ID` -- :busho_id");
         nameList.add("`SHOKUI_ID` -- :shokui_id");
-        nameList.add("`KINO_NM` -- :kino_nm");
-        nameList.add("`KENGEN_KB` -- :kengen_kb");
+        nameList.add("`TABLE_REGEX` -- :table_regex");
+        nameList.add("`KENGEN_B` -- :kengen_b");
         nameList.add("`TEKIYO_BI` -- :tekiyo_bi");
         nameList.add("`HAISHI_BI` -- :haishi_bi");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -396,8 +395,8 @@ public class MhrShokuiNinka implements IEntity {
         List<String> valueList = new ArrayList<String>();
         valueList.add(":busho_id");
         valueList.add(":shokui_id");
-        valueList.add(":kino_nm");
-        valueList.add(":kengen_kb");
+        valueList.add(":table_regex");
+        valueList.add(":kengen_b");
         valueList.add(":tekiyo_bi");
         valueList.add(":haishi_bi");
         valueList.add(":insert_ts");
@@ -425,8 +424,8 @@ public class MhrShokuiNinka implements IEntity {
         List<String> setList = new ArrayList<String>();
         setList.add("`BUSHO_ID` = :busho_id");
         setList.add("`SHOKUI_ID` = :shokui_id");
-        setList.add("`KINO_NM` = :kino_nm");
-        setList.add("`KENGEN_KB` = :kengen_kb");
+        setList.add("`TABLE_REGEX` = :table_regex");
+        setList.add("`KENGEN_B` = :kengen_b");
         setList.add("`TEKIYO_BI` = :tekiyo_bi");
         setList.add("`HAISHI_BI` = :haishi_bi");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -450,7 +449,7 @@ public class MhrShokuiNinka implements IEntity {
         List<String> whereList = new ArrayList<String>();
         whereList.add("`BUSHO_ID` = :busho_id");
         whereList.add("`SHOKUI_ID` = :shokui_id");
-        whereList.add("`KINO_NM` = :kino_nm");
+        whereList.add("`TABLE_REGEX` = :table_regex");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
@@ -464,8 +463,8 @@ public class MhrShokuiNinka implements IEntity {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("busho_id", this.bushoId);
         map.put("shokui_id", this.shokuiId);
-        map.put("kino_nm", this.kinoNm);
-        map.put("kengen_kb", this.kengenBf);
+        map.put("table_regex", this.tableRegex);
+        map.put("kengen_b", this.kengenB);
         map.put("tekiyo_bi", this.tekiyoBi);
         map.put("haishi_bi", this.haishiBi);
         map.put("insert_ts", now);

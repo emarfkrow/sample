@@ -10,10 +10,13 @@
 </script>
 <script th:src="@{/model/T12Tasho2.js}"></script>
 <script th:src="@{/model/T12Tasho2GridColumns.js}"></script>
+<!-- 他生２の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T12Koho3.js}"></script>
 <script th:src="@{/model/T12Koho3GridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+  <!-- 候補３の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 他生２の転生先モデルのグリッド定義 -->
 <script th:src="@{/model/T12Reborn3.js}"></script>
 <script th:src="@{/model/T12Reborn3GridColumns.js}"></script>
 </head>
@@ -30,12 +33,12 @@
           <label for="T12Tasho2.tasho2Id" th:text="#{T12Tasho2.tasho2Id}">他生２ID</label><input type="text" id="T12Tasho2.tasho2Id" name="T12Tasho2.tasho2Id" maxlength="10" />
         </div>
         <div id="koho3Id">
-          <label for="T12Tasho2.koho3Id" th:text="#{T12Tasho2.koho3Id}">候補３ID</label><input type="text" id="T12Tasho2.koho3Id" name="T12Tasho2.koho3Id" maxlength="10" /><a id="T12Tasho2.koho3Id" th:href="@{/model/T12Koho3S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T12Tasho2.koho3Id" th:text="#{T12Tasho2.koho3Id}">候補３ID</label><input type="text" id="T12Tasho2.koho3Id" name="T12Tasho2.koho3Id" maxlength="10" class=" refer" /><a id="T12Tasho2.koho3Id" th:href="@{/model/T12Koho3S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT12Tasho2" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T12Tasho2.html}" target="dialog" id="T12Tasho2" class="anew derive" th:text="#{T12Tasho2.add}" tabindex="-1">他生２</a>
+        <a th:href="@{/model/T12Tasho2.html(anew)}" target="dialog" id="T12Tasho2" class="anew derive" th:text="#{T12Tasho2.add}" tabindex="-1">他生２</a>
           <label for="T12Tasho2.deriveeKoho3Id" th:text="#{T12Tasho2.deriveeKoho3Id}">候補３ID</label><input type="text" id="T12Tasho2.deriveeKoho3Id" name="T12Tasho2.deriveeKoho3Id" maxlength="10" />
           <a id="T12Tasho2.deriveeKoho3Id" th:href="@{/model/T12Koho3S.html?action=T12Koho3Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
       </div>

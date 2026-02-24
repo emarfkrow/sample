@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/T00Nokey.js}"></script>
 <script th:src="@{/model/T00NokeyGridColumns.js}"></script>
+<!-- 主キーなしの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -40,7 +41,7 @@
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT00Nokey" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T00Nokey.html}" target="dialog" id="T00Nokey" class="anew" th:text="#{T00Nokey.add}" tabindex="-1">主キーなし</a>
+        <a th:href="@{/model/T00Nokey.html(anew)}" target="dialog" id="T00Nokey" class="anew" th:text="#{T00Nokey.add}" tabindex="-1">主キーなし</a>
       </div>
       <div class="submits">
         <button id="SearchT00Nokey" type="submit" class="search" data-gridId="T00NokeyGrid" th:text="#{common.search}">submit</button>

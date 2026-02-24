@@ -10,14 +10,18 @@
 </script>
 <script th:src="@{/model/T07Reborn.js}"></script>
 <script th:src="@{/model/T07RebornGridColumns.js}"></script>
+<!-- 転生の参照モデルのグリッド定義 -->
 <script th:src="@{/model/T07Prev.js}"></script>
 <script th:src="@{/model/T07PrevGridColumns.js}"></script>
-<script th:src="@{/model/MhrUser.js}"></script>
-<script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/model/T07PrevDet.js}"></script>
-<script th:src="@{/model/T07PrevDetGridColumns.js}"></script>
+  <!-- 前世の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 転生の子モデルのグリッド定義 -->
 <script th:src="@{/model/T07RebornDet.js}"></script>
 <script th:src="@{/model/T07RebornDetGridColumns.js}"></script>
+  <!-- 前世の子モデルのグリッド定義 -->
+  <script th:src="@{/model/T07PrevDet.js}"></script>
+  <script th:src="@{/model/T07PrevDetGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -35,12 +39,12 @@
           <label for="T07Reborn.prevInfo" th:text="#{T07Reborn.prevInfo}">前世情報</label><input type="text" id="T07Reborn.prevInfo" name="T07Reborn.prevInfo" maxlength="300" />
         </div>
         <div id="prevId">
-          <label for="T07Reborn.prevId" th:text="#{T07Reborn.prevId}">前世ID</label><input type="text" id="T07Reborn.prevId" name="T07Reborn.prevId" maxlength="10" /><a id="T07Reborn.prevId" th:href="@{/model/T07PrevS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T07Reborn.prevId" th:text="#{T07Reborn.prevId}">前世ID</label><input type="text" id="T07Reborn.prevId" name="T07Reborn.prevId" maxlength="10" class=" refer" /><a id="T07Reborn.prevId" th:href="@{/model/T07PrevS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="reset" id="ResetT07Reborn" th:text="#{common.reset}" class="reset">reset</button>
-        <a th:href="@{/model/T07Reborn.html}" target="dialog" id="T07Reborn" class="anew" th:text="#{T07Reborn.add}" tabindex="-1">転生</a>
+        <a th:href="@{/model/T07Reborn.html(anew)}" target="dialog" id="T07Reborn" class="anew" th:text="#{T07Reborn.add}" tabindex="-1">転生</a>
       </div>
       <div class="submits">
         <button id="SearchT07Reborn" type="submit" class="search" data-gridId="T07RebornGrid" th:text="#{common.search}">submit</button>
