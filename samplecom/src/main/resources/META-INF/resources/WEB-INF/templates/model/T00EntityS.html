@@ -33,7 +33,8 @@
           <label for="T00Entity.entityMei" th:text="#{T00Entity.entityMei}">エンティティ名</label><input type="text" id="T00Entity.entityMei" name="T00Entity.entityMei" maxlength="60" />
         </div>
         <div id="bitB">
-          <label for="T00Entity.bitB" th:text="#{T00Entity.bitB}">ビットフラグ</label><input type="text" id="T00Entity.bitB" name="T00Entity.bitB" maxlength="10" />
+          <label for="T00Entity.bitBF" th:text="#{T00Entity.bitB}">ビットフラグ</label><input type="text" id="T00Entity.bitBF" name="T00Entity.bitBF" maxlength="10" class=" bit right" />
+          <span id="T00Entity.bitB" class=" bit right"></span><input type="hidden" id="T00Entity.bitB" name="T00Entity.bitB" class=" bit right" />
         </div>
         <div id="checkF">
           <fieldset id="T00Entity.checkFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:CHECK_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">

@@ -36,7 +36,8 @@
           <label for="MhrShokuiNinka.tableRegex" th:text="#{MhrShokuiNinka.tableRegex}">テーブル正規表現</label><input type="text" id="MhrShokuiNinka.tableRegex" name="MhrShokuiNinka.tableRegex" maxlength="20" class=" primaryKey notblank" />
         </div>
         <div id="kengenB">
-          <label for="MhrShokuiNinka.kengenB" th:text="#{MhrShokuiNinka.kengenB}">権限ビット</label><input type="text" id="MhrShokuiNinka.kengenB" name="MhrShokuiNinka.kengenB" maxlength="10" class=" notblank" />
+          <label for="MhrShokuiNinka.kengenBF" th:text="#{MhrShokuiNinka.kengenB}">権限ビット</label><input type="text" id="MhrShokuiNinka.kengenBF" name="MhrShokuiNinka.kengenBF" maxlength="10" class=" notblank bit right" />
+          <span id="MhrShokuiNinka.kengenB" class=" notblank bit right"></span><input type="hidden" id="MhrShokuiNinka.kengenB" name="MhrShokuiNinka.kengenB" class=" notblank bit right" />
         </div>
         <div id="tekiyoBi">
           <label for="MhrShokuiNinka.tekiyoBi" th:text="#{MhrShokuiNinka.tekiyoBi}">適用日</label><input type="text" id="MhrShokuiNinka.tekiyoBi" name="MhrShokuiNinka.tekiyoBi" maxlength="10" class=" datepicker" />

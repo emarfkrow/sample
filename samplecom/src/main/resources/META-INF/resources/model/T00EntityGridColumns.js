@@ -9,7 +9,7 @@ $(function() {
         Column.text('ENTITY_ID', Messages['T00EntityGrid.entityId'], 100, 'primaryKey numbering', null),
         Column.text('ENTITY_NM', Messages['T00EntityGrid.entityNm'], 200, 'notblank', null),
         Column.text('ENTITY_MEI', Messages['T00EntityGrid.entityMei'], 300, 'notblank', null),
-        Column.comma('BIT_B', Messages['T00EntityGrid.bitB'], 100, 'notblank', null),
+        Column.bit('BIT_B', Messages['T00EntityGrid.bitB'], 100, 'notblank'),
         Column.check('CHECK_F', Messages['T00EntityGrid.checkF'], 30, 'notblank'),
         Column.select('RADIO_KB', Messages['T00EntityGrid.radioKb'], 30, 'notblank', { json: 'MsyKbnValSearch.json', paramkey: 'KBN_NM', value: 'KBN_VAL', label: 'KBN_VAL_MEI' }),
         Column.select('PULLDOWN_KB', Messages['T00EntityGrid.pulldownKb'], 30, 'notblank', { json: 'MsyKbnValSearch.json', paramkey: 'KBN_NM', value: 'KBN_VAL', label: 'KBN_VAL_MEI' }),
