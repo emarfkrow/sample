@@ -95,7 +95,7 @@ public class LoginAction extends LoginActionBase {
                             //                                }
                             //                            }
 
-                            authzInfo.put(mNinka.getTableRegex(), mNinka.getKengenB());
+                            authzInfo.put(mNinka.getTableRe(), mNinka.getKengenB());
                         }
                     }
                 }

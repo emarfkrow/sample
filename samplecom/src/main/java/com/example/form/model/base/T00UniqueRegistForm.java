@@ -9,14 +9,14 @@ import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
 /**
- * キーなし登録フォーム
+ * ユニークキー登録フォーム
  *
  * @author emarfkrow
  */
-public class T00NokeyRegistForm implements IForm {
+public class T00UniqueRegistForm implements IForm {
 
     /** logger */
-    private static final Logger LOG = LoggerFactory.getLogger(T00NokeyRegistForm.class);
+    private static final Logger LOG = LoggerFactory.getLogger(T00UniqueRegistForm.class);
 
     /** 列Ａ */
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 60)
@@ -62,28 +62,34 @@ public class T00NokeyRegistForm implements IForm {
 
     /** 列Ｄ */
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 60)
+    @jp.co.golorp.emarf.validation.PrimaryKeys
     private String dMei;
 
     /** @return 列Ｄ */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
     public String getDMei() {
         return dMei;
     }
 
     /** @param p 列Ｄ */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setDMei(final String p) {
         this.dMei = p;
     }
 
     /** 列Ｅ */
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 60)
+    @jp.co.golorp.emarf.validation.PrimaryKeys
     private String eMei;
 
     /** @return 列Ｅ */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
     public String getEMei() {
         return eMei;
     }
 
     /** @param p 列Ｅ */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setEMei(final String p) {
         this.eMei = p;
     }

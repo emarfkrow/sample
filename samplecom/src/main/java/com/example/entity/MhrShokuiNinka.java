@@ -116,22 +116,22 @@ public class MhrShokuiNinka implements IEntity {
 
     /** テーブル正規表現 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String tableRegex;
+    private String tableRe;
 
     /** @return テーブル正規表現 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_REGEX", index = 6)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_RE", index = 6)
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getTableRegex() {
-        return this.tableRegex;
+    public String getTableRe() {
+        return this.tableRe;
     }
 
     /** @param o テーブル正規表現 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setTableRegex(final Object o) {
+    public void setTableRe(final Object o) {
         if (o != null) {
-            this.tableRegex = o.toString();
+            this.tableRe = o.toString();
         } else {
-            this.tableRegex = null;
+            this.tableRe = null;
         }
     }
 
@@ -337,12 +337,12 @@ public class MhrShokuiNinka implements IEntity {
         List<String> whereList = new ArrayList<String>();
         whereList.add("`BUSHO_ID` = :busho_id");
         whereList.add("`SHOKUI_ID` = :shokui_id");
-        whereList.add("`TABLE_REGEX` = :table_regex");
+        whereList.add("`TABLE_RE` = :table_re");
         String sql = "";
         sql += "SELECT \n";
         sql += "      a.`BUSHO_ID` \n";
         sql += "    , a.`SHOKUI_ID` \n";
-        sql += "    , a.`TABLE_REGEX` \n";
+        sql += "    , a.`TABLE_RE` \n";
         sql += "    , a.`KENGEN_B` \n";
         sql += "    , a.`TEKIYO_BI` AS TEKIYO_BI \n";
         sql += "    , a.`HAISHI_BI` AS HAISHI_BI \n";
@@ -357,7 +357,7 @@ public class MhrShokuiNinka implements IEntity {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("busho_id", param1);
         map.put("shokui_id", param2);
-        map.put("table_regex", param3);
+        map.put("table_re", param3);
         return Queries.get(sql, map, MhrShokuiNinka.class);
     }
 
@@ -379,7 +379,7 @@ public class MhrShokuiNinka implements IEntity {
         List<String> nameList = new ArrayList<String>();
         nameList.add("`BUSHO_ID` -- :busho_id");
         nameList.add("`SHOKUI_ID` -- :shokui_id");
-        nameList.add("`TABLE_REGEX` -- :table_regex");
+        nameList.add("`TABLE_RE` -- :table_re");
         nameList.add("`KENGEN_B` -- :kengen_b");
         nameList.add("`TEKIYO_BI` -- :tekiyo_bi");
         nameList.add("`HAISHI_BI` -- :haishi_bi");
@@ -395,7 +395,7 @@ public class MhrShokuiNinka implements IEntity {
         List<String> valueList = new ArrayList<String>();
         valueList.add(":busho_id");
         valueList.add(":shokui_id");
-        valueList.add(":table_regex");
+        valueList.add(":table_re");
         valueList.add(":kengen_b");
         valueList.add(":tekiyo_bi");
         valueList.add(":haishi_bi");
@@ -424,7 +424,7 @@ public class MhrShokuiNinka implements IEntity {
         List<String> setList = new ArrayList<String>();
         setList.add("`BUSHO_ID` = :busho_id");
         setList.add("`SHOKUI_ID` = :shokui_id");
-        setList.add("`TABLE_REGEX` = :table_regex");
+        setList.add("`TABLE_RE` = :table_re");
         setList.add("`KENGEN_B` = :kengen_b");
         setList.add("`TEKIYO_BI` = :tekiyo_bi");
         setList.add("`HAISHI_BI` = :haishi_bi");
@@ -449,7 +449,7 @@ public class MhrShokuiNinka implements IEntity {
         List<String> whereList = new ArrayList<String>();
         whereList.add("`BUSHO_ID` = :busho_id");
         whereList.add("`SHOKUI_ID` = :shokui_id");
-        whereList.add("`TABLE_REGEX` = :table_regex");
+        whereList.add("`TABLE_RE` = :table_re");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
@@ -463,7 +463,7 @@ public class MhrShokuiNinka implements IEntity {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("busho_id", this.bushoId);
         map.put("shokui_id", this.shokuiId);
-        map.put("table_regex", this.tableRegex);
+        map.put("table_re", this.tableRe);
         map.put("kengen_b", this.kengenB);
         map.put("tekiyo_bi", this.tekiyoBi);
         map.put("haishi_bi", this.haishiBi);

@@ -81,8 +81,7 @@ FooterLeft=
 FooterCenter=
 FooterRight=
 ShowPageoutRelation=1
-RDBMSType=7
-RDBMSTypeName=PostgreSQL
+RDBMSTypeName=Oracle Database
 BackupRestoreTempTable=0
 CommonField="作成タイムスタンプ","INSERT_TS","*TS","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF
 CommonField="作成者","INSERT_USER_ID","*ID","NOT NULL",,"","",$FFFFFFFF
@@ -818,25 +817,25 @@ TermPos2=R
 ZOrder=12
 
 [Entity]
-PName=T00_NOKEY
-LName=主キーなし
+PName=T00_UNIQUE
+LName=ユニークキー
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
 Top=1450
-Field="列Ａ","COL_A","*MEI",,,"","",$FFFFFFFF,""
-Field="列Ｂ","COL_B","*MEI",,,"","",$FFFFFFFF,""
-Field="列Ｃ","COL_C","*MEI",,,"","",$FFFFFFFF,""
-Field="列Ｄ","COL_D","*MEI",,,"","",$FFFFFFFF,""
-Field="列Ｅ","COL_E","*MEI",,,"","",$FFFFFFFF,""
-Index==1,COL_A,COL_B,COL_C
-Index==1,COL_D,COL_E
+Field="列Ａ","A_MEI","*MEI",,,"","",$FFFFFFFF,""
+Field="列Ｂ","B_MEI","*MEI",,,"","",$FFFFFFFF,""
+Field="列Ｃ","C_MEI","*MEI",,,"","",$FFFFFFFF,""
+Field="列Ｄ","D_MEI","*MEI",,,"","",$FFFFFFFF,""
+Field="列Ｅ","E_MEI","*MEI",,,"","",$FFFFFFFF,""
+Index==1,A_MEI,B_MEI,C_MEI
+Index==1,D_MEI,E_MEI
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260123210122
+ModifiedDateTime=20260305093508
 Position="MAIN",50,1450
 ZOrder=15
 
@@ -2351,3 +2350,24 @@ Bar3=158
 TermPos1=R
 TermPos2=R
 ZOrder=170
+
+[Entity]
+PName=T00_NOKEY
+LName=キーなし
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=50
+Top=1700
+Field="列Ａ","A_MEI","*MEI",,,"","",$FFFFFFFF,""
+Field="列Ｂ","B_MEI","*MEI",,,"","",$FFFFFFFF,""
+Field="列Ｃ","C_MEI","*MEI",,,"","",$FFFFFFFF,""
+Field="列Ｄ","D_MEI","*MEI",,,"","",$FFFFFFFF,""
+Field="列Ｅ","E_MEI","*MEI",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260305093518
+Position="Main",50,1700
+ZOrder=171

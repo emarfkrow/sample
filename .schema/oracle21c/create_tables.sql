@@ -1,6 +1,6 @@
 -- Project Name : emarf
--- Date/Time    : 2026/02/04 19:51:38
--- Author       : t_fuk
+-- Date/Time    : 2026/03/05 9:35:54
+-- Author       : KTC0966
 -- RDBMS Type   : Oracle Database
 -- Application  : A5:SQL Mk-2
 
@@ -140,15 +140,15 @@ create table MHR_SHOKUI (
 create table MHR_SHOKUI_NINKA (
   BUSHO_ID NUMBER(10) not null
   , SHOKUI_ID NUMBER(10) not null
-  , KINO_NM VARCHAR2(20) not null
-  , KENGEN_KB VARCHAR2(2) not null
+  , TABLE_RE VARCHAR2(20) not null
+  , KENGEN_B NUMBER(10) not null
   , TEKIYO_BI DATE
   , HAISHI_BI DATE
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint MHR_SHOKUI_NINKA_PKC primary key (BUSHO_ID,SHOKUI_ID,KINO_NM)
+  , constraint MHR_SHOKUI_NINKA_PKC primary key (BUSHO_ID,SHOKUI_ID,TABLE_RE)
 ) ;
 
 -- ユーザマスタ
@@ -250,6 +250,7 @@ create table T00_ENTITY (
   ENTITY_ID NUMBER(10) not null
   , ENTITY_NM VARCHAR2(20) not null
   , ENTITY_MEI VARCHAR2(60) not null
+  , BIT_B NUMBER(10) not null
   , CHECK_F CHAR(1) not null
   , RADIO_KB VARCHAR2(2) not null
   , PULLDOWN_KB VARCHAR2(2) not null
@@ -282,24 +283,37 @@ create table T00_ENTITY (
   , constraint T00_ENTITY_PKC primary key (ENTITY_ID)
 ) ;
 
--- 主キーなし
+-- キーなし
 create table T00_NOKEY (
-  COL_A VARCHAR2(60)
-  , COL_B VARCHAR2(60)
-  , COL_C VARCHAR2(60)
-  , COL_D VARCHAR2(60)
-  , COL_E VARCHAR2(60)
+  A_MEI VARCHAR2(60)
+  , B_MEI VARCHAR2(60)
+  , C_MEI VARCHAR2(60)
+  , D_MEI VARCHAR2(60)
+  , E_MEI VARCHAR2(60)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
 ) ;
 
-create unique index T00_NOKEY_IX1
-  on T00_NOKEY(COL_A,COL_B,COL_C);
+-- ユニークキー
+create table T00_UNIQUE (
+  A_MEI VARCHAR2(60)
+  , B_MEI VARCHAR2(60)
+  , C_MEI VARCHAR2(60)
+  , D_MEI VARCHAR2(60)
+  , E_MEI VARCHAR2(60)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+) ;
 
-create unique index T00_NOKEY_IX2
-  on T00_NOKEY(COL_D,COL_E);
+create unique index T00_UNIQUE_IX1
+  on T00_UNIQUE(A_MEI,B_MEI,C_MEI);
+
+create unique index T00_UNIQUE_IX2
+  on T00_UNIQUE(D_MEI,E_MEI);
 
 -- 子なし
 create table T01_DINKS (
@@ -908,8 +922,8 @@ comment on column MHR_SHOKUI.UPDATE_USER_ID is '更新者';
 comment on table MHR_SHOKUI_NINKA is '認可マスタ';
 comment on column MHR_SHOKUI_NINKA.BUSHO_ID is '部署ID';
 comment on column MHR_SHOKUI_NINKA.SHOKUI_ID is '職位ID';
-comment on column MHR_SHOKUI_NINKA.KINO_NM is '機能名称:機能名の正規表現';
-comment on column MHR_SHOKUI_NINKA.KENGEN_KB is '権限区分:1:参照,2:出力,3:更新削除,4:追加,5:承認,6:否認';
+comment on column MHR_SHOKUI_NINKA.TABLE_RE is 'テーブル正規表現:テーブル名の正規表現';
+comment on column MHR_SHOKUI_NINKA.KENGEN_B is '権限ビット';
 comment on column MHR_SHOKUI_NINKA.TEKIYO_BI is '適用日';
 comment on column MHR_SHOKUI_NINKA.HAISHI_BI is '廃止日';
 comment on column MHR_SHOKUI_NINKA.INSERT_TS is '作成タイムスタンプ';
@@ -994,6 +1008,7 @@ comment on table T00_ENTITY is 'エンティティ';
 comment on column T00_ENTITY.ENTITY_ID is 'エンティティID';
 comment on column T00_ENTITY.ENTITY_NM is 'エンティティ名称';
 comment on column T00_ENTITY.ENTITY_MEI is 'エンティティ名';
+comment on column T00_ENTITY.BIT_B is 'ビットフラグ';
 comment on column T00_ENTITY.CHECK_F is 'チェックフラグ';
 comment on column T00_ENTITY.RADIO_KB is 'ラジオ区分';
 comment on column T00_ENTITY.PULLDOWN_KB is 'プルダウン区分';
@@ -1024,16 +1039,27 @@ comment on column T00_ENTITY.INSERT_USER_ID is '作成者';
 comment on column T00_ENTITY.UPDATE_TS is '更新タイムスタンプ';
 comment on column T00_ENTITY.UPDATE_USER_ID is '更新者';
 
-comment on table T00_NOKEY is '主キーなし';
-comment on column T00_NOKEY.COL_A is '列Ａ';
-comment on column T00_NOKEY.COL_B is '列Ｂ';
-comment on column T00_NOKEY.COL_C is '列Ｃ';
-comment on column T00_NOKEY.COL_D is '列Ｄ';
-comment on column T00_NOKEY.COL_E is '列Ｅ';
+comment on table T00_NOKEY is 'キーなし';
+comment on column T00_NOKEY.A_MEI is '列Ａ';
+comment on column T00_NOKEY.B_MEI is '列Ｂ';
+comment on column T00_NOKEY.C_MEI is '列Ｃ';
+comment on column T00_NOKEY.D_MEI is '列Ｄ';
+comment on column T00_NOKEY.E_MEI is '列Ｅ';
 comment on column T00_NOKEY.INSERT_TS is '作成タイムスタンプ';
 comment on column T00_NOKEY.INSERT_USER_ID is '作成者';
 comment on column T00_NOKEY.UPDATE_TS is '更新タイムスタンプ';
 comment on column T00_NOKEY.UPDATE_USER_ID is '更新者';
+
+comment on table T00_UNIQUE is 'ユニークキー';
+comment on column T00_UNIQUE.A_MEI is '列Ａ';
+comment on column T00_UNIQUE.B_MEI is '列Ｂ';
+comment on column T00_UNIQUE.C_MEI is '列Ｃ';
+comment on column T00_UNIQUE.D_MEI is '列Ｄ';
+comment on column T00_UNIQUE.E_MEI is '列Ｅ';
+comment on column T00_UNIQUE.INSERT_TS is '作成タイムスタンプ';
+comment on column T00_UNIQUE.INSERT_USER_ID is '作成者';
+comment on column T00_UNIQUE.UPDATE_TS is '更新タイムスタンプ';
+comment on column T00_UNIQUE.UPDATE_USER_ID is '更新者';
 
 comment on table T01_DINKS is '子なし';
 comment on column T01_DINKS.OYA_ID is '親ID';

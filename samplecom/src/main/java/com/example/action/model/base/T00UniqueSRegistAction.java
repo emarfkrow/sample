@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.entity.MhrShokuiNinka;
+import com.example.entity.T00Unique;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.OptLockError;
@@ -13,13 +13,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 認可マスタ一覧登録
+ * ユニークキー一覧登録
  *
  * @author emarfkrow
  */
-public class MhrShokuiNinkaSRegistAction extends BaseAction {
+public class T00UniqueSRegistAction extends BaseAction {
 
-    /** 認可マスタ一覧登録処理 */
+    /** ユニークキー一覧登録処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
 
@@ -28,7 +28,7 @@ public class MhrShokuiNinkaSRegistAction extends BaseAction {
         int count = 0;
 
         @SuppressWarnings("unchecked")
-        List<Map<String, Object>> data = (List<Map<String, Object>>) form.get("MhrShokuiNinkaGrid");
+        List<Map<String, Object>> data = (List<Map<String, Object>>) form.get("T00UniqueGrid");
         if (data != null) {
             for (Map<String, Object> row : data) {
 
@@ -36,17 +36,14 @@ public class MhrShokuiNinkaSRegistAction extends BaseAction {
                     continue;
                 }
 
-                MhrShokuiNinka e = FormValidator.toBean(MhrShokuiNinka.class.getName(), row);
+                T00Unique e = FormValidator.toBean(T00Unique.class.getName(), row);
 
                 // 主キーが不足していたらINSERT
                 boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getBushoId())) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getDMei())) {
                     isNew = true;
                 }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getShokuiId())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getTableRe())) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getEMei())) {
                     isNew = true;
                 }
                 // 楽観ロック値がなくてもINSERT
@@ -57,14 +54,14 @@ public class MhrShokuiNinkaSRegistAction extends BaseAction {
                 if (isNew) {
 
                     if (e.insert(now, execId) != 1) {
-                        throw new OptLockError("error.cant.insert", "認可マスタ");
+                        throw new OptLockError("error.cant.insert", "ユニークキー");
                     }
                     ++count;
 
                 } else {
 
                     if (e.update(now, execId) != 1) {
-                        throw new OptLockError("error.cant.update", "認可マスタ");
+                        throw new OptLockError("error.cant.update", "ユニークキー");
                     }
                     ++count;
                 }

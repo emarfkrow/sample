@@ -10,10 +10,10 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.sql.Queries;
 
 /**
- * 集約
+ * ユニークキー
  * @author emarfkrow
  */
-public class T09Sum implements IEntity {
+public class T00Unique implements IEntity {
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
@@ -34,42 +34,99 @@ public class T09Sum implements IEntity {
         }
     }
 
-    /** 集約ID */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    private Integer sumId;
+    /** 列Ａ */
+    private String aMei;
 
-    /** @return 集約ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "SUM_ID", index = 2)
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    public Integer getSumId() {
-        return this.sumId;
+    /** @return 列Ａ */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "A_MEI", index = 2)
+    public String getAMei() {
+        return this.aMei;
     }
 
-    /** @param o 集約ID */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setSumId(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.sumId = Integer.valueOf(o.toString());
+    /** @param o 列Ａ */
+    public void setAMei(final Object o) {
+        if (o != null) {
+            this.aMei = o.toString();
         } else {
-            this.sumId = null;
+            this.aMei = null;
         }
     }
 
-    /** 集約情報 */
-    private String sumInfo;
+    /** 列Ｂ */
+    private String bMei;
 
-    /** @return 集約情報 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "SUM_INFO", index = 3)
-    public String getSumInfo() {
-        return this.sumInfo;
+    /** @return 列Ｂ */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "B_MEI", index = 3)
+    public String getBMei() {
+        return this.bMei;
     }
 
-    /** @param o 集約情報 */
-    public void setSumInfo(final Object o) {
+    /** @param o 列Ｂ */
+    public void setBMei(final Object o) {
         if (o != null) {
-            this.sumInfo = o.toString();
+            this.bMei = o.toString();
         } else {
-            this.sumInfo = null;
+            this.bMei = null;
+        }
+    }
+
+    /** 列Ｃ */
+    private String cMei;
+
+    /** @return 列Ｃ */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "C_MEI", index = 4)
+    public String getCMei() {
+        return this.cMei;
+    }
+
+    /** @param o 列Ｃ */
+    public void setCMei(final Object o) {
+        if (o != null) {
+            this.cMei = o.toString();
+        } else {
+            this.cMei = null;
+        }
+    }
+
+    /** 列Ｄ */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    private String dMei;
+
+    /** @return 列Ｄ */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "D_MEI", index = 5)
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    public String getDMei() {
+        return this.dMei;
+    }
+
+    /** @param o 列Ｄ */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    public void setDMei(final Object o) {
+        if (o != null) {
+            this.dMei = o.toString();
+        } else {
+            this.dMei = null;
+        }
+    }
+
+    /** 列Ｅ */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    private String eMei;
+
+    /** @return 列Ｅ */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "E_MEI", index = 6)
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    public String getEMei() {
+        return this.eMei;
+    }
+
+    /** @param o 列Ｅ */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    public void setEMei(final Object o) {
+        if (o != null) {
+            this.eMei = o.toString();
+        } else {
+            this.eMei = null;
         }
     }
 
@@ -80,7 +137,7 @@ public class T09Sum implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return 作成タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 4)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 7)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -104,7 +161,7 @@ public class T09Sum implements IEntity {
     private Integer insertUserId;
 
     /** @return 作成者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 5)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 8)
     public Integer getInsertUserId() {
         return this.insertUserId;
     }
@@ -123,7 +180,7 @@ public class T09Sum implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 6)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 9)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -145,7 +202,7 @@ public class T09Sum implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return 更新タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 7)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 10)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -171,7 +228,7 @@ public class T09Sum implements IEntity {
     private Integer updateUserId;
 
     /** @return 更新者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 8)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 11)
     public Integer getUpdateUserId() {
         return this.updateUserId;
     }
@@ -190,7 +247,7 @@ public class T09Sum implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 9)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 12)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -205,51 +262,57 @@ public class T09Sum implements IEntity {
     }
 
     /**
-     * 集約照会
-     * @param param1 集約ID
-     * @return 集約
+     * ユニークキー照会
+     * @param param1 列Ｄ
+     * @param param2 列Ｅ
+     * @return ユニークキー
      */
-    public static T09Sum get(final Object param1) {
+    public static T00Unique get(final Object param1, final Object param2) {
         List<String> whereList = new ArrayList<String>();
-        whereList.add("`SUM_ID` = :sum_id");
+        whereList.add("`D_MEI` = :d_mei");
+        whereList.add("`E_MEI` = :e_mei");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`SUM_ID` \n";
-        sql += "    , a.`SUM_INFO` \n";
+        sql += "      a.`A_MEI` \n";
+        sql += "    , a.`B_MEI` \n";
+        sql += "    , a.`C_MEI` \n";
+        sql += "    , a.`D_MEI` \n";
+        sql += "    , a.`E_MEI` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
         sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
-        sql += "    T09_SUM a \n";
+        sql += "    T00_UNIQUE a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("sum_id", param1);
-        return Queries.get(sql, map, T09Sum.class);
+        map.put("d_mei", param1);
+        map.put("e_mei", param2);
+        return Queries.get(sql, map, T00Unique.class);
     }
 
     /**
-     * 集約追加
+     * ユニークキー追加
      * @param now システム日時
      * @param execId 登録者
      * @return 追加件数
      */
     public int insert(final LocalDateTime now, final String execId) {
 
-        // 集約IDの採番処理
-        numbering();
-
-        // 集約の登録
-        String sql = "INSERT INTO T09_SUM(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
+        // ユニークキーの登録
+        String sql = "INSERT INTO T00_UNIQUE(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
         List<String> nameList = new ArrayList<String>();
-        nameList.add("`SUM_ID` -- :sum_id");
-        nameList.add("`SUM_INFO` -- :sum_info");
+        nameList.add("`A_MEI` -- :a_mei");
+        nameList.add("`B_MEI` -- :b_mei");
+        nameList.add("`C_MEI` -- :c_mei");
+        nameList.add("`D_MEI` -- :d_mei");
+        nameList.add("`E_MEI` -- :e_mei");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -260,8 +323,11 @@ public class T09Sum implements IEntity {
     /** @return insert用のvalue句 */
     private String values() {
         List<String> valueList = new ArrayList<String>();
-        valueList.add(":sum_id");
-        valueList.add(":sum_info");
+        valueList.add(":a_mei");
+        valueList.add(":b_mei");
+        valueList.add(":c_mei");
+        valueList.add(":d_mei");
+        valueList.add(":e_mei");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -269,56 +335,48 @@ public class T09Sum implements IEntity {
         return String.join("\r\n    , ", valueList);
     }
 
-    /** 集約IDの採番処理 */
-    private void numbering() {
-        if (this.sumId != null) {
-            return;
-        }
-        String sql = "SELECT CASE WHEN MAX(e.`SUM_ID`) IS NULL THEN 0 ELSE MAX(e.`SUM_ID`) * 1 END + 1 AS `SUM_ID` FROM T09_SUM e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("SUM_ID");
-        this.setSumId(o);
-    }
-
     /**
-     * 集約更新
+     * ユニークキー更新
      * @param now システム日時
      * @param execId 更新者
      * @return 更新件数
      */
     public int update(final LocalDateTime now, final String execId) {
 
-        // 集約の登録
-        String sql = "UPDATE T09_SUM\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
+        // ユニークキーの登録
+        String sql = "UPDATE T00_UNIQUE\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
         List<String> setList = new ArrayList<String>();
-        setList.add("`SUM_ID` = :sum_id");
-        setList.add("`SUM_INFO` = :sum_info");
+        setList.add("`A_MEI` = :a_mei");
+        setList.add("`B_MEI` = :b_mei");
+        setList.add("`C_MEI` = :c_mei");
+        setList.add("`D_MEI` = :d_mei");
+        setList.add("`E_MEI` = :e_mei");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
     /**
-     * 集約削除
+     * ユニークキー削除
      * @return 削除件数
      */
     public int delete() {
 
-        // 集約の削除
-        String sql = "DELETE FROM T09_SUM WHERE " + getWhere();
+        // ユニークキーの削除
+        String sql = "DELETE FROM T00_UNIQUE WHERE " + getWhere();
         return Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
         List<String> whereList = new ArrayList<String>();
-        whereList.add("`SUM_ID` = :sum_id");
+        whereList.add("`D_MEI` = :d_mei");
+        whereList.add("`E_MEI` = :e_mei");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
@@ -330,132 +388,15 @@ public class T09Sum implements IEntity {
      */
     private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("sum_id", this.sumId);
-        map.put("sum_info", this.sumInfo);
+        map.put("a_mei", this.aMei);
+        map.put("b_mei", this.bMei);
+        map.put("c_mei", this.cMei);
+        map.put("d_mei", this.dMei);
+        map.put("e_mei", this.eMei);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);
         map.put("update_user_id", execId);
         return map;
-    }
-
-    /*
-     * 集約元：集団２
-     */
-
-    /** 集団２のリスト */
-    private List<T09Grp2> t09Grp2s;
-
-    /** @return 集団２のリスト */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T09Grp2s", index = 10)
-    public List<T09Grp2> getT09Grp2s() {
-        return this.t09Grp2s;
-    }
-
-    /** @param list 集団２のリスト */
-    public void setT09Grp2s(final List<T09Grp2> list) {
-        this.t09Grp2s = list;
-    }
-
-    /** @param t09Grp2 */
-    public void addT09Grp2s(final T09Grp2 t09Grp2) {
-        if (this.t09Grp2s == null) {
-            this.t09Grp2s = new ArrayList<T09Grp2>();
-        }
-        this.t09Grp2s.add(t09Grp2);
-    }
-
-    /** @return 集団２のリスト */
-    public List<T09Grp2> referT09Grp2s() {
-        this.t09Grp2s = T09Sum.referT09Grp2s(this.sumId);
-        return this.t09Grp2s;
-    }
-
-    /**
-     * @param param1 sumId
-     * @return List<T09Grp2>
-     */
-    public static List<T09Grp2> referT09Grp2s(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
-        whereList.add("SUM_ID = :sum_id");
-        String sql = "SELECT ";
-        sql += "`GRP2_ID`";
-        sql += ", `SUM_ID`";
-        sql += ", LEFT(DATE_FORMAT (`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS";
-        sql += ", `INSERT_USER_ID`";
-        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", LEFT(DATE_FORMAT (`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS";
-        sql += ", `UPDATE_USER_ID`";
-        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
-        sql += " FROM T09_GRP2 a WHERE " + String.join(" AND ", whereList);
-        sql += " ORDER BY ";
-        sql += "GRP2_ID";
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("sum_id", param1);
-        List<T09Grp2> list = Queries.select(sql, map, T09Grp2.class, null, null);
-        if (list != null) {
-            return list;
-        }
-        return new ArrayList<T09Grp2>();
-    }
-
-    /*
-     * 集約元：集団１
-     */
-
-    /** 集団１のリスト */
-    private List<T09Grp1> t09Grp1s;
-
-    /** @return 集団１のリスト */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T09Grp1s", index = 11)
-    public List<T09Grp1> getT09Grp1s() {
-        return this.t09Grp1s;
-    }
-
-    /** @param list 集団１のリスト */
-    public void setT09Grp1s(final List<T09Grp1> list) {
-        this.t09Grp1s = list;
-    }
-
-    /** @param t09Grp1 */
-    public void addT09Grp1s(final T09Grp1 t09Grp1) {
-        if (this.t09Grp1s == null) {
-            this.t09Grp1s = new ArrayList<T09Grp1>();
-        }
-        this.t09Grp1s.add(t09Grp1);
-    }
-
-    /** @return 集団１のリスト */
-    public List<T09Grp1> referT09Grp1s() {
-        this.t09Grp1s = T09Sum.referT09Grp1s(this.sumId);
-        return this.t09Grp1s;
-    }
-
-    /**
-     * @param param1 sumId
-     * @return List<T09Grp1>
-     */
-    public static List<T09Grp1> referT09Grp1s(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
-        whereList.add("SUM_ID = :sum_id");
-        String sql = "SELECT ";
-        sql += "`GRP1_ID`";
-        sql += ", `SUM_ID`";
-        sql += ", LEFT(DATE_FORMAT (`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS";
-        sql += ", `INSERT_USER_ID`";
-        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", LEFT(DATE_FORMAT (`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS";
-        sql += ", `UPDATE_USER_ID`";
-        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
-        sql += " FROM T09_GRP1 a WHERE " + String.join(" AND ", whereList);
-        sql += " ORDER BY ";
-        sql += "GRP1_ID";
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("sum_id", param1);
-        List<T09Grp1> list = Queries.select(sql, map, T09Grp1.class, null, null);
-        if (list != null) {
-            return list;
-        }
-        return new ArrayList<T09Grp1>();
     }
 }

@@ -11,7 +11,7 @@ import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
 /**
- * 主キーなし一覧登録フォーム
+ * キーなし一覧登録フォーム
  *
  * @author emarfkrow
  */
@@ -20,19 +20,19 @@ public class T00NokeySRegistForm implements IForm {
     // /** logger */
     // private static final Logger LOG = LoggerFactory.getLogger(T00NokeyRegistForm.class);
 
-    /** 主キーなし登録フォームのリスト */
+    /** キーなし登録フォームのリスト */
     @Valid
     private List<T00NokeyRegistForm> t00NokeyGrid;
 
     /**
-     * @return 主キーなし登録フォームのリスト
+     * @return キーなし登録フォームのリスト
      */
     public List<T00NokeyRegistForm> getT00NokeyGrid() {
         return t00NokeyGrid;
     }
 
     /**
-     * @param p 主キーなし登録フォームのリスト
+     * @param p キーなし登録フォームのリスト
      */
     public void setT00NokeyGrid(final List<T00NokeyRegistForm> p) {
         this.t00NokeyGrid = p;

@@ -11,13 +11,15 @@ SELECT
     , a.`UPDATE_USER_ID` AS `UPDATE_USER_ID`
     , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
 FROM
-    T00_NOKEY a 
+    T00_UNIQUE a 
 WHERE
     1 = 1 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`A_MEI`)) LIKE UPPER (CONCAT ('%', :a_mei, '%')) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`B_MEI`)) LIKE UPPER (CONCAT ('%', :b_mei, '%')) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`C_MEI`)) LIKE UPPER (CONCAT ('%', :c_mei, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`D_MEI`)) = UPPER (:d_mei_full) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`D_MEI`)) LIKE UPPER (CONCAT ('%', :d_mei, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`E_MEI`)) = UPPER (:e_mei_full) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`E_MEI`)) LIKE UPPER (CONCAT ('%', :e_mei, '%')) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
@@ -28,12 +30,5 @@ WHERE
     AND a.`UPDATE_TS` <= :update_ts_2 
     AND a.`UPDATE_USER_ID` = :update_user_id 
 ORDER BY
-    1
-    , 2
-    , 3
-    , 4
-    , 5
-    , 6
-    , 7
-    , 8
-    , 9
+    a.`D_MEI`
+    , a.`E_MEI`

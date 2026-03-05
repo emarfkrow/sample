@@ -3,7 +3,7 @@ SELECT
     , (SELECT r0.`BUSHO_MEI` FROM MHR_BUSHO r0 WHERE r0.`BUSHO_ID` = a.`BUSHO_ID`) AS `BUSHO_MEI`
     , a.`SHOKUI_ID` AS `SHOKUI_ID`
     , (SELECT r1.`SHOKUI_MEI` FROM MHR_SHOKUI r1 WHERE r1.`SHOKUI_ID` = a.`SHOKUI_ID`) AS `SHOKUI_MEI`
-    , a.`TABLE_REGEX` AS `TABLE_REGEX`
+    , a.`TABLE_RE` AS `TABLE_RE`
     , a.`KENGEN_B` AS `KENGEN_B`
     , a.`TEKIYO_BI` AS `TEKIYO_BI`
     , a.`HAISHI_BI` AS `HAISHI_BI`
@@ -31,8 +31,8 @@ WHERE
     AND DATE_ADD(IFNULL (a.HAISHI_BI, sysdate()), INTERVAL 1 DAY) > sysdate() 
     AND a.`BUSHO_ID` = :busho_id 
     AND a.`SHOKUI_ID` = :shokui_id 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`TABLE_REGEX`)) = UPPER (:table_regex_full) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`TABLE_REGEX`)) LIKE UPPER (CONCAT ('%', :table_regex, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`TABLE_RE`)) = UPPER (:table_re_full) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`TABLE_RE`)) LIKE UPPER (CONCAT ('%', :table_re, '%')) 
     AND a.`KENGEN_B` = :kengen_b 
     AND a.`TEKIYO_BI` = :tekiyo_bi 
     AND a.`TEKIYO_BI` >= :tekiyo_bi_1 
@@ -51,4 +51,4 @@ WHERE
 ORDER BY
     a.`BUSHO_ID`
     , a.`SHOKUI_ID`
-    , a.`TABLE_REGEX`
+    , a.`TABLE_RE`

@@ -43,26 +43,9 @@ public class T09SumRegistAction extends BaseAction {
             }
 
             //集約先に該当する場合は、集約元に主キーを反映
-            String summaryKey1 = postJson.get("T09Grp1.grp1Id").toString();
+            String summaryKey1 = postJson.get("T09Grp2.grp2Id").toString();
             if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(summaryKey1)) {
                 String[] summaryKeys = summaryKey1.trim().split(",");
-                for (String pk : summaryKeys) {
-                    com.example.entity.T09Grp1 t09Grp1 = com.example.entity.T09Grp1.get(pk);
-                    //集約済みならエラー
-                    if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(t09Grp1.getSumId())) {
-                        throw new OptLockError("error.already.summary", "集団１");
-                    }
-                    t09Grp1.setSumId(e.getSumId());
-                    if (t09Grp1.update(now, execId) != 1) {
-                        throw new OptLockError("error.cant.insert", "集団１");
-                    }
-                }
-            }
-
-            //集約先に該当する場合は、集約元に主キーを反映
-            String summaryKey2 = postJson.get("T09Grp2.grp2Id").toString();
-            if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(summaryKey2)) {
-                String[] summaryKeys = summaryKey2.trim().split(",");
                 for (String pk : summaryKeys) {
                     com.example.entity.T09Grp2 t09Grp2 = com.example.entity.T09Grp2.get(pk);
                     //集約済みならエラー
@@ -72,6 +55,23 @@ public class T09SumRegistAction extends BaseAction {
                     t09Grp2.setSumId(e.getSumId());
                     if (t09Grp2.update(now, execId) != 1) {
                         throw new OptLockError("error.cant.insert", "集団２");
+                    }
+                }
+            }
+
+            //集約先に該当する場合は、集約元に主キーを反映
+            String summaryKey2 = postJson.get("T09Grp1.grp1Id").toString();
+            if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(summaryKey2)) {
+                String[] summaryKeys = summaryKey2.trim().split(",");
+                for (String pk : summaryKeys) {
+                    com.example.entity.T09Grp1 t09Grp1 = com.example.entity.T09Grp1.get(pk);
+                    //集約済みならエラー
+                    if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(t09Grp1.getSumId())) {
+                        throw new OptLockError("error.already.summary", "集団１");
+                    }
+                    t09Grp1.setSumId(e.getSumId());
+                    if (t09Grp1.update(now, execId) != 1) {
+                        throw new OptLockError("error.cant.insert", "集団１");
                     }
                 }
             }

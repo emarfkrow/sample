@@ -1,16 +1,16 @@
 /**
- * 主キーなしグリッド定義
+ * キーなしグリッド定義
  */
 
 let T00NokeyGridColumns = [];
 
 $(function() {
     T00NokeyGridColumns = [
-        Column.text('COL_D', Messages['T00NokeyGrid.colD'], 300, 'primaryKey', null),
-        Column.text('COL_E', Messages['T00NokeyGrid.colE'], 300, 'primaryKey', null),
-        Column.text('COL_A', Messages['T00NokeyGrid.colA'], 300, 'uniqueKey', null),
-        Column.bit('COL_B', Messages['T00NokeyGrid.colB'], 300, 'uniqueKey'),
-        Column.text('COL_C', Messages['T00NokeyGrid.colC'], 300, 'uniqueKey', null),
+        Column.text('A_MEI', Messages['T00NokeyGrid.aMei'], 300, '', null),
+        Column.text('B_MEI', Messages['T00NokeyGrid.bMei'], 300, '', null),
+        Column.text('C_MEI', Messages['T00NokeyGrid.cMei'], 300, '', null),
+        Column.text('D_MEI', Messages['T00NokeyGrid.dMei'], 300, '', null),
+        Column.text('E_MEI', Messages['T00NokeyGrid.eMei'], 300, '', null),
         Column.cell('UPDATE_TS', Messages['T00NokeyGrid.updateTs'], 230, 'metaInfo optLock', Slick.Formatters.Extends.Timestamp),
     ];
 });

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T00Nokey.title}">主キーなし</title>
+<title th:text="#{T00Nokey.title}">キーなし</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -10,7 +10,7 @@
 </script>
 <script th:src="@{/model/T00Nokey.js}"></script>
 <script th:src="@{/model/T00NokeyGridColumns.js}"></script>
-<!-- 主キーなしの参照モデルのグリッド定義 -->
+<!-- キーなしの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -20,21 +20,20 @@
     <form name="T00NokeyRegistForm" action="T00NokeyRegist.ajax" class="regist">
       <fieldset>
         <legend th:text="#{T00Nokey.legend}">legend</legend>
-        <div id="colA">
-          <label for="T00Nokey.colA" th:text="#{T00Nokey.colA}">列Ａ</label><input type="text" id="T00Nokey.colA" name="T00Nokey.colA" maxlength="60" class=" uniqueKey" />
+        <div id="aMei">
+          <label for="T00Nokey.aMei" th:text="#{T00Nokey.aMei}">列Ａ</label><input type="text" id="T00Nokey.aMei" name="T00Nokey.aMei" maxlength="60" />
         </div>
-        <div id="colB">
-          <label for="T00Nokey.colBF" th:text="#{T00Nokey.colB}">列Ｂ</label><input type="text" id="T00Nokey.colBF" name="T00Nokey.colBF" maxlength="60" class=" uniqueKey bit right" />
-          <span id="T00Nokey.colB" class=" uniqueKey bit right"></span><input type="hidden" id="T00Nokey.colB" name="T00Nokey.colB" class=" uniqueKey bit right" />
+        <div id="bMei">
+          <label for="T00Nokey.bMei" th:text="#{T00Nokey.bMei}">列Ｂ</label><input type="text" id="T00Nokey.bMei" name="T00Nokey.bMei" maxlength="60" />
         </div>
-        <div id="colC">
-          <label for="T00Nokey.colC" th:text="#{T00Nokey.colC}">列Ｃ</label><input type="text" id="T00Nokey.colC" name="T00Nokey.colC" maxlength="60" class=" uniqueKey" />
+        <div id="cMei">
+          <label for="T00Nokey.cMei" th:text="#{T00Nokey.cMei}">列Ｃ</label><input type="text" id="T00Nokey.cMei" name="T00Nokey.cMei" maxlength="60" />
         </div>
-        <div id="colD">
-          <label for="T00Nokey.colD" th:text="#{T00Nokey.colD}">列Ｄ</label><input type="number" id="T00Nokey.colD" name="T00Nokey.colD" maxlength="60" class=" primaryKey" />
+        <div id="dMei">
+          <label for="T00Nokey.dMei" th:text="#{T00Nokey.dMei}">列Ｄ</label><input type="text" id="T00Nokey.dMei" name="T00Nokey.dMei" maxlength="60" />
         </div>
-        <div id="colE">
-          <label for="T00Nokey.colE" th:text="#{T00Nokey.colE}">列Ｅ</label><input type="text" id="T00Nokey.colE" name="T00Nokey.colE" maxlength="60" class=" primaryKey" />
+        <div id="eMei">
+          <label for="T00Nokey.eMei" th:text="#{T00Nokey.eMei}">列Ｅ</label><input type="text" id="T00Nokey.eMei" name="T00Nokey.eMei" maxlength="60" />
         </div>
         <div id="insertTs">
           <label th:text="#{T00Nokey.insertTs}" class="meta">作成タイムスタンプ</label><span id="T00Nokey.insertTs" class="meta"></span><input type="hidden" id="T00Nokey.insertTs" name="T00Nokey.insertTs" class="meta"/>

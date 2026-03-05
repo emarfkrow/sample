@@ -37,11 +37,11 @@ public class MhrShokuiNinkaDeleteAction extends BaseAction {
         if (shokuiId == null) {
             throw new OptLockError("error.cant.delete", "認可マスタ");
         }
-        Object tableRegex = postJson.get("tableRegex");
-        if (tableRegex == null) {
-            tableRegex = postJson.get("MhrShokuiNinka.tableRegex");
+        Object tableRe = postJson.get("tableRe");
+        if (tableRe == null) {
+            tableRe = postJson.get("MhrShokuiNinka.tableRe");
         }
-        if (tableRegex == null) {
+        if (tableRe == null) {
             throw new OptLockError("error.cant.delete", "認可マスタ");
         }
 

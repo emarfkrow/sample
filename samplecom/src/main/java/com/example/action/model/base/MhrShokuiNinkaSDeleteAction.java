@@ -43,7 +43,7 @@ public class MhrShokuiNinkaSDeleteAction extends BaseAction {
                 if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("SHOKUI_ID"))) {
                     throw new OptLockError("error.cant.delete", "認可マスタ");
                 }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("TABLE_REGEX"))) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("TABLE_RE"))) {
                     throw new OptLockError("error.cant.delete", "認可マスタ");
                 }
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T00UniqueS.title}">ユニークキー</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T00Unique.js}"></script>
+<script th:src="@{/model/T00UniqueGridColumns.js}"></script>
+<!-- ユニークキーの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T00UniqueS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T00UniqueSearchForm" action="T00UniqueSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T00UniqueS.legend}">legend</legend>
+        <div id="aMei">
+          <label for="T00Unique.aMei" th:text="#{T00Unique.aMei}">列Ａ</label><input type="text" id="T00Unique.aMei" name="T00Unique.aMei" maxlength="60" />
+        </div>
+        <div id="bMei">
+          <label for="T00Unique.bMei" th:text="#{T00Unique.bMei}">列Ｂ</label><input type="text" id="T00Unique.bMei" name="T00Unique.bMei" maxlength="60" />
+        </div>
+        <div id="cMei">
+          <label for="T00Unique.cMei" th:text="#{T00Unique.cMei}">列Ｃ</label><input type="text" id="T00Unique.cMei" name="T00Unique.cMei" maxlength="60" />
+        </div>
+        <div id="dMei">
+          <label for="T00Unique.dMei" th:text="#{T00Unique.dMei}">列Ｄ</label><input type="text" id="T00Unique.dMei" name="T00Unique.dMei" maxlength="60" />
+        </div>
+        <div id="eMei">
+          <label for="T00Unique.eMei" th:text="#{T00Unique.eMei}">列Ｅ</label><input type="text" id="T00Unique.eMei" name="T00Unique.eMei" maxlength="60" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetT00Unique" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/T00Unique.html(anew)}" target="dialog" id="T00Unique" class="anew" th:text="#{T00Unique.add}" tabindex="-1">ユニークキー</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT00Unique" type="submit" class="search" data-gridId="T00UniqueGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T00UniqueSRegistForm" action="T00UniqueSRegist.ajax" class="regist">
+      <h3 th:text="#{T00Unique.h3}">h3</h3>
+      <div id="T00UniqueGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T00Unique.html}"></div>
+      <div id="T00UniquePager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT00UniqueS" th:text="#{common.reset}" onClick="Base.listReset('T00Unique');">reset</button>
+        <a th:href="@{T00UniqueSearch.xlsx(baseMei=#{T00UniqueS.h2})}" id="T00UniqueSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteT00UniqueS" data-action="T00UniqueSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT00UniqueS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

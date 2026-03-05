@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T00Unique.title}">ユニークキー</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T00Unique.js}"></script>
+<script th:src="@{/model/T00UniqueGridColumns.js}"></script>
+<!-- ユニークキーの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T00Unique.h2}">h2</h2>
+    <form name="T00UniqueRegistForm" action="T00UniqueRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T00Unique.legend}">legend</legend>
+        <div id="aMei">
+          <label for="T00Unique.aMei" th:text="#{T00Unique.aMei}">列Ａ</label><input type="text" id="T00Unique.aMei" name="T00Unique.aMei" maxlength="60" class=" uniqueKey" />
+        </div>
+        <div id="bMei">
+          <label for="T00Unique.bMei" th:text="#{T00Unique.bMei}">列Ｂ</label><input type="text" id="T00Unique.bMei" name="T00Unique.bMei" maxlength="60" class=" uniqueKey" />
+        </div>
+        <div id="cMei">
+          <label for="T00Unique.cMei" th:text="#{T00Unique.cMei}">列Ｃ</label><input type="text" id="T00Unique.cMei" name="T00Unique.cMei" maxlength="60" class=" uniqueKey" />
+        </div>
+        <div id="dMei">
+          <label for="T00Unique.dMei" th:text="#{T00Unique.dMei}">列Ｄ</label><input type="text" id="T00Unique.dMei" name="T00Unique.dMei" maxlength="60" class=" primaryKey" />
+        </div>
+        <div id="eMei">
+          <label for="T00Unique.eMei" th:text="#{T00Unique.eMei}">列Ｅ</label><input type="text" id="T00Unique.eMei" name="T00Unique.eMei" maxlength="60" class=" primaryKey" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T00Unique.insertTs}" class="meta">作成タイムスタンプ</label><span id="T00Unique.insertTs" class="meta"></span><input type="hidden" id="T00Unique.insertTs" name="T00Unique.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T00Unique.insertUserId}" class="meta">作成者</label><span id="T00Unique.insertUserId" class="meta"></span><input type="hidden" id="T00Unique.insertUserId" name="T00Unique.insertUserId" class="meta"/>
+          <span id="T00Unique.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Unique.insertUserId" data-destDef="T00Unique.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T00Unique.updateTs}" class="meta">更新タイムスタンプ</label><span id="T00Unique.updateTs" class="meta"></span><input type="hidden" id="T00Unique.updateTs" name="T00Unique.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T00Unique.updateUserId}" class="meta">更新者</label><span id="T00Unique.updateUserId" class="meta"></span><input type="hidden" id="T00Unique.updateUserId" name="T00Unique.updateUserId" class="meta"/>
+          <span id="T00Unique.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Unique.updateUserId" data-destDef="T00Unique.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT00Unique" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T00UniqueGet.xlsx(baseMei=#{T00Unique.h2})}" id="T00UniqueGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT00Unique" type="submit" class="delete" data-action="T00UniqueDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistT00Unique" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

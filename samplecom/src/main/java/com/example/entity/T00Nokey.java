@@ -10,7 +10,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.sql.Queries;
 
 /**
- * 主キーなし
+ * キーなし
  * @author emarfkrow
  */
 public class T00Nokey implements IEntity {
@@ -35,98 +35,92 @@ public class T00Nokey implements IEntity {
     }
 
     /** 列Ａ */
-    private String colA;
+    private String aMei;
 
     /** @return 列Ａ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "COL_A", index = 2)
-    public String getColA() {
-        return this.colA;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "A_MEI", index = 2)
+    public String getAMei() {
+        return this.aMei;
     }
 
     /** @param o 列Ａ */
-    public void setColA(final Object o) {
+    public void setAMei(final Object o) {
         if (o != null) {
-            this.colA = o.toString();
+            this.aMei = o.toString();
         } else {
-            this.colA = null;
+            this.aMei = null;
         }
     }
 
     /** 列Ｂ */
-    private String colB;
+    private String bMei;
 
     /** @return 列Ｂ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "COL_B", index = 3)
-    public String getColB() {
-        return this.colB;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "B_MEI", index = 3)
+    public String getBMei() {
+        return this.bMei;
     }
 
     /** @param o 列Ｂ */
-    public void setColB(final Object o) {
+    public void setBMei(final Object o) {
         if (o != null) {
-            this.colB = o.toString();
+            this.bMei = o.toString();
         } else {
-            this.colB = null;
+            this.bMei = null;
         }
     }
 
     /** 列Ｃ */
-    private String colC;
+    private String cMei;
 
     /** @return 列Ｃ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "COL_C", index = 4)
-    public String getColC() {
-        return this.colC;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "C_MEI", index = 4)
+    public String getCMei() {
+        return this.cMei;
     }
 
     /** @param o 列Ｃ */
-    public void setColC(final Object o) {
+    public void setCMei(final Object o) {
         if (o != null) {
-            this.colC = o.toString();
+            this.cMei = o.toString();
         } else {
-            this.colC = null;
+            this.cMei = null;
         }
     }
 
     /** 列Ｄ */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String colD;
+    private String dMei;
 
     /** @return 列Ｄ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "COL_D", index = 5)
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getColD() {
-        return this.colD;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "D_MEI", index = 5)
+    public String getDMei() {
+        return this.dMei;
     }
 
     /** @param o 列Ｄ */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setColD(final Object o) {
+    public void setDMei(final Object o) {
         if (o != null) {
-            this.colD = o.toString();
+            this.dMei = o.toString();
         } else {
-            this.colD = null;
+            this.dMei = null;
         }
     }
 
     /** 列Ｅ */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String colE;
+    private String eMei;
 
     /** @return 列Ｅ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "COL_E", index = 6)
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getColE() {
-        return this.colE;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "E_MEI", index = 6)
+    public String getEMei() {
+        return this.eMei;
     }
 
     /** @param o 列Ｅ */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setColE(final Object o) {
+    public void setEMei(final Object o) {
         if (o != null) {
-            this.colE = o.toString();
+            this.eMei = o.toString();
         } else {
-            this.colE = null;
+            this.eMei = null;
         }
     }
 
@@ -262,22 +256,27 @@ public class T00Nokey implements IEntity {
     }
 
     /**
-     * 主キーなし照会
-     * @param param1 列Ｄ
-     * @param param2 列Ｅ
-     * @return 主キーなし
+     * キーなし照会
+     * @return キーなし
      */
-    public static T00Nokey get(final Object param1, final Object param2) {
+    public static T00Nokey get() {
         List<String> whereList = new ArrayList<String>();
-        whereList.add("`COL_D` = :col_d");
-        whereList.add("`COL_E` = :col_e");
+        whereList.add("`A_MEI` = :a_mei");
+        whereList.add("`B_MEI` = :b_mei");
+        whereList.add("`C_MEI` = :c_mei");
+        whereList.add("`D_MEI` = :d_mei");
+        whereList.add("`E_MEI` = :e_mei");
+        whereList.add("`INSERT_TS` = :insert_ts");
+        whereList.add("`INSERT_USER_ID` = :insert_user_id");
+        whereList.add("`UPDATE_TS` = :update_ts");
+        whereList.add("`UPDATE_USER_ID` = :update_user_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`COL_A` \n";
-        sql += "    , a.`COL_B` \n";
-        sql += "    , a.`COL_C` \n";
-        sql += "    , a.`COL_D` \n";
-        sql += "    , a.`COL_E` \n";
+        sql += "      a.`A_MEI` \n";
+        sql += "    , a.`B_MEI` \n";
+        sql += "    , a.`C_MEI` \n";
+        sql += "    , a.`D_MEI` \n";
+        sql += "    , a.`E_MEI` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
@@ -287,20 +286,18 @@ public class T00Nokey implements IEntity {
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("col_d", param1);
-        map.put("col_e", param2);
         return Queries.get(sql, map, T00Nokey.class);
     }
 
     /**
-     * 主キーなし追加
+     * キーなし追加
      * @param now システム日時
      * @param execId 登録者
      * @return 追加件数
      */
     public int insert(final LocalDateTime now, final String execId) {
 
-        // 主キーなしの登録
+        // キーなしの登録
         String sql = "INSERT INTO T00_NOKEY(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return Queries.regist(sql, toMap(now, execId));
     }
@@ -308,11 +305,11 @@ public class T00Nokey implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         List<String> nameList = new ArrayList<String>();
-        nameList.add("`COL_A` -- :col_a");
-        nameList.add("`COL_B` -- :col_b");
-        nameList.add("`COL_C` -- :col_c");
-        nameList.add("`COL_D` -- :col_d");
-        nameList.add("`COL_E` -- :col_e");
+        nameList.add("`A_MEI` -- :a_mei");
+        nameList.add("`B_MEI` -- :b_mei");
+        nameList.add("`C_MEI` -- :c_mei");
+        nameList.add("`D_MEI` -- :d_mei");
+        nameList.add("`E_MEI` -- :e_mei");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -323,11 +320,11 @@ public class T00Nokey implements IEntity {
     /** @return insert用のvalue句 */
     private String values() {
         List<String> valueList = new ArrayList<String>();
-        valueList.add(":col_a");
-        valueList.add(":col_b");
-        valueList.add(":col_c");
-        valueList.add(":col_d");
-        valueList.add(":col_e");
+        valueList.add(":a_mei");
+        valueList.add(":b_mei");
+        valueList.add(":c_mei");
+        valueList.add(":d_mei");
+        valueList.add(":e_mei");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -336,14 +333,14 @@ public class T00Nokey implements IEntity {
     }
 
     /**
-     * 主キーなし更新
+     * キーなし更新
      * @param now システム日時
      * @param execId 更新者
      * @return 更新件数
      */
     public int update(final LocalDateTime now, final String execId) {
 
-        // 主キーなしの登録
+        // キーなしの登録
         String sql = "UPDATE T00_NOKEY\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return Queries.regist(sql, toMap(now, execId));
     }
@@ -351,23 +348,23 @@ public class T00Nokey implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         List<String> setList = new ArrayList<String>();
-        setList.add("`COL_A` = :col_a");
-        setList.add("`COL_B` = :col_b");
-        setList.add("`COL_C` = :col_c");
-        setList.add("`COL_D` = :col_d");
-        setList.add("`COL_E` = :col_e");
+        setList.add("`A_MEI` = :a_mei");
+        setList.add("`B_MEI` = :b_mei");
+        setList.add("`C_MEI` = :c_mei");
+        setList.add("`D_MEI` = :d_mei");
+        setList.add("`E_MEI` = :e_mei");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
     /**
-     * 主キーなし削除
+     * キーなし削除
      * @return 削除件数
      */
     public int delete() {
 
-        // 主キーなしの削除
+        // キーなしの削除
         String sql = "DELETE FROM T00_NOKEY WHERE " + getWhere();
         return Queries.regist(sql, toMap(null, null));
     }
@@ -375,8 +372,6 @@ public class T00Nokey implements IEntity {
     /** @return where句 */
     private String getWhere() {
         List<String> whereList = new ArrayList<String>();
-        whereList.add("`COL_D` = :col_d");
-        whereList.add("`COL_E` = :col_e");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
@@ -388,11 +383,11 @@ public class T00Nokey implements IEntity {
      */
     private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("col_a", this.colA);
-        map.put("col_b", this.colB);
-        map.put("col_c", this.colC);
-        map.put("col_d", this.colD);
-        map.put("col_e", this.colE);
+        map.put("a_mei", this.aMei);
+        map.put("b_mei", this.bMei);
+        map.put("c_mei", this.cMei);
+        map.put("d_mei", this.dMei);
+        map.put("e_mei", this.eMei);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);

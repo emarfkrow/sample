@@ -56,18 +56,18 @@ public class MhrShokuiNinkaRegistForm implements IForm {
     @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 20)
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String tableRegex;
+    private String tableRe;
 
     /** @return テーブル正規表現 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getTableRegex() {
-        return tableRegex;
+    public String getTableRe() {
+        return tableRe;
     }
 
     /** @param p テーブル正規表現 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setTableRegex(final String p) {
-        this.tableRegex = p;
+    public void setTableRe(final String p) {
+        this.tableRe = p;
     }
 
     /** 権限ビット */

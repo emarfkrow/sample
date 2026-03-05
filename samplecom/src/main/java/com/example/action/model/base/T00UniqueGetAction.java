@@ -4,19 +4,19 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.entity.T09Sum;
+import com.example.entity.T00Unique;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.NoDataError;
 
 /**
- * 集約照会
+ * ユニークキー照会
  *
  * @author emarfkrow
  */
-public class T09SumGetAction extends BaseAction {
+public class T00UniqueGetAction extends BaseAction {
 
-    /** 集約照会処理 */
+    /** ユニークキー照会処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
@@ -25,11 +25,19 @@ public class T09SumGetAction extends BaseAction {
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object sumId = postJson.get("sumId");
-        if (sumId == null) {
-            sumId = postJson.get("T09Sum.sumId");
+        Object dMei = postJson.get("dMei");
+        if (dMei == null) {
+            dMei = postJson.get("T00Unique.dMei");
         }
-        if (sumId == null) {
+        if (dMei == null) {
+            isAllKey = false;
+        }
+
+        Object eMei = postJson.get("eMei");
+        if (eMei == null) {
+            eMei = postJson.get("T00Unique.eMei");
+        }
+        if (eMei == null) {
             isAllKey = false;
         }
 
@@ -39,11 +47,8 @@ public class T09SumGetAction extends BaseAction {
         }
 
         try {
-            T09Sum t09Sum = T09Sum.get(sumId);
-            // 集約元
-            t09Sum.referT09Grp2s();
-            t09Sum.referT09Grp1s();
-            map.put("T09Sum", t09Sum);
+            T00Unique t00Unique = T00Unique.get(dMei, eMei);
+            map.put("T00Unique", t00Unique);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
                 throw e;

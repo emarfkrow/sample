@@ -12,35 +12,21 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 主キーなし削除
+ * キーなし削除
  *
  * @author emarfkrow
  */
 public class T00NokeyDeleteAction extends BaseAction {
 
-    /** 主キーなし削除処理 */
+    /** キーなし削除処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
         // 主キーが不足していたらエラー
-        Object colD = postJson.get("colD");
-        if (colD == null) {
-            colD = postJson.get("T00Nokey.colD");
-        }
-        if (colD == null) {
-            throw new OptLockError("error.cant.delete", "主キーなし");
-        }
-        Object colE = postJson.get("colE");
-        if (colE == null) {
-            colE = postJson.get("T00Nokey.colE");
-        }
-        if (colE == null) {
-            throw new OptLockError("error.cant.delete", "主キーなし");
-        }
 
         T00Nokey e = FormValidator.toBean(T00Nokey.class.getName(), postJson);
         if (e.delete() != 1) {
-            throw new OptLockError("error.cant.delete", "主キーなし");
+            throw new OptLockError("error.cant.delete", "キーなし");
         }
 
         Map<String, Object> map = new HashMap<String, Object>();

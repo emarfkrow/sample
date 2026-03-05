@@ -13,13 +13,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 主キーなし一覧登録
+ * キーなし一覧登録
  *
  * @author emarfkrow
  */
 public class T00NokeySRegistAction extends BaseAction {
 
-    /** 主キーなし一覧登録処理 */
+    /** キーなし一覧登録処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
 
@@ -40,12 +40,6 @@ public class T00NokeySRegistAction extends BaseAction {
 
                 // 主キーが不足していたらINSERT
                 boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getColD())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getColE())) {
-                    isNew = true;
-                }
                 // 楽観ロック値がなくてもINSERT
                 if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
                     isNew = true;
@@ -54,14 +48,14 @@ public class T00NokeySRegistAction extends BaseAction {
                 if (isNew) {
 
                     if (e.insert(now, execId) != 1) {
-                        throw new OptLockError("error.cant.insert", "主キーなし");
+                        throw new OptLockError("error.cant.insert", "キーなし");
                     }
                     ++count;
 
                 } else {
 
                     if (e.update(now, execId) != 1) {
-                        throw new OptLockError("error.cant.update", "主キーなし");
+                        throw new OptLockError("error.cant.update", "キーなし");
                     }
                     ++count;
                 }
