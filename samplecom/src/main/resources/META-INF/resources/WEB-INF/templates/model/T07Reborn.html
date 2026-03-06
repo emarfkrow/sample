@@ -54,7 +54,7 @@
         </div>
       </fieldset>
       <h3 th:text="#{T07RebornDet.h3}">h3</h3>
-      <a th:href="@{/model/T07RebornDet.html}" id="T07RebornDet" target="dialog" th:text="#{T07RebornDet.add}" class="addChild" tabindex="-1">転生明細</a>
+      <a th:href="@{/model/T07RebornDet.html(anew)}" id="T07RebornDet" target="dialog" th:text="#{T07RebornDet.add}" class="addChild" tabindex="-1">転生明細</a>
       <div id="T07RebornDetGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T07RebornDet.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshT07Reborn" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>

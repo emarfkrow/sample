@@ -45,7 +45,7 @@
         </div>
       </fieldset>
       <h3 th:text="#{MsyKbnVal.h3}">h3</h3>
-      <a th:href="@{/model/MsyKbnVal.html}" id="MsyKbnVal" target="dialog" th:text="#{MsyKbnVal.add}" class="addChild" tabindex="-1">区分値マスタ</a>
+      <a th:href="@{/model/MsyKbnVal.html(anew)}" id="MsyKbnVal" target="dialog" th:text="#{MsyKbnVal.add}" class="addChild" tabindex="-1">区分値マスタ</a>
       <div id="MsyKbnValGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/MsyKbnVal.html}" class="childs"></div>
         <a id="MsyKbnValGrid.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class="refer" th:text="'区分マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
       <div class="buttons">

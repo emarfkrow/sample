@@ -45,7 +45,7 @@
         </div>
       </fieldset>
       <h3 th:text="#{M04Idbn.h3}">h3</h3>
-      <a th:href="@{/model/M04Idbn.html}" id="M04Idbn" target="dialog" th:text="#{M04Idbn.add}" class="addChild" tabindex="-1">ID連番マスタ</a>
+      <a th:href="@{/model/M04Idbn.html(anew)}" id="M04Idbn" target="dialog" th:text="#{M04Idbn.add}" class="addChild" tabindex="-1">ID連番マスタ</a>
       <div id="M04IdbnGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/M04Idbn.html}" class="childs"></div>
         <a id="M04IdbnGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="'IDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
       <div class="buttons">

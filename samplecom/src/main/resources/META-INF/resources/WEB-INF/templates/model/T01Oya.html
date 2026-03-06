@@ -54,10 +54,10 @@
         </div>
       </fieldset>
       <h3 th:text="#{T01Dinks.h3}">h3</h3>
-      <a th:href="@{/model/T01Dinks.html}" id="T01Dinks" target="dialog" th:text="#{T01Dinks.add}" class="addChild" tabindex="-1">子なし</a>
+      <a th:href="@{/model/T01Dinks.html(anew)}" id="T01Dinks" target="dialog" th:text="#{T01Dinks.add}" class="addChild" tabindex="-1">子なし</a>
       <div id="T01DinksGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T01Dinks.html}" class="childs"></div>
       <h3 th:text="#{T01Ko.h3}">h3</h3>
-      <a th:href="@{/model/T01Ko.html}" id="T01Ko" target="dialog" th:text="#{T01Ko.add}" class="addChild" tabindex="-1">子</a>
+      <a th:href="@{/model/T01Ko.html(anew)}" id="T01Ko" target="dialog" th:text="#{T01Ko.add}" class="addChild" tabindex="-1">子</a>
       <div id="T01KoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T01Ko.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshT01Oya" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>

@@ -91,7 +91,7 @@
         <input type="hidden" name="T01Orphan.updateTs" />
       </fieldset>
       <h3 th:text="#{T01Mago.h3}">h3</h3>
-      <a th:href="@{/model/T01Mago.html}" id="T01Mago" target="dialog" th:text="#{T01Mago.add}" class="addChild" tabindex="-1">孫</a>
+      <a th:href="@{/model/T01Mago.html(anew)}" id="T01Mago" target="dialog" th:text="#{T01Mago.add}" class="addChild" tabindex="-1">孫</a>
       <div id="T01MagoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="2" th:data-href="@{/model/T01Mago.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshT01Ko" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>

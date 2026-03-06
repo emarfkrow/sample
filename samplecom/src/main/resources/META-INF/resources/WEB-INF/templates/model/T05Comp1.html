@@ -57,7 +57,7 @@
         </div>
       </fieldset>
       <h3 th:text="#{T05Comp2.h3}">h3</h3>
-      <a th:href="@{/model/T05Comp2.html}" id="T05Comp2" target="dialog" th:text="#{T05Comp2.add}" class="addChild" tabindex="-1">複合２</a>
+      <a th:href="@{/model/T05Comp2.html(anew)}" id="T05Comp2" target="dialog" th:text="#{T05Comp2.add}" class="addChild" tabindex="-1">複合２</a>
       <div id="T05Comp2Grid" data-selectionMode="link" data-addRow="true" data-frozenColumn="2" th:data-href="@{/model/T05Comp2.html}" class="childs"></div>
         <a id="T05Comp2Grid.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class="refer" th:text="'マスタ参照１' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <a id="T05Comp2Grid.ref2Id" th:href="@{/model/M05Ref2S.html?action=M05Ref2Correct.ajax}" target="dialog" class="refer correct" th:text="'マスタ参照２' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
