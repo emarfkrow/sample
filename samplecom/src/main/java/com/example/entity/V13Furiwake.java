@@ -34,16 +34,16 @@ public class V13Furiwake implements IEntity {
         }
     }
 
-    /** TABLE_NAME */
+    /** table_name */
     private String tableName;
 
-    /** @return TABLE_NAME */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_NAME", index = 2)
+    /** @return table_name */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "table_name", index = 2)
     public String getTableName() {
         return this.tableName;
     }
 
-    /** @param o TABLE_NAME */
+    /** @param o table_name */
     public void setTableName(final Object o) {
         if (o != null) {
             this.tableName = o.toString();
@@ -70,16 +70,16 @@ public class V13Furiwake implements IEntity {
         }
     }
 
-    /** INFO */
+    /** info */
     private String info;
 
-    /** @return INFO */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INFO", index = 4)
+    /** @return info */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "info", index = 4)
     public String getInfo() {
         return this.info;
     }
 
-    /** @param o INFO */
+    /** @param o info */
     public void setInfo(final Object o) {
         if (o != null) {
             this.info = o.toString();
@@ -99,9 +99,9 @@ public class V13Furiwake implements IEntity {
         whereList.add("`INFO` = :info");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`TABLE_NAME` \n";
+        sql += "      a.`table_name` \n";
         sql += "    , a.`SRC_ID$DEST_ID` \n";
-        sql += "    , a.`INFO` \n";
+        sql += "    , a.`info` \n";
         sql += "FROM \n";
         sql += "    V13_FURIWAKE a \n";
         sql += "WHERE \n";

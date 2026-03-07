@@ -34,16 +34,16 @@ public class V13Henkan implements IEntity {
         }
     }
 
-    /** TABLE_NAME */
+    /** table_name */
     private String tableName;
 
-    /** @return TABLE_NAME */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_NAME", index = 2)
+    /** @return table_name */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "table_name", index = 2)
     public String getTableName() {
         return this.tableName;
     }
 
-    /** @param o TABLE_NAME */
+    /** @param o table_name */
     public void setTableName(final Object o) {
         if (o != null) {
             this.tableName = o.toString();
@@ -56,7 +56,7 @@ public class V13Henkan implements IEntity {
     private Integer srcId;
 
     /** @return 変換元ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "SRC_ID", index = 3)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "src_id", index = 3)
     public Integer getSrcId() {
         return this.srcId;
     }
@@ -74,7 +74,7 @@ public class V13Henkan implements IEntity {
     private String destInfo;
 
     /** @return 変換元情報 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEST_INFO", index = 4)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "dest_info", index = 4)
     public String getDestInfo() {
         return this.destInfo;
     }
@@ -99,9 +99,9 @@ public class V13Henkan implements IEntity {
         whereList.add("`DEST_INFO` = :dest_info");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`TABLE_NAME` \n";
-        sql += "    , a.`SRC_ID` \n";
-        sql += "    , a.`DEST_INFO` \n";
+        sql += "      a.`table_name` \n";
+        sql += "    , a.`src_id` \n";
+        sql += "    , a.`dest_info` \n";
         sql += "FROM \n";
         sql += "    V13_HENKAN a \n";
         sql += "WHERE \n";
