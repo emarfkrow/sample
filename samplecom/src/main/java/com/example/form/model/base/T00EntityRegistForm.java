@@ -83,7 +83,7 @@ public class T00EntityRegistForm implements IForm {
     /** チェックフラグ */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 1)
-    private String checkF = "0";
+    private String checkF;
 
     /** @return チェックフラグ */
     public String getCheckF() {
@@ -426,7 +426,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** 削除フラグ */
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 1)
-    private String deleteF;
+    private String deleteF = "0";
 
     /** @return 削除フラグ */
     public String getDeleteF() {

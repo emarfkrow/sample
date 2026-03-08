@@ -1,0 +1,3 @@
+CREATE USER emarf PASSWORD 'emarf';
+--DROP DATABASE emarf;
+CREATE DATABASE emarf OWNER emarf;

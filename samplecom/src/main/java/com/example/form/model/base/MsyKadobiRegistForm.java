@@ -57,7 +57,7 @@ public class MsyKadobiRegistForm implements IForm {
     /** 稼働日フラグ */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 1)
-    private String kadobiF = "0";
+    private String kadobiF;
 
     /** @return 稼働日フラグ */
     public String getKadobiF() {

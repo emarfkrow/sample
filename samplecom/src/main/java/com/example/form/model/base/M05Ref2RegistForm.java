@@ -52,7 +52,7 @@ public class M05Ref2RegistForm implements IForm {
 
     /** 削除フラグ */
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 1)
-    private String deleteF;
+    private String deleteF = "0";
 
     /** @return 削除フラグ */
     public String getDeleteF() {
