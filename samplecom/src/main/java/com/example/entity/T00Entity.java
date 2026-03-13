@@ -235,57 +235,57 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 年月日年 */
-    private String nengappiY;
+    /** 年 */
+    private String nenY;
 
-    /** @return 年月日年 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "NENGAPPI_Y", index = 13)
-    public String getNengappiY() {
-        return this.nengappiY;
+    /** @return 年 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "NEN_Y", index = 13)
+    public String getNenY() {
+        return this.nenY;
     }
 
-    /** @param o 年月日年 */
-    public void setNengappiY(final Object o) {
+    /** @param o 年 */
+    public void setNenY(final Object o) {
         if (o != null) {
-            this.nengappiY = o.toString();
+            this.nenY = o.toString();
         } else {
-            this.nengappiY = null;
+            this.nenY = null;
         }
     }
 
-    /** 年月日月 */
-    private String nengappiM;
+    /** 月 */
+    private String tsukiM;
 
-    /** @return 年月日月 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "NENGAPPI_M", index = 14)
-    public String getNengappiM() {
-        return this.nengappiM;
+    /** @return 月 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TSUKI_M", index = 14)
+    public String getTsukiM() {
+        return this.tsukiM;
     }
 
-    /** @param o 年月日月 */
-    public void setNengappiM(final Object o) {
+    /** @param o 月 */
+    public void setTsukiM(final Object o) {
         if (o != null) {
-            this.nengappiM = o.toString();
+            this.tsukiM = o.toString();
         } else {
-            this.nengappiM = null;
+            this.tsukiM = null;
         }
     }
 
-    /** 年月日日 */
-    private String nengappiD;
+    /** 日 */
+    private String hiD;
 
-    /** @return 年月日日 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "NENGAPPI_D", index = 15)
-    public String getNengappiD() {
-        return this.nengappiD;
+    /** @return 日 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "HI_D", index = 15)
+    public String getHiD() {
+        return this.hiD;
     }
 
-    /** @param o 年月日日 */
-    public void setNengappiD(final Object o) {
+    /** @param o 日 */
+    public void setHiD(final Object o) {
         if (o != null) {
-            this.nengappiD = o.toString();
+            this.hiD = o.toString();
         } else {
-            this.nengappiD = null;
+            this.hiD = null;
         }
     }
 
@@ -443,29 +443,11 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 数量 */
-    private java.math.BigDecimal suryoQt;
-
-    /** @return 数量 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "SURYO_QT", index = 23)
-    public java.math.BigDecimal getSuryoQt() {
-        return this.suryoQt;
-    }
-
-    /** @param o 数量 */
-    public void setSuryoQt(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.suryoQt = new java.math.BigDecimal(o.toString());
-        } else {
-            this.suryoQt = null;
-        }
-    }
-
     /** 通貨区分 */
     private String tsukaKb;
 
     /** @return 通貨区分 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "TSUKA_KB", index = 24)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TSUKA_KB", index = 23)
     public String getTsukaKb() {
         return this.tsukaKb;
     }
@@ -476,6 +458,24 @@ public class T00Entity implements IEntity {
             this.tsukaKb = o.toString();
         } else {
             this.tsukaKb = null;
+        }
+    }
+
+    /** 受注数量 */
+    private java.math.BigDecimal juchuQt;
+
+    /** @return 受注数量 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_QT", index = 24)
+    public java.math.BigDecimal getJuchuQt() {
+        return this.juchuQt;
+    }
+
+    /** @param o 受注数量 */
+    public void setJuchuQt(final Object o) {
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
+            this.juchuQt = new java.math.BigDecimal(o.toString());
+        } else {
+            this.juchuQt = null;
         }
     }
 
@@ -515,39 +515,57 @@ public class T00Entity implements IEntity {
         }
     }
 
+    /** 発注数量 */
+    private java.math.BigDecimal hacchuQt;
+
+    /** @return 発注数量 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_QT", index = 27)
+    public java.math.BigDecimal getHacchuQt() {
+        return this.hacchuQt;
+    }
+
+    /** @param o 発注数量 */
+    public void setHacchuQt(final Object o) {
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
+            this.hacchuQt = new java.math.BigDecimal(o.toString());
+        } else {
+            this.hacchuQt = null;
+        }
+    }
+
     /** 発注単価 */
-    private java.math.BigDecimal hachuPr;
+    private java.math.BigDecimal hacchuPr;
 
     /** @return 発注単価 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACHU_PR", index = 27)
-    public java.math.BigDecimal getHachuPr() {
-        return this.hachuPr;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_PR", index = 28)
+    public java.math.BigDecimal getHacchuPr() {
+        return this.hacchuPr;
     }
 
     /** @param o 発注単価 */
-    public void setHachuPr(final Object o) {
+    public void setHacchuPr(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.hachuPr = new java.math.BigDecimal(o.toString());
+            this.hacchuPr = new java.math.BigDecimal(o.toString());
         } else {
-            this.hachuPr = null;
+            this.hacchuPr = null;
         }
     }
 
     /** 発注金額 */
-    private java.math.BigDecimal hachuAm;
+    private java.math.BigDecimal hacchuAm;
 
     /** @return 発注金額 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACHU_AM", index = 28)
-    public java.math.BigDecimal getHachuAm() {
-        return this.hachuAm;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_AM", index = 29)
+    public java.math.BigDecimal getHacchuAm() {
+        return this.hacchuAm;
     }
 
     /** @param o 発注金額 */
-    public void setHachuAm(final Object o) {
+    public void setHacchuAm(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.hachuAm = new java.math.BigDecimal(o.toString());
+            this.hacchuAm = new java.math.BigDecimal(o.toString());
         } else {
-            this.hachuAm = null;
+            this.hacchuAm = null;
         }
     }
 
@@ -555,7 +573,7 @@ public class T00Entity implements IEntity {
     private String deleteF = "0";
 
     /** @return 削除フラグ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "DELETE_F", index = 29)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "DELETE_F", index = 30)
     public String getDeleteF() {
         return this.deleteF;
     }
@@ -573,7 +591,7 @@ public class T00Entity implements IEntity {
     private String statusKb;
 
     /** @return ステータス区分 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "STATUS_KB", index = 30)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "STATUS_KB", index = 31)
     public String getStatusKb() {
         return this.statusKb;
     }
@@ -594,7 +612,7 @@ public class T00Entity implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return 作成タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 31)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 32)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -618,7 +636,7 @@ public class T00Entity implements IEntity {
     private Integer insertUserId;
 
     /** @return 作成者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 32)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 33)
     public Integer getInsertUserId() {
         return this.insertUserId;
     }
@@ -637,7 +655,7 @@ public class T00Entity implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 33)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 34)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -659,7 +677,7 @@ public class T00Entity implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return 更新タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 34)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 35)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -685,7 +703,7 @@ public class T00Entity implements IEntity {
     private Integer updateUserId;
 
     /** @return 更新者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 35)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 36)
     public Integer getUpdateUserId() {
         return this.updateUserId;
     }
@@ -704,7 +722,7 @@ public class T00Entity implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 36)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 37)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -739,9 +757,9 @@ public class T00Entity implements IEntity {
         sql += "    , a.`MEMO_TX` \n";
         sql += "    , a.`MEMO` \n";
         sql += "    , a.`TENPU_FILE` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_Y`) AS NENGAPPI_Y \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_M`) AS NENGAPPI_M \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_D`) AS NENGAPPI_D \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`NEN_Y`) AS NEN_Y \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`TSUKI_M`) AS TSUKI_M \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`HI_D`) AS HI_D \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`NENGETSU_YM`) AS NENGETSU_YM \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_YMD`) AS NENGAPPI_YMD \n";
         sql += "    , LEFT(DATE_FORMAT (a.`TIMESTAMP_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS TIMESTAMP_TS \n";
@@ -749,12 +767,13 @@ public class T00Entity implements IEntity {
         sql += "    , a.`HIDUKE_BI` AS HIDUKE_BI \n";
         sql += "    , a.`JIKOKU_HM` \n";
         sql += "    , a.`JIKAN_TM` \n";
-        sql += "    , a.`SURYO_QT` \n";
         sql += "    , a.`TSUKA_KB` \n";
+        sql += "    , a.`JUCHU_QT` \n";
         sql += "    , a.`JUCHU_PR` \n";
         sql += "    , a.`JUCHU_AM` \n";
-        sql += "    , a.`HACHU_PR` \n";
-        sql += "    , a.`HACHU_AM` \n";
+        sql += "    , a.`HACCHU_QT` \n";
+        sql += "    , a.`HACCHU_PR` \n";
+        sql += "    , a.`HACCHU_AM` \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`DELETE_F`) AS DELETE_F \n";
         sql += "    , a.`STATUS_KB` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
@@ -800,9 +819,9 @@ public class T00Entity implements IEntity {
         nameList.add("`MEMO_TX` -- :memo_tx");
         nameList.add("`MEMO` -- :memo");
         nameList.add("`TENPU_FILE` -- :tenpu_file");
-        nameList.add("`NENGAPPI_Y` -- :nengappi_y");
-        nameList.add("`NENGAPPI_M` -- :nengappi_m");
-        nameList.add("`NENGAPPI_D` -- :nengappi_d");
+        nameList.add("`NEN_Y` -- :nen_y");
+        nameList.add("`TSUKI_M` -- :tsuki_m");
+        nameList.add("`HI_D` -- :hi_d");
         nameList.add("`NENGETSU_YM` -- :nengetsu_ym");
         nameList.add("`NENGAPPI_YMD` -- :nengappi_ymd");
         nameList.add("`TIMESTAMP_TS` -- :timestamp_ts");
@@ -810,12 +829,13 @@ public class T00Entity implements IEntity {
         nameList.add("`HIDUKE_BI` -- :hiduke_bi");
         nameList.add("`JIKOKU_HM` -- :jikoku_hm");
         nameList.add("`JIKAN_TM` -- :jikan_tm");
-        nameList.add("`SURYO_QT` -- :suryo_qt");
         nameList.add("`TSUKA_KB` -- :tsuka_kb");
+        nameList.add("`JUCHU_QT` -- :juchu_qt");
         nameList.add("`JUCHU_PR` -- :juchu_pr");
         nameList.add("`JUCHU_AM` -- :juchu_am");
-        nameList.add("`HACHU_PR` -- :hachu_pr");
-        nameList.add("`HACHU_AM` -- :hachu_am");
+        nameList.add("`HACCHU_QT` -- :hacchu_qt");
+        nameList.add("`HACCHU_PR` -- :hacchu_pr");
+        nameList.add("`HACCHU_AM` -- :hacchu_am");
         nameList.add("`DELETE_F` -- :delete_f");
         nameList.add("`STATUS_KB` -- :status_kb");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -839,9 +859,9 @@ public class T00Entity implements IEntity {
         valueList.add(":memo_tx");
         valueList.add(":memo");
         valueList.add(":tenpu_file");
-        valueList.add(":nengappi_y");
-        valueList.add(":nengappi_m");
-        valueList.add(":nengappi_d");
+        valueList.add(":nen_y");
+        valueList.add(":tsuki_m");
+        valueList.add(":hi_d");
         valueList.add(":nengetsu_ym");
         valueList.add(":nengappi_ymd");
         valueList.add("LEFT(DATE_FORMAT (now(3), '%Y-%m-%dT%H:%i:%s.%f'), 23)");
@@ -849,12 +869,13 @@ public class T00Entity implements IEntity {
         valueList.add(":hiduke_bi");
         valueList.add(":jikoku_hm");
         valueList.add(":jikan_tm");
-        valueList.add(":suryo_qt");
         valueList.add(":tsuka_kb");
+        valueList.add(":juchu_qt");
         valueList.add(":juchu_pr");
         valueList.add(":juchu_am");
-        valueList.add(":hachu_pr");
-        valueList.add(":hachu_am");
+        valueList.add(":hacchu_qt");
+        valueList.add(":hacchu_pr");
+        valueList.add(":hacchu_am");
         valueList.add(":delete_f");
         valueList.add(":status_kb");
         valueList.add(":insert_ts");
@@ -903,9 +924,9 @@ public class T00Entity implements IEntity {
         setList.add("`MEMO_TX` = :memo_tx");
         setList.add("`MEMO` = :memo");
         setList.add("`TENPU_FILE` = :tenpu_file");
-        setList.add("`NENGAPPI_Y` = :nengappi_y");
-        setList.add("`NENGAPPI_M` = :nengappi_m");
-        setList.add("`NENGAPPI_D` = :nengappi_d");
+        setList.add("`NEN_Y` = :nen_y");
+        setList.add("`TSUKI_M` = :tsuki_m");
+        setList.add("`HI_D` = :hi_d");
         setList.add("`NENGETSU_YM` = :nengetsu_ym");
         setList.add("`NENGAPPI_YMD` = :nengappi_ymd");
         setList.add("`TIMESTAMP_TS` = :timestamp_ts");
@@ -913,12 +934,13 @@ public class T00Entity implements IEntity {
         setList.add("`HIDUKE_BI` = :hiduke_bi");
         setList.add("`JIKOKU_HM` = :jikoku_hm");
         setList.add("`JIKAN_TM` = :jikan_tm");
-        setList.add("`SURYO_QT` = :suryo_qt");
         setList.add("`TSUKA_KB` = :tsuka_kb");
+        setList.add("`JUCHU_QT` = :juchu_qt");
         setList.add("`JUCHU_PR` = :juchu_pr");
         setList.add("`JUCHU_AM` = :juchu_am");
-        setList.add("`HACHU_PR` = :hachu_pr");
-        setList.add("`HACHU_AM` = :hachu_am");
+        setList.add("`HACCHU_QT` = :hacchu_qt");
+        setList.add("`HACCHU_PR` = :hacchu_pr");
+        setList.add("`HACCHU_AM` = :hacchu_am");
         setList.add("`DELETE_F` = :delete_f");
         setList.add("`STATUS_KB` = :status_kb");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -952,9 +974,9 @@ public class T00Entity implements IEntity {
         map.put("memo_tx", this.memoTx);
         map.put("memo", this.memo);
         map.put("tenpu_file", this.tenpuFile);
-        map.put("nengappi_y", this.nengappiY);
-        map.put("nengappi_m", this.nengappiM);
-        map.put("nengappi_d", this.nengappiD);
+        map.put("nen_y", this.nenY);
+        map.put("tsuki_m", this.tsukiM);
+        map.put("hi_d", this.hiD);
         map.put("nengetsu_ym", this.nengetsuYm);
         map.put("nengappi_ymd", this.nengappiYmd);
         map.put("timestamp_ts", this.timestampTs);
@@ -962,12 +984,13 @@ public class T00Entity implements IEntity {
         map.put("hiduke_bi", this.hidukeBi);
         map.put("jikoku_hm", this.jikokuHm);
         map.put("jikan_tm", this.jikanTm);
-        map.put("suryo_qt", this.suryoQt);
         map.put("tsuka_kb", this.tsukaKb);
+        map.put("juchu_qt", this.juchuQt);
         map.put("juchu_pr", this.juchuPr);
         map.put("juchu_am", this.juchuAm);
-        map.put("hachu_pr", this.hachuPr);
-        map.put("hachu_am", this.hachuAm);
+        map.put("hacchu_qt", this.hacchuQt);
+        map.put("hacchu_pr", this.hacchuPr);
+        map.put("hacchu_am", this.hacchuAm);
         map.put("delete_f", this.deleteF);
         map.put("status_kb", this.statusKb);
         map.put("insert_ts", now);

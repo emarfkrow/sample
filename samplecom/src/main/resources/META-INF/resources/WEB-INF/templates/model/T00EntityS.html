@@ -62,14 +62,14 @@
         <div id="memo">
           <label for="T00Entity.memo" th:text="#{T00Entity.memo}">１行メモ</label><input type="text" id="T00Entity.memo" name="T00Entity.memo" maxlength="300" />
         </div>
-        <div id="nengappiY">
-          <label for="T00Entity.nengappiY_1" th:text="#{T00Entity.nengappiY}">年月日年</label><input type="number" id="T00Entity.nengappiY_1" name="T00Entity.nengappiY_1" maxlength="4" />～<input type="number" id="T00Entity.nengappiY_2" name="T00Entity.nengappiY_2" maxlength="4" />
+        <div id="nenY">
+          <label for="T00Entity.nenY_1" th:text="#{T00Entity.nenY}">年</label><input type="number" id="T00Entity.nenY_1" name="T00Entity.nenY_1" maxlength="4" />～<input type="number" id="T00Entity.nenY_2" name="T00Entity.nenY_2" maxlength="4" />
         </div>
-        <div id="nengappiM">
-          <label for="T00Entity.nengappiM_1" th:text="#{T00Entity.nengappiM}">年月日月</label><input type="number" id="T00Entity.nengappiM_1" name="T00Entity.nengappiM_1" maxlength="2" />～<input type="number" id="T00Entity.nengappiM_2" name="T00Entity.nengappiM_2" maxlength="2" />
+        <div id="tsukiM">
+          <label for="T00Entity.tsukiM_1" th:text="#{T00Entity.tsukiM}">月</label><input type="number" id="T00Entity.tsukiM_1" name="T00Entity.tsukiM_1" maxlength="2" />～<input type="number" id="T00Entity.tsukiM_2" name="T00Entity.tsukiM_2" maxlength="2" />
         </div>
-        <div id="nengappiD">
-          <label for="T00Entity.nengappiD_1" th:text="#{T00Entity.nengappiD}">年月日日</label><input type="number" id="T00Entity.nengappiD_1" name="T00Entity.nengappiD_1" maxlength="2" />～<input type="number" id="T00Entity.nengappiD_2" name="T00Entity.nengappiD_2" maxlength="2" />
+        <div id="hiD">
+          <label for="T00Entity.hiD_1" th:text="#{T00Entity.hiD}">日</label><input type="number" id="T00Entity.hiD_1" name="T00Entity.hiD_1" maxlength="2" />～<input type="number" id="T00Entity.hiD_2" name="T00Entity.hiD_2" maxlength="2" />
         </div>
         <div id="nengetsuYm">
           <label for="T00Entity.nengetsuYm_1" th:text="#{T00Entity.nengetsuYm}">年月</label><input type="month" id="T00Entity.nengetsuYm_1" name="T00Entity.nengetsuYm_1" maxlength="6" />～<input type="month" id="T00Entity.nengetsuYm_2" name="T00Entity.nengetsuYm_2" maxlength="6" />
@@ -89,13 +89,13 @@
         <div id="jikanTm">
           <label for="T00Entity.jikanTm_1" th:text="#{T00Entity.jikanTm}">時間</label><input type="text" id="T00Entity.jikanTm_1" name="T00Entity.jikanTm_1" maxlength="9" class=" time" />～<input type="text" id="T00Entity.jikanTm_2" name="T00Entity.jikanTm_2" maxlength="9" class=" time" />
         </div>
-        <div id="suryoQt">
-          <label for="T00Entity.suryoQt_1" th:text="#{T00Entity.suryoQt}">数量</label><input type="number" id="T00Entity.suryoQt_1" name="T00Entity.suryoQt_1" maxlength="11" />～<input type="number" id="T00Entity.suryoQt_2" name="T00Entity.suryoQt_2" maxlength="11" />
-        </div>
         <div id="tsukaKb">
           <fieldset id="T00Entity.tsukaKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:TSUKA_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
             <legend th:text="#{T00Entity.tsukaKb}">通貨区分</legend>
           </fieldset>
+        </div>
+        <div id="juchuQt">
+          <label for="T00Entity.juchuQt_1" th:text="#{T00Entity.juchuQt}">受注数量</label><input type="number" id="T00Entity.juchuQt_1" name="T00Entity.juchuQt_1" maxlength="11" />～<input type="number" id="T00Entity.juchuQt_2" name="T00Entity.juchuQt_2" maxlength="11" />
         </div>
         <div id="juchuPr">
           <label for="T00Entity.juchuPr_1" th:text="#{T00Entity.juchuPr}">受注単価</label><input type="number" id="T00Entity.juchuPr_1" name="T00Entity.juchuPr_1" maxlength="11" />～<input type="number" id="T00Entity.juchuPr_2" name="T00Entity.juchuPr_2" maxlength="11" />
@@ -103,11 +103,14 @@
         <div id="juchuAm">
           <label for="T00Entity.juchuAm_1" th:text="#{T00Entity.juchuAm}">受注金額</label><input type="number" id="T00Entity.juchuAm_1" name="T00Entity.juchuAm_1" maxlength="11" />～<input type="number" id="T00Entity.juchuAm_2" name="T00Entity.juchuAm_2" maxlength="11" />
         </div>
-        <div id="hachuPr">
-          <label for="T00Entity.hachuPr_1" th:text="#{T00Entity.hachuPr}">発注単価</label><input type="number" id="T00Entity.hachuPr_1" name="T00Entity.hachuPr_1" maxlength="11" />～<input type="number" id="T00Entity.hachuPr_2" name="T00Entity.hachuPr_2" maxlength="11" />
+        <div id="hacchuQt">
+          <label for="T00Entity.hacchuQt_1" th:text="#{T00Entity.hacchuQt}">発注数量</label><input type="number" id="T00Entity.hacchuQt_1" name="T00Entity.hacchuQt_1" maxlength="11" />～<input type="number" id="T00Entity.hacchuQt_2" name="T00Entity.hacchuQt_2" maxlength="11" />
         </div>
-        <div id="hachuAm">
-          <label for="T00Entity.hachuAm_1" th:text="#{T00Entity.hachuAm}">発注金額</label><input type="number" id="T00Entity.hachuAm_1" name="T00Entity.hachuAm_1" maxlength="11" />～<input type="number" id="T00Entity.hachuAm_2" name="T00Entity.hachuAm_2" maxlength="11" />
+        <div id="hacchuPr">
+          <label for="T00Entity.hacchuPr_1" th:text="#{T00Entity.hacchuPr}">発注単価</label><input type="number" id="T00Entity.hacchuPr_1" name="T00Entity.hacchuPr_1" maxlength="11" />～<input type="number" id="T00Entity.hacchuPr_2" name="T00Entity.hacchuPr_2" maxlength="11" />
+        </div>
+        <div id="hacchuAm">
+          <label for="T00Entity.hacchuAm_1" th:text="#{T00Entity.hacchuAm}">発注金額</label><input type="number" id="T00Entity.hacchuAm_1" name="T00Entity.hacchuAm_1" maxlength="11" />～<input type="number" id="T00Entity.hacchuAm_2" name="T00Entity.hacchuAm_2" maxlength="11" />
         </div>
         <div id="deleteF">
           <fieldset id="T00Entity.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">

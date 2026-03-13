@@ -10,9 +10,9 @@ SELECT
     , a.`MEMO_TX` AS `MEMO_TX`
     , a.`MEMO` AS `MEMO`
     , a.`TENPU_FILE` AS `TENPU_FILE`
-    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_Y`) AS `NENGAPPI_Y`
-    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_M`) AS `NENGAPPI_M`
-    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_D`) AS `NENGAPPI_D`
+    , TRIM(TRAILING ' ' FROM a.`NEN_Y`) AS `NEN_Y`
+    , TRIM(TRAILING ' ' FROM a.`TSUKI_M`) AS `TSUKI_M`
+    , TRIM(TRAILING ' ' FROM a.`HI_D`) AS `HI_D`
     , TRIM(TRAILING ' ' FROM a.`NENGETSU_YM`) AS `NENGETSU_YM`
     , TRIM(TRAILING ' ' FROM a.`NENGAPPI_YMD`) AS `NENGAPPI_YMD`
     , LEFT(DATE_FORMAT (a.`TIMESTAMP_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `TIMESTAMP_TS`
@@ -20,12 +20,13 @@ SELECT
     , a.`HIDUKE_BI` AS `HIDUKE_BI`
     , a.`JIKOKU_HM` AS `JIKOKU_HM`
     , a.`JIKAN_TM` AS `JIKAN_TM`
-    , a.`SURYO_QT` AS `SURYO_QT`
     , a.`TSUKA_KB` AS `TSUKA_KB`
+    , a.`JUCHU_QT` AS `JUCHU_QT`
     , a.`JUCHU_PR` AS `JUCHU_PR`
     , a.`JUCHU_AM` AS `JUCHU_AM`
-    , a.`HACHU_PR` AS `HACHU_PR`
-    , a.`HACHU_AM` AS `HACHU_AM`
+    , a.`HACCHU_QT` AS `HACCHU_QT`
+    , a.`HACCHU_PR` AS `HACCHU_PR`
+    , a.`HACCHU_AM` AS `HACCHU_AM`
     , TRIM(TRAILING ' ' FROM a.`DELETE_F`) AS `DELETE_F`
     , a.`STATUS_KB` AS `STATUS_KB`
     , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
@@ -50,15 +51,15 @@ WHERE
     AND UPPER (TRIM(TRAILING ' ' FROM a.`MEMO_TX`)) LIKE UPPER (CONCAT ('%', :memo_tx, '%')) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`MEMO`)) LIKE UPPER (CONCAT ('%', :memo, '%')) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`TENPU_FILE`)) LIKE UPPER (CONCAT ('%', :tenpu_file, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`NENGAPPI_Y`)) LIKE UPPER (CONCAT ('%', :nengappi_y, '%')) 
-    AND a.`NENGAPPI_Y` >= :nengappi_y_1 
-    AND a.`NENGAPPI_Y` <= :nengappi_y_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`NENGAPPI_M`)) LIKE UPPER (CONCAT ('%', :nengappi_m, '%')) 
-    AND a.`NENGAPPI_M` >= :nengappi_m_1 
-    AND a.`NENGAPPI_M` <= :nengappi_m_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`NENGAPPI_D`)) LIKE UPPER (CONCAT ('%', :nengappi_d, '%')) 
-    AND a.`NENGAPPI_D` >= :nengappi_d_1 
-    AND a.`NENGAPPI_D` <= :nengappi_d_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`NEN_Y`)) LIKE UPPER (CONCAT ('%', :nen_y, '%')) 
+    AND a.`NEN_Y` >= :nen_y_1 
+    AND a.`NEN_Y` <= :nen_y_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`TSUKI_M`)) LIKE UPPER (CONCAT ('%', :tsuki_m, '%')) 
+    AND a.`TSUKI_M` >= :tsuki_m_1 
+    AND a.`TSUKI_M` <= :tsuki_m_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`HI_D`)) LIKE UPPER (CONCAT ('%', :hi_d, '%')) 
+    AND a.`HI_D` >= :hi_d_1 
+    AND a.`HI_D` <= :hi_d_2 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`NENGETSU_YM`)) LIKE UPPER (CONCAT ('%', :nengetsu_ym, '%')) 
     AND a.`NENGETSU_YM` >= :nengetsu_ym_1 
     AND a.`NENGETSU_YM` <= :nengetsu_ym_2 
@@ -80,22 +81,25 @@ WHERE
     AND UPPER (TRIM(TRAILING ' ' FROM a.`JIKAN_TM`)) LIKE UPPER (CONCAT ('%', :jikan_tm, '%')) 
     AND a.`JIKAN_TM` >= :jikan_tm_1 
     AND a.`JIKAN_TM` <= :jikan_tm_2 
-    AND a.`SURYO_QT` = :suryo_qt 
-    AND a.`SURYO_QT` >= :suryo_qt_1 
-    AND a.`SURYO_QT` <= :suryo_qt_2 
     AND TRIM(TRAILING ' ' FROM a.`TSUKA_KB`) IN (:tsuka_kb) 
+    AND a.`JUCHU_QT` = :juchu_qt 
+    AND a.`JUCHU_QT` >= :juchu_qt_1 
+    AND a.`JUCHU_QT` <= :juchu_qt_2 
     AND a.`JUCHU_PR` = :juchu_pr 
     AND a.`JUCHU_PR` >= :juchu_pr_1 
     AND a.`JUCHU_PR` <= :juchu_pr_2 
     AND a.`JUCHU_AM` = :juchu_am 
     AND a.`JUCHU_AM` >= :juchu_am_1 
     AND a.`JUCHU_AM` <= :juchu_am_2 
-    AND a.`HACHU_PR` = :hachu_pr 
-    AND a.`HACHU_PR` >= :hachu_pr_1 
-    AND a.`HACHU_PR` <= :hachu_pr_2 
-    AND a.`HACHU_AM` = :hachu_am 
-    AND a.`HACHU_AM` >= :hachu_am_1 
-    AND a.`HACHU_AM` <= :hachu_am_2 
+    AND a.`HACCHU_QT` = :hacchu_qt 
+    AND a.`HACCHU_QT` >= :hacchu_qt_1 
+    AND a.`HACCHU_QT` <= :hacchu_qt_2 
+    AND a.`HACCHU_PR` = :hacchu_pr 
+    AND a.`HACCHU_PR` >= :hacchu_pr_1 
+    AND a.`HACCHU_PR` <= :hacchu_pr_2 
+    AND a.`HACCHU_AM` = :hacchu_am 
+    AND a.`HACCHU_AM` >= :hacchu_am_1 
+    AND a.`HACCHU_AM` <= :hacchu_am_2 
     AND CASE WHEN TRIM(TRAILING ' ' FROM a.`DELETE_F`) IS NULL THEN '0' ELSE TO_CHAR (a.`DELETE_F`) END IN (:delete_f) 
     AND TRIM(TRAILING ' ' FROM a.`STATUS_KB`) IN (:status_kb) 
     AND a.`INSERT_TS` = :insert_ts 

@@ -185,49 +185,49 @@ public class T00EntityRegistForm implements IForm {
         this.tenpuFile = p;
     }
 
-    /** 年月日年 */
+    /** 年 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4})?")
-    private String nengappiY;
+    private String nenY;
 
-    /** @return 年月日年 */
-    public String getNengappiY() {
-        return nengappiY;
+    /** @return 年 */
+    public String getNenY() {
+        return nenY;
     }
 
-    /** @param p 年月日年 */
-    public void setNengappiY(final String p) {
-        this.nengappiY = p;
+    /** @param p 年 */
+    public void setNenY(final String p) {
+        this.nenY = p;
     }
 
-    /** 年月日月 */
+    /** 月 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,2})?")
-    private String nengappiM;
+    private String tsukiM;
 
-    /** @return 年月日月 */
-    public String getNengappiM() {
-        return nengappiM;
+    /** @return 月 */
+    public String getTsukiM() {
+        return tsukiM;
     }
 
-    /** @param p 年月日月 */
-    public void setNengappiM(final String p) {
-        this.nengappiM = p;
+    /** @param p 月 */
+    public void setTsukiM(final String p) {
+        this.tsukiM = p;
     }
 
-    /** 年月日日 */
+    /** 日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,2})?")
-    private String nengappiD;
+    private String hiD;
 
-    /** @return 年月日日 */
-    public String getNengappiD() {
-        return nengappiD;
+    /** @return 日 */
+    public String getHiD() {
+        return hiD;
     }
 
-    /** @param p 年月日日 */
-    public void setNengappiD(final String p) {
-        this.nengappiD = p;
+    /** @param p 日 */
+    public void setHiD(final String p) {
+        this.hiD = p;
     }
 
     /** 年月 */
@@ -334,21 +334,6 @@ public class T00EntityRegistForm implements IForm {
         this.jikanTm = p;
     }
 
-    /** 数量 */
-    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,8}\\.?[0-9]{0,3}?)?")
-    private String suryoQt;
-
-    /** @return 数量 */
-    public String getSuryoQt() {
-        return suryoQt;
-    }
-
-    /** @param p 数量 */
-    public void setSuryoQt(final String p) {
-        this.suryoQt = p;
-    }
-
     /** 通貨区分 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 2)
@@ -362,6 +347,21 @@ public class T00EntityRegistForm implements IForm {
     /** @param p 通貨区分 */
     public void setTsukaKb(final String p) {
         this.tsukaKb = p;
+    }
+
+    /** 受注数量 */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,8}\\.?[0-9]{0,3}?)?")
+    private String juchuQt;
+
+    /** @return 受注数量 */
+    public String getJuchuQt() {
+        return juchuQt;
+    }
+
+    /** @param p 受注数量 */
+    public void setJuchuQt(final String p) {
+        this.juchuQt = p;
     }
 
     /** 受注単価 */
@@ -394,34 +394,49 @@ public class T00EntityRegistForm implements IForm {
         this.juchuAm = p;
     }
 
+    /** 発注数量 */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,8}\\.?[0-9]{0,3}?)?")
+    private String hacchuQt;
+
+    /** @return 発注数量 */
+    public String getHacchuQt() {
+        return hacchuQt;
+    }
+
+    /** @param p 発注数量 */
+    public void setHacchuQt(final String p) {
+        this.hacchuQt = p;
+    }
+
     /** 発注単価 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,9}\\.?[0-9]{0,2}?)?")
-    private String hachuPr;
+    private String hacchuPr;
 
     /** @return 発注単価 */
-    public String getHachuPr() {
-        return hachuPr;
+    public String getHacchuPr() {
+        return hacchuPr;
     }
 
     /** @param p 発注単価 */
-    public void setHachuPr(final String p) {
-        this.hachuPr = p;
+    public void setHacchuPr(final String p) {
+        this.hacchuPr = p;
     }
 
     /** 発注金額 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,9}\\.?[0-9]{0,2}?)?")
-    private String hachuAm;
+    private String hacchuAm;
 
     /** @return 発注金額 */
-    public String getHachuAm() {
-        return hachuAm;
+    public String getHacchuAm() {
+        return hacchuAm;
     }
 
     /** @param p 発注金額 */
-    public void setHachuAm(final String p) {
-        this.hachuAm = p;
+    public void setHacchuAm(final String p) {
+        this.hacchuAm = p;
     }
 
     /** 削除フラグ */
