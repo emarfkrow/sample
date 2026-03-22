@@ -79,7 +79,7 @@
           <label for="T00Entity.nengappiYmd" th:text="#{T00Entity.nengappiYmd}">年月日</label><input type="text" id="T00Entity.nengappiYmd" name="T00Entity.nengappiYmd" maxlength="8" class=" notblank datepicker" data-format="yymmdd" />
         </div>
         <div id="timestampTs">
-          <label th:text="#{T00Entity.timestampTs}">タイムスタンプ</label><span id="T00Entity.timestampTs"></span><input type="hidden" id="T00Entity.timestampTs" name="T00Entity.timestampTs" />
+          <label th:text="#{T00Entity.timestampTs}">タイムスタンプ</label><span id="T00Entity.timestampTs"></span><input type="text" id="T00Entity.timestampTs" name="T00Entity.timestampTs" style="display: none;" />
         </div>
         <div id="nichijiDt">
           <label for="T00Entity.nichijiDt" th:text="#{T00Entity.nichijiDt}">日時</label><input type="datetime-local" id="T00Entity.nichijiDt" name="T00Entity.nichijiDt" maxlength="19" class=" notblank" />
@@ -105,7 +105,7 @@
           <label for="T00Entity.juchuPr" th:text="#{T00Entity.juchuPr}">受注単価</label><input type="number" id="T00Entity.juchuPr" name="T00Entity.juchuPr" maxlength="11" class=" notblank" />
         </div>
         <div id="juchuAm">
-          <label th:text="#{T00Entity.juchuAm}">受注金額</label><span id="T00Entity.juchuAm"></span><input type="hidden" id="T00Entity.juchuAm" name="T00Entity.juchuAm" />
+          <label th:text="#{T00Entity.juchuAm}">受注金額</label><span id="T00Entity.juchuAm" class="dec2"></span><input type="text" id="T00Entity.juchuAm" name="T00Entity.juchuAm" style="display: none;" class="dec2" />
         </div>
         <div id="hacchuQt">
           <label for="T00Entity.hacchuQt" th:text="#{T00Entity.hacchuQt}">発注数量</label><input type="number" id="T00Entity.hacchuQt" name="T00Entity.hacchuQt" maxlength="11" class=" notblank" />
@@ -114,7 +114,7 @@
           <label for="T00Entity.hacchuPr" th:text="#{T00Entity.hacchuPr}">発注単価</label><input type="number" id="T00Entity.hacchuPr" name="T00Entity.hacchuPr" maxlength="11" class=" notblank" />
         </div>
         <div id="hacchuAm">
-          <label th:text="#{T00Entity.hacchuAm}">発注金額</label><span id="T00Entity.hacchuAm"></span><input type="hidden" id="T00Entity.hacchuAm" name="T00Entity.hacchuAm" />
+          <label th:text="#{T00Entity.hacchuAm}">発注金額</label><span id="T00Entity.hacchuAm" class="dec2"></span><input type="text" id="T00Entity.hacchuAm" name="T00Entity.hacchuAm" style="display: none;" class="dec2" />
         </div>
         <div id="deleteF">
           <fieldset id="T00Entity.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">

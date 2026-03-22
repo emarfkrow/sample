@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 再帰
@@ -413,7 +406,7 @@ public class M04Saiki implements IEntity {
      * @return 再帰
      */
     public static M04Saiki get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`SAIKI_ID` = :saiki_id");
         String sql = "";
         sql += "SELECT \n";
@@ -433,9 +426,9 @@ public class M04Saiki implements IEntity {
         sql += "    M04_SAIKI a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("saiki_id", param1);
-        return Queries.get(sql, map, M04Saiki.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, M04Saiki.class);
     }
 
     /**
@@ -444,19 +437,19 @@ public class M04Saiki implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 再帰IDの採番処理
         numbering();
 
         // 再帰の登録
         String sql = "INSERT INTO M04_SAIKI(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`SAIKI_ID` -- :saiki_id");
         nameList.add("`SAIKI_MEI` -- :saiki_mei");
         nameList.add("`IDREF_ID` -- :idref_id");
@@ -474,7 +467,7 @@ public class M04Saiki implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":saiki_id");
         valueList.add(":saiki_mei");
         valueList.add(":idref_id");
@@ -496,8 +489,8 @@ public class M04Saiki implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`SAIKI_ID`) IS NULL THEN 0 ELSE MAX(e.`SAIKI_ID`) * 1 END + 1 AS `SAIKI_ID` FROM M04_SAIKI e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("SAIKI_ID");
         this.setSaikiId(o);
     }
@@ -508,16 +501,16 @@ public class M04Saiki implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 再帰の登録
         String sql = "UPDATE M04_SAIKI\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`SAIKI_ID` = :saiki_id");
         setList.add("`SAIKI_MEI` = :saiki_mei");
         setList.add("`IDREF_ID` = :idref_id");
@@ -539,12 +532,12 @@ public class M04Saiki implements IEntity {
 
         // 再帰の削除
         String sql = "DELETE FROM M04_SAIKI WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`SAIKI_ID` = :saiki_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -555,8 +548,8 @@ public class M04Saiki implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("saiki_id", this.saikiId);
         map.put("saiki_mei", this.saikiMei);
         map.put("idref_id", this.idrefId);

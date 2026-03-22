@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 起源
@@ -210,7 +203,7 @@ public class T06Org implements IEntity {
      * @return 起源
      */
     public static T06Org get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`ORG_ID` = :org_id");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class T06Org implements IEntity {
         sql += "    T06_ORG a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("org_id", param1);
-        return Queries.get(sql, map, T06Org.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T06Org.class);
     }
 
     /**
@@ -235,7 +228,7 @@ public class T06Org implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 起源IDの採番処理
         numbering();
@@ -252,12 +245,12 @@ public class T06Org implements IEntity {
 
         // 起源の登録
         String sql = "INSERT INTO T06_ORG(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`ORG_ID` -- :org_id");
         nameList.add("`ORG_INFO` -- :org_info");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -269,7 +262,7 @@ public class T06Org implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":org_id");
         valueList.add(":org_info");
         valueList.add(":insert_ts");
@@ -285,8 +278,8 @@ public class T06Org implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`ORG_ID`) IS NULL THEN 0 ELSE MAX(e.`ORG_ID`) * 1 END + 1 AS `ORG_ID` FROM T06_ORG e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("ORG_ID");
         this.setOrgId(o);
     }
@@ -297,7 +290,7 @@ public class T06Org implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 起源明細の登録
         if (this.t06OrgDets != null) {
@@ -316,12 +309,12 @@ public class T06Org implements IEntity {
 
         // 起源の登録
         String sql = "UPDATE T06_ORG\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`ORG_ID` = :org_id");
         setList.add("`ORG_INFO` = :org_info");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -346,12 +339,12 @@ public class T06Org implements IEntity {
 
         // 起源の削除
         String sql = "DELETE FROM T06_ORG WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`ORG_ID` = :org_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -362,8 +355,8 @@ public class T06Org implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("org_id", this.orgId);
         map.put("org_info", this.orgInfo);
         map.put("insert_ts", now);
@@ -378,39 +371,39 @@ public class T06Org implements IEntity {
      */
 
     /** 起源明細のリスト */
-    private List<T06OrgDet> t06OrgDets;
+    private java.util.List<T06OrgDet> t06OrgDets;
 
     /** @return 起源明細のリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T06OrgDets", index = 10)
-    public List<T06OrgDet> getT06OrgDets() {
+    public java.util.List<T06OrgDet> getT06OrgDets() {
         return this.t06OrgDets;
     }
 
     /** @param list 起源明細のリスト */
-    public void setT06OrgDets(final List<T06OrgDet> list) {
+    public void setT06OrgDets(final java.util.List<T06OrgDet> list) {
         this.t06OrgDets = list;
     }
 
     /** @param t06OrgDet */
     public void addT06OrgDets(final T06OrgDet t06OrgDet) {
         if (this.t06OrgDets == null) {
-            this.t06OrgDets = new ArrayList<T06OrgDet>();
+            this.t06OrgDets = new java.util.ArrayList<T06OrgDet>();
         }
         this.t06OrgDets.add(t06OrgDet);
     }
 
     /** @return 起源明細のリスト */
-    public List<T06OrgDet> referT06OrgDets() {
+    public java.util.List<T06OrgDet> referT06OrgDets() {
         this.t06OrgDets = T06Org.referT06OrgDets(this.orgId);
         return this.t06OrgDets;
     }
 
     /**
      * @param param1 orgId
-     * @return List<T06OrgDet>
+     * @return java.util.List<T06OrgDet>
      */
-    public static List<T06OrgDet> referT06OrgDets(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T06OrgDet> referT06OrgDets(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("ORG_ID = :org_id");
         String sql = "SELECT ";
         sql += "`ORG_ID`";
@@ -425,12 +418,12 @@ public class T06Org implements IEntity {
         sql += " FROM T06_ORG_DET a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "ORG_ID, ORG_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("org_id", param1);
-        List<T06OrgDet> list = Queries.select(sql, map, T06OrgDet.class, null, null);
+        java.util.List<T06OrgDet> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T06OrgDet.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T06OrgDet>();
+        return new java.util.ArrayList<T06OrgDet>();
     }
 }

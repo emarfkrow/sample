@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * IDマスタ
@@ -210,7 +203,7 @@ public class M04Id implements IEntity {
      * @return IDマスタ
      */
     public static M04Id get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`IDREF_ID` = :idref_id");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class M04Id implements IEntity {
         sql += "    M04_ID a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("idref_id", param1);
-        return Queries.get(sql, map, M04Id.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, M04Id.class);
     }
 
     /**
@@ -235,7 +228,7 @@ public class M04Id implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 参照IDの採番処理
         numbering();
@@ -252,12 +245,12 @@ public class M04Id implements IEntity {
 
         // IDマスタの登録
         String sql = "INSERT INTO M04_ID(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`IDREF_ID` -- :idref_id");
         nameList.add("`IDREF_MEI` -- :idref_mei");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -269,7 +262,7 @@ public class M04Id implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":idref_id");
         valueList.add(":idref_mei");
         valueList.add(":insert_ts");
@@ -285,8 +278,8 @@ public class M04Id implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`IDREF_ID`) IS NULL THEN 0 ELSE MAX(e.`IDREF_ID`) * 1 END + 1 AS `IDREF_ID` FROM M04_ID e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("IDREF_ID");
         this.setIdrefId(o);
     }
@@ -297,7 +290,7 @@ public class M04Id implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // ID連番マスタの登録
         if (this.m04Idbns != null) {
@@ -316,12 +309,12 @@ public class M04Id implements IEntity {
 
         // IDマスタの登録
         String sql = "UPDATE M04_ID\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`IDREF_ID` = :idref_id");
         setList.add("`IDREF_MEI` = :idref_mei");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -346,12 +339,12 @@ public class M04Id implements IEntity {
 
         // IDマスタの削除
         String sql = "DELETE FROM M04_ID WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`IDREF_ID` = :idref_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -362,8 +355,8 @@ public class M04Id implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("idref_id", this.idrefId);
         map.put("idref_mei", this.idrefMei);
         map.put("insert_ts", now);
@@ -378,39 +371,39 @@ public class M04Id implements IEntity {
      */
 
     /** ID連番マスタのリスト */
-    private List<M04Idbn> m04Idbns;
+    private java.util.List<M04Idbn> m04Idbns;
 
     /** @return ID連番マスタのリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "M04Idbns", index = 10)
-    public List<M04Idbn> getM04Idbns() {
+    public java.util.List<M04Idbn> getM04Idbns() {
         return this.m04Idbns;
     }
 
     /** @param list ID連番マスタのリスト */
-    public void setM04Idbns(final List<M04Idbn> list) {
+    public void setM04Idbns(final java.util.List<M04Idbn> list) {
         this.m04Idbns = list;
     }
 
     /** @param m04Idbn */
     public void addM04Idbns(final M04Idbn m04Idbn) {
         if (this.m04Idbns == null) {
-            this.m04Idbns = new ArrayList<M04Idbn>();
+            this.m04Idbns = new java.util.ArrayList<M04Idbn>();
         }
         this.m04Idbns.add(m04Idbn);
     }
 
     /** @return ID連番マスタのリスト */
-    public List<M04Idbn> referM04Idbns() {
+    public java.util.List<M04Idbn> referM04Idbns() {
         this.m04Idbns = M04Id.referM04Idbns(this.idrefId);
         return this.m04Idbns;
     }
 
     /**
      * @param param1 idrefId
-     * @return List<M04Idbn>
+     * @return java.util.List<M04Idbn>
      */
-    public static List<M04Idbn> referM04Idbns(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<M04Idbn> referM04Idbns(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("IDREF_ID = :idref_id");
         String sql = "SELECT ";
         sql += "`IDREF_ID`";
@@ -425,12 +418,12 @@ public class M04Id implements IEntity {
         sql += " FROM M04_IDBN a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "IDREF_ID, IDBN_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("idref_id", param1);
-        List<M04Idbn> list = Queries.select(sql, map, M04Idbn.class, null, null);
+        java.util.List<M04Idbn> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, M04Idbn.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<M04Idbn>();
+        return new java.util.ArrayList<M04Idbn>();
     }
 }

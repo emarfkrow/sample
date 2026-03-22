@@ -1,12 +1,6 @@
 package com.example.entity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * VIEW
@@ -52,18 +46,15 @@ public class V13Furiwake implements IEntity {
     }
 
     /** SRC_ID$DEST_ID */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer srcIdDestId;
 
     /** @return SRC_ID$DEST_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "SRC_ID$DEST_ID", index = 3)
-    @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getSrcIdDestId() {
         return this.srcIdDestId;
     }
 
     /** @param o SRC_ID$DEST_ID */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setSrcIdDestId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.srcIdDestId = Integer.valueOf(o.toString());
@@ -88,27 +79,5 @@ public class V13Furiwake implements IEntity {
         } else {
             this.info = null;
         }
-    }
-
-    /**
-     * VIEW照会
-     * @return VIEW
-     */
-    public static V13Furiwake get() {
-        List<String> whereList = new ArrayList<String>();
-        whereList.add("`TABLE_NAME` = :table_name");
-        whereList.add("`SRC_ID$DEST_ID` = :src_id_dest_id");
-        whereList.add("`INFO` = :info");
-        String sql = "";
-        sql += "SELECT \n";
-        sql += "      a.`table_name` \n";
-        sql += "    , a.`SRC_ID$DEST_ID` \n";
-        sql += "    , a.`info` \n";
-        sql += "FROM \n";
-        sql += "    V13_FURIWAKE a \n";
-        sql += "WHERE \n";
-        sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
-        return Queries.get(sql, map, V13Furiwake.class);
     }
 }

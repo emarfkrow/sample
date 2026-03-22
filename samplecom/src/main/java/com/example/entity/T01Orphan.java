@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 孤児
@@ -232,7 +225,7 @@ public class T01Orphan implements IEntity {
      * @return 孤児
      */
     public static T01Orphan get(final Object param1, final Object param2) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`OYA_ID` = :oya_id");
         whereList.add("`KO_BN` = :ko_bn");
         String sql = "";
@@ -248,10 +241,10 @@ public class T01Orphan implements IEntity {
         sql += "    T01_ORPHAN a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("oya_id", param1);
         map.put("ko_bn", param2);
-        return Queries.get(sql, map, T01Orphan.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T01Orphan.class);
     }
 
     /**
@@ -260,7 +253,7 @@ public class T01Orphan implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 子枝番の採番処理
         numbering();
@@ -292,12 +285,12 @@ public class T01Orphan implements IEntity {
 
         // 孤児の登録
         String sql = "INSERT INTO T01_ORPHAN(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`OYA_ID` -- :oya_id");
         nameList.add("`KO_BN` -- :ko_bn");
         nameList.add("`ORPHAN_INFO` -- :orphan_info");
@@ -310,7 +303,7 @@ public class T01Orphan implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":oya_id");
         valueList.add(":ko_bn");
         valueList.add(":orphan_info");
@@ -327,12 +320,12 @@ public class T01Orphan implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`KO_BN`) IS NULL THEN 0 ELSE MAX(e.`KO_BN`) * 1 END + 1 AS `KO_BN` FROM T01_ORPHAN e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        List<String> whereList = new ArrayList<String>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("e.`OYA_ID` = :oya_id");
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("oya_id", this.oyaId);
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("KO_BN");
         this.setKoBn(o);
     }
@@ -343,7 +336,7 @@ public class T01Orphan implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 孫の登録
         if (this.t01Magos != null) {
@@ -385,12 +378,12 @@ public class T01Orphan implements IEntity {
 
         // 孤児の登録
         String sql = "UPDATE T01_ORPHAN\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`OYA_ID` = :oya_id");
         setList.add("`KO_BN` = :ko_bn");
         setList.add("`ORPHAN_INFO` = :orphan_info");
@@ -430,12 +423,12 @@ public class T01Orphan implements IEntity {
 
         // 孤児の削除
         String sql = "DELETE FROM T01_ORPHAN WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`OYA_ID` = :oya_id");
         whereList.add("`KO_BN` = :ko_bn");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
@@ -447,8 +440,8 @@ public class T01Orphan implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("oya_id", this.oyaId);
         map.put("ko_bn", this.koBn);
         map.put("orphan_info", this.orphanInfo);
@@ -514,29 +507,29 @@ public class T01Orphan implements IEntity {
      */
 
     /** 孫のリスト */
-    private List<T01Mago> t01Magos;
+    private java.util.List<T01Mago> t01Magos;
 
     /** @return 孫のリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Magos", index = 13)
-    public List<T01Mago> getT01Magos() {
+    public java.util.List<T01Mago> getT01Magos() {
         return this.t01Magos;
     }
 
     /** @param list 孫のリスト */
-    public void setT01Magos(final List<T01Mago> list) {
+    public void setT01Magos(final java.util.List<T01Mago> list) {
         this.t01Magos = list;
     }
 
     /** @param t01Mago */
     public void addT01Magos(final T01Mago t01Mago) {
         if (this.t01Magos == null) {
-            this.t01Magos = new ArrayList<T01Mago>();
+            this.t01Magos = new java.util.ArrayList<T01Mago>();
         }
         this.t01Magos.add(t01Mago);
     }
 
     /** @return 孫のリスト */
-    public List<T01Mago> referT01Magos() {
+    public java.util.List<T01Mago> referT01Magos() {
         this.t01Magos = T01Orphan.referT01Magos(this.oyaId, this.koBn);
         return this.t01Magos;
     }
@@ -544,10 +537,10 @@ public class T01Orphan implements IEntity {
     /**
      * @param param1 oyaId
      * @param param2 koBn
-     * @return List<T01Mago>
+     * @return java.util.List<T01Mago>
      */
-    public static List<T01Mago> referT01Magos(final Integer param1, final Integer param2) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T01Mago> referT01Magos(final Integer param1, final Integer param2) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("OYA_ID = :oya_id");
         whereList.add("KO_BN = :ko_bn");
         String sql = "SELECT ";
@@ -564,13 +557,13 @@ public class T01Orphan implements IEntity {
         sql += " FROM T01_MAGO a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "OYA_ID, KO_BN, MAGO_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("oya_id", param1);
         map.put("ko_bn", param2);
-        List<T01Mago> list = Queries.select(sql, map, T01Mago.class, null, null);
+        java.util.List<T01Mago> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T01Mago.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T01Mago>();
+        return new java.util.ArrayList<T01Mago>();
     }
 }

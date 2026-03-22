@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 派生１
@@ -228,7 +221,7 @@ public class T06Derive1 implements IEntity {
      * @return 派生１
      */
     public static T06Derive1 get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`DERIVE1_ID` = :derive_1_id");
         String sql = "";
         sql += "SELECT \n";
@@ -243,9 +236,9 @@ public class T06Derive1 implements IEntity {
         sql += "    T06_DERIVE1 a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("derive_1_id", param1);
-        return Queries.get(sql, map, T06Derive1.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T06Derive1.class);
     }
 
     /**
@@ -254,7 +247,7 @@ public class T06Derive1 implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 派生１IDの採番処理
         numbering();
@@ -271,12 +264,12 @@ public class T06Derive1 implements IEntity {
 
         // 派生１の登録
         String sql = "INSERT INTO T06_DERIVE1(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`DERIVE1_ID` -- :derive_1_id");
         nameList.add("`ORG_INFO` -- :org_info");
         nameList.add("`ORG_ID` -- :org_id");
@@ -289,7 +282,7 @@ public class T06Derive1 implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":derive_1_id");
         valueList.add(":org_info");
         valueList.add(":org_id");
@@ -306,8 +299,8 @@ public class T06Derive1 implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`DERIVE1_ID`) IS NULL THEN 0 ELSE MAX(e.`DERIVE1_ID`) * 1 END + 1 AS `DERIVE1_ID` FROM T06_DERIVE1 e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("DERIVE1_ID");
         this.setDerive1Id(o);
     }
@@ -318,7 +311,7 @@ public class T06Derive1 implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 派生１明細の登録
         if (this.t06Derive1Dets != null) {
@@ -337,12 +330,12 @@ public class T06Derive1 implements IEntity {
 
         // 派生１の登録
         String sql = "UPDATE T06_DERIVE1\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`DERIVE1_ID` = :derive_1_id");
         setList.add("`ORG_INFO` = :org_info");
         setList.add("`ORG_ID` = :org_id");
@@ -368,12 +361,12 @@ public class T06Derive1 implements IEntity {
 
         // 派生１の削除
         String sql = "DELETE FROM T06_DERIVE1 WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`DERIVE1_ID` = :derive_1_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -384,8 +377,8 @@ public class T06Derive1 implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("derive_1_id", this.derive1Id);
         map.put("org_info", this.orgInfo);
         map.put("org_id", this.orgId);
@@ -401,39 +394,39 @@ public class T06Derive1 implements IEntity {
      */
 
     /** 派生１明細のリスト */
-    private List<T06Derive1Det> t06Derive1Dets;
+    private java.util.List<T06Derive1Det> t06Derive1Dets;
 
     /** @return 派生１明細のリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T06Derive1Dets", index = 11)
-    public List<T06Derive1Det> getT06Derive1Dets() {
+    public java.util.List<T06Derive1Det> getT06Derive1Dets() {
         return this.t06Derive1Dets;
     }
 
     /** @param list 派生１明細のリスト */
-    public void setT06Derive1Dets(final List<T06Derive1Det> list) {
+    public void setT06Derive1Dets(final java.util.List<T06Derive1Det> list) {
         this.t06Derive1Dets = list;
     }
 
     /** @param t06Derive1Det */
     public void addT06Derive1Dets(final T06Derive1Det t06Derive1Det) {
         if (this.t06Derive1Dets == null) {
-            this.t06Derive1Dets = new ArrayList<T06Derive1Det>();
+            this.t06Derive1Dets = new java.util.ArrayList<T06Derive1Det>();
         }
         this.t06Derive1Dets.add(t06Derive1Det);
     }
 
     /** @return 派生１明細のリスト */
-    public List<T06Derive1Det> referT06Derive1Dets() {
+    public java.util.List<T06Derive1Det> referT06Derive1Dets() {
         this.t06Derive1Dets = T06Derive1.referT06Derive1Dets(this.derive1Id);
         return this.t06Derive1Dets;
     }
 
     /**
      * @param param1 derive1Id
-     * @return List<T06Derive1Det>
+     * @return java.util.List<T06Derive1Det>
      */
-    public static List<T06Derive1Det> referT06Derive1Dets(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T06Derive1Det> referT06Derive1Dets(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("DERIVE1_ID = :derive_1_id");
         String sql = "SELECT ";
         sql += "`DERIVE1_ID`";
@@ -448,12 +441,12 @@ public class T06Derive1 implements IEntity {
         sql += " FROM T06_DERIVE1_DET a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "DERIVE1_ID, DERIVE1_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("derive_1_id", param1);
-        List<T06Derive1Det> list = Queries.select(sql, map, T06Derive1Det.class, null, null);
+        java.util.List<T06Derive1Det> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T06Derive1Det.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T06Derive1Det>();
+        return new java.util.ArrayList<T06Derive1Det>();
     }
 }

@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 親
@@ -210,7 +203,7 @@ public class T01Oya implements IEntity {
      * @return 親
      */
     public static T01Oya get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`OYA_ID` = :oya_id");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class T01Oya implements IEntity {
         sql += "    T01_OYA a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("oya_id", param1);
-        return Queries.get(sql, map, T01Oya.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T01Oya.class);
     }
 
     /**
@@ -235,7 +228,7 @@ public class T01Oya implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 親IDの採番処理
         numbering();
@@ -262,12 +255,12 @@ public class T01Oya implements IEntity {
 
         // 親の登録
         String sql = "INSERT INTO T01_OYA(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`OYA_ID` -- :oya_id");
         nameList.add("`OYA_INFO` -- :oya_info");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -279,7 +272,7 @@ public class T01Oya implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":oya_id");
         valueList.add(":oya_info");
         valueList.add(":insert_ts");
@@ -295,8 +288,8 @@ public class T01Oya implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`OYA_ID`) IS NULL THEN 0 ELSE MAX(e.`OYA_ID`) * 1 END + 1 AS `OYA_ID` FROM T01_OYA e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("OYA_ID");
         this.setOyaId(o);
     }
@@ -307,7 +300,7 @@ public class T01Oya implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 子なしの登録
         if (this.t01Dinkss != null) {
@@ -341,12 +334,12 @@ public class T01Oya implements IEntity {
 
         // 親の登録
         String sql = "UPDATE T01_OYA\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`OYA_ID` = :oya_id");
         setList.add("`OYA_INFO` = :oya_info");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -380,12 +373,12 @@ public class T01Oya implements IEntity {
 
         // 親の削除
         String sql = "DELETE FROM T01_OYA WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`OYA_ID` = :oya_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -396,8 +389,8 @@ public class T01Oya implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("oya_id", this.oyaId);
         map.put("oya_info", this.oyaInfo);
         map.put("insert_ts", now);
@@ -412,39 +405,39 @@ public class T01Oya implements IEntity {
      */
 
     /** 子なしのリスト */
-    private List<T01Dinks> t01Dinkss;
+    private java.util.List<T01Dinks> t01Dinkss;
 
     /** @return 子なしのリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Dinkss", index = 10)
-    public List<T01Dinks> getT01Dinkss() {
+    public java.util.List<T01Dinks> getT01Dinkss() {
         return this.t01Dinkss;
     }
 
     /** @param list 子なしのリスト */
-    public void setT01Dinkss(final List<T01Dinks> list) {
+    public void setT01Dinkss(final java.util.List<T01Dinks> list) {
         this.t01Dinkss = list;
     }
 
     /** @param t01Dinks */
     public void addT01Dinkss(final T01Dinks t01Dinks) {
         if (this.t01Dinkss == null) {
-            this.t01Dinkss = new ArrayList<T01Dinks>();
+            this.t01Dinkss = new java.util.ArrayList<T01Dinks>();
         }
         this.t01Dinkss.add(t01Dinks);
     }
 
     /** @return 子なしのリスト */
-    public List<T01Dinks> referT01Dinkss() {
+    public java.util.List<T01Dinks> referT01Dinkss() {
         this.t01Dinkss = T01Oya.referT01Dinkss(this.oyaId);
         return this.t01Dinkss;
     }
 
     /**
      * @param param1 oyaId
-     * @return List<T01Dinks>
+     * @return java.util.List<T01Dinks>
      */
-    public static List<T01Dinks> referT01Dinkss(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T01Dinks> referT01Dinkss(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("OYA_ID = :oya_id");
         String sql = "SELECT ";
         sql += "`OYA_ID`";
@@ -459,13 +452,13 @@ public class T01Oya implements IEntity {
         sql += " FROM T01_DINKS a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "OYA_ID, KO_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("oya_id", param1);
-        List<T01Dinks> list = Queries.select(sql, map, T01Dinks.class, null, null);
+        java.util.List<T01Dinks> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T01Dinks.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T01Dinks>();
+        return new java.util.ArrayList<T01Dinks>();
     }
 
     /*
@@ -473,39 +466,39 @@ public class T01Oya implements IEntity {
      */
 
     /** 子のリスト */
-    private List<T01Ko> t01Kos;
+    private java.util.List<T01Ko> t01Kos;
 
     /** @return 子のリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Kos", index = 11)
-    public List<T01Ko> getT01Kos() {
+    public java.util.List<T01Ko> getT01Kos() {
         return this.t01Kos;
     }
 
     /** @param list 子のリスト */
-    public void setT01Kos(final List<T01Ko> list) {
+    public void setT01Kos(final java.util.List<T01Ko> list) {
         this.t01Kos = list;
     }
 
     /** @param t01Ko */
     public void addT01Kos(final T01Ko t01Ko) {
         if (this.t01Kos == null) {
-            this.t01Kos = new ArrayList<T01Ko>();
+            this.t01Kos = new java.util.ArrayList<T01Ko>();
         }
         this.t01Kos.add(t01Ko);
     }
 
     /** @return 子のリスト */
-    public List<T01Ko> referT01Kos() {
+    public java.util.List<T01Ko> referT01Kos() {
         this.t01Kos = T01Oya.referT01Kos(this.oyaId);
         return this.t01Kos;
     }
 
     /**
      * @param param1 oyaId
-     * @return List<T01Ko>
+     * @return java.util.List<T01Ko>
      */
-    public static List<T01Ko> referT01Kos(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T01Ko> referT01Kos(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("OYA_ID = :oya_id");
         String sql = "SELECT ";
         sql += "`OYA_ID`";
@@ -520,12 +513,12 @@ public class T01Oya implements IEntity {
         sql += " FROM T01_KO a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "OYA_ID, KO_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("oya_id", param1);
-        List<T01Ko> list = Queries.select(sql, map, T01Ko.class, null, null);
+        java.util.List<T01Ko> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T01Ko.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T01Ko>();
+        return new java.util.ArrayList<T01Ko>();
     }
 }

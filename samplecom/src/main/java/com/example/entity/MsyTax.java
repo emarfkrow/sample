@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 税マスタ
@@ -256,7 +249,7 @@ public class MsyTax implements IEntity {
      * @return 税マスタ
      */
     public static MsyTax get(final Object param1, final Object param2) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`TAX_KB` = :tax_kb");
         whereList.add("`TEKIYO_BI` = :tekiyo_bi");
         String sql = "";
@@ -273,10 +266,10 @@ public class MsyTax implements IEntity {
         sql += "    MSY_TAX a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("tax_kb", param1);
         map.put("tekiyo_bi", param2);
-        return Queries.get(sql, map, MsyTax.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, MsyTax.class);
     }
 
     /**
@@ -285,16 +278,16 @@ public class MsyTax implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 税マスタの登録
         String sql = "INSERT INTO MSY_TAX(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`TAX_KB` -- :tax_kb");
         nameList.add("`TEKIYO_BI` -- :tekiyo_bi");
         nameList.add("`HAISHI_BI` -- :haishi_bi");
@@ -308,7 +301,7 @@ public class MsyTax implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":tax_kb");
         valueList.add(":tekiyo_bi");
         valueList.add(":haishi_bi");
@@ -326,16 +319,16 @@ public class MsyTax implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 税マスタの登録
         String sql = "UPDATE MSY_TAX\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`TAX_KB` = :tax_kb");
         setList.add("`TEKIYO_BI` = :tekiyo_bi");
         setList.add("`HAISHI_BI` = :haishi_bi");
@@ -353,12 +346,12 @@ public class MsyTax implements IEntity {
 
         // 税マスタの削除
         String sql = "DELETE FROM MSY_TAX WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`TAX_KB` = :tax_kb");
         whereList.add("`TEKIYO_BI` = :tekiyo_bi");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
@@ -370,8 +363,8 @@ public class MsyTax implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("tax_kb", this.taxKb);
         map.put("tekiyo_bi", this.tekiyoBi);
         map.put("haishi_bi", this.haishiBi);

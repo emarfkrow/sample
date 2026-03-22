@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 稼働日マスタ
@@ -272,7 +265,7 @@ public class MsyKadobi implements IEntity {
      * @return 稼働日マスタ
      */
     public static MsyKadobi get(final Object param1, final Object param2) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`KADO_BI` = :kado_bi");
         whereList.add("`BUSHO_ID` = :busho_id");
         String sql = "";
@@ -289,10 +282,10 @@ public class MsyKadobi implements IEntity {
         sql += "    MSY_KADOBI a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kado_bi", param1);
         map.put("busho_id", param2);
-        return Queries.get(sql, map, MsyKadobi.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, MsyKadobi.class);
     }
 
     /**
@@ -301,16 +294,16 @@ public class MsyKadobi implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 稼働日マスタの登録
         String sql = "INSERT INTO MSY_KADOBI(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`KADO_BI` -- :kado_bi");
         nameList.add("`BUSHO_ID` -- :busho_id");
         nameList.add("`KADOBI_F` -- :kadobi_f");
@@ -324,7 +317,7 @@ public class MsyKadobi implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":kado_bi");
         valueList.add(":busho_id");
         valueList.add(":kadobi_f");
@@ -342,16 +335,16 @@ public class MsyKadobi implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 稼働日マスタの登録
         String sql = "UPDATE MSY_KADOBI\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`KADO_BI` = :kado_bi");
         setList.add("`BUSHO_ID` = :busho_id");
         setList.add("`KADOBI_F` = :kadobi_f");
@@ -369,12 +362,12 @@ public class MsyKadobi implements IEntity {
 
         // 稼働日マスタの削除
         String sql = "DELETE FROM MSY_KADOBI WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`KADO_BI` = :kado_bi");
         whereList.add("`BUSHO_ID` = :busho_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
@@ -386,8 +379,8 @@ public class MsyKadobi implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kado_bi", this.kadoBi);
         map.put("busho_id", this.bushoId);
         map.put("kadobi_f", this.kadobiF);

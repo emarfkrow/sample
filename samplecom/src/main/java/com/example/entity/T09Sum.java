@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 集約
@@ -210,7 +203,7 @@ public class T09Sum implements IEntity {
      * @return 集約
      */
     public static T09Sum get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`SUM_ID` = :sum_id");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class T09Sum implements IEntity {
         sql += "    T09_SUM a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("sum_id", param1);
-        return Queries.get(sql, map, T09Sum.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T09Sum.class);
     }
 
     /**
@@ -235,19 +228,19 @@ public class T09Sum implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 集約IDの採番処理
         numbering();
 
         // 集約の登録
         String sql = "INSERT INTO T09_SUM(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`SUM_ID` -- :sum_id");
         nameList.add("`SUM_INFO` -- :sum_info");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -259,7 +252,7 @@ public class T09Sum implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":sum_id");
         valueList.add(":sum_info");
         valueList.add(":insert_ts");
@@ -275,8 +268,8 @@ public class T09Sum implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`SUM_ID`) IS NULL THEN 0 ELSE MAX(e.`SUM_ID`) * 1 END + 1 AS `SUM_ID` FROM T09_SUM e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("SUM_ID");
         this.setSumId(o);
     }
@@ -287,16 +280,16 @@ public class T09Sum implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 集約の登録
         String sql = "UPDATE T09_SUM\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`SUM_ID` = :sum_id");
         setList.add("`SUM_INFO` = :sum_info");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -312,12 +305,12 @@ public class T09Sum implements IEntity {
 
         // 集約の削除
         String sql = "DELETE FROM T09_SUM WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`SUM_ID` = :sum_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -328,8 +321,8 @@ public class T09Sum implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("sum_id", this.sumId);
         map.put("sum_info", this.sumInfo);
         map.put("insert_ts", now);
@@ -344,39 +337,39 @@ public class T09Sum implements IEntity {
      */
 
     /** 集団１のリスト */
-    private List<T09Grp1> t09Grp1s;
+    private java.util.List<T09Grp1> t09Grp1s;
 
     /** @return 集団１のリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T09Grp1s", index = 10)
-    public List<T09Grp1> getT09Grp1s() {
+    public java.util.List<T09Grp1> getT09Grp1s() {
         return this.t09Grp1s;
     }
 
     /** @param list 集団１のリスト */
-    public void setT09Grp1s(final List<T09Grp1> list) {
+    public void setT09Grp1s(final java.util.List<T09Grp1> list) {
         this.t09Grp1s = list;
     }
 
     /** @param t09Grp1 */
     public void addT09Grp1s(final T09Grp1 t09Grp1) {
         if (this.t09Grp1s == null) {
-            this.t09Grp1s = new ArrayList<T09Grp1>();
+            this.t09Grp1s = new java.util.ArrayList<T09Grp1>();
         }
         this.t09Grp1s.add(t09Grp1);
     }
 
     /** @return 集団１のリスト */
-    public List<T09Grp1> referT09Grp1s() {
+    public java.util.List<T09Grp1> referT09Grp1s() {
         this.t09Grp1s = T09Sum.referT09Grp1s(this.sumId);
         return this.t09Grp1s;
     }
 
     /**
      * @param param1 sumId
-     * @return List<T09Grp1>
+     * @return java.util.List<T09Grp1>
      */
-    public static List<T09Grp1> referT09Grp1s(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T09Grp1> referT09Grp1s(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("SUM_ID = :sum_id");
         String sql = "SELECT ";
         sql += "`GRP1_ID`";
@@ -390,13 +383,13 @@ public class T09Sum implements IEntity {
         sql += " FROM T09_GRP1 a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "GRP1_ID";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("sum_id", param1);
-        List<T09Grp1> list = Queries.select(sql, map, T09Grp1.class, null, null);
+        java.util.List<T09Grp1> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T09Grp1.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T09Grp1>();
+        return new java.util.ArrayList<T09Grp1>();
     }
 
     /*
@@ -404,39 +397,39 @@ public class T09Sum implements IEntity {
      */
 
     /** 集団２のリスト */
-    private List<T09Grp2> t09Grp2s;
+    private java.util.List<T09Grp2> t09Grp2s;
 
     /** @return 集団２のリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T09Grp2s", index = 11)
-    public List<T09Grp2> getT09Grp2s() {
+    public java.util.List<T09Grp2> getT09Grp2s() {
         return this.t09Grp2s;
     }
 
     /** @param list 集団２のリスト */
-    public void setT09Grp2s(final List<T09Grp2> list) {
+    public void setT09Grp2s(final java.util.List<T09Grp2> list) {
         this.t09Grp2s = list;
     }
 
     /** @param t09Grp2 */
     public void addT09Grp2s(final T09Grp2 t09Grp2) {
         if (this.t09Grp2s == null) {
-            this.t09Grp2s = new ArrayList<T09Grp2>();
+            this.t09Grp2s = new java.util.ArrayList<T09Grp2>();
         }
         this.t09Grp2s.add(t09Grp2);
     }
 
     /** @return 集団２のリスト */
-    public List<T09Grp2> referT09Grp2s() {
+    public java.util.List<T09Grp2> referT09Grp2s() {
         this.t09Grp2s = T09Sum.referT09Grp2s(this.sumId);
         return this.t09Grp2s;
     }
 
     /**
      * @param param1 sumId
-     * @return List<T09Grp2>
+     * @return java.util.List<T09Grp2>
      */
-    public static List<T09Grp2> referT09Grp2s(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T09Grp2> referT09Grp2s(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("SUM_ID = :sum_id");
         String sql = "SELECT ";
         sql += "`GRP2_ID`";
@@ -450,12 +443,12 @@ public class T09Sum implements IEntity {
         sql += " FROM T09_GRP2 a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "GRP2_ID";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("sum_id", param1);
-        List<T09Grp2> list = Queries.select(sql, map, T09Grp2.class, null, null);
+        java.util.List<T09Grp2> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T09Grp2.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T09Grp2>();
+        return new java.util.ArrayList<T09Grp2>();
     }
 }

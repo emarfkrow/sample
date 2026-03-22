@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 他生２
@@ -210,7 +203,7 @@ public class T12Tasho2 implements IEntity {
      * @return 他生２
      */
     public static T12Tasho2 get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`TASHO2_ID` = :tasho_2_id");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class T12Tasho2 implements IEntity {
         sql += "    T12_TASHO2 a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("tasho_2_id", param1);
-        return Queries.get(sql, map, T12Tasho2.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T12Tasho2.class);
     }
 
     /**
@@ -235,19 +228,19 @@ public class T12Tasho2 implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 他生２IDの採番処理
         numbering();
 
         // 他生２の登録
         String sql = "INSERT INTO T12_TASHO2(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`TASHO2_ID` -- :tasho_2_id");
         nameList.add("`KOHO3_ID` -- :koho_3_id");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -259,7 +252,7 @@ public class T12Tasho2 implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":tasho_2_id");
         valueList.add(":koho_3_id");
         valueList.add(":insert_ts");
@@ -275,8 +268,8 @@ public class T12Tasho2 implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`TASHO2_ID`) IS NULL THEN 0 ELSE MAX(e.`TASHO2_ID`) * 1 END + 1 AS `TASHO2_ID` FROM T12_TASHO2 e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("TASHO2_ID");
         this.setTasho2Id(o);
     }
@@ -287,16 +280,16 @@ public class T12Tasho2 implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 他生２の登録
         String sql = "UPDATE T12_TASHO2\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`TASHO2_ID` = :tasho_2_id");
         setList.add("`KOHO3_ID` = :koho_3_id");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -312,12 +305,12 @@ public class T12Tasho2 implements IEntity {
 
         // 他生２の削除
         String sql = "DELETE FROM T12_TASHO2 WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`TASHO2_ID` = :tasho_2_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -328,8 +321,8 @@ public class T12Tasho2 implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("tasho_2_id", this.tasho2Id);
         map.put("koho_3_id", this.koho3Id);
         map.put("insert_ts", now);
@@ -344,39 +337,39 @@ public class T12Tasho2 implements IEntity {
      */
 
     /** 転生３のリスト */
-    private List<T12Reborn3> t12Reborn3s;
+    private java.util.List<T12Reborn3> t12Reborn3s;
 
     /** @return 転生３のリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T12Reborn3s", index = 10)
-    public List<T12Reborn3> getT12Reborn3s() {
+    public java.util.List<T12Reborn3> getT12Reborn3s() {
         return this.t12Reborn3s;
     }
 
     /** @param list 転生３のリスト */
-    public void setT12Reborn3s(final List<T12Reborn3> list) {
+    public void setT12Reborn3s(final java.util.List<T12Reborn3> list) {
         this.t12Reborn3s = list;
     }
 
     /** @param t12Reborn3 */
     public void addT12Reborn3s(final T12Reborn3 t12Reborn3) {
         if (this.t12Reborn3s == null) {
-            this.t12Reborn3s = new ArrayList<T12Reborn3>();
+            this.t12Reborn3s = new java.util.ArrayList<T12Reborn3>();
         }
         this.t12Reborn3s.add(t12Reborn3);
     }
 
     /** @return 転生３のリスト */
-    public List<T12Reborn3> referT12Reborn3s() {
+    public java.util.List<T12Reborn3> referT12Reborn3s() {
         this.t12Reborn3s = T12Tasho2.referT12Reborn3s(this.tasho2Id);
         return this.t12Reborn3s;
     }
 
     /**
      * @param param1 tasho2Id
-     * @return List<T12Reborn3>
+     * @return java.util.List<T12Reborn3>
      */
-    public static List<T12Reborn3> referT12Reborn3s(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T12Reborn3> referT12Reborn3s(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("TASHO2_ID = :tasho_2_id");
         String sql = "SELECT ";
         sql += "`REBORN3_ID`";
@@ -390,12 +383,12 @@ public class T12Tasho2 implements IEntity {
         sql += " FROM T12_REBORN3 a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "REBORN3_ID";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("tasho_2_id", param1);
-        List<T12Reborn3> list = Queries.select(sql, map, T12Reborn3.class, null, null);
+        java.util.List<T12Reborn3> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T12Reborn3.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T12Reborn3>();
+        return new java.util.ArrayList<T12Reborn3>();
     }
 }

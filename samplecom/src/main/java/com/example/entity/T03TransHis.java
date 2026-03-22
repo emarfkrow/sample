@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 変遷履歴
@@ -250,7 +243,7 @@ public class T03TransHis implements IEntity {
      * @return 変遷履歴
      */
     public static T03TransHis get(final Object param1, final Object param2) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`TRANS_ID` = :trans_id");
         whereList.add("`TRANS_BN` = :trans_bn");
         String sql = "";
@@ -267,10 +260,10 @@ public class T03TransHis implements IEntity {
         sql += "    T03_TRANS_HIS a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("trans_id", param1);
         map.put("trans_bn", param2);
-        return Queries.get(sql, map, T03TransHis.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T03TransHis.class);
     }
 
     /**
@@ -279,19 +272,19 @@ public class T03TransHis implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 変遷枝番の採番処理
         numbering();
 
         // 変遷履歴の登録
         String sql = "INSERT INTO T03_TRANS_HIS(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`TRANS_ID` -- :trans_id");
         nameList.add("`TRANS_BN` -- :trans_bn");
         nameList.add("`TRANS_INFO` -- :trans_info");
@@ -305,7 +298,7 @@ public class T03TransHis implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":trans_id");
         valueList.add(":trans_bn");
         valueList.add(":trans_info");
@@ -323,12 +316,12 @@ public class T03TransHis implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`TRANS_BN`) IS NULL THEN 0 ELSE MAX(e.`TRANS_BN`) * 1 END + 1 AS `TRANS_BN` FROM T03_TRANS_HIS e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        List<String> whereList = new ArrayList<String>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("e.`TRANS_ID` = :trans_id");
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("trans_id", this.transId);
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("TRANS_BN");
         this.setTransBn(o);
     }
@@ -339,16 +332,16 @@ public class T03TransHis implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 変遷履歴の登録
         String sql = "UPDATE T03_TRANS_HIS\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`TRANS_ID` = :trans_id");
         setList.add("`TRANS_BN` = :trans_bn");
         setList.add("`TRANS_INFO` = :trans_info");
@@ -366,12 +359,12 @@ public class T03TransHis implements IEntity {
 
         // 変遷履歴の削除
         String sql = "DELETE FROM T03_TRANS_HIS WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`TRANS_ID` = :trans_id");
         whereList.add("`TRANS_BN` = :trans_bn");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
@@ -383,8 +376,8 @@ public class T03TransHis implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("trans_id", this.transId);
         map.put("trans_bn", this.transBn);
         map.put("trans_info", this.transInfo);

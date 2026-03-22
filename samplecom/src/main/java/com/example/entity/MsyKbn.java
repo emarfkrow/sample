@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 区分マスタ
@@ -210,7 +203,7 @@ public class MsyKbn implements IEntity {
      * @return 区分マスタ
      */
     public static MsyKbn get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`KBN_NM` = :kbn_nm");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class MsyKbn implements IEntity {
         sql += "    MSY_KBN a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kbn_nm", param1);
-        return Queries.get(sql, map, MsyKbn.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, MsyKbn.class);
     }
 
     /**
@@ -235,7 +228,7 @@ public class MsyKbn implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 区分値マスタの登録
         if (this.msyKbnVals != null) {
@@ -249,12 +242,12 @@ public class MsyKbn implements IEntity {
 
         // 区分マスタの登録
         String sql = "INSERT INTO MSY_KBN(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`KBN_NM` -- :kbn_nm");
         nameList.add("`KBN_MEI` -- :kbn_mei");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -266,7 +259,7 @@ public class MsyKbn implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":kbn_nm");
         valueList.add(":kbn_mei");
         valueList.add(":insert_ts");
@@ -282,7 +275,7 @@ public class MsyKbn implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 区分値マスタの登録
         if (this.msyKbnVals != null) {
@@ -301,12 +294,12 @@ public class MsyKbn implements IEntity {
 
         // 区分マスタの登録
         String sql = "UPDATE MSY_KBN\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`KBN_NM` = :kbn_nm");
         setList.add("`KBN_MEI` = :kbn_mei");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -331,12 +324,12 @@ public class MsyKbn implements IEntity {
 
         // 区分マスタの削除
         String sql = "DELETE FROM MSY_KBN WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`KBN_NM` = :kbn_nm");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -347,8 +340,8 @@ public class MsyKbn implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kbn_nm", this.kbnNm);
         map.put("kbn_mei", this.kbnMei);
         map.put("insert_ts", now);
@@ -363,39 +356,39 @@ public class MsyKbn implements IEntity {
      */
 
     /** 区分値マスタのリスト */
-    private List<MsyKbnVal> msyKbnVals;
+    private java.util.List<MsyKbnVal> msyKbnVals;
 
     /** @return 区分値マスタのリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "MsyKbnVals", index = 10)
-    public List<MsyKbnVal> getMsyKbnVals() {
+    public java.util.List<MsyKbnVal> getMsyKbnVals() {
         return this.msyKbnVals;
     }
 
     /** @param list 区分値マスタのリスト */
-    public void setMsyKbnVals(final List<MsyKbnVal> list) {
+    public void setMsyKbnVals(final java.util.List<MsyKbnVal> list) {
         this.msyKbnVals = list;
     }
 
     /** @param msyKbnVal */
     public void addMsyKbnVals(final MsyKbnVal msyKbnVal) {
         if (this.msyKbnVals == null) {
-            this.msyKbnVals = new ArrayList<MsyKbnVal>();
+            this.msyKbnVals = new java.util.ArrayList<MsyKbnVal>();
         }
         this.msyKbnVals.add(msyKbnVal);
     }
 
     /** @return 区分値マスタのリスト */
-    public List<MsyKbnVal> referMsyKbnVals() {
+    public java.util.List<MsyKbnVal> referMsyKbnVals() {
         this.msyKbnVals = MsyKbn.referMsyKbnVals(this.kbnNm);
         return this.msyKbnVals;
     }
 
     /**
      * @param param1 kbnNm
-     * @return List<MsyKbnVal>
+     * @return java.util.List<MsyKbnVal>
      */
-    public static List<MsyKbnVal> referMsyKbnVals(final String param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<MsyKbnVal> referMsyKbnVals(final String param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("KBN_NM = :kbn_nm");
         String sql = "SELECT ";
         sql += "`KBN_NM`";
@@ -412,12 +405,12 @@ public class MsyKbn implements IEntity {
         sql += " FROM MSY_KBN_VAL a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "KBN_NM, KBN_VAL";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kbn_nm", param1);
-        List<MsyKbnVal> list = Queries.select(sql, map, MsyKbnVal.class, null, null);
+        java.util.List<MsyKbnVal> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, MsyKbnVal.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<MsyKbnVal>();
+        return new java.util.ArrayList<MsyKbnVal>();
     }
 }

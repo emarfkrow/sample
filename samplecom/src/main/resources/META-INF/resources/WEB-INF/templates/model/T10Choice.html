@@ -30,14 +30,14 @@
           <label for="T10Choice.choiceId" th:text="#{T10Choice.choiceId}">選抜ID</label><input type="text" id="T10Choice.choiceId" name="T10Choice.choiceId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="koho1Id">
-          <label th:text="#{T10Choice.koho1Id}">候補１ID</label><span id="T10Choice.koho1Id" class="derivee"></span><input type="hidden" id="T10Choice.koho1Id" name="T10Choice.koho1Id" class="derivee" />
+          <label th:text="#{T10Choice.koho1Id}">候補１ID</label><span id="T10Choice.koho1Id" class="derivee"></span><input type="text" id="T10Choice.koho1Id" name="T10Choice.koho1Id" style="display: none;" class="derivee" />
           <a id="T10Choice.koho1Id" th:href="@{/model/T10Koho1S.html?action=T10Koho1Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
         </div>
         <div id="koho1Info">
           <label for="T10Choice.koho1Info" th:text="#{T10Choice.koho1Info}">候補１情報</label><input type="text" id="T10Choice.koho1Info" name="T10Choice.koho1Info" maxlength="300" />
         </div>
         <div id="koho2Id">
-          <label th:text="#{T10Choice.koho2Id}">候補２ID</label><span id="T10Choice.koho2Id" class="derivee"></span><input type="hidden" id="T10Choice.koho2Id" name="T10Choice.koho2Id" class="derivee" />
+          <label th:text="#{T10Choice.koho2Id}">候補２ID</label><span id="T10Choice.koho2Id" class="derivee"></span><input type="text" id="T10Choice.koho2Id" name="T10Choice.koho2Id" style="display: none;" class="derivee" />
           <a id="T10Choice.koho2Id" th:href="@{/model/T10Koho2S.html?action=T10Koho2Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
         </div>
         <div id="koho2Info">

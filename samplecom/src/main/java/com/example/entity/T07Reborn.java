@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 転生
@@ -228,7 +221,7 @@ public class T07Reborn implements IEntity {
      * @return 転生
      */
     public static T07Reborn get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`REBORN_ID` = :reborn_id");
         String sql = "";
         sql += "SELECT \n";
@@ -243,9 +236,9 @@ public class T07Reborn implements IEntity {
         sql += "    T07_REBORN a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("reborn_id", param1);
-        return Queries.get(sql, map, T07Reborn.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T07Reborn.class);
     }
 
     /**
@@ -254,7 +247,7 @@ public class T07Reborn implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 転生IDの採番処理
         numbering();
@@ -271,12 +264,12 @@ public class T07Reborn implements IEntity {
 
         // 転生の登録
         String sql = "INSERT INTO T07_REBORN(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`REBORN_ID` -- :reborn_id");
         nameList.add("`PREV_INFO` -- :prev_info");
         nameList.add("`PREV_ID` -- :prev_id");
@@ -289,7 +282,7 @@ public class T07Reborn implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":reborn_id");
         valueList.add(":prev_info");
         valueList.add(":prev_id");
@@ -306,8 +299,8 @@ public class T07Reborn implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`REBORN_ID`) IS NULL THEN 0 ELSE MAX(e.`REBORN_ID`) * 1 END + 1 AS `REBORN_ID` FROM T07_REBORN e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("REBORN_ID");
         this.setRebornId(o);
     }
@@ -318,7 +311,7 @@ public class T07Reborn implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 転生明細の登録
         if (this.t07RebornDets != null) {
@@ -337,12 +330,12 @@ public class T07Reborn implements IEntity {
 
         // 転生の登録
         String sql = "UPDATE T07_REBORN\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`REBORN_ID` = :reborn_id");
         setList.add("`PREV_INFO` = :prev_info");
         setList.add("`PREV_ID` = :prev_id");
@@ -368,12 +361,12 @@ public class T07Reborn implements IEntity {
 
         // 転生の削除
         String sql = "DELETE FROM T07_REBORN WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`REBORN_ID` = :reborn_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -384,8 +377,8 @@ public class T07Reborn implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("reborn_id", this.rebornId);
         map.put("prev_info", this.prevInfo);
         map.put("prev_id", this.prevId);
@@ -401,39 +394,39 @@ public class T07Reborn implements IEntity {
      */
 
     /** 転生明細のリスト */
-    private List<T07RebornDet> t07RebornDets;
+    private java.util.List<T07RebornDet> t07RebornDets;
 
     /** @return 転生明細のリスト */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "T07RebornDets", index = 11)
-    public List<T07RebornDet> getT07RebornDets() {
+    public java.util.List<T07RebornDet> getT07RebornDets() {
         return this.t07RebornDets;
     }
 
     /** @param list 転生明細のリスト */
-    public void setT07RebornDets(final List<T07RebornDet> list) {
+    public void setT07RebornDets(final java.util.List<T07RebornDet> list) {
         this.t07RebornDets = list;
     }
 
     /** @param t07RebornDet */
     public void addT07RebornDets(final T07RebornDet t07RebornDet) {
         if (this.t07RebornDets == null) {
-            this.t07RebornDets = new ArrayList<T07RebornDet>();
+            this.t07RebornDets = new java.util.ArrayList<T07RebornDet>();
         }
         this.t07RebornDets.add(t07RebornDet);
     }
 
     /** @return 転生明細のリスト */
-    public List<T07RebornDet> referT07RebornDets() {
+    public java.util.List<T07RebornDet> referT07RebornDets() {
         this.t07RebornDets = T07Reborn.referT07RebornDets(this.rebornId);
         return this.t07RebornDets;
     }
 
     /**
      * @param param1 rebornId
-     * @return List<T07RebornDet>
+     * @return java.util.List<T07RebornDet>
      */
-    public static List<T07RebornDet> referT07RebornDets(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
+    public static java.util.List<T07RebornDet> referT07RebornDets(final Integer param1) {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("REBORN_ID = :reborn_id");
         String sql = "SELECT ";
         sql += "`REBORN_ID`";
@@ -448,12 +441,12 @@ public class T07Reborn implements IEntity {
         sql += " FROM T07_REBORN_DET a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "REBORN_ID, REBORN_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("reborn_id", param1);
-        List<T07RebornDet> list = Queries.select(sql, map, T07RebornDet.class, null, null);
+        java.util.List<T07RebornDet> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T07RebornDet.class, null, null);
         if (list != null) {
             return list;
         }
-        return new ArrayList<T07RebornDet>();
+        return new java.util.ArrayList<T07RebornDet>();
     }
 }

@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * NOマスタ
@@ -210,7 +203,7 @@ public class M04No implements IEntity {
      * @return NOマスタ
      */
     public static M04No get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("TRIM(TRAILING ' ' FROM `NOREF_NO`) = TRIM(TRAILING ' ' FROM :noref_no)");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class M04No implements IEntity {
         sql += "    M04_NO a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("noref_no", param1);
-        return Queries.get(sql, map, M04No.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, M04No.class);
     }
 
     /**
@@ -235,16 +228,16 @@ public class M04No implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // NOマスタの登録
         String sql = "INSERT INTO M04_NO(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`NOREF_NO` -- :noref_no");
         nameList.add("`NOREF_MEI` -- :noref_mei");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -256,7 +249,7 @@ public class M04No implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":noref_no");
         valueList.add(":noref_mei");
         valueList.add(":insert_ts");
@@ -272,16 +265,16 @@ public class M04No implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // NOマスタの登録
         String sql = "UPDATE M04_NO\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`NOREF_NO` = :noref_no");
         setList.add("`NOREF_MEI` = :noref_mei");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -297,12 +290,12 @@ public class M04No implements IEntity {
 
         // NOマスタの削除
         String sql = "DELETE FROM M04_NO WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("TRIM(TRAILING ' ' FROM `NOREF_NO`) = TRIM(TRAILING ' ' FROM :noref_no)");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -313,8 +306,8 @@ public class M04No implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("noref_no", this.norefNo);
         map.put("noref_mei", this.norefMei);
         map.put("insert_ts", now);

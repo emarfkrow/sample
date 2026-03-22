@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 寄生２
@@ -210,7 +203,7 @@ public class T08Kisei2 implements IEntity {
      * @return 寄生２
      */
     public static T08Kisei2 get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`KISEI2_ID` = :kisei_2_id");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class T08Kisei2 implements IEntity {
         sql += "    T08_KISEI2 a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kisei_2_id", param1);
-        return Queries.get(sql, map, T08Kisei2.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T08Kisei2.class);
     }
 
     /**
@@ -235,19 +228,19 @@ public class T08Kisei2 implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 寄生２IDの採番処理
         numbering();
 
         // 寄生２の登録
         String sql = "INSERT INTO T08_KISEI2(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`KISEI2_ID` -- :kisei_2_id");
         nameList.add("`KISEI2_INFO` -- :kisei_2_info");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -259,7 +252,7 @@ public class T08Kisei2 implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":kisei_2_id");
         valueList.add(":kisei_2_info");
         valueList.add(":insert_ts");
@@ -275,8 +268,8 @@ public class T08Kisei2 implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`KISEI2_ID`) IS NULL THEN 0 ELSE MAX(e.`KISEI2_ID`) * 1 END + 1 AS `KISEI2_ID` FROM T08_KISEI2 e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("KISEI2_ID");
         this.setKisei2Id(o);
     }
@@ -287,16 +280,16 @@ public class T08Kisei2 implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 寄生２の登録
         String sql = "UPDATE T08_KISEI2\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`KISEI2_ID` = :kisei_2_id");
         setList.add("`KISEI2_INFO` = :kisei_2_info");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -312,12 +305,12 @@ public class T08Kisei2 implements IEntity {
 
         // 寄生２の削除
         String sql = "DELETE FROM T08_KISEI2 WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`KISEI2_ID` = :kisei_2_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -328,8 +321,8 @@ public class T08Kisei2 implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kisei_2_id", this.kisei2Id);
         map.put("kisei_2_info", this.kisei2Info);
         map.put("insert_ts", now);

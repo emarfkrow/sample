@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * マスタ参照３
@@ -270,7 +263,7 @@ public class M05Ref3 implements IEntity {
      * @return マスタ参照３
      */
     public static M05Ref3 get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`REF3_ID` = :ref_3_id");
         String sql = "";
         sql += "SELECT \n";
@@ -287,9 +280,9 @@ public class M05Ref3 implements IEntity {
         sql += "    M05_REF3 a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("ref_3_id", param1);
-        return Queries.get(sql, map, M05Ref3.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, M05Ref3.class);
     }
 
     /**
@@ -298,19 +291,19 @@ public class M05Ref3 implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 参照３IDの採番処理
         numbering();
 
         // マスタ参照３の登録
         String sql = "INSERT INTO M05_REF3(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`REF3_ID` -- :ref_3_id");
         nameList.add("`REF3_MEI` -- :ref_3_mei");
         nameList.add("`DELETE_F` -- :delete_f");
@@ -325,7 +318,7 @@ public class M05Ref3 implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":ref_3_id");
         valueList.add(":ref_3_mei");
         valueList.add(":delete_f");
@@ -344,8 +337,8 @@ public class M05Ref3 implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`REF3_ID`) IS NULL THEN 0 ELSE MAX(e.`REF3_ID`) * 1 END + 1 AS `REF3_ID` FROM M05_REF3 e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("REF3_ID");
         this.setRef3Id(o);
     }
@@ -356,16 +349,16 @@ public class M05Ref3 implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // マスタ参照３の登録
         String sql = "UPDATE M05_REF3\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`REF3_ID` = :ref_3_id");
         setList.add("`REF3_MEI` = :ref_3_mei");
         setList.add("`DELETE_F` = :delete_f");
@@ -378,7 +371,7 @@ public class M05Ref3 implements IEntity {
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`REF3_ID` = :ref_3_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -389,8 +382,8 @@ public class M05Ref3 implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("ref_3_id", this.ref3Id);
         map.put("ref_3_mei", this.ref3Mei);
         map.put("delete_f", this.deleteF);

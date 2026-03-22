@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * エンティティ
@@ -742,7 +735,7 @@ public class T00Entity implements IEntity {
      * @return エンティティ
      */
     public static T00Entity get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`ENTITY_ID` = :entity_id");
         String sql = "";
         sql += "SELECT \n";
@@ -784,9 +777,9 @@ public class T00Entity implements IEntity {
         sql += "    T00_ENTITY a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("entity_id", param1);
-        return Queries.get(sql, map, T00Entity.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T00Entity.class);
     }
 
     /**
@@ -795,19 +788,19 @@ public class T00Entity implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // エンティティIDの採番処理
         numbering();
 
         // エンティティの登録
         String sql = "INSERT INTO T00_ENTITY(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`ENTITY_ID` -- :entity_id");
         nameList.add("`ENTITY_NM` -- :entity_nm");
         nameList.add("`ENTITY_MEI` -- :entity_mei");
@@ -847,7 +840,7 @@ public class T00Entity implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":entity_id");
         valueList.add(":entity_nm");
         valueList.add(":entity_mei");
@@ -891,8 +884,8 @@ public class T00Entity implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`ENTITY_ID`) IS NULL THEN 0 ELSE MAX(e.`ENTITY_ID`) * 1 END + 1 AS `ENTITY_ID` FROM T00_ENTITY e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("ENTITY_ID");
         this.setEntityId(o);
     }
@@ -903,16 +896,16 @@ public class T00Entity implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // エンティティの登録
         String sql = "UPDATE T00_ENTITY\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`ENTITY_ID` = :entity_id");
         setList.add("`ENTITY_NM` = :entity_nm");
         setList.add("`ENTITY_MEI` = :entity_mei");
@@ -950,7 +943,7 @@ public class T00Entity implements IEntity {
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`ENTITY_ID` = :entity_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -961,8 +954,8 @@ public class T00Entity implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("entity_id", this.entityId);
         map.put("entity_nm", this.entityNm);
         map.put("entity_mei", this.entityMei);

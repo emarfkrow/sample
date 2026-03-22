@@ -42,7 +42,7 @@
           <label for="T06Derive1.orgInfo" th:text="#{T06Derive1.orgInfo}">起源情報</label><input type="text" id="T06Derive1.orgInfo" name="T06Derive1.orgInfo" maxlength="300" />
         </div>
         <div id="orgId">
-          <label th:text="#{T06Derive1.orgId}">起源ID</label><span id="T06Derive1.orgId" class="derivee"></span><input type="hidden" id="T06Derive1.orgId" name="T06Derive1.orgId" class="derivee" />
+          <label th:text="#{T06Derive1.orgId}">起源ID</label><span id="T06Derive1.orgId" class="derivee"></span><input type="text" id="T06Derive1.orgId" name="T06Derive1.orgId" style="display: none;" class="derivee" />
           <a id="T06Derive1.orgId" th:href="@{/model/T06OrgS.html?action=T06OrgCorrect.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
         </div>
         <div id="insertTs">

@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 集団１
@@ -210,7 +203,7 @@ public class T09Grp1 implements IEntity {
      * @return 集団１
      */
     public static T09Grp1 get(final Object param1) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`GRP1_ID` = :grp_1_id");
         String sql = "";
         sql += "SELECT \n";
@@ -224,9 +217,9 @@ public class T09Grp1 implements IEntity {
         sql += "    T09_GRP1 a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("grp_1_id", param1);
-        return Queries.get(sql, map, T09Grp1.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T09Grp1.class);
     }
 
     /**
@@ -235,19 +228,19 @@ public class T09Grp1 implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 集団１IDの採番処理
         numbering();
 
         // 集団１の登録
         String sql = "INSERT INTO T09_GRP1(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`GRP1_ID` -- :grp_1_id");
         nameList.add("`SUM_ID` -- :sum_id");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -259,7 +252,7 @@ public class T09Grp1 implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":grp_1_id");
         valueList.add(":sum_id");
         valueList.add(":insert_ts");
@@ -275,8 +268,8 @@ public class T09Grp1 implements IEntity {
             return;
         }
         String sql = "SELECT CASE WHEN MAX(e.`GRP1_ID`) IS NULL THEN 0 ELSE MAX(e.`GRP1_ID`) * 1 END + 1 AS `GRP1_ID` FROM T09_GRP1 e";
-        Map<String, Object> map = new HashMap<String, Object>();
-        jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("GRP1_ID");
         this.setGrp1Id(o);
     }
@@ -287,16 +280,16 @@ public class T09Grp1 implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 集団１の登録
         String sql = "UPDATE T09_GRP1\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`GRP1_ID` = :grp_1_id");
         setList.add("`SUM_ID` = :sum_id");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -312,12 +305,12 @@ public class T09Grp1 implements IEntity {
 
         // 集団１の削除
         String sql = "DELETE FROM T09_GRP1 WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`GRP1_ID` = :grp_1_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
@@ -328,8 +321,8 @@ public class T09Grp1 implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("grp_1_id", this.grp1Id);
         map.put("sum_id", this.sumId);
         map.put("insert_ts", now);

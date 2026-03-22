@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 複合２
@@ -336,7 +329,7 @@ public class T05Comp2 implements IEntity {
      * @return 複合２
      */
     public static T05Comp2 get(final Object param1, final Object param2, final Object param3, final Object param4) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`REF1_ID` = :ref_1_id");
         whereList.add("`REF2_ID` = :ref_2_id");
         whereList.add("`REF3_ID` = :ref_3_id");
@@ -356,12 +349,12 @@ public class T05Comp2 implements IEntity {
         sql += "    T05_COMP2 a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("ref_1_id", param1);
         map.put("ref_2_id", param2);
         map.put("ref_3_id", param3);
         map.put("tekiyo_bi", param4);
-        return Queries.get(sql, map, T05Comp2.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T05Comp2.class);
     }
 
     /**
@@ -370,16 +363,16 @@ public class T05Comp2 implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 複合２の登録
         String sql = "INSERT INTO T05_COMP2(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`REF1_ID` -- :ref_1_id");
         nameList.add("`REF2_ID` -- :ref_2_id");
         nameList.add("`REF3_ID` -- :ref_3_id");
@@ -394,7 +387,7 @@ public class T05Comp2 implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":ref_1_id");
         valueList.add(":ref_2_id");
         valueList.add(":ref_3_id");
@@ -413,16 +406,16 @@ public class T05Comp2 implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 複合２の登録
         String sql = "UPDATE T05_COMP2\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`REF1_ID` = :ref_1_id");
         setList.add("`REF2_ID` = :ref_2_id");
         setList.add("`REF3_ID` = :ref_3_id");
@@ -441,12 +434,12 @@ public class T05Comp2 implements IEntity {
 
         // 複合２の削除
         String sql = "DELETE FROM T05_COMP2 WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`REF1_ID` = :ref_1_id");
         whereList.add("`REF2_ID` = :ref_2_id");
         whereList.add("`REF3_ID` = :ref_3_id");
@@ -460,8 +453,8 @@ public class T05Comp2 implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("ref_1_id", this.ref1Id);
         map.put("ref_2_id", this.ref2Id);
         map.put("ref_3_id", this.ref3Id);

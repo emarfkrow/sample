@@ -1,13 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jp.co.golorp.emarf.entity.IEntity;
-import jp.co.golorp.emarf.sql.Queries;
 
 /**
  * 区分値マスタ
@@ -287,7 +280,7 @@ public class MsyKbnVal implements IEntity {
      * @return 区分値マスタ
      */
     public static MsyKbnVal get(final Object param1, final Object param2) {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`KBN_NM` = :kbn_nm");
         whereList.add("`KBN_VAL` = :kbn_val");
         String sql = "";
@@ -305,10 +298,10 @@ public class MsyKbnVal implements IEntity {
         sql += "    MSY_KBN_VAL a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
-        Map<String, Object> map = new HashMap<String, Object>();
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kbn_nm", param1);
         map.put("kbn_val", param2);
-        return Queries.get(sql, map, MsyKbnVal.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, MsyKbnVal.class);
     }
 
     /**
@@ -317,16 +310,16 @@ public class MsyKbnVal implements IEntity {
      * @param execId 登録者
      * @return 追加件数
      */
-    public int insert(final LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime now, final String execId) {
 
         // 区分値マスタの登録
         String sql = "INSERT INTO MSY_KBN_VAL(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return insert用のname句 */
     private String names() {
-        List<String> nameList = new ArrayList<String>();
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`KBN_NM` -- :kbn_nm");
         nameList.add("`KBN_VAL` -- :kbn_val");
         nameList.add("`KBN_VAL_MEI` -- :kbn_val_mei");
@@ -341,7 +334,7 @@ public class MsyKbnVal implements IEntity {
 
     /** @return insert用のvalue句 */
     private String values() {
-        List<String> valueList = new ArrayList<String>();
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":kbn_nm");
         valueList.add(":kbn_val");
         valueList.add(":kbn_val_mei");
@@ -360,16 +353,16 @@ public class MsyKbnVal implements IEntity {
      * @param execId 更新者
      * @return 更新件数
      */
-    public int update(final LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 区分値マスタの登録
         String sql = "UPDATE MSY_KBN_VAL\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
 
     /** @return update用のset句 */
     private String getSet() {
-        List<String> setList = new ArrayList<String>();
+        java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`KBN_NM` = :kbn_nm");
         setList.add("`KBN_VAL` = :kbn_val");
         setList.add("`KBN_VAL_MEI` = :kbn_val_mei");
@@ -388,12 +381,12 @@ public class MsyKbnVal implements IEntity {
 
         // 区分値マスタの削除
         String sql = "DELETE FROM MSY_KBN_VAL WHERE " + getWhere();
-        return Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /** @return where句 */
     private String getWhere() {
-        List<String> whereList = new ArrayList<String>();
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`KBN_NM` = :kbn_nm");
         whereList.add("`KBN_VAL` = :kbn_val");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
@@ -405,8 +398,8 @@ public class MsyKbnVal implements IEntity {
      * @param execId 実行ID
      * @return マップ化したエンティティ
      */
-    private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kbn_nm", this.kbnNm);
         map.put("kbn_val", this.kbnVal);
         map.put("kbn_val_mei", this.kbnValMei);
