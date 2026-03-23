@@ -30,7 +30,7 @@
       <fieldset>
         <legend th:text="#{T09Grp2S.legend}">legend</legend>
         <div id="grp2Id">
-          <label for="T09Grp2.grp2Id" th:text="#{T09Grp2.grp2Id}">集団２ID</label><input type="text" id="T09Grp2.grp2Id" name="T09Grp2.grp2Id" maxlength="10" />
+          <label for="T09Grp2.grp2Id" th:text="#{T09Grp2.grp2Id}">集団２ID</label><input type="text" id="T09Grp2.grp2Id" name="T09Grp2.grp2Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="sumId">
           <label for="T09Grp2.sumId" th:text="#{T09Grp2.sumId}">集約ID</label><input type="text" id="T09Grp2.sumId" name="T09Grp2.sumId" maxlength="10" class=" refer" /><a id="T09Grp2.sumId" th:href="@{/model/T09SumS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>

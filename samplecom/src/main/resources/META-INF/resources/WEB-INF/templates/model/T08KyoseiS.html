@@ -30,7 +30,7 @@
       <fieldset>
         <legend th:text="#{T08KyoseiS.legend}">legend</legend>
         <div id="kyoseiId">
-          <label for="T08Kyosei.kyoseiId" th:text="#{T08Kyosei.kyoseiId}">共生ID</label><input type="text" id="T08Kyosei.kyoseiId" name="T08Kyosei.kyoseiId" maxlength="10" />
+          <label for="T08Kyosei.kyoseiId" th:text="#{T08Kyosei.kyoseiId}">共生ID</label><input type="text" id="T08Kyosei.kyoseiId" name="T08Kyosei.kyoseiId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="kisei1Id">
           <label for="T08Kyosei.kisei1Id" th:text="#{T08Kyosei.kisei1Id}">寄生１ID</label><input type="text" id="T08Kyosei.kisei1Id" name="T08Kyosei.kisei1Id" maxlength="10" class=" refer" /><a id="T08Kyosei.kisei1Id" th:href="@{/model/T08Kisei1S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>

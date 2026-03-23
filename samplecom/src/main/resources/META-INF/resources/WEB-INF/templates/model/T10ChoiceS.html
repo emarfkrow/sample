@@ -30,7 +30,7 @@
       <fieldset>
         <legend th:text="#{T10ChoiceS.legend}">legend</legend>
         <div id="choiceId">
-          <label for="T10Choice.choiceId" th:text="#{T10Choice.choiceId}">選抜ID</label><input type="text" id="T10Choice.choiceId" name="T10Choice.choiceId" maxlength="10" />
+          <label for="T10Choice.choiceId" th:text="#{T10Choice.choiceId}">選抜ID</label><input type="text" id="T10Choice.choiceId" name="T10Choice.choiceId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="koho1Id">
           <label for="T10Choice.koho1Id" th:text="#{T10Choice.koho1Id}">候補１ID</label><input type="text" id="T10Choice.koho1Id" name="T10Choice.koho1Id" maxlength="10" class=" refer" /><a id="T10Choice.koho1Id" th:href="@{/model/T10Koho1S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>

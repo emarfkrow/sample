@@ -30,7 +30,7 @@
       <fieldset>
         <legend th:text="#{T12Tasho2S.legend}">legend</legend>
         <div id="tasho2Id">
-          <label for="T12Tasho2.tasho2Id" th:text="#{T12Tasho2.tasho2Id}">他生２ID</label><input type="text" id="T12Tasho2.tasho2Id" name="T12Tasho2.tasho2Id" maxlength="10" />
+          <label for="T12Tasho2.tasho2Id" th:text="#{T12Tasho2.tasho2Id}">他生２ID</label><input type="text" id="T12Tasho2.tasho2Id" name="T12Tasho2.tasho2Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="koho3Id">
           <label for="T12Tasho2.koho3Id" th:text="#{T12Tasho2.koho3Id}">候補３ID</label><input type="text" id="T12Tasho2.koho3Id" name="T12Tasho2.koho3Id" maxlength="10" class=" refer" /><a id="T12Tasho2.koho3Id" th:href="@{/model/T12Koho3S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
