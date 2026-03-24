@@ -3,7 +3,7 @@ package com.example.entity;
 import jp.co.golorp.emarf.entity.IEntity;
 
 /**
- * VIEW
+ * 変換ビュー
  * @author emarfkrow
  */
 public class V13Henkan implements IEntity {
@@ -27,16 +27,16 @@ public class V13Henkan implements IEntity {
         }
     }
 
-    /** table_name */
+    /** テーブル名 */
     private String tableName;
 
-    /** @return table_name */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "table_name", index = 2)
+    /** @return テーブル名 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_NAME", index = 2)
     public String getTableName() {
         return this.tableName;
     }
 
-    /** @param o table_name */
+    /** @param o テーブル名 */
     public void setTableName(final Object o) {
         if (o != null) {
             this.tableName = o.toString();
@@ -49,7 +49,7 @@ public class V13Henkan implements IEntity {
     private Integer srcId;
 
     /** @return 変換元ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "src_id", index = 3)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "SRC_ID", index = 3)
     public Integer getSrcId() {
         return this.srcId;
     }
@@ -67,7 +67,7 @@ public class V13Henkan implements IEntity {
     private String destInfo;
 
     /** @return 変換元情報 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "dest_info", index = 4)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEST_INFO", index = 4)
     public String getDestInfo() {
         return this.destInfo;
     }

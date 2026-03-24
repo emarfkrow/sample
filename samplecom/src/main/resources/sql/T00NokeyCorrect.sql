@@ -1,32 +1,32 @@
 SELECT
-      a.`A_MEI` AS `A_MEI`
-    , a.`B_MEI` AS `B_MEI`
-    , a.`C_MEI` AS `C_MEI`
-    , a.`D_MEI` AS `D_MEI`
-    , a.`E_MEI` AS `E_MEI`
-    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , a.`INSERT_USER_ID` AS `INSERT_USER_ID`
-    , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
-    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , a.`UPDATE_USER_ID` AS `UPDATE_USER_ID`
-    , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
+      a."A_MEI" AS "A_MEI"
+    , a."B_MEI" AS "B_MEI"
+    , a."C_MEI" AS "C_MEI"
+    , a."D_MEI" AS "D_MEI"
+    , a."E_MEI" AS "E_MEI"
+    , TO_CHAR (a."INSERT_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "INSERT_TS"
+    , a."INSERT_USER_ID" AS "INSERT_USER_ID"
+    , (SELECT r0."USER_SEI" FROM MHR_USER r0 WHERE r0."USER_ID" = a."INSERT_USER_ID") AS "INSERT_USER_SEI"
+    , TO_CHAR (a."UPDATE_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "UPDATE_TS"
+    , a."UPDATE_USER_ID" AS "UPDATE_USER_ID"
+    , (SELECT r1."USER_SEI" FROM MHR_USER r1 WHERE r1."USER_ID" = a."UPDATE_USER_ID") AS "UPDATE_USER_SEI"
 FROM
     T00_NOKEY a 
 WHERE
     1 = 1 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`A_MEI`)) LIKE UPPER (CONCAT ('%', :a_mei, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`B_MEI`)) LIKE UPPER (CONCAT ('%', :b_mei, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`C_MEI`)) LIKE UPPER (CONCAT ('%', :c_mei, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`D_MEI`)) LIKE UPPER (CONCAT ('%', :d_mei, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`E_MEI`)) LIKE UPPER (CONCAT ('%', :e_mei, '%')) 
-    AND a.`INSERT_TS` = :insert_ts 
-    AND a.`INSERT_TS` >= :insert_ts_1 
-    AND a.`INSERT_TS` <= :insert_ts_2 
-    AND a.`INSERT_USER_ID` = :insert_user_id 
-    AND a.`UPDATE_TS` = :update_ts 
-    AND a.`UPDATE_TS` >= :update_ts_1 
-    AND a.`UPDATE_TS` <= :update_ts_2 
-    AND a.`UPDATE_USER_ID` = :update_user_id 
+    AND UPPER (RTRIM (RTRIM (a."A_MEI"), '　')) LIKE UPPER ('%' || :a_mei || '%') 
+    AND UPPER (RTRIM (RTRIM (a."B_MEI"), '　')) LIKE UPPER ('%' || :b_mei || '%') 
+    AND UPPER (RTRIM (RTRIM (a."C_MEI"), '　')) LIKE UPPER ('%' || :c_mei || '%') 
+    AND UPPER (RTRIM (RTRIM (a."D_MEI"), '　')) LIKE UPPER ('%' || :d_mei || '%') 
+    AND UPPER (RTRIM (RTRIM (a."E_MEI"), '　')) LIKE UPPER ('%' || :e_mei || '%') 
+    AND a."INSERT_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."INSERT_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."INSERT_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."INSERT_USER_ID" = :insert_user_id 
+    AND a."UPDATE_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."UPDATE_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."UPDATE_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."UPDATE_USER_ID" = :update_user_id 
 ORDER BY
     1
     , 2

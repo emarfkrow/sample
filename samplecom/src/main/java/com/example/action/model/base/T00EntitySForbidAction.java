@@ -13,13 +13,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * エンティティ一覧承認
+ * エンティティ一覧否認
  *
  * @author emarfkrow
  */
 public class T00EntitySForbidAction extends BaseAction {
 
-    /** エンティティ一覧承認処理 */
+    /** エンティティ一覧否認処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
 

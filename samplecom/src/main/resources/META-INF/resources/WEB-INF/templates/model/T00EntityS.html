@@ -141,6 +141,8 @@
         <a th:href="@{T00EntitySearch.xlsx(baseMei=#{T00EntityS.h2})}" id="T00EntitySearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
         <button type="submit" id="PermitT00EntityS" data-action="T00EntitySPermit.ajax" class="permit selectRows" th:text="#{common.permit}" tabindex="-1">承認</button>
         <button type="submit" id="ForbidT00EntityS" data-action="T00EntitySForbid.ajax" class="forbid selectRows" th:text="#{common.forbid}" tabindex="-1">否認</button>
+        <button type="submit" id="ApplyT00EntityS" data-action="T00EntitySApply.ajax" class="apply selectRows" th:text="#{common.apply}" tabindex="-1">申請</button>
+        <button type="submit" id="CancelT00EntityS" data-action="T00EntitySCancel.ajax" class="cancel selectRows" th:text="#{common.cancel}" tabindex="-1">取消</button>
       </div>
       <div class="submits">
         <button id="RegistT00EntityS" type="submit" class="regist" th:text="#{common.regist}">submit</button>

@@ -258,18 +258,18 @@ public class T10Choice implements IEntity {
      */
     public static T10Choice get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`CHOICE_ID` = :choice_id");
+        whereList.add("\"CHOICE_ID\" = :choice_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`CHOICE_ID` \n";
-        sql += "    , a.`KOHO1_ID` \n";
-        sql += "    , a.`KOHO1_INFO` \n";
-        sql += "    , a.`KOHO2_ID` \n";
-        sql += "    , a.`KOHO2_INFO` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , a.`UPDATE_USER_ID` \n";
+        sql += "      a.\"CHOICE_ID\" \n";
+        sql += "    , a.\"KOHO1_ID\" \n";
+        sql += "    , a.\"KOHO1_INFO\" \n";
+        sql += "    , a.\"KOHO2_ID\" \n";
+        sql += "    , a.\"KOHO2_INFO\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , a.\"INSERT_USER_ID\" \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , a.\"UPDATE_USER_ID\" \n";
         sql += "FROM \n";
         sql += "    T10_CHOICE a \n";
         sql += "WHERE \n";
@@ -298,15 +298,15 @@ public class T10Choice implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`CHOICE_ID` -- :choice_id");
-        nameList.add("`KOHO1_ID` -- :koho_1_id");
-        nameList.add("`KOHO1_INFO` -- :koho_1_info");
-        nameList.add("`KOHO2_ID` -- :koho_2_id");
-        nameList.add("`KOHO2_INFO` -- :koho_2_info");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"CHOICE_ID\" -- :choice_id");
+        nameList.add("\"KOHO1_ID\" -- :koho_1_id");
+        nameList.add("\"KOHO1_INFO\" -- :koho_1_info");
+        nameList.add("\"KOHO2_ID\" -- :koho_2_id");
+        nameList.add("\"KOHO2_INFO\" -- :koho_2_info");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -318,9 +318,9 @@ public class T10Choice implements IEntity {
         valueList.add(":koho_1_info");
         valueList.add(":koho_2_id");
         valueList.add(":koho_2_info");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -330,7 +330,7 @@ public class T10Choice implements IEntity {
         if (this.choiceId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`CHOICE_ID`) IS NULL THEN 0 ELSE MAX(e.`CHOICE_ID`) * 1 END + 1 AS `CHOICE_ID` FROM T10_CHOICE e";
+        String sql = "SELECT CASE WHEN MAX(e.\"CHOICE_ID\") IS NULL THEN 0 ELSE MAX(e.\"CHOICE_ID\") * 1 END + 1 AS \"CHOICE_ID\" FROM T10_CHOICE e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("CHOICE_ID");
@@ -353,13 +353,13 @@ public class T10Choice implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`CHOICE_ID` = :choice_id");
-        setList.add("`KOHO1_ID` = :koho_1_id");
-        setList.add("`KOHO1_INFO` = :koho_1_info");
-        setList.add("`KOHO2_ID` = :koho_2_id");
-        setList.add("`KOHO2_INFO` = :koho_2_info");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"CHOICE_ID\" = :choice_id");
+        setList.add("\"KOHO1_ID\" = :koho_1_id");
+        setList.add("\"KOHO1_INFO\" = :koho_1_info");
+        setList.add("\"KOHO2_ID\" = :koho_2_id");
+        setList.add("\"KOHO2_INFO\" = :koho_2_info");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -377,8 +377,8 @@ public class T10Choice implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`CHOICE_ID` = :choice_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"CHOICE_ID\" = :choice_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{V13Furiwake.title}">VIEW</title>
+<title th:text="#{V13Furiwake.title}">振分ビュー</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -18,10 +18,10 @@
       <fieldset class="view">
         <legend th:text="#{V13Furiwake.legend}">legend</legend>
         <div id="srcIdDestId">
-          <label for="V13Furiwake.srcIdDestId" th:text="#{V13Furiwake.srcIdDestId}">SRC_ID$DEST_ID</label><input type="text" id="V13Furiwake.srcIdDestId" name="V13Furiwake.srcIdDestId" maxlength="10" class=" notblank" />
+          <label for="V13Furiwake.srcIdDestId" th:text="#{V13Furiwake.srcIdDestId}">振分ID</label><input type="text" id="V13Furiwake.srcIdDestId" name="V13Furiwake.srcIdDestId" maxlength="10" />
         </div>
         <div id="info">
-          <label for="V13Furiwake.info" th:text="#{V13Furiwake.info}">info</label><input type="text" id="V13Furiwake.info" name="V13Furiwake.info" maxlength="300" />
+          <label for="V13Furiwake.info" th:text="#{V13Furiwake.info}">情報</label><input type="text" id="V13Furiwake.info" name="V13Furiwake.info" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">

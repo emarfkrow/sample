@@ -244,18 +244,18 @@ public class T03TransHis implements IEntity {
      */
     public static T03TransHis get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`TRANS_ID` = :trans_id");
-        whereList.add("`TRANS_BN` = :trans_bn");
+        whereList.add("\"TRANS_ID\" = :trans_id");
+        whereList.add("\"TRANS_BN\" = :trans_bn");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`TRANS_ID` \n";
-        sql += "    , a.`TRANS_BN` \n";
-        sql += "    , a.`TRANS_INFO` \n";
-        sql += "    , a.`RIYU_TX` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , a.`UPDATE_USER_ID` \n";
+        sql += "      a.\"TRANS_ID\" \n";
+        sql += "    , a.\"TRANS_BN\" \n";
+        sql += "    , a.\"TRANS_INFO\" \n";
+        sql += "    , a.\"RIYU_TX\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , a.\"INSERT_USER_ID\" \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , a.\"UPDATE_USER_ID\" \n";
         sql += "FROM \n";
         sql += "    T03_TRANS_HIS a \n";
         sql += "WHERE \n";
@@ -285,14 +285,14 @@ public class T03TransHis implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`TRANS_ID` -- :trans_id");
-        nameList.add("`TRANS_BN` -- :trans_bn");
-        nameList.add("`TRANS_INFO` -- :trans_info");
-        nameList.add("`RIYU_TX` -- :riyu_tx");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"TRANS_ID\" -- :trans_id");
+        nameList.add("\"TRANS_BN\" -- :trans_bn");
+        nameList.add("\"TRANS_INFO\" -- :trans_info");
+        nameList.add("\"RIYU_TX\" -- :riyu_tx");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -303,9 +303,9 @@ public class T03TransHis implements IEntity {
         valueList.add(":trans_bn");
         valueList.add(":trans_info");
         valueList.add(":riyu_tx");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -315,10 +315,10 @@ public class T03TransHis implements IEntity {
         if (this.transBn != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`TRANS_BN`) IS NULL THEN 0 ELSE MAX(e.`TRANS_BN`) * 1 END + 1 AS `TRANS_BN` FROM T03_TRANS_HIS e";
+        String sql = "SELECT CASE WHEN MAX(e.\"TRANS_BN\") IS NULL THEN 0 ELSE MAX(e.\"TRANS_BN\") * 1 END + 1 AS \"TRANS_BN\" FROM T03_TRANS_HIS e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("e.`TRANS_ID` = :trans_id");
+        whereList.add("e.\"TRANS_ID\" = :trans_id");
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("trans_id", this.transId);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
@@ -342,12 +342,12 @@ public class T03TransHis implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`TRANS_ID` = :trans_id");
-        setList.add("`TRANS_BN` = :trans_bn");
-        setList.add("`TRANS_INFO` = :trans_info");
-        setList.add("`RIYU_TX` = :riyu_tx");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"TRANS_ID\" = :trans_id");
+        setList.add("\"TRANS_BN\" = :trans_bn");
+        setList.add("\"TRANS_INFO\" = :trans_info");
+        setList.add("\"RIYU_TX\" = :riyu_tx");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -365,9 +365,9 @@ public class T03TransHis implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`TRANS_ID` = :trans_id");
-        whereList.add("`TRANS_BN` = :trans_bn");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"TRANS_ID\" = :trans_id");
+        whereList.add("\"TRANS_BN\" = :trans_bn");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 

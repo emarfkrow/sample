@@ -204,15 +204,15 @@ public class T02Foster implements IEntity {
      */
     public static T02Foster get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`BRO_ID` = :bro_id");
+        whereList.add("\"BRO_ID\" = :bro_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`BRO_ID` \n";
-        sql += "    , a.`FOSTER_INFO` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , a.`UPDATE_USER_ID` \n";
+        sql += "      a.\"BRO_ID\" \n";
+        sql += "    , a.\"FOSTER_INFO\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , a.\"INSERT_USER_ID\" \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , a.\"UPDATE_USER_ID\" \n";
         sql += "FROM \n";
         sql += "    T02_FOSTER a \n";
         sql += "WHERE \n";
@@ -241,12 +241,12 @@ public class T02Foster implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`BRO_ID` -- :bro_id");
-        nameList.add("`FOSTER_INFO` -- :foster_info");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"BRO_ID\" -- :bro_id");
+        nameList.add("\"FOSTER_INFO\" -- :foster_info");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -255,9 +255,9 @@ public class T02Foster implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":bro_id");
         valueList.add(":foster_info");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -267,7 +267,7 @@ public class T02Foster implements IEntity {
         if (this.broId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`BRO_ID`) IS NULL THEN 0 ELSE MAX(e.`BRO_ID`) * 1 END + 1 AS `BRO_ID` FROM T02_FOSTER e";
+        String sql = "SELECT CASE WHEN MAX(e.\"BRO_ID\") IS NULL THEN 0 ELSE MAX(e.\"BRO_ID\") * 1 END + 1 AS \"BRO_ID\" FROM T02_FOSTER e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("BRO_ID");
@@ -290,10 +290,10 @@ public class T02Foster implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`BRO_ID` = :bro_id");
-        setList.add("`FOSTER_INFO` = :foster_info");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"BRO_ID\" = :bro_id");
+        setList.add("\"FOSTER_INFO\" = :foster_info");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -311,8 +311,8 @@ public class T02Foster implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`BRO_ID` = :bro_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"BRO_ID\" = :bro_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 

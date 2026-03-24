@@ -30,7 +30,7 @@
           <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">部署ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" class=" primaryKey refer notblank" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" class=" primaryKey refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>
         </div>
         <div id="kadobiF">
-          <fieldset id="MsyKadobi.kadobiFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:KADOBI_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" notblank">
+          <fieldset id="MsyKadobi.kadobiFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:KADOBI_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
             <legend th:text="#{MsyKadobi.kadobiF}">稼働日フラグ</legend>
           </fieldset>
         </div>

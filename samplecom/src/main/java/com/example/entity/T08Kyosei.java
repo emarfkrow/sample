@@ -258,18 +258,18 @@ public class T08Kyosei implements IEntity {
      */
     public static T08Kyosei get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KYOSEI_ID` = :kyosei_id");
+        whereList.add("\"KYOSEI_ID\" = :kyosei_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`KYOSEI_ID` \n";
-        sql += "    , a.`KISEI1_ID` \n";
-        sql += "    , a.`KISEI1_INFO` \n";
-        sql += "    , a.`KISEI2_ID` \n";
-        sql += "    , a.`KISEI2_INFO` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , a.`UPDATE_USER_ID` \n";
+        sql += "      a.\"KYOSEI_ID\" \n";
+        sql += "    , a.\"KISEI1_ID\" \n";
+        sql += "    , a.\"KISEI1_INFO\" \n";
+        sql += "    , a.\"KISEI2_ID\" \n";
+        sql += "    , a.\"KISEI2_INFO\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , a.\"INSERT_USER_ID\" \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , a.\"UPDATE_USER_ID\" \n";
         sql += "FROM \n";
         sql += "    T08_KYOSEI a \n";
         sql += "WHERE \n";
@@ -298,15 +298,15 @@ public class T08Kyosei implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`KYOSEI_ID` -- :kyosei_id");
-        nameList.add("`KISEI1_ID` -- :kisei_1_id");
-        nameList.add("`KISEI1_INFO` -- :kisei_1_info");
-        nameList.add("`KISEI2_ID` -- :kisei_2_id");
-        nameList.add("`KISEI2_INFO` -- :kisei_2_info");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"KYOSEI_ID\" -- :kyosei_id");
+        nameList.add("\"KISEI1_ID\" -- :kisei_1_id");
+        nameList.add("\"KISEI1_INFO\" -- :kisei_1_info");
+        nameList.add("\"KISEI2_ID\" -- :kisei_2_id");
+        nameList.add("\"KISEI2_INFO\" -- :kisei_2_info");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -318,9 +318,9 @@ public class T08Kyosei implements IEntity {
         valueList.add(":kisei_1_info");
         valueList.add(":kisei_2_id");
         valueList.add(":kisei_2_info");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -330,7 +330,7 @@ public class T08Kyosei implements IEntity {
         if (this.kyoseiId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`KYOSEI_ID`) IS NULL THEN 0 ELSE MAX(e.`KYOSEI_ID`) * 1 END + 1 AS `KYOSEI_ID` FROM T08_KYOSEI e";
+        String sql = "SELECT CASE WHEN MAX(e.\"KYOSEI_ID\") IS NULL THEN 0 ELSE MAX(e.\"KYOSEI_ID\") * 1 END + 1 AS \"KYOSEI_ID\" FROM T08_KYOSEI e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("KYOSEI_ID");
@@ -353,13 +353,13 @@ public class T08Kyosei implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`KYOSEI_ID` = :kyosei_id");
-        setList.add("`KISEI1_ID` = :kisei_1_id");
-        setList.add("`KISEI1_INFO` = :kisei_1_info");
-        setList.add("`KISEI2_ID` = :kisei_2_id");
-        setList.add("`KISEI2_INFO` = :kisei_2_info");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"KYOSEI_ID\" = :kyosei_id");
+        setList.add("\"KISEI1_ID\" = :kisei_1_id");
+        setList.add("\"KISEI1_INFO\" = :kisei_1_info");
+        setList.add("\"KISEI2_ID\" = :kisei_2_id");
+        setList.add("\"KISEI2_INFO\" = :kisei_2_info");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -377,8 +377,8 @@ public class T08Kyosei implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KYOSEI_ID` = :kyosei_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"KYOSEI_ID\" = :kyosei_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 

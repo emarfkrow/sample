@@ -264,18 +264,18 @@ public class M05Ref1 implements IEntity {
      */
     public static M05Ref1 get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`REF1_ID` = :ref_1_id");
+        whereList.add("\"REF1_ID\" = :ref_1_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`REF1_ID` \n";
-        sql += "    , a.`REF1_MEI` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`DELETE_F`) AS DELETE_F \n";
-        sql += "    , a.`TEKIYO_BI` AS TEKIYO_BI \n";
-        sql += "    , a.`HAISHI_BI` AS HAISHI_BI \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , a.`INSERT_USER_ID` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , a.`UPDATE_USER_ID` \n";
+        sql += "      a.\"REF1_ID\" \n";
+        sql += "    , a.\"REF1_MEI\" \n";
+        sql += "    , RTRIM (RTRIM (a.\"DELETE_F\"), '　') AS DELETE_F \n";
+        sql += "    , TO_CHAR (a.\"TEKIYO_BI\", 'YYYY-MM-DD') AS TEKIYO_BI \n";
+        sql += "    , TO_CHAR (a.\"HAISHI_BI\", 'YYYY-MM-DD') AS HAISHI_BI \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , a.\"INSERT_USER_ID\" \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , a.\"UPDATE_USER_ID\" \n";
         sql += "FROM \n";
         sql += "    M05_REF1 a \n";
         sql += "WHERE \n";
@@ -304,15 +304,15 @@ public class M05Ref1 implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`REF1_ID` -- :ref_1_id");
-        nameList.add("`REF1_MEI` -- :ref_1_mei");
-        nameList.add("`DELETE_F` -- :delete_f");
-        nameList.add("`TEKIYO_BI` -- :tekiyo_bi");
-        nameList.add("`HAISHI_BI` -- :haishi_bi");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"REF1_ID\" -- :ref_1_id");
+        nameList.add("\"REF1_MEI\" -- :ref_1_mei");
+        nameList.add("\"DELETE_F\" -- :delete_f");
+        nameList.add("\"TEKIYO_BI\" -- :tekiyo_bi");
+        nameList.add("\"HAISHI_BI\" -- :haishi_bi");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -322,11 +322,11 @@ public class M05Ref1 implements IEntity {
         valueList.add(":ref_1_id");
         valueList.add(":ref_1_mei");
         valueList.add(":delete_f");
-        valueList.add(":tekiyo_bi");
-        valueList.add(":haishi_bi");
-        valueList.add(":insert_ts");
+        valueList.add("TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        valueList.add("TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -336,7 +336,7 @@ public class M05Ref1 implements IEntity {
         if (this.ref1Id != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`REF1_ID`) IS NULL THEN 0 ELSE MAX(e.`REF1_ID`) * 1 END + 1 AS `REF1_ID` FROM M05_REF1 e";
+        String sql = "SELECT CASE WHEN MAX(e.\"REF1_ID\") IS NULL THEN 0 ELSE MAX(e.\"REF1_ID\") * 1 END + 1 AS \"REF1_ID\" FROM M05_REF1 e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("REF1_ID");
@@ -359,21 +359,21 @@ public class M05Ref1 implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`REF1_ID` = :ref_1_id");
-        setList.add("`REF1_MEI` = :ref_1_mei");
-        setList.add("`DELETE_F` = :delete_f");
-        setList.add("`TEKIYO_BI` = :tekiyo_bi");
-        setList.add("`HAISHI_BI` = :haishi_bi");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"REF1_ID\" = :ref_1_id");
+        setList.add("\"REF1_MEI\" = :ref_1_mei");
+        setList.add("\"DELETE_F\" = :delete_f");
+        setList.add("\"TEKIYO_BI\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"HAISHI_BI\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`REF1_ID` = :ref_1_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"REF1_ID\" = :ref_1_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 

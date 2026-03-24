@@ -3,7 +3,7 @@ package com.example.entity;
 import jp.co.golorp.emarf.entity.IEntity;
 
 /**
- * VIEW
+ * 振分ビュー
  * @author emarfkrow
  */
 public class V13Furiwake implements IEntity {
@@ -27,16 +27,16 @@ public class V13Furiwake implements IEntity {
         }
     }
 
-    /** table_name */
+    /** テーブル名 */
     private String tableName;
 
-    /** @return table_name */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "table_name", index = 2)
+    /** @return テーブル名 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_NAME", index = 2)
     public String getTableName() {
         return this.tableName;
     }
 
-    /** @param o table_name */
+    /** @param o テーブル名 */
     public void setTableName(final Object o) {
         if (o != null) {
             this.tableName = o.toString();
@@ -45,16 +45,16 @@ public class V13Furiwake implements IEntity {
         }
     }
 
-    /** SRC_ID$DEST_ID */
+    /** 振分ID */
     private Integer srcIdDestId;
 
-    /** @return SRC_ID$DEST_ID */
+    /** @return 振分ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "SRC_ID$DEST_ID", index = 3)
     public Integer getSrcIdDestId() {
         return this.srcIdDestId;
     }
 
-    /** @param o SRC_ID$DEST_ID */
+    /** @param o 振分ID */
     public void setSrcIdDestId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.srcIdDestId = Integer.valueOf(o.toString());
@@ -63,16 +63,16 @@ public class V13Furiwake implements IEntity {
         }
     }
 
-    /** info */
+    /** 情報 */
     private String info;
 
-    /** @return info */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "info", index = 4)
+    /** @return 情報 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INFO", index = 4)
     public String getInfo() {
         return this.info;
     }
 
-    /** @param o info */
+    /** @param o 情報 */
     public void setInfo(final Object o) {
         if (o != null) {
             this.info = o.toString();

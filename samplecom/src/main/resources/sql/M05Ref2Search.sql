@@ -1,35 +1,35 @@
 SELECT
-      a.`REF2_ID` AS `REF2_ID`
-    , a.`REF2_MEI` AS `REF2_MEI`
-    , TRIM(TRAILING ' ' FROM a.`DELETE_F`) AS `DELETE_F`
-    , a.`TEKIYO_BI` AS `TEKIYO_BI`
-    , a.`HAISHI_BI` AS `HAISHI_BI`
-    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , a.`INSERT_USER_ID` AS `INSERT_USER_ID`
-    , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
-    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , a.`UPDATE_USER_ID` AS `UPDATE_USER_ID`
-    , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
+      a."REF2_ID" AS "REF2_ID"
+    , a."REF2_MEI" AS "REF2_MEI"
+    , RTRIM (RTRIM (a."DELETE_F"), '　') AS "DELETE_F"
+    , TO_CHAR (a."TEKIYO_BI", 'YYYY-MM-DD') AS "TEKIYO_BI"
+    , TO_CHAR (a."HAISHI_BI", 'YYYY-MM-DD') AS "HAISHI_BI"
+    , TO_CHAR (a."INSERT_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "INSERT_TS"
+    , a."INSERT_USER_ID" AS "INSERT_USER_ID"
+    , (SELECT r0."USER_SEI" FROM MHR_USER r0 WHERE r0."USER_ID" = a."INSERT_USER_ID") AS "INSERT_USER_SEI"
+    , TO_CHAR (a."UPDATE_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "UPDATE_TS"
+    , a."UPDATE_USER_ID" AS "UPDATE_USER_ID"
+    , (SELECT r1."USER_SEI" FROM MHR_USER r1 WHERE r1."USER_ID" = a."UPDATE_USER_ID") AS "UPDATE_USER_SEI"
 FROM
     M05_REF2 a 
 WHERE
     1 = 1 
-    AND a.`REF2_ID` = :ref_2_id 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`REF2_MEI`)) LIKE UPPER (CONCAT ('%', :ref_2_mei, '%')) 
-    AND CASE WHEN TRIM(TRAILING ' ' FROM a.`DELETE_F`) IS NULL THEN '0' ELSE TO_CHAR (a.`DELETE_F`) END IN (:delete_f) 
-    AND a.`TEKIYO_BI` = :tekiyo_bi 
-    AND a.`TEKIYO_BI` >= :tekiyo_bi_1 
-    AND a.`TEKIYO_BI` <= :tekiyo_bi_2 
-    AND a.`HAISHI_BI` = :haishi_bi 
-    AND a.`HAISHI_BI` >= :haishi_bi_1 
-    AND a.`HAISHI_BI` <= :haishi_bi_2 
-    AND a.`INSERT_TS` = :insert_ts 
-    AND a.`INSERT_TS` >= :insert_ts_1 
-    AND a.`INSERT_TS` <= :insert_ts_2 
-    AND a.`INSERT_USER_ID` = :insert_user_id 
-    AND a.`UPDATE_TS` = :update_ts 
-    AND a.`UPDATE_TS` >= :update_ts_1 
-    AND a.`UPDATE_TS` <= :update_ts_2 
-    AND a.`UPDATE_USER_ID` = :update_user_id 
+    AND a."REF2_ID" = :ref_2_id 
+    AND UPPER (RTRIM (RTRIM (a."REF2_MEI"), '　')) LIKE UPPER ('%' || :ref_2_mei || '%') 
+    AND CASE WHEN RTRIM (RTRIM (a."DELETE_F"), '　') IS NULL THEN '0' ELSE TO_CHAR (a."DELETE_F") END IN (:delete_f) 
+    AND a."TEKIYO_BI" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD') 
+    AND a."TEKIYO_BI" >= TO_DATE (SUBSTR (:tekiyo_bi_1 , 0, 10), 'YYYY-MM-DD')
+    AND a."TEKIYO_BI" <= TO_DATE (SUBSTR (:tekiyo_bi_2 , 0, 10), 'YYYY-MM-DD')
+    AND a."HAISHI_BI" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD') 
+    AND a."HAISHI_BI" >= TO_DATE (SUBSTR (:haishi_bi_1 , 0, 10), 'YYYY-MM-DD')
+    AND a."HAISHI_BI" <= TO_DATE (SUBSTR (:haishi_bi_2 , 0, 10), 'YYYY-MM-DD')
+    AND a."INSERT_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."INSERT_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."INSERT_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."INSERT_USER_ID" = :insert_user_id 
+    AND a."UPDATE_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."UPDATE_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."UPDATE_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."UPDATE_USER_ID" = :update_user_id 
 ORDER BY
-    a.`REF2_ID`
+    a."REF2_ID"
