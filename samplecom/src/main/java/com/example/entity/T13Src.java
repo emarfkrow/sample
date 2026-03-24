@@ -204,15 +204,15 @@ public class T13Src implements IEntity {
      */
     public static T13Src get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"SRC_ID\" = :src_id");
+        whereList.add("`SRC_ID` = :src_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"SRC_ID\" \n";
-        sql += "    , a.\"SRC_INFO\" \n";
-        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
-        sql += "    , a.\"INSERT_USER_ID\" \n";
-        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
-        sql += "    , a.\"UPDATE_USER_ID\" \n";
+        sql += "      a.`SRC_ID` \n";
+        sql += "    , a.`SRC_INFO` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
+        sql += "    , a.`INSERT_USER_ID` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
+        sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T13_SRC a \n";
         sql += "WHERE \n";
@@ -241,12 +241,12 @@ public class T13Src implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"SRC_ID\" -- :src_id");
-        nameList.add("\"SRC_INFO\" -- :src_info");
-        nameList.add("\"INSERT_TS\" -- :insert_ts");
-        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
-        nameList.add("\"UPDATE_TS\" -- :update_ts");
-        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
+        nameList.add("`SRC_ID` -- :src_id");
+        nameList.add("`SRC_INFO` -- :src_info");
+        nameList.add("`INSERT_TS` -- :insert_ts");
+        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
+        nameList.add("`UPDATE_TS` -- :update_ts");
+        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -255,9 +255,9 @@ public class T13Src implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":src_id");
         valueList.add(":src_info");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":update_ts");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -267,7 +267,7 @@ public class T13Src implements IEntity {
         if (this.srcId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.\"SRC_ID\") IS NULL THEN 0 ELSE MAX(e.\"SRC_ID\") * 1 END + 1 AS \"SRC_ID\" FROM T13_SRC e";
+        String sql = "SELECT CASE WHEN MAX(e.`SRC_ID`) IS NULL THEN 0 ELSE MAX(e.`SRC_ID`) * 1 END + 1 AS `SRC_ID` FROM T13_SRC e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("SRC_ID");
@@ -290,10 +290,10 @@ public class T13Src implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"SRC_ID\" = :src_id");
-        setList.add("\"SRC_INFO\" = :src_info");
-        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
+        setList.add("`SRC_ID` = :src_id");
+        setList.add("`SRC_INFO` = :src_info");
+        setList.add("`UPDATE_TS` = :update_ts");
+        setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -311,8 +311,8 @@ public class T13Src implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"SRC_ID\" = :src_id");
-        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("`SRC_ID` = :src_id");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
 

@@ -264,17 +264,17 @@ public class T05Comp1 implements IEntity {
      */
     public static T05Comp1 get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"REF1_ID\" = :ref_1_id");
-        whereList.add("\"REF2_ID\" = :ref_2_id");
+        whereList.add("`REF1_ID` = :ref_1_id");
+        whereList.add("`REF2_ID` = :ref_2_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"REF1_ID\" \n";
-        sql += "    , a.\"REF2_ID\" \n";
-        sql += "    , a.\"COMP1_MEI\" \n";
-        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
-        sql += "    , a.\"INSERT_USER_ID\" \n";
-        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
-        sql += "    , a.\"UPDATE_USER_ID\" \n";
+        sql += "      a.`REF1_ID` \n";
+        sql += "    , a.`REF2_ID` \n";
+        sql += "    , a.`COMP1_MEI` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
+        sql += "    , a.`INSERT_USER_ID` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
+        sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T05_COMP1 a \n";
         sql += "WHERE \n";
@@ -312,13 +312,13 @@ public class T05Comp1 implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"REF1_ID\" -- :ref_1_id");
-        nameList.add("\"REF2_ID\" -- :ref_2_id");
-        nameList.add("\"COMP1_MEI\" -- :comp_1_mei");
-        nameList.add("\"INSERT_TS\" -- :insert_ts");
-        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
-        nameList.add("\"UPDATE_TS\" -- :update_ts");
-        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
+        nameList.add("`REF1_ID` -- :ref_1_id");
+        nameList.add("`REF2_ID` -- :ref_2_id");
+        nameList.add("`COMP1_MEI` -- :comp_1_mei");
+        nameList.add("`INSERT_TS` -- :insert_ts");
+        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
+        nameList.add("`UPDATE_TS` -- :update_ts");
+        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -328,9 +328,9 @@ public class T05Comp1 implements IEntity {
         valueList.add(":ref_1_id");
         valueList.add(":ref_2_id");
         valueList.add(":comp_1_mei");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":update_ts");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -367,11 +367,11 @@ public class T05Comp1 implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"REF1_ID\" = :ref_1_id");
-        setList.add("\"REF2_ID\" = :ref_2_id");
-        setList.add("\"COMP1_MEI\" = :comp_1_mei");
-        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
+        setList.add("`REF1_ID` = :ref_1_id");
+        setList.add("`REF2_ID` = :ref_2_id");
+        setList.add("`COMP1_MEI` = :comp_1_mei");
+        setList.add("`UPDATE_TS` = :update_ts");
+        setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -398,9 +398,9 @@ public class T05Comp1 implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"REF1_ID\" = :ref_1_id");
-        whereList.add("\"REF2_ID\" = :ref_2_id");
-        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("`REF1_ID` = :ref_1_id");
+        whereList.add("`REF2_ID` = :ref_2_id");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
 
@@ -463,20 +463,20 @@ public class T05Comp1 implements IEntity {
         whereList.add("REF1_ID = :ref_1_id");
         whereList.add("REF2_ID = :ref_2_id");
         String sql = "SELECT ";
-        sql += "\"REF1_ID\"";
-        sql += ", (SELECT r0.\"REF1_MEI\" FROM M05_REF1 r0 WHERE r0.\"REF1_ID\" = a.\"REF1_ID\") AS \"REF1_MEI\"";
-        sql += ", \"REF2_ID\"";
-        sql += ", (SELECT r1.\"REF2_MEI\" FROM M05_REF2 r1 WHERE r1.\"REF2_ID\" = a.\"REF2_ID\") AS \"REF2_MEI\"";
-        sql += ", \"REF3_ID\"";
-        sql += ", (SELECT r2.\"REF3_MEI\" FROM M05_REF3 r2 WHERE r2.\"REF3_ID\" = a.\"REF3_ID\") AS \"REF3_MEI\"";
-        sql += ", TO_CHAR (\"TEKIYO_BI\", 'YYYY-MM-DD') AS TEKIYO_BI";
-        sql += ", \"COMP2_INFO\"";
-        sql += ", TO_CHAR (\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS";
-        sql += ", \"INSERT_USER_ID\"";
-        sql += ", (SELECT r3.\"USER_SEI\" FROM MHR_USER r3 WHERE r3.\"USER_ID\" = a.\"INSERT_USER_ID\") AS \"INSERT_USER_SEI\"";
-        sql += ", TO_CHAR (\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS";
-        sql += ", \"UPDATE_USER_ID\"";
-        sql += ", (SELECT r4.\"USER_SEI\" FROM MHR_USER r4 WHERE r4.\"USER_ID\" = a.\"UPDATE_USER_ID\") AS \"UPDATE_USER_SEI\"";
+        sql += "`REF1_ID`";
+        sql += ", (SELECT r0.`REF1_MEI` FROM M05_REF1 r0 WHERE r0.`REF1_ID` = a.`REF1_ID`) AS `REF1_MEI`";
+        sql += ", `REF2_ID`";
+        sql += ", (SELECT r1.`REF2_MEI` FROM M05_REF2 r1 WHERE r1.`REF2_ID` = a.`REF2_ID`) AS `REF2_MEI`";
+        sql += ", `REF3_ID`";
+        sql += ", (SELECT r2.`REF3_MEI` FROM M05_REF3 r2 WHERE r2.`REF3_ID` = a.`REF3_ID`) AS `REF3_MEI`";
+        sql += ", `TEKIYO_BI` AS TEKIYO_BI";
+        sql += ", `COMP2_INFO`";
+        sql += ", LEFT(DATE_FORMAT (`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS";
+        sql += ", `INSERT_USER_ID`";
+        sql += ", (SELECT r3.`USER_SEI` FROM MHR_USER r3 WHERE r3.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
+        sql += ", LEFT(DATE_FORMAT (`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS";
+        sql += ", `UPDATE_USER_ID`";
+        sql += ", (SELECT r4.`USER_SEI` FROM MHR_USER r4 WHERE r4.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
         sql += " FROM T05_COMP2 a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "REF1_ID, REF2_ID, REF3_ID, TEKIYO_BI";

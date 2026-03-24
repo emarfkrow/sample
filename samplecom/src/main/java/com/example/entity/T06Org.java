@@ -204,15 +204,15 @@ public class T06Org implements IEntity {
      */
     public static T06Org get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"ORG_ID\" = :org_id");
+        whereList.add("`ORG_ID` = :org_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"ORG_ID\" \n";
-        sql += "    , a.\"ORG_INFO\" \n";
-        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
-        sql += "    , a.\"INSERT_USER_ID\" \n";
-        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
-        sql += "    , a.\"UPDATE_USER_ID\" \n";
+        sql += "      a.`ORG_ID` \n";
+        sql += "    , a.`ORG_INFO` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
+        sql += "    , a.`INSERT_USER_ID` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
+        sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T06_ORG a \n";
         sql += "WHERE \n";
@@ -251,12 +251,12 @@ public class T06Org implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"ORG_ID\" -- :org_id");
-        nameList.add("\"ORG_INFO\" -- :org_info");
-        nameList.add("\"INSERT_TS\" -- :insert_ts");
-        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
-        nameList.add("\"UPDATE_TS\" -- :update_ts");
-        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
+        nameList.add("`ORG_ID` -- :org_id");
+        nameList.add("`ORG_INFO` -- :org_info");
+        nameList.add("`INSERT_TS` -- :insert_ts");
+        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
+        nameList.add("`UPDATE_TS` -- :update_ts");
+        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -265,9 +265,9 @@ public class T06Org implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":org_id");
         valueList.add(":org_info");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":update_ts");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -277,7 +277,7 @@ public class T06Org implements IEntity {
         if (this.orgId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.\"ORG_ID\") IS NULL THEN 0 ELSE MAX(e.\"ORG_ID\") * 1 END + 1 AS \"ORG_ID\" FROM T06_ORG e";
+        String sql = "SELECT CASE WHEN MAX(e.`ORG_ID`) IS NULL THEN 0 ELSE MAX(e.`ORG_ID`) * 1 END + 1 AS `ORG_ID` FROM T06_ORG e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("ORG_ID");
@@ -315,10 +315,10 @@ public class T06Org implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"ORG_ID\" = :org_id");
-        setList.add("\"ORG_INFO\" = :org_info");
-        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
+        setList.add("`ORG_ID` = :org_id");
+        setList.add("`ORG_INFO` = :org_info");
+        setList.add("`UPDATE_TS` = :update_ts");
+        setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -345,8 +345,8 @@ public class T06Org implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"ORG_ID\" = :org_id");
-        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("`ORG_ID` = :org_id");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
 
@@ -406,15 +406,15 @@ public class T06Org implements IEntity {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("ORG_ID = :org_id");
         String sql = "SELECT ";
-        sql += "\"ORG_ID\"";
-        sql += ", \"ORG_BN\"";
-        sql += ", \"DET_INFO\"";
-        sql += ", TO_CHAR (\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS";
-        sql += ", \"INSERT_USER_ID\"";
-        sql += ", (SELECT r0.\"USER_SEI\" FROM MHR_USER r0 WHERE r0.\"USER_ID\" = a.\"INSERT_USER_ID\") AS \"INSERT_USER_SEI\"";
-        sql += ", TO_CHAR (\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS";
-        sql += ", \"UPDATE_USER_ID\"";
-        sql += ", (SELECT r1.\"USER_SEI\" FROM MHR_USER r1 WHERE r1.\"USER_ID\" = a.\"UPDATE_USER_ID\") AS \"UPDATE_USER_SEI\"";
+        sql += "`ORG_ID`";
+        sql += ", `ORG_BN`";
+        sql += ", `DET_INFO`";
+        sql += ", LEFT(DATE_FORMAT (`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS";
+        sql += ", `INSERT_USER_ID`";
+        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
+        sql += ", LEFT(DATE_FORMAT (`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS";
+        sql += ", `UPDATE_USER_ID`";
+        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
         sql += " FROM T06_ORG_DET a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "ORG_ID, ORG_BN";

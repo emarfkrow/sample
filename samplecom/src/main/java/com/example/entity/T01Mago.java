@@ -248,19 +248,19 @@ public class T01Mago implements IEntity {
      */
     public static T01Mago get(final Object param1, final Object param2, final Object param3) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"OYA_ID\" = :oya_id");
-        whereList.add("\"KO_BN\" = :ko_bn");
-        whereList.add("\"MAGO_BN\" = :mago_bn");
+        whereList.add("`OYA_ID` = :oya_id");
+        whereList.add("`KO_BN` = :ko_bn");
+        whereList.add("`MAGO_BN` = :mago_bn");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"OYA_ID\" \n";
-        sql += "    , a.\"KO_BN\" \n";
-        sql += "    , a.\"MAGO_BN\" \n";
-        sql += "    , a.\"MAGO_INFO\" \n";
-        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
-        sql += "    , a.\"INSERT_USER_ID\" \n";
-        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
-        sql += "    , a.\"UPDATE_USER_ID\" \n";
+        sql += "      a.`OYA_ID` \n";
+        sql += "    , a.`KO_BN` \n";
+        sql += "    , a.`MAGO_BN` \n";
+        sql += "    , a.`MAGO_INFO` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
+        sql += "    , a.`INSERT_USER_ID` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
+        sql += "    , a.`UPDATE_USER_ID` \n";
         sql += "FROM \n";
         sql += "    T01_MAGO a \n";
         sql += "WHERE \n";
@@ -291,14 +291,14 @@ public class T01Mago implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"OYA_ID\" -- :oya_id");
-        nameList.add("\"KO_BN\" -- :ko_bn");
-        nameList.add("\"MAGO_BN\" -- :mago_bn");
-        nameList.add("\"MAGO_INFO\" -- :mago_info");
-        nameList.add("\"INSERT_TS\" -- :insert_ts");
-        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
-        nameList.add("\"UPDATE_TS\" -- :update_ts");
-        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
+        nameList.add("`OYA_ID` -- :oya_id");
+        nameList.add("`KO_BN` -- :ko_bn");
+        nameList.add("`MAGO_BN` -- :mago_bn");
+        nameList.add("`MAGO_INFO` -- :mago_info");
+        nameList.add("`INSERT_TS` -- :insert_ts");
+        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
+        nameList.add("`UPDATE_TS` -- :update_ts");
+        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -309,9 +309,9 @@ public class T01Mago implements IEntity {
         valueList.add(":ko_bn");
         valueList.add(":mago_bn");
         valueList.add(":mago_info");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":update_ts");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -321,11 +321,11 @@ public class T01Mago implements IEntity {
         if (this.magoBn != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.\"MAGO_BN\") IS NULL THEN 0 ELSE MAX(e.\"MAGO_BN\") * 1 END + 1 AS \"MAGO_BN\" FROM T01_MAGO e";
+        String sql = "SELECT CASE WHEN MAX(e.`MAGO_BN`) IS NULL THEN 0 ELSE MAX(e.`MAGO_BN`) * 1 END + 1 AS `MAGO_BN` FROM T01_MAGO e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("e.\"OYA_ID\" = :oya_id");
-        whereList.add("e.\"KO_BN\" = :ko_bn");
+        whereList.add("e.`OYA_ID` = :oya_id");
+        whereList.add("e.`KO_BN` = :ko_bn");
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("oya_id", this.oyaId);
         map.put("ko_bn", this.koBn);
@@ -350,12 +350,12 @@ public class T01Mago implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"OYA_ID\" = :oya_id");
-        setList.add("\"KO_BN\" = :ko_bn");
-        setList.add("\"MAGO_BN\" = :mago_bn");
-        setList.add("\"MAGO_INFO\" = :mago_info");
-        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
+        setList.add("`OYA_ID` = :oya_id");
+        setList.add("`KO_BN` = :ko_bn");
+        setList.add("`MAGO_BN` = :mago_bn");
+        setList.add("`MAGO_INFO` = :mago_info");
+        setList.add("`UPDATE_TS` = :update_ts");
+        setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -373,10 +373,10 @@ public class T01Mago implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"OYA_ID\" = :oya_id");
-        whereList.add("\"KO_BN\" = :ko_bn");
-        whereList.add("\"MAGO_BN\" = :mago_bn");
-        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("`OYA_ID` = :oya_id");
+        whereList.add("`KO_BN` = :ko_bn");
+        whereList.add("`MAGO_BN` = :mago_bn");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
 
