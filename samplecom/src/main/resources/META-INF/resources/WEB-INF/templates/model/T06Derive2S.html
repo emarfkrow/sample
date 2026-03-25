@@ -49,7 +49,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetT06Derive2" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetT06Derive2" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T06Derive2.html(anew)}" target="dialog" id="T06Derive2" class="anew derive" th:text="#{T06Derive2.add}" tabindex="-1">派生２</a>
           <label for="T06Derive2.deriveeOrgId" th:text="#{T06Derive2.deriveeOrgId}">起源ID</label><input type="text" id="T06Derive2.deriveeOrgId" name="T06Derive2.deriveeOrgId" maxlength="10" />
           <a id="T06Derive2.deriveeOrgId" th:href="@{/model/T06OrgS.html?action=T06OrgCorrect.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>

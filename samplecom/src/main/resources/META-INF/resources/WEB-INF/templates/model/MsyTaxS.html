@@ -39,7 +39,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetMsyTax" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetMsyTax" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/MsyTax.html(anew)}" target="dialog" id="MsyTax" class="anew" th:text="#{MsyTax.add}" tabindex="-1">税マスタ</a>
       </div>
       <div class="submits">

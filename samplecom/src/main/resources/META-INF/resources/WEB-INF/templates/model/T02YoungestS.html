@@ -31,7 +31,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetT02Youngest" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetT02Youngest" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T02Youngest.html(anew)}" target="dialog" id="T02Youngest" class="anew" th:text="#{T02Youngest.add}" tabindex="-1">末弟</a>
       </div>
       <div class="submits">

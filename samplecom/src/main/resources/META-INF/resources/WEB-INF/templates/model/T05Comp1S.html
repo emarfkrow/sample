@@ -46,7 +46,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetT05Comp1" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetT05Comp1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T05Comp1.html(anew)}" target="dialog" id="T05Comp1" class="anew" th:text="#{T05Comp1.add}" tabindex="-1">複合１</a>
       </div>
       <div class="submits">

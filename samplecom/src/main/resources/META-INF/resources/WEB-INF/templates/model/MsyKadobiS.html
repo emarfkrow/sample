@@ -42,7 +42,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetMsyKadobi" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetMsyKadobi" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/MsyKadobi.html(anew)}" target="dialog" id="MsyKadobi" class="anew" th:text="#{MsyKadobi.add}" tabindex="-1">稼働日マスタ</a>
       </div>
       <div class="submits">

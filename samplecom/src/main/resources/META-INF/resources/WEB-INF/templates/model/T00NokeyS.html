@@ -40,7 +40,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetT00Nokey" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetT00Nokey" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T00Nokey.html(anew)}" target="dialog" id="T00Nokey" class="anew" th:text="#{T00Nokey.add}" tabindex="-1">キーなし</a>
       </div>
       <div class="submits">

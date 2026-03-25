@@ -61,7 +61,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetM04Saiki" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetM04Saiki" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/M04Saiki.html(anew)}" target="dialog" id="M04Saiki" class="anew" th:text="#{M04Saiki.add}" tabindex="-1">再帰</a>
       </div>
       <div class="submits">

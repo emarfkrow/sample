@@ -37,7 +37,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetT09Sum" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetT09Sum" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T09Sum.html(anew)}" target="dialog" id="T09Sum" class="anew" th:text="#{T09Sum.add}" tabindex="-1">集約</a>
       </div>
       <div class="submits">

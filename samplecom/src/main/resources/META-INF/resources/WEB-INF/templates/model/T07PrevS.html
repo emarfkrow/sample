@@ -40,7 +40,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetT07Prev" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetT07Prev" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T07Prev.html(anew)}" target="dialog" id="T07Prev" class="anew" th:text="#{T07Prev.add}" tabindex="-1">前世</a>
       </div>
       <div class="submits">

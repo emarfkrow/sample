@@ -34,7 +34,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetM04Id" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetM04Id" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/M04Id.html(anew)}" target="dialog" id="M04Id" class="anew" th:text="#{M04Id.add}" tabindex="-1">IDマスタ</a>
       </div>
       <div class="submits">

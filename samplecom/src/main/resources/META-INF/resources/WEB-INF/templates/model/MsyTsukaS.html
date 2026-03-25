@@ -39,7 +39,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetMsyTsuka" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetMsyTsuka" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/MsyTsuka.html(anew)}" target="dialog" id="MsyTsuka" class="anew" th:text="#{MsyTsuka.add}" tabindex="-1">通貨マスタ</a>
       </div>
       <div class="submits">

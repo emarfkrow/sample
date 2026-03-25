@@ -40,7 +40,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetT00Unique" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetT00Unique" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T00Unique.html(anew)}" target="dialog" id="T00Unique" class="anew" th:text="#{T00Unique.add}" tabindex="-1">ユニークキー</a>
       </div>
       <div class="submits">

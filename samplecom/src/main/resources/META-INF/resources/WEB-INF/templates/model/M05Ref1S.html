@@ -42,7 +42,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetM05Ref1" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetM05Ref1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/M05Ref1.html(anew)}" target="dialog" id="M05Ref1" class="anew" th:text="#{M05Ref1.add}" tabindex="-1">マスタ参照１</a>
       </div>
       <div class="submits">

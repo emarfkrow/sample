@@ -37,7 +37,7 @@
         </div>
       </fieldset>
       <div class="buttons">
-        <button type="reset" id="ResetT12Tasho2" th:text="#{common.reset}" class="reset">reset</button>
+        <button type="button" id="ResetT12Tasho2" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T12Tasho2.html(anew)}" target="dialog" id="T12Tasho2" class="anew derive" th:text="#{T12Tasho2.add}" tabindex="-1">他生２</a>
           <label for="T12Tasho2.deriveeKoho3Id" th:text="#{T12Tasho2.deriveeKoho3Id}">候補３ID</label><input type="text" id="T12Tasho2.deriveeKoho3Id" name="T12Tasho2.deriveeKoho3Id" maxlength="10" />
           <a id="T12Tasho2.deriveeKoho3Id" th:href="@{/model/T12Koho3S.html?action=T12Koho3Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
