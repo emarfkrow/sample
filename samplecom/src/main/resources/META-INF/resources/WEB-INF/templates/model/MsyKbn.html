@@ -34,14 +34,14 @@
         </div>
         <div id="insertUserId">
           <label th:text="#{MsyKbn.insertUserId}" class="meta">作成者</label><span id="MsyKbn.insertUserId" class="meta"></span><input type="hidden" id="MsyKbn.insertUserId" name="MsyKbn.insertUserId" class="meta"/>
-          <span id="MsyKbn.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbn.insertUserId" data-destDef="MsyKbn.insertUserSei:USER_SEI"></span>
+          <span id="MsyKbn.insertUserSei" class="refer meta" data-referFor="MsyKbn.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbn.insertUserId" data-destDef="MsyKbn.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
           <label th:text="#{MsyKbn.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyKbn.updateTs" class="meta"></span><input type="hidden" id="MsyKbn.updateTs" name="MsyKbn.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MsyKbn.updateUserId}" class="meta">更新者</label><span id="MsyKbn.updateUserId" class="meta"></span><input type="hidden" id="MsyKbn.updateUserId" name="MsyKbn.updateUserId" class="meta"/>
-          <span id="MsyKbn.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbn.updateUserId" data-destDef="MsyKbn.updateUserSei:USER_SEI"></span>
+          <span id="MsyKbn.updateUserSei" class="refer meta" data-referFor="MsyKbn.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKbn.updateUserId" data-destDef="MsyKbn.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <h3 th:text="#{MsyKbnVal.h3}">h3</h3>

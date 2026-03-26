@@ -27,7 +27,7 @@
           <label for="MsyKadobi.kadoBi" th:text="#{MsyKadobi.kadoBi}">稼働日</label><input type="text" id="MsyKadobi.kadoBi" name="MsyKadobi.kadoBi" maxlength="10" class=" primaryKey notblank datepicker" />
         </div>
         <div id="bushoId">
-          <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">部署ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" class=" primaryKey refer notblank" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" class=" primaryKey refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>
+          <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">部署ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" class=" primaryKey refer notblank" data-referFor="MsyKadobi.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" class=" primaryKey refer" data-referFor="MsyKadobi.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>
         </div>
         <div id="kadobiF">
           <fieldset id="MsyKadobi.kadobiFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:KADOBI_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
@@ -42,14 +42,14 @@
         </div>
         <div id="insertUserId">
           <label th:text="#{MsyKadobi.insertUserId}" class="meta">作成者</label><span id="MsyKadobi.insertUserId" class="meta"></span><input type="hidden" id="MsyKadobi.insertUserId" name="MsyKadobi.insertUserId" class="meta"/>
-          <span id="MsyKadobi.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKadobi.insertUserId" data-destDef="MsyKadobi.insertUserSei:USER_SEI"></span>
+          <span id="MsyKadobi.insertUserSei" class="refer meta" data-referFor="MsyKadobi.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKadobi.insertUserId" data-destDef="MsyKadobi.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
           <label th:text="#{MsyKadobi.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyKadobi.updateTs" class="meta"></span><input type="hidden" id="MsyKadobi.updateTs" name="MsyKadobi.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MsyKadobi.updateUserId}" class="meta">更新者</label><span id="MsyKadobi.updateUserId" class="meta"></span><input type="hidden" id="MsyKadobi.updateUserId" name="MsyKadobi.updateUserId" class="meta"/>
-          <span id="MsyKadobi.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKadobi.updateUserId" data-destDef="MsyKadobi.updateUserSei:USER_SEI"></span>
+          <span id="MsyKadobi.updateUserSei" class="refer meta" data-referFor="MsyKadobi.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKadobi.updateUserId" data-destDef="MsyKadobi.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">

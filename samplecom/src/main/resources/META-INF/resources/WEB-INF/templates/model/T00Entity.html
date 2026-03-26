@@ -131,14 +131,14 @@
         </div>
         <div id="insertUserId">
           <label th:text="#{T00Entity.insertUserId}" class="meta">作成者</label><span id="T00Entity.insertUserId" class="meta"></span><input type="hidden" id="T00Entity.insertUserId" name="T00Entity.insertUserId" class="meta"/>
-          <span id="T00Entity.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Entity.insertUserId" data-destDef="T00Entity.insertUserSei:USER_SEI"></span>
+          <span id="T00Entity.insertUserSei" class="refer meta" data-referFor="T00Entity.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Entity.insertUserId" data-destDef="T00Entity.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
           <label th:text="#{T00Entity.updateTs}" class="meta">更新タイムスタンプ</label><span id="T00Entity.updateTs" class="meta"></span><input type="hidden" id="T00Entity.updateTs" name="T00Entity.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T00Entity.updateUserId}" class="meta">更新者</label><span id="T00Entity.updateUserId" class="meta"></span><input type="hidden" id="T00Entity.updateUserId" name="T00Entity.updateUserId" class="meta"/>
-          <span id="T00Entity.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Entity.updateUserId" data-destDef="T00Entity.updateUserSei:USER_SEI"></span>
+          <span id="T00Entity.updateUserSei" class="refer meta" data-referFor="T00Entity.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Entity.updateUserId" data-destDef="T00Entity.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">

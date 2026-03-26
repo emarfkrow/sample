@@ -27,10 +27,10 @@
       <fieldset>
         <legend th:text="#{MhrShokuiNinka.legend}">legend</legend>
         <div id="bushoId">
-          <label for="MhrShokuiNinka.bushoId" th:text="#{MhrShokuiNinka.bushoId}">部署ID</label><input type="text" id="MhrShokuiNinka.bushoId" name="MhrShokuiNinka.bushoId" maxlength="10" class=" primaryKey numbering refer notblank" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI" /><a id="MhrShokuiNinka.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.bushoMei" class=" primaryKey numbering refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI"></span>
+          <label for="MhrShokuiNinka.bushoId" th:text="#{MhrShokuiNinka.bushoId}">部署ID</label><input type="text" id="MhrShokuiNinka.bushoId" name="MhrShokuiNinka.bushoId" maxlength="10" class=" primaryKey numbering refer notblank" data-referFor="MhrShokuiNinka.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI" /><a id="MhrShokuiNinka.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.bushoMei" class=" primaryKey numbering refer" data-referFor="MhrShokuiNinka.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrShokuiNinka.bushoId" data-destDef="MhrShokuiNinka.bushoMei:BUSHO_MEI"></span>
         </div>
         <div id="shokuiId">
-          <label for="MhrShokuiNinka.shokuiId" th:text="#{MhrShokuiNinka.shokuiId}">職位ID</label><input type="text" id="MhrShokuiNinka.shokuiId" name="MhrShokuiNinka.shokuiId" maxlength="10" class=" primaryKey numbering refer notblank" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI" /><a id="MhrShokuiNinka.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.shokuiMei" class=" primaryKey numbering refer" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI"></span>
+          <label for="MhrShokuiNinka.shokuiId" th:text="#{MhrShokuiNinka.shokuiId}">職位ID</label><input type="text" id="MhrShokuiNinka.shokuiId" name="MhrShokuiNinka.shokuiId" maxlength="10" class=" primaryKey numbering refer notblank" data-referFor="MhrShokuiNinka.shokuiId" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI" /><a id="MhrShokuiNinka.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrShokuiNinka.shokuiMei" class=" primaryKey numbering refer" data-referFor="MhrShokuiNinka.shokuiId" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrShokuiNinka.shokuiId" data-destDef="MhrShokuiNinka.shokuiMei:SHOKUI_MEI"></span>
         </div>
         <div id="tableRe">
           <label for="MhrShokuiNinka.tableRe" th:text="#{MhrShokuiNinka.tableRe}">テーブル正規表現</label><input type="text" id="MhrShokuiNinka.tableRe" name="MhrShokuiNinka.tableRe" maxlength="20" class=" primaryKey notblank" />
@@ -50,14 +50,14 @@
         </div>
         <div id="insertUserId">
           <label th:text="#{MhrShokuiNinka.insertUserId}" class="meta">作成者</label><span id="MhrShokuiNinka.insertUserId" class="meta"></span><input type="hidden" id="MhrShokuiNinka.insertUserId" name="MhrShokuiNinka.insertUserId" class="meta"/>
-          <span id="MhrShokuiNinka.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokuiNinka.insertUserId" data-destDef="MhrShokuiNinka.insertUserSei:USER_SEI"></span>
+          <span id="MhrShokuiNinka.insertUserSei" class="refer meta" data-referFor="MhrShokuiNinka.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokuiNinka.insertUserId" data-destDef="MhrShokuiNinka.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
           <label th:text="#{MhrShokuiNinka.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrShokuiNinka.updateTs" class="meta"></span><input type="hidden" id="MhrShokuiNinka.updateTs" name="MhrShokuiNinka.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MhrShokuiNinka.updateUserId}" class="meta">更新者</label><span id="MhrShokuiNinka.updateUserId" class="meta"></span><input type="hidden" id="MhrShokuiNinka.updateUserId" name="MhrShokuiNinka.updateUserId" class="meta"/>
-          <span id="MhrShokuiNinka.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokuiNinka.updateUserId" data-destDef="MhrShokuiNinka.updateUserSei:USER_SEI"></span>
+          <span id="MhrShokuiNinka.updateUserSei" class="refer meta" data-referFor="MhrShokuiNinka.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokuiNinka.updateUserId" data-destDef="MhrShokuiNinka.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">

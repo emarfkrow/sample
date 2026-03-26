@@ -34,20 +34,20 @@
         </div>
         <div id="insertUserId">
           <label th:text="#{M04Id.insertUserId}" class="meta">作成者</label><span id="M04Id.insertUserId" class="meta"></span><input type="hidden" id="M04Id.insertUserId" name="M04Id.insertUserId" class="meta"/>
-          <span id="M04Id.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Id.insertUserId" data-destDef="M04Id.insertUserSei:USER_SEI"></span>
+          <span id="M04Id.insertUserSei" class="refer meta" data-referFor="M04Id.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Id.insertUserId" data-destDef="M04Id.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
           <label th:text="#{M04Id.updateTs}" class="meta">更新タイムスタンプ</label><span id="M04Id.updateTs" class="meta"></span><input type="hidden" id="M04Id.updateTs" name="M04Id.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{M04Id.updateUserId}" class="meta">更新者</label><span id="M04Id.updateUserId" class="meta"></span><input type="hidden" id="M04Id.updateUserId" name="M04Id.updateUserId" class="meta"/>
-          <span id="M04Id.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Id.updateUserId" data-destDef="M04Id.updateUserSei:USER_SEI"></span>
+          <span id="M04Id.updateUserSei" class="refer meta" data-referFor="M04Id.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Id.updateUserId" data-destDef="M04Id.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <fieldset>
         <legend th:text="#{M04Idbn.legend}">legend</legend>
         <div id="idrefId">
-          <label for="M04Idbn.idrefId" th:text="#{M04Idbn.idrefId}">参照ID</label><input type="text" id="M04Idbn.idrefId" name="M04Idbn.idrefId" maxlength="10" class=" primaryKey numbering refer notblank" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI" /><a id="M04Idbn.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Idbn.idrefMei" class=" primaryKey numbering refer" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI"></span>
+          <label for="M04Idbn.idrefId" th:text="#{M04Idbn.idrefId}">参照ID</label><input type="text" id="M04Idbn.idrefId" name="M04Idbn.idrefId" maxlength="10" class=" primaryKey numbering refer notblank" data-referFor="M04Idbn.idrefId" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI" /><a id="M04Idbn.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Idbn.idrefMei" class=" primaryKey numbering refer" data-referFor="M04Idbn.idrefId" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI"></span>
         </div>
         <div id="idbnBn">
           <label for="M04Idbn.idbnBn" th:text="#{M04Idbn.idbnBn}">参照連番</label><input type="text" id="M04Idbn.idbnBn" name="M04Idbn.idbnBn" maxlength="10" class=" primaryKey numbering notblank" />
@@ -60,14 +60,14 @@
         </div>
         <div id="insertUserId">
           <label th:text="#{M04Idbn.insertUserId}" class="meta">作成者</label><span id="M04Idbn.insertUserId" class="meta"></span><input type="hidden" id="M04Idbn.insertUserId" name="M04Idbn.insertUserId" class="meta"/>
-          <span id="M04Idbn.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Idbn.insertUserId" data-destDef="M04Idbn.insertUserSei:USER_SEI"></span>
+          <span id="M04Idbn.insertUserSei" class="refer meta" data-referFor="M04Idbn.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Idbn.insertUserId" data-destDef="M04Idbn.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
           <label th:text="#{M04Idbn.updateTs}" class="meta">更新タイムスタンプ</label><span id="M04Idbn.updateTs" class="meta"></span><input type="hidden" id="M04Idbn.updateTs" name="M04Idbn.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{M04Idbn.updateUserId}" class="meta">更新者</label><span id="M04Idbn.updateUserId" class="meta"></span><input type="hidden" id="M04Idbn.updateUserId" name="M04Idbn.updateUserId" class="meta"/>
-          <span id="M04Idbn.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Idbn.updateUserId" data-destDef="M04Idbn.updateUserSei:USER_SEI"></span>
+          <span id="M04Idbn.updateUserSei" class="refer meta" data-referFor="M04Idbn.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Idbn.updateUserId" data-destDef="M04Idbn.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">

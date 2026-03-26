@@ -27,7 +27,7 @@
           <label for="MhrBusho.bushoMei" th:text="#{MhrBusho.bushoMei}">部署名</label><input type="text" id="MhrBusho.bushoMei" name="MhrBusho.bushoMei" maxlength="60" class=" notblank" />
         </div>
         <div id="oyaBushoId">
-          <label for="MhrBusho.oyaBushoId" th:text="#{MhrBusho.oyaBushoId}">親部署ID</label><input type="text" id="MhrBusho.oyaBushoId" name="MhrBusho.oyaBushoId" maxlength="10" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI" /><a id="MhrBusho.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrBusho.oyaBushoMei" class=" refer" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI"></span>
+          <label for="MhrBusho.oyaBushoId" th:text="#{MhrBusho.oyaBushoId}">親部署ID</label><input type="text" id="MhrBusho.oyaBushoId" name="MhrBusho.oyaBushoId" maxlength="10" class=" refer" data-referFor="MhrBusho.oyaBushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI" /><a id="MhrBusho.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrBusho.oyaBushoMei" class=" refer" data-referFor="MhrBusho.oyaBushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI"></span>
         </div>
         <div id="tekiyoBi">
           <label for="MhrBusho.tekiyoBi" th:text="#{MhrBusho.tekiyoBi}">適用日</label><input type="text" id="MhrBusho.tekiyoBi" name="MhrBusho.tekiyoBi" maxlength="10" class=" datepicker" />
@@ -40,14 +40,14 @@
         </div>
         <div id="insertUserId">
           <label th:text="#{MhrBusho.insertUserId}" class="meta">作成者</label><span id="MhrBusho.insertUserId" class="meta"></span><input type="hidden" id="MhrBusho.insertUserId" name="MhrBusho.insertUserId" class="meta"/>
-          <span id="MhrBusho.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrBusho.insertUserId" data-destDef="MhrBusho.insertUserSei:USER_SEI"></span>
+          <span id="MhrBusho.insertUserSei" class="refer meta" data-referFor="MhrBusho.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrBusho.insertUserId" data-destDef="MhrBusho.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
           <label th:text="#{MhrBusho.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrBusho.updateTs" class="meta"></span><input type="hidden" id="MhrBusho.updateTs" name="MhrBusho.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MhrBusho.updateUserId}" class="meta">更新者</label><span id="MhrBusho.updateUserId" class="meta"></span><input type="hidden" id="MhrBusho.updateUserId" name="MhrBusho.updateUserId" class="meta"/>
-          <span id="MhrBusho.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrBusho.updateUserId" data-destDef="MhrBusho.updateUserSei:USER_SEI"></span>
+          <span id="MhrBusho.updateUserSei" class="refer meta" data-referFor="MhrBusho.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrBusho.updateUserId" data-destDef="MhrBusho.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">
