@@ -57,14 +57,14 @@
           <label for="M04Saiki.oyaSaikiId" th:text="#{M04Saiki.oyaSaikiId}">親再帰ID</label><input type="text" id="M04Saiki.oyaSaikiId" name="M04Saiki.oyaSaikiId" maxlength="10" class=" refer" data-referFor="M04Saiki.oyaSaikiId" data-json="M04SaikiSearch.json" data-srcDef="SAIKI_ID:M04Saiki.oyaSaikiId" data-destDef="M04Saiki.oyaSaikiMei:SAIKI_MEI" /><a id="M04Saiki.oyaSaikiId" th:href="@{/model/M04SaikiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Saiki.oyaSaikiMei" class=" refer" data-referFor="M04Saiki.oyaSaikiId" data-json="M04SaikiSearch.json" data-srcDef="SAIKI_ID:M04Saiki.oyaSaikiId" data-destDef="M04Saiki.oyaSaikiMei:SAIKI_MEI"></span>
         </div>
         <div id="insertTs">
-          <label th:text="#{M04Saiki.insertTs}" class="meta">作成タイムスタンプ</label><span id="M04Saiki.insertTs" class="meta"></span><input type="hidden" id="M04Saiki.insertTs" name="M04Saiki.insertTs" class="meta"/>
+          <label th:text="#{M04Saiki.insertTs}" class="meta">作成タイムスタンプ</label><span id="M04Saiki.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Saiki.insertTs" name="M04Saiki.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{M04Saiki.insertUserId}" class="meta">作成者</label><span id="M04Saiki.insertUserId" class="meta"></span><input type="hidden" id="M04Saiki.insertUserId" name="M04Saiki.insertUserId" class="meta"/>
           <span id="M04Saiki.insertUserSei" class="refer meta" data-referFor="M04Saiki.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Saiki.insertUserId" data-destDef="M04Saiki.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{M04Saiki.updateTs}" class="meta">更新タイムスタンプ</label><span id="M04Saiki.updateTs" class="meta"></span><input type="hidden" id="M04Saiki.updateTs" name="M04Saiki.updateTs" class="meta"/>
+          <label th:text="#{M04Saiki.updateTs}" class="meta">更新タイムスタンプ</label><span id="M04Saiki.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Saiki.updateTs" name="M04Saiki.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{M04Saiki.updateUserId}" class="meta">更新者</label><span id="M04Saiki.updateUserId" class="meta"></span><input type="hidden" id="M04Saiki.updateUserId" name="M04Saiki.updateUserId" class="meta"/>

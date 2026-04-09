@@ -27,14 +27,14 @@
           <label for="T02Eldest.eldestInfo" th:text="#{T02Eldest.eldestInfo}">長兄情報</label><input type="text" id="T02Eldest.eldestInfo" name="T02Eldest.eldestInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T02Eldest.insertTs}" class="meta">作成タイムスタンプ</label><span id="T02Eldest.insertTs" class="meta"></span><input type="hidden" id="T02Eldest.insertTs" name="T02Eldest.insertTs" class="meta"/>
+          <label th:text="#{T02Eldest.insertTs}" class="meta">作成タイムスタンプ</label><span id="T02Eldest.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Eldest.insertTs" name="T02Eldest.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T02Eldest.insertUserId}" class="meta">作成者</label><span id="T02Eldest.insertUserId" class="meta"></span><input type="hidden" id="T02Eldest.insertUserId" name="T02Eldest.insertUserId" class="meta"/>
           <span id="T02Eldest.insertUserSei" class="refer meta" data-referFor="T02Eldest.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Eldest.insertUserId" data-destDef="T02Eldest.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T02Eldest.updateTs}" class="meta">更新タイムスタンプ</label><span id="T02Eldest.updateTs" class="meta"></span><input type="hidden" id="T02Eldest.updateTs" name="T02Eldest.updateTs" class="meta"/>
+          <label th:text="#{T02Eldest.updateTs}" class="meta">更新タイムスタンプ</label><span id="T02Eldest.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Eldest.updateTs" name="T02Eldest.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T02Eldest.updateUserId}" class="meta">更新者</label><span id="T02Eldest.updateUserId" class="meta"></span><input type="hidden" id="T02Eldest.updateUserId" name="T02Eldest.updateUserId" class="meta"/>

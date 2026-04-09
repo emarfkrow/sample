@@ -33,14 +33,14 @@
           <label for="T09Sum.sumInfo" th:text="#{T09Sum.sumInfo}">集約情報</label><input type="text" id="T09Sum.sumInfo" name="T09Sum.sumInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T09Sum.insertTs}" class="meta">作成タイムスタンプ</label><span id="T09Sum.insertTs" class="meta"></span><input type="hidden" id="T09Sum.insertTs" name="T09Sum.insertTs" class="meta"/>
+          <label th:text="#{T09Sum.insertTs}" class="meta">作成タイムスタンプ</label><span id="T09Sum.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T09Sum.insertTs" name="T09Sum.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T09Sum.insertUserId}" class="meta">作成者</label><span id="T09Sum.insertUserId" class="meta"></span><input type="hidden" id="T09Sum.insertUserId" name="T09Sum.insertUserId" class="meta"/>
           <span id="T09Sum.insertUserSei" class="refer meta" data-referFor="T09Sum.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T09Sum.insertUserId" data-destDef="T09Sum.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T09Sum.updateTs}" class="meta">更新タイムスタンプ</label><span id="T09Sum.updateTs" class="meta"></span><input type="hidden" id="T09Sum.updateTs" name="T09Sum.updateTs" class="meta"/>
+          <label th:text="#{T09Sum.updateTs}" class="meta">更新タイムスタンプ</label><span id="T09Sum.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T09Sum.updateTs" name="T09Sum.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T09Sum.updateUserId}" class="meta">更新者</label><span id="T09Sum.updateUserId" class="meta"></span><input type="hidden" id="T09Sum.updateUserId" name="T09Sum.updateUserId" class="meta"/>

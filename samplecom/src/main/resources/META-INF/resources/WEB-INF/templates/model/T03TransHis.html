@@ -33,14 +33,14 @@
           <label th:text="#{T03TransHis.riyuTx}">変更理由</label><span id="T03TransHis.riyuTx" class="history"></span><input type="text" id="T03TransHis.riyuTx" name="T03TransHis.riyuTx" style="display: none;" class="history" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T03TransHis.insertTs}" class="meta">作成タイムスタンプ</label><span id="T03TransHis.insertTs" class="meta"></span><input type="hidden" id="T03TransHis.insertTs" name="T03TransHis.insertTs" class="meta"/>
+          <label th:text="#{T03TransHis.insertTs}" class="meta">作成タイムスタンプ</label><span id="T03TransHis.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T03TransHis.insertTs" name="T03TransHis.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T03TransHis.insertUserId}" class="meta">作成者</label><span id="T03TransHis.insertUserId" class="meta"></span><input type="hidden" id="T03TransHis.insertUserId" name="T03TransHis.insertUserId" class="meta"/>
           <span id="T03TransHis.insertUserSei" class="refer meta" data-referFor="T03TransHis.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T03TransHis.insertUserId" data-destDef="T03TransHis.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T03TransHis.updateTs}" class="meta">更新タイムスタンプ</label><span id="T03TransHis.updateTs" class="meta"></span><input type="hidden" id="T03TransHis.updateTs" name="T03TransHis.updateTs" class="meta"/>
+          <label th:text="#{T03TransHis.updateTs}" class="meta">更新タイムスタンプ</label><span id="T03TransHis.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T03TransHis.updateTs" name="T03TransHis.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T03TransHis.updateUserId}" class="meta">更新者</label><span id="T03TransHis.updateUserId" class="meta"></span><input type="hidden" id="T03TransHis.updateUserId" name="T03TransHis.updateUserId" class="meta"/>

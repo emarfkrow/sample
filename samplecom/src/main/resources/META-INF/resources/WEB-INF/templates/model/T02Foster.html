@@ -27,14 +27,14 @@
           <label for="T02Foster.fosterInfo" th:text="#{T02Foster.fosterInfo}">里子情報</label><input type="text" id="T02Foster.fosterInfo" name="T02Foster.fosterInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T02Foster.insertTs}" class="meta">作成タイムスタンプ</label><span id="T02Foster.insertTs" class="meta"></span><input type="hidden" id="T02Foster.insertTs" name="T02Foster.insertTs" class="meta"/>
+          <label th:text="#{T02Foster.insertTs}" class="meta">作成タイムスタンプ</label><span id="T02Foster.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Foster.insertTs" name="T02Foster.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T02Foster.insertUserId}" class="meta">作成者</label><span id="T02Foster.insertUserId" class="meta"></span><input type="hidden" id="T02Foster.insertUserId" name="T02Foster.insertUserId" class="meta"/>
           <span id="T02Foster.insertUserSei" class="refer meta" data-referFor="T02Foster.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Foster.insertUserId" data-destDef="T02Foster.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T02Foster.updateTs}" class="meta">更新タイムスタンプ</label><span id="T02Foster.updateTs" class="meta"></span><input type="hidden" id="T02Foster.updateTs" name="T02Foster.updateTs" class="meta"/>
+          <label th:text="#{T02Foster.updateTs}" class="meta">更新タイムスタンプ</label><span id="T02Foster.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Foster.updateTs" name="T02Foster.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T02Foster.updateUserId}" class="meta">更新者</label><span id="T02Foster.updateUserId" class="meta"></span><input type="hidden" id="T02Foster.updateUserId" name="T02Foster.updateUserId" class="meta"/>

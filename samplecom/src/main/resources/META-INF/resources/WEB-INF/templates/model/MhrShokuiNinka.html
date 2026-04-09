@@ -46,14 +46,14 @@
           <label for="MhrShokuiNinka.haishiBi" th:text="#{MhrShokuiNinka.haishiBi}">廃止日</label><input type="text" id="MhrShokuiNinka.haishiBi" name="MhrShokuiNinka.haishiBi" maxlength="10" class=" datepicker" />
         </div>
         <div id="insertTs">
-          <label th:text="#{MhrShokuiNinka.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrShokuiNinka.insertTs" class="meta"></span><input type="hidden" id="MhrShokuiNinka.insertTs" name="MhrShokuiNinka.insertTs" class="meta"/>
+          <label th:text="#{MhrShokuiNinka.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrShokuiNinka.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrShokuiNinka.insertTs" name="MhrShokuiNinka.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{MhrShokuiNinka.insertUserId}" class="meta">作成者</label><span id="MhrShokuiNinka.insertUserId" class="meta"></span><input type="hidden" id="MhrShokuiNinka.insertUserId" name="MhrShokuiNinka.insertUserId" class="meta"/>
           <span id="MhrShokuiNinka.insertUserSei" class="refer meta" data-referFor="MhrShokuiNinka.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokuiNinka.insertUserId" data-destDef="MhrShokuiNinka.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{MhrShokuiNinka.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrShokuiNinka.updateTs" class="meta"></span><input type="hidden" id="MhrShokuiNinka.updateTs" name="MhrShokuiNinka.updateTs" class="meta"/>
+          <label th:text="#{MhrShokuiNinka.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrShokuiNinka.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrShokuiNinka.updateTs" name="MhrShokuiNinka.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MhrShokuiNinka.updateUserId}" class="meta">更新者</label><span id="MhrShokuiNinka.updateUserId" class="meta"></span><input type="hidden" id="MhrShokuiNinka.updateUserId" name="MhrShokuiNinka.updateUserId" class="meta"/>

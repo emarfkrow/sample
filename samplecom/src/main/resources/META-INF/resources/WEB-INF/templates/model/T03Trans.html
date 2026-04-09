@@ -27,14 +27,14 @@
           <label for="T03Trans.transInfo" th:text="#{T03Trans.transInfo}">変遷情報</label><input type="text" id="T03Trans.transInfo" name="T03Trans.transInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T03Trans.insertTs}" class="meta">作成タイムスタンプ</label><span id="T03Trans.insertTs" class="meta"></span><input type="hidden" id="T03Trans.insertTs" name="T03Trans.insertTs" class="meta"/>
+          <label th:text="#{T03Trans.insertTs}" class="meta">作成タイムスタンプ</label><span id="T03Trans.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T03Trans.insertTs" name="T03Trans.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T03Trans.insertUserId}" class="meta">作成者</label><span id="T03Trans.insertUserId" class="meta"></span><input type="hidden" id="T03Trans.insertUserId" name="T03Trans.insertUserId" class="meta"/>
           <span id="T03Trans.insertUserSei" class="refer meta" data-referFor="T03Trans.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T03Trans.insertUserId" data-destDef="T03Trans.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T03Trans.updateTs}" class="meta">更新タイムスタンプ</label><span id="T03Trans.updateTs" class="meta"></span><input type="hidden" id="T03Trans.updateTs" name="T03Trans.updateTs" class="meta"/>
+          <label th:text="#{T03Trans.updateTs}" class="meta">更新タイムスタンプ</label><span id="T03Trans.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T03Trans.updateTs" name="T03Trans.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T03Trans.updateUserId}" class="meta">更新者</label><span id="T03Trans.updateUserId" class="meta"></span><input type="hidden" id="T03Trans.updateUserId" name="T03Trans.updateUserId" class="meta"/>

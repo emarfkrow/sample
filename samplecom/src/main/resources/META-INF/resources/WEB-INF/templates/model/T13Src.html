@@ -27,14 +27,14 @@
           <label for="T13Src.srcInfo" th:text="#{T13Src.srcInfo}">変換元情報</label><input type="text" id="T13Src.srcInfo" name="T13Src.srcInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T13Src.insertTs}" class="meta">作成タイムスタンプ</label><span id="T13Src.insertTs" class="meta"></span><input type="hidden" id="T13Src.insertTs" name="T13Src.insertTs" class="meta"/>
+          <label th:text="#{T13Src.insertTs}" class="meta">作成タイムスタンプ</label><span id="T13Src.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T13Src.insertTs" name="T13Src.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T13Src.insertUserId}" class="meta">作成者</label><span id="T13Src.insertUserId" class="meta"></span><input type="hidden" id="T13Src.insertUserId" name="T13Src.insertUserId" class="meta"/>
           <span id="T13Src.insertUserSei" class="refer meta" data-referFor="T13Src.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T13Src.insertUserId" data-destDef="T13Src.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T13Src.updateTs}" class="meta">更新タイムスタンプ</label><span id="T13Src.updateTs" class="meta"></span><input type="hidden" id="T13Src.updateTs" name="T13Src.updateTs" class="meta"/>
+          <label th:text="#{T13Src.updateTs}" class="meta">更新タイムスタンプ</label><span id="T13Src.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T13Src.updateTs" name="T13Src.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T13Src.updateUserId}" class="meta">更新者</label><span id="T13Src.updateUserId" class="meta"></span><input type="hidden" id="T13Src.updateUserId" name="T13Src.updateUserId" class="meta"/>

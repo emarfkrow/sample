@@ -35,14 +35,14 @@
           <label for="MsyTax.taxRt" th:text="#{MsyTax.taxRt}">税率</label><input type="text" id="MsyTax.taxRt" name="MsyTax.taxRt" maxlength="5" class=" notblank" />
         </div>
         <div id="insertTs">
-          <label th:text="#{MsyTax.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyTax.insertTs" class="meta"></span><input type="hidden" id="MsyTax.insertTs" name="MsyTax.insertTs" class="meta"/>
+          <label th:text="#{MsyTax.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyTax.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="MsyTax.insertTs" name="MsyTax.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{MsyTax.insertUserId}" class="meta">作成者</label><span id="MsyTax.insertUserId" class="meta"></span><input type="hidden" id="MsyTax.insertUserId" name="MsyTax.insertUserId" class="meta"/>
           <span id="MsyTax.insertUserSei" class="refer meta" data-referFor="MsyTax.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyTax.insertUserId" data-destDef="MsyTax.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{MsyTax.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyTax.updateTs" class="meta"></span><input type="hidden" id="MsyTax.updateTs" name="MsyTax.updateTs" class="meta"/>
+          <label th:text="#{MsyTax.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyTax.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="MsyTax.updateTs" name="MsyTax.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MsyTax.updateUserId}" class="meta">更新者</label><span id="MsyTax.updateUserId" class="meta"></span><input type="hidden" id="MsyTax.updateUserId" name="MsyTax.updateUserId" class="meta"/>

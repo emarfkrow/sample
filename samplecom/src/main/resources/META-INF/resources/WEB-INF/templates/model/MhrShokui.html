@@ -36,14 +36,14 @@
           <label for="MhrShokui.haishiBi" th:text="#{MhrShokui.haishiBi}">廃止日</label><input type="text" id="MhrShokui.haishiBi" name="MhrShokui.haishiBi" maxlength="10" class=" datepicker" />
         </div>
         <div id="insertTs">
-          <label th:text="#{MhrShokui.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrShokui.insertTs" class="meta"></span><input type="hidden" id="MhrShokui.insertTs" name="MhrShokui.insertTs" class="meta"/>
+          <label th:text="#{MhrShokui.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrShokui.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrShokui.insertTs" name="MhrShokui.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{MhrShokui.insertUserId}" class="meta">作成者</label><span id="MhrShokui.insertUserId" class="meta"></span><input type="hidden" id="MhrShokui.insertUserId" name="MhrShokui.insertUserId" class="meta"/>
           <span id="MhrShokui.insertUserSei" class="refer meta" data-referFor="MhrShokui.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrShokui.insertUserId" data-destDef="MhrShokui.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{MhrShokui.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrShokui.updateTs" class="meta"></span><input type="hidden" id="MhrShokui.updateTs" name="MhrShokui.updateTs" class="meta"/>
+          <label th:text="#{MhrShokui.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrShokui.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrShokui.updateTs" name="MhrShokui.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MhrShokui.updateUserId}" class="meta">更新者</label><span id="MhrShokui.updateUserId" class="meta"></span><input type="hidden" id="MhrShokui.updateUserId" name="MhrShokui.updateUserId" class="meta"/>

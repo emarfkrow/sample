@@ -39,14 +39,14 @@
           <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">親情報</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T01Oya.insertTs}" class="meta">作成タイムスタンプ</label><span id="T01Oya.insertTs" class="meta"></span><input type="hidden" id="T01Oya.insertTs" name="T01Oya.insertTs" class="meta"/>
+          <label th:text="#{T01Oya.insertTs}" class="meta">作成タイムスタンプ</label><span id="T01Oya.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Oya.insertTs" name="T01Oya.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T01Oya.insertUserId}" class="meta">作成者</label><span id="T01Oya.insertUserId" class="meta"></span><input type="hidden" id="T01Oya.insertUserId" name="T01Oya.insertUserId" class="meta"/>
           <span id="T01Oya.insertUserSei" class="refer meta" data-referFor="T01Oya.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Oya.insertUserId" data-destDef="T01Oya.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T01Oya.updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Oya.updateTs" class="meta"></span><input type="hidden" id="T01Oya.updateTs" name="T01Oya.updateTs" class="meta"/>
+          <label th:text="#{T01Oya.updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Oya.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Oya.updateTs" name="T01Oya.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T01Oya.updateUserId}" class="meta">更新者</label><span id="T01Oya.updateUserId" class="meta"></span><input type="hidden" id="T01Oya.updateUserId" name="T01Oya.updateUserId" class="meta"/>

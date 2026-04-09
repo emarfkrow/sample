@@ -38,14 +38,14 @@
           <label for="MsyKadobi.memo" th:text="#{MsyKadobi.memo}">メモ</label><input type="text" id="MsyKadobi.memo" name="MsyKadobi.memo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{MsyKadobi.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyKadobi.insertTs" class="meta"></span><input type="hidden" id="MsyKadobi.insertTs" name="MsyKadobi.insertTs" class="meta"/>
+          <label th:text="#{MsyKadobi.insertTs}" class="meta">作成タイムスタンプ</label><span id="MsyKadobi.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="MsyKadobi.insertTs" name="MsyKadobi.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{MsyKadobi.insertUserId}" class="meta">作成者</label><span id="MsyKadobi.insertUserId" class="meta"></span><input type="hidden" id="MsyKadobi.insertUserId" name="MsyKadobi.insertUserId" class="meta"/>
           <span id="MsyKadobi.insertUserSei" class="refer meta" data-referFor="MsyKadobi.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MsyKadobi.insertUserId" data-destDef="MsyKadobi.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{MsyKadobi.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyKadobi.updateTs" class="meta"></span><input type="hidden" id="MsyKadobi.updateTs" name="MsyKadobi.updateTs" class="meta"/>
+          <label th:text="#{MsyKadobi.updateTs}" class="meta">更新タイムスタンプ</label><span id="MsyKadobi.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="MsyKadobi.updateTs" name="MsyKadobi.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MsyKadobi.updateUserId}" class="meta">更新者</label><span id="MsyKadobi.updateUserId" class="meta"></span><input type="hidden" id="MsyKadobi.updateUserId" name="MsyKadobi.updateUserId" class="meta"/>

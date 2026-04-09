@@ -79,7 +79,7 @@
           <label for="T00Entity.nengappiYmd" th:text="#{T00Entity.nengappiYmd}">年月日</label><input type="text" id="T00Entity.nengappiYmd" name="T00Entity.nengappiYmd" maxlength="8" class=" notblank datepicker" data-format="yymmdd" />
         </div>
         <div id="timestampTs">
-          <label th:text="#{T00Entity.timestampTs}">タイムスタンプ</label><span id="T00Entity.timestampTs"></span><input type="text" id="T00Entity.timestampTs" name="T00Entity.timestampTs" style="display: none;" />
+          <label th:text="#{T00Entity.timestampTs}">タイムスタンプ</label><span id="T00Entity.timestampTs" class=" YmdHmsS"></span><input type="text" id="T00Entity.timestampTs" name="T00Entity.timestampTs" style="display: none;" class=" YmdHmsS" />
         </div>
         <div id="nichijiDt">
           <label for="T00Entity.nichijiDt" th:text="#{T00Entity.nichijiDt}">日時</label><input type="datetime-local" id="T00Entity.nichijiDt" name="T00Entity.nichijiDt" maxlength="19" class=" notblank" />
@@ -127,14 +127,14 @@
           </fieldset>
         </div>
         <div id="insertTs">
-          <label th:text="#{T00Entity.insertTs}" class="meta">作成タイムスタンプ</label><span id="T00Entity.insertTs" class="meta"></span><input type="hidden" id="T00Entity.insertTs" name="T00Entity.insertTs" class="meta"/>
+          <label th:text="#{T00Entity.insertTs}" class="meta">作成タイムスタンプ</label><span id="T00Entity.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Entity.insertTs" name="T00Entity.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T00Entity.insertUserId}" class="meta">作成者</label><span id="T00Entity.insertUserId" class="meta"></span><input type="hidden" id="T00Entity.insertUserId" name="T00Entity.insertUserId" class="meta"/>
           <span id="T00Entity.insertUserSei" class="refer meta" data-referFor="T00Entity.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Entity.insertUserId" data-destDef="T00Entity.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T00Entity.updateTs}" class="meta">更新タイムスタンプ</label><span id="T00Entity.updateTs" class="meta"></span><input type="hidden" id="T00Entity.updateTs" name="T00Entity.updateTs" class="meta"/>
+          <label th:text="#{T00Entity.updateTs}" class="meta">更新タイムスタンプ</label><span id="T00Entity.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Entity.updateTs" name="T00Entity.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T00Entity.updateUserId}" class="meta">更新者</label><span id="T00Entity.updateUserId" class="meta"></span><input type="hidden" id="T00Entity.updateUserId" name="T00Entity.updateUserId" class="meta"/>

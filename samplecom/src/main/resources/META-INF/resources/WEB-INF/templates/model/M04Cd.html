@@ -27,14 +27,14 @@
           <label for="M04Cd.cdrefMei" th:text="#{M04Cd.cdrefMei}">CD参照名</label><input type="text" id="M04Cd.cdrefMei" name="M04Cd.cdrefMei" maxlength="60" class=" notblank" />
         </div>
         <div id="insertTs">
-          <label th:text="#{M04Cd.insertTs}" class="meta">作成タイムスタンプ</label><span id="M04Cd.insertTs" class="meta"></span><input type="hidden" id="M04Cd.insertTs" name="M04Cd.insertTs" class="meta"/>
+          <label th:text="#{M04Cd.insertTs}" class="meta">作成タイムスタンプ</label><span id="M04Cd.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Cd.insertTs" name="M04Cd.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{M04Cd.insertUserId}" class="meta">作成者</label><span id="M04Cd.insertUserId" class="meta"></span><input type="hidden" id="M04Cd.insertUserId" name="M04Cd.insertUserId" class="meta"/>
           <span id="M04Cd.insertUserSei" class="refer meta" data-referFor="M04Cd.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Cd.insertUserId" data-destDef="M04Cd.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{M04Cd.updateTs}" class="meta">更新タイムスタンプ</label><span id="M04Cd.updateTs" class="meta"></span><input type="hidden" id="M04Cd.updateTs" name="M04Cd.updateTs" class="meta"/>
+          <label th:text="#{M04Cd.updateTs}" class="meta">更新タイムスタンプ</label><span id="M04Cd.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Cd.updateTs" name="M04Cd.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{M04Cd.updateUserId}" class="meta">更新者</label><span id="M04Cd.updateUserId" class="meta"></span><input type="hidden" id="M04Cd.updateUserId" name="M04Cd.updateUserId" class="meta"/>

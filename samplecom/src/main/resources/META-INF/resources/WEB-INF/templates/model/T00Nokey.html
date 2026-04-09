@@ -36,14 +36,14 @@
           <label for="T00Nokey.eMei" th:text="#{T00Nokey.eMei}">列Ｅ</label><input type="text" id="T00Nokey.eMei" name="T00Nokey.eMei" maxlength="60" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T00Nokey.insertTs}" class="meta">作成タイムスタンプ</label><span id="T00Nokey.insertTs" class="meta"></span><input type="hidden" id="T00Nokey.insertTs" name="T00Nokey.insertTs" class="meta"/>
+          <label th:text="#{T00Nokey.insertTs}" class="meta">作成タイムスタンプ</label><span id="T00Nokey.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Nokey.insertTs" name="T00Nokey.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{T00Nokey.insertUserId}" class="meta">作成者</label><span id="T00Nokey.insertUserId" class="meta"></span><input type="hidden" id="T00Nokey.insertUserId" name="T00Nokey.insertUserId" class="meta"/>
           <span id="T00Nokey.insertUserSei" class="refer meta" data-referFor="T00Nokey.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Nokey.insertUserId" data-destDef="T00Nokey.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T00Nokey.updateTs}" class="meta">更新タイムスタンプ</label><span id="T00Nokey.updateTs" class="meta"></span><input type="hidden" id="T00Nokey.updateTs" name="T00Nokey.updateTs" class="meta"/>
+          <label th:text="#{T00Nokey.updateTs}" class="meta">更新タイムスタンプ</label><span id="T00Nokey.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Nokey.updateTs" name="T00Nokey.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{T00Nokey.updateUserId}" class="meta">更新者</label><span id="T00Nokey.updateUserId" class="meta"></span><input type="hidden" id="T00Nokey.updateUserId" name="T00Nokey.updateUserId" class="meta"/>

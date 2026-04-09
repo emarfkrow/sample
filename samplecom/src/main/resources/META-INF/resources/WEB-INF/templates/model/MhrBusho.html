@@ -36,14 +36,14 @@
           <label for="MhrBusho.haishiBi" th:text="#{MhrBusho.haishiBi}">廃止日</label><input type="text" id="MhrBusho.haishiBi" name="MhrBusho.haishiBi" maxlength="10" class=" datepicker" />
         </div>
         <div id="insertTs">
-          <label th:text="#{MhrBusho.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrBusho.insertTs" class="meta"></span><input type="hidden" id="MhrBusho.insertTs" name="MhrBusho.insertTs" class="meta"/>
+          <label th:text="#{MhrBusho.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrBusho.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrBusho.insertTs" name="MhrBusho.insertTs" class="meta"/>
         </div>
         <div id="insertUserId">
           <label th:text="#{MhrBusho.insertUserId}" class="meta">作成者</label><span id="MhrBusho.insertUserId" class="meta"></span><input type="hidden" id="MhrBusho.insertUserId" name="MhrBusho.insertUserId" class="meta"/>
           <span id="MhrBusho.insertUserSei" class="refer meta" data-referFor="MhrBusho.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrBusho.insertUserId" data-destDef="MhrBusho.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{MhrBusho.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrBusho.updateTs" class="meta"></span><input type="hidden" id="MhrBusho.updateTs" name="MhrBusho.updateTs" class="meta"/>
+          <label th:text="#{MhrBusho.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrBusho.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrBusho.updateTs" name="MhrBusho.updateTs" class="meta"/>
         </div>
         <div id="updateUserId">
           <label th:text="#{MhrBusho.updateUserId}" class="meta">更新者</label><span id="MhrBusho.updateUserId" class="meta"></span><input type="hidden" id="MhrBusho.updateUserId" name="MhrBusho.updateUserId" class="meta"/>
