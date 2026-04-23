@@ -134,18 +134,18 @@ public class M04Idbn implements IEntity {
     }
 
     /** 作成者 */
-    private Integer insertUserId;
+    private String insertUserId;
 
     /** @return 作成者 */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 7)
-    public Integer getInsertUserId() {
+    public String getInsertUserId() {
         return this.insertUserId;
     }
 
     /** @param o 作成者 */
     public void setInsertUserId(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.insertUserId = Integer.valueOf(o.toString());
+        if (o != null) {
+            this.insertUserId = o.toString();
         } else {
             this.insertUserId = null;
         }
@@ -201,18 +201,18 @@ public class M04Idbn implements IEntity {
     }
 
     /** 更新者 */
-    private Integer updateUserId;
+    private String updateUserId;
 
     /** @return 更新者 */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 10)
-    public Integer getUpdateUserId() {
+    public String getUpdateUserId() {
         return this.updateUserId;
     }
 
     /** @param o 更新者 */
     public void setUpdateUserId(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.updateUserId = Integer.valueOf(o.toString());
+        if (o != null) {
+            this.updateUserId = o.toString();
         } else {
             this.updateUserId = null;
         }
@@ -253,9 +253,9 @@ public class M04Idbn implements IEntity {
         sql += "    , a.`IDBN_BN` \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`IDBN_NO`) AS IDBN_NO \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , a.`INSERT_USER_ID` \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
         sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , a.`UPDATE_USER_ID` \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    M04_IDBN a \n";
         sql += "WHERE \n";
