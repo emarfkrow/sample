@@ -11,7 +11,7 @@ import jp.co.golorp.emarf.exception.AppError;
 import jp.co.golorp.emarf.job.BaseJob;
 
 /**
- * エンティティEntity 追加・照会・更新・削除バッチ
+ * Entityの、追加・照会・更新・削除
  *
  * @author toshiyuki
  *

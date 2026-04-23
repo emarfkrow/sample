@@ -1,4 +1,4 @@
-package com.example.job.B0002;
+package com.example.job.B0003;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -15,17 +15,17 @@ import jp.co.golorp.emarf.sql.Queries;
 import jp.co.golorp.emarf.util.MapList;
 
 /**
- * クラスパス内SQLの発行
+ * クラスパス外SQLの発行
  *
  * @author toshiyuki
  *
  */
-public class B0002Job extends BaseJob {
+public class B0003Job extends BaseJob {
 
     /**
      * logger
      */
-    private static final Logger LOG = LoggerFactory.getLogger(B0002Job.class);
+    private static final Logger LOG = LoggerFactory.getLogger(B0003Job.class);
 
     /**
      * エントリポイント
@@ -33,7 +33,7 @@ public class B0002Job extends BaseJob {
      * @param args
      */
     public static void main(final String[] args) {
-        new B0002Job().run(args);
+        new B0003Job().run(args);
     }
 
     /**
@@ -52,7 +52,7 @@ public class B0002Job extends BaseJob {
             throw new AppError("error.cant.insert");
         }
 
-        String sql = this.loadSqlFile("T01OyaSearch");
+        String sql = this.loadSqlFile("B0003");
         Map<String, Object> params = new HashMap<String, Object>();
         MapList list = Queries.select(sql, params, null, null);
 

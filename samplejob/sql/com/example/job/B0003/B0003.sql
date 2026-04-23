@@ -1,7 +1,7 @@
 SELECT
       * 
 FROM
-    t_entity e 
+    t01_oya e 
 WHERE
     1 = 1 
     AND e.ancestor_id = :ancestor_id 
