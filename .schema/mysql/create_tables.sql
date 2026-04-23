@@ -910,13 +910,13 @@ drop view V13_FURIWAKE;
 create view V13_FURIWAKE as 
 SELECT
     a.table_name                                -- テーブル名
-    , a."SRC_ID$DEST_ID"                        -- 振分ID
+    , a.`SRC_ID$DEST_ID`                        -- 振分ID
     , a.info                                    -- 情報
 FROM
     ( 
         SELECT
             'T13_SRC' AS table_name
-            , s.src_id AS "SRC_ID$DEST_ID"
+            , s.src_id AS `SRC_ID$DEST_ID`
             , s.src_info AS info 
         FROM
             t13_src s 
