@@ -1,4 +1,4 @@
-package com.example.job.B0001;
+package com.example.job.B0000.B0001;
 
 import java.time.LocalDateTime;
 
