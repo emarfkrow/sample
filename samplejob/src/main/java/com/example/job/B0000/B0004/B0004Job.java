@@ -41,8 +41,13 @@ public class B0004Job extends BaseJob {
         String sql = this.loadSqlFile("B0004");
         Map<String, Object> params = new HashMap<String, Object>();
 
-        TextUtil.csv(sql, params, "out/output_fixed.csv");
-        TextUtil.tsv(sql, params, "out/output_fixed.tsv");
+        TextUtil.csvOut(sql, params, "out/output_fixed.csv");
+        TextUtil.tsvOut(sql, params, "out/output_fixed.tsv");
+        TextUtil.fixOut(sql, params, "out/output_fixed.dat");
+
+        TextUtil.csvOut(sql, "out/output_fixed.csv");
+        TextUtil.tsvOut(sql, "out/output_fixed.tsv");
+        TextUtil.fixOut(sql, "out/output_fixed.dat");
     }
 
 }

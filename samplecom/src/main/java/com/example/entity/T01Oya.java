@@ -8,6 +8,80 @@ import jp.co.golorp.emarf.entity.IEntity;
  */
 public class T01Oya implements IEntity {
 
+    /**
+     * デフォルトコンストラクタ
+     */
+    public T01Oya() {
+    }
+
+    /**
+     * @param values
+     */
+    public T01Oya(final String[] values) {
+        this.setOyaId(values[0]);
+        this.setOyaInfo(values[1]);
+        this.setInsertTs(values[2]);
+        this.setInsertUserId(values[3]);
+        this.setUpdateTs(values[4]);
+        this.setUpdateUserId(values[5]);
+    }
+
+    /**
+     * @param map
+     */
+    public T01Oya(final java.util.Map<String, Object> map) {
+
+        if (map.containsKey("OYA_ID")) {
+            this.setOyaId(map.get("OYA_ID"));
+        } else if (map.containsKey("oya_id")) {
+            this.setOyaId(map.get("oya_id"));
+        } else if (map.containsKey("OyaId")) {
+            this.setOyaId(map.get("OyaId"));
+        }
+
+        if (map.containsKey("OYA_INFO")) {
+            this.setOyaInfo(map.get("OYA_INFO"));
+        } else if (map.containsKey("oya_info")) {
+            this.setOyaInfo(map.get("oya_info"));
+        } else if (map.containsKey("OyaInfo")) {
+            this.setOyaInfo(map.get("OyaInfo"));
+        }
+
+        if (map.containsKey("INSERT_TS")) {
+            this.setInsertTs(map.get("INSERT_TS"));
+        }
+        if (map.containsKey("insert_ts")) {
+            this.setInsertTs(map.get("insert_ts"));
+        }
+        if (map.containsKey("InsertTs")) {
+            this.setInsertTs(map.get("InsertTs"));
+        }
+
+        if (map.containsKey("INSERT_USER_ID")) {
+            this.setInsertUserId(map.get("INSERT_USER_ID"));
+        } else if (map.containsKey("insert_user_id")) {
+            this.setInsertUserId(map.get("insert_user_id"));
+        } else if (map.containsKey("InsertUserId")) {
+            this.setInsertUserId(map.get("InsertUserId"));
+        }
+
+        if (map.containsKey("UPDATE_TS")) {
+            this.setUpdateTs(map.get("UPDATE_TS"));
+        } else if (map.containsKey("update_ts")) {
+            this.setUpdateTs(map.get("update_ts"));
+        } else if (map.containsKey("UpdateTs")) {
+            this.setUpdateTs(map.get("UpdateTs"));
+        }
+
+        if (map.containsKey("UPDATE_USER_ID")) {
+            this.setUpdateUserId(map.get("UPDATE_USER_ID"));
+        } else if (map.containsKey("update_user_id")) {
+            this.setUpdateUserId(map.get("update_user_id"));
+        } else if (map.containsKey("UpdateUserId")) {
+            this.setUpdateUserId(map.get("UpdateUserId"));
+        }
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;
