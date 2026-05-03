@@ -37,7 +37,8 @@ public class B0005Job extends BaseJob {
      * @param args
      */
     public void running(final LocalDateTime now, final String jobId, final String[] args) {
-        TextUtil.in(now, jobId, "out/output_fixed.csv", true, T01Oya.class);
+        TextUtil.walkIn(now, jobId, "out/output_fixed.csv", true, T01Oya.class);
+        TextUtil.checkIn(now, jobId, "out/output_fixed.csv", true, T01Oya.class);
     }
 
 }
