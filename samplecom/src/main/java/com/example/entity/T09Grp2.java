@@ -1,12 +1,37 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 集団２
  * @author emarfkrow
  */
 public class T09Grp2 implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T09Grp2() {
+    }
+
+    /** @param values */
+    public T09Grp2(final String[] values) {
+        this.setGrp2Id(values[0]);
+        this.setSumId(values[1]);
+        this.setInsertTs(values[2]);
+        this.setInsertUserId(values[3]);
+        this.setUpdateTs(values[4]);
+        this.setUpdateUserId(values[5]);
+    }
+
+    /** @param map */
+    public T09Grp2(final java.util.Map<String, Object> map) {
+        this.setGrp2Id(IgnoreCaseLinkedMap.get(map, "GRP2_ID"));
+        this.setSumId(IgnoreCaseLinkedMap.get(map, "SUM_ID"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

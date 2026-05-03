@@ -1,12 +1,39 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 前世明細
  * @author emarfkrow
  */
 public class T07PrevDet implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T07PrevDet() {
+    }
+
+    /** @param values */
+    public T07PrevDet(final String[] values) {
+        this.setPrevId(values[0]);
+        this.setPrevBn(values[1]);
+        this.setDetInfo(values[2]);
+        this.setInsertTs(values[3]);
+        this.setInsertUserId(values[4]);
+        this.setUpdateTs(values[5]);
+        this.setUpdateUserId(values[6]);
+    }
+
+    /** @param map */
+    public T07PrevDet(final java.util.Map<String, Object> map) {
+        this.setPrevId(IgnoreCaseLinkedMap.get(map, "PREV_ID"));
+        this.setPrevBn(IgnoreCaseLinkedMap.get(map, "PREV_BN"));
+        this.setDetInfo(IgnoreCaseLinkedMap.get(map, "DET_INFO"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

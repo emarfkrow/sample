@@ -1,12 +1,47 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * ユーザマスタ
  * @author emarfkrow
  */
 public class MhrUser implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public MhrUser() {
+    }
+
+    /** @param values */
+    public MhrUser(final String[] values) {
+        this.setUserId(values[0]);
+        this.setUserSei(values[1]);
+        this.setUserMei(values[2]);
+        this.setEMail(values[3]);
+        this.setPassword(values[4]);
+        this.setTekiyoBi(values[5]);
+        this.setHaishiBi(values[6]);
+        this.setInsertTs(values[7]);
+        this.setInsertUserId(values[8]);
+        this.setUpdateTs(values[9]);
+        this.setUpdateUserId(values[10]);
+    }
+
+    /** @param map */
+    public MhrUser(final java.util.Map<String, Object> map) {
+        this.setUserId(IgnoreCaseLinkedMap.get(map, "USER_ID"));
+        this.setUserSei(IgnoreCaseLinkedMap.get(map, "USER_SEI"));
+        this.setUserMei(IgnoreCaseLinkedMap.get(map, "USER_MEI"));
+        this.setEMail(IgnoreCaseLinkedMap.get(map, "E_MAIL"));
+        this.setPassword(IgnoreCaseLinkedMap.get(map, "PASSWORD"));
+        this.setTekiyoBi(IgnoreCaseLinkedMap.get(map, "TEKIYO_BI"));
+        this.setHaishiBi(IgnoreCaseLinkedMap.get(map, "HAISHI_BI"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

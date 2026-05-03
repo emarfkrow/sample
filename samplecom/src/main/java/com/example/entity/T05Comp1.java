@@ -1,12 +1,39 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 複合１
  * @author emarfkrow
  */
 public class T05Comp1 implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T05Comp1() {
+    }
+
+    /** @param values */
+    public T05Comp1(final String[] values) {
+        this.setRef1Id(values[0]);
+        this.setRef2Id(values[1]);
+        this.setComp1Mei(values[2]);
+        this.setInsertTs(values[3]);
+        this.setInsertUserId(values[4]);
+        this.setUpdateTs(values[5]);
+        this.setUpdateUserId(values[6]);
+    }
+
+    /** @param map */
+    public T05Comp1(final java.util.Map<String, Object> map) {
+        this.setRef1Id(IgnoreCaseLinkedMap.get(map, "REF1_ID"));
+        this.setRef2Id(IgnoreCaseLinkedMap.get(map, "REF2_ID"));
+        this.setComp1Mei(IgnoreCaseLinkedMap.get(map, "COMP1_MEI"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

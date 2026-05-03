@@ -1,12 +1,41 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 通貨マスタ
  * @author emarfkrow
  */
 public class MsyTsuka implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public MsyTsuka() {
+    }
+
+    /** @param values */
+    public MsyTsuka(final String[] values) {
+        this.setTsukaKb(values[0]);
+        this.setTekiyoBi(values[1]);
+        this.setTts(values[2]);
+        this.setTtb(values[3]);
+        this.setInsertTs(values[4]);
+        this.setInsertUserId(values[5]);
+        this.setUpdateTs(values[6]);
+        this.setUpdateUserId(values[7]);
+    }
+
+    /** @param map */
+    public MsyTsuka(final java.util.Map<String, Object> map) {
+        this.setTsukaKb(IgnoreCaseLinkedMap.get(map, "TSUKA_KB"));
+        this.setTekiyoBi(IgnoreCaseLinkedMap.get(map, "TEKIYO_BI"));
+        this.setTts(IgnoreCaseLinkedMap.get(map, "TTS"));
+        this.setTtb(IgnoreCaseLinkedMap.get(map, "TTB"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

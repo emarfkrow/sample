@@ -1,12 +1,41 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 税マスタ
  * @author emarfkrow
  */
 public class MsyTax implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public MsyTax() {
+    }
+
+    /** @param values */
+    public MsyTax(final String[] values) {
+        this.setTaxKb(values[0]);
+        this.setTekiyoBi(values[1]);
+        this.setHaishiBi(values[2]);
+        this.setTaxRt(values[3]);
+        this.setInsertTs(values[4]);
+        this.setInsertUserId(values[5]);
+        this.setUpdateTs(values[6]);
+        this.setUpdateUserId(values[7]);
+    }
+
+    /** @param map */
+    public MsyTax(final java.util.Map<String, Object> map) {
+        this.setTaxKb(IgnoreCaseLinkedMap.get(map, "TAX_KB"));
+        this.setTekiyoBi(IgnoreCaseLinkedMap.get(map, "TEKIYO_BI"));
+        this.setHaishiBi(IgnoreCaseLinkedMap.get(map, "HAISHI_BI"));
+        this.setTaxRt(IgnoreCaseLinkedMap.get(map, "TAX_RT"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

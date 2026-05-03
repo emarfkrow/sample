@@ -1,12 +1,41 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 変遷履歴
  * @author emarfkrow
  */
 public class T03TransHis implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T03TransHis() {
+    }
+
+    /** @param values */
+    public T03TransHis(final String[] values) {
+        this.setTransId(values[0]);
+        this.setTransBn(values[1]);
+        this.setTransInfo(values[2]);
+        this.setRiyuTx(values[3]);
+        this.setInsertTs(values[4]);
+        this.setInsertUserId(values[5]);
+        this.setUpdateTs(values[6]);
+        this.setUpdateUserId(values[7]);
+    }
+
+    /** @param map */
+    public T03TransHis(final java.util.Map<String, Object> map) {
+        this.setTransId(IgnoreCaseLinkedMap.get(map, "TRANS_ID"));
+        this.setTransBn(IgnoreCaseLinkedMap.get(map, "TRANS_BN"));
+        this.setTransInfo(IgnoreCaseLinkedMap.get(map, "TRANS_INFO"));
+        this.setRiyuTx(IgnoreCaseLinkedMap.get(map, "RIYU_TX"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

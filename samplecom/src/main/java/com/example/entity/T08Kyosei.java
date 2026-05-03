@@ -1,12 +1,43 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 共生
  * @author emarfkrow
  */
 public class T08Kyosei implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T08Kyosei() {
+    }
+
+    /** @param values */
+    public T08Kyosei(final String[] values) {
+        this.setKyoseiId(values[0]);
+        this.setKisei1Id(values[1]);
+        this.setKisei1Info(values[2]);
+        this.setKisei2Id(values[3]);
+        this.setKisei2Info(values[4]);
+        this.setInsertTs(values[5]);
+        this.setInsertUserId(values[6]);
+        this.setUpdateTs(values[7]);
+        this.setUpdateUserId(values[8]);
+    }
+
+    /** @param map */
+    public T08Kyosei(final java.util.Map<String, Object> map) {
+        this.setKyoseiId(IgnoreCaseLinkedMap.get(map, "KYOSEI_ID"));
+        this.setKisei1Id(IgnoreCaseLinkedMap.get(map, "KISEI1_ID"));
+        this.setKisei1Info(IgnoreCaseLinkedMap.get(map, "KISEI1_INFO"));
+        this.setKisei2Id(IgnoreCaseLinkedMap.get(map, "KISEI2_ID"));
+        this.setKisei2Info(IgnoreCaseLinkedMap.get(map, "KISEI2_INFO"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

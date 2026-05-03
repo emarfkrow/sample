@@ -1,12 +1,43 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * キーなし
  * @author emarfkrow
  */
 public class T00Nokey implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T00Nokey() {
+    }
+
+    /** @param values */
+    public T00Nokey(final String[] values) {
+        this.setAMei(values[0]);
+        this.setBMei(values[1]);
+        this.setCMei(values[2]);
+        this.setDMei(values[3]);
+        this.setEMei(values[4]);
+        this.setInsertTs(values[5]);
+        this.setInsertUserId(values[6]);
+        this.setUpdateTs(values[7]);
+        this.setUpdateUserId(values[8]);
+    }
+
+    /** @param map */
+    public T00Nokey(final java.util.Map<String, Object> map) {
+        this.setAMei(IgnoreCaseLinkedMap.get(map, "A_MEI"));
+        this.setBMei(IgnoreCaseLinkedMap.get(map, "B_MEI"));
+        this.setCMei(IgnoreCaseLinkedMap.get(map, "C_MEI"));
+        this.setDMei(IgnoreCaseLinkedMap.get(map, "D_MEI"));
+        this.setEMei(IgnoreCaseLinkedMap.get(map, "E_MEI"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

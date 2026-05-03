@@ -1,12 +1,49 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 再帰
  * @author emarfkrow
  */
 public class M04Saiki implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public M04Saiki() {
+    }
+
+    /** @param values */
+    public M04Saiki(final String[] values) {
+        this.setSaikiId(values[0]);
+        this.setSaikiMei(values[1]);
+        this.setIdrefId(values[2]);
+        this.setCdrefCd(values[3]);
+        this.setNorefNo(values[4]);
+        this.setExIdrefId(values[5]);
+        this.setExIdbnBn(values[6]);
+        this.setOyaSaikiId(values[7]);
+        this.setInsertTs(values[8]);
+        this.setInsertUserId(values[9]);
+        this.setUpdateTs(values[10]);
+        this.setUpdateUserId(values[11]);
+    }
+
+    /** @param map */
+    public M04Saiki(final java.util.Map<String, Object> map) {
+        this.setSaikiId(IgnoreCaseLinkedMap.get(map, "SAIKI_ID"));
+        this.setSaikiMei(IgnoreCaseLinkedMap.get(map, "SAIKI_MEI"));
+        this.setIdrefId(IgnoreCaseLinkedMap.get(map, "IDREF_ID"));
+        this.setCdrefCd(IgnoreCaseLinkedMap.get(map, "CDREF_CD"));
+        this.setNorefNo(IgnoreCaseLinkedMap.get(map, "NOREF_NO"));
+        this.setExIdrefId(IgnoreCaseLinkedMap.get(map, "EX_IDREF_ID"));
+        this.setExIdbnBn(IgnoreCaseLinkedMap.get(map, "EX_IDBN_BN"));
+        this.setOyaSaikiId(IgnoreCaseLinkedMap.get(map, "OYA_SAIKI_ID"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

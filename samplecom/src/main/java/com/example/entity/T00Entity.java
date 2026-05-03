@@ -1,12 +1,93 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * エンティティ
  * @author emarfkrow
  */
 public class T00Entity implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T00Entity() {
+    }
+
+    /** @param values */
+    public T00Entity(final String[] values) {
+        this.setEntityId(values[0]);
+        this.setEntityNm(values[1]);
+        this.setEntityMei(values[2]);
+        this.setBitB(values[3]);
+        this.setCheckF(values[4]);
+        this.setRadioKb(values[5]);
+        this.setPulldownKb(values[6]);
+        this.setPulldownSb(values[7]);
+        this.setMemoTx(values[8]);
+        this.setMemo(values[9]);
+        this.setTenpuFile(values[10]);
+        this.setNenY(values[11]);
+        this.setTsukiM(values[12]);
+        this.setHiD(values[13]);
+        this.setNengetsuYm(values[14]);
+        this.setNengappiYmd(values[15]);
+        this.setTimestampTs(values[16]);
+        this.setNichijiDt(values[17]);
+        this.setHidukeBi(values[18]);
+        this.setJikokuHm(values[19]);
+        this.setJikanTm(values[20]);
+        this.setTsukaKb(values[21]);
+        this.setJuchuQt(values[22]);
+        this.setJuchuPr(values[23]);
+        this.setJuchuAm(values[24]);
+        this.setHacchuQt(values[25]);
+        this.setHacchuPr(values[26]);
+        this.setHacchuAm(values[27]);
+        this.setDeleteF(values[28]);
+        this.setStatusKb(values[29]);
+        this.setInsertTs(values[30]);
+        this.setInsertUserId(values[31]);
+        this.setUpdateTs(values[32]);
+        this.setUpdateUserId(values[33]);
+    }
+
+    /** @param map */
+    public T00Entity(final java.util.Map<String, Object> map) {
+        this.setEntityId(IgnoreCaseLinkedMap.get(map, "ENTITY_ID"));
+        this.setEntityNm(IgnoreCaseLinkedMap.get(map, "ENTITY_NM"));
+        this.setEntityMei(IgnoreCaseLinkedMap.get(map, "ENTITY_MEI"));
+        this.setBitB(IgnoreCaseLinkedMap.get(map, "BIT_B"));
+        this.setCheckF(IgnoreCaseLinkedMap.get(map, "CHECK_F"));
+        this.setRadioKb(IgnoreCaseLinkedMap.get(map, "RADIO_KB"));
+        this.setPulldownKb(IgnoreCaseLinkedMap.get(map, "PULLDOWN_KB"));
+        this.setPulldownSb(IgnoreCaseLinkedMap.get(map, "PULLDOWN_SB"));
+        this.setMemoTx(IgnoreCaseLinkedMap.get(map, "MEMO_TX"));
+        this.setMemo(IgnoreCaseLinkedMap.get(map, "MEMO"));
+        this.setTenpuFile(IgnoreCaseLinkedMap.get(map, "TENPU_FILE"));
+        this.setNenY(IgnoreCaseLinkedMap.get(map, "NEN_Y"));
+        this.setTsukiM(IgnoreCaseLinkedMap.get(map, "TSUKI_M"));
+        this.setHiD(IgnoreCaseLinkedMap.get(map, "HI_D"));
+        this.setNengetsuYm(IgnoreCaseLinkedMap.get(map, "NENGETSU_YM"));
+        this.setNengappiYmd(IgnoreCaseLinkedMap.get(map, "NENGAPPI_YMD"));
+        this.setTimestampTs(IgnoreCaseLinkedMap.get(map, "TIMESTAMP_TS"));
+        this.setNichijiDt(IgnoreCaseLinkedMap.get(map, "NICHIJI_DT"));
+        this.setHidukeBi(IgnoreCaseLinkedMap.get(map, "HIDUKE_BI"));
+        this.setJikokuHm(IgnoreCaseLinkedMap.get(map, "JIKOKU_HM"));
+        this.setJikanTm(IgnoreCaseLinkedMap.get(map, "JIKAN_TM"));
+        this.setTsukaKb(IgnoreCaseLinkedMap.get(map, "TSUKA_KB"));
+        this.setJuchuQt(IgnoreCaseLinkedMap.get(map, "JUCHU_QT"));
+        this.setJuchuPr(IgnoreCaseLinkedMap.get(map, "JUCHU_PR"));
+        this.setJuchuAm(IgnoreCaseLinkedMap.get(map, "JUCHU_AM"));
+        this.setHacchuQt(IgnoreCaseLinkedMap.get(map, "HACCHU_QT"));
+        this.setHacchuPr(IgnoreCaseLinkedMap.get(map, "HACCHU_PR"));
+        this.setHacchuAm(IgnoreCaseLinkedMap.get(map, "HACCHU_AM"));
+        this.setDeleteF(IgnoreCaseLinkedMap.get(map, "DELETE_F"));
+        this.setStatusKb(IgnoreCaseLinkedMap.get(map, "STATUS_KB"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

@@ -1,12 +1,41 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 稼働日マスタ
  * @author emarfkrow
  */
 public class MsyKadobi implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public MsyKadobi() {
+    }
+
+    /** @param values */
+    public MsyKadobi(final String[] values) {
+        this.setKadoBi(values[0]);
+        this.setBushoId(values[1]);
+        this.setKadobiF(values[2]);
+        this.setMemo(values[3]);
+        this.setInsertTs(values[4]);
+        this.setInsertUserId(values[5]);
+        this.setUpdateTs(values[6]);
+        this.setUpdateUserId(values[7]);
+    }
+
+    /** @param map */
+    public MsyKadobi(final java.util.Map<String, Object> map) {
+        this.setKadoBi(IgnoreCaseLinkedMap.get(map, "KADO_BI"));
+        this.setBushoId(IgnoreCaseLinkedMap.get(map, "BUSHO_ID"));
+        this.setKadobiF(IgnoreCaseLinkedMap.get(map, "KADOBI_F"));
+        this.setMemo(IgnoreCaseLinkedMap.get(map, "MEMO"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

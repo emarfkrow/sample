@@ -1,12 +1,31 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * VIEW
  * @author emarfkrow
  */
 public class V13Furiwake implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public V13Furiwake() {
+    }
+
+    /** @param values */
+    public V13Furiwake(final String[] values) {
+        this.setTableName(values[0]);
+        this.setSrcIdDestId(values[1]);
+        this.setInfo(values[2]);
+    }
+
+    /** @param map */
+    public V13Furiwake(final java.util.Map<String, Object> map) {
+        this.setTableName(IgnoreCaseLinkedMap.get(map, "TABLE_NAME"));
+        this.setSrcIdDestId(IgnoreCaseLinkedMap.get(map, "SRC_ID$DEST_ID"));
+        this.setInfo(IgnoreCaseLinkedMap.get(map, "INFO"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

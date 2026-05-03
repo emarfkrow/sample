@@ -1,12 +1,43 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 区分値マスタ
  * @author emarfkrow
  */
 public class MsyKbnVal implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public MsyKbnVal() {
+    }
+
+    /** @param values */
+    public MsyKbnVal(final String[] values) {
+        this.setKbnNm(values[0]);
+        this.setKbnVal(values[1]);
+        this.setKbnValMei(values[2]);
+        this.setHyojiOn(values[3]);
+        this.setCriteria(values[4]);
+        this.setInsertTs(values[5]);
+        this.setInsertUserId(values[6]);
+        this.setUpdateTs(values[7]);
+        this.setUpdateUserId(values[8]);
+    }
+
+    /** @param map */
+    public MsyKbnVal(final java.util.Map<String, Object> map) {
+        this.setKbnNm(IgnoreCaseLinkedMap.get(map, "KBN_NM"));
+        this.setKbnVal(IgnoreCaseLinkedMap.get(map, "KBN_VAL"));
+        this.setKbnValMei(IgnoreCaseLinkedMap.get(map, "KBN_VAL_MEI"));
+        this.setHyojiOn(IgnoreCaseLinkedMap.get(map, "HYOJI_ON"));
+        this.setCriteria(IgnoreCaseLinkedMap.get(map, "CRITERIA"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

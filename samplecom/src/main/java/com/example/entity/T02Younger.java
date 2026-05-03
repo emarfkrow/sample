@@ -1,12 +1,37 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 弟
  * @author emarfkrow
  */
 public class T02Younger implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T02Younger() {
+    }
+
+    /** @param values */
+    public T02Younger(final String[] values) {
+        this.setBroId(values[0]);
+        this.setYoungerInfo(values[1]);
+        this.setInsertTs(values[2]);
+        this.setInsertUserId(values[3]);
+        this.setUpdateTs(values[4]);
+        this.setUpdateUserId(values[5]);
+    }
+
+    /** @param map */
+    public T02Younger(final java.util.Map<String, Object> map) {
+        this.setBroId(IgnoreCaseLinkedMap.get(map, "BRO_ID"));
+        this.setYoungerInfo(IgnoreCaseLinkedMap.get(map, "YOUNGER_INFO"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

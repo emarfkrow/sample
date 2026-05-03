@@ -1,12 +1,31 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * VIEW
  * @author emarfkrow
  */
 public class V13Henkan implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public V13Henkan() {
+    }
+
+    /** @param values */
+    public V13Henkan(final String[] values) {
+        this.setTableName(values[0]);
+        this.setSrcId(values[1]);
+        this.setDestInfo(values[2]);
+    }
+
+    /** @param map */
+    public V13Henkan(final java.util.Map<String, Object> map) {
+        this.setTableName(IgnoreCaseLinkedMap.get(map, "TABLE_NAME"));
+        this.setSrcId(IgnoreCaseLinkedMap.get(map, "SRC_ID"));
+        this.setDestInfo(IgnoreCaseLinkedMap.get(map, "DEST_INFO"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId

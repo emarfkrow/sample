@@ -1,12 +1,41 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
  * 孫
  * @author emarfkrow
  */
 public class T01Mago implements IEntity {
+
+    /** デフォルトコンストラクタ */
+    public T01Mago() {
+    }
+
+    /** @param values */
+    public T01Mago(final String[] values) {
+        this.setOyaId(values[0]);
+        this.setKoBn(values[1]);
+        this.setMagoBn(values[2]);
+        this.setMagoInfo(values[3]);
+        this.setInsertTs(values[4]);
+        this.setInsertUserId(values[5]);
+        this.setUpdateTs(values[6]);
+        this.setUpdateUserId(values[7]);
+    }
+
+    /** @param map */
+    public T01Mago(final java.util.Map<String, Object> map) {
+        this.setOyaId(IgnoreCaseLinkedMap.get(map, "OYA_ID"));
+        this.setKoBn(IgnoreCaseLinkedMap.get(map, "KO_BN"));
+        this.setMagoBn(IgnoreCaseLinkedMap.get(map, "MAGO_BN"));
+        this.setMagoInfo(IgnoreCaseLinkedMap.get(map, "MAGO_INFO"));
+        this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
+        this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
+        this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
+        this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
+    }
 
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
