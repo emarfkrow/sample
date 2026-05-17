@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{D0001S.title}">title</title>
+<title th:text="#{D0001.title}">title</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
 
 </script>
-<script src="../D0000/D0001GridColumns.js"></script>
+<script th:src="@{/D0000/D0001GridColumns.js}"></script>
 <script th:src="@{/model/T01Oya.js}"></script>
 <script th:src="@{/model/T01OyaGridColumns.js}"></script>
 <!-- 親の参照モデルのグリッド定義 -->
@@ -35,30 +35,30 @@
       <input type="hidden" name="rows" value="10" />
       <input type="hidden" name="page" value="0" />
       <fieldset>
-        <legend th:text="#{T01OyaS.legend}">legend</legend>
+        <legend th:text="#{D0001.legend}">legend</legend>
         <div id="oyaId">
-          <label for="T01Oya.oyaId" th:text="#{T01Oya.oyaId}">親ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" class=" primaryKey" />
+          <label for="T01Oya.oyaId" th:text="#{D0001.oyaId}">親ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="oyaInfo">
-          <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">親情報</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
+          <label for="T01Oya.oyaInfo" th:text="#{D0001.oyaInfo}">親情報</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetD0001" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/D0002.html(anew)}" target="dialog" id="D0002" class="anew" th:text="#{D0002.add}" tabindex="-1">親</a>
+<!--         <a th:href="@{/D0000/D0002.html(anew)}" target="dialog" id="D0002" class="anew" th:text="#{D0002.add}" tabindex="-1">親</a> -->
       </div>
       <div class="submits">
         <button id="SearchD0001" type="submit" class="search" data-gridId="D0001Grid" th:text="#{common.search}">submit</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
-    <form name="D0001SRegistForm" action="D0001SRegist.ajax" class="regist">
+    <form name="D0001RegistForm" action="D0001Regist.ajax" class="regist">
       <h3 th:text="#{D0001.h3}">h3</h3>
-      <div id="D0001Grid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/D0002.html}"></div>
+      <div id="D0001Grid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/D0000/D0002.html}"></div>
       <div id="D0001Pager"></div>
       <div class="buttons">
-        <button type="button" class="reset" id="ResetD0001S" th:text="#{common.reset}" onClick="Base.listReset('D0001');">reset</button>
-        <a th:href="@{D0001Search.xlsx(baseMei=#{D0001S.h2})}" id="D0001Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="button" class="reset" id="ResetD0001" th:text="#{common.reset}" onClick="Base.listReset('D0001');">reset</button>
+        <a th:href="@{D0001Search.xlsx(baseMei=#{D0001.h2})}" id="D0001Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
       </div>
