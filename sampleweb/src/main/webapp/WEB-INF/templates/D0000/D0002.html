@@ -2,39 +2,55 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{D0002S.title}">title</title>
+<title th:text="#{D0002.title}">title</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
-
+	
 </script>
 </head>
 <body>
   <div layout:fragment="article">
     <h2 th:text="#{D0002.h2}">h2</h2>
     <!-- 登録フォーム -->
-    <form name="D0002RegistForm" action="D0002Regist.ajax">
+    <form name="D0002RegistForm" action="D0002Regist.ajax" class="regist">
       <fieldset>
-        <legend th:text="#{T01Oya.legend}">legend</legend>
+        <legend th:text="#{D0002.legend}">legend</legend>
         <div id="oyaId">
-          <label for="T01Oya.oyaId" th:text="#{T01Oya.oyaId}">親ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="oyaId" th:text="#{oyaId}">親ID</label><input type="text" id="oyaId" name="oyaId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="oyaInfo">
-          <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">親情報</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
+          <label for="oyaInfo" th:text="#{oyaInfo}">親情報</label><input type="text" id="oyaInfo" name="oyaInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T01Oya.insertTs}" class="meta">作成タイムスタンプ</label><span id="T01Oya.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Oya.insertTs" name="T01Oya.insertTs" class="meta"/>
+          <label th:text="#{insertTs}" class="meta">作成タイムスタンプ</label><span id="insertTs" class="meta YmdHmsS"></span><input type="hidden" id="insertTs" name="insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T01Oya.insertUserId}" class="meta">作成者</label><span id="T01Oya.insertUserId" class="meta"></span><input type="hidden" id="T01Oya.insertUserId" name="T01Oya.insertUserId" class="meta"/>
-          <span id="T01Oya.insertUserSei" class="refer meta" data-referFor="T01Oya.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Oya.insertUserId" data-destDef="T01Oya.insertUserSei:USER_SEI"></span>
+          <label th:text="#{insertUserId}" class="meta">作成者</label><span id="insertUserId" class="meta"></span><input type="hidden" id="insertUserId" name="insertUserId" class="meta" /><span id="insertUserSei" class="refer meta" data-referFor="insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:insertUserId" data-destDef="insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T01Oya.updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Oya.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Oya.updateTs" name="T01Oya.updateTs" class="meta"/>
+          <label th:text="#{updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Oya.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="updateTs" name="T01Oya.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T01Oya.updateUserId}" class="meta">更新者</label><span id="T01Oya.updateUserId" class="meta"></span><input type="hidden" id="T01Oya.updateUserId" name="T01Oya.updateUserId" class="meta"/>
-          <span id="T01Oya.updateUserSei" class="refer meta" data-referFor="T01Oya.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Oya.updateUserId" data-destDef="T01Oya.updateUserSei:USER_SEI"></span>
+          <label th:text="#{updateUserId}" class="meta">更新者</label><span id="updateUserId" class="meta"></span><input type="hidden" id="updateUserId" name="updateUserId" class="meta" /><span id="updateUserSei" class="refer meta" data-referFor="updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:updateUserId" data-destDef="updateUserSei:USER_SEI"></span>
+        </div>
+        <div id="koBn">
+          <label for="koBn" th:text="#{koBn}">子枝番</label><input type="text" id="koBn" name="koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koInfo">
+          <label for="koInfo" th:text="#{koInfo}">子情報</label><input type="text" id="koInfo" name="koInfo" maxlength="300" />
+        </div>
+        <div id="updateTs">
+          <label th:text="#{updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Ko.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="updateTs" name="T01Ko.updateTs" class="meta" />
+        </div>
+        <div id="magoBn">
+          <label for="magoBn" th:text="#{magoBn}">孫枝番</label><input type="text" id="magoBn" name="magoBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="magoInfo">
+          <label for="magoInfo" th:text="#{magoInfo}">孫情報</label><input type="text" id="magoInfo" name="magoInfo" maxlength="300" />
+        </div>
+        <div id="updateTs">
+          <label th:text="#{updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Mago.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="updateTs" name="T01Mago.updateTs" class="meta" />
         </div>
       </fieldset>
       <div class="buttons">

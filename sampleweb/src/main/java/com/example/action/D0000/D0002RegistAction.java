@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.example.entity.T01Ko;
+import com.example.entity.T01Mago;
 import com.example.entity.T01Oya;
 
 import jp.co.golorp.emarf.action.BaseAction;
@@ -25,20 +26,20 @@ public class D0002RegistAction extends BaseAction {
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String id, final Map<String, Object> postJson) {
 
-        T01Ko tKo = FormValidator.toBean(T01Ko.class.getName(), postJson);
+        T01Mago mago = FormValidator.toBean(T01Mago.class.getName(), postJson);
 
-        //        TEntity2 tEntity2 = FormValidator.toBean(TEntity2.class.getName(), postJson);
-        //        tEntity.setTEntity2(tEntity2);
+        T01Ko ko = FormValidator.toBean(T01Ko.class.getName(), postJson);
+        ko.addT01Magos(mago);
 
-        T01Oya tOya = FormValidator.toBean(T01Oya.class.getName(), postJson);
-        tOya.addT01Kos(tKo);
+        T01Oya oya = FormValidator.toBean(T01Oya.class.getName(), postJson);
+        oya.addT01Kos(ko);
 
-        if (tOya.insert(now, id) != 1) {
-            throw new AppError("error.cant.insert");
+        if (oya.update(now, id) != 1) {
+            throw new AppError("error.cant.update");
         }
 
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("INFO", Messages.get("info.insert"));
+        map.put("INFO", Messages.get("info.update"));
         return map;
     }
 

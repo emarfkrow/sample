@@ -14,15 +14,15 @@ WHERE
     1 = 1 
     AND a.`OYA_ID` = :oya_id 
     AND a.`KO_BN` = :ko_bn 
-    AND UPPER (TRIM (TRAILING ' ' FROM a.`KO_INFO`)) LIKE UPPER (CONCAT ('%', :ko_info, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`KO_INFO`)) LIKE UPPER (CONCAT ('%', :ko_info, '%')) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 
-    AND UPPER (TRIM (TRAILING ' ' FROM a.`INSERT_USER_ID`)) LIKE UPPER (CONCAT ('%', :insert_user_id, '%'))
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`)) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
     AND a.`UPDATE_TS` = :update_ts 
     AND a.`UPDATE_TS` >= :update_ts_1 
     AND a.`UPDATE_TS` <= :update_ts_2 
-    AND UPPER (TRIM (TRAILING ' ' FROM a.`UPDATE_USER_ID`)) LIKE UPPER (CONCAT ('%', :update_user_id, '%'))
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`)) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
 ORDER BY
     a.`OYA_ID`
     , a.`KO_BN`

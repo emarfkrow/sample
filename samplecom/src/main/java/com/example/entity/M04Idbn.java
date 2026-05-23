@@ -153,6 +153,9 @@ public class M04Idbn implements IEntity {
         } else if (o != null && o.toString().matches("^[0-9]+")) {
             java.util.Date d = new java.util.Date(Long.valueOf(o.toString()));
             this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
+        } else if (o != null && o.toString().matches("^.+\\+\\d{2}:\\d{2}$")) {
+            java.time.Instant instant = java.time.Instant.parse(o.toString());
+            this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
         } else {
@@ -220,6 +223,9 @@ public class M04Idbn implements IEntity {
         } else if (o != null && o.toString().matches("^[0-9]+")) {
             java.util.Date d = new java.util.Date(Long.valueOf(o.toString()));
             this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
+        } else if (o != null && o.toString().matches("^.+\\+\\d{2}:\\d{2}$")) {
+            java.time.Instant instant = java.time.Instant.parse(o.toString());
+            this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
         } else {
