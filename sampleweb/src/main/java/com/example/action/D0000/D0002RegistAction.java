@@ -26,13 +26,15 @@ public class D0002RegistAction extends BaseAction {
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String id, final Map<String, Object> postJson) {
 
-        T01Mago mago = FormValidator.toBean(T01Mago.class.getName(), postJson);
-
-        T01Ko ko = FormValidator.toBean(T01Ko.class.getName(), postJson);
-        ko.addT01Magos(mago);
-
         T01Oya oya = FormValidator.toBean(T01Oya.class.getName(), postJson);
-        oya.addT01Kos(ko);
+        T01Ko ko = FormValidator.toBean(T01Ko.class.getName(), postJson);
+        if (ko != null) {
+            oya.addT01Kos(ko);
+            T01Mago mago = FormValidator.toBean(T01Mago.class.getName(), postJson);
+            if (mago != null) {
+                ko.addT01Magos(mago);
+            }
+        }
 
         if (oya.update(now, id) != 1) {
             throw new AppError("error.cant.update");
