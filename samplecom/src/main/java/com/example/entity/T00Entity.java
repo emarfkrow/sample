@@ -89,6 +89,39 @@ public class T00Entity implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.entityNm == null || this.entityNm.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.entityMei == null || this.entityMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.bitB == null || this.bitB.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.checkF == null || this.checkF.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.radioKb == null || this.radioKb.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.pulldownKb == null || this.pulldownKb.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.pulldownSb == null || this.pulldownSb.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.memoTx == null || this.memoTx.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.memo == null || this.memo.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.tenpuFile == null || this.tenpuFile.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.nenY == null || this.nenY.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.tsukiM == null || this.tsukiM.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.hiD == null || this.hiD.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.nengetsuYm == null || this.nengetsuYm.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.nengappiYmd == null || this.nengappiYmd.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.timestampTs == null || this.timestampTs.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.nichijiDt == null || this.nichijiDt.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.hidukeBi == null || this.hidukeBi.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.jikokuHm == null || this.jikokuHm.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.jikanTm == null || this.jikanTm.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.tsukaKb == null || this.tsukaKb.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.juchuQt == null || this.juchuQt.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.juchuPr == null || this.juchuPr.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.juchuAm == null || this.juchuAm.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.hacchuQt == null || this.hacchuQt.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.hacchuPr == null || this.hacchuPr.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.hacchuAm == null || this.hacchuAm.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

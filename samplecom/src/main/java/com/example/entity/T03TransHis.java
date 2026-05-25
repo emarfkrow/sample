@@ -37,6 +37,14 @@ public class T03TransHis implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.transInfo == null || this.transInfo.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.riyuTx == null || this.riyuTx.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

@@ -43,6 +43,18 @@ public class MhrUser implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.userSei == null || this.userSei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.userMei == null || this.userMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.eMail == null || this.eMail.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.password == null || this.password.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.tekiyoBi == null || this.tekiyoBi.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.haishiBi == null || this.haishiBi.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

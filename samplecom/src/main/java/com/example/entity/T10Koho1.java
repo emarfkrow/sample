@@ -33,6 +33,13 @@ public class T10Koho1 implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.koho1Info == null || this.koho1Info.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

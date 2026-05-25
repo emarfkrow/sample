@@ -33,6 +33,13 @@ public class T11Tasho1 implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.reborn2Id == null || this.reborn2Id.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

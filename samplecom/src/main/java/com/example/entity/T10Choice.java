@@ -39,6 +39,16 @@ public class T10Choice implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.koho1Id == null || this.koho1Id.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.koho1Info == null || this.koho1Info.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.koho2Id == null || this.koho2Id.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.koho2Info == null || this.koho2Info.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

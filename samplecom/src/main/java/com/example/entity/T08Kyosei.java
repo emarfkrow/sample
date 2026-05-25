@@ -39,6 +39,16 @@ public class T08Kyosei implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.kisei1Id == null || this.kisei1Id.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.kisei1Info == null || this.kisei1Info.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.kisei2Id == null || this.kisei2Id.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.kisei2Info == null || this.kisei2Info.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

@@ -39,6 +39,17 @@ public class T00Nokey implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.aMei == null || this.aMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.bMei == null || this.bMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.cMei == null || this.cMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.dMei == null || this.dMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.eMei == null || this.eMei.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

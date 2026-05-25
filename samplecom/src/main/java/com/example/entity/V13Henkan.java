@@ -27,6 +27,15 @@ public class V13Henkan implements IEntity {
         this.setDestInfo(IgnoreCaseLinkedMap.get(map, "DEST_INFO"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.tableName == null || this.tableName.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.srcId == null || this.srcId.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.destInfo == null || this.destInfo.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

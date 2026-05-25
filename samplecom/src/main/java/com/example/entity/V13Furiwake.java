@@ -27,6 +27,15 @@ public class V13Furiwake implements IEntity {
         this.setInfo(IgnoreCaseLinkedMap.get(map, "INFO"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.tableName == null || this.tableName.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.srcIdDestId == null || this.srcIdDestId.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.info == null || this.info.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

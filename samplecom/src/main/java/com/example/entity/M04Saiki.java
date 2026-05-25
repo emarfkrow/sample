@@ -45,6 +45,19 @@ public class M04Saiki implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.saikiMei == null || this.saikiMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.idrefId == null || this.idrefId.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.cdrefCd == null || this.cdrefCd.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.norefNo == null || this.norefNo.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.exIdrefId == null || this.exIdrefId.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.exIdbnBn == null || this.exIdbnBn.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.oyaSaikiId == null || this.oyaSaikiId.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;

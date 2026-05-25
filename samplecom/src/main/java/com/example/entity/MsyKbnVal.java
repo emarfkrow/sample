@@ -39,6 +39,15 @@ public class MsyKbnVal implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
+    /** @return boolean */
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        isEmpty &= this.kbnValMei == null || this.kbnValMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.hyojiOn == null || this.hyojiOn.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.criteria == null || this.criteria.toString().replaceAll("　| ", "").equals("");
+        return isEmpty;
+    }
+
     /** SlickGridのDataView用ID */
     @jp.co.golorp.emarf.validation.GridViewRowId
     private Integer id;
