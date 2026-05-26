@@ -38,23 +38,7 @@ public class T01MagoSRegistAction extends BaseAction {
 
                 T01Mago e = FormValidator.toBean(T01Mago.class.getName(), row);
 
-                // 主キーが不足していたらINSERT
-                boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getOyaId())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getKoBn())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getMagoBn())) {
-                    isNew = true;
-                }
-                // 楽観ロック値がなくてもINSERT
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-                    isNew = true;
-                }
-
-                if (isNew) {
+                if (e.isNew()) {
 
                     if (e.insert(now, execId) != 1) {
                         throw new OptLockError("error.cant.insert", "孫");

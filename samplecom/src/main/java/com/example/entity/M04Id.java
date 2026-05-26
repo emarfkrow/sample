@@ -34,6 +34,21 @@ public class M04Id implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.idrefId)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.idrefMei == null || this.idrefMei.toString().replaceAll("　| ", "").equals("");
@@ -337,9 +352,9 @@ public class M04Id implements IEntity {
                     continue;
                 }
                 m04Idbn.setIdrefId(this.idrefId);
-                try {
+                if (m04Idbn.isNew()) {
                     m04Idbn.insert(now, execId);
-                } catch (Exception e) {
+                } else {
                     m04Idbn.update(now, execId);
                 }
             }

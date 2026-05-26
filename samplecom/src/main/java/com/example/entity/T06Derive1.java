@@ -36,6 +36,21 @@ public class T06Derive1 implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.derive1Id)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.orgInfo == null || this.orgInfo.toString().replaceAll("　| ", "").equals("");
@@ -361,9 +376,9 @@ public class T06Derive1 implements IEntity {
                     continue;
                 }
                 t06Derive1Det.setDerive1Id(this.derive1Id);
-                try {
+                if (t06Derive1Det.isNew()) {
                     t06Derive1Det.insert(now, execId);
-                } catch (Exception e) {
+                } else {
                     t06Derive1Det.update(now, execId);
                 }
             }

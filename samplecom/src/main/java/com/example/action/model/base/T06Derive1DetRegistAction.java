@@ -26,20 +26,7 @@ public class T06Derive1DetRegistAction extends BaseAction {
 
         T06Derive1Det e = FormValidator.toBean(T06Derive1Det.class.getName(), postJson);
 
-        // 主キーが不足していたらINSERT
-        boolean isNew = false;
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getDerive1Id())) {
-            isNew = true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getDerive1Bn())) {
-            isNew = true;
-        }
-        // 楽観ロック値がなくてもINSERT
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-            isNew = true;
-        }
-
-        if (isNew) {
+        if (e.isNew()) {
 
             if (e.insert(now, execId) != 1) {
                 throw new OptLockError("error.cant.insert", "派生１明細");

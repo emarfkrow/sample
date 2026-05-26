@@ -34,6 +34,21 @@ public class T07Prev implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.prevId)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.prevInfo == null || this.prevInfo.toString().replaceAll("　| ", "").equals("");
@@ -337,9 +352,9 @@ public class T07Prev implements IEntity {
                     continue;
                 }
                 t07PrevDet.setPrevId(this.prevId);
-                try {
+                if (t07PrevDet.isNew()) {
                     t07PrevDet.insert(now, execId);
-                } catch (Exception e) {
+                } else {
                     t07PrevDet.update(now, execId);
                 }
             }

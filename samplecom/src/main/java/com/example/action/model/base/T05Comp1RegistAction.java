@@ -26,20 +26,7 @@ public class T05Comp1RegistAction extends BaseAction {
 
         T05Comp1 e = FormValidator.toBean(T05Comp1.class.getName(), postJson);
 
-        // 主キーが不足していたらINSERT
-        boolean isNew = false;
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRef1Id())) {
-            isNew = true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRef2Id())) {
-            isNew = true;
-        }
-        // 楽観ロック値がなくてもINSERT
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-            isNew = true;
-        }
-
-        if (isNew) {
+        if (e.isNew()) {
 
             if (e.insert(now, execId) != 1) {
                 throw new OptLockError("error.cant.insert", "複合１");

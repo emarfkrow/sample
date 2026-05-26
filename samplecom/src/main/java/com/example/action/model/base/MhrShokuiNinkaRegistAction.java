@@ -26,23 +26,7 @@ public class MhrShokuiNinkaRegistAction extends BaseAction {
 
         MhrShokuiNinka e = FormValidator.toBean(MhrShokuiNinka.class.getName(), postJson);
 
-        // 主キーが不足していたらINSERT
-        boolean isNew = false;
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getBushoId())) {
-            isNew = true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getShokuiId())) {
-            isNew = true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getTableRe())) {
-            isNew = true;
-        }
-        // 楽観ロック値がなくてもINSERT
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-            isNew = true;
-        }
-
-        if (isNew) {
+        if (e.isNew()) {
 
             if (e.insert(now, execId) != 1) {
                 throw new OptLockError("error.cant.insert", "認可マスタ");

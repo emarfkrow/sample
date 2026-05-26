@@ -34,6 +34,21 @@ public class T08Kisei2 implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kisei2Id)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.kisei2Info == null || this.kisei2Info.toString().replaceAll("　| ", "").equals("");

@@ -40,6 +40,30 @@ public class T05Comp2 implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref1Id)) {
+            isNew = true;
+        }
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref2Id)) {
+            isNew = true;
+        }
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref3Id)) {
+            isNew = true;
+        }
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.tekiyoBi)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.comp2Info == null || this.comp2Info.toString().replaceAll("　| ", "").equals("");

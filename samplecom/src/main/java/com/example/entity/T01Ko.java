@@ -36,6 +36,24 @@ public class T01Ko implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.oyaId)) {
+            isNew = true;
+        }
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.koBn)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.koInfo == null || this.koInfo.toString().replaceAll("　| ", "").equals("");
@@ -386,9 +404,9 @@ public class T01Ko implements IEntity {
                 }
                 t01Mago.setOyaId(this.oyaId);
                 t01Mago.setKoBn(this.koBn);
-                try {
+                if (t01Mago.isNew()) {
                     t01Mago.insert(now, execId);
-                } catch (Exception e) {
+                } else {
                     t01Mago.update(now, execId);
                 }
             }
@@ -398,9 +416,9 @@ public class T01Ko implements IEntity {
         if (this.t01Dinks != null) {
             t01Dinks.setOyaId(this.getOyaId());
             t01Dinks.setKoBn(this.getKoBn());
-            try {
+            if (t01Dinks.isNew()) {
                 t01Dinks.insert(now, execId);
-            } catch (Exception e) {
+            } else {
                 t01Dinks.update(now, execId);
             }
         }
@@ -409,9 +427,9 @@ public class T01Ko implements IEntity {
         if (this.t01Orphan != null) {
             t01Orphan.setOyaId(this.getOyaId());
             t01Orphan.setKoBn(this.getKoBn());
-            try {
+            if (t01Orphan.isNew()) {
                 t01Orphan.insert(now, execId);
-            } catch (Exception e) {
+            } else {
                 t01Orphan.update(now, execId);
             }
         }

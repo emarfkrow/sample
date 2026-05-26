@@ -38,17 +38,7 @@ public class M05Ref2SRegistAction extends BaseAction {
 
                 M05Ref2 e = FormValidator.toBean(M05Ref2.class.getName(), row);
 
-                // 主キーが不足していたらINSERT
-                boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRef2Id())) {
-                    isNew = true;
-                }
-                // 楽観ロック値がなくてもINSERT
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-                    isNew = true;
-                }
-
-                if (isNew) {
+                if (e.isNew()) {
 
                     if (e.insert(now, execId) != 1) {
                         throw new OptLockError("error.cant.insert", "マスタ参照２");

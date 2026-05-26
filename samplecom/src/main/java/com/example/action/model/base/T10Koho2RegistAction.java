@@ -26,17 +26,7 @@ public class T10Koho2RegistAction extends BaseAction {
 
         T10Koho2 e = FormValidator.toBean(T10Koho2.class.getName(), postJson);
 
-        // 主キーが不足していたらINSERT
-        boolean isNew = false;
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getKoho2Id())) {
-            isNew = true;
-        }
-        // 楽観ロック値がなくてもINSERT
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-            isNew = true;
-        }
-
-        if (isNew) {
+        if (e.isNew()) {
 
             if (e.insert(now, execId) != 1) {
                 throw new OptLockError("error.cant.insert", "候補２");

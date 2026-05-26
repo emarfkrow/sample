@@ -34,6 +34,21 @@ public class T02Younger implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.broId)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.youngerInfo == null || this.youngerInfo.toString().replaceAll("　| ", "").equals("");
@@ -329,9 +344,9 @@ public class T02Younger implements IEntity {
         // 末弟の登録
         if (this.t02Youngest != null) {
             t02Youngest.setBroId(this.getBroId());
-            try {
+            if (t02Youngest.isNew()) {
                 t02Youngest.insert(now, execId);
-            } catch (Exception e) {
+            } else {
                 t02Youngest.update(now, execId);
             }
         }

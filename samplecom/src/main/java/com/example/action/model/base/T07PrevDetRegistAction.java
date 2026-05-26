@@ -26,20 +26,7 @@ public class T07PrevDetRegistAction extends BaseAction {
 
         T07PrevDet e = FormValidator.toBean(T07PrevDet.class.getName(), postJson);
 
-        // 主キーが不足していたらINSERT
-        boolean isNew = false;
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getPrevId())) {
-            isNew = true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getPrevBn())) {
-            isNew = true;
-        }
-        // 楽観ロック値がなくてもINSERT
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-            isNew = true;
-        }
-
-        if (isNew) {
+        if (e.isNew()) {
 
             if (e.insert(now, execId) != 1) {
                 throw new OptLockError("error.cant.insert", "前世明細");

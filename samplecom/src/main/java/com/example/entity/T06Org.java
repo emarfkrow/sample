@@ -34,6 +34,21 @@ public class T06Org implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.orgId)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.orgInfo == null || this.orgInfo.toString().replaceAll("　| ", "").equals("");
@@ -337,9 +352,9 @@ public class T06Org implements IEntity {
                     continue;
                 }
                 t06OrgDet.setOrgId(this.orgId);
-                try {
+                if (t06OrgDet.isNew()) {
                     t06OrgDet.insert(now, execId);
-                } catch (Exception e) {
+                } else {
                     t06OrgDet.update(now, execId);
                 }
             }

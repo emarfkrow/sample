@@ -38,26 +38,7 @@ public class MhrUserPosSRegistAction extends BaseAction {
 
                 MhrUserPos e = FormValidator.toBean(MhrUserPos.class.getName(), row);
 
-                // 主キーが不足していたらINSERT
-                boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getBushoId())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getShokuiId())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUserId())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getTekiyoBi())) {
-                    isNew = true;
-                }
-                // 楽観ロック値がなくてもINSERT
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-                    isNew = true;
-                }
-
-                if (isNew) {
+                if (e.isNew()) {
 
                     if (e.insert(now, execId) != 1) {
                         throw new OptLockError("error.cant.insert", "所属マスタ");

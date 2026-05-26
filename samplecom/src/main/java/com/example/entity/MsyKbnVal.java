@@ -40,6 +40,24 @@ public class MsyKbnVal implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kbnNm)) {
+            isNew = true;
+        }
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kbnVal)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.kbnValMei == null || this.kbnValMei.toString().replaceAll("　| ", "").equals("");

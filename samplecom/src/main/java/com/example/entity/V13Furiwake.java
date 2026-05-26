@@ -28,6 +28,14 @@ public class V13Furiwake implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.tableName == null || this.tableName.toString().replaceAll("　| ", "").equals("");

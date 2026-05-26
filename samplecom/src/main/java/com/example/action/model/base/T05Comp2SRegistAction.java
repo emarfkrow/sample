@@ -38,26 +38,7 @@ public class T05Comp2SRegistAction extends BaseAction {
 
                 T05Comp2 e = FormValidator.toBean(T05Comp2.class.getName(), row);
 
-                // 主キーが不足していたらINSERT
-                boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRef1Id())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRef2Id())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRef3Id())) {
-                    isNew = true;
-                }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getTekiyoBi())) {
-                    isNew = true;
-                }
-                // 楽観ロック値がなくてもINSERT
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-                    isNew = true;
-                }
-
-                if (isNew) {
+                if (e.isNew()) {
 
                     if (e.insert(now, execId) != 1) {
                         throw new OptLockError("error.cant.insert", "複合２");

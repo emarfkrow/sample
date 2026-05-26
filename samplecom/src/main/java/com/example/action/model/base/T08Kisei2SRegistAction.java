@@ -38,17 +38,7 @@ public class T08Kisei2SRegistAction extends BaseAction {
 
                 T08Kisei2 e = FormValidator.toBean(T08Kisei2.class.getName(), row);
 
-                // 主キーが不足していたらINSERT
-                boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getKisei2Id())) {
-                    isNew = true;
-                }
-                // 楽観ロック値がなくてもINSERT
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getUpdateTs())) {
-                    isNew = true;
-                }
-
-                if (isNew) {
+                if (e.isNew()) {
 
                     if (e.insert(now, execId) != 1) {
                         throw new OptLockError("error.cant.insert", "寄生２");

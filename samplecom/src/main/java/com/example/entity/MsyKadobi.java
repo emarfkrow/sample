@@ -38,6 +38,24 @@ public class MsyKadobi implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kadoBi)) {
+            isNew = true;
+        }
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.bushoId)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.kadobiF == null || this.kadobiF.toString().replaceAll("　| ", "").equals("");

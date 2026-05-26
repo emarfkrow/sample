@@ -36,6 +36,21 @@ public class T07Reborn implements IEntity {
     }
 
     /** @return boolean */
+    public boolean isNew() {
+        boolean isNew = false;
+
+        // 主キーが不足していたらINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.rebornId)) {
+            isNew = true;
+        }
+        // 楽観ロック値がなくてもINSERT
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+            isNew = true;
+        }
+        return isNew;
+    }
+
+    /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.prevInfo == null || this.prevInfo.toString().replaceAll("　| ", "").equals("");
@@ -361,9 +376,9 @@ public class T07Reborn implements IEntity {
                     continue;
                 }
                 t07RebornDet.setRebornId(this.rebornId);
-                try {
+                if (t07RebornDet.isNew()) {
                     t07RebornDet.insert(now, execId);
-                } catch (Exception e) {
+                } else {
                     t07RebornDet.update(now, execId);
                 }
             }
