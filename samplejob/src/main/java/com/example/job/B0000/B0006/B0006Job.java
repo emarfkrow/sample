@@ -6,6 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.example.job.B0000.B0004.B0004Job;
+
 import jp.co.golorp.emarf.job.BaseJob;
 import jp.co.golorp.emarf.report.PdfUtil;
 import jp.co.golorp.emarf.report.XlsxUtil;
@@ -20,10 +25,10 @@ import jp.co.golorp.emarf.util.MapList;
  */
 public class B0006Job extends BaseJob {
 
-    //    /**
-    //     * logger
-    //     */
-    //    private static final Logger LOG = LoggerFactory.getLogger(B0004Job.class);
+    /**
+     * logger
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(B0004Job.class);
 
     /**
      * エントリポイント
@@ -60,6 +65,8 @@ public class B0006Job extends BaseJob {
 
         String tempFilePath = XlsxUtil.getGeneratedPath(pathes, layoutFileName, layoutSheetMap, baseMei);
         String pdfPath = PdfUtil.byXlsx(tempFilePath);
+
+        LOG.info("pdfPath: " + pdfPath);
     }
 
 }
