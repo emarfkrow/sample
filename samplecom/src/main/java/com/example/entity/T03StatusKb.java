@@ -7,14 +7,14 @@ import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
  * 決裁フロー
  * @author emarfkrow
  */
-public class T00StatusKb implements IEntity {
+public class T03StatusKb implements IEntity {
 
     /** デフォルトコンストラクタ */
-    public T00StatusKb() {
+    public T03StatusKb() {
     }
 
     /** @param values */
-    public T00StatusKb(final String[] values) {
+    public T03StatusKb(final String[] values) {
         this.setFlowId(values[0]);
         this.setTableNm(values[1]);
         this.setPrimaryKeys(values[2]);
@@ -29,7 +29,7 @@ public class T00StatusKb implements IEntity {
     }
 
     /** @param map */
-    public T00StatusKb(final java.util.Map<String, Object> map) {
+    public T03StatusKb(final java.util.Map<String, Object> map) {
         this.setFlowId(IgnoreCaseLinkedMap.get(map, "FLOW_ID"));
         this.setTableNm(IgnoreCaseLinkedMap.get(map, "TABLE_NM"));
         this.setPrimaryKeys(IgnoreCaseLinkedMap.get(map, "PRIMARY_KEYS"));
@@ -211,16 +211,16 @@ public class T00StatusKb implements IEntity {
         }
     }
 
-    /** 決裁コメント */
+    /** 決裁理由 */
     private String riyuTx;
 
-    /** @return 決裁コメント */
+    /** @return 決裁理由 */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "RIYU_TX", index = 8)
     public String getRiyuTx() {
         return this.riyuTx;
     }
 
-    /** @param o 決裁コメント */
+    /** @param o 決裁理由 */
     public void setRiyuTx(final Object o) {
         if (o != null) {
             this.riyuTx = o.toString();
@@ -371,7 +371,7 @@ public class T00StatusKb implements IEntity {
      * @param param1 フローID
      * @return 決裁フロー
      */
-    public static T00StatusKb get(final Object param1) {
+    public static T03StatusKb get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("`FLOW_ID` = :flow_id");
         String sql = "";
@@ -388,11 +388,94 @@ public class T00StatusKb implements IEntity {
         sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
         sql += "FROM \n";
-        sql += "    T00_STATUS_KB a \n";
+        sql += "    T03_STATUS_KB a \n";
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("flow_id", param1);
-        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T00StatusKb.class);
+        return jp.co.golorp.emarf.sql.Queries.get(sql, map, T03StatusKb.class);
+    }
+
+    /**
+     * 決裁フロー追加
+     * @param now システム日時
+     * @param execId 登録者
+     * @return 追加件数
+     */
+    public int insert(final java.time.LocalDateTime now, final String execId) {
+
+        // フローIDの採番処理
+        numbering();
+
+        // 決裁フローの登録
+        String sql = "INSERT INTO T03_STATUS_KB(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+    }
+
+    /** @return insert用のname句 */
+    private String names() {
+        java.util.List<String> nameList = new java.util.ArrayList<String>();
+        nameList.add("`FLOW_ID` -- :flow_id");
+        nameList.add("`TABLE_NM` -- :table_nm");
+        nameList.add("`PRIMARY_KEYS` -- :primary_keys");
+        nameList.add("`STATUS_KB` -- :status_kb");
+        nameList.add("`KESSAI_TS` -- :kessai_ts");
+        nameList.add("`KESSAI_ID` -- :kessai_id");
+        nameList.add("`RIYU_TX` -- :riyu_tx");
+        nameList.add("`INSERT_TS` -- :insert_ts");
+        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
+        nameList.add("`UPDATE_TS` -- :update_ts");
+        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        return String.join("\r\n    , ", nameList);
+    }
+
+    /** @return insert用のvalue句 */
+    private String values() {
+        java.util.List<String> valueList = new java.util.ArrayList<String>();
+        valueList.add(":flow_id");
+        valueList.add(":table_nm");
+        valueList.add(":primary_keys");
+        valueList.add(":status_kb");
+        valueList.add("LEFT(DATE_FORMAT (now(3), '%Y-%m-%dT%H:%i:%s.%f'), 23)");
+        valueList.add(":kessai_id");
+        valueList.add(":riyu_tx");
+        valueList.add(":insert_ts");
+        valueList.add(":insert_user_id");
+        valueList.add(":update_ts");
+        valueList.add(":update_user_id");
+        return String.join("\r\n    , ", valueList);
+    }
+
+    /** フローIDの採番処理 */
+    private void numbering() {
+        if (this.flowId != null) {
+            return;
+        }
+        String sql = "SELECT CASE WHEN MAX(e.`FLOW_ID`) IS NULL THEN 0 ELSE MAX(e.`FLOW_ID`) * 1 END + 1 AS `FLOW_ID` FROM T03_STATUS_KB e";
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
+        Object o = mapList.get(0).get("FLOW_ID");
+        this.setFlowId(o);
+    }
+
+    /**
+     * @param now システム日時
+     * @param execId 実行ID
+     * @return マップ化したエンティティ
+     */
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        map.put("flow_id", this.flowId);
+        map.put("table_nm", this.tableNm);
+        map.put("primary_keys", this.primaryKeys);
+        map.put("status_kb", this.statusKb);
+        map.put("kessai_ts", this.kessaiTs);
+        map.put("kessai_id", this.kessaiId);
+        map.put("riyu_tx", this.riyuTx);
+        map.put("insert_ts", now);
+        map.put("insert_user_id", execId);
+        map.put("update_ts", now);
+        map.put("update_user_id", execId);
+        return map;
     }
 }

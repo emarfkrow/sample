@@ -17,16 +17,18 @@ public class T03Trans implements IEntity {
     public T03Trans(final String[] values) {
         this.setTransId(values[0]);
         this.setTransInfo(values[1]);
-        this.setInsertTs(values[2]);
-        this.setInsertUserId(values[3]);
-        this.setUpdateTs(values[4]);
-        this.setUpdateUserId(values[5]);
+        this.setStatusKb(values[2]);
+        this.setInsertTs(values[3]);
+        this.setInsertUserId(values[4]);
+        this.setUpdateTs(values[5]);
+        this.setUpdateUserId(values[6]);
     }
 
     /** @param map */
     public T03Trans(final java.util.Map<String, Object> map) {
         this.setTransId(IgnoreCaseLinkedMap.get(map, "TRANS_ID"));
         this.setTransInfo(IgnoreCaseLinkedMap.get(map, "TRANS_INFO"));
+        this.setStatusKb(IgnoreCaseLinkedMap.get(map, "STATUS_KB"));
         this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
         this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
         this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
@@ -113,6 +115,24 @@ public class T03Trans implements IEntity {
         }
     }
 
+    /** ステータス区分 */
+    private String statusKb;
+
+    /** @return ステータス区分 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "STATUS_KB", index = 4)
+    public String getStatusKb() {
+        return this.statusKb;
+    }
+
+    /** @param o ステータス区分 */
+    public void setStatusKb(final Object o) {
+        if (o != null) {
+            this.statusKb = o.toString();
+        } else {
+            this.statusKb = null;
+        }
+    }
+
     /** 作成タイムスタンプ */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
@@ -120,7 +140,7 @@ public class T03Trans implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return 作成タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 4)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 5)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -147,7 +167,7 @@ public class T03Trans implements IEntity {
     private String insertUserId;
 
     /** @return 作成者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 5)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 6)
     public String getInsertUserId() {
         return this.insertUserId;
     }
@@ -166,7 +186,7 @@ public class T03Trans implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 6)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 7)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -188,7 +208,7 @@ public class T03Trans implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return 更新タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 7)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 8)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -217,7 +237,7 @@ public class T03Trans implements IEntity {
     private String updateUserId;
 
     /** @return 更新者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 8)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 9)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
@@ -236,7 +256,7 @@ public class T03Trans implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 9)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 10)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -254,7 +274,7 @@ public class T03Trans implements IEntity {
     private String riyuTx;
 
     /** @return riyuTx */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "riyu_tx", index = 10)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "riyu_tx", index = 11)
     public String getRiyuTx() {
         return this.riyuTx;
     }
@@ -278,6 +298,7 @@ public class T03Trans implements IEntity {
         sql += "SELECT \n";
         sql += "      a.`TRANS_ID` \n";
         sql += "    , a.`TRANS_INFO` \n";
+        sql += "    , a.`STATUS_KB` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
         sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
@@ -306,6 +327,7 @@ public class T03Trans implements IEntity {
         T03TransHis t03TransHis = new T03TransHis();
         t03TransHis.setTransId(this.transId);
         t03TransHis.setTransInfo(this.transInfo);
+        t03TransHis.setStatusKb(this.statusKb);
         t03TransHis.setInsertTs(this.insertTs);
         t03TransHis.setInsertUserId(this.insertUserId);
         t03TransHis.setUpdateTs(this.updateTs);
@@ -323,6 +345,7 @@ public class T03Trans implements IEntity {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`TRANS_ID` -- :trans_id");
         nameList.add("`TRANS_INFO` -- :trans_info");
+        nameList.add("`STATUS_KB` -- :status_kb");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -335,6 +358,7 @@ public class T03Trans implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":trans_id");
         valueList.add(":trans_info");
+        valueList.add(":status_kb");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -366,6 +390,7 @@ public class T03Trans implements IEntity {
         T03TransHis t03TransHis = new T03TransHis();
         t03TransHis.setTransId(this.transId);
         t03TransHis.setTransInfo(this.transInfo);
+        t03TransHis.setStatusKb(this.statusKb);
         t03TransHis.setInsertTs(this.insertTs);
         t03TransHis.setInsertUserId(this.insertUserId);
         t03TransHis.setUpdateTs(this.updateTs);
@@ -383,6 +408,7 @@ public class T03Trans implements IEntity {
         java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`TRANS_ID` = :trans_id");
         setList.add("`TRANS_INFO` = :trans_info");
+        setList.add("`STATUS_KB` = :status_kb");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
@@ -399,14 +425,6 @@ public class T03Trans implements IEntity {
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /** @return where句 */
-    private String getWhere() {
-        java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`TRANS_ID` = :trans_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
-        return String.join(" AND ", whereList);
-    }
-
     /**
      * @param now システム日時
      * @param execId 実行ID
@@ -416,10 +434,19 @@ public class T03Trans implements IEntity {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("trans_id", this.transId);
         map.put("trans_info", this.transInfo);
+        map.put("status_kb", this.statusKb);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);
         map.put("update_user_id", execId);
         return map;
+    }
+
+    /** @return where句 */
+    private String getWhere() {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
+        whereList.add("`TRANS_ID` = :trans_id");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        return String.join(" AND ", whereList);
     }
 }

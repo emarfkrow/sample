@@ -26,6 +26,11 @@
         <div id="transInfo">
           <label for="T03Trans.transInfo" th:text="#{T03Trans.transInfo}">変遷情報</label><input type="text" id="T03Trans.transInfo" name="T03Trans.transInfo" maxlength="300" />
         </div>
+        <div id="statusKb">
+          <fieldset id="T03Trans.statusKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:STATUS_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{T03Trans.statusKb}">ステータス区分</legend>
+          </fieldset>
+        </div>
         <div id="insertTs">
           <label th:text="#{T03Trans.insertTs}" class="meta">作成タイムスタンプ</label><span id="T03Trans.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T03Trans.insertTs" name="T03Trans.insertTs" class="meta" />
         </div>
@@ -47,6 +52,10 @@
       </div>
       <div class="submits">
         <button id="DeleteT03Trans" type="submit" class="delete" data-action="T03TransDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="PermitT03Trans" type="submit" class="permit" data-action="T03TransPermit.ajax" th:text="#{common.permit}" tabindex="-1">承認</button>
+        <button id="ForbidT03Trans" type="submit" class="forbid" data-action="T03TransForbid.ajax" th:text="#{common.forbid}" tabindex="-1">否認</button>
+        <button id="ApplyT03Trans" type="submit" class="apply" data-action="T03TransApply.ajax" th:text="#{common.apply}" tabindex="-1">申請</button>
+        <button id="CancelT03Trans" type="submit" class="cancel" data-action="T03TransCancel.ajax" th:text="#{common.cancel}" tabindex="-1">取消</button>
         <button id="RegistT03Trans" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.historyReason(this)) { return false; }">登録</button>
       </div>
     </form>

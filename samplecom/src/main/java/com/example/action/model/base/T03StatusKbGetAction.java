@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.entity.T00StatusKb;
+import com.example.entity.T03StatusKb;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.NoDataError;
@@ -14,7 +14,7 @@ import jp.co.golorp.emarf.exception.NoDataError;
  *
  * @author emarfkrow
  */
-public class T00StatusKbGetAction extends BaseAction {
+public class T03StatusKbGetAction extends BaseAction {
 
     /** 決裁フロー照会処理 */
     @Override
@@ -27,7 +27,7 @@ public class T00StatusKbGetAction extends BaseAction {
 
         Object flowId = postJson.get("flowId");
         if (flowId == null) {
-            flowId = postJson.get("T00StatusKb.flowId");
+            flowId = postJson.get("T03StatusKb.flowId");
         }
         if (flowId == null) {
             isAllKey = false;
@@ -39,8 +39,8 @@ public class T00StatusKbGetAction extends BaseAction {
         }
 
         try {
-            T00StatusKb t00StatusKb = T00StatusKb.get(flowId);
-            map.put("T00StatusKb", t00StatusKb);
+            T03StatusKb t03StatusKb = T03StatusKb.get(flowId);
+            map.put("T03StatusKb", t03StatusKb);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
                 throw e;

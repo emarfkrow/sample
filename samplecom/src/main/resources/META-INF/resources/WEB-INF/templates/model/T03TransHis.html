@@ -29,6 +29,11 @@
         <div id="transInfo">
           <label th:text="#{T03TransHis.transInfo}">変遷情報</label><span id="T03TransHis.transInfo" class="history"></span><input type="text" id="T03TransHis.transInfo" name="T03TransHis.transInfo" style="display: none;" class="history" />
         </div>
+        <div id="statusKb">
+          <fieldset id="T03TransHis.statusKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:STATUS_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI" class=" history">
+            <legend th:text="#{T03TransHis.statusKb}">ステータス区分</legend>
+          </fieldset>
+        </div>
         <div id="riyuTx">
           <label th:text="#{T03TransHis.riyuTx}">変更理由</label><span id="T03TransHis.riyuTx" class="history"></span><input type="text" id="T03TransHis.riyuTx" name="T03TransHis.riyuTx" style="display: none;" class="history" />
         </div>

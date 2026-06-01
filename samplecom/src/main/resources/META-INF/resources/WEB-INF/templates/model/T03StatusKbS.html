@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T03StatusKbS.title}">決裁フロー</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T03StatusKb.js}"></script>
+<script th:src="@{/model/T03StatusKbGridColumns.js}"></script>
+<!-- 決裁フローの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T03StatusKbS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T03StatusKbSearchForm" action="T03StatusKbSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T03StatusKbS.legend}">legend</legend>
+        <div id="flowId">
+          <label for="T03StatusKb.flowId" th:text="#{T03StatusKb.flowId}">フローID</label><input type="text" id="T03StatusKb.flowId" name="T03StatusKb.flowId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="tableNm">
+          <label for="T03StatusKb.tableNm" th:text="#{T03StatusKb.tableNm}">テーブル名称</label><input type="text" id="T03StatusKb.tableNm" name="T03StatusKb.tableNm" maxlength="20" />
+        </div>
+        <div id="primaryKeys">
+          <label for="T03StatusKb.primaryKeys" th:text="#{T03StatusKb.primaryKeys}">主キー</label><input type="text" id="T03StatusKb.primaryKeys" name="T03StatusKb.primaryKeys" maxlength="300" />
+        </div>
+        <div id="statusKb">
+          <fieldset id="T03StatusKb.statusKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:STATUS_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{T03StatusKb.statusKb}">ステータス区分</legend>
+          </fieldset>
+        </div>
+        <div id="kessaiId">
+          <label for="T03StatusKb.kessaiId" th:text="#{T03StatusKb.kessaiId}">決裁者ID</label><input type="text" id="T03StatusKb.kessaiId" name="T03StatusKb.kessaiId" maxlength="10" />
+        </div>
+        <div id="riyuTx">
+          <label for="T03StatusKb.riyuTx" th:text="#{T03StatusKb.riyuTx}">決裁理由</label><input type="text" id="T03StatusKb.riyuTx" name="T03StatusKb.riyuTx" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT03StatusKb" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchT03StatusKb" type="submit" class="search" data-gridId="T03StatusKbGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T03StatusKbSRegistForm" action="T03StatusKbSRegist.ajax" class="regist">
+      <h3 th:text="#{T03StatusKb.h3}">h3</h3>
+      <div id="T03StatusKbGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/T03StatusKb.html}"></div>
+      <div id="T03StatusKbPager"></div>
+      <div class="buttons">
+        <a th:href="@{T03StatusKbSearch.xlsx(baseMei=#{T03StatusKbS.h2})}" id="T03StatusKbSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

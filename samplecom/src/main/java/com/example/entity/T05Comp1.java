@@ -453,15 +453,6 @@ public class T05Comp1 implements IEntity {
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /** @return where句 */
-    private String getWhere() {
-        java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`REF1_ID` = :ref_1_id");
-        whereList.add("`REF2_ID` = :ref_2_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
-        return String.join(" AND ", whereList);
-    }
-
     /**
      * @param now システム日時
      * @param execId 実行ID
@@ -477,6 +468,15 @@ public class T05Comp1 implements IEntity {
         map.put("update_ts", now);
         map.put("update_user_id", execId);
         return map;
+    }
+
+    /** @return where句 */
+    private String getWhere() {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
+        whereList.add("`REF1_ID` = :ref_1_id");
+        whereList.add("`REF2_ID` = :ref_2_id");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        return String.join(" AND ", whereList);
     }
 
     /*

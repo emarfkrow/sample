@@ -1,6 +1,7 @@
 SELECT
       a.`TRANS_ID` AS `TRANS_ID`
     , a.`TRANS_INFO` AS `TRANS_INFO`
+    , a.`STATUS_KB` AS `STATUS_KB`
     , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
     , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS `INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
@@ -13,6 +14,7 @@ WHERE
     1 = 1 
     AND a.`TRANS_ID` = :trans_id 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`TRANS_INFO`)) LIKE UPPER (CONCAT ('%', :trans_info, '%')) 
+    AND TRIM(TRAILING ' ' FROM a.`STATUS_KB`) IN (:status_kb) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 

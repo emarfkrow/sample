@@ -18,11 +18,12 @@ public class T03TransHis implements IEntity {
         this.setTransId(values[0]);
         this.setTransBn(values[1]);
         this.setTransInfo(values[2]);
-        this.setRiyuTx(values[3]);
-        this.setInsertTs(values[4]);
-        this.setInsertUserId(values[5]);
-        this.setUpdateTs(values[6]);
-        this.setUpdateUserId(values[7]);
+        this.setStatusKb(values[3]);
+        this.setRiyuTx(values[4]);
+        this.setInsertTs(values[5]);
+        this.setInsertUserId(values[6]);
+        this.setUpdateTs(values[7]);
+        this.setUpdateUserId(values[8]);
     }
 
     /** @param map */
@@ -30,6 +31,7 @@ public class T03TransHis implements IEntity {
         this.setTransId(IgnoreCaseLinkedMap.get(map, "TRANS_ID"));
         this.setTransBn(IgnoreCaseLinkedMap.get(map, "TRANS_BN"));
         this.setTransInfo(IgnoreCaseLinkedMap.get(map, "TRANS_INFO"));
+        this.setStatusKb(IgnoreCaseLinkedMap.get(map, "STATUS_KB"));
         this.setRiyuTx(IgnoreCaseLinkedMap.get(map, "RIYU_TX"));
         this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
         this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
@@ -142,11 +144,29 @@ public class T03TransHis implements IEntity {
         }
     }
 
+    /** ステータス区分 */
+    private String statusKb;
+
+    /** @return ステータス区分 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "STATUS_KB", index = 5)
+    public String getStatusKb() {
+        return this.statusKb;
+    }
+
+    /** @param o ステータス区分 */
+    public void setStatusKb(final Object o) {
+        if (o != null) {
+            this.statusKb = o.toString();
+        } else {
+            this.statusKb = null;
+        }
+    }
+
     /** 変更理由 */
     private String riyuTx;
 
     /** @return 変更理由 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "RIYU_TX", index = 5)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "RIYU_TX", index = 6)
     public String getRiyuTx() {
         return this.riyuTx;
     }
@@ -167,7 +187,7 @@ public class T03TransHis implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return 作成タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 6)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 7)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -194,7 +214,7 @@ public class T03TransHis implements IEntity {
     private String insertUserId;
 
     /** @return 作成者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 7)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 8)
     public String getInsertUserId() {
         return this.insertUserId;
     }
@@ -213,7 +233,7 @@ public class T03TransHis implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 8)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 9)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -235,7 +255,7 @@ public class T03TransHis implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return 更新タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 9)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 10)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -264,7 +284,7 @@ public class T03TransHis implements IEntity {
     private String updateUserId;
 
     /** @return 更新者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 10)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 11)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
@@ -283,7 +303,7 @@ public class T03TransHis implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 12)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -312,6 +332,7 @@ public class T03TransHis implements IEntity {
         sql += "      a.`TRANS_ID` \n";
         sql += "    , a.`TRANS_BN` \n";
         sql += "    , a.`TRANS_INFO` \n";
+        sql += "    , a.`STATUS_KB` \n";
         sql += "    , a.`RIYU_TX` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
@@ -349,6 +370,7 @@ public class T03TransHis implements IEntity {
         nameList.add("`TRANS_ID` -- :trans_id");
         nameList.add("`TRANS_BN` -- :trans_bn");
         nameList.add("`TRANS_INFO` -- :trans_info");
+        nameList.add("`STATUS_KB` -- :status_kb");
         nameList.add("`RIYU_TX` -- :riyu_tx");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
@@ -363,6 +385,7 @@ public class T03TransHis implements IEntity {
         valueList.add(":trans_id");
         valueList.add(":trans_bn");
         valueList.add(":trans_info");
+        valueList.add(":status_kb");
         valueList.add(":riyu_tx");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
@@ -406,6 +429,7 @@ public class T03TransHis implements IEntity {
         setList.add("`TRANS_ID` = :trans_id");
         setList.add("`TRANS_BN` = :trans_bn");
         setList.add("`TRANS_INFO` = :trans_info");
+        setList.add("`STATUS_KB` = :status_kb");
         setList.add("`RIYU_TX` = :riyu_tx");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
@@ -423,15 +447,6 @@ public class T03TransHis implements IEntity {
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /** @return where句 */
-    private String getWhere() {
-        java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`TRANS_ID` = :trans_id");
-        whereList.add("`TRANS_BN` = :trans_bn");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
-        return String.join(" AND ", whereList);
-    }
-
     /**
      * @param now システム日時
      * @param execId 実行ID
@@ -442,11 +457,21 @@ public class T03TransHis implements IEntity {
         map.put("trans_id", this.transId);
         map.put("trans_bn", this.transBn);
         map.put("trans_info", this.transInfo);
+        map.put("status_kb", this.statusKb);
         map.put("riyu_tx", this.riyuTx);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);
         map.put("update_user_id", execId);
         return map;
+    }
+
+    /** @return where句 */
+    private String getWhere() {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
+        whereList.add("`TRANS_ID` = :trans_id");
+        whereList.add("`TRANS_BN` = :trans_bn");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        return String.join(" AND ", whereList);
     }
 }

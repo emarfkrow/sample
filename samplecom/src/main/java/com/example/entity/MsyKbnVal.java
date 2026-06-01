@@ -448,15 +448,6 @@ public class MsyKbnVal implements IEntity {
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /** @return where句 */
-    private String getWhere() {
-        java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KBN_NM` = :kbn_nm");
-        whereList.add("`KBN_VAL` = :kbn_val");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
-        return String.join(" AND ", whereList);
-    }
-
     /**
      * @param now システム日時
      * @param execId 実行ID
@@ -474,5 +465,14 @@ public class MsyKbnVal implements IEntity {
         map.put("update_ts", now);
         map.put("update_user_id", execId);
         return map;
+    }
+
+    /** @return where句 */
+    private String getWhere() {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
+        whereList.add("`KBN_NM` = :kbn_nm");
+        whereList.add("`KBN_VAL` = :kbn_val");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        return String.join(" AND ", whereList);
     }
 }

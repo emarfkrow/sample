@@ -49,6 +49,20 @@ public class T03TransRegistForm implements IForm {
         this.transInfo = p;
     }
 
+    /** ステータス区分 */
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 2)
+    private String statusKb;
+
+    /** @return ステータス区分 */
+    public String getStatusKb() {
+        return statusKb;
+    }
+
+    /** @param p ステータス区分 */
+    public void setStatusKb(final String p) {
+        this.statusKb = p;
+    }
+
     /** 更新タイムスタンプ */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3}(\\+\\d{2}:\\d{2})?)?)?)?")
     @jp.co.golorp.emarf.validation.OptLock

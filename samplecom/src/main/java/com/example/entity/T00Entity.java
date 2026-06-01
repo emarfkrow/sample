@@ -1082,14 +1082,6 @@ public class T00Entity implements IEntity {
         return String.join("\r\n    , ", setList);
     }
 
-    /** @return where句 */
-    private String getWhere() {
-        java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`ENTITY_ID` = :entity_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
-        return String.join(" AND ", whereList);
-    }
-
     /**
      * @param now システム日時
      * @param execId 実行ID
@@ -1132,5 +1124,13 @@ public class T00Entity implements IEntity {
         map.put("update_ts", now);
         map.put("update_user_id", execId);
         return map;
+    }
+
+    /** @return where句 */
+    private String getWhere() {
+        java.util.List<String> whereList = new java.util.ArrayList<String>();
+        whereList.add("`ENTITY_ID` = :entity_id");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        return String.join(" AND ", whereList);
     }
 }
