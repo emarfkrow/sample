@@ -870,6 +870,22 @@ public class T00Entity implements IEntity {
         }
     }
 
+    /** kessaiTx */
+    private String kessaiTx;
+
+    /** @return kessaiTx */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "kessai_tx", index = 38)
+    public String getKessaiTx() {
+        return this.kessaiTx;
+    }
+
+    /** @param o kessaiTx */
+    public void setKessaiTx(final Object o) {
+        if (o != null) {
+            this.kessaiTx = o.toString();
+        }
+    }
+
     /**
      * エンティティ照会
      * @param param1 エンティティID
@@ -1038,6 +1054,22 @@ public class T00Entity implements IEntity {
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime now, final String execId) {
+
+        // 決裁フローの登録
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.statusKb) && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kessaiTx)) {
+            T03StatusKb t03StatusKb = new T03StatusKb();
+            t03StatusKb.setTableNm("T00_ENTITY");
+            t03StatusKb.setPrimaryKeys(String.join(",", this.getEntityId().toString()));
+            t03StatusKb.setStatusKb(this.statusKb);
+            t03StatusKb.setKessaiTs(now);
+            t03StatusKb.setKessaiId(execId);
+            t03StatusKb.setKessaiTx(this.kessaiTx);
+            t03StatusKb.setInsertTs(this.insertTs);
+            t03StatusKb.setInsertUserId(this.insertUserId);
+            t03StatusKb.setUpdateTs(this.updateTs);
+            t03StatusKb.setUpdateUserId(this.updateUserId);
+            t03StatusKb.insert(now, execId);
+        }
 
         // エンティティの登録
         String sql = "UPDATE T00_ENTITY\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();

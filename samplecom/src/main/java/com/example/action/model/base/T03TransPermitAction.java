@@ -33,9 +33,8 @@ public class T03TransPermitAction extends BaseAction {
 
         T03Trans e = FormValidator.toBean(T03Trans.class.getName(), postJson);
 
-        T03Trans f = T03Trans.get(e.getTransId());
-        f.setStatusKb(1);
-        if (f.update(now, execId) != 1) {
+        e.setStatusKb(1);
+        if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.permit", "変遷");
         }
 

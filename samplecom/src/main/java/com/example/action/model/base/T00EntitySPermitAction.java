@@ -44,9 +44,8 @@ public class T00EntitySPermitAction extends BaseAction {
                     throw new OptLockError("error.cant.permit", "エンティティ");
                 }
 
-                T00Entity f = T00Entity.get(entityId);
-                f.setStatusKb(1);
-                if (f.update(now, execId) != 1) {
+                e.setStatusKb(1);
+                if (e.update(now, execId) != 1) {
                     throw new OptLockError("error.cant.permit", "エンティティ");
                 }
                 ++count;

@@ -33,9 +33,8 @@ public class T03TransApplyAction extends BaseAction {
 
         T03Trans e = FormValidator.toBean(T03Trans.class.getName(), postJson);
 
-        T03Trans f = T03Trans.get(e.getTransId());
-        f.setStatusKb(0);
-        if (f.update(now, execId) != 1) {
+        e.setStatusKb(0);
+        if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.apply", "変遷");
         }
 

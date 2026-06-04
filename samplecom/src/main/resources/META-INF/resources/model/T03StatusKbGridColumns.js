@@ -12,7 +12,7 @@ $(function() {
         Column.select('STATUS_KB', Messages['T03StatusKbGrid.statusKb'], 30, '', { json: 'MsyKbnValSearch.json', paramkey: 'KBN_NM', value: 'KBN_VAL', label: 'KBN_VAL_MEI' }),
         Column.cell('KESSAI_TS', Messages['T03StatusKbGrid.kessaiTs'], 230, '', Slick.Formatters.Extends.Timestamp),
         Column.text('KESSAI_ID', Messages['T03StatusKbGrid.kessaiId'], 100, '', null),
-        Column.longText('RIYU_TX', Messages['T03StatusKbGrid.riyuTx'], 300, '', null),
+        Column.longText('KESSAI_TX', Messages['T03StatusKbGrid.kessaiTx'], 300, '', null),
         Column.cell('UPDATE_TS', Messages['T03StatusKbGrid.updateTs'], 230, 'metaInfo optLock', Slick.Formatters.Extends.Timestamp),
     ];
 });

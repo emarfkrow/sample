@@ -44,9 +44,8 @@ public class T00EntitySCancelAction extends BaseAction {
                     throw new OptLockError("error.cant.cancel", "エンティティ");
                 }
 
-                T00Entity f = T00Entity.get(entityId);
-                f.setStatusKb(null);
-                if (f.update(now, execId) != 1) {
+                e.setStatusKb(null);
+                if (e.update(now, execId) != 1) {
                     throw new OptLockError("error.cant.cancel", "エンティティ");
                 }
                 ++count;

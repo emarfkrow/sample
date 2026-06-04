@@ -52,11 +52,11 @@
       </div>
       <div class="submits">
         <button id="DeleteT03Trans" type="submit" class="delete" data-action="T03TransDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="PermitT03Trans" type="submit" class="permit" data-action="T03TransPermit.ajax" th:text="#{common.permit}" tabindex="-1">承認</button>
-        <button id="ForbidT03Trans" type="submit" class="forbid" data-action="T03TransForbid.ajax" th:text="#{common.forbid}" tabindex="-1">否認</button>
-        <button id="ApplyT03Trans" type="submit" class="apply" data-action="T03TransApply.ajax" th:text="#{common.apply}" tabindex="-1">申請</button>
-        <button id="CancelT03Trans" type="submit" class="cancel" data-action="T03TransCancel.ajax" th:text="#{common.cancel}" tabindex="-1">取消</button>
-        <button id="RegistT03Trans" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.historyReason(this)) { return false; }">登録</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="PermitT03Trans" data-action="T03TransPermit.ajax" class="permit" th:text="#{common.permit}" tabindex="-1">承認</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ForbidT03Trans" data-action="T03TransForbid.ajax" class="forbid" th:text="#{common.forbid}" tabindex="-1">否認</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ApplyT03Trans" data-action="T03TransApply.ajax" class="apply" th:text="#{common.apply}" tabindex="-1">申請</button>
+        <button type="submit" id="CancelT03Trans" data-action="T03TransCancel.ajax" class="cancel" th:text="#{common.cancel}" tabindex="-1">取消</button>
+        <button id="RegistT03Trans" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.rirekiTx(this)) { return false; }">登録</button>
       </div>
     </form>
   </div>

@@ -33,9 +33,8 @@ public class T00EntityCancelAction extends BaseAction {
 
         T00Entity e = FormValidator.toBean(T00Entity.class.getName(), postJson);
 
-        T00Entity f = T00Entity.get(e.getEntityId());
-        f.setStatusKb(null);
-        if (f.update(now, execId) != 1) {
+        e.setStatusKb(null);
+        if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.cancel", "エンティティ");
         }
 

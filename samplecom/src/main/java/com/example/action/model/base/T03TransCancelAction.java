@@ -33,9 +33,8 @@ public class T03TransCancelAction extends BaseAction {
 
         T03Trans e = FormValidator.toBean(T03Trans.class.getName(), postJson);
 
-        T03Trans f = T03Trans.get(e.getTransId());
-        f.setStatusKb(null);
-        if (f.update(now, execId) != 1) {
+        e.setStatusKb(null);
+        if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.cancel", "変遷");
         }
 

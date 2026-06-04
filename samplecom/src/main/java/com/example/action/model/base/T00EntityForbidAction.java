@@ -33,9 +33,8 @@ public class T00EntityForbidAction extends BaseAction {
 
         T00Entity e = FormValidator.toBean(T00Entity.class.getName(), postJson);
 
-        T00Entity f = T00Entity.get(e.getEntityId());
-        f.setStatusKb(-1);
-        if (f.update(now, execId) != 1) {
+        e.setStatusKb(-1);
+        if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.forbid", "エンティティ");
         }
 

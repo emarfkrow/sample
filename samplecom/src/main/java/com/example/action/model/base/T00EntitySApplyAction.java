@@ -44,9 +44,8 @@ public class T00EntitySApplyAction extends BaseAction {
                     throw new OptLockError("error.cant.apply", "エンティティ");
                 }
 
-                T00Entity f = T00Entity.get(entityId);
-                f.setStatusKb(0);
-                if (f.update(now, execId) != 1) {
+                e.setStatusKb(0);
+                if (e.update(now, execId) != 1) {
                     throw new OptLockError("error.cant.apply", "エンティティ");
                 }
                 ++count;

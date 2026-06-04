@@ -52,13 +52,13 @@
         <button type="button" class="reset" id="ResetT03TransS" th:text="#{common.reset}" onClick="Base.listReset('T03Trans');">reset</button>
         <a th:href="@{T03TransSearch.xlsx(baseMei=#{T03TransS.h2})}" id="T03TransSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
         <button type="submit" id="DeleteT03TransS" data-action="T03TransSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button type="submit" id="PermitT03TransS" data-action="T03TransSPermit.ajax" class="permit selectRows" th:text="#{common.permit}" tabindex="-1">承認</button>
-        <button type="submit" id="ForbidT03TransS" data-action="T03TransSForbid.ajax" class="forbid selectRows" th:text="#{common.forbid}" tabindex="-1">否認</button>
-        <button type="submit" id="ApplyT03TransS" data-action="T03TransSApply.ajax" class="apply selectRows" th:text="#{common.apply}" tabindex="-1">申請</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="PermitT03TransS" data-action="T03TransSPermit.ajax" class="permit selectRows" th:text="#{common.permit}" tabindex="-1">承認</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ForbidT03TransS" data-action="T03TransSForbid.ajax" class="forbid selectRows" th:text="#{common.forbid}" tabindex="-1">否認</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ApplyT03TransS" data-action="T03TransSApply.ajax" class="apply selectRows" th:text="#{common.apply}" tabindex="-1">申請</button>
         <button type="submit" id="CancelT03TransS" data-action="T03TransSCancel.ajax" class="cancel selectRows" th:text="#{common.cancel}" tabindex="-1">取消</button>
       </div>
       <div class="submits">
-        <button id="RegistT03TransS" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.historyReason(this)) { return false; }">submit</button>
+        <button id="RegistT03TransS" type="submit" onclick="if (!Base.rirekiTx(this)) { return false; }" class="regist" th:text="#{common.regist}">submit</button>
       </div>
     </form>
   </div>

@@ -44,9 +44,8 @@ public class T03TransSPermitAction extends BaseAction {
                     throw new OptLockError("error.cant.permit", "変遷");
                 }
 
-                T03Trans f = T03Trans.get(transId);
-                f.setStatusKb(1);
-                if (f.update(now, execId) != 1) {
+                e.setStatusKb(1);
+                if (e.update(now, execId) != 1) {
                     throw new OptLockError("error.cant.permit", "変遷");
                 }
                 ++count;

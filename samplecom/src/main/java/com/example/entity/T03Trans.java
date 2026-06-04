@@ -270,19 +270,35 @@ public class T03Trans implements IEntity {
         }
     }
 
-    /** riyuTx */
-    private String riyuTx;
+    /** rirekiTx */
+    private String rirekiTx;
 
-    /** @return riyuTx */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "riyu_tx", index = 11)
-    public String getRiyuTx() {
-        return this.riyuTx;
+    /** @return rirekiTx */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "rireki_tx", index = 11)
+    public String getRirekiTx() {
+        return this.rirekiTx;
     }
 
-    /** @param o riyuTx */
-    public void setRiyuTx(final Object o) {
+    /** @param o rirekiTx */
+    public void setRirekiTx(final Object o) {
         if (o != null) {
-            this.riyuTx = o.toString();
+            this.rirekiTx = o.toString();
+        }
+    }
+
+    /** kessaiTx */
+    private String kessaiTx;
+
+    /** @return kessaiTx */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "kessai_tx", index = 12)
+    public String getKessaiTx() {
+        return this.kessaiTx;
+    }
+
+    /** @param o kessaiTx */
+    public void setKessaiTx(final Object o) {
+        if (o != null) {
+            this.kessaiTx = o.toString();
         }
     }
 
@@ -332,7 +348,7 @@ public class T03Trans implements IEntity {
         t03TransHis.setInsertUserId(this.insertUserId);
         t03TransHis.setUpdateTs(this.updateTs);
         t03TransHis.setUpdateUserId(this.updateUserId);
-        t03TransHis.setRiyuTx(this.riyuTx);
+        t03TransHis.setRirekiTx(this.rirekiTx);
         t03TransHis.insert(now, execId);
 
         // 変遷の登録
@@ -386,6 +402,22 @@ public class T03Trans implements IEntity {
      */
     public int update(final java.time.LocalDateTime now, final String execId) {
 
+        // 決裁フローの登録
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.statusKb) && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kessaiTx)) {
+            T03StatusKb t03StatusKb = new T03StatusKb();
+            t03StatusKb.setTableNm("T03_TRANS");
+            t03StatusKb.setPrimaryKeys(String.join(",", this.getTransId().toString()));
+            t03StatusKb.setStatusKb(this.statusKb);
+            t03StatusKb.setKessaiTs(now);
+            t03StatusKb.setKessaiId(execId);
+            t03StatusKb.setKessaiTx(this.kessaiTx);
+            t03StatusKb.setInsertTs(this.insertTs);
+            t03StatusKb.setInsertUserId(this.insertUserId);
+            t03StatusKb.setUpdateTs(this.updateTs);
+            t03StatusKb.setUpdateUserId(this.updateUserId);
+            t03StatusKb.insert(now, execId);
+        }
+
         // 変遷履歴の登録
         T03TransHis t03TransHis = new T03TransHis();
         t03TransHis.setTransId(this.transId);
@@ -395,7 +427,12 @@ public class T03Trans implements IEntity {
         t03TransHis.setInsertUserId(this.insertUserId);
         t03TransHis.setUpdateTs(this.updateTs);
         t03TransHis.setUpdateUserId(this.updateUserId);
-        t03TransHis.setRiyuTx(this.riyuTx);
+        String rirekiTx = this.rirekiTx;
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(rirekiTx)
+                && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kessaiTx)) {
+            rirekiTx = this.kessaiTx;
+        }
+        t03TransHis.setRirekiTx(rirekiTx);
         t03TransHis.insert(now, execId);
 
         // 変遷の登録

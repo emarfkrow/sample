@@ -44,9 +44,8 @@ public class T03TransSCancelAction extends BaseAction {
                     throw new OptLockError("error.cant.cancel", "変遷");
                 }
 
-                T03Trans f = T03Trans.get(transId);
-                f.setStatusKb(null);
-                if (f.update(now, execId) != 1) {
+                e.setStatusKb(null);
+                if (e.update(now, execId) != 1) {
                     throw new OptLockError("error.cant.cancel", "変遷");
                 }
                 ++count;

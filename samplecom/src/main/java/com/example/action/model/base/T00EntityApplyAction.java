@@ -33,9 +33,8 @@ public class T00EntityApplyAction extends BaseAction {
 
         T00Entity e = FormValidator.toBean(T00Entity.class.getName(), postJson);
 
-        T00Entity f = T00Entity.get(e.getEntityId());
-        f.setStatusKb(0);
-        if (f.update(now, execId) != 1) {
+        e.setStatusKb(0);
+        if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.apply", "エンティティ");
         }
 
