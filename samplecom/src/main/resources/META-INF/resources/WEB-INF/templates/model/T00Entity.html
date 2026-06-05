@@ -149,7 +149,7 @@
         <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="PermitT00Entity" data-action="T00EntityPermit.ajax" class="permit" th:text="#{common.permit}" tabindex="-1">承認</button>
         <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ForbidT00Entity" data-action="T00EntityForbid.ajax" class="forbid" th:text="#{common.forbid}" tabindex="-1">否認</button>
         <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ApplyT00Entity" data-action="T00EntityApply.ajax" class="apply" th:text="#{common.apply}" tabindex="-1">申請</button>
-        <button type="submit" id="CancelT00Entity" data-action="T00EntityCancel.ajax" class="cancel" th:text="#{common.cancel}" tabindex="-1">取消</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="CancelT00Entity" data-action="T00EntityCancel.ajax" class="cancel" th:text="#{common.cancel}" tabindex="-1">取消</button>
         <button id="RegistT00Entity" type="submit" class="regist" th:text="#{common.regist}">登録</button>
       </div>
     </form>

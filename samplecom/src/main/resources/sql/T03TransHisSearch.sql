@@ -3,7 +3,7 @@ SELECT
     , a.`TRANS_BN` AS `TRANS_BN`
     , a.`TRANS_INFO` AS `TRANS_INFO`
     , a.`STATUS_KB` AS `STATUS_KB`
-    , a.`RIREKI_TX` AS `RIREKI_TX`
+    , a.`RIYU_TX` AS `RIYU_TX`
     , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
     , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS `INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
@@ -18,7 +18,7 @@ WHERE
     AND a.`TRANS_BN` = :trans_bn 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`TRANS_INFO`)) LIKE UPPER (CONCAT ('%', :trans_info, '%')) 
     AND TRIM(TRAILING ' ' FROM a.`STATUS_KB`) IN (:status_kb) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`RIREKI_TX`)) LIKE UPPER (CONCAT ('%', :rireki_tx, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`RIYU_TX`)) LIKE UPPER (CONCAT ('%', :riyu_tx, '%')) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 

@@ -55,7 +55,7 @@
         <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="PermitT03TransS" data-action="T03TransSPermit.ajax" class="permit selectRows" th:text="#{common.permit}" tabindex="-1">承認</button>
         <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ForbidT03TransS" data-action="T03TransSForbid.ajax" class="forbid selectRows" th:text="#{common.forbid}" tabindex="-1">否認</button>
         <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ApplyT03TransS" data-action="T03TransSApply.ajax" class="apply selectRows" th:text="#{common.apply}" tabindex="-1">申請</button>
-        <button type="submit" id="CancelT03TransS" data-action="T03TransSCancel.ajax" class="cancel selectRows" th:text="#{common.cancel}" tabindex="-1">取消</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="CancelT03TransS" data-action="T03TransSCancel.ajax" class="cancel selectRows" th:text="#{common.cancel}" tabindex="-1">取消</button>
       </div>
       <div class="submits">
         <button id="RegistT03TransS" type="submit" onclick="if (!Base.rirekiTx(this)) { return false; }" class="regist" th:text="#{common.regist}">submit</button>

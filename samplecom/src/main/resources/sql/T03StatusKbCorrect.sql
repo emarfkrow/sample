@@ -5,7 +5,7 @@ SELECT
     , a.`STATUS_KB` AS `STATUS_KB`
     , LEFT(DATE_FORMAT (a.`KESSAI_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `KESSAI_TS`
     , a.`KESSAI_ID` AS `KESSAI_ID`
-    , a.`KESSAI_TX` AS `KESSAI_TX`
+    , a.`RIYU_TX` AS `RIYU_TX`
     , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
     , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS `INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
@@ -24,7 +24,7 @@ WHERE
     AND a.`KESSAI_TS` >= :kessai_ts_1 
     AND a.`KESSAI_TS` <= :kessai_ts_2 
     AND a.`KESSAI_ID` = :kessai_id 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`KESSAI_TX`)) LIKE UPPER (CONCAT ('%', :kessai_tx, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`RIYU_TX`)) LIKE UPPER (CONCAT ('%', :riyu_tx, '%')) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 

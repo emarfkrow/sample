@@ -21,7 +21,7 @@ public class T03StatusKb implements IEntity {
         this.setStatusKb(values[3]);
         this.setKessaiTs(values[4]);
         this.setKessaiId(values[5]);
-        this.setKessaiTx(values[6]);
+        this.setRiyuTx(values[6]);
         this.setInsertTs(values[7]);
         this.setInsertUserId(values[8]);
         this.setUpdateTs(values[9]);
@@ -36,7 +36,7 @@ public class T03StatusKb implements IEntity {
         this.setStatusKb(IgnoreCaseLinkedMap.get(map, "STATUS_KB"));
         this.setKessaiTs(IgnoreCaseLinkedMap.get(map, "KESSAI_TS"));
         this.setKessaiId(IgnoreCaseLinkedMap.get(map, "KESSAI_ID"));
-        this.setKessaiTx(IgnoreCaseLinkedMap.get(map, "KESSAI_TX"));
+        this.setRiyuTx(IgnoreCaseLinkedMap.get(map, "RIYU_TX"));
         this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
         this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
         this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
@@ -65,7 +65,7 @@ public class T03StatusKb implements IEntity {
         isEmpty &= this.primaryKeys == null || this.primaryKeys.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.kessaiTs == null || this.kessaiTs.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.kessaiId == null || this.kessaiId.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.kessaiTx == null || this.kessaiTx.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.riyuTx == null || this.riyuTx.toString().replaceAll("　| ", "").equals("");
         return isEmpty;
     }
 
@@ -212,20 +212,20 @@ public class T03StatusKb implements IEntity {
     }
 
     /** 決裁理由 */
-    private String kessaiTx;
+    private String riyuTx;
 
     /** @return 決裁理由 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KESSAI_TX", index = 8)
-    public String getKessaiTx() {
-        return this.kessaiTx;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "RIYU_TX", index = 8)
+    public String getRiyuTx() {
+        return this.riyuTx;
     }
 
     /** @param o 決裁理由 */
-    public void setKessaiTx(final Object o) {
+    public void setRiyuTx(final Object o) {
         if (o != null) {
-            this.kessaiTx = o.toString();
+            this.riyuTx = o.toString();
         } else {
-            this.kessaiTx = null;
+            this.riyuTx = null;
         }
     }
 
@@ -382,7 +382,7 @@ public class T03StatusKb implements IEntity {
         sql += "    , a.`STATUS_KB` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`KESSAI_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS KESSAI_TS \n";
         sql += "    , a.`KESSAI_ID` \n";
-        sql += "    , a.`KESSAI_TX` \n";
+        sql += "    , a.`RIYU_TX` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
         sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
@@ -421,7 +421,7 @@ public class T03StatusKb implements IEntity {
         nameList.add("`STATUS_KB` -- :status_kb");
         nameList.add("`KESSAI_TS` -- :kessai_ts");
         nameList.add("`KESSAI_ID` -- :kessai_id");
-        nameList.add("`KESSAI_TX` -- :kessai_tx");
+        nameList.add("`RIYU_TX` -- :riyu_tx");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -438,7 +438,7 @@ public class T03StatusKb implements IEntity {
         valueList.add(":status_kb");
         valueList.add("LEFT(DATE_FORMAT (now(3), '%Y-%m-%dT%H:%i:%s.%f'), 23)");
         valueList.add(":kessai_id");
-        valueList.add(":kessai_tx");
+        valueList.add(":riyu_tx");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -471,7 +471,7 @@ public class T03StatusKb implements IEntity {
         map.put("status_kb", this.statusKb);
         map.put("kessai_ts", this.kessaiTs);
         map.put("kessai_id", this.kessaiId);
-        map.put("kessai_tx", this.kessaiTx);
+        map.put("riyu_tx", this.riyuTx);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);

@@ -870,19 +870,19 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** kessaiTx */
-    private String kessaiTx;
+    /** riyuTx */
+    private String riyuTx;
 
-    /** @return kessaiTx */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "kessai_tx", index = 38)
-    public String getKessaiTx() {
-        return this.kessaiTx;
+    /** @return riyuTx */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "riyu_tx", index = 38)
+    public String getRiyuTx() {
+        return this.riyuTx;
     }
 
-    /** @param o kessaiTx */
-    public void setKessaiTx(final Object o) {
+    /** @param o riyuTx */
+    public void setRiyuTx(final Object o) {
         if (o != null) {
-            this.kessaiTx = o.toString();
+            this.riyuTx = o.toString();
         }
     }
 
@@ -1056,14 +1056,14 @@ public class T00Entity implements IEntity {
     public int update(final java.time.LocalDateTime now, final String execId) {
 
         // 決裁フローの登録
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.statusKb) && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kessaiTx)) {
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.statusKb) && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.riyuTx)) {
             T03StatusKb t03StatusKb = new T03StatusKb();
             t03StatusKb.setTableNm("T00_ENTITY");
             t03StatusKb.setPrimaryKeys(String.join(",", this.getEntityId().toString()));
             t03StatusKb.setStatusKb(this.statusKb);
             t03StatusKb.setKessaiTs(now);
             t03StatusKb.setKessaiId(execId);
-            t03StatusKb.setKessaiTx(this.kessaiTx);
+            t03StatusKb.setRiyuTx(this.riyuTx);
             t03StatusKb.setInsertTs(this.insertTs);
             t03StatusKb.setInsertUserId(this.insertUserId);
             t03StatusKb.setUpdateTs(this.updateTs);

@@ -19,7 +19,7 @@ public class T03TransHis implements IEntity {
         this.setTransBn(values[1]);
         this.setTransInfo(values[2]);
         this.setStatusKb(values[3]);
-        this.setRirekiTx(values[4]);
+        this.setRiyuTx(values[4]);
         this.setInsertTs(values[5]);
         this.setInsertUserId(values[6]);
         this.setUpdateTs(values[7]);
@@ -32,7 +32,7 @@ public class T03TransHis implements IEntity {
         this.setTransBn(IgnoreCaseLinkedMap.get(map, "TRANS_BN"));
         this.setTransInfo(IgnoreCaseLinkedMap.get(map, "TRANS_INFO"));
         this.setStatusKb(IgnoreCaseLinkedMap.get(map, "STATUS_KB"));
-        this.setRirekiTx(IgnoreCaseLinkedMap.get(map, "RIREKI_TX"));
+        this.setRiyuTx(IgnoreCaseLinkedMap.get(map, "RIYU_TX"));
         this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
         this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
         this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
@@ -61,7 +61,7 @@ public class T03TransHis implements IEntity {
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.transInfo == null || this.transInfo.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.rirekiTx == null || this.rirekiTx.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.riyuTx == null || this.riyuTx.toString().replaceAll("　| ", "").equals("");
         return isEmpty;
     }
 
@@ -163,20 +163,20 @@ public class T03TransHis implements IEntity {
     }
 
     /** 変更理由 */
-    private String rirekiTx;
+    private String riyuTx;
 
     /** @return 変更理由 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "RIREKI_TX", index = 6)
-    public String getRirekiTx() {
-        return this.rirekiTx;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "RIYU_TX", index = 6)
+    public String getRiyuTx() {
+        return this.riyuTx;
     }
 
     /** @param o 変更理由 */
-    public void setRirekiTx(final Object o) {
+    public void setRiyuTx(final Object o) {
         if (o != null) {
-            this.rirekiTx = o.toString();
+            this.riyuTx = o.toString();
         } else {
-            this.rirekiTx = null;
+            this.riyuTx = null;
         }
     }
 
@@ -333,7 +333,7 @@ public class T03TransHis implements IEntity {
         sql += "    , a.`TRANS_BN` \n";
         sql += "    , a.`TRANS_INFO` \n";
         sql += "    , a.`STATUS_KB` \n";
-        sql += "    , a.`RIREKI_TX` \n";
+        sql += "    , a.`RIYU_TX` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
         sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
@@ -371,7 +371,7 @@ public class T03TransHis implements IEntity {
         nameList.add("`TRANS_BN` -- :trans_bn");
         nameList.add("`TRANS_INFO` -- :trans_info");
         nameList.add("`STATUS_KB` -- :status_kb");
-        nameList.add("`RIREKI_TX` -- :rireki_tx");
+        nameList.add("`RIYU_TX` -- :riyu_tx");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -386,7 +386,7 @@ public class T03TransHis implements IEntity {
         valueList.add(":trans_bn");
         valueList.add(":trans_info");
         valueList.add(":status_kb");
-        valueList.add(":rireki_tx");
+        valueList.add(":riyu_tx");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -430,7 +430,7 @@ public class T03TransHis implements IEntity {
         setList.add("`TRANS_BN` = :trans_bn");
         setList.add("`TRANS_INFO` = :trans_info");
         setList.add("`STATUS_KB` = :status_kb");
-        setList.add("`RIREKI_TX` = :rireki_tx");
+        setList.add("`RIYU_TX` = :riyu_tx");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
@@ -458,7 +458,7 @@ public class T03TransHis implements IEntity {
         map.put("trans_bn", this.transBn);
         map.put("trans_info", this.transInfo);
         map.put("status_kb", this.statusKb);
-        map.put("rireki_tx", this.rirekiTx);
+        map.put("riyu_tx", this.riyuTx);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);
