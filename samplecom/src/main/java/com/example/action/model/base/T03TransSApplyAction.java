@@ -44,6 +44,9 @@ public class T03TransSApplyAction extends BaseAction {
                     throw new OptLockError("error.cant.apply", "変遷");
                 }
 
+                if (!e.getStatusKb().equals("")) {
+                    throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("common.selectedRow"), Messages.get("common.notapply"));
+                }
                 e.setStatusKb(0);
                 if (e.update(now, execId) != 1) {
                     throw new OptLockError("error.cant.apply", "変遷");

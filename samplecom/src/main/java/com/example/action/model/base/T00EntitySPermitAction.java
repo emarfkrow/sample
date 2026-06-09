@@ -44,6 +44,9 @@ public class T00EntitySPermitAction extends BaseAction {
                     throw new OptLockError("error.cant.permit", "エンティティ");
                 }
 
+                if (!e.getStatusKb().equals("0")) {
+                    throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("common.selectedRow"), Messages.get("common.applied"));
+                }
                 e.setStatusKb(1);
                 if (e.update(now, execId) != 1) {
                     throw new OptLockError("error.cant.permit", "エンティティ");

@@ -33,6 +33,9 @@ public class T03TransPermitAction extends BaseAction {
 
         T03Trans e = FormValidator.toBean(T03Trans.class.getName(), postJson);
 
+        if (!e.getStatusKb().equals("0")) {
+            throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("T03Trans.statusKb"), Messages.get("common.applied"));
+        }
         e.setStatusKb(1);
         if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.permit", "変遷");

@@ -33,6 +33,9 @@ public class T00EntityForbidAction extends BaseAction {
 
         T00Entity e = FormValidator.toBean(T00Entity.class.getName(), postJson);
 
+        if (!e.getStatusKb().equals("0") && !e.getStatusKb().equals("1")) {
+            throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("T00Entity.statusKb"), Messages.get("common.apply.permit"));
+        }
         e.setStatusKb(-1);
         if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.forbid", "エンティティ");

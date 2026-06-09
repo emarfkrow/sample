@@ -33,6 +33,9 @@ public class T03TransCancelAction extends BaseAction {
 
         T03Trans e = FormValidator.toBean(T03Trans.class.getName(), postJson);
 
+        if (!e.getStatusKb().equals("0") && !e.getStatusKb().equals("-1")) {
+            throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("T03Trans.statusKb"), Messages.get("common.apply.forbid"));
+        }
         e.setStatusKb(null);
         if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.cancel", "変遷");

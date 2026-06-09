@@ -33,6 +33,9 @@ public class T03TransApplyAction extends BaseAction {
 
         T03Trans e = FormValidator.toBean(T03Trans.class.getName(), postJson);
 
+        if (!e.getStatusKb().equals("")) {
+            throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("T03Trans.statusKb"), Messages.get("common.notapply"));
+        }
         e.setStatusKb(0);
         if (e.update(now, execId) != 1) {
             throw new OptLockError("error.cant.apply", "変遷");
