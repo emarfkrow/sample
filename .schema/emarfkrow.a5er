@@ -2400,3 +2400,24 @@ BkColor=$FFFFFF
 ModifiedDateTime=20260605073116
 Position="MAIN",1600,1600
 ZOrder=172
+
+[Entity]
+PName=T00_KOUTEI
+LName=工程表
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=50
+Top=1950
+Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
+Field="工程名","KOUTEI_MEI","*MEI","NOT NULL",,"","",$FFFFFFFF,""
+Field="開始日","KAISHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
+Field="終了日","SHURYO_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
+Field="親工程ID","OYA_KOUTEI_ID","*ID",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260612095731
+Position="MAIN",50,1950
+ZOrder=173

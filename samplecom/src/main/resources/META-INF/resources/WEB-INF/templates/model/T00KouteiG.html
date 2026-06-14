@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T00KouteiS.title}">工程表</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T00Koutei.js}"></script>
+<script th:src="@{/model/T00KouteiGridColumns.js}"></script>
+<!-- 工程表の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T00KouteiS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T00KouteiSearchForm" action="T00KouteiSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T00KouteiS.legend}">legend</legend>
+        <div id="kouteiId">
+          <label for="T00Koutei.kouteiId" th:text="#{T00Koutei.kouteiId}">工程ID</label><input type="text" id="T00Koutei.kouteiId" name="T00Koutei.kouteiId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="kouteiMei">
+          <label for="T00Koutei.kouteiMei" th:text="#{T00Koutei.kouteiMei}">工程名</label><input type="text" id="T00Koutei.kouteiMei" name="T00Koutei.kouteiMei" maxlength="60" />
+        </div>
+        <div id="kaishiBi">
+          <label for="T00Koutei.kaishiBi_1" th:text="#{T00Koutei.kaishiBi}">開始日</label><input type="text" id="T00Koutei.kaishiBi_1" name="T00Koutei.kaishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="T00Koutei.kaishiBi_2" name="T00Koutei.kaishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="shuryoBi">
+          <label for="T00Koutei.shuryoBi_1" th:text="#{T00Koutei.shuryoBi}">終了日</label><input type="text" id="T00Koutei.shuryoBi_1" name="T00Koutei.shuryoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="T00Koutei.shuryoBi_2" name="T00Koutei.shuryoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="oyaKouteiId">
+          <label for="T00Koutei.oyaKouteiId" th:text="#{T00Koutei.oyaKouteiId}">親工程ID</label><input type="text" id="T00Koutei.oyaKouteiId" name="T00Koutei.oyaKouteiId" maxlength="10" class=" refer" data-referFor="T00Koutei.oyaKouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:T00Koutei.oyaKouteiId" data-destDef="T00Koutei.oyaKouteiMei:KOUTEI_MEI" /><a id="T00Koutei.oyaKouteiId" th:href="@{/model/T00KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T00Koutei.oyaKouteiMei" class=" refer" data-referFor="T00Koutei.oyaKouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:T00Koutei.oyaKouteiId" data-destDef="T00Koutei.oyaKouteiMei:KOUTEI_MEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT00Koutei" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/T00Koutei.html(anew)}" target="dialog" id="T00Koutei" class="anew" th:text="#{T00Koutei.add}" tabindex="-1">工程表</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT00Koutei" type="submit" class="search" data-ganttId="T00KouteiGantt" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <h3 th:text="#{T00Koutei.h3}">h3</h3>
+    <div class="ganttWrapper">
+      <svg id="T00KouteiGantt" class="gantt" th:data-href="@{/model/T00Koutei.html}"></svg>
+    </div>
+  </div>
+</body>
+</html>
