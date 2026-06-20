@@ -9,7 +9,7 @@ import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
 /**
- * 工程表登録フォーム
+ * 工程登録フォーム
  *
  * @author emarfkrow
  */

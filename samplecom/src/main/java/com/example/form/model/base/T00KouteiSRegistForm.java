@@ -11,7 +11,7 @@ import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
 /**
- * 工程表一覧登録フォーム
+ * 工程一覧登録フォーム
  *
  * @author emarfkrow
  */
@@ -20,19 +20,19 @@ public class T00KouteiSRegistForm implements IForm {
     // /** logger */
     // private static final Logger LOG = LoggerFactory.getLogger(T00KouteiRegistForm.class);
 
-    /** 工程表登録フォームのリスト */
+    /** 工程登録フォームのリスト */
     @Valid
     private List<T00KouteiRegistForm> t00KouteiGrid;
 
     /**
-     * @return 工程表登録フォームのリスト
+     * @return 工程登録フォームのリスト
      */
     public List<T00KouteiRegistForm> getT00KouteiGrid() {
         return t00KouteiGrid;
     }
 
     /**
-     * @param p 工程表登録フォームのリスト
+     * @param p 工程登録フォームのリスト
      */
     public void setT00KouteiGrid(final List<T00KouteiRegistForm> p) {
         this.t00KouteiGrid = p;

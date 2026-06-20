@@ -12,13 +12,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 工程表削除
+ * 工程削除
  *
  * @author emarfkrow
  */
 public class T00KouteiDeleteAction extends BaseAction {
 
-    /** 工程表削除処理 */
+    /** 工程削除処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
@@ -28,12 +28,12 @@ public class T00KouteiDeleteAction extends BaseAction {
             kouteiId = postJson.get("T00Koutei.kouteiId");
         }
         if (kouteiId == null) {
-            throw new OptLockError("error.cant.delete", "工程表");
+            throw new OptLockError("error.cant.delete", "工程");
         }
 
         T00Koutei e = FormValidator.toBean(T00Koutei.class.getName(), postJson);
         if (e.delete() != 1) {
-            throw new OptLockError("error.cant.delete", "工程表");
+            throw new OptLockError("error.cant.delete", "工程");
         }
 
         Map<String, Object> map = new HashMap<String, Object>();

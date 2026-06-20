@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T00KouteiS.title}">工程表</title>
+<title th:text="#{T00KouteiS.title}">工程</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -11,7 +11,7 @@
 <script th:src="@{/model/T00Koutei.js}"></script>
 <script th:src="@{/model/T00KouteiGridColumns.js}"></script>
 <script th:src="@{/model/T00KouteiGanttTasks.js}"></script>
-<!-- 工程表の参照モデルのグリッド定義 -->
+<!-- 工程の参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
@@ -42,7 +42,7 @@
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT00Koutei" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T00Koutei.html(anew)}" target="dialog" id="T00Koutei" class="anew" th:text="#{T00Koutei.add}" tabindex="-1">工程表</a>
+        <a th:href="@{/model/T00Koutei.html(anew)}" target="dialog" id="T00Koutei" class="anew" th:text="#{T00Koutei.add}" tabindex="-1">工程</a>
       </div>
       <div class="submits">
         <button id="SearchT00Koutei" type="submit" class="search" data-ganttId="T00KouteiGantt" th:text="#{common.search}">submit</button>

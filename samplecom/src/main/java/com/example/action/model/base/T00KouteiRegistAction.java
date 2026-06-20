@@ -12,13 +12,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 工程表登録
+ * 工程登録
  *
  * @author emarfkrow
  */
 public class T00KouteiRegistAction extends BaseAction {
 
-    /** 工程表登録処理 */
+    /** 工程登録処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
@@ -29,7 +29,7 @@ public class T00KouteiRegistAction extends BaseAction {
         if (e.isNew()) {
 
             if (e.insert(now, execId) != 1) {
-                throw new OptLockError("error.cant.insert", "工程表");
+                throw new OptLockError("error.cant.insert", "工程");
             }
 
             map.put("INFO", Messages.get("info.insert"));
@@ -41,7 +41,7 @@ public class T00KouteiRegistAction extends BaseAction {
             } else if (e.insert(now, execId) == 1) {
                 map.put("INFO", Messages.get("info.insert"));
             } else {
-                throw new OptLockError("error.cant.update", "工程表");
+                throw new OptLockError("error.cant.update", "工程");
             }
         }
 

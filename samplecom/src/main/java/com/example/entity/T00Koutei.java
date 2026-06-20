@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 工程表
+ * 工程
  * @author emarfkrow
  */
 public class T00Koutei implements IEntity {
@@ -339,9 +339,9 @@ public class T00Koutei implements IEntity {
     }
 
     /**
-     * 工程表照会
+     * 工程照会
      * @param param1 工程ID
-     * @return 工程表
+     * @return 工程
      */
     public static T00Koutei get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
@@ -367,7 +367,7 @@ public class T00Koutei implements IEntity {
     }
 
     /**
-     * 工程表追加
+     * 工程追加
      * @param now システム日時
      * @param execId 登録者
      * @return 追加件数
@@ -377,7 +377,7 @@ public class T00Koutei implements IEntity {
         // 工程IDの採番処理
         numbering();
 
-        // 工程表の登録
+        // 工程の登録
         String sql = "INSERT INTO T00_KOUTEI(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
@@ -425,14 +425,14 @@ public class T00Koutei implements IEntity {
     }
 
     /**
-     * 工程表更新
+     * 工程更新
      * @param now システム日時
      * @param execId 更新者
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime now, final String execId) {
 
-        // 工程表の登録
+        // 工程の登録
         String sql = "UPDATE T00_KOUTEI\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
@@ -451,12 +451,12 @@ public class T00Koutei implements IEntity {
     }
 
     /**
-     * 工程表削除
+     * 工程削除
      * @return 削除件数
      */
     public int delete() {
 
-        // 工程表の削除
+        // 工程の削除
         String sql = "DELETE FROM T00_KOUTEI WHERE " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }

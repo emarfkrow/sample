@@ -2403,7 +2403,7 @@ ZOrder=172
 
 [Entity]
 PName=T00_KOUTEI
-LName=工程表
+LName=工程
 Comment=
 TableInnerOption=
 TableOption=
@@ -2418,6 +2418,6 @@ Field="親工程ID","OYA_KOUTEI_ID","*ID",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260612095731
+ModifiedDateTime=20260620165629
 Position="MAIN",50,1950
 ZOrder=173
