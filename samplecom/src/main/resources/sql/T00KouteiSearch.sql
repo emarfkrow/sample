@@ -11,21 +11,8 @@ SELECT
     , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
     , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS `UPDATE_USER_ID`
     , (SELECT r2.`USER_SEI` FROM MHR_USER r2 WHERE r2.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
-    , b.dependencies
 FROM
     T00_KOUTEI a 
-    LEFT OUTER JOIN ( 
-        SELECT
-              oya_koutei_id
-            , LISTAGG (koutei_id, ',') WITHIN GROUP (ORDER BY koutei_id) AS dependencies 
-        FROM
-            t00_koutei 
-        WHERE
-            oya_koutei_id IS NOT NULL 
-        GROUP BY
-            oya_koutei_id
-    ) b 
-        ON b.oya_koutei_id = a.koutei_id 
 WHERE
     1 = 1 
     AND a.`KOUTEI_ID` = :koutei_id 
