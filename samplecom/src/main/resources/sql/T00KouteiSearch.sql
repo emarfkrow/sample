@@ -11,8 +11,21 @@ SELECT
     , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
     , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS `UPDATE_USER_ID`
     , (SELECT r2.`USER_SEI` FROM MHR_USER r2 WHERE r2.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
+    , b.DEPENDENCIES
 FROM
     T00_KOUTEI a 
+    LEFT OUTER JOIN ( 
+        SELECT
+              OYA_KOUTEI_ID
+            , GROUP_CONCAT(KOUTEI_ID ORDER BY KOUTEI_ID SEPARATOR ',') AS DEPENDENCIES 
+        FROM
+            T00_KOUTEI 
+        WHERE
+            OYA_KOUTEI_ID IS NOT NULL 
+        GROUP BY
+            OYA_KOUTEI_ID
+    ) b 
+        ON b.OYA_KOUTEI_ID = a.KOUTEI_ID 
 WHERE
     1 = 1 
     AND a.`KOUTEI_ID` = :koutei_id 
