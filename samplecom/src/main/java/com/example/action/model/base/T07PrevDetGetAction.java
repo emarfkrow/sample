@@ -42,8 +42,11 @@ public class T07PrevDetGetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.T07Prev t07Prev = com.example.entity.T07Prev.get(prevId);
-        map.put("T07Prev", t07Prev);
+        try {
+            com.example.entity.T07Prev t07Prev = com.example.entity.T07Prev.get(prevId);
+            map.put("T07Prev", t07Prev);
+        } catch (Exception e) {
+        }
 
         // 主キーが不足していたら終了
         if (!isAllKey) {

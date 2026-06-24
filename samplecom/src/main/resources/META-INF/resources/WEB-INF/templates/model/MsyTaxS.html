@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{MsyTaxS.title}">税マスタ</title>
+<title th:text="#{MsyTaxS.title}">MSY_TAX</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -25,25 +25,25 @@
         <legend th:text="#{MsyTaxS.legend}">legend</legend>
         <div id="taxKb">
           <fieldset id="MsyTax.taxKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:TAX_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
-            <legend th:text="#{MsyTax.taxKb}">税区分</legend>
+            <legend th:text="#{MsyTax.taxKb}">TAX_KB</legend>
           </fieldset>
         </div>
         <div id="tekiyoBi">
-          <label for="MsyTax.tekiyoBi_1" th:text="#{MsyTax.tekiyoBi}">適用日</label><input type="text" id="MsyTax.tekiyoBi_1" name="MsyTax.tekiyoBi_1" maxlength="10" class=" primaryKey datepicker" />～<input type="text" id="MsyTax.tekiyoBi_2" name="MsyTax.tekiyoBi_2" maxlength="10" class=" primaryKey datepicker" />
+          <label for="MsyTax.tekiyoBi_1" th:text="#{MsyTax.tekiyoBi}">TEKIYO_BI</label><input type="text" id="MsyTax.tekiyoBi_1" name="MsyTax.tekiyoBi_1" maxlength="10" class=" primaryKey datepicker" />～<input type="text" id="MsyTax.tekiyoBi_2" name="MsyTax.tekiyoBi_2" maxlength="10" class=" primaryKey datepicker" />
         </div>
         <div id="haishiBi">
-          <label for="MsyTax.haishiBi_1" th:text="#{MsyTax.haishiBi}">廃止日</label><input type="text" id="MsyTax.haishiBi_1" name="MsyTax.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MsyTax.haishiBi_2" name="MsyTax.haishiBi_2" maxlength="10" class=" datepicker" />
+          <label for="MsyTax.haishiBi_1" th:text="#{MsyTax.haishiBi}">HAISHI_BI</label><input type="text" id="MsyTax.haishiBi_1" name="MsyTax.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MsyTax.haishiBi_2" name="MsyTax.haishiBi_2" maxlength="10" class=" datepicker" />
         </div>
         <div id="taxRt">
-          <label for="MsyTax.taxRt" th:text="#{MsyTax.taxRt}">税率</label><input type="text" id="MsyTax.taxRt" name="MsyTax.taxRt" maxlength="5" />
+          <label for="MsyTax.taxRt" th:text="#{MsyTax.taxRt}">TAX_RT</label><input type="text" id="MsyTax.taxRt" name="MsyTax.taxRt" maxlength="5" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetMsyTax" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/MsyTax.html(anew)}" target="dialog" id="MsyTax" class="anew" th:text="#{MsyTax.add}" tabindex="-1">税マスタ</a>
+        <a th:href="@{/model/MsyTax.html(anew)}" target="dialog" id="MsyTax" class="anew" th:text="#{MsyTax.add}" tabindex="-1">MSY_TAX</a>
       </div>
       <div class="submits">
-        <button id="SearchMsyTax" type="submit" class="search" data-gridId="MsyTaxGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchMsyTax" type="submit" class="search" data-gridId="MsyTaxGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -56,7 +56,7 @@
         <a th:href="@{MsyTaxSearch.xlsx(baseMei=#{MsyTaxS.h2})}" id="MsyTaxSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="RegistMsyTaxS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistMsyTaxS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

@@ -1,5 +1,5 @@
 /**
- * 変遷グリッド定義
+ * T03_TRANS grid columns
  */
 
 let T03TransGridColumns = [];

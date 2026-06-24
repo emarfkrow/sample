@@ -1,5 +1,5 @@
 /**
- * 決裁フローグリッド定義
+ * T03_STATUS_KB grid columns
  */
 
 let T03StatusKbGridColumns = [];

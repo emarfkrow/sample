@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T09SumS.title}">集約</title>
+<title th:text="#{T09SumS.title}">T09_SUM</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -30,18 +30,18 @@
       <fieldset>
         <legend th:text="#{T09SumS.legend}">legend</legend>
         <div id="sumId">
-          <label for="T09Sum.sumId" th:text="#{T09Sum.sumId}">集約ID</label><input type="text" id="T09Sum.sumId" name="T09Sum.sumId" maxlength="10" class=" primaryKey" />
+          <label for="T09Sum.sumId" th:text="#{T09Sum.sumId}">SUM_ID</label><input type="text" id="T09Sum.sumId" name="T09Sum.sumId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="sumInfo">
-          <label for="T09Sum.sumInfo" th:text="#{T09Sum.sumInfo}">集約情報</label><input type="text" id="T09Sum.sumInfo" name="T09Sum.sumInfo" maxlength="300" />
+          <label for="T09Sum.sumInfo" th:text="#{T09Sum.sumInfo}">SUM_INFO</label><input type="text" id="T09Sum.sumInfo" name="T09Sum.sumInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT09Sum" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T09Sum.html(anew)}" target="dialog" id="T09Sum" class="anew" th:text="#{T09Sum.add}" tabindex="-1">集約</a>
+        <a th:href="@{/model/T09Sum.html(anew)}" target="dialog" id="T09Sum" class="anew" th:text="#{T09Sum.add}" tabindex="-1">T09_SUM</a>
       </div>
       <div class="submits">
-        <button id="SearchT09Sum" type="submit" class="search" data-gridId="T09SumGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT09Sum" type="submit" class="search" data-gridId="T09SumGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -52,10 +52,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT09SumS" th:text="#{common.reset}" onClick="Base.listReset('T09Sum');">reset</button>
         <a th:href="@{T09SumSearch.xlsx(baseMei=#{T09SumS.h2})}" id="T09SumSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT09SumS" data-action="T09SumSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT09SumS" data-action="T09SumSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT09SumS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT09SumS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

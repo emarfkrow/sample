@@ -1,5 +1,5 @@
 /**
- * 転生３グリッド定義
+ * T12_REBORN3 grid columns
  */
 
 let T12Reborn3GridColumns = [];

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T06Derive2DetS.title}">派生２明細</title>
+<title th:text="#{T06Derive2DetS.title}">T06_DERIVE2_DET</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -30,20 +30,20 @@
       <fieldset>
         <legend th:text="#{T06Derive2DetS.legend}">legend</legend>
         <div id="derive2Id">
-          <label for="T06Derive2Det.derive2Id" th:text="#{T06Derive2Det.derive2Id}">派生２ID</label><input type="text" id="T06Derive2Det.derive2Id" name="T06Derive2Det.derive2Id" maxlength="10" class=" primaryKey" />
+          <label for="T06Derive2Det.derive2Id" th:text="#{T06Derive2Det.derive2Id}">DERIVE2_ID</label><input type="text" id="T06Derive2Det.derive2Id" name="T06Derive2Det.derive2Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="derive2Bn">
-          <label for="T06Derive2Det.derive2Bn" th:text="#{T06Derive2Det.derive2Bn}">派生２枝番</label><input type="text" id="T06Derive2Det.derive2Bn" name="T06Derive2Det.derive2Bn" maxlength="10" class=" primaryKey" />
+          <label for="T06Derive2Det.derive2Bn" th:text="#{T06Derive2Det.derive2Bn}">DERIVE2_BN</label><input type="text" id="T06Derive2Det.derive2Bn" name="T06Derive2Det.derive2Bn" maxlength="10" class=" primaryKey" />
         </div>
         <div id="detInfo">
-          <label for="T06Derive2Det.detInfo" th:text="#{T06Derive2Det.detInfo}">明細情報</label><input type="text" id="T06Derive2Det.detInfo" name="T06Derive2Det.detInfo" maxlength="300" />
+          <label for="T06Derive2Det.detInfo" th:text="#{T06Derive2Det.detInfo}">DET_INFO</label><input type="text" id="T06Derive2Det.detInfo" name="T06Derive2Det.detInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT06Derive2Det" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchT06Derive2Det" type="submit" class="search" data-gridId="T06Derive2DetGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT06Derive2Det" type="submit" class="search" data-gridId="T06Derive2DetGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -54,10 +54,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT06Derive2DetS" th:text="#{common.reset}" onClick="Base.listReset('T06Derive2Det');">reset</button>
         <a th:href="@{T06Derive2DetSearch.xlsx(baseMei=#{T06Derive2DetS.h2})}" id="T06Derive2DetSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT06Derive2DetS" data-action="T06Derive2DetSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT06Derive2DetS" data-action="T06Derive2DetSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT06Derive2DetS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT06Derive2DetS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T07RebornS.title}">転生</title>
+<title th:text="#{T07RebornS.title}">T07_REBORN</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -33,21 +33,21 @@
       <fieldset>
         <legend th:text="#{T07RebornS.legend}">legend</legend>
         <div id="rebornId">
-          <label for="T07Reborn.rebornId" th:text="#{T07Reborn.rebornId}">転生ID</label><input type="text" id="T07Reborn.rebornId" name="T07Reborn.rebornId" maxlength="10" class=" primaryKey" />
+          <label for="T07Reborn.rebornId" th:text="#{T07Reborn.rebornId}">REBORN_ID</label><input type="text" id="T07Reborn.rebornId" name="T07Reborn.rebornId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="prevInfo">
-          <label for="T07Reborn.prevInfo" th:text="#{T07Reborn.prevInfo}">前世情報</label><input type="text" id="T07Reborn.prevInfo" name="T07Reborn.prevInfo" maxlength="300" />
+          <label for="T07Reborn.prevInfo" th:text="#{T07Reborn.prevInfo}">PREV_INFO</label><input type="text" id="T07Reborn.prevInfo" name="T07Reborn.prevInfo" maxlength="300" />
         </div>
         <div id="prevId">
-          <label for="T07Reborn.prevId" th:text="#{T07Reborn.prevId}">前世ID</label><input type="text" id="T07Reborn.prevId" name="T07Reborn.prevId" maxlength="10" class=" refer" /><a id="T07Reborn.prevId" th:href="@{/model/T07PrevS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T07Reborn.prevId" th:text="#{T07Reborn.prevId}">PREV_ID</label><input type="text" id="T07Reborn.prevId" name="T07Reborn.prevId" maxlength="10" class=" refer" /><a id="T07Reborn.prevId" th:href="@{/model/T07PrevS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT07Reborn" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T07Reborn.html(anew)}" target="dialog" id="T07Reborn" class="anew" th:text="#{T07Reborn.add}" tabindex="-1">転生</a>
+        <a th:href="@{/model/T07Reborn.html(anew)}" target="dialog" id="T07Reborn" class="anew" th:text="#{T07Reborn.add}" tabindex="-1">T07_REBORN</a>
       </div>
       <div class="submits">
-        <button id="SearchT07Reborn" type="submit" class="search" data-gridId="T07RebornGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT07Reborn" type="submit" class="search" data-gridId="T07RebornGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -58,7 +58,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT07RebornS" th:text="#{common.reset}" onClick="Base.listReset('T07Reborn');">reset</button>
         <a th:href="@{T07RebornSearch.xlsx(baseMei=#{T07RebornS.h2})}" id="T07RebornSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="T07RebornGrid.prevId" th:href="@{/model/T07PrevS.html}" target="dialog" class="refer" th:text="'前世' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T07RebornGrid.prevId" th:href="@{/model/T07PrevS.html}" target="dialog" class="refer" th:text="#{T07PrevS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
       </div>
       <div class="submits">
       </div>

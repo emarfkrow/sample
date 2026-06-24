@@ -42,8 +42,11 @@ public class T01KoGetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.T01Oya t01Oya = com.example.entity.T01Oya.get(oyaId);
-        map.put("T01Oya", t01Oya);
+        try {
+            com.example.entity.T01Oya t01Oya = com.example.entity.T01Oya.get(oyaId);
+            map.put("T01Oya", t01Oya);
+        } catch (Exception e) {
+        }
 
         // 主キーが不足していたら終了
         if (!isAllKey) {

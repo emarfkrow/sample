@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T07RebornDetS.title}">転生明細</title>
+<title th:text="#{T07RebornDetS.title}">T07_REBORN_DET</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -30,20 +30,20 @@
       <fieldset>
         <legend th:text="#{T07RebornDetS.legend}">legend</legend>
         <div id="rebornId">
-          <label for="T07RebornDet.rebornId" th:text="#{T07RebornDet.rebornId}">転生ID</label><input type="text" id="T07RebornDet.rebornId" name="T07RebornDet.rebornId" maxlength="10" class=" primaryKey" />
+          <label for="T07RebornDet.rebornId" th:text="#{T07RebornDet.rebornId}">REBORN_ID</label><input type="text" id="T07RebornDet.rebornId" name="T07RebornDet.rebornId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="rebornBn">
-          <label for="T07RebornDet.rebornBn" th:text="#{T07RebornDet.rebornBn}">転生枝番</label><input type="text" id="T07RebornDet.rebornBn" name="T07RebornDet.rebornBn" maxlength="10" class=" primaryKey" />
+          <label for="T07RebornDet.rebornBn" th:text="#{T07RebornDet.rebornBn}">REBORN_BN</label><input type="text" id="T07RebornDet.rebornBn" name="T07RebornDet.rebornBn" maxlength="10" class=" primaryKey" />
         </div>
         <div id="detInfo">
-          <label for="T07RebornDet.detInfo" th:text="#{T07RebornDet.detInfo}">明細情報</label><input type="text" id="T07RebornDet.detInfo" name="T07RebornDet.detInfo" maxlength="300" />
+          <label for="T07RebornDet.detInfo" th:text="#{T07RebornDet.detInfo}">DET_INFO</label><input type="text" id="T07RebornDet.detInfo" name="T07RebornDet.detInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT07RebornDet" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchT07RebornDet" type="submit" class="search" data-gridId="T07RebornDetGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT07RebornDet" type="submit" class="search" data-gridId="T07RebornDetGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -54,10 +54,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT07RebornDetS" th:text="#{common.reset}" onClick="Base.listReset('T07RebornDet');">reset</button>
         <a th:href="@{T07RebornDetSearch.xlsx(baseMei=#{T07RebornDetS.h2})}" id="T07RebornDetSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT07RebornDetS" data-action="T07RebornDetSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT07RebornDetS" data-action="T07RebornDetSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT07RebornDetS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT07RebornDetS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

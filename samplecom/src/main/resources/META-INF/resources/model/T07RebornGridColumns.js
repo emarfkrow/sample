@@ -1,5 +1,5 @@
 /**
- * 転生グリッド定義
+ * T07_REBORN grid columns
  */
 
 let T07RebornGridColumns = [];

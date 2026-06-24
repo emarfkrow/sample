@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T03TransHisS.title}">変遷履歴</title>
+<title th:text="#{T03TransHisS.title}">T03_TRANS_HIS</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,28 +24,28 @@
       <fieldset>
         <legend th:text="#{T03TransHisS.legend}">legend</legend>
         <div id="transId">
-          <label for="T03TransHis.transId" th:text="#{T03TransHis.transId}">変遷ID</label><input type="text" id="T03TransHis.transId" name="T03TransHis.transId" maxlength="10" class=" primaryKey" />
+          <label for="T03TransHis.transId" th:text="#{T03TransHis.transId}">TRANS_ID</label><input type="text" id="T03TransHis.transId" name="T03TransHis.transId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="transBn">
-          <label for="T03TransHis.transBn" th:text="#{T03TransHis.transBn}">変遷枝番</label><input type="text" id="T03TransHis.transBn" name="T03TransHis.transBn" maxlength="10" class=" primaryKey" />
+          <label for="T03TransHis.transBn" th:text="#{T03TransHis.transBn}">TRANS_BN</label><input type="text" id="T03TransHis.transBn" name="T03TransHis.transBn" maxlength="10" class=" primaryKey" />
         </div>
         <div id="transInfo">
-          <label for="T03TransHis.transInfo" th:text="#{T03TransHis.transInfo}">変遷情報</label><input type="text" id="T03TransHis.transInfo" name="T03TransHis.transInfo" maxlength="300" />
+          <label for="T03TransHis.transInfo" th:text="#{T03TransHis.transInfo}">TRANS_INFO</label><input type="text" id="T03TransHis.transInfo" name="T03TransHis.transInfo" maxlength="300" />
         </div>
         <div id="statusKb">
           <fieldset id="T03TransHis.statusKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:STATUS_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
-            <legend th:text="#{T03TransHis.statusKb}">ステータス区分</legend>
+            <legend th:text="#{T03TransHis.statusKb}">STATUS_KB</legend>
           </fieldset>
         </div>
         <div id="riyuTx">
-          <label for="T03TransHis.riyuTx" th:text="#{T03TransHis.riyuTx}">変更理由</label><input type="text" id="T03TransHis.riyuTx" name="T03TransHis.riyuTx" maxlength="300" />
+          <label for="T03TransHis.riyuTx" th:text="#{T03TransHis.riyuTx}">RIYU_TX</label><input type="text" id="T03TransHis.riyuTx" name="T03TransHis.riyuTx" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT03TransHis" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchT03TransHis" type="submit" class="search" data-gridId="T03TransHisGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT03TransHis" type="submit" class="search" data-gridId="T03TransHisGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->

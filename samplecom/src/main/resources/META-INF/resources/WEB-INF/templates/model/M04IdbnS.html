@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{M04IdbnS.title}">ID連番マスタ</title>
+<title th:text="#{M04IdbnS.title}">M04_IDBN</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,20 +27,20 @@
       <fieldset>
         <legend th:text="#{M04IdbnS.legend}">legend</legend>
         <div id="idrefId">
-          <label for="M04Idbn.idrefId" th:text="#{M04Idbn.idrefId}">参照ID</label><input type="text" id="M04Idbn.idrefId" name="M04Idbn.idrefId" maxlength="10" class=" primaryKey refer" data-referFor="M04Idbn.idrefId" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI" /><a id="M04Idbn.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Idbn.idrefMei" class=" primaryKey refer" data-referFor="M04Idbn.idrefId" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI"></span>
+          <label for="M04Idbn.idrefId" th:text="#{M04Idbn.idrefId}">IDREF_ID</label><input type="text" id="M04Idbn.idrefId" name="M04Idbn.idrefId" maxlength="10" class=" primaryKey refer" data-referFor="M04Idbn.idrefId" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI" /><a id="M04Idbn.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M04Idbn.idrefMei" class=" primaryKey refer" data-referFor="M04Idbn.idrefId" data-json="M04IdSearch.json" data-srcDef="IDREF_ID:M04Idbn.idrefId" data-destDef="M04Idbn.idrefMei:IDREF_MEI"></span>
         </div>
         <div id="idbnBn">
-          <label for="M04Idbn.idbnBn" th:text="#{M04Idbn.idbnBn}">参照連番</label><input type="text" id="M04Idbn.idbnBn" name="M04Idbn.idbnBn" maxlength="10" class=" primaryKey" />
+          <label for="M04Idbn.idbnBn" th:text="#{M04Idbn.idbnBn}">IDBN_BN</label><input type="text" id="M04Idbn.idbnBn" name="M04Idbn.idbnBn" maxlength="10" class=" primaryKey" />
         </div>
         <div id="idbnNo">
-          <label for="M04Idbn.idbnNo" th:text="#{M04Idbn.idbnNo}">ID連番NO</label><input type="text" id="M04Idbn.idbnNo" name="M04Idbn.idbnNo" maxlength="10" />
+          <label for="M04Idbn.idbnNo" th:text="#{M04Idbn.idbnNo}">IDBN_NO</label><input type="text" id="M04Idbn.idbnNo" name="M04Idbn.idbnNo" maxlength="10" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetM04Idbn" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchM04Idbn" type="submit" class="search" data-gridId="M04IdbnGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchM04Idbn" type="submit" class="search" data-gridId="M04IdbnGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -51,11 +51,11 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetM04IdbnS" th:text="#{common.reset}" onClick="Base.listReset('M04Idbn');">reset</button>
         <a th:href="@{M04IdbnSearch.xlsx(baseMei=#{M04IdbnS.h2})}" id="M04IdbnSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="M04IdbnGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="'IDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <button type="submit" id="DeleteM04IdbnS" data-action="M04IdbnSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <a id="M04IdbnGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="#{M04IdS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteM04IdbnS" data-action="M04IdbnSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistM04IdbnS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistM04IdbnS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

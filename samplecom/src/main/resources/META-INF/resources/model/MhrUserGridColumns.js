@@ -1,5 +1,5 @@
 /**
- * ユーザマスタグリッド定義
+ * MHR_USER grid columns
  */
 
 let MhrUserGridColumns = [];

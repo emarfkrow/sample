@@ -1,5 +1,5 @@
 /**
- * VIEWグリッド定義
+ * V13_FURIWAKE grid columns
  */
 
 let V13FuriwakeGridColumns = [];

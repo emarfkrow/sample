@@ -1,5 +1,5 @@
 /**
- * 工程ガント定義
+ * T00_KOUTEI gantt tasks
  */
 
 let T00KouteiGanttTasks = {

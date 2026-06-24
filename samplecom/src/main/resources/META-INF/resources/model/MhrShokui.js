@@ -1,3 +1,3 @@
 /**
- * 職位マスタスクリプト
+ * MHR_SHOKUI script
  */

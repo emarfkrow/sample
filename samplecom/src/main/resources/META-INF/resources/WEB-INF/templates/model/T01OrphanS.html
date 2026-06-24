@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T01OrphanS.title}">孤児</title>
+<title th:text="#{T01OrphanS.title}">T01_ORPHAN</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -30,20 +30,20 @@
       <fieldset>
         <legend th:text="#{T01OrphanS.legend}">legend</legend>
         <div id="oyaId">
-          <label for="T01Orphan.oyaId" th:text="#{T01Orphan.oyaId}">親ID</label><input type="text" id="T01Orphan.oyaId" name="T01Orphan.oyaId" maxlength="10" class=" primaryKey" />
+          <label for="T01Orphan.oyaId" th:text="#{T01Orphan.oyaId}">OYA_ID</label><input type="text" id="T01Orphan.oyaId" name="T01Orphan.oyaId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="koBn">
-          <label for="T01Orphan.koBn" th:text="#{T01Orphan.koBn}">子枝番</label><input type="text" id="T01Orphan.koBn" name="T01Orphan.koBn" maxlength="10" class=" primaryKey" />
+          <label for="T01Orphan.koBn" th:text="#{T01Orphan.koBn}">KO_BN</label><input type="text" id="T01Orphan.koBn" name="T01Orphan.koBn" maxlength="10" class=" primaryKey" />
         </div>
         <div id="orphanInfo">
-          <label for="T01Orphan.orphanInfo" th:text="#{T01Orphan.orphanInfo}">孤児情報</label><input type="text" id="T01Orphan.orphanInfo" name="T01Orphan.orphanInfo" maxlength="300" />
+          <label for="T01Orphan.orphanInfo" th:text="#{T01Orphan.orphanInfo}">ORPHAN_INFO</label><input type="text" id="T01Orphan.orphanInfo" name="T01Orphan.orphanInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT01Orphan" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchT01Orphan" type="submit" class="search" data-gridId="T01OrphanGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT01Orphan" type="submit" class="search" data-gridId="T01OrphanGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->

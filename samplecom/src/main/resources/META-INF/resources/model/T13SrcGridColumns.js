@@ -1,5 +1,5 @@
 /**
- * 変換元グリッド定義
+ * T13_SRC grid columns
  */
 
 let T13SrcGridColumns = [];

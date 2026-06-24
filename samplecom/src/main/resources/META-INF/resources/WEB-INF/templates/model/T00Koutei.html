@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T00Koutei.title}">工程</title>
+<title th:text="#{T00Koutei.title}">T00_KOUTEI</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -21,32 +21,32 @@
       <fieldset>
         <legend th:text="#{T00Koutei.legend}">legend</legend>
         <div id="kouteiId">
-          <label for="T00Koutei.kouteiId" th:text="#{T00Koutei.kouteiId}">工程ID</label><input type="text" id="T00Koutei.kouteiId" name="T00Koutei.kouteiId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T00Koutei.kouteiId" th:text="#{T00Koutei.kouteiId}">KOUTEI_ID</label><input type="text" id="T00Koutei.kouteiId" name="T00Koutei.kouteiId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="kouteiMei">
-          <label for="T00Koutei.kouteiMei" th:text="#{T00Koutei.kouteiMei}">工程名</label><input type="text" id="T00Koutei.kouteiMei" name="T00Koutei.kouteiMei" maxlength="60" class=" notblank" />
+          <label for="T00Koutei.kouteiMei" th:text="#{T00Koutei.kouteiMei}">KOUTEI_MEI</label><input type="text" id="T00Koutei.kouteiMei" name="T00Koutei.kouteiMei" maxlength="60" class=" notblank" />
         </div>
         <div id="kaishiBi">
-          <label for="T00Koutei.kaishiBi" th:text="#{T00Koutei.kaishiBi}">開始日</label><input type="text" id="T00Koutei.kaishiBi" name="T00Koutei.kaishiBi" maxlength="10" class=" notblank datepicker" />
+          <label for="T00Koutei.kaishiBi" th:text="#{T00Koutei.kaishiBi}">KAISHI_BI</label><input type="text" id="T00Koutei.kaishiBi" name="T00Koutei.kaishiBi" maxlength="10" class=" notblank datepicker" />
         </div>
         <div id="shuryoBi">
-          <label for="T00Koutei.shuryoBi" th:text="#{T00Koutei.shuryoBi}">終了日</label><input type="text" id="T00Koutei.shuryoBi" name="T00Koutei.shuryoBi" maxlength="10" class=" notblank datepicker" />
+          <label for="T00Koutei.shuryoBi" th:text="#{T00Koutei.shuryoBi}">SHURYO_BI</label><input type="text" id="T00Koutei.shuryoBi" name="T00Koutei.shuryoBi" maxlength="10" class=" notblank datepicker" />
         </div>
         <div id="oyaKouteiId">
-          <label for="T00Koutei.oyaKouteiId" th:text="#{T00Koutei.oyaKouteiId}">親工程ID</label><input type="text" id="T00Koutei.oyaKouteiId" name="T00Koutei.oyaKouteiId" maxlength="10" class=" refer" data-referFor="T00Koutei.oyaKouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:T00Koutei.oyaKouteiId" data-destDef="T00Koutei.oyaKouteiMei:KOUTEI_MEI" /><a id="T00Koutei.oyaKouteiId" th:href="@{/model/T00KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T00Koutei.oyaKouteiMei" class=" refer" data-referFor="T00Koutei.oyaKouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:T00Koutei.oyaKouteiId" data-destDef="T00Koutei.oyaKouteiMei:KOUTEI_MEI"></span>
+          <label for="T00Koutei.oyaKouteiId" th:text="#{T00Koutei.oyaKouteiId}">OYA_KOUTEI_ID</label><input type="text" id="T00Koutei.oyaKouteiId" name="T00Koutei.oyaKouteiId" maxlength="10" class=" refer" data-referFor="T00Koutei.oyaKouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:T00Koutei.oyaKouteiId" data-destDef="T00Koutei.oyaKouteiMei:KOUTEI_MEI" /><a id="T00Koutei.oyaKouteiId" th:href="@{/model/T00KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T00Koutei.oyaKouteiMei" class=" refer" data-referFor="T00Koutei.oyaKouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:T00Koutei.oyaKouteiId" data-destDef="T00Koutei.oyaKouteiMei:KOUTEI_MEI"></span>
         </div>
         <div id="insertTs">
-          <label th:text="#{T00Koutei.insertTs}" class="meta">作成タイムスタンプ</label><span id="T00Koutei.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Koutei.insertTs" name="T00Koutei.insertTs" class="meta" />
+          <label th:text="#{T00Koutei.insertTs}" class="meta">INSERT_TS</label><span id="T00Koutei.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Koutei.insertTs" name="T00Koutei.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T00Koutei.insertUserId}" class="meta">作成者</label><span id="T00Koutei.insertUserId" class="meta"></span><input type="hidden" id="T00Koutei.insertUserId" name="T00Koutei.insertUserId" class="meta" />
+          <label th:text="#{T00Koutei.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T00Koutei.insertUserId" class="meta"></span><input type="hidden" id="T00Koutei.insertUserId" name="T00Koutei.insertUserId" class="meta" />
           <span id="T00Koutei.insertUserSei" class="refer meta" data-referFor="T00Koutei.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Koutei.insertUserId" data-destDef="T00Koutei.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T00Koutei.updateTs}" class="meta">更新タイムスタンプ</label><span id="T00Koutei.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Koutei.updateTs" name="T00Koutei.updateTs" class="meta" />
+          <label th:text="#{T00Koutei.updateTs}" class="meta">UPDATE_TS</label><span id="T00Koutei.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Koutei.updateTs" name="T00Koutei.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T00Koutei.updateUserId}" class="meta">更新者</label><span id="T00Koutei.updateUserId" class="meta"></span><input type="hidden" id="T00Koutei.updateUserId" name="T00Koutei.updateUserId" class="meta" />
+          <label th:text="#{T00Koutei.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T00Koutei.updateUserId" class="meta"></span><input type="hidden" id="T00Koutei.updateUserId" name="T00Koutei.updateUserId" class="meta" />
           <span id="T00Koutei.updateUserSei" class="refer meta" data-referFor="T00Koutei.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Koutei.updateUserId" data-destDef="T00Koutei.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -55,8 +55,8 @@
         <a th:href="@{T00KouteiGet.xlsx(baseMei=#{T00Koutei.h2})}" id="T00KouteiGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT00Koutei" type="submit" class="delete" data-action="T00KouteiDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT00Koutei" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT00Koutei" type="submit" class="delete" data-action="T00KouteiDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT00Koutei" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

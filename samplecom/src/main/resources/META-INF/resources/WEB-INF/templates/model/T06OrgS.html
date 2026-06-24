@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T06OrgS.title}">起源</title>
+<title th:text="#{T06OrgS.title}">T06_ORG</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -39,18 +39,18 @@
       <fieldset>
         <legend th:text="#{T06OrgS.legend}">legend</legend>
         <div id="orgId">
-          <label for="T06Org.orgId" th:text="#{T06Org.orgId}">起源ID</label><input type="text" id="T06Org.orgId" name="T06Org.orgId" maxlength="10" class=" primaryKey" />
+          <label for="T06Org.orgId" th:text="#{T06Org.orgId}">ORG_ID</label><input type="text" id="T06Org.orgId" name="T06Org.orgId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="orgInfo">
-          <label for="T06Org.orgInfo" th:text="#{T06Org.orgInfo}">起源情報</label><input type="text" id="T06Org.orgInfo" name="T06Org.orgInfo" maxlength="300" />
+          <label for="T06Org.orgInfo" th:text="#{T06Org.orgInfo}">ORG_INFO</label><input type="text" id="T06Org.orgInfo" name="T06Org.orgInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT06Org" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T06Org.html(anew)}" target="dialog" id="T06Org" class="anew" th:text="#{T06Org.add}" tabindex="-1">起源</a>
+        <a th:href="@{/model/T06Org.html(anew)}" target="dialog" id="T06Org" class="anew" th:text="#{T06Org.add}" tabindex="-1">T06_ORG</a>
       </div>
       <div class="submits">
-        <button id="SearchT06Org" type="submit" class="search" data-gridId="T06OrgGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT06Org" type="submit" class="search" data-gridId="T06OrgGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->

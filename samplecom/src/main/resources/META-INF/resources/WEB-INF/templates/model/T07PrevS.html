@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T07PrevS.title}">前世</title>
+<title th:text="#{T07PrevS.title}">T07_PREV</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -33,18 +33,18 @@
       <fieldset>
         <legend th:text="#{T07PrevS.legend}">legend</legend>
         <div id="prevId">
-          <label for="T07Prev.prevId" th:text="#{T07Prev.prevId}">前世ID</label><input type="text" id="T07Prev.prevId" name="T07Prev.prevId" maxlength="10" class=" primaryKey" />
+          <label for="T07Prev.prevId" th:text="#{T07Prev.prevId}">PREV_ID</label><input type="text" id="T07Prev.prevId" name="T07Prev.prevId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="prevInfo">
-          <label for="T07Prev.prevInfo" th:text="#{T07Prev.prevInfo}">前世情報</label><input type="text" id="T07Prev.prevInfo" name="T07Prev.prevInfo" maxlength="300" />
+          <label for="T07Prev.prevInfo" th:text="#{T07Prev.prevInfo}">PREV_INFO</label><input type="text" id="T07Prev.prevInfo" name="T07Prev.prevInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT07Prev" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T07Prev.html(anew)}" target="dialog" id="T07Prev" class="anew" th:text="#{T07Prev.add}" tabindex="-1">前世</a>
+        <a th:href="@{/model/T07Prev.html(anew)}" target="dialog" id="T07Prev" class="anew" th:text="#{T07Prev.add}" tabindex="-1">T07_PREV</a>
       </div>
       <div class="submits">
-        <button id="SearchT07Prev" type="submit" class="search" data-gridId="T07PrevGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT07Prev" type="submit" class="search" data-gridId="T07PrevGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->

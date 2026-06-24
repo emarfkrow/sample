@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T07RebornDet.title}">転生明細</title>
+<title th:text="#{T07RebornDet.title}">T07_REBORN_DET</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,52 +27,52 @@
       <fieldset class="parent">
         <legend th:text="#{T07Reborn.legend}">legend</legend>
         <div id="rebornId">
-          <label for="T07Reborn.rebornId" th:text="#{T07Reborn.rebornId}">転生ID</label><input type="text" id="T07Reborn.rebornId" name="T07Reborn.rebornId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T07Reborn.rebornId" th:text="#{T07Reborn.rebornId}">REBORN_ID</label><input type="text" id="T07Reborn.rebornId" name="T07Reborn.rebornId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="prevInfo">
-          <label for="T07Reborn.prevInfo" th:text="#{T07Reborn.prevInfo}">前世情報</label><input type="text" id="T07Reborn.prevInfo" name="T07Reborn.prevInfo" maxlength="300" />
+          <label for="T07Reborn.prevInfo" th:text="#{T07Reborn.prevInfo}">PREV_INFO</label><input type="text" id="T07Reborn.prevInfo" name="T07Reborn.prevInfo" maxlength="300" />
         </div>
         <div id="prevId">
-          <label th:text="#{T07Reborn.prevId}">前世ID</label><span id="T07Reborn.prevId" class="rebornee"></span><input type="text" id="T07Reborn.prevId" name="T07Reborn.prevId" style="display: none;" class="rebornee" />
+          <label th:text="#{T07Reborn.prevId}">PREV_ID</label><span id="T07Reborn.prevId" class="rebornee"></span><input type="text" id="T07Reborn.prevId" name="T07Reborn.prevId" style="display: none;" class="rebornee" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T07Reborn.insertTs}" class="meta">作成タイムスタンプ</label><span id="T07Reborn.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Reborn.insertTs" name="T07Reborn.insertTs" class="meta" />
+          <label th:text="#{T07Reborn.insertTs}" class="meta">INSERT_TS</label><span id="T07Reborn.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Reborn.insertTs" name="T07Reborn.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T07Reborn.insertUserId}" class="meta">作成者</label><span id="T07Reborn.insertUserId" class="meta"></span><input type="hidden" id="T07Reborn.insertUserId" name="T07Reborn.insertUserId" class="meta" />
+          <label th:text="#{T07Reborn.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T07Reborn.insertUserId" class="meta"></span><input type="hidden" id="T07Reborn.insertUserId" name="T07Reborn.insertUserId" class="meta" />
           <span id="T07Reborn.insertUserSei" class="refer meta" data-referFor="T07Reborn.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Reborn.insertUserId" data-destDef="T07Reborn.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T07Reborn.updateTs}" class="meta">更新タイムスタンプ</label><span id="T07Reborn.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Reborn.updateTs" name="T07Reborn.updateTs" class="meta" />
+          <label th:text="#{T07Reborn.updateTs}" class="meta">UPDATE_TS</label><span id="T07Reborn.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Reborn.updateTs" name="T07Reborn.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T07Reborn.updateUserId}" class="meta">更新者</label><span id="T07Reborn.updateUserId" class="meta"></span><input type="hidden" id="T07Reborn.updateUserId" name="T07Reborn.updateUserId" class="meta" />
+          <label th:text="#{T07Reborn.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T07Reborn.updateUserId" class="meta"></span><input type="hidden" id="T07Reborn.updateUserId" name="T07Reborn.updateUserId" class="meta" />
           <span id="T07Reborn.updateUserSei" class="refer meta" data-referFor="T07Reborn.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Reborn.updateUserId" data-destDef="T07Reborn.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <fieldset>
         <legend th:text="#{T07RebornDet.legend}">legend</legend>
         <div id="rebornId">
-          <label for="T07RebornDet.rebornId" th:text="#{T07RebornDet.rebornId}">転生ID</label><input type="text" id="T07RebornDet.rebornId" name="T07RebornDet.rebornId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T07RebornDet.rebornId" th:text="#{T07RebornDet.rebornId}">REBORN_ID</label><input type="text" id="T07RebornDet.rebornId" name="T07RebornDet.rebornId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="rebornBn">
-          <label for="T07RebornDet.rebornBn" th:text="#{T07RebornDet.rebornBn}">転生枝番</label><input type="text" id="T07RebornDet.rebornBn" name="T07RebornDet.rebornBn" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T07RebornDet.rebornBn" th:text="#{T07RebornDet.rebornBn}">REBORN_BN</label><input type="text" id="T07RebornDet.rebornBn" name="T07RebornDet.rebornBn" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="detInfo">
-          <label for="T07RebornDet.detInfo" th:text="#{T07RebornDet.detInfo}">明細情報</label><input type="text" id="T07RebornDet.detInfo" name="T07RebornDet.detInfo" maxlength="300" />
+          <label for="T07RebornDet.detInfo" th:text="#{T07RebornDet.detInfo}">DET_INFO</label><input type="text" id="T07RebornDet.detInfo" name="T07RebornDet.detInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T07RebornDet.insertTs}" class="meta">作成タイムスタンプ</label><span id="T07RebornDet.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07RebornDet.insertTs" name="T07RebornDet.insertTs" class="meta" />
+          <label th:text="#{T07RebornDet.insertTs}" class="meta">INSERT_TS</label><span id="T07RebornDet.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07RebornDet.insertTs" name="T07RebornDet.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T07RebornDet.insertUserId}" class="meta">作成者</label><span id="T07RebornDet.insertUserId" class="meta"></span><input type="hidden" id="T07RebornDet.insertUserId" name="T07RebornDet.insertUserId" class="meta" />
+          <label th:text="#{T07RebornDet.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T07RebornDet.insertUserId" class="meta"></span><input type="hidden" id="T07RebornDet.insertUserId" name="T07RebornDet.insertUserId" class="meta" />
           <span id="T07RebornDet.insertUserSei" class="refer meta" data-referFor="T07RebornDet.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07RebornDet.insertUserId" data-destDef="T07RebornDet.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T07RebornDet.updateTs}" class="meta">更新タイムスタンプ</label><span id="T07RebornDet.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07RebornDet.updateTs" name="T07RebornDet.updateTs" class="meta" />
+          <label th:text="#{T07RebornDet.updateTs}" class="meta">UPDATE_TS</label><span id="T07RebornDet.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07RebornDet.updateTs" name="T07RebornDet.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T07RebornDet.updateUserId}" class="meta">更新者</label><span id="T07RebornDet.updateUserId" class="meta"></span><input type="hidden" id="T07RebornDet.updateUserId" name="T07RebornDet.updateUserId" class="meta" />
+          <label th:text="#{T07RebornDet.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T07RebornDet.updateUserId" class="meta"></span><input type="hidden" id="T07RebornDet.updateUserId" name="T07RebornDet.updateUserId" class="meta" />
           <span id="T07RebornDet.updateUserSei" class="refer meta" data-referFor="T07RebornDet.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07RebornDet.updateUserId" data-destDef="T07RebornDet.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -81,8 +81,8 @@
         <a th:href="@{T07RebornDetGet.xlsx(baseMei=#{T07RebornDet.h2})}" id="T07RebornDetGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT07RebornDet" type="submit" class="delete" data-action="T07RebornDetDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT07RebornDet" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT07RebornDet" type="submit" class="delete" data-action="T07RebornDetDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT07RebornDet" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

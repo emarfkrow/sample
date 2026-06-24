@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T01OyaS.title}">親</title>
+<title th:text="#{T01OyaS.title}">T01_OYA</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -36,18 +36,18 @@
       <fieldset>
         <legend th:text="#{T01OyaS.legend}">legend</legend>
         <div id="oyaId">
-          <label for="T01Oya.oyaId" th:text="#{T01Oya.oyaId}">親ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" class=" primaryKey" />
+          <label for="T01Oya.oyaId" th:text="#{T01Oya.oyaId}">OYA_ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="oyaInfo">
-          <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">親情報</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
+          <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">OYA_INFO</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT01Oya" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T01Oya.html(anew)}" target="dialog" id="T01Oya" class="anew" th:text="#{T01Oya.add}" tabindex="-1">親</a>
+        <a th:href="@{/model/T01Oya.html(anew)}" target="dialog" id="T01Oya" class="anew" th:text="#{T01Oya.add}" tabindex="-1">T01_OYA</a>
       </div>
       <div class="submits">
-        <button id="SearchT01Oya" type="submit" class="search" data-gridId="T01OyaGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT01Oya" type="submit" class="search" data-gridId="T01OyaGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->

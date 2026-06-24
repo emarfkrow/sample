@@ -1,5 +1,5 @@
 /**
- * 里子グリッド定義
+ * T02_FOSTER grid columns
  */
 
 let T02FosterGridColumns = [];

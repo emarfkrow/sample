@@ -1,5 +1,5 @@
 /**
- * 転生２グリッド定義
+ * T11_REBORN2 grid columns
  */
 
 let T11Reborn2GridColumns = [];

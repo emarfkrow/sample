@@ -1,5 +1,5 @@
 /**
- * 通貨マスタグリッド定義
+ * MSY_TSUKA grid columns
  */
 
 let MsyTsukaGridColumns = [];

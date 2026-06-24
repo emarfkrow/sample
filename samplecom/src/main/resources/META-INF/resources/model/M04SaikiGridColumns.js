@@ -1,5 +1,5 @@
 /**
- * 再帰グリッド定義
+ * M04_SAIKI grid columns
  */
 
 let M04SaikiGridColumns = [];

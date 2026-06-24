@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{M04Id.title}">IDマスタ</title>
+<title th:text="#{M04Id.title}">M04_ID</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,37 +24,37 @@
       <fieldset>
         <legend th:text="#{M04Id.legend}">legend</legend>
         <div id="idrefId">
-          <label for="M04Id.idrefId" th:text="#{M04Id.idrefId}">参照ID</label><input type="text" id="M04Id.idrefId" name="M04Id.idrefId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="M04Id.idrefId" th:text="#{M04Id.idrefId}">IDREF_ID</label><input type="text" id="M04Id.idrefId" name="M04Id.idrefId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="idrefMei">
-          <label for="M04Id.idrefMei" th:text="#{M04Id.idrefMei}">ID参照名</label><input type="text" id="M04Id.idrefMei" name="M04Id.idrefMei" maxlength="60" class=" notblank" />
+          <label for="M04Id.idrefMei" th:text="#{M04Id.idrefMei}">IDREF_MEI</label><input type="text" id="M04Id.idrefMei" name="M04Id.idrefMei" maxlength="60" class=" notblank" />
         </div>
         <div id="insertTs">
-          <label th:text="#{M04Id.insertTs}" class="meta">作成タイムスタンプ</label><span id="M04Id.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Id.insertTs" name="M04Id.insertTs" class="meta" />
+          <label th:text="#{M04Id.insertTs}" class="meta">INSERT_TS</label><span id="M04Id.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Id.insertTs" name="M04Id.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{M04Id.insertUserId}" class="meta">作成者</label><span id="M04Id.insertUserId" class="meta"></span><input type="hidden" id="M04Id.insertUserId" name="M04Id.insertUserId" class="meta" />
+          <label th:text="#{M04Id.insertUserId}" class="meta">INSERT_USER_ID</label><span id="M04Id.insertUserId" class="meta"></span><input type="hidden" id="M04Id.insertUserId" name="M04Id.insertUserId" class="meta" />
           <span id="M04Id.insertUserSei" class="refer meta" data-referFor="M04Id.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Id.insertUserId" data-destDef="M04Id.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{M04Id.updateTs}" class="meta">更新タイムスタンプ</label><span id="M04Id.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Id.updateTs" name="M04Id.updateTs" class="meta" />
+          <label th:text="#{M04Id.updateTs}" class="meta">UPDATE_TS</label><span id="M04Id.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Id.updateTs" name="M04Id.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{M04Id.updateUserId}" class="meta">更新者</label><span id="M04Id.updateUserId" class="meta"></span><input type="hidden" id="M04Id.updateUserId" name="M04Id.updateUserId" class="meta" />
+          <label th:text="#{M04Id.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="M04Id.updateUserId" class="meta"></span><input type="hidden" id="M04Id.updateUserId" name="M04Id.updateUserId" class="meta" />
           <span id="M04Id.updateUserSei" class="refer meta" data-referFor="M04Id.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Id.updateUserId" data-destDef="M04Id.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <h3 th:text="#{M04Idbn.h3}">h3</h3>
-      <a th:href="@{/model/M04Idbn.html(anew)}" id="M04Idbn" target="dialog" th:text="#{M04Idbn.add}" class="addChild" tabindex="-1">ID連番マスタ</a>
+      <a th:href="@{/model/M04Idbn.html(anew)}" id="M04Idbn" target="dialog" th:text="#{M04Idbn.add}" class="addChild" tabindex="-1">M04_IDBN</a>
       <div id="M04IdbnGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/M04Idbn.html}" class="childs"></div>
-        <a id="M04IdbnGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="'IDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="M04IdbnGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="#{M04IdS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
       <div class="buttons">
         <button type="button" id="RefreshM04Id" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{M04IdGet.xlsx(baseMei=#{M04Id.h2})}" id="M04IdGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteM04Id" type="submit" class="delete" data-action="M04IdDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistM04Id" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteM04Id" type="submit" class="delete" data-action="M04IdDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistM04Id" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{V13FuriwakeS.title}">VIEW</title>
+<title th:text="#{V13FuriwakeS.title}">V13_FURIWAKE</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -31,7 +31,7 @@
         <button type="button" id="ResetV13Furiwake" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchV13Furiwake" type="submit" class="search" data-gridId="V13FuriwakeGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchV13Furiwake" type="submit" class="search" data-gridId="V13FuriwakeGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -44,7 +44,7 @@
         <a th:href="@{V13FuriwakeSearch.xlsx(baseMei=#{V13FuriwakeS.h2})}" id="V13FuriwakeSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="RegistV13FuriwakeS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistV13FuriwakeS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

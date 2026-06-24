@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T01Oya.title}">親</title>
+<title th:text="#{T01Oya.title}">T01_OYA</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -33,39 +33,39 @@
       <fieldset>
         <legend th:text="#{T01Oya.legend}">legend</legend>
         <div id="oyaId">
-          <label for="T01Oya.oyaId" th:text="#{T01Oya.oyaId}">親ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T01Oya.oyaId" th:text="#{T01Oya.oyaId}">OYA_ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="oyaInfo">
-          <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">親情報</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
+          <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">OYA_INFO</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T01Oya.insertTs}" class="meta">作成タイムスタンプ</label><span id="T01Oya.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Oya.insertTs" name="T01Oya.insertTs" class="meta" />
+          <label th:text="#{T01Oya.insertTs}" class="meta">INSERT_TS</label><span id="T01Oya.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Oya.insertTs" name="T01Oya.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T01Oya.insertUserId}" class="meta">作成者</label><span id="T01Oya.insertUserId" class="meta"></span><input type="hidden" id="T01Oya.insertUserId" name="T01Oya.insertUserId" class="meta" />
+          <label th:text="#{T01Oya.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T01Oya.insertUserId" class="meta"></span><input type="hidden" id="T01Oya.insertUserId" name="T01Oya.insertUserId" class="meta" />
           <span id="T01Oya.insertUserSei" class="refer meta" data-referFor="T01Oya.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Oya.insertUserId" data-destDef="T01Oya.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T01Oya.updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Oya.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Oya.updateTs" name="T01Oya.updateTs" class="meta" />
+          <label th:text="#{T01Oya.updateTs}" class="meta">UPDATE_TS</label><span id="T01Oya.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Oya.updateTs" name="T01Oya.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T01Oya.updateUserId}" class="meta">更新者</label><span id="T01Oya.updateUserId" class="meta"></span><input type="hidden" id="T01Oya.updateUserId" name="T01Oya.updateUserId" class="meta" />
+          <label th:text="#{T01Oya.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T01Oya.updateUserId" class="meta"></span><input type="hidden" id="T01Oya.updateUserId" name="T01Oya.updateUserId" class="meta" />
           <span id="T01Oya.updateUserSei" class="refer meta" data-referFor="T01Oya.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Oya.updateUserId" data-destDef="T01Oya.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <h3 th:text="#{T01Dinks.h3}">h3</h3>
-      <a th:href="@{/model/T01Dinks.html(anew)}" id="T01Dinks" target="dialog" th:text="#{T01Dinks.add}" class="addChild" tabindex="-1">子なし</a>
+      <a th:href="@{/model/T01Dinks.html(anew)}" id="T01Dinks" target="dialog" th:text="#{T01Dinks.add}" class="addChild" tabindex="-1">T01_DINKS</a>
       <div id="T01DinksGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T01Dinks.html}" class="childs"></div>
       <h3 th:text="#{T01Ko.h3}">h3</h3>
-      <a th:href="@{/model/T01Ko.html(anew)}" id="T01Ko" target="dialog" th:text="#{T01Ko.add}" class="addChild" tabindex="-1">子</a>
+      <a th:href="@{/model/T01Ko.html(anew)}" id="T01Ko" target="dialog" th:text="#{T01Ko.add}" class="addChild" tabindex="-1">T01_KO</a>
       <div id="T01KoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T01Ko.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshT01Oya" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T01OyaGet.xlsx(baseMei=#{T01Oya.h2})}" id="T01OyaGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT01Oya" type="submit" class="delete" data-action="T01OyaDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT01Oya" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT01Oya" type="submit" class="delete" data-action="T01OyaDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT01Oya" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

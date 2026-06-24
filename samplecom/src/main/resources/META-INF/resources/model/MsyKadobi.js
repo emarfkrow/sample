@@ -1,3 +1,3 @@
 /**
- * 稼働日マスタスクリプト
+ * MSY_KADOBI script
  */

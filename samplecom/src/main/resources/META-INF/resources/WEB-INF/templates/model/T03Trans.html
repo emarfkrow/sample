@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T03Trans.title}">変遷</title>
+<title th:text="#{T03Trans.title}">T03_TRANS</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -21,28 +21,28 @@
       <fieldset>
         <legend th:text="#{T03Trans.legend}">legend</legend>
         <div id="transId">
-          <label for="T03Trans.transId" th:text="#{T03Trans.transId}">変遷ID</label><input type="text" id="T03Trans.transId" name="T03Trans.transId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T03Trans.transId" th:text="#{T03Trans.transId}">TRANS_ID</label><input type="text" id="T03Trans.transId" name="T03Trans.transId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="transInfo">
-          <label for="T03Trans.transInfo" th:text="#{T03Trans.transInfo}">変遷情報</label><input type="text" id="T03Trans.transInfo" name="T03Trans.transInfo" maxlength="300" />
+          <label for="T03Trans.transInfo" th:text="#{T03Trans.transInfo}">TRANS_INFO</label><input type="text" id="T03Trans.transInfo" name="T03Trans.transInfo" maxlength="300" />
         </div>
         <div id="statusKb">
           <fieldset id="T03Trans.statusKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:STATUS_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
-            <legend th:text="#{T03Trans.statusKb}">ステータス区分</legend>
+            <legend th:text="#{T03Trans.statusKb}">STATUS_KB</legend>
           </fieldset>
         </div>
         <div id="insertTs">
-          <label th:text="#{T03Trans.insertTs}" class="meta">作成タイムスタンプ</label><span id="T03Trans.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T03Trans.insertTs" name="T03Trans.insertTs" class="meta" />
+          <label th:text="#{T03Trans.insertTs}" class="meta">INSERT_TS</label><span id="T03Trans.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T03Trans.insertTs" name="T03Trans.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T03Trans.insertUserId}" class="meta">作成者</label><span id="T03Trans.insertUserId" class="meta"></span><input type="hidden" id="T03Trans.insertUserId" name="T03Trans.insertUserId" class="meta" />
+          <label th:text="#{T03Trans.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T03Trans.insertUserId" class="meta"></span><input type="hidden" id="T03Trans.insertUserId" name="T03Trans.insertUserId" class="meta" />
           <span id="T03Trans.insertUserSei" class="refer meta" data-referFor="T03Trans.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T03Trans.insertUserId" data-destDef="T03Trans.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T03Trans.updateTs}" class="meta">更新タイムスタンプ</label><span id="T03Trans.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T03Trans.updateTs" name="T03Trans.updateTs" class="meta" />
+          <label th:text="#{T03Trans.updateTs}" class="meta">UPDATE_TS</label><span id="T03Trans.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T03Trans.updateTs" name="T03Trans.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T03Trans.updateUserId}" class="meta">更新者</label><span id="T03Trans.updateUserId" class="meta"></span><input type="hidden" id="T03Trans.updateUserId" name="T03Trans.updateUserId" class="meta" />
+          <label th:text="#{T03Trans.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T03Trans.updateUserId" class="meta"></span><input type="hidden" id="T03Trans.updateUserId" name="T03Trans.updateUserId" class="meta" />
           <span id="T03Trans.updateUserSei" class="refer meta" data-referFor="T03Trans.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T03Trans.updateUserId" data-destDef="T03Trans.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -51,12 +51,12 @@
         <a th:href="@{T03TransGet.xlsx(baseMei=#{T03Trans.h2})}" id="T03TransGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT03Trans" type="submit" class="delete" data-action="T03TransDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="PermitT03Trans" data-action="T03TransPermit.ajax" class="permit" th:text="#{common.permit}" tabindex="-1">承認</button>
-        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ForbidT03Trans" data-action="T03TransForbid.ajax" class="forbid" th:text="#{common.forbid}" tabindex="-1">否認</button>
-        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ApplyT03Trans" data-action="T03TransApply.ajax" class="apply" th:text="#{common.apply}" tabindex="-1">申請</button>
-        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="CancelT03Trans" data-action="T03TransCancel.ajax" class="cancel" th:text="#{common.cancel}" tabindex="-1">取消</button>
-        <button id="RegistT03Trans" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.rirekiTx(this)) { return false; }">登録</button>
+        <button id="DeleteT03Trans" type="submit" class="delete" data-action="T03TransDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="PermitT03Trans" data-action="T03TransPermit.ajax" class="permit" th:text="#{common.permit}" tabindex="-1">permit</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ForbidT03Trans" data-action="T03TransForbid.ajax" class="forbid" th:text="#{common.forbid}" tabindex="-1">forbid</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ApplyT03Trans" data-action="T03TransApply.ajax" class="apply" th:text="#{common.apply}" tabindex="-1">apply</button>
+        <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="CancelT03Trans" data-action="T03TransCancel.ajax" class="cancel" th:text="#{common.cancel}" tabindex="-1">cancel</button>
+        <button id="RegistT03Trans" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.rirekiTx(this)) { return false; }">regist</button>
       </div>
     </form>
   </div>

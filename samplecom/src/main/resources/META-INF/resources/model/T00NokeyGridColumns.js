@@ -1,5 +1,5 @@
 /**
- * キーなしグリッド定義
+ * T00_NOKEY grid columns
  */
 
 let T00NokeyGridColumns = [];

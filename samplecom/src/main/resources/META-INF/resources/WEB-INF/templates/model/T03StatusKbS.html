@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T03StatusKbS.title}">決裁フロー</title>
+<title th:text="#{T03StatusKbS.title}">T03_STATUS_KB</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,31 +24,31 @@
       <fieldset>
         <legend th:text="#{T03StatusKbS.legend}">legend</legend>
         <div id="flowId">
-          <label for="T03StatusKb.flowId" th:text="#{T03StatusKb.flowId}">フローID</label><input type="text" id="T03StatusKb.flowId" name="T03StatusKb.flowId" maxlength="10" class=" primaryKey" />
+          <label for="T03StatusKb.flowId" th:text="#{T03StatusKb.flowId}">FLOW_ID</label><input type="text" id="T03StatusKb.flowId" name="T03StatusKb.flowId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="tableNm">
-          <label for="T03StatusKb.tableNm" th:text="#{T03StatusKb.tableNm}">テーブル名称</label><input type="text" id="T03StatusKb.tableNm" name="T03StatusKb.tableNm" maxlength="20" />
+          <label for="T03StatusKb.tableNm" th:text="#{T03StatusKb.tableNm}">TABLE_NM</label><input type="text" id="T03StatusKb.tableNm" name="T03StatusKb.tableNm" maxlength="20" />
         </div>
         <div id="primaryKeys">
-          <label for="T03StatusKb.primaryKeys" th:text="#{T03StatusKb.primaryKeys}">主キー</label><input type="text" id="T03StatusKb.primaryKeys" name="T03StatusKb.primaryKeys" maxlength="300" />
+          <label for="T03StatusKb.primaryKeys" th:text="#{T03StatusKb.primaryKeys}">PRIMARY_KEYS</label><input type="text" id="T03StatusKb.primaryKeys" name="T03StatusKb.primaryKeys" maxlength="300" />
         </div>
         <div id="statusKb">
           <fieldset id="T03StatusKb.statusKbList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:STATUS_KB" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
-            <legend th:text="#{T03StatusKb.statusKb}">ステータス区分</legend>
+            <legend th:text="#{T03StatusKb.statusKb}">STATUS_KB</legend>
           </fieldset>
         </div>
         <div id="kessaiId">
-          <label for="T03StatusKb.kessaiId" th:text="#{T03StatusKb.kessaiId}">決裁者ID</label><input type="text" id="T03StatusKb.kessaiId" name="T03StatusKb.kessaiId" maxlength="10" />
+          <label for="T03StatusKb.kessaiId" th:text="#{T03StatusKb.kessaiId}">KESSAI_ID</label><input type="text" id="T03StatusKb.kessaiId" name="T03StatusKb.kessaiId" maxlength="10" />
         </div>
         <div id="riyuTx">
-          <label for="T03StatusKb.riyuTx" th:text="#{T03StatusKb.riyuTx}">決裁理由</label><input type="text" id="T03StatusKb.riyuTx" name="T03StatusKb.riyuTx" maxlength="300" />
+          <label for="T03StatusKb.riyuTx" th:text="#{T03StatusKb.riyuTx}">RIYU_TX</label><input type="text" id="T03StatusKb.riyuTx" name="T03StatusKb.riyuTx" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT03StatusKb" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchT03StatusKb" type="submit" class="search" data-gridId="T03StatusKbGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT03StatusKb" type="submit" class="search" data-gridId="T03StatusKbGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->

@@ -1,5 +1,5 @@
 /**
- * 起源明細グリッド定義
+ * T06_ORG_DET grid columns
  */
 
 let T06OrgDetGridColumns = [];

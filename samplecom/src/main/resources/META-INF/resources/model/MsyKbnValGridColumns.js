@@ -1,5 +1,5 @@
 /**
- * 区分値マスタグリッド定義
+ * MSY_KBN_VAL grid columns
  */
 
 let MsyKbnValGridColumns = [];

@@ -1,5 +1,5 @@
 /**
- * 候補２グリッド定義
+ * T10_KOHO2 grid columns
  */
 
 let T10Koho2GridColumns = [];

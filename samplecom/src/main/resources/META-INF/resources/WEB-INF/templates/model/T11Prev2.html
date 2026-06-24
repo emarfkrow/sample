@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T11Prev2.title}">前世２</title>
+<title th:text="#{T11Prev2.title}">T11_PREV2</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,34 +27,34 @@
       <fieldset>
         <legend th:text="#{T11Prev2.legend}">legend</legend>
         <div id="prev2Id">
-          <label for="T11Prev2.prev2Id" th:text="#{T11Prev2.prev2Id}">前世２ID</label><input type="text" id="T11Prev2.prev2Id" name="T11Prev2.prev2Id" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T11Prev2.prev2Id" th:text="#{T11Prev2.prev2Id}">PREV2_ID</label><input type="text" id="T11Prev2.prev2Id" name="T11Prev2.prev2Id" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="prev2Info">
-          <label for="T11Prev2.prev2Info" th:text="#{T11Prev2.prev2Info}">前世２情報</label><input type="text" id="T11Prev2.prev2Info" name="T11Prev2.prev2Info" maxlength="300" />
+          <label for="T11Prev2.prev2Info" th:text="#{T11Prev2.prev2Info}">PREV2_INFO</label><input type="text" id="T11Prev2.prev2Info" name="T11Prev2.prev2Info" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T11Prev2.insertTs}" class="meta">作成タイムスタンプ</label><span id="T11Prev2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T11Prev2.insertTs" name="T11Prev2.insertTs" class="meta" />
+          <label th:text="#{T11Prev2.insertTs}" class="meta">INSERT_TS</label><span id="T11Prev2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T11Prev2.insertTs" name="T11Prev2.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T11Prev2.insertUserId}" class="meta">作成者</label><span id="T11Prev2.insertUserId" class="meta"></span><input type="hidden" id="T11Prev2.insertUserId" name="T11Prev2.insertUserId" class="meta" />
+          <label th:text="#{T11Prev2.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T11Prev2.insertUserId" class="meta"></span><input type="hidden" id="T11Prev2.insertUserId" name="T11Prev2.insertUserId" class="meta" />
           <span id="T11Prev2.insertUserSei" class="refer meta" data-referFor="T11Prev2.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T11Prev2.insertUserId" data-destDef="T11Prev2.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T11Prev2.updateTs}" class="meta">更新タイムスタンプ</label><span id="T11Prev2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T11Prev2.updateTs" name="T11Prev2.updateTs" class="meta" />
+          <label th:text="#{T11Prev2.updateTs}" class="meta">UPDATE_TS</label><span id="T11Prev2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T11Prev2.updateTs" name="T11Prev2.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T11Prev2.updateUserId}" class="meta">更新者</label><span id="T11Prev2.updateUserId" class="meta"></span><input type="hidden" id="T11Prev2.updateUserId" name="T11Prev2.updateUserId" class="meta" />
+          <label th:text="#{T11Prev2.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T11Prev2.updateUserId" class="meta"></span><input type="hidden" id="T11Prev2.updateUserId" name="T11Prev2.updateUserId" class="meta" />
           <span id="T11Prev2.updateUserSei" class="refer meta" data-referFor="T11Prev2.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T11Prev2.updateUserId" data-destDef="T11Prev2.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="RefreshT11Prev2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T11Prev2Get.xlsx(baseMei=#{T11Prev2.h2})}" id="T11Prev2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a th:href="@{/model/T11Reborn2.html}" id="T11Reborn2" target="dialog" th:text="#{T11Reborn2.add}" class="reborner" tabindex="-1">転生２</a>
+        <a th:href="@{/model/T11Reborn2.html}" id="T11Reborn2" target="dialog" th:text="#{T11Reborn2.add}" class="reborner" tabindex="-1">T11_REBORN2</a>
       </div>
       <div class="submits">
-        <button id="DeleteT11Prev2" type="submit" class="delete" data-action="T11Prev2Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT11Prev2" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT11Prev2" type="submit" class="delete" data-action="T11Prev2Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT11Prev2" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
       <h3 th:text="#{T11Reborn2.h3}">h3</h3>
       <div id="T11Reborn2Grid" data-selectionMode="link" data-frozenColumn="1" th:data-href="@{/model/T11Reborn2.html}" class="reborners"></div>

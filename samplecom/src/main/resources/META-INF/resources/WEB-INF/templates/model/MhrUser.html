@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{MhrUser.title}">ユーザマスタ</title>
+<title th:text="#{MhrUser.title}">MHR_USER</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -18,38 +18,38 @@
       <fieldset>
         <legend th:text="#{MhrUser.legend}">legend</legend>
         <div id="userId">
-          <label for="MhrUser.userId" th:text="#{MhrUser.userId}">ユーザID</label><input type="text" id="MhrUser.userId" name="MhrUser.userId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="MhrUser.userId" th:text="#{MhrUser.userId}">USER_ID</label><input type="text" id="MhrUser.userId" name="MhrUser.userId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="userSei">
-          <label for="MhrUser.userSei" th:text="#{MhrUser.userSei}">ユーザ姓</label><input type="text" id="MhrUser.userSei" name="MhrUser.userSei" maxlength="60" class=" notblank" />
+          <label for="MhrUser.userSei" th:text="#{MhrUser.userSei}">USER_SEI</label><input type="text" id="MhrUser.userSei" name="MhrUser.userSei" maxlength="60" class=" notblank" />
         </div>
         <div id="userMei">
-          <label for="MhrUser.userMei" th:text="#{MhrUser.userMei}">ユーザ名</label><input type="text" id="MhrUser.userMei" name="MhrUser.userMei" maxlength="60" class=" notblank" />
+          <label for="MhrUser.userMei" th:text="#{MhrUser.userMei}">USER_MEI</label><input type="text" id="MhrUser.userMei" name="MhrUser.userMei" maxlength="60" class=" notblank" />
         </div>
         <div id="eMail">
-          <label for="MhrUser.eMail" th:text="#{MhrUser.eMail}">メールアドレス</label><input type="text" id="MhrUser.eMail" name="MhrUser.eMail" maxlength="300" class=" notblank" />
+          <label for="MhrUser.eMail" th:text="#{MhrUser.eMail}">E_MAIL</label><input type="text" id="MhrUser.eMail" name="MhrUser.eMail" maxlength="300" class=" notblank" />
         </div>
         <div id="password">
-          <label for="MhrUser.password" th:text="#{MhrUser.password}">パスワード</label><input type="text" id="MhrUser.password" name="MhrUser.password" maxlength="300" class=" notblank" />
+          <label for="MhrUser.password" th:text="#{MhrUser.password}">PASSWORD</label><input type="text" id="MhrUser.password" name="MhrUser.password" maxlength="300" class=" notblank" />
         </div>
         <div id="tekiyoBi">
-          <label for="MhrUser.tekiyoBi" th:text="#{MhrUser.tekiyoBi}">適用日</label><input type="text" id="MhrUser.tekiyoBi" name="MhrUser.tekiyoBi" maxlength="10" class=" datepicker" />
+          <label for="MhrUser.tekiyoBi" th:text="#{MhrUser.tekiyoBi}">TEKIYO_BI</label><input type="text" id="MhrUser.tekiyoBi" name="MhrUser.tekiyoBi" maxlength="10" class=" datepicker" />
         </div>
         <div id="haishiBi">
-          <label for="MhrUser.haishiBi" th:text="#{MhrUser.haishiBi}">廃止日</label><input type="text" id="MhrUser.haishiBi" name="MhrUser.haishiBi" maxlength="10" class=" datepicker" />
+          <label for="MhrUser.haishiBi" th:text="#{MhrUser.haishiBi}">HAISHI_BI</label><input type="text" id="MhrUser.haishiBi" name="MhrUser.haishiBi" maxlength="10" class=" datepicker" />
         </div>
         <div id="insertTs">
-          <label th:text="#{MhrUser.insertTs}" class="meta">作成タイムスタンプ</label><span id="MhrUser.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrUser.insertTs" name="MhrUser.insertTs" class="meta" />
+          <label th:text="#{MhrUser.insertTs}" class="meta">INSERT_TS</label><span id="MhrUser.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrUser.insertTs" name="MhrUser.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{MhrUser.insertUserId}" class="meta">作成者</label><span id="MhrUser.insertUserId" class="meta"></span><input type="hidden" id="MhrUser.insertUserId" name="MhrUser.insertUserId" class="meta" />
+          <label th:text="#{MhrUser.insertUserId}" class="meta">INSERT_USER_ID</label><span id="MhrUser.insertUserId" class="meta"></span><input type="hidden" id="MhrUser.insertUserId" name="MhrUser.insertUserId" class="meta" />
           <span id="MhrUser.insertUserSei" class="refer meta" data-referFor="MhrUser.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUser.insertUserId" data-destDef="MhrUser.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{MhrUser.updateTs}" class="meta">更新タイムスタンプ</label><span id="MhrUser.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrUser.updateTs" name="MhrUser.updateTs" class="meta" />
+          <label th:text="#{MhrUser.updateTs}" class="meta">UPDATE_TS</label><span id="MhrUser.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="MhrUser.updateTs" name="MhrUser.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{MhrUser.updateUserId}" class="meta">更新者</label><span id="MhrUser.updateUserId" class="meta"></span><input type="hidden" id="MhrUser.updateUserId" name="MhrUser.updateUserId" class="meta" />
+          <label th:text="#{MhrUser.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="MhrUser.updateUserId" class="meta"></span><input type="hidden" id="MhrUser.updateUserId" name="MhrUser.updateUserId" class="meta" />
           <span id="MhrUser.updateUserSei" class="refer meta" data-referFor="MhrUser.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:MhrUser.updateUserId" data-destDef="MhrUser.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -58,7 +58,7 @@
         <a th:href="@{MhrUserGet.xlsx(baseMei=#{MhrUser.h2})}" id="MhrUserGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="RegistMhrUser" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="RegistMhrUser" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

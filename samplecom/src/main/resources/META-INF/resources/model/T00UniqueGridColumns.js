@@ -1,5 +1,5 @@
 /**
- * ユニークキーグリッド定義
+ * T00_UNIQUE grid columns
  */
 
 let T00UniqueGridColumns = [];

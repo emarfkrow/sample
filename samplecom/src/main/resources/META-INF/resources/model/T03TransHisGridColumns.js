@@ -1,5 +1,5 @@
 /**
- * 変遷履歴グリッド定義
+ * T03_TRANS_HIS grid columns
  */
 
 let T03TransHisGridColumns = [];

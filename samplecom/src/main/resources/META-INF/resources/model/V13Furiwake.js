@@ -1,3 +1,3 @@
 /**
- * VIEWスクリプト
+ * V13_FURIWAKE script
  */

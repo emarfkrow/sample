@@ -1,5 +1,5 @@
 /**
- * 税マスタグリッド定義
+ * MSY_TAX grid columns
  */
 
 let MsyTaxGridColumns = [];

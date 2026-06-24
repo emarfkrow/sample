@@ -1,5 +1,5 @@
 /**
- * NOマスタグリッド定義
+ * M04_NO grid columns
  */
 
 let M04NoGridColumns = [];

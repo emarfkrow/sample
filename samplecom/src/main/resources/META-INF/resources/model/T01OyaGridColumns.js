@@ -1,5 +1,5 @@
 /**
- * 親グリッド定義
+ * T01_OYA grid columns
  */
 
 let T01OyaGridColumns = [];

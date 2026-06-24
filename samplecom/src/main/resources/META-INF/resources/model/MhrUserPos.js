@@ -1,3 +1,3 @@
 /**
- * 所属マスタスクリプト
+ * MHR_USER_POS script
  */

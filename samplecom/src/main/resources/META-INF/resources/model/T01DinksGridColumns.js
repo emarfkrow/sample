@@ -1,5 +1,5 @@
 /**
- * 子なしグリッド定義
+ * T01_DINKS grid columns
  */
 
 let T01DinksGridColumns = [];

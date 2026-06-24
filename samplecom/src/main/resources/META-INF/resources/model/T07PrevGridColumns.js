@@ -1,5 +1,5 @@
 /**
- * 前世グリッド定義
+ * T07_PREV grid columns
  */
 
 let T07PrevGridColumns = [];

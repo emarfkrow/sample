@@ -1,5 +1,5 @@
 /**
- * 選抜グリッド定義
+ * T10_CHOICE grid columns
  */
 
 let T10ChoiceGridColumns = [];

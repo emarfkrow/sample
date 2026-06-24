@@ -1,4 +1,9 @@
 SELECT
+      * 
+FROM
+    ( 
+        SELECT
+              SYS_CONNECT_BY_PATH (a."KOUTEI_ID", ',')             AS PATH,
       a.`KOUTEI_ID` AS `KOUTEI_ID`
     , a.`KOUTEI_MEI` AS `KOUTEI_MEI`
     , a.`KAISHI_BI` AS `KAISHI_BI`
@@ -46,4 +51,4 @@ WHERE
     AND a.`UPDATE_TS` <= :update_ts_2 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`)) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
 ORDER BY
-    a.`KOUTEI_ID`
+    a.PATH DESC

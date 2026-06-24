@@ -1,5 +1,5 @@
 /**
- * 派生１グリッド定義
+ * T06_DERIVE1 grid columns
  */
 
 let T06Derive1GridColumns = [];

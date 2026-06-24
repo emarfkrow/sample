@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{M04No.title}">NOマスタ</title>
+<title th:text="#{M04No.title}">M04_NO</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -21,23 +21,23 @@
       <fieldset>
         <legend th:text="#{M04No.legend}">legend</legend>
         <div id="norefNo">
-          <label for="M04No.norefNo" th:text="#{M04No.norefNo}">参照NO</label><input type="text" id="M04No.norefNo" name="M04No.norefNo" maxlength="10" class=" primaryKey notblank" />
+          <label for="M04No.norefNo" th:text="#{M04No.norefNo}">NOREF_NO</label><input type="text" id="M04No.norefNo" name="M04No.norefNo" maxlength="10" class=" primaryKey notblank" />
         </div>
         <div id="norefMei">
-          <label for="M04No.norefMei" th:text="#{M04No.norefMei}">NO参照名</label><input type="text" id="M04No.norefMei" name="M04No.norefMei" maxlength="60" class=" notblank" />
+          <label for="M04No.norefMei" th:text="#{M04No.norefMei}">NOREF_MEI</label><input type="text" id="M04No.norefMei" name="M04No.norefMei" maxlength="60" class=" notblank" />
         </div>
         <div id="insertTs">
-          <label th:text="#{M04No.insertTs}" class="meta">作成タイムスタンプ</label><span id="M04No.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M04No.insertTs" name="M04No.insertTs" class="meta" />
+          <label th:text="#{M04No.insertTs}" class="meta">INSERT_TS</label><span id="M04No.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M04No.insertTs" name="M04No.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{M04No.insertUserId}" class="meta">作成者</label><span id="M04No.insertUserId" class="meta"></span><input type="hidden" id="M04No.insertUserId" name="M04No.insertUserId" class="meta" />
+          <label th:text="#{M04No.insertUserId}" class="meta">INSERT_USER_ID</label><span id="M04No.insertUserId" class="meta"></span><input type="hidden" id="M04No.insertUserId" name="M04No.insertUserId" class="meta" />
           <span id="M04No.insertUserSei" class="refer meta" data-referFor="M04No.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04No.insertUserId" data-destDef="M04No.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{M04No.updateTs}" class="meta">更新タイムスタンプ</label><span id="M04No.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M04No.updateTs" name="M04No.updateTs" class="meta" />
+          <label th:text="#{M04No.updateTs}" class="meta">UPDATE_TS</label><span id="M04No.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M04No.updateTs" name="M04No.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{M04No.updateUserId}" class="meta">更新者</label><span id="M04No.updateUserId" class="meta"></span><input type="hidden" id="M04No.updateUserId" name="M04No.updateUserId" class="meta" />
+          <label th:text="#{M04No.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="M04No.updateUserId" class="meta"></span><input type="hidden" id="M04No.updateUserId" name="M04No.updateUserId" class="meta" />
           <span id="M04No.updateUserSei" class="refer meta" data-referFor="M04No.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04No.updateUserId" data-destDef="M04No.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -46,8 +46,8 @@
         <a th:href="@{M04NoGet.xlsx(baseMei=#{M04No.h2})}" id="M04NoGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteM04No" type="submit" class="delete" data-action="M04NoDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistM04No" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteM04No" type="submit" class="delete" data-action="M04NoDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistM04No" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

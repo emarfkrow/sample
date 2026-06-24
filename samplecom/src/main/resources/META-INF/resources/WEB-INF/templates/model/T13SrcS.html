@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T13SrcS.title}">変換元</title>
+<title th:text="#{T13SrcS.title}">T13_SRC</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,18 +24,18 @@
       <fieldset>
         <legend th:text="#{T13SrcS.legend}">legend</legend>
         <div id="srcId">
-          <label for="T13Src.srcId" th:text="#{T13Src.srcId}">変換元ID</label><input type="text" id="T13Src.srcId" name="T13Src.srcId" maxlength="10" class=" primaryKey" />
+          <label for="T13Src.srcId" th:text="#{T13Src.srcId}">SRC_ID</label><input type="text" id="T13Src.srcId" name="T13Src.srcId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="srcInfo">
-          <label for="T13Src.srcInfo" th:text="#{T13Src.srcInfo}">変換元情報</label><input type="text" id="T13Src.srcInfo" name="T13Src.srcInfo" maxlength="300" />
+          <label for="T13Src.srcInfo" th:text="#{T13Src.srcInfo}">SRC_INFO</label><input type="text" id="T13Src.srcInfo" name="T13Src.srcInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT13Src" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T13Src.html(anew)}" target="dialog" id="T13Src" class="anew" th:text="#{T13Src.add}" tabindex="-1">変換元</a>
+        <a th:href="@{/model/T13Src.html(anew)}" target="dialog" id="T13Src" class="anew" th:text="#{T13Src.add}" tabindex="-1">T13_SRC</a>
       </div>
       <div class="submits">
-        <button id="SearchT13Src" type="submit" class="search" data-gridId="T13SrcGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT13Src" type="submit" class="search" data-gridId="T13SrcGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -46,10 +46,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT13SrcS" th:text="#{common.reset}" onClick="Base.listReset('T13Src');">reset</button>
         <a th:href="@{T13SrcSearch.xlsx(baseMei=#{T13SrcS.h2})}" id="T13SrcSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT13SrcS" data-action="T13SrcSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT13SrcS" data-action="T13SrcSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT13SrcS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT13SrcS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

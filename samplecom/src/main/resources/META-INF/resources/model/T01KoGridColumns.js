@@ -1,5 +1,5 @@
 /**
- * 子グリッド定義
+ * T01_KO grid columns
  */
 
 let T01KoGridColumns = [];

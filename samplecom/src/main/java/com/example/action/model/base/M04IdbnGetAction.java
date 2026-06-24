@@ -42,8 +42,11 @@ public class M04IdbnGetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.M04Id m04Id = com.example.entity.M04Id.get(idrefId);
-        map.put("M04Id", m04Id);
+        try {
+            com.example.entity.M04Id m04Id = com.example.entity.M04Id.get(idrefId);
+            map.put("M04Id", m04Id);
+        } catch (Exception e) {
+        }
 
         // 主キーが不足していたら終了
         if (!isAllKey) {

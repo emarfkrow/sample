@@ -1,5 +1,5 @@
 /**
- * 複合１グリッド定義
+ * T05_COMP1 grid columns
  */
 
 let T05Comp1GridColumns = [];

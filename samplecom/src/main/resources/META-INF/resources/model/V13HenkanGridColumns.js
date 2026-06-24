@@ -1,5 +1,5 @@
 /**
- * VIEWグリッド定義
+ * V13_HENKAN grid columns
  */
 
 let V13HenkanGridColumns = [];

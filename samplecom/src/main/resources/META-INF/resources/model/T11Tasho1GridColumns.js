@@ -1,5 +1,5 @@
 /**
- * 他生１グリッド定義
+ * T11_TASHO1 grid columns
  */
 
 let T11Tasho1GridColumns = [];

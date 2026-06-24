@@ -1,5 +1,5 @@
 /**
- * 末弟グリッド定義
+ * T02_YOUNGEST grid columns
  */
 
 let T02YoungestGridColumns = [];

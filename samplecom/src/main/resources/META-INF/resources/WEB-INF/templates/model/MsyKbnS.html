@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{MsyKbnS.title}">区分マスタ</title>
+<title th:text="#{MsyKbnS.title}">MSY_KBN</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,18 +27,18 @@
       <fieldset>
         <legend th:text="#{MsyKbnS.legend}">legend</legend>
         <div id="kbnNm">
-          <label for="MsyKbn.kbnNm" th:text="#{MsyKbn.kbnNm}">区分名称</label><input type="text" id="MsyKbn.kbnNm" name="MsyKbn.kbnNm" maxlength="20" class=" primaryKey" />
+          <label for="MsyKbn.kbnNm" th:text="#{MsyKbn.kbnNm}">KBN_NM</label><input type="text" id="MsyKbn.kbnNm" name="MsyKbn.kbnNm" maxlength="20" class=" primaryKey" />
         </div>
         <div id="kbnMei">
-          <label for="MsyKbn.kbnMei" th:text="#{MsyKbn.kbnMei}">区分名</label><input type="text" id="MsyKbn.kbnMei" name="MsyKbn.kbnMei" maxlength="60" />
+          <label for="MsyKbn.kbnMei" th:text="#{MsyKbn.kbnMei}">KBN_MEI</label><input type="text" id="MsyKbn.kbnMei" name="MsyKbn.kbnMei" maxlength="60" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetMsyKbn" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/MsyKbn.html(anew)}" target="dialog" id="MsyKbn" class="anew" th:text="#{MsyKbn.add}" tabindex="-1">区分マスタ</a>
+        <a th:href="@{/model/MsyKbn.html(anew)}" target="dialog" id="MsyKbn" class="anew" th:text="#{MsyKbn.add}" tabindex="-1">MSY_KBN</a>
       </div>
       <div class="submits">
-        <button id="SearchMsyKbn" type="submit" class="search" data-gridId="MsyKbnGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchMsyKbn" type="submit" class="search" data-gridId="MsyKbnGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->

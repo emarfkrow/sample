@@ -1,5 +1,5 @@
 /**
- * 職位マスタグリッド定義
+ * MHR_SHOKUI grid columns
  */
 
 let MhrShokuiGridColumns = [];

@@ -1,3 +1,3 @@
 /**
- * 転生明細スクリプト
+ * T07_REBORN_DET script
  */

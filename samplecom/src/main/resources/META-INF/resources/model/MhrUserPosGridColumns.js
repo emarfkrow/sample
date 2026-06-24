@@ -1,5 +1,5 @@
 /**
- * 所属マスタグリッド定義
+ * MHR_USER_POS grid columns
  */
 
 let MhrUserPosGridColumns = [];

@@ -1,5 +1,5 @@
 /**
- * CDマスタグリッド定義
+ * M04_CD grid columns
  */
 
 let M04CdGridColumns = [];

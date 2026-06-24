@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T06Derive2Det.title}">派生２明細</title>
+<title th:text="#{T06Derive2Det.title}">T06_DERIVE2_DET</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,52 +27,52 @@
       <fieldset class="parent">
         <legend th:text="#{T06Derive2.legend}">legend</legend>
         <div id="derive2Id">
-          <label for="T06Derive2.derive2Id" th:text="#{T06Derive2.derive2Id}">派生２ID</label><input type="text" id="T06Derive2.derive2Id" name="T06Derive2.derive2Id" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T06Derive2.derive2Id" th:text="#{T06Derive2.derive2Id}">DERIVE2_ID</label><input type="text" id="T06Derive2.derive2Id" name="T06Derive2.derive2Id" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="orgInfo">
-          <label for="T06Derive2.orgInfo" th:text="#{T06Derive2.orgInfo}">起源情報</label><input type="text" id="T06Derive2.orgInfo" name="T06Derive2.orgInfo" maxlength="300" />
+          <label for="T06Derive2.orgInfo" th:text="#{T06Derive2.orgInfo}">ORG_INFO</label><input type="text" id="T06Derive2.orgInfo" name="T06Derive2.orgInfo" maxlength="300" />
         </div>
         <div id="orgId">
-          <label th:text="#{T06Derive2.orgId}">起源ID</label><span id="T06Derive2.orgId" class="derivee"></span><input type="text" id="T06Derive2.orgId" name="T06Derive2.orgId" style="display: none;" class="derivee" />
+          <label th:text="#{T06Derive2.orgId}">ORG_ID</label><span id="T06Derive2.orgId" class="derivee"></span><input type="text" id="T06Derive2.orgId" name="T06Derive2.orgId" style="display: none;" class="derivee" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T06Derive2.insertTs}" class="meta">作成タイムスタンプ</label><span id="T06Derive2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive2.insertTs" name="T06Derive2.insertTs" class="meta" />
+          <label th:text="#{T06Derive2.insertTs}" class="meta">INSERT_TS</label><span id="T06Derive2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive2.insertTs" name="T06Derive2.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T06Derive2.insertUserId}" class="meta">作成者</label><span id="T06Derive2.insertUserId" class="meta"></span><input type="hidden" id="T06Derive2.insertUserId" name="T06Derive2.insertUserId" class="meta" />
+          <label th:text="#{T06Derive2.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T06Derive2.insertUserId" class="meta"></span><input type="hidden" id="T06Derive2.insertUserId" name="T06Derive2.insertUserId" class="meta" />
           <span id="T06Derive2.insertUserSei" class="refer meta" data-referFor="T06Derive2.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Derive2.insertUserId" data-destDef="T06Derive2.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T06Derive2.updateTs}" class="meta">更新タイムスタンプ</label><span id="T06Derive2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive2.updateTs" name="T06Derive2.updateTs" class="meta" />
+          <label th:text="#{T06Derive2.updateTs}" class="meta">UPDATE_TS</label><span id="T06Derive2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive2.updateTs" name="T06Derive2.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T06Derive2.updateUserId}" class="meta">更新者</label><span id="T06Derive2.updateUserId" class="meta"></span><input type="hidden" id="T06Derive2.updateUserId" name="T06Derive2.updateUserId" class="meta" />
+          <label th:text="#{T06Derive2.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T06Derive2.updateUserId" class="meta"></span><input type="hidden" id="T06Derive2.updateUserId" name="T06Derive2.updateUserId" class="meta" />
           <span id="T06Derive2.updateUserSei" class="refer meta" data-referFor="T06Derive2.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Derive2.updateUserId" data-destDef="T06Derive2.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <fieldset>
         <legend th:text="#{T06Derive2Det.legend}">legend</legend>
         <div id="derive2Id">
-          <label for="T06Derive2Det.derive2Id" th:text="#{T06Derive2Det.derive2Id}">派生２ID</label><input type="text" id="T06Derive2Det.derive2Id" name="T06Derive2Det.derive2Id" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T06Derive2Det.derive2Id" th:text="#{T06Derive2Det.derive2Id}">DERIVE2_ID</label><input type="text" id="T06Derive2Det.derive2Id" name="T06Derive2Det.derive2Id" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="derive2Bn">
-          <label for="T06Derive2Det.derive2Bn" th:text="#{T06Derive2Det.derive2Bn}">派生２枝番</label><input type="text" id="T06Derive2Det.derive2Bn" name="T06Derive2Det.derive2Bn" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T06Derive2Det.derive2Bn" th:text="#{T06Derive2Det.derive2Bn}">DERIVE2_BN</label><input type="text" id="T06Derive2Det.derive2Bn" name="T06Derive2Det.derive2Bn" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="detInfo">
-          <label for="T06Derive2Det.detInfo" th:text="#{T06Derive2Det.detInfo}">明細情報</label><input type="text" id="T06Derive2Det.detInfo" name="T06Derive2Det.detInfo" maxlength="300" />
+          <label for="T06Derive2Det.detInfo" th:text="#{T06Derive2Det.detInfo}">DET_INFO</label><input type="text" id="T06Derive2Det.detInfo" name="T06Derive2Det.detInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T06Derive2Det.insertTs}" class="meta">作成タイムスタンプ</label><span id="T06Derive2Det.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive2Det.insertTs" name="T06Derive2Det.insertTs" class="meta" />
+          <label th:text="#{T06Derive2Det.insertTs}" class="meta">INSERT_TS</label><span id="T06Derive2Det.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive2Det.insertTs" name="T06Derive2Det.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T06Derive2Det.insertUserId}" class="meta">作成者</label><span id="T06Derive2Det.insertUserId" class="meta"></span><input type="hidden" id="T06Derive2Det.insertUserId" name="T06Derive2Det.insertUserId" class="meta" />
+          <label th:text="#{T06Derive2Det.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T06Derive2Det.insertUserId" class="meta"></span><input type="hidden" id="T06Derive2Det.insertUserId" name="T06Derive2Det.insertUserId" class="meta" />
           <span id="T06Derive2Det.insertUserSei" class="refer meta" data-referFor="T06Derive2Det.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Derive2Det.insertUserId" data-destDef="T06Derive2Det.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T06Derive2Det.updateTs}" class="meta">更新タイムスタンプ</label><span id="T06Derive2Det.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive2Det.updateTs" name="T06Derive2Det.updateTs" class="meta" />
+          <label th:text="#{T06Derive2Det.updateTs}" class="meta">UPDATE_TS</label><span id="T06Derive2Det.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive2Det.updateTs" name="T06Derive2Det.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T06Derive2Det.updateUserId}" class="meta">更新者</label><span id="T06Derive2Det.updateUserId" class="meta"></span><input type="hidden" id="T06Derive2Det.updateUserId" name="T06Derive2Det.updateUserId" class="meta" />
+          <label th:text="#{T06Derive2Det.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T06Derive2Det.updateUserId" class="meta"></span><input type="hidden" id="T06Derive2Det.updateUserId" name="T06Derive2Det.updateUserId" class="meta" />
           <span id="T06Derive2Det.updateUserSei" class="refer meta" data-referFor="T06Derive2Det.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Derive2Det.updateUserId" data-destDef="T06Derive2Det.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -81,8 +81,8 @@
         <a th:href="@{T06Derive2DetGet.xlsx(baseMei=#{T06Derive2Det.h2})}" id="T06Derive2DetGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT06Derive2Det" type="submit" class="delete" data-action="T06Derive2DetDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT06Derive2Det" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT06Derive2Det" type="submit" class="delete" data-action="T06Derive2DetDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT06Derive2Det" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

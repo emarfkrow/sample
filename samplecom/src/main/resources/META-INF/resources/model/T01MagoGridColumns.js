@@ -1,5 +1,5 @@
 /**
- * 孫グリッド定義
+ * T01_MAGO grid columns
  */
 
 let T01MagoGridColumns = [];

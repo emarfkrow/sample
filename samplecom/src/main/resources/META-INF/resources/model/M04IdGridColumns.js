@@ -1,5 +1,5 @@
 /**
- * IDマスタグリッド定義
+ * M04_ID grid columns
  */
 
 let M04IdGridColumns = [];

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T02Younger.title}">弟</title>
+<title th:text="#{T02Younger.title}">T02_YOUNGER</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -21,30 +21,30 @@
       <fieldset>
         <legend th:text="#{T02Younger.legend}">legend</legend>
         <div id="broId">
-          <label for="T02Younger.broId" th:text="#{T02Younger.broId}">兄弟ID</label><input type="text" id="T02Younger.broId" name="T02Younger.broId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T02Younger.broId" th:text="#{T02Younger.broId}">BRO_ID</label><input type="text" id="T02Younger.broId" name="T02Younger.broId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="youngerInfo">
-          <label for="T02Younger.youngerInfo" th:text="#{T02Younger.youngerInfo}">弟情報</label><input type="text" id="T02Younger.youngerInfo" name="T02Younger.youngerInfo" maxlength="300" />
+          <label for="T02Younger.youngerInfo" th:text="#{T02Younger.youngerInfo}">YOUNGER_INFO</label><input type="text" id="T02Younger.youngerInfo" name="T02Younger.youngerInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T02Younger.insertTs}" class="meta">作成タイムスタンプ</label><span id="T02Younger.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Younger.insertTs" name="T02Younger.insertTs" class="meta" />
+          <label th:text="#{T02Younger.insertTs}" class="meta">INSERT_TS</label><span id="T02Younger.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Younger.insertTs" name="T02Younger.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T02Younger.insertUserId}" class="meta">作成者</label><span id="T02Younger.insertUserId" class="meta"></span><input type="hidden" id="T02Younger.insertUserId" name="T02Younger.insertUserId" class="meta" />
+          <label th:text="#{T02Younger.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T02Younger.insertUserId" class="meta"></span><input type="hidden" id="T02Younger.insertUserId" name="T02Younger.insertUserId" class="meta" />
           <span id="T02Younger.insertUserSei" class="refer meta" data-referFor="T02Younger.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Younger.insertUserId" data-destDef="T02Younger.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T02Younger.updateTs}" class="meta">更新タイムスタンプ</label><span id="T02Younger.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Younger.updateTs" name="T02Younger.updateTs" class="meta" />
+          <label th:text="#{T02Younger.updateTs}" class="meta">UPDATE_TS</label><span id="T02Younger.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Younger.updateTs" name="T02Younger.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T02Younger.updateUserId}" class="meta">更新者</label><span id="T02Younger.updateUserId" class="meta"></span><input type="hidden" id="T02Younger.updateUserId" name="T02Younger.updateUserId" class="meta" />
+          <label th:text="#{T02Younger.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T02Younger.updateUserId" class="meta"></span><input type="hidden" id="T02Younger.updateUserId" name="T02Younger.updateUserId" class="meta" />
           <span id="T02Younger.updateUserSei" class="refer meta" data-referFor="T02Younger.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Younger.updateUserId" data-destDef="T02Younger.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <fieldset class="youngest">
         <legend th:text="#{T02Youngest.legend}">legend</legend>
         <div id="youngestInfo">
-          <label for="T02Youngest.youngestInfo" th:text="#{T02Youngest.youngestInfo}">末弟情報</label><input type="text" id="T02Youngest.youngestInfo" name="T02Youngest.youngestInfo" maxlength="300" />
+          <label for="T02Youngest.youngestInfo" th:text="#{T02Youngest.youngestInfo}">YOUNGEST_INFO</label><input type="text" id="T02Youngest.youngestInfo" name="T02Youngest.youngestInfo" maxlength="300" />
         </div>
         <input type="hidden" name="T02Youngest.updateTs" />
       </fieldset>
@@ -53,8 +53,8 @@
         <a th:href="@{T02YoungerGet.xlsx(baseMei=#{T02Younger.h2})}" id="T02YoungerGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT02Younger" type="submit" class="delete" data-action="T02YoungerDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT02Younger" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT02Younger" type="submit" class="delete" data-action="T02YoungerDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT02Younger" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

@@ -50,10 +50,16 @@ public class T01MagoGetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.T01Ko t01Ko = com.example.entity.T01Ko.get(oyaId, koBn);
-        map.put("T01Ko", t01Ko);
-        com.example.entity.T01Orphan t01Orphan = com.example.entity.T01Orphan.get(oyaId, koBn);
-        map.put("T01Orphan", t01Orphan);
+        try {
+            com.example.entity.T01Ko t01Ko = com.example.entity.T01Ko.get(oyaId, koBn);
+            map.put("T01Ko", t01Ko);
+        } catch (Exception e) {
+        }
+        try {
+            com.example.entity.T01Orphan t01Orphan = com.example.entity.T01Orphan.get(oyaId, koBn);
+            map.put("T01Orphan", t01Orphan);
+        } catch (Exception e) {
+        }
 
         // 主キーが不足していたら終了
         if (!isAllKey) {

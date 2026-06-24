@@ -1,5 +1,5 @@
 /**
- * 孤児グリッド定義
+ * T01_ORPHAN grid columns
  */
 
 let T01OrphanGridColumns = [];

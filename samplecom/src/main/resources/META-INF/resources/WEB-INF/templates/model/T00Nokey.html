@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T00Nokey.title}">キーなし</title>
+<title th:text="#{T00Nokey.title}">T00_NOKEY</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -21,32 +21,32 @@
       <fieldset>
         <legend th:text="#{T00Nokey.legend}">legend</legend>
         <div id="aMei">
-          <label for="T00Nokey.aMei" th:text="#{T00Nokey.aMei}">列Ａ</label><input type="text" id="T00Nokey.aMei" name="T00Nokey.aMei" maxlength="60" />
+          <label for="T00Nokey.aMei" th:text="#{T00Nokey.aMei}">A_MEI</label><input type="text" id="T00Nokey.aMei" name="T00Nokey.aMei" maxlength="60" />
         </div>
         <div id="bMei">
-          <label for="T00Nokey.bMei" th:text="#{T00Nokey.bMei}">列Ｂ</label><input type="text" id="T00Nokey.bMei" name="T00Nokey.bMei" maxlength="60" />
+          <label for="T00Nokey.bMei" th:text="#{T00Nokey.bMei}">B_MEI</label><input type="text" id="T00Nokey.bMei" name="T00Nokey.bMei" maxlength="60" />
         </div>
         <div id="cMei">
-          <label for="T00Nokey.cMei" th:text="#{T00Nokey.cMei}">列Ｃ</label><input type="text" id="T00Nokey.cMei" name="T00Nokey.cMei" maxlength="60" />
+          <label for="T00Nokey.cMei" th:text="#{T00Nokey.cMei}">C_MEI</label><input type="text" id="T00Nokey.cMei" name="T00Nokey.cMei" maxlength="60" />
         </div>
         <div id="dMei">
-          <label for="T00Nokey.dMei" th:text="#{T00Nokey.dMei}">列Ｄ</label><input type="text" id="T00Nokey.dMei" name="T00Nokey.dMei" maxlength="60" />
+          <label for="T00Nokey.dMei" th:text="#{T00Nokey.dMei}">D_MEI</label><input type="text" id="T00Nokey.dMei" name="T00Nokey.dMei" maxlength="60" />
         </div>
         <div id="eMei">
-          <label for="T00Nokey.eMei" th:text="#{T00Nokey.eMei}">列Ｅ</label><input type="text" id="T00Nokey.eMei" name="T00Nokey.eMei" maxlength="60" />
+          <label for="T00Nokey.eMei" th:text="#{T00Nokey.eMei}">E_MEI</label><input type="text" id="T00Nokey.eMei" name="T00Nokey.eMei" maxlength="60" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T00Nokey.insertTs}" class="meta">作成タイムスタンプ</label><span id="T00Nokey.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Nokey.insertTs" name="T00Nokey.insertTs" class="meta" />
+          <label th:text="#{T00Nokey.insertTs}" class="meta">INSERT_TS</label><span id="T00Nokey.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Nokey.insertTs" name="T00Nokey.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T00Nokey.insertUserId}" class="meta">作成者</label><span id="T00Nokey.insertUserId" class="meta"></span><input type="hidden" id="T00Nokey.insertUserId" name="T00Nokey.insertUserId" class="meta" />
+          <label th:text="#{T00Nokey.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T00Nokey.insertUserId" class="meta"></span><input type="hidden" id="T00Nokey.insertUserId" name="T00Nokey.insertUserId" class="meta" />
           <span id="T00Nokey.insertUserSei" class="refer meta" data-referFor="T00Nokey.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Nokey.insertUserId" data-destDef="T00Nokey.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T00Nokey.updateTs}" class="meta">更新タイムスタンプ</label><span id="T00Nokey.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Nokey.updateTs" name="T00Nokey.updateTs" class="meta" />
+          <label th:text="#{T00Nokey.updateTs}" class="meta">UPDATE_TS</label><span id="T00Nokey.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T00Nokey.updateTs" name="T00Nokey.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T00Nokey.updateUserId}" class="meta">更新者</label><span id="T00Nokey.updateUserId" class="meta"></span><input type="hidden" id="T00Nokey.updateUserId" name="T00Nokey.updateUserId" class="meta" />
+          <label th:text="#{T00Nokey.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T00Nokey.updateUserId" class="meta"></span><input type="hidden" id="T00Nokey.updateUserId" name="T00Nokey.updateUserId" class="meta" />
           <span id="T00Nokey.updateUserSei" class="refer meta" data-referFor="T00Nokey.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T00Nokey.updateUserId" data-destDef="T00Nokey.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -55,8 +55,8 @@
         <a th:href="@{T00NokeyGet.xlsx(baseMei=#{T00Nokey.h2})}" id="T00NokeyGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT00Nokey" type="submit" class="delete" data-action="T00NokeyDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT00Nokey" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT00Nokey" type="submit" class="delete" data-action="T00NokeyDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT00Nokey" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

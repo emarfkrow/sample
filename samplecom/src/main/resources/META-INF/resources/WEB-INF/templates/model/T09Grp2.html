@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T09Grp2.title}">集団２</title>
+<title th:text="#{T09Grp2.title}">T09_GRP2</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,23 +27,23 @@
       <fieldset>
         <legend th:text="#{T09Grp2.legend}">legend</legend>
         <div id="grp2Id">
-          <label for="T09Grp2.grp2Id" th:text="#{T09Grp2.grp2Id}">集団２ID</label><input type="text" id="T09Grp2.grp2Id" name="T09Grp2.grp2Id" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T09Grp2.grp2Id" th:text="#{T09Grp2.grp2Id}">GRP2_ID</label><input type="text" id="T09Grp2.grp2Id" name="T09Grp2.grp2Id" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="sumId">
-          <label th:text="#{T09Grp2.sumId}">集約ID</label><span id="T09Grp2.sumId" class="summary"></span><input type="text" id="T09Grp2.sumId" name="T09Grp2.sumId" style="display: none;" class="summary" />
+          <label th:text="#{T09Grp2.sumId}">SUM_ID</label><span id="T09Grp2.sumId" class="summary"></span><input type="text" id="T09Grp2.sumId" name="T09Grp2.sumId" style="display: none;" class="summary" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T09Grp2.insertTs}" class="meta">作成タイムスタンプ</label><span id="T09Grp2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T09Grp2.insertTs" name="T09Grp2.insertTs" class="meta" />
+          <label th:text="#{T09Grp2.insertTs}" class="meta">INSERT_TS</label><span id="T09Grp2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T09Grp2.insertTs" name="T09Grp2.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T09Grp2.insertUserId}" class="meta">作成者</label><span id="T09Grp2.insertUserId" class="meta"></span><input type="hidden" id="T09Grp2.insertUserId" name="T09Grp2.insertUserId" class="meta" />
+          <label th:text="#{T09Grp2.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T09Grp2.insertUserId" class="meta"></span><input type="hidden" id="T09Grp2.insertUserId" name="T09Grp2.insertUserId" class="meta" />
           <span id="T09Grp2.insertUserSei" class="refer meta" data-referFor="T09Grp2.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T09Grp2.insertUserId" data-destDef="T09Grp2.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T09Grp2.updateTs}" class="meta">更新タイムスタンプ</label><span id="T09Grp2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T09Grp2.updateTs" name="T09Grp2.updateTs" class="meta" />
+          <label th:text="#{T09Grp2.updateTs}" class="meta">UPDATE_TS</label><span id="T09Grp2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T09Grp2.updateTs" name="T09Grp2.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T09Grp2.updateUserId}" class="meta">更新者</label><span id="T09Grp2.updateUserId" class="meta"></span><input type="hidden" id="T09Grp2.updateUserId" name="T09Grp2.updateUserId" class="meta" />
+          <label th:text="#{T09Grp2.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T09Grp2.updateUserId" class="meta"></span><input type="hidden" id="T09Grp2.updateUserId" name="T09Grp2.updateUserId" class="meta" />
           <span id="T09Grp2.updateUserSei" class="refer meta" data-referFor="T09Grp2.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T09Grp2.updateUserId" data-destDef="T09Grp2.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -52,8 +52,8 @@
         <a th:href="@{T09Grp2Get.xlsx(baseMei=#{T09Grp2.h2})}" id="T09Grp2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT09Grp2" type="submit" class="delete" data-action="T09Grp2Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT09Grp2" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT09Grp2" type="submit" class="delete" data-action="T09Grp2Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT09Grp2" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

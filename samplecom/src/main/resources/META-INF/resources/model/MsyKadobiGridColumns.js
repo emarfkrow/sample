@@ -1,5 +1,5 @@
 /**
- * 稼働日マスタグリッド定義
+ * MSY_KADOBI grid columns
  */
 
 let MsyKadobiGridColumns = [];

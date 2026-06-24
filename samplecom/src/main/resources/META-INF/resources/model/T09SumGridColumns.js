@@ -1,5 +1,5 @@
 /**
- * 集約グリッド定義
+ * T09_SUM grid columns
  */
 
 let T09SumGridColumns = [];

@@ -1,3 +1,3 @@
 /**
- * 認可マスタスクリプト
+ * MHR_SHOKUI_NINKA script
  */

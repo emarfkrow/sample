@@ -1,5 +1,5 @@
 /**
- * 長兄グリッド定義
+ * T02_ELDEST grid columns
  */
 
 let T02EldestGridColumns = [];

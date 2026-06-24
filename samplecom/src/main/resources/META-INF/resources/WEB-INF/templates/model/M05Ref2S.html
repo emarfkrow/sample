@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{M05Ref2S.title}">マスタ参照２</title>
+<title th:text="#{M05Ref2S.title}">M05_REF2</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,33 +24,33 @@
       <fieldset>
         <legend th:text="#{M05Ref2S.legend}">legend</legend>
         <div id="ref1Id" class="stint" style="display: none;">
-          <label th:text="#{M05Ref1.ref1Id}">参照１ID</label><span id="M05Ref1.ref1Id" class="stint"></span><input type="text" id="M05Ref1.ref1Id" name="M05Ref1.ref1Id" style="display: none;" class="stint" />
+          <label th:text="#{M05Ref1.ref1Id}">REF1_ID</label><span id="M05Ref1.ref1Id" class="stint"></span><input type="text" id="M05Ref1.ref1Id" name="M05Ref1.ref1Id" style="display: none;" class="stint" />
           <span id="M05Ref2.ref1Mei" class="refer" data-referFor="M05Ref2.ref1Id" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:M05Ref2.ref1Id" data-destDef="M05Ref2.ref1Mei:REF1_MEI"></span>
         </div>
         <div id="ref2Id">
-          <label for="M05Ref2.ref2Id" th:text="#{M05Ref2.ref2Id}">参照２ID</label><input type="text" id="M05Ref2.ref2Id" name="M05Ref2.ref2Id" maxlength="10" class=" primaryKey" />
+          <label for="M05Ref2.ref2Id" th:text="#{M05Ref2.ref2Id}">REF2_ID</label><input type="text" id="M05Ref2.ref2Id" name="M05Ref2.ref2Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="ref2Mei">
-          <label for="M05Ref2.ref2Mei" th:text="#{M05Ref2.ref2Mei}">参照２名</label><input type="text" id="M05Ref2.ref2Mei" name="M05Ref2.ref2Mei" maxlength="60" />
+          <label for="M05Ref2.ref2Mei" th:text="#{M05Ref2.ref2Mei}">REF2_MEI</label><input type="text" id="M05Ref2.ref2Mei" name="M05Ref2.ref2Mei" maxlength="60" />
         </div>
         <div id="deleteF">
           <fieldset id="M05Ref2.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
-            <legend th:text="#{M05Ref2.deleteF}">削除フラグ</legend>
+            <legend th:text="#{M05Ref2.deleteF}">DELETE_F</legend>
           </fieldset>
         </div>
         <div id="tekiyoBi">
-          <label for="M05Ref2.tekiyoBi_1" th:text="#{M05Ref2.tekiyoBi}">適用日</label><input type="text" id="M05Ref2.tekiyoBi_1" name="M05Ref2.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="M05Ref2.tekiyoBi_2" name="M05Ref2.tekiyoBi_2" maxlength="10" class=" datepicker" />
+          <label for="M05Ref2.tekiyoBi_1" th:text="#{M05Ref2.tekiyoBi}">TEKIYO_BI</label><input type="text" id="M05Ref2.tekiyoBi_1" name="M05Ref2.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="M05Ref2.tekiyoBi_2" name="M05Ref2.tekiyoBi_2" maxlength="10" class=" datepicker" />
         </div>
         <div id="haishiBi">
-          <label for="M05Ref2.haishiBi_1" th:text="#{M05Ref2.haishiBi}">廃止日</label><input type="text" id="M05Ref2.haishiBi_1" name="M05Ref2.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="M05Ref2.haishiBi_2" name="M05Ref2.haishiBi_2" maxlength="10" class=" datepicker" />
+          <label for="M05Ref2.haishiBi_1" th:text="#{M05Ref2.haishiBi}">HAISHI_BI</label><input type="text" id="M05Ref2.haishiBi_1" name="M05Ref2.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="M05Ref2.haishiBi_2" name="M05Ref2.haishiBi_2" maxlength="10" class=" datepicker" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetM05Ref2" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/M05Ref2.html(anew)}" target="dialog" id="M05Ref2" class="anew" th:text="#{M05Ref2.add}" tabindex="-1">マスタ参照２</a>
+        <a th:href="@{/model/M05Ref2.html(anew)}" target="dialog" id="M05Ref2" class="anew" th:text="#{M05Ref2.add}" tabindex="-1">M05_REF2</a>
       </div>
       <div class="submits">
-        <button id="SearchM05Ref2" type="submit" class="search" data-gridId="M05Ref2Grid" th:text="#{common.search}">submit</button>
+        <button id="SearchM05Ref2" type="submit" class="search" data-gridId="M05Ref2Grid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -63,7 +63,7 @@
         <a th:href="@{M05Ref2Search.xlsx(baseMei=#{M05Ref2S.h2})}" id="M05Ref2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="RegistM05Ref2S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistM05Ref2S" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

@@ -1,5 +1,5 @@
 /**
- * 工程グリッド定義
+ * T00_KOUTEI grid columns
  */
 
 let T00KouteiGridColumns = [];

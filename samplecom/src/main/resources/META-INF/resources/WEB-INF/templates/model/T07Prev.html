@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T07Prev.title}">前世</title>
+<title th:text="#{T07Prev.title}">T07_PREV</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -30,37 +30,37 @@
       <fieldset>
         <legend th:text="#{T07Prev.legend}">legend</legend>
         <div id="prevId">
-          <label for="T07Prev.prevId" th:text="#{T07Prev.prevId}">前世ID</label><input type="text" id="T07Prev.prevId" name="T07Prev.prevId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T07Prev.prevId" th:text="#{T07Prev.prevId}">PREV_ID</label><input type="text" id="T07Prev.prevId" name="T07Prev.prevId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="prevInfo">
-          <label for="T07Prev.prevInfo" th:text="#{T07Prev.prevInfo}">前世情報</label><input type="text" id="T07Prev.prevInfo" name="T07Prev.prevInfo" maxlength="300" />
+          <label for="T07Prev.prevInfo" th:text="#{T07Prev.prevInfo}">PREV_INFO</label><input type="text" id="T07Prev.prevInfo" name="T07Prev.prevInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T07Prev.insertTs}" class="meta">作成タイムスタンプ</label><span id="T07Prev.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Prev.insertTs" name="T07Prev.insertTs" class="meta" />
+          <label th:text="#{T07Prev.insertTs}" class="meta">INSERT_TS</label><span id="T07Prev.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Prev.insertTs" name="T07Prev.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T07Prev.insertUserId}" class="meta">作成者</label><span id="T07Prev.insertUserId" class="meta"></span><input type="hidden" id="T07Prev.insertUserId" name="T07Prev.insertUserId" class="meta" />
+          <label th:text="#{T07Prev.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T07Prev.insertUserId" class="meta"></span><input type="hidden" id="T07Prev.insertUserId" name="T07Prev.insertUserId" class="meta" />
           <span id="T07Prev.insertUserSei" class="refer meta" data-referFor="T07Prev.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Prev.insertUserId" data-destDef="T07Prev.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T07Prev.updateTs}" class="meta">更新タイムスタンプ</label><span id="T07Prev.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Prev.updateTs" name="T07Prev.updateTs" class="meta" />
+          <label th:text="#{T07Prev.updateTs}" class="meta">UPDATE_TS</label><span id="T07Prev.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Prev.updateTs" name="T07Prev.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T07Prev.updateUserId}" class="meta">更新者</label><span id="T07Prev.updateUserId" class="meta"></span><input type="hidden" id="T07Prev.updateUserId" name="T07Prev.updateUserId" class="meta" />
+          <label th:text="#{T07Prev.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T07Prev.updateUserId" class="meta"></span><input type="hidden" id="T07Prev.updateUserId" name="T07Prev.updateUserId" class="meta" />
           <span id="T07Prev.updateUserSei" class="refer meta" data-referFor="T07Prev.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Prev.updateUserId" data-destDef="T07Prev.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <h3 th:text="#{T07PrevDet.h3}">h3</h3>
-      <a th:href="@{/model/T07PrevDet.html(anew)}" id="T07PrevDet" target="dialog" th:text="#{T07PrevDet.add}" class="addChild" tabindex="-1">前世明細</a>
+      <a th:href="@{/model/T07PrevDet.html(anew)}" id="T07PrevDet" target="dialog" th:text="#{T07PrevDet.add}" class="addChild" tabindex="-1">T07_PREV_DET</a>
       <div id="T07PrevDetGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T07PrevDet.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshT07Prev" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T07PrevGet.xlsx(baseMei=#{T07Prev.h2})}" id="T07PrevGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a th:href="@{/model/T07Reborn.html}" id="T07Reborn" target="dialog" th:text="#{T07Reborn.add}" class="reborner" tabindex="-1">転生</a>
+        <a th:href="@{/model/T07Reborn.html}" id="T07Reborn" target="dialog" th:text="#{T07Reborn.add}" class="reborner" tabindex="-1">T07_REBORN</a>
       </div>
       <div class="submits">
-        <button id="DeleteT07Prev" type="submit" class="delete" data-action="T07PrevDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT07Prev" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT07Prev" type="submit" class="delete" data-action="T07PrevDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT07Prev" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
       <h3 th:text="#{T07Reborn.h3}">h3</h3>
       <div id="T07RebornGrid" data-selectionMode="link" data-frozenColumn="1" th:data-href="@{/model/T07Reborn.html}" class="reborners"></div>

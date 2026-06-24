@@ -1,5 +1,5 @@
 /**
- * 寄生２グリッド定義
+ * T08_KISEI2 grid columns
  */
 
 let T08Kisei2GridColumns = [];

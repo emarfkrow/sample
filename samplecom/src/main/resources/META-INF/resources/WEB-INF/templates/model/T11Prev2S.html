@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T11Prev2S.title}">前世２</title>
+<title th:text="#{T11Prev2S.title}">T11_PREV2</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -30,18 +30,18 @@
       <fieldset>
         <legend th:text="#{T11Prev2S.legend}">legend</legend>
         <div id="prev2Id">
-          <label for="T11Prev2.prev2Id" th:text="#{T11Prev2.prev2Id}">前世２ID</label><input type="text" id="T11Prev2.prev2Id" name="T11Prev2.prev2Id" maxlength="10" class=" primaryKey" />
+          <label for="T11Prev2.prev2Id" th:text="#{T11Prev2.prev2Id}">PREV2_ID</label><input type="text" id="T11Prev2.prev2Id" name="T11Prev2.prev2Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="prev2Info">
-          <label for="T11Prev2.prev2Info" th:text="#{T11Prev2.prev2Info}">前世２情報</label><input type="text" id="T11Prev2.prev2Info" name="T11Prev2.prev2Info" maxlength="300" />
+          <label for="T11Prev2.prev2Info" th:text="#{T11Prev2.prev2Info}">PREV2_INFO</label><input type="text" id="T11Prev2.prev2Info" name="T11Prev2.prev2Info" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT11Prev2" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T11Prev2.html(anew)}" target="dialog" id="T11Prev2" class="anew" th:text="#{T11Prev2.add}" tabindex="-1">前世２</a>
+        <a th:href="@{/model/T11Prev2.html(anew)}" target="dialog" id="T11Prev2" class="anew" th:text="#{T11Prev2.add}" tabindex="-1">T11_PREV2</a>
       </div>
       <div class="submits">
-        <button id="SearchT11Prev2" type="submit" class="search" data-gridId="T11Prev2Grid" th:text="#{common.search}">submit</button>
+        <button id="SearchT11Prev2" type="submit" class="search" data-gridId="T11Prev2Grid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -52,10 +52,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT11Prev2S" th:text="#{common.reset}" onClick="Base.listReset('T11Prev2');">reset</button>
         <a th:href="@{T11Prev2Search.xlsx(baseMei=#{T11Prev2S.h2})}" id="T11Prev2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT11Prev2S" data-action="T11Prev2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT11Prev2S" data-action="T11Prev2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT11Prev2S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT11Prev2S" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

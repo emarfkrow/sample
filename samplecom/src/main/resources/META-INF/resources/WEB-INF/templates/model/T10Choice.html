@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T10Choice.title}">選抜</title>
+<title th:text="#{T10Choice.title}">T10_CHOICE</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,34 +27,34 @@
       <fieldset>
         <legend th:text="#{T10Choice.legend}">legend</legend>
         <div id="choiceId">
-          <label for="T10Choice.choiceId" th:text="#{T10Choice.choiceId}">選抜ID</label><input type="text" id="T10Choice.choiceId" name="T10Choice.choiceId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T10Choice.choiceId" th:text="#{T10Choice.choiceId}">CHOICE_ID</label><input type="text" id="T10Choice.choiceId" name="T10Choice.choiceId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="koho1Id">
-          <label th:text="#{T10Choice.koho1Id}">候補１ID</label><span id="T10Choice.koho1Id" class="derivee"></span><input type="text" id="T10Choice.koho1Id" name="T10Choice.koho1Id" style="display: none;" class="derivee" />
+          <label th:text="#{T10Choice.koho1Id}">KOHO1_ID</label><span id="T10Choice.koho1Id" class="derivee"></span><input type="text" id="T10Choice.koho1Id" name="T10Choice.koho1Id" style="display: none;" class="derivee" />
           <a id="T10Choice.koho1Id" th:href="@{/model/T10Koho1S.html?action=T10Koho1Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
         </div>
         <div id="koho1Info">
-          <label for="T10Choice.koho1Info" th:text="#{T10Choice.koho1Info}">候補１情報</label><input type="text" id="T10Choice.koho1Info" name="T10Choice.koho1Info" maxlength="300" />
+          <label for="T10Choice.koho1Info" th:text="#{T10Choice.koho1Info}">KOHO1_INFO</label><input type="text" id="T10Choice.koho1Info" name="T10Choice.koho1Info" maxlength="300" />
         </div>
         <div id="koho2Id">
-          <label th:text="#{T10Choice.koho2Id}">候補２ID</label><span id="T10Choice.koho2Id" class="derivee"></span><input type="text" id="T10Choice.koho2Id" name="T10Choice.koho2Id" style="display: none;" class="derivee" />
+          <label th:text="#{T10Choice.koho2Id}">KOHO2_ID</label><span id="T10Choice.koho2Id" class="derivee"></span><input type="text" id="T10Choice.koho2Id" name="T10Choice.koho2Id" style="display: none;" class="derivee" />
           <a id="T10Choice.koho2Id" th:href="@{/model/T10Koho2S.html?action=T10Koho2Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
         </div>
         <div id="koho2Info">
-          <label for="T10Choice.koho2Info" th:text="#{T10Choice.koho2Info}">候補２情報</label><input type="text" id="T10Choice.koho2Info" name="T10Choice.koho2Info" maxlength="300" />
+          <label for="T10Choice.koho2Info" th:text="#{T10Choice.koho2Info}">KOHO2_INFO</label><input type="text" id="T10Choice.koho2Info" name="T10Choice.koho2Info" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T10Choice.insertTs}" class="meta">作成タイムスタンプ</label><span id="T10Choice.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T10Choice.insertTs" name="T10Choice.insertTs" class="meta" />
+          <label th:text="#{T10Choice.insertTs}" class="meta">INSERT_TS</label><span id="T10Choice.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T10Choice.insertTs" name="T10Choice.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T10Choice.insertUserId}" class="meta">作成者</label><span id="T10Choice.insertUserId" class="meta"></span><input type="hidden" id="T10Choice.insertUserId" name="T10Choice.insertUserId" class="meta" />
+          <label th:text="#{T10Choice.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T10Choice.insertUserId" class="meta"></span><input type="hidden" id="T10Choice.insertUserId" name="T10Choice.insertUserId" class="meta" />
           <span id="T10Choice.insertUserSei" class="refer meta" data-referFor="T10Choice.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T10Choice.insertUserId" data-destDef="T10Choice.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T10Choice.updateTs}" class="meta">更新タイムスタンプ</label><span id="T10Choice.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T10Choice.updateTs" name="T10Choice.updateTs" class="meta" />
+          <label th:text="#{T10Choice.updateTs}" class="meta">UPDATE_TS</label><span id="T10Choice.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T10Choice.updateTs" name="T10Choice.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T10Choice.updateUserId}" class="meta">更新者</label><span id="T10Choice.updateUserId" class="meta"></span><input type="hidden" id="T10Choice.updateUserId" name="T10Choice.updateUserId" class="meta" />
+          <label th:text="#{T10Choice.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T10Choice.updateUserId" class="meta"></span><input type="hidden" id="T10Choice.updateUserId" name="T10Choice.updateUserId" class="meta" />
           <span id="T10Choice.updateUserSei" class="refer meta" data-referFor="T10Choice.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T10Choice.updateUserId" data-destDef="T10Choice.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -63,8 +63,8 @@
         <a th:href="@{T10ChoiceGet.xlsx(baseMei=#{T10Choice.h2})}" id="T10ChoiceGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT10Choice" type="submit" class="delete" data-action="T10ChoiceDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT10Choice" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT10Choice" type="submit" class="delete" data-action="T10ChoiceDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT10Choice" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

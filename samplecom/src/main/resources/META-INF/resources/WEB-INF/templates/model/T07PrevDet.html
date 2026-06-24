@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T07PrevDet.title}">前世明細</title>
+<title th:text="#{T07PrevDet.title}">T07_PREV_DET</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,49 +24,49 @@
       <fieldset class="parent">
         <legend th:text="#{T07Prev.legend}">legend</legend>
         <div id="prevId">
-          <label for="T07Prev.prevId" th:text="#{T07Prev.prevId}">前世ID</label><input type="text" id="T07Prev.prevId" name="T07Prev.prevId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T07Prev.prevId" th:text="#{T07Prev.prevId}">PREV_ID</label><input type="text" id="T07Prev.prevId" name="T07Prev.prevId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="prevInfo">
-          <label for="T07Prev.prevInfo" th:text="#{T07Prev.prevInfo}">前世情報</label><input type="text" id="T07Prev.prevInfo" name="T07Prev.prevInfo" maxlength="300" />
+          <label for="T07Prev.prevInfo" th:text="#{T07Prev.prevInfo}">PREV_INFO</label><input type="text" id="T07Prev.prevInfo" name="T07Prev.prevInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T07Prev.insertTs}" class="meta">作成タイムスタンプ</label><span id="T07Prev.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Prev.insertTs" name="T07Prev.insertTs" class="meta" />
+          <label th:text="#{T07Prev.insertTs}" class="meta">INSERT_TS</label><span id="T07Prev.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Prev.insertTs" name="T07Prev.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T07Prev.insertUserId}" class="meta">作成者</label><span id="T07Prev.insertUserId" class="meta"></span><input type="hidden" id="T07Prev.insertUserId" name="T07Prev.insertUserId" class="meta" />
+          <label th:text="#{T07Prev.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T07Prev.insertUserId" class="meta"></span><input type="hidden" id="T07Prev.insertUserId" name="T07Prev.insertUserId" class="meta" />
           <span id="T07Prev.insertUserSei" class="refer meta" data-referFor="T07Prev.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Prev.insertUserId" data-destDef="T07Prev.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T07Prev.updateTs}" class="meta">更新タイムスタンプ</label><span id="T07Prev.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Prev.updateTs" name="T07Prev.updateTs" class="meta" />
+          <label th:text="#{T07Prev.updateTs}" class="meta">UPDATE_TS</label><span id="T07Prev.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Prev.updateTs" name="T07Prev.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T07Prev.updateUserId}" class="meta">更新者</label><span id="T07Prev.updateUserId" class="meta"></span><input type="hidden" id="T07Prev.updateUserId" name="T07Prev.updateUserId" class="meta" />
+          <label th:text="#{T07Prev.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T07Prev.updateUserId" class="meta"></span><input type="hidden" id="T07Prev.updateUserId" name="T07Prev.updateUserId" class="meta" />
           <span id="T07Prev.updateUserSei" class="refer meta" data-referFor="T07Prev.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Prev.updateUserId" data-destDef="T07Prev.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <fieldset>
         <legend th:text="#{T07PrevDet.legend}">legend</legend>
         <div id="prevId">
-          <label for="T07PrevDet.prevId" th:text="#{T07PrevDet.prevId}">前世ID</label><input type="text" id="T07PrevDet.prevId" name="T07PrevDet.prevId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T07PrevDet.prevId" th:text="#{T07PrevDet.prevId}">PREV_ID</label><input type="text" id="T07PrevDet.prevId" name="T07PrevDet.prevId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="prevBn">
-          <label for="T07PrevDet.prevBn" th:text="#{T07PrevDet.prevBn}">前世枝番</label><input type="text" id="T07PrevDet.prevBn" name="T07PrevDet.prevBn" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T07PrevDet.prevBn" th:text="#{T07PrevDet.prevBn}">PREV_BN</label><input type="text" id="T07PrevDet.prevBn" name="T07PrevDet.prevBn" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="detInfo">
-          <label for="T07PrevDet.detInfo" th:text="#{T07PrevDet.detInfo}">明細情報</label><input type="text" id="T07PrevDet.detInfo" name="T07PrevDet.detInfo" maxlength="300" />
+          <label for="T07PrevDet.detInfo" th:text="#{T07PrevDet.detInfo}">DET_INFO</label><input type="text" id="T07PrevDet.detInfo" name="T07PrevDet.detInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T07PrevDet.insertTs}" class="meta">作成タイムスタンプ</label><span id="T07PrevDet.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07PrevDet.insertTs" name="T07PrevDet.insertTs" class="meta" />
+          <label th:text="#{T07PrevDet.insertTs}" class="meta">INSERT_TS</label><span id="T07PrevDet.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07PrevDet.insertTs" name="T07PrevDet.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T07PrevDet.insertUserId}" class="meta">作成者</label><span id="T07PrevDet.insertUserId" class="meta"></span><input type="hidden" id="T07PrevDet.insertUserId" name="T07PrevDet.insertUserId" class="meta" />
+          <label th:text="#{T07PrevDet.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T07PrevDet.insertUserId" class="meta"></span><input type="hidden" id="T07PrevDet.insertUserId" name="T07PrevDet.insertUserId" class="meta" />
           <span id="T07PrevDet.insertUserSei" class="refer meta" data-referFor="T07PrevDet.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07PrevDet.insertUserId" data-destDef="T07PrevDet.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T07PrevDet.updateTs}" class="meta">更新タイムスタンプ</label><span id="T07PrevDet.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07PrevDet.updateTs" name="T07PrevDet.updateTs" class="meta" />
+          <label th:text="#{T07PrevDet.updateTs}" class="meta">UPDATE_TS</label><span id="T07PrevDet.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07PrevDet.updateTs" name="T07PrevDet.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T07PrevDet.updateUserId}" class="meta">更新者</label><span id="T07PrevDet.updateUserId" class="meta"></span><input type="hidden" id="T07PrevDet.updateUserId" name="T07PrevDet.updateUserId" class="meta" />
+          <label th:text="#{T07PrevDet.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T07PrevDet.updateUserId" class="meta"></span><input type="hidden" id="T07PrevDet.updateUserId" name="T07PrevDet.updateUserId" class="meta" />
           <span id="T07PrevDet.updateUserSei" class="refer meta" data-referFor="T07PrevDet.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07PrevDet.updateUserId" data-destDef="T07PrevDet.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -75,8 +75,8 @@
         <a th:href="@{T07PrevDetGet.xlsx(baseMei=#{T07PrevDet.h2})}" id="T07PrevDetGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT07PrevDet" type="submit" class="delete" data-action="T07PrevDetDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT07PrevDet" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT07PrevDet" type="submit" class="delete" data-action="T07PrevDetDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT07PrevDet" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

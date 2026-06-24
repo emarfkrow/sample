@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T08Kisei1.title}">寄生１</title>
+<title th:text="#{T08Kisei1.title}">T08_KISEI1</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -21,23 +21,23 @@
       <fieldset>
         <legend th:text="#{T08Kisei1.legend}">legend</legend>
         <div id="kisei1Id">
-          <label for="T08Kisei1.kisei1Id" th:text="#{T08Kisei1.kisei1Id}">寄生１ID</label><input type="text" id="T08Kisei1.kisei1Id" name="T08Kisei1.kisei1Id" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T08Kisei1.kisei1Id" th:text="#{T08Kisei1.kisei1Id}">KISEI1_ID</label><input type="text" id="T08Kisei1.kisei1Id" name="T08Kisei1.kisei1Id" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="kisei1Info">
-          <label for="T08Kisei1.kisei1Info" th:text="#{T08Kisei1.kisei1Info}">寄生１情報</label><input type="text" id="T08Kisei1.kisei1Info" name="T08Kisei1.kisei1Info" maxlength="300" />
+          <label for="T08Kisei1.kisei1Info" th:text="#{T08Kisei1.kisei1Info}">KISEI1_INFO</label><input type="text" id="T08Kisei1.kisei1Info" name="T08Kisei1.kisei1Info" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T08Kisei1.insertTs}" class="meta">作成タイムスタンプ</label><span id="T08Kisei1.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T08Kisei1.insertTs" name="T08Kisei1.insertTs" class="meta" />
+          <label th:text="#{T08Kisei1.insertTs}" class="meta">INSERT_TS</label><span id="T08Kisei1.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T08Kisei1.insertTs" name="T08Kisei1.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T08Kisei1.insertUserId}" class="meta">作成者</label><span id="T08Kisei1.insertUserId" class="meta"></span><input type="hidden" id="T08Kisei1.insertUserId" name="T08Kisei1.insertUserId" class="meta" />
+          <label th:text="#{T08Kisei1.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T08Kisei1.insertUserId" class="meta"></span><input type="hidden" id="T08Kisei1.insertUserId" name="T08Kisei1.insertUserId" class="meta" />
           <span id="T08Kisei1.insertUserSei" class="refer meta" data-referFor="T08Kisei1.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T08Kisei1.insertUserId" data-destDef="T08Kisei1.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T08Kisei1.updateTs}" class="meta">更新タイムスタンプ</label><span id="T08Kisei1.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T08Kisei1.updateTs" name="T08Kisei1.updateTs" class="meta" />
+          <label th:text="#{T08Kisei1.updateTs}" class="meta">UPDATE_TS</label><span id="T08Kisei1.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T08Kisei1.updateTs" name="T08Kisei1.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T08Kisei1.updateUserId}" class="meta">更新者</label><span id="T08Kisei1.updateUserId" class="meta"></span><input type="hidden" id="T08Kisei1.updateUserId" name="T08Kisei1.updateUserId" class="meta" />
+          <label th:text="#{T08Kisei1.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T08Kisei1.updateUserId" class="meta"></span><input type="hidden" id="T08Kisei1.updateUserId" name="T08Kisei1.updateUserId" class="meta" />
           <span id="T08Kisei1.updateUserSei" class="refer meta" data-referFor="T08Kisei1.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T08Kisei1.updateUserId" data-destDef="T08Kisei1.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -46,8 +46,8 @@
         <a th:href="@{T08Kisei1Get.xlsx(baseMei=#{T08Kisei1.h2})}" id="T08Kisei1Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT08Kisei1" type="submit" class="delete" data-action="T08Kisei1Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT08Kisei1" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT08Kisei1" type="submit" class="delete" data-action="T08Kisei1Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT08Kisei1" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

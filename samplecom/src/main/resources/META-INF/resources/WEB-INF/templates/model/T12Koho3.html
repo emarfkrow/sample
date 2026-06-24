@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T12Koho3.title}">候補３</title>
+<title th:text="#{T12Koho3.title}">T12_KOHO3</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,34 +27,34 @@
       <fieldset>
         <legend th:text="#{T12Koho3.legend}">legend</legend>
         <div id="koho3Id">
-          <label for="T12Koho3.koho3Id" th:text="#{T12Koho3.koho3Id}">候補３ID</label><input type="text" id="T12Koho3.koho3Id" name="T12Koho3.koho3Id" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T12Koho3.koho3Id" th:text="#{T12Koho3.koho3Id}">KOHO3_ID</label><input type="text" id="T12Koho3.koho3Id" name="T12Koho3.koho3Id" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="koho3Info">
-          <label for="T12Koho3.koho3Info" th:text="#{T12Koho3.koho3Info}">候補３情報</label><input type="text" id="T12Koho3.koho3Info" name="T12Koho3.koho3Info" maxlength="300" />
+          <label for="T12Koho3.koho3Info" th:text="#{T12Koho3.koho3Info}">KOHO3_INFO</label><input type="text" id="T12Koho3.koho3Info" name="T12Koho3.koho3Info" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T12Koho3.insertTs}" class="meta">作成タイムスタンプ</label><span id="T12Koho3.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T12Koho3.insertTs" name="T12Koho3.insertTs" class="meta" />
+          <label th:text="#{T12Koho3.insertTs}" class="meta">INSERT_TS</label><span id="T12Koho3.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T12Koho3.insertTs" name="T12Koho3.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T12Koho3.insertUserId}" class="meta">作成者</label><span id="T12Koho3.insertUserId" class="meta"></span><input type="hidden" id="T12Koho3.insertUserId" name="T12Koho3.insertUserId" class="meta" />
+          <label th:text="#{T12Koho3.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T12Koho3.insertUserId" class="meta"></span><input type="hidden" id="T12Koho3.insertUserId" name="T12Koho3.insertUserId" class="meta" />
           <span id="T12Koho3.insertUserSei" class="refer meta" data-referFor="T12Koho3.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T12Koho3.insertUserId" data-destDef="T12Koho3.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T12Koho3.updateTs}" class="meta">更新タイムスタンプ</label><span id="T12Koho3.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T12Koho3.updateTs" name="T12Koho3.updateTs" class="meta" />
+          <label th:text="#{T12Koho3.updateTs}" class="meta">UPDATE_TS</label><span id="T12Koho3.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T12Koho3.updateTs" name="T12Koho3.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T12Koho3.updateUserId}" class="meta">更新者</label><span id="T12Koho3.updateUserId" class="meta"></span><input type="hidden" id="T12Koho3.updateUserId" name="T12Koho3.updateUserId" class="meta" />
+          <label th:text="#{T12Koho3.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T12Koho3.updateUserId" class="meta"></span><input type="hidden" id="T12Koho3.updateUserId" name="T12Koho3.updateUserId" class="meta" />
           <span id="T12Koho3.updateUserSei" class="refer meta" data-referFor="T12Koho3.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T12Koho3.updateUserId" data-destDef="T12Koho3.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="RefreshT12Koho3" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T12Koho3Get.xlsx(baseMei=#{T12Koho3.h2})}" id="T12Koho3Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a th:href="@{/model/T12Tasho2.html}" id="T12Tasho2" target="dialog" th:text="#{T12Tasho2.add}" class="reborner" tabindex="-1">他生２</a>
+        <a th:href="@{/model/T12Tasho2.html}" id="T12Tasho2" target="dialog" th:text="#{T12Tasho2.add}" class="reborner" tabindex="-1">T12_TASHO2</a>
       </div>
       <div class="submits">
-        <button id="DeleteT12Koho3" type="submit" class="delete" data-action="T12Koho3Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT12Koho3" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT12Koho3" type="submit" class="delete" data-action="T12Koho3Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT12Koho3" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

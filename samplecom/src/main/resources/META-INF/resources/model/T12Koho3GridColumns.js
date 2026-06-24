@@ -1,5 +1,5 @@
 /**
- * 候補３グリッド定義
+ * T12_KOHO3 grid columns
  */
 
 let T12Koho3GridColumns = [];

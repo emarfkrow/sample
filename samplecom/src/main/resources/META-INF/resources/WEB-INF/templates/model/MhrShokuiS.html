@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{MhrShokuiS.title}">職位マスタ</title>
+<title th:text="#{MhrShokuiS.title}">MHR_SHOKUI</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,27 +24,27 @@
       <fieldset>
         <legend th:text="#{MhrShokuiS.legend}">legend</legend>
         <div id="shokuiId">
-          <label for="MhrShokui.shokuiId" th:text="#{MhrShokui.shokuiId}">職位ID</label><input type="text" id="MhrShokui.shokuiId" name="MhrShokui.shokuiId" maxlength="10" class=" primaryKey" />
+          <label for="MhrShokui.shokuiId" th:text="#{MhrShokui.shokuiId}">SHOKUI_ID</label><input type="text" id="MhrShokui.shokuiId" name="MhrShokui.shokuiId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="shokuiMei">
-          <label for="MhrShokui.shokuiMei" th:text="#{MhrShokui.shokuiMei}">職位名</label><input type="text" id="MhrShokui.shokuiMei" name="MhrShokui.shokuiMei" maxlength="60" />
+          <label for="MhrShokui.shokuiMei" th:text="#{MhrShokui.shokuiMei}">SHOKUI_MEI</label><input type="text" id="MhrShokui.shokuiMei" name="MhrShokui.shokuiMei" maxlength="60" />
         </div>
         <div id="shokuiOn">
-          <label for="MhrShokui.shokuiOn" th:text="#{MhrShokui.shokuiOn}">職位順</label><input type="text" id="MhrShokui.shokuiOn" name="MhrShokui.shokuiOn" maxlength="10" />
+          <label for="MhrShokui.shokuiOn" th:text="#{MhrShokui.shokuiOn}">SHOKUI_ON</label><input type="text" id="MhrShokui.shokuiOn" name="MhrShokui.shokuiOn" maxlength="10" />
         </div>
         <div id="tekiyoBi">
-          <label for="MhrShokui.tekiyoBi_1" th:text="#{MhrShokui.tekiyoBi}">適用日</label><input type="text" id="MhrShokui.tekiyoBi_1" name="MhrShokui.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrShokui.tekiyoBi_2" name="MhrShokui.tekiyoBi_2" maxlength="10" class=" datepicker" />
+          <label for="MhrShokui.tekiyoBi_1" th:text="#{MhrShokui.tekiyoBi}">TEKIYO_BI</label><input type="text" id="MhrShokui.tekiyoBi_1" name="MhrShokui.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrShokui.tekiyoBi_2" name="MhrShokui.tekiyoBi_2" maxlength="10" class=" datepicker" />
         </div>
         <div id="haishiBi">
-          <label for="MhrShokui.haishiBi_1" th:text="#{MhrShokui.haishiBi}">廃止日</label><input type="text" id="MhrShokui.haishiBi_1" name="MhrShokui.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrShokui.haishiBi_2" name="MhrShokui.haishiBi_2" maxlength="10" class=" datepicker" />
+          <label for="MhrShokui.haishiBi_1" th:text="#{MhrShokui.haishiBi}">HAISHI_BI</label><input type="text" id="MhrShokui.haishiBi_1" name="MhrShokui.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrShokui.haishiBi_2" name="MhrShokui.haishiBi_2" maxlength="10" class=" datepicker" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetMhrShokui" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/MhrShokui.html(anew)}" target="dialog" id="MhrShokui" class="anew" th:text="#{MhrShokui.add}" tabindex="-1">職位マスタ</a>
+        <a th:href="@{/model/MhrShokui.html(anew)}" target="dialog" id="MhrShokui" class="anew" th:text="#{MhrShokui.add}" tabindex="-1">MHR_SHOKUI</a>
       </div>
       <div class="submits">
-        <button id="SearchMhrShokui" type="submit" class="search" data-gridId="MhrShokuiGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchMhrShokui" type="submit" class="search" data-gridId="MhrShokuiGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -57,7 +57,7 @@
         <a th:href="@{MhrShokuiSearch.xlsx(baseMei=#{MhrShokuiS.h2})}" id="MhrShokuiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="RegistMhrShokuiS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistMhrShokuiS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

@@ -1,3 +1,3 @@
 /**
- * 派生２明細スクリプト
+ * T06_DERIVE2_DET script
  */

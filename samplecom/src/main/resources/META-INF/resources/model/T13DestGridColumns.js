@@ -1,5 +1,5 @@
 /**
- * 変換先グリッド定義
+ * T13_DEST grid columns
  */
 
 let T13DestGridColumns = [];

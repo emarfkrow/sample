@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T09Grp1S.title}">集団１</title>
+<title th:text="#{T09Grp1S.title}">T09_GRP1</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -30,18 +30,18 @@
       <fieldset>
         <legend th:text="#{T09Grp1S.legend}">legend</legend>
         <div id="grp1Id">
-          <label for="T09Grp1.grp1Id" th:text="#{T09Grp1.grp1Id}">集団１ID</label><input type="text" id="T09Grp1.grp1Id" name="T09Grp1.grp1Id" maxlength="10" class=" primaryKey" />
+          <label for="T09Grp1.grp1Id" th:text="#{T09Grp1.grp1Id}">GRP1_ID</label><input type="text" id="T09Grp1.grp1Id" name="T09Grp1.grp1Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="sumId">
-          <label for="T09Grp1.sumId" th:text="#{T09Grp1.sumId}">集約ID</label><input type="text" id="T09Grp1.sumId" name="T09Grp1.sumId" maxlength="10" class=" refer" /><a id="T09Grp1.sumId" th:href="@{/model/T09SumS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T09Grp1.sumId" th:text="#{T09Grp1.sumId}">SUM_ID</label><input type="text" id="T09Grp1.sumId" name="T09Grp1.sumId" maxlength="10" class=" refer" /><a id="T09Grp1.sumId" th:href="@{/model/T09SumS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT09Grp1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T09Grp1.html(anew)}" target="dialog" id="T09Grp1" class="anew" th:text="#{T09Grp1.add}" tabindex="-1">集団１</a>
+        <a th:href="@{/model/T09Grp1.html(anew)}" target="dialog" id="T09Grp1" class="anew" th:text="#{T09Grp1.add}" tabindex="-1">T09_GRP1</a>
       </div>
       <div class="submits">
-        <button id="SearchT09Grp1" type="submit" class="search" data-gridId="T09Grp1Grid" th:text="#{common.search}">submit</button>
+        <button id="SearchT09Grp1" type="submit" class="search" data-gridId="T09Grp1Grid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -52,12 +52,12 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT09Grp1S" th:text="#{common.reset}" onClick="Base.listReset('T09Grp1');">reset</button>
         <a th:href="@{T09Grp1Search.xlsx(baseMei=#{T09Grp1S.h2})}" id="T09Grp1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a th:href="@{/model/T09Sum.html}" id="T09Sum" target="dialog" th:text="#{T09Sum.sum}" class="summary" tabindex="-1">集約</a>
-        <a id="T09Grp1Grid.sumId" th:href="@{/model/T09SumS.html}" target="dialog" class="refer" th:text="'集約' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <button type="submit" id="DeleteT09Grp1S" data-action="T09Grp1SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <a th:href="@{/model/T09Sum.html}" id="T09Sum" target="dialog" th:text="#{T09Sum.sum}" class="summary" tabindex="-1">T09_SUM</a>
+        <a id="T09Grp1Grid.sumId" th:href="@{/model/T09SumS.html}" target="dialog" class="refer" th:text="#{T09SumS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteT09Grp1S" data-action="T09Grp1SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT09Grp1S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT09Grp1S" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

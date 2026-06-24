@@ -1,5 +1,5 @@
 /**
- * 他生２グリッド定義
+ * T12_TASHO2 grid columns
  */
 
 let T12Tasho2GridColumns = [];

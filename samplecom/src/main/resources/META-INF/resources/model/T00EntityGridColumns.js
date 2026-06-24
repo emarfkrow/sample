@@ -1,5 +1,5 @@
 /**
- * エンティティグリッド定義
+ * T00_ENTITY grid columns
  */
 
 let T00EntityGridColumns = [];

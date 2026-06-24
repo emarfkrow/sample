@@ -1,3 +1,3 @@
 /**
- * 末弟スクリプト
+ * T02_YOUNGEST script
  */

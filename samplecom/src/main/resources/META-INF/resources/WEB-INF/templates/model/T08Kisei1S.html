@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T08Kisei1S.title}">寄生１</title>
+<title th:text="#{T08Kisei1S.title}">T08_KISEI1</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,18 +24,18 @@
       <fieldset>
         <legend th:text="#{T08Kisei1S.legend}">legend</legend>
         <div id="kisei1Id">
-          <label for="T08Kisei1.kisei1Id" th:text="#{T08Kisei1.kisei1Id}">寄生１ID</label><input type="text" id="T08Kisei1.kisei1Id" name="T08Kisei1.kisei1Id" maxlength="10" class=" primaryKey" />
+          <label for="T08Kisei1.kisei1Id" th:text="#{T08Kisei1.kisei1Id}">KISEI1_ID</label><input type="text" id="T08Kisei1.kisei1Id" name="T08Kisei1.kisei1Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="kisei1Info">
-          <label for="T08Kisei1.kisei1Info" th:text="#{T08Kisei1.kisei1Info}">寄生１情報</label><input type="text" id="T08Kisei1.kisei1Info" name="T08Kisei1.kisei1Info" maxlength="300" />
+          <label for="T08Kisei1.kisei1Info" th:text="#{T08Kisei1.kisei1Info}">KISEI1_INFO</label><input type="text" id="T08Kisei1.kisei1Info" name="T08Kisei1.kisei1Info" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT08Kisei1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T08Kisei1.html(anew)}" target="dialog" id="T08Kisei1" class="anew" th:text="#{T08Kisei1.add}" tabindex="-1">寄生１</a>
+        <a th:href="@{/model/T08Kisei1.html(anew)}" target="dialog" id="T08Kisei1" class="anew" th:text="#{T08Kisei1.add}" tabindex="-1">T08_KISEI1</a>
       </div>
       <div class="submits">
-        <button id="SearchT08Kisei1" type="submit" class="search" data-gridId="T08Kisei1Grid" th:text="#{common.search}">submit</button>
+        <button id="SearchT08Kisei1" type="submit" class="search" data-gridId="T08Kisei1Grid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -46,10 +46,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT08Kisei1S" th:text="#{common.reset}" onClick="Base.listReset('T08Kisei1');">reset</button>
         <a th:href="@{T08Kisei1Search.xlsx(baseMei=#{T08Kisei1S.h2})}" id="T08Kisei1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT08Kisei1S" data-action="T08Kisei1SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT08Kisei1S" data-action="T08Kisei1SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT08Kisei1S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT08Kisei1S" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

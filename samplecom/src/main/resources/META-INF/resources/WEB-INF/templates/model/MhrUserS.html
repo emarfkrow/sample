@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{MhrUserS.title}">ユーザマスタ</title>
+<title th:text="#{MhrUserS.title}">MHR_USER</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -21,33 +21,33 @@
       <fieldset>
         <legend th:text="#{MhrUserS.legend}">legend</legend>
         <div id="userId">
-          <label for="MhrUser.userId" th:text="#{MhrUser.userId}">ユーザID</label><input type="text" id="MhrUser.userId" name="MhrUser.userId" maxlength="10" class=" primaryKey" />
+          <label for="MhrUser.userId" th:text="#{MhrUser.userId}">USER_ID</label><input type="text" id="MhrUser.userId" name="MhrUser.userId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="userSei">
-          <label for="MhrUser.userSei" th:text="#{MhrUser.userSei}">ユーザ姓</label><input type="text" id="MhrUser.userSei" name="MhrUser.userSei" maxlength="60" />
+          <label for="MhrUser.userSei" th:text="#{MhrUser.userSei}">USER_SEI</label><input type="text" id="MhrUser.userSei" name="MhrUser.userSei" maxlength="60" />
         </div>
         <div id="userMei">
-          <label for="MhrUser.userMei" th:text="#{MhrUser.userMei}">ユーザ名</label><input type="text" id="MhrUser.userMei" name="MhrUser.userMei" maxlength="60" />
+          <label for="MhrUser.userMei" th:text="#{MhrUser.userMei}">USER_MEI</label><input type="text" id="MhrUser.userMei" name="MhrUser.userMei" maxlength="60" />
         </div>
         <div id="eMail">
-          <label for="MhrUser.eMail" th:text="#{MhrUser.eMail}">メールアドレス</label><input type="text" id="MhrUser.eMail" name="MhrUser.eMail" maxlength="300" />
+          <label for="MhrUser.eMail" th:text="#{MhrUser.eMail}">E_MAIL</label><input type="text" id="MhrUser.eMail" name="MhrUser.eMail" maxlength="300" />
         </div>
         <div id="password">
-          <label for="MhrUser.password" th:text="#{MhrUser.password}">パスワード</label><input type="text" id="MhrUser.password" name="MhrUser.password" maxlength="300" />
+          <label for="MhrUser.password" th:text="#{MhrUser.password}">PASSWORD</label><input type="text" id="MhrUser.password" name="MhrUser.password" maxlength="300" />
         </div>
         <div id="tekiyoBi">
-          <label for="MhrUser.tekiyoBi_1" th:text="#{MhrUser.tekiyoBi}">適用日</label><input type="text" id="MhrUser.tekiyoBi_1" name="MhrUser.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrUser.tekiyoBi_2" name="MhrUser.tekiyoBi_2" maxlength="10" class=" datepicker" />
+          <label for="MhrUser.tekiyoBi_1" th:text="#{MhrUser.tekiyoBi}">TEKIYO_BI</label><input type="text" id="MhrUser.tekiyoBi_1" name="MhrUser.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrUser.tekiyoBi_2" name="MhrUser.tekiyoBi_2" maxlength="10" class=" datepicker" />
         </div>
         <div id="haishiBi">
-          <label for="MhrUser.haishiBi_1" th:text="#{MhrUser.haishiBi}">廃止日</label><input type="text" id="MhrUser.haishiBi_1" name="MhrUser.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrUser.haishiBi_2" name="MhrUser.haishiBi_2" maxlength="10" class=" datepicker" />
+          <label for="MhrUser.haishiBi_1" th:text="#{MhrUser.haishiBi}">HAISHI_BI</label><input type="text" id="MhrUser.haishiBi_1" name="MhrUser.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="MhrUser.haishiBi_2" name="MhrUser.haishiBi_2" maxlength="10" class=" datepicker" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetMhrUser" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/MhrUser.html(anew)}" target="dialog" id="MhrUser" class="anew" th:text="#{MhrUser.add}" tabindex="-1">ユーザマスタ</a>
+        <a th:href="@{/model/MhrUser.html(anew)}" target="dialog" id="MhrUser" class="anew" th:text="#{MhrUser.add}" tabindex="-1">MHR_USER</a>
       </div>
       <div class="submits">
-        <button id="SearchMhrUser" type="submit" class="search" data-gridId="MhrUserGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchMhrUser" type="submit" class="search" data-gridId="MhrUserGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -60,7 +60,7 @@
         <a th:href="@{MhrUserSearch.xlsx(baseMei=#{MhrUserS.h2})}" id="MhrUserSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="RegistMhrUserS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistMhrUserS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

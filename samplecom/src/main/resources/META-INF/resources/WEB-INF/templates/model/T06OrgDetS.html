@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T06OrgDetS.title}">起源明細</title>
+<title th:text="#{T06OrgDetS.title}">T06_ORG_DET</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -27,20 +27,20 @@
       <fieldset>
         <legend th:text="#{T06OrgDetS.legend}">legend</legend>
         <div id="orgId">
-          <label for="T06OrgDet.orgId" th:text="#{T06OrgDet.orgId}">起源ID</label><input type="text" id="T06OrgDet.orgId" name="T06OrgDet.orgId" maxlength="10" class=" primaryKey" />
+          <label for="T06OrgDet.orgId" th:text="#{T06OrgDet.orgId}">ORG_ID</label><input type="text" id="T06OrgDet.orgId" name="T06OrgDet.orgId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="orgBn">
-          <label for="T06OrgDet.orgBn" th:text="#{T06OrgDet.orgBn}">起源枝番</label><input type="text" id="T06OrgDet.orgBn" name="T06OrgDet.orgBn" maxlength="10" class=" primaryKey" />
+          <label for="T06OrgDet.orgBn" th:text="#{T06OrgDet.orgBn}">ORG_BN</label><input type="text" id="T06OrgDet.orgBn" name="T06OrgDet.orgBn" maxlength="10" class=" primaryKey" />
         </div>
         <div id="detInfo">
-          <label for="T06OrgDet.detInfo" th:text="#{T06OrgDet.detInfo}">明細情報</label><input type="text" id="T06OrgDet.detInfo" name="T06OrgDet.detInfo" maxlength="300" />
+          <label for="T06OrgDet.detInfo" th:text="#{T06OrgDet.detInfo}">DET_INFO</label><input type="text" id="T06OrgDet.detInfo" name="T06OrgDet.detInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT06OrgDet" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchT06OrgDet" type="submit" class="search" data-gridId="T06OrgDetGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT06OrgDet" type="submit" class="search" data-gridId="T06OrgDetGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -51,10 +51,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT06OrgDetS" th:text="#{common.reset}" onClick="Base.listReset('T06OrgDet');">reset</button>
         <a th:href="@{T06OrgDetSearch.xlsx(baseMei=#{T06OrgDetS.h2})}" id="T06OrgDetSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT06OrgDetS" data-action="T06OrgDetSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT06OrgDetS" data-action="T06OrgDetSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT06OrgDetS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT06OrgDetS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

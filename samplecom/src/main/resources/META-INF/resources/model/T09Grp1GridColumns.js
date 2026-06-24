@@ -1,5 +1,5 @@
 /**
- * 集団１グリッド定義
+ * T09_GRP1 grid columns
  */
 
 let T09Grp1GridColumns = [];

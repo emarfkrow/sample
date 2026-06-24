@@ -1,5 +1,5 @@
 /**
- * 前世２グリッド定義
+ * T11_PREV2 grid columns
  */
 
 let T11Prev2GridColumns = [];

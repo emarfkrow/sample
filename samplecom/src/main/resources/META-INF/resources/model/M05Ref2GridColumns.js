@@ -1,5 +1,5 @@
 /**
- * マスタ参照２グリッド定義
+ * M05_REF2 grid columns
  */
 
 let M05Ref2GridColumns = [];

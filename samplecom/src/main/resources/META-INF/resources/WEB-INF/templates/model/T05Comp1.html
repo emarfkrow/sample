@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T05Comp1.title}">複合１</title>
+<title th:text="#{T05Comp1.title}">T05_COMP1</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -33,42 +33,42 @@
       <fieldset>
         <legend th:text="#{T05Comp1.legend}">legend</legend>
         <div id="ref1Id">
-          <label for="T05Comp1.ref1Id" th:text="#{T05Comp1.ref1Id}">参照１ID</label><input type="text" id="T05Comp1.ref1Id" name="T05Comp1.ref1Id" maxlength="10" class=" primaryKey numbering refer notblank" data-referFor="T05Comp1.ref1Id" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:T05Comp1.ref1Id" data-destDef="T05Comp1.ref1Mei:REF1_MEI" /><a id="T05Comp1.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T05Comp1.ref1Mei" class=" primaryKey numbering refer" data-referFor="T05Comp1.ref1Id" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:T05Comp1.ref1Id" data-destDef="T05Comp1.ref1Mei:REF1_MEI"></span>
+          <label for="T05Comp1.ref1Id" th:text="#{T05Comp1.ref1Id}">REF1_ID</label><input type="text" id="T05Comp1.ref1Id" name="T05Comp1.ref1Id" maxlength="10" class=" primaryKey numbering refer notblank" data-referFor="T05Comp1.ref1Id" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:T05Comp1.ref1Id" data-destDef="T05Comp1.ref1Mei:REF1_MEI" /><a id="T05Comp1.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T05Comp1.ref1Mei" class=" primaryKey numbering refer" data-referFor="T05Comp1.ref1Id" data-json="M05Ref1Search.json" data-srcDef="REF1_ID:T05Comp1.ref1Id" data-destDef="T05Comp1.ref1Mei:REF1_MEI"></span>
         </div>
         <div id="ref2Id">
-          <label for="T05Comp1.ref2Id" th:text="#{T05Comp1.ref2Id}">参照２ID</label><input type="text" id="T05Comp1.ref2Id" name="T05Comp1.ref2Id" maxlength="10" class=" primaryKey refer notblank" data-referFor="T05Comp1.ref2Id" data-json="M05Ref2Search.json" data-srcDef="REF2_ID:T05Comp1.ref2Id" data-destDef="T05Comp1.ref2Mei:REF2_MEI" /><a id="T05Comp1.ref2Id" th:href="@{/model/M05Ref2S.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T05Comp1.ref2Mei" class=" primaryKey refer" data-referFor="T05Comp1.ref2Id" data-json="M05Ref2Search.json" data-srcDef="REF2_ID:T05Comp1.ref2Id" data-destDef="T05Comp1.ref2Mei:REF2_MEI"></span>
+          <label for="T05Comp1.ref2Id" th:text="#{T05Comp1.ref2Id}">REF2_ID</label><input type="text" id="T05Comp1.ref2Id" name="T05Comp1.ref2Id" maxlength="10" class=" primaryKey refer notblank" data-referFor="T05Comp1.ref2Id" data-json="M05Ref2Search.json" data-srcDef="REF2_ID:T05Comp1.ref2Id" data-destDef="T05Comp1.ref2Mei:REF2_MEI" /><a id="T05Comp1.ref2Id" th:href="@{/model/M05Ref2S.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T05Comp1.ref2Mei" class=" primaryKey refer" data-referFor="T05Comp1.ref2Id" data-json="M05Ref2Search.json" data-srcDef="REF2_ID:T05Comp1.ref2Id" data-destDef="T05Comp1.ref2Mei:REF2_MEI"></span>
         </div>
         <div id="comp1Mei">
-          <label for="T05Comp1.comp1Mei" th:text="#{T05Comp1.comp1Mei}">複合１名</label><input type="text" id="T05Comp1.comp1Mei" name="T05Comp1.comp1Mei" maxlength="300" />
+          <label for="T05Comp1.comp1Mei" th:text="#{T05Comp1.comp1Mei}">COMP1_MEI</label><input type="text" id="T05Comp1.comp1Mei" name="T05Comp1.comp1Mei" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T05Comp1.insertTs}" class="meta">作成タイムスタンプ</label><span id="T05Comp1.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T05Comp1.insertTs" name="T05Comp1.insertTs" class="meta" />
+          <label th:text="#{T05Comp1.insertTs}" class="meta">INSERT_TS</label><span id="T05Comp1.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T05Comp1.insertTs" name="T05Comp1.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T05Comp1.insertUserId}" class="meta">作成者</label><span id="T05Comp1.insertUserId" class="meta"></span><input type="hidden" id="T05Comp1.insertUserId" name="T05Comp1.insertUserId" class="meta" />
+          <label th:text="#{T05Comp1.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T05Comp1.insertUserId" class="meta"></span><input type="hidden" id="T05Comp1.insertUserId" name="T05Comp1.insertUserId" class="meta" />
           <span id="T05Comp1.insertUserSei" class="refer meta" data-referFor="T05Comp1.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T05Comp1.insertUserId" data-destDef="T05Comp1.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T05Comp1.updateTs}" class="meta">更新タイムスタンプ</label><span id="T05Comp1.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T05Comp1.updateTs" name="T05Comp1.updateTs" class="meta" />
+          <label th:text="#{T05Comp1.updateTs}" class="meta">UPDATE_TS</label><span id="T05Comp1.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T05Comp1.updateTs" name="T05Comp1.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T05Comp1.updateUserId}" class="meta">更新者</label><span id="T05Comp1.updateUserId" class="meta"></span><input type="hidden" id="T05Comp1.updateUserId" name="T05Comp1.updateUserId" class="meta" />
+          <label th:text="#{T05Comp1.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T05Comp1.updateUserId" class="meta"></span><input type="hidden" id="T05Comp1.updateUserId" name="T05Comp1.updateUserId" class="meta" />
           <span id="T05Comp1.updateUserSei" class="refer meta" data-referFor="T05Comp1.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T05Comp1.updateUserId" data-destDef="T05Comp1.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <h3 th:text="#{T05Comp2.h3}">h3</h3>
-      <a th:href="@{/model/T05Comp2.html(anew)}" id="T05Comp2" target="dialog" th:text="#{T05Comp2.add}" class="addChild" tabindex="-1">複合２</a>
+      <a th:href="@{/model/T05Comp2.html(anew)}" id="T05Comp2" target="dialog" th:text="#{T05Comp2.add}" class="addChild" tabindex="-1">T05_COMP2</a>
       <div id="T05Comp2Grid" data-selectionMode="link" data-addRow="true" data-frozenColumn="2" th:data-href="@{/model/T05Comp2.html}" class="childs"></div>
-        <a id="T05Comp2Grid.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class="refer" th:text="'マスタ参照１' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="T05Comp2Grid.ref2Id" th:href="@{/model/M05Ref2S.html?action=M05Ref2Correct.ajax}" target="dialog" class="refer correct" th:text="'マスタ参照２' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="T05Comp2Grid.ref3Id" th:href="@{/model/M05Ref3S.html}" target="dialog" class="refer" th:text="'マスタ参照３' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T05Comp2Grid.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class="refer" th:text="#{M05Ref1S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T05Comp2Grid.ref2Id" th:href="@{/model/M05Ref2S.html?action=M05Ref2Correct.ajax}" target="dialog" class="refer correct" th:text="#{M05Ref2S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T05Comp2Grid.ref3Id" th:href="@{/model/M05Ref3S.html}" target="dialog" class="refer" th:text="#{M05Ref3S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
       <div class="buttons">
         <button type="button" id="RefreshT05Comp1" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T05Comp1Get.xlsx(baseMei=#{T05Comp1.h2})}" id="T05Comp1Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT05Comp1" type="submit" class="delete" data-action="T05Comp1Delete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT05Comp1" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT05Comp1" type="submit" class="delete" data-action="T05Comp1Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT05Comp1" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T02EldestS.title}">長兄</title>
+<title th:text="#{T02EldestS.title}">T02_ELDEST</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -24,20 +24,20 @@
       <fieldset>
         <legend th:text="#{T02EldestS.legend}">legend</legend>
         <div id="broId">
-          <label for="T02Eldest.broId" th:text="#{T02Eldest.broId}">兄弟ID</label><input type="text" id="T02Eldest.broId" name="T02Eldest.broId" maxlength="10" class=" primaryKey" />
+          <label for="T02Eldest.broId" th:text="#{T02Eldest.broId}">BRO_ID</label><input type="text" id="T02Eldest.broId" name="T02Eldest.broId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="eldestInfo">
-          <label for="T02Eldest.eldestInfo" th:text="#{T02Eldest.eldestInfo}">長兄情報</label><input type="text" id="T02Eldest.eldestInfo" name="T02Eldest.eldestInfo" maxlength="300" />
+          <label for="T02Eldest.eldestInfo" th:text="#{T02Eldest.eldestInfo}">ELDEST_INFO</label><input type="text" id="T02Eldest.eldestInfo" name="T02Eldest.eldestInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT02Eldest" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T02Eldest.html(anew)}" target="dialog" id="T02Eldest" class="anew" th:text="#{T02Eldest.add}" tabindex="-1">長兄</a>
-        <a th:href="@{/model/T02Younger.html}" target="dialog" id="T02Younger" class="anew" style="display: none;" th:text="#{T02Younger.add}" tabindex="-1">弟</a>
-        <a th:href="@{/model/T02Youngest.html}" target="dialog" id="T02Youngest" class="anew" style="display: none;" th:text="#{T02Youngest.add}" tabindex="-1">末弟</a>
+        <a th:href="@{/model/T02Eldest.html(anew)}" target="dialog" id="T02Eldest" class="anew" th:text="#{T02Eldest.add}" tabindex="-1">T02_ELDEST</a>
+        <a th:href="@{/model/T02Younger.html}" target="dialog" id="T02Younger" class="anew" style="display: none;" th:text="#{T02Younger.add}" tabindex="-1">T02_YOUNGER</a>
+        <a th:href="@{/model/T02Youngest.html}" target="dialog" id="T02Youngest" class="anew" style="display: none;" th:text="#{T02Youngest.add}" tabindex="-1">T02_YOUNGEST</a>
       </div>
       <div class="submits">
-        <button id="SearchT02Eldest" type="submit" class="search" data-gridId="T02EldestGrid" th:text="#{common.search}">submit</button>
+        <button id="SearchT02Eldest" type="submit" class="search" data-gridId="T02EldestGrid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -48,10 +48,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT02EldestS" th:text="#{common.reset}" onClick="Base.listReset('T02Eldest');">reset</button>
         <a th:href="@{T02EldestSearch.xlsx(baseMei=#{T02EldestS.h2})}" id="T02EldestSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT02EldestS" data-action="T02EldestSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT02EldestS" data-action="T02EldestSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT02EldestS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT02EldestS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

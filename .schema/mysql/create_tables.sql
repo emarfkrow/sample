@@ -1,6 +1,6 @@
 -- Project Name : emarf
--- Date/Time    : 2026/04/23 16:31:29
--- Author       : t_fuk
+-- Date/Time    : 2026/06/23 12:32:25
+-- Author       : KTC0966
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
 
@@ -322,6 +322,22 @@ create table T00_ENTITY (
   , constraint T00_ENTITY_PKC primary key (ENTITY_ID)
 ) comment 'エンティティ' ;
 
+-- 工程
+drop table T00_KOUTEI cascade;
+
+create table T00_KOUTEI (
+  KOUTEI_ID INT comment '工程ID'
+  , KOUTEI_MEI VARCHAR(60) not null comment '工程名'
+  , KAISHI_BI DATE not null comment '開始日'
+  , SHURYO_BI DATE not null comment '終了日'
+  , OYA_KOUTEI_ID INT comment '親工程ID'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID CHAR(10) not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID CHAR(10) not null comment '更新者'
+  , constraint T00_KOUTEI_PKC primary key (KOUTEI_ID)
+) comment '工程' ;
+
 -- キーなし
 drop table T00_NOKEY cascade;
 
@@ -480,12 +496,31 @@ create table T02_YOUNGEST (
   , constraint T02_YOUNGEST_PKC primary key (BRO_ID)
 ) comment '末弟' ;
 
+-- 決裁フロー
+drop table T03_STATUS_KB cascade;
+
+create table T03_STATUS_KB (
+  FLOW_ID INT comment 'フローID'
+  , TABLE_NM VARCHAR(20) comment 'テーブル名称'
+  , PRIMARY_KEYS VARCHAR(300) comment '主キー'
+  , STATUS_KB VARCHAR(2) comment 'ステータス区分'
+  , KESSAI_TS TIMESTAMP comment '決裁タイムスタンプ'
+  , KESSAI_ID INT comment '決裁者ID'
+  , RIYU_TX VARCHAR(300) comment '決裁理由'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID CHAR(10) not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID CHAR(10) not null comment '更新者'
+  , constraint T03_STATUS_KB_PKC primary key (FLOW_ID)
+) comment '決裁フロー' ;
+
 -- 変遷
 drop table T03_TRANS cascade;
 
 create table T03_TRANS (
   TRANS_ID INT comment '変遷ID'
   , TRANS_INFO VARCHAR(300) comment '変遷情報'
+  , STATUS_KB VARCHAR(2) comment 'ステータス区分'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID CHAR(10) not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
@@ -500,6 +535,7 @@ create table T03_TRANS_HIS (
   TRANS_ID INT comment '変遷ID'
   , TRANS_BN INT comment '変遷枝番'
   , TRANS_INFO VARCHAR(300) comment '変遷情報'
+  , STATUS_KB VARCHAR(2) comment 'ステータス区分'
   , RIYU_TX VARCHAR(300) not null comment '変更理由'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID CHAR(10) not null comment '作成者'

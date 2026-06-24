@@ -1,5 +1,5 @@
 /**
- * 認可マスタグリッド定義
+ * MHR_SHOKUI_NINKA grid columns
  */
 
 let MhrShokuiNinkaGridColumns = [];

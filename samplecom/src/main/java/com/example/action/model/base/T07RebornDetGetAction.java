@@ -42,8 +42,11 @@ public class T07RebornDetGetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.T07Reborn t07Reborn = com.example.entity.T07Reborn.get(rebornId);
-        map.put("T07Reborn", t07Reborn);
+        try {
+            com.example.entity.T07Reborn t07Reborn = com.example.entity.T07Reborn.get(rebornId);
+            map.put("T07Reborn", t07Reborn);
+        } catch (Exception e) {
+        }
 
         // 主キーが不足していたら終了
         if (!isAllKey) {

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T10Koho2S.title}">候補２</title>
+<title th:text="#{T10Koho2S.title}">T10_KOHO2</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -30,18 +30,18 @@
       <fieldset>
         <legend th:text="#{T10Koho2S.legend}">legend</legend>
         <div id="koho2Id">
-          <label for="T10Koho2.koho2Id" th:text="#{T10Koho2.koho2Id}">候補２ID</label><input type="text" id="T10Koho2.koho2Id" name="T10Koho2.koho2Id" maxlength="10" class=" primaryKey" />
+          <label for="T10Koho2.koho2Id" th:text="#{T10Koho2.koho2Id}">KOHO2_ID</label><input type="text" id="T10Koho2.koho2Id" name="T10Koho2.koho2Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="koho2Info">
-          <label for="T10Koho2.koho2Info" th:text="#{T10Koho2.koho2Info}">候補２情報</label><input type="text" id="T10Koho2.koho2Info" name="T10Koho2.koho2Info" maxlength="300" />
+          <label for="T10Koho2.koho2Info" th:text="#{T10Koho2.koho2Info}">KOHO2_INFO</label><input type="text" id="T10Koho2.koho2Info" name="T10Koho2.koho2Info" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT10Koho2" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T10Koho2.html(anew)}" target="dialog" id="T10Koho2" class="anew" th:text="#{T10Koho2.add}" tabindex="-1">候補２</a>
+        <a th:href="@{/model/T10Koho2.html(anew)}" target="dialog" id="T10Koho2" class="anew" th:text="#{T10Koho2.add}" tabindex="-1">T10_KOHO2</a>
       </div>
       <div class="submits">
-        <button id="SearchT10Koho2" type="submit" class="search" data-gridId="T10Koho2Grid" th:text="#{common.search}">submit</button>
+        <button id="SearchT10Koho2" type="submit" class="search" data-gridId="T10Koho2Grid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -52,10 +52,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT10Koho2S" th:text="#{common.reset}" onClick="Base.listReset('T10Koho2');">reset</button>
         <a th:href="@{T10Koho2Search.xlsx(baseMei=#{T10Koho2S.h2})}" id="T10Koho2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteT10Koho2S" data-action="T10Koho2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button type="submit" id="DeleteT10Koho2S" data-action="T10Koho2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
-        <button id="RegistT10Koho2S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+        <button id="RegistT10Koho2S" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

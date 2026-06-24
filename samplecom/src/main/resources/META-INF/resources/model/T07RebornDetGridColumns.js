@@ -1,5 +1,5 @@
 /**
- * 転生明細グリッド定義
+ * T07_REBORN_DET grid columns
  */
 
 let T07RebornDetGridColumns = [];

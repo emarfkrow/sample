@@ -42,8 +42,11 @@ public class T06OrgDetGetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.T06Org t06Org = com.example.entity.T06Org.get(orgId);
-        map.put("T06Org", t06Org);
+        try {
+            com.example.entity.T06Org t06Org = com.example.entity.T06Org.get(orgId);
+            map.put("T06Org", t06Org);
+        } catch (Exception e) {
+        }
 
         // 主キーが不足していたら終了
         if (!isAllKey) {

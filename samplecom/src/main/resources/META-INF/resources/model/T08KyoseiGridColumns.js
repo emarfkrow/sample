@@ -1,5 +1,5 @@
 /**
- * 共生グリッド定義
+ * T08_KYOSEI grid columns
  */
 
 let T08KyoseiGridColumns = [];

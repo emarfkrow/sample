@@ -58,8 +58,11 @@ public class T05Comp2GetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.T05Comp1 t05Comp1 = com.example.entity.T05Comp1.get(ref1Id, ref2Id);
-        map.put("T05Comp1", t05Comp1);
+        try {
+            com.example.entity.T05Comp1 t05Comp1 = com.example.entity.T05Comp1.get(ref1Id, ref2Id);
+            map.put("T05Comp1", t05Comp1);
+        } catch (Exception e) {
+        }
 
         // 主キーが不足していたら終了
         if (!isAllKey) {

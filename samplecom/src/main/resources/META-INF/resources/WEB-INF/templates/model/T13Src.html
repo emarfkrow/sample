@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T13Src.title}">変換元</title>
+<title th:text="#{T13Src.title}">T13_SRC</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -21,23 +21,23 @@
       <fieldset>
         <legend th:text="#{T13Src.legend}">legend</legend>
         <div id="srcId">
-          <label for="T13Src.srcId" th:text="#{T13Src.srcId}">変換元ID</label><input type="text" id="T13Src.srcId" name="T13Src.srcId" maxlength="10" class=" primaryKey numbering notblank" />
+          <label for="T13Src.srcId" th:text="#{T13Src.srcId}">SRC_ID</label><input type="text" id="T13Src.srcId" name="T13Src.srcId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="srcInfo">
-          <label for="T13Src.srcInfo" th:text="#{T13Src.srcInfo}">変換元情報</label><input type="text" id="T13Src.srcInfo" name="T13Src.srcInfo" maxlength="300" />
+          <label for="T13Src.srcInfo" th:text="#{T13Src.srcInfo}">SRC_INFO</label><input type="text" id="T13Src.srcInfo" name="T13Src.srcInfo" maxlength="300" />
         </div>
         <div id="insertTs">
-          <label th:text="#{T13Src.insertTs}" class="meta">作成タイムスタンプ</label><span id="T13Src.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T13Src.insertTs" name="T13Src.insertTs" class="meta" />
+          <label th:text="#{T13Src.insertTs}" class="meta">INSERT_TS</label><span id="T13Src.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T13Src.insertTs" name="T13Src.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T13Src.insertUserId}" class="meta">作成者</label><span id="T13Src.insertUserId" class="meta"></span><input type="hidden" id="T13Src.insertUserId" name="T13Src.insertUserId" class="meta" />
+          <label th:text="#{T13Src.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T13Src.insertUserId" class="meta"></span><input type="hidden" id="T13Src.insertUserId" name="T13Src.insertUserId" class="meta" />
           <span id="T13Src.insertUserSei" class="refer meta" data-referFor="T13Src.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T13Src.insertUserId" data-destDef="T13Src.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T13Src.updateTs}" class="meta">更新タイムスタンプ</label><span id="T13Src.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T13Src.updateTs" name="T13Src.updateTs" class="meta" />
+          <label th:text="#{T13Src.updateTs}" class="meta">UPDATE_TS</label><span id="T13Src.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T13Src.updateTs" name="T13Src.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T13Src.updateUserId}" class="meta">更新者</label><span id="T13Src.updateUserId" class="meta"></span><input type="hidden" id="T13Src.updateUserId" name="T13Src.updateUserId" class="meta" />
+          <label th:text="#{T13Src.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T13Src.updateUserId" class="meta"></span><input type="hidden" id="T13Src.updateUserId" name="T13Src.updateUserId" class="meta" />
           <span id="T13Src.updateUserSei" class="refer meta" data-referFor="T13Src.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T13Src.updateUserId" data-destDef="T13Src.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
@@ -46,8 +46,8 @@
         <a th:href="@{T13SrcGet.xlsx(baseMei=#{T13Src.h2})}" id="T13SrcGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="DeleteT13Src" type="submit" class="delete" data-action="T13SrcDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistT13Src" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="DeleteT13Src" type="submit" class="delete" data-action="T13SrcDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT13Src" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

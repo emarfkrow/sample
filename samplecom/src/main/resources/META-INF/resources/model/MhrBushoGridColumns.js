@@ -1,5 +1,5 @@
 /**
- * 部署マスタグリッド定義
+ * MHR_BUSHO grid columns
  */
 
 let MhrBushoGridColumns = [];

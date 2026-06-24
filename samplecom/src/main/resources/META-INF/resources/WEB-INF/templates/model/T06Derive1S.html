@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{T06Derive1S.title}">派生１</title>
+<title th:text="#{T06Derive1S.title}">T06_DERIVE1</title>
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -39,23 +39,23 @@
       <fieldset>
         <legend th:text="#{T06Derive1S.legend}">legend</legend>
         <div id="derive1Id">
-          <label for="T06Derive1.derive1Id" th:text="#{T06Derive1.derive1Id}">派生１ID</label><input type="text" id="T06Derive1.derive1Id" name="T06Derive1.derive1Id" maxlength="10" class=" primaryKey" />
+          <label for="T06Derive1.derive1Id" th:text="#{T06Derive1.derive1Id}">DERIVE1_ID</label><input type="text" id="T06Derive1.derive1Id" name="T06Derive1.derive1Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="orgInfo">
-          <label for="T06Derive1.orgInfo" th:text="#{T06Derive1.orgInfo}">起源情報</label><input type="text" id="T06Derive1.orgInfo" name="T06Derive1.orgInfo" maxlength="300" />
+          <label for="T06Derive1.orgInfo" th:text="#{T06Derive1.orgInfo}">ORG_INFO</label><input type="text" id="T06Derive1.orgInfo" name="T06Derive1.orgInfo" maxlength="300" />
         </div>
         <div id="orgId">
-          <label for="T06Derive1.orgId" th:text="#{T06Derive1.orgId}">起源ID</label><input type="text" id="T06Derive1.orgId" name="T06Derive1.orgId" maxlength="10" class=" refer" /><a id="T06Derive1.orgId" th:href="@{/model/T06OrgS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T06Derive1.orgId" th:text="#{T06Derive1.orgId}">ORG_ID</label><input type="text" id="T06Derive1.orgId" name="T06Derive1.orgId" maxlength="10" class=" refer" /><a id="T06Derive1.orgId" th:href="@{/model/T06OrgS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT06Derive1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T06Derive1.html(anew)}" target="dialog" id="T06Derive1" class="anew derive" th:text="#{T06Derive1.add}" tabindex="-1">派生１</a>
-          <label for="T06Derive1.deriveeOrgId" th:text="#{T06Derive1.deriveeOrgId}">起源ID</label><input type="text" id="T06Derive1.deriveeOrgId" name="T06Derive1.deriveeOrgId" maxlength="10" />
+        <a th:href="@{/model/T06Derive1.html(anew)}" target="dialog" id="T06Derive1" class="anew derive" th:text="#{T06Derive1.add}" tabindex="-1">T06_DERIVE1</a>
+          <label for="T06Derive1.deriveeOrgId" th:text="#{T06Derive1.deriveeOrgId}">ORG_ID</label><input type="text" id="T06Derive1.deriveeOrgId" name="T06Derive1.deriveeOrgId" maxlength="10" />
           <a id="T06Derive1.deriveeOrgId" th:href="@{/model/T06OrgS.html?action=T06OrgCorrect.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
       </div>
       <div class="submits">
-        <button id="SearchT06Derive1" type="submit" class="search" data-gridId="T06Derive1Grid" th:text="#{common.search}">submit</button>
+        <button id="SearchT06Derive1" type="submit" class="search" data-gridId="T06Derive1Grid" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
@@ -66,7 +66,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT06Derive1S" th:text="#{common.reset}" onClick="Base.listReset('T06Derive1');">reset</button>
         <a th:href="@{T06Derive1Search.xlsx(baseMei=#{T06Derive1S.h2})}" id="T06Derive1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="T06Derive1Grid.orgId" th:href="@{/model/T06OrgS.html}" target="dialog" class="refer" th:text="'起源' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T06Derive1Grid.orgId" th:href="@{/model/T06OrgS.html}" target="dialog" class="refer" th:text="#{T06OrgS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
       </div>
       <div class="submits">
       </div>

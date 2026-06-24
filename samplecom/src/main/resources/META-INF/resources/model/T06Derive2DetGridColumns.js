@@ -1,5 +1,5 @@
 /**
- * 派生２明細グリッド定義
+ * T06_DERIVE2_DET grid columns
  */
 
 let T06Derive2DetGridColumns = [];

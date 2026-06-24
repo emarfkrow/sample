@@ -42,8 +42,11 @@ public class T06Derive1DetGetAction extends BaseAction {
         }
 
         // 親モデルの取得
-        com.example.entity.T06Derive1 t06Derive1 = com.example.entity.T06Derive1.get(derive1Id);
-        map.put("T06Derive1", t06Derive1);
+        try {
+            com.example.entity.T06Derive1 t06Derive1 = com.example.entity.T06Derive1.get(derive1Id);
+            map.put("T06Derive1", t06Derive1);
+        } catch (Exception e) {
+        }
 
         // 主キーが不足していたら終了
         if (!isAllKey) {
