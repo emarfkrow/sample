@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 孫
+ * T01_MAGO
  * @author emarfkrow
  */
 public class T01Mago implements IEntity {
@@ -84,18 +84,18 @@ public class T01Mago implements IEntity {
         }
     }
 
-    /** 親ID */
+    /** OYA_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer oyaId;
 
-    /** @return 親ID */
+    /** @return OYA_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getOyaId() {
         return this.oyaId;
     }
 
-    /** @param o 親ID */
+    /** @param o OYA_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setOyaId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -105,18 +105,18 @@ public class T01Mago implements IEntity {
         }
     }
 
-    /** 子枝番 */
+    /** KO_BN */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer koBn;
 
-    /** @return 子枝番 */
+    /** @return KO_BN */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KO_BN", index = 3)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getKoBn() {
         return this.koBn;
     }
 
-    /** @param o 子枝番 */
+    /** @param o KO_BN */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setKoBn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -126,18 +126,18 @@ public class T01Mago implements IEntity {
         }
     }
 
-    /** 孫枝番 */
+    /** MAGO_BN */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer magoBn;
 
-    /** @return 孫枝番 */
+    /** @return MAGO_BN */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "MAGO_BN", index = 4)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getMagoBn() {
         return this.magoBn;
     }
 
-    /** @param o 孫枝番 */
+    /** @param o MAGO_BN */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setMagoBn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -147,16 +147,16 @@ public class T01Mago implements IEntity {
         }
     }
 
-    /** 孫情報 */
+    /** MAGO_INFO */
     private String magoInfo;
 
-    /** @return 孫情報 */
+    /** @return MAGO_INFO */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "MAGO_INFO", index = 5)
     public String getMagoInfo() {
         return this.magoInfo;
     }
 
-    /** @param o 孫情報 */
+    /** @param o MAGO_INFO */
     public void setMagoInfo(final Object o) {
         if (o != null) {
             this.magoInfo = o.toString();
@@ -165,19 +165,19 @@ public class T01Mago implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 6)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -195,16 +195,16 @@ public class T01Mago implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 7)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -232,21 +232,21 @@ public class T01Mago implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 9)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -265,16 +265,16 @@ public class T01Mago implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 10)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();

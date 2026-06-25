@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * VIEW
+ * V13_HENKAN
  * @author emarfkrow
  */
 public class V13Henkan implements IEntity {
@@ -81,16 +81,16 @@ public class V13Henkan implements IEntity {
         }
     }
 
-    /** 変換元ID */
+    /** src_id */
     private Integer srcId;
 
-    /** @return 変換元ID */
+    /** @return src_id */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "src_id", index = 3)
     public Integer getSrcId() {
         return this.srcId;
     }
 
-    /** @param o 変換元ID */
+    /** @param o src_id */
     public void setSrcId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.srcId = Integer.valueOf(o.toString());
@@ -99,16 +99,16 @@ public class V13Henkan implements IEntity {
         }
     }
 
-    /** 変換元情報 */
+    /** dest_info */
     private String destInfo;
 
-    /** @return 変換元情報 */
+    /** @return dest_info */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "dest_info", index = 4)
     public String getDestInfo() {
         return this.destInfo;
     }
 
-    /** @param o 変換元情報 */
+    /** @param o dest_info */
     public void setDestInfo(final Object o) {
         if (o != null) {
             this.destInfo = o.toString();

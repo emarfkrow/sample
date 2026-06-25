@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 子なし
+ * T01_DINKS
  * @author emarfkrow
  */
 public class T01Dinks implements IEntity {
@@ -79,18 +79,18 @@ public class T01Dinks implements IEntity {
         }
     }
 
-    /** 親ID */
+    /** OYA_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer oyaId;
 
-    /** @return 親ID */
+    /** @return OYA_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getOyaId() {
         return this.oyaId;
     }
 
-    /** @param o 親ID */
+    /** @param o OYA_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setOyaId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -100,18 +100,18 @@ public class T01Dinks implements IEntity {
         }
     }
 
-    /** 子枝番 */
+    /** KO_BN */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer koBn;
 
-    /** @return 子枝番 */
+    /** @return KO_BN */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KO_BN", index = 3)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getKoBn() {
         return this.koBn;
     }
 
-    /** @param o 子枝番 */
+    /** @param o KO_BN */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setKoBn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -121,16 +121,16 @@ public class T01Dinks implements IEntity {
         }
     }
 
-    /** 子なし情報 */
+    /** DINKS_INFO */
     private String dinksInfo;
 
-    /** @return 子なし情報 */
+    /** @return DINKS_INFO */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "DINKS_INFO", index = 4)
     public String getDinksInfo() {
         return this.dinksInfo;
     }
 
-    /** @param o 子なし情報 */
+    /** @param o DINKS_INFO */
     public void setDinksInfo(final Object o) {
         if (o != null) {
             this.dinksInfo = o.toString();
@@ -139,19 +139,19 @@ public class T01Dinks implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 5)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -169,16 +169,16 @@ public class T01Dinks implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 6)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -206,21 +206,21 @@ public class T01Dinks implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 8)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -239,16 +239,16 @@ public class T01Dinks implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 9)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();

@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 再帰
+ * M04_SAIKI
  * @author emarfkrow
  */
 public class M04Saiki implements IEntity {
@@ -92,18 +92,18 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 再帰ID */
+    /** SAIKI_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer saikiId;
 
-    /** @return 再帰ID */
+    /** @return SAIKI_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "SAIKI_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getSaikiId() {
         return this.saikiId;
     }
 
-    /** @param o 再帰ID */
+    /** @param o SAIKI_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setSaikiId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -113,16 +113,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 再帰名 */
+    /** SAIKI_MEI */
     private String saikiMei;
 
-    /** @return 再帰名 */
+    /** @return SAIKI_MEI */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "SAIKI_MEI", index = 3)
     public String getSaikiMei() {
         return this.saikiMei;
     }
 
-    /** @param o 再帰名 */
+    /** @param o SAIKI_MEI */
     public void setSaikiMei(final Object o) {
         if (o != null) {
             this.saikiMei = o.toString();
@@ -131,16 +131,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 参照ID */
+    /** IDREF_ID */
     private Integer idrefId;
 
-    /** @return 参照ID */
+    /** @return IDREF_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "IDREF_ID", index = 4)
     public Integer getIdrefId() {
         return this.idrefId;
     }
 
-    /** @param o 参照ID */
+    /** @param o IDREF_ID */
     public void setIdrefId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.idrefId = Integer.valueOf(o.toString());
@@ -168,16 +168,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 参照CD */
+    /** CDREF_CD */
     private String cdrefCd;
 
-    /** @return 参照CD */
+    /** @return CDREF_CD */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "CDREF_CD", index = 6)
     public String getCdrefCd() {
         return this.cdrefCd;
     }
 
-    /** @param o 参照CD */
+    /** @param o CDREF_CD */
     public void setCdrefCd(final Object o) {
         if (o != null) {
             this.cdrefCd = o.toString();
@@ -205,16 +205,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 参照NO */
+    /** NOREF_NO */
     private String norefNo;
 
-    /** @return 参照NO */
+    /** @return NOREF_NO */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "NOREF_NO", index = 8)
     public String getNorefNo() {
         return this.norefNo;
     }
 
-    /** @param o 参照NO */
+    /** @param o NOREF_NO */
     public void setNorefNo(final Object o) {
         if (o != null) {
             this.norefNo = o.toString();
@@ -242,16 +242,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** ID連番ID */
+    /** EX_IDREF_ID */
     private Integer exIdrefId;
 
-    /** @return ID連番ID */
+    /** @return EX_IDREF_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_IDREF_ID", index = 10)
     public Integer getExIdrefId() {
         return this.exIdrefId;
     }
 
-    /** @param o ID連番ID */
+    /** @param o EX_IDREF_ID */
     public void setExIdrefId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.exIdrefId = Integer.valueOf(o.toString());
@@ -279,16 +279,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** ID連番 */
+    /** EX_IDBN_BN */
     private Integer exIdbnBn;
 
-    /** @return ID連番 */
+    /** @return EX_IDBN_BN */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_IDBN_BN", index = 12)
     public Integer getExIdbnBn() {
         return this.exIdbnBn;
     }
 
-    /** @param o ID連番 */
+    /** @param o EX_IDBN_BN */
     public void setExIdbnBn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.exIdbnBn = Integer.valueOf(o.toString());
@@ -297,16 +297,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 親再帰ID */
+    /** OYA_SAIKI_ID */
     private Integer oyaSaikiId;
 
-    /** @return 親再帰ID */
+    /** @return OYA_SAIKI_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_ID", index = 13)
     public Integer getOyaSaikiId() {
         return this.oyaSaikiId;
     }
 
-    /** @param o 親再帰ID */
+    /** @param o OYA_SAIKI_ID */
     public void setOyaSaikiId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.oyaSaikiId = Integer.valueOf(o.toString());
@@ -334,19 +334,19 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 15)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -364,16 +364,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 16)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -401,21 +401,21 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 18)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -434,16 +434,16 @@ public class M04Saiki implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 19)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();

@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * VIEW
+ * V13_FURIWAKE
  * @author emarfkrow
  */
 public class V13Furiwake implements IEntity {

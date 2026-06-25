@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 選抜
+ * T10_CHOICE
  * @author emarfkrow
  */
 public class T10Choice implements IEntity {
@@ -83,18 +83,18 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 選抜ID */
+    /** CHOICE_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer choiceId;
 
-    /** @return 選抜ID */
+    /** @return CHOICE_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "CHOICE_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getChoiceId() {
         return this.choiceId;
     }
 
-    /** @param o 選抜ID */
+    /** @param o CHOICE_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setChoiceId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -104,16 +104,16 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 候補１ID */
+    /** KOHO1_ID */
     private Integer koho1Id;
 
-    /** @return 候補１ID */
+    /** @return KOHO1_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KOHO1_ID", index = 3)
     public Integer getKoho1Id() {
         return this.koho1Id;
     }
 
-    /** @param o 候補１ID */
+    /** @param o KOHO1_ID */
     public void setKoho1Id(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.koho1Id = Integer.valueOf(o.toString());
@@ -122,16 +122,16 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 候補１情報 */
+    /** KOHO1_INFO */
     private String koho1Info;
 
-    /** @return 候補１情報 */
+    /** @return KOHO1_INFO */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KOHO1_INFO", index = 4)
     public String getKoho1Info() {
         return this.koho1Info;
     }
 
-    /** @param o 候補１情報 */
+    /** @param o KOHO1_INFO */
     public void setKoho1Info(final Object o) {
         if (o != null) {
             this.koho1Info = o.toString();
@@ -140,16 +140,16 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 候補２ID */
+    /** KOHO2_ID */
     private Integer koho2Id;
 
-    /** @return 候補２ID */
+    /** @return KOHO2_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KOHO2_ID", index = 5)
     public Integer getKoho2Id() {
         return this.koho2Id;
     }
 
-    /** @param o 候補２ID */
+    /** @param o KOHO2_ID */
     public void setKoho2Id(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.koho2Id = Integer.valueOf(o.toString());
@@ -158,16 +158,16 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 候補２情報 */
+    /** KOHO2_INFO */
     private String koho2Info;
 
-    /** @return 候補２情報 */
+    /** @return KOHO2_INFO */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KOHO2_INFO", index = 6)
     public String getKoho2Info() {
         return this.koho2Info;
     }
 
-    /** @param o 候補２情報 */
+    /** @param o KOHO2_INFO */
     public void setKoho2Info(final Object o) {
         if (o != null) {
             this.koho2Info = o.toString();
@@ -176,19 +176,19 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 7)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -206,16 +206,16 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 8)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -243,21 +243,21 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 10)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -276,16 +276,16 @@ public class T10Choice implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 11)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();

@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 寄生２
+ * T08_KISEI2
  * @author emarfkrow
  */
 public class T08Kisei2 implements IEntity {
@@ -74,18 +74,18 @@ public class T08Kisei2 implements IEntity {
         }
     }
 
-    /** 寄生２ID */
+    /** KISEI2_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer kisei2Id;
 
-    /** @return 寄生２ID */
+    /** @return KISEI2_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KISEI2_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getKisei2Id() {
         return this.kisei2Id;
     }
 
-    /** @param o 寄生２ID */
+    /** @param o KISEI2_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setKisei2Id(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -95,16 +95,16 @@ public class T08Kisei2 implements IEntity {
         }
     }
 
-    /** 寄生２情報 */
+    /** KISEI2_INFO */
     private String kisei2Info;
 
-    /** @return 寄生２情報 */
+    /** @return KISEI2_INFO */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "KISEI2_INFO", index = 3)
     public String getKisei2Info() {
         return this.kisei2Info;
     }
 
-    /** @param o 寄生２情報 */
+    /** @param o KISEI2_INFO */
     public void setKisei2Info(final Object o) {
         if (o != null) {
             this.kisei2Info = o.toString();
@@ -113,19 +113,19 @@ public class T08Kisei2 implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 4)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -143,16 +143,16 @@ public class T08Kisei2 implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 5)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -180,21 +180,21 @@ public class T08Kisei2 implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 7)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -213,16 +213,16 @@ public class T08Kisei2 implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 8)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();

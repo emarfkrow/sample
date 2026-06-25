@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 派生２明細
+ * T06_DERIVE2_DET
  * @author emarfkrow
  */
 public class T06Derive2Det implements IEntity {
@@ -79,18 +79,18 @@ public class T06Derive2Det implements IEntity {
         }
     }
 
-    /** 派生２ID */
+    /** DERIVE2_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer derive2Id;
 
-    /** @return 派生２ID */
+    /** @return DERIVE2_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "DERIVE2_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getDerive2Id() {
         return this.derive2Id;
     }
 
-    /** @param o 派生２ID */
+    /** @param o DERIVE2_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setDerive2Id(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -100,18 +100,18 @@ public class T06Derive2Det implements IEntity {
         }
     }
 
-    /** 派生２枝番 */
+    /** DERIVE2_BN */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer derive2Bn;
 
-    /** @return 派生２枝番 */
+    /** @return DERIVE2_BN */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "DERIVE2_BN", index = 3)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getDerive2Bn() {
         return this.derive2Bn;
     }
 
-    /** @param o 派生２枝番 */
+    /** @param o DERIVE2_BN */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setDerive2Bn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -121,16 +121,16 @@ public class T06Derive2Det implements IEntity {
         }
     }
 
-    /** 明細情報 */
+    /** DET_INFO */
     private String detInfo;
 
-    /** @return 明細情報 */
+    /** @return DET_INFO */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "DET_INFO", index = 4)
     public String getDetInfo() {
         return this.detInfo;
     }
 
-    /** @param o 明細情報 */
+    /** @param o DET_INFO */
     public void setDetInfo(final Object o) {
         if (o != null) {
             this.detInfo = o.toString();
@@ -139,19 +139,19 @@ public class T06Derive2Det implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 5)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -169,16 +169,16 @@ public class T06Derive2Det implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 6)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -206,21 +206,21 @@ public class T06Derive2Det implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 8)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -239,16 +239,16 @@ public class T06Derive2Det implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 9)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();

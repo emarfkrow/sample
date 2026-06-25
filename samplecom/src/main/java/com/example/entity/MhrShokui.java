@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 職位マスタ
+ * MHR_SHOKUI
  * @author emarfkrow
  */
 public class MhrShokui implements IEntity {
@@ -83,18 +83,18 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 職位ID */
+    /** SHOKUI_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer shokuiId;
 
-    /** @return 職位ID */
+    /** @return SHOKUI_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "SHOKUI_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getShokuiId() {
         return this.shokuiId;
     }
 
-    /** @param o 職位ID */
+    /** @param o SHOKUI_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setShokuiId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -104,16 +104,16 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 職位名 */
+    /** SHOKUI_MEI */
     private String shokuiMei;
 
-    /** @return 職位名 */
+    /** @return SHOKUI_MEI */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "SHOKUI_MEI", index = 3)
     public String getShokuiMei() {
         return this.shokuiMei;
     }
 
-    /** @param o 職位名 */
+    /** @param o SHOKUI_MEI */
     public void setShokuiMei(final Object o) {
         if (o != null) {
             this.shokuiMei = o.toString();
@@ -122,16 +122,16 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 職位順 */
+    /** SHOKUI_ON */
     private Integer shokuiOn;
 
-    /** @return 職位順 */
+    /** @return SHOKUI_ON */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "SHOKUI_ON", index = 4)
     public Integer getShokuiOn() {
         return this.shokuiOn;
     }
 
-    /** @param o 職位順 */
+    /** @param o SHOKUI_ON */
     public void setShokuiOn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.shokuiOn = Integer.valueOf(o.toString());
@@ -140,19 +140,19 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 適用日 */
+    /** TEKIYO_BI */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
     private java.time.LocalDate tekiyoBi;
 
-    /** @return 適用日 */
+    /** @return TEKIYO_BI */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "TEKIYO_BI", index = 5)
     public java.time.LocalDate getTekiyoBi() {
         return this.tekiyoBi;
     }
 
-    /** @param o 適用日 */
+    /** @param o TEKIYO_BI */
     public void setTekiyoBi(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.tekiyoBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
@@ -161,19 +161,19 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 廃止日 */
+    /** HAISHI_BI */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
     private java.time.LocalDate haishiBi;
 
-    /** @return 廃止日 */
+    /** @return HAISHI_BI */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "HAISHI_BI", index = 6)
     public java.time.LocalDate getHaishiBi() {
         return this.haishiBi;
     }
 
-    /** @param o 廃止日 */
+    /** @param o HAISHI_BI */
     public void setHaishiBi(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.haishiBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
@@ -182,19 +182,19 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 7)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -212,16 +212,16 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 8)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -249,21 +249,21 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 10)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -282,16 +282,16 @@ public class MhrShokui implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 11)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();

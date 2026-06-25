@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * 税マスタ
+ * MSY_TAX
  * @author emarfkrow
  */
 public class MsyTax implements IEntity {
@@ -82,18 +82,18 @@ public class MsyTax implements IEntity {
         }
     }
 
-    /** 税区分 */
+    /** TAX_KB */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String taxKb;
 
-    /** @return 税区分 */
+    /** @return TAX_KB */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "TAX_KB", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public String getTaxKb() {
         return this.taxKb;
     }
 
-    /** @param o 税区分 */
+    /** @param o TAX_KB */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setTaxKb(final Object o) {
         if (o != null) {
@@ -103,21 +103,21 @@ public class MsyTax implements IEntity {
         }
     }
 
-    /** 適用日 */
+    /** TEKIYO_BI */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private java.time.LocalDate tekiyoBi;
 
-    /** @return 適用日 */
+    /** @return TEKIYO_BI */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "TEKIYO_BI", index = 3)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public java.time.LocalDate getTekiyoBi() {
         return this.tekiyoBi;
     }
 
-    /** @param o 適用日 */
+    /** @param o TEKIYO_BI */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setTekiyoBi(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -127,19 +127,19 @@ public class MsyTax implements IEntity {
         }
     }
 
-    /** 廃止日 */
+    /** HAISHI_BI */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
     private java.time.LocalDate haishiBi;
 
-    /** @return 廃止日 */
+    /** @return HAISHI_BI */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "HAISHI_BI", index = 4)
     public java.time.LocalDate getHaishiBi() {
         return this.haishiBi;
     }
 
-    /** @param o 廃止日 */
+    /** @param o HAISHI_BI */
     public void setHaishiBi(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.haishiBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
@@ -148,16 +148,16 @@ public class MsyTax implements IEntity {
         }
     }
 
-    /** 税率 */
+    /** TAX_RT */
     private java.math.BigDecimal taxRt;
 
-    /** @return 税率 */
+    /** @return TAX_RT */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "TAX_RT", index = 5)
     public java.math.BigDecimal getTaxRt() {
         return this.taxRt;
     }
 
-    /** @param o 税率 */
+    /** @param o TAX_RT */
     public void setTaxRt(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.taxRt = new java.math.BigDecimal(o.toString());
@@ -166,19 +166,19 @@ public class MsyTax implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 6)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -196,16 +196,16 @@ public class MsyTax implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 7)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -233,21 +233,21 @@ public class MsyTax implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 9)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -266,16 +266,16 @@ public class MsyTax implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 10)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();

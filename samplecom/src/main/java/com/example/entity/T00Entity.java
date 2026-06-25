@@ -4,7 +4,7 @@ import jp.co.golorp.emarf.entity.IEntity;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
- * エンティティ
+ * T00_ENTITY
  * @author emarfkrow
  */
 public class T00Entity implements IEntity {
@@ -156,18 +156,18 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** エンティティID */
+    /** ENTITY_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer entityId;
 
-    /** @return エンティティID */
+    /** @return ENTITY_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "ENTITY_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public Integer getEntityId() {
         return this.entityId;
     }
 
-    /** @param o エンティティID */
+    /** @param o ENTITY_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setEntityId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
@@ -177,16 +177,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** エンティティ名称 */
+    /** ENTITY_NM */
     private String entityNm;
 
-    /** @return エンティティ名称 */
+    /** @return ENTITY_NM */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "ENTITY_NM", index = 3)
     public String getEntityNm() {
         return this.entityNm;
     }
 
-    /** @param o エンティティ名称 */
+    /** @param o ENTITY_NM */
     public void setEntityNm(final Object o) {
         if (o != null) {
             this.entityNm = o.toString();
@@ -195,16 +195,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** エンティティ名 */
+    /** ENTITY_MEI */
     private String entityMei;
 
-    /** @return エンティティ名 */
+    /** @return ENTITY_MEI */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "ENTITY_MEI", index = 4)
     public String getEntityMei() {
         return this.entityMei;
     }
 
-    /** @param o エンティティ名 */
+    /** @param o ENTITY_MEI */
     public void setEntityMei(final Object o) {
         if (o != null) {
             this.entityMei = o.toString();
@@ -213,16 +213,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** ビットフラグ */
+    /** BIT_B */
     private Integer bitB;
 
-    /** @return ビットフラグ */
+    /** @return BIT_B */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "BIT_B", index = 5)
     public Integer getBitB() {
         return this.bitB;
     }
 
-    /** @param o ビットフラグ */
+    /** @param o BIT_B */
     public void setBitB(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.bitB = Integer.valueOf(o.toString());
@@ -231,16 +231,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** チェックフラグ */
+    /** CHECK_F */
     private String checkF = "0";
 
-    /** @return チェックフラグ */
+    /** @return CHECK_F */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "CHECK_F", index = 6)
     public String getCheckF() {
         return this.checkF;
     }
 
-    /** @param o チェックフラグ */
+    /** @param o CHECK_F */
     public void setCheckF(final Object o) {
         if (o != null) {
             this.checkF = o.toString();
@@ -249,16 +249,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** ラジオ区分 */
+    /** RADIO_KB */
     private String radioKb;
 
-    /** @return ラジオ区分 */
+    /** @return RADIO_KB */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "RADIO_KB", index = 7)
     public String getRadioKb() {
         return this.radioKb;
     }
 
-    /** @param o ラジオ区分 */
+    /** @param o RADIO_KB */
     public void setRadioKb(final Object o) {
         if (o != null) {
             this.radioKb = o.toString();
@@ -267,16 +267,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** プルダウン区分 */
+    /** PULLDOWN_KB */
     private String pulldownKb;
 
-    /** @return プルダウン区分 */
+    /** @return PULLDOWN_KB */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "PULLDOWN_KB", index = 8)
     public String getPulldownKb() {
         return this.pulldownKb;
     }
 
-    /** @param o プルダウン区分 */
+    /** @param o PULLDOWN_KB */
     public void setPulldownKb(final Object o) {
         if (o != null) {
             this.pulldownKb = o.toString();
@@ -285,16 +285,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** プルダウン種別 */
+    /** PULLDOWN_SB */
     private String pulldownSb;
 
-    /** @return プルダウン種別 */
+    /** @return PULLDOWN_SB */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "PULLDOWN_SB", index = 9)
     public String getPulldownSb() {
         return this.pulldownSb;
     }
 
-    /** @param o プルダウン種別 */
+    /** @param o PULLDOWN_SB */
     public void setPulldownSb(final Object o) {
         if (o != null) {
             this.pulldownSb = o.toString();
@@ -303,16 +303,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** メモ */
+    /** MEMO_TX */
     private String memoTx;
 
-    /** @return メモ */
+    /** @return MEMO_TX */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "MEMO_TX", index = 10)
     public String getMemoTx() {
         return this.memoTx;
     }
 
-    /** @param o メモ */
+    /** @param o MEMO_TX */
     public void setMemoTx(final Object o) {
         if (o != null) {
             this.memoTx = o.toString();
@@ -321,16 +321,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** １行メモ */
+    /** MEMO */
     private String memo;
 
-    /** @return １行メモ */
+    /** @return MEMO */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "MEMO", index = 11)
     public String getMemo() {
         return this.memo;
     }
 
-    /** @param o １行メモ */
+    /** @param o MEMO */
     public void setMemo(final Object o) {
         if (o != null) {
             this.memo = o.toString();
@@ -339,16 +339,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 添付ファイル */
+    /** TENPU_FILE */
     private String tenpuFile;
 
-    /** @return 添付ファイル */
+    /** @return TENPU_FILE */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "TENPU_FILE", index = 12)
     public String getTenpuFile() {
         return this.tenpuFile;
     }
 
-    /** @param o 添付ファイル */
+    /** @param o TENPU_FILE */
     public void setTenpuFile(final Object o) {
         if (o != null) {
             this.tenpuFile = o.toString();
@@ -357,16 +357,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 年 */
+    /** NEN_Y */
     private String nenY;
 
-    /** @return 年 */
+    /** @return NEN_Y */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "NEN_Y", index = 13)
     public String getNenY() {
         return this.nenY;
     }
 
-    /** @param o 年 */
+    /** @param o NEN_Y */
     public void setNenY(final Object o) {
         if (o != null) {
             this.nenY = o.toString();
@@ -375,16 +375,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 月 */
+    /** TSUKI_M */
     private String tsukiM;
 
-    /** @return 月 */
+    /** @return TSUKI_M */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "TSUKI_M", index = 14)
     public String getTsukiM() {
         return this.tsukiM;
     }
 
-    /** @param o 月 */
+    /** @param o TSUKI_M */
     public void setTsukiM(final Object o) {
         if (o != null) {
             this.tsukiM = o.toString();
@@ -393,16 +393,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 日 */
+    /** HI_D */
     private String hiD;
 
-    /** @return 日 */
+    /** @return HI_D */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "HI_D", index = 15)
     public String getHiD() {
         return this.hiD;
     }
 
-    /** @param o 日 */
+    /** @param o HI_D */
     public void setHiD(final Object o) {
         if (o != null) {
             this.hiD = o.toString();
@@ -411,10 +411,10 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 年月 */
+    /** NENGETSU_YM */
     private String nengetsuYm;
 
-    /** @return 年月 */
+    /** @return NENGETSU_YM */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "NENGETSU_YM", index = 16)
     public String getNengetsuYm() {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.nengetsuYm)) {
@@ -423,7 +423,7 @@ public class T00Entity implements IEntity {
         return this.nengetsuYm;
     }
 
-    /** @param o 年月 */
+    /** @param o NENGETSU_YM */
     public void setNengetsuYm(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.nengetsuYm = String.valueOf(o.toString().replace("-", ""));
@@ -432,16 +432,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 年月日 */
+    /** NENGAPPI_YMD */
     private String nengappiYmd;
 
-    /** @return 年月日 */
+    /** @return NENGAPPI_YMD */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "NENGAPPI_YMD", index = 17)
     public String getNengappiYmd() {
         return this.nengappiYmd;
     }
 
-    /** @param o 年月日 */
+    /** @param o NENGAPPI_YMD */
     public void setNengappiYmd(final Object o) {
         if (o != null) {
             this.nengappiYmd = o.toString();
@@ -450,19 +450,19 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** タイムスタンプ */
+    /** TIMESTAMP_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime timestampTs;
 
-    /** @return タイムスタンプ */
+    /** @return TIMESTAMP_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "TIMESTAMP_TS", index = 18)
     public java.time.LocalDateTime getTimestampTs() {
         return this.timestampTs;
     }
 
-    /** @param o タイムスタンプ */
+    /** @param o TIMESTAMP_TS */
     public void setTimestampTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -480,19 +480,19 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 日時 */
+    /** NICHIJI_DT */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime nichijiDt;
 
-    /** @return 日時 */
+    /** @return NICHIJI_DT */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "NICHIJI_DT", index = 19)
     public java.time.LocalDateTime getNichijiDt() {
         return this.nichijiDt;
     }
 
-    /** @param o 日時 */
+    /** @param o NICHIJI_DT */
     public void setNichijiDt(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -510,19 +510,19 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 日付 */
+    /** HIDUKE_BI */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
     private java.time.LocalDate hidukeBi;
 
-    /** @return 日付 */
+    /** @return HIDUKE_BI */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "HIDUKE_BI", index = 20)
     public java.time.LocalDate getHidukeBi() {
         return this.hidukeBi;
     }
 
-    /** @param o 日付 */
+    /** @param o HIDUKE_BI */
     public void setHidukeBi(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.hidukeBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
@@ -531,19 +531,19 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 時刻 */
+    /** JIKOKU_HM */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "hh:mm")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer.class)
     private java.time.LocalTime jikokuHm;
 
-    /** @return 時刻 */
+    /** @return JIKOKU_HM */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "JIKOKU_HM", index = 21)
     public java.time.LocalTime getJikokuHm() {
         return this.jikokuHm;
     }
 
-    /** @param o 時刻 */
+    /** @param o JIKOKU_HM */
     public void setJikokuHm(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             String text = o.toString().replaceFirst("^\\d+[\\/|\\-]\\d+[\\/|\\-]\\d+ ", "");
@@ -553,16 +553,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 時間 */
+    /** JIKAN_TM */
     private String jikanTm;
 
-    /** @return 時間 */
+    /** @return JIKAN_TM */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "JIKAN_TM", index = 22)
     public String getJikanTm() {
         return this.jikanTm;
     }
 
-    /** @param o 時間 */
+    /** @param o JIKAN_TM */
     public void setJikanTm(final Object o) {
         if (o != null) {
             this.jikanTm = o.toString();
@@ -571,16 +571,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 通貨区分 */
+    /** TSUKA_KB */
     private String tsukaKb;
 
-    /** @return 通貨区分 */
+    /** @return TSUKA_KB */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "TSUKA_KB", index = 23)
     public String getTsukaKb() {
         return this.tsukaKb;
     }
 
-    /** @param o 通貨区分 */
+    /** @param o TSUKA_KB */
     public void setTsukaKb(final Object o) {
         if (o != null) {
             this.tsukaKb = o.toString();
@@ -589,16 +589,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 受注数量 */
+    /** JUCHU_QT */
     private java.math.BigDecimal juchuQt;
 
-    /** @return 受注数量 */
+    /** @return JUCHU_QT */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_QT", index = 24)
     public java.math.BigDecimal getJuchuQt() {
         return this.juchuQt;
     }
 
-    /** @param o 受注数量 */
+    /** @param o JUCHU_QT */
     public void setJuchuQt(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.juchuQt = new java.math.BigDecimal(o.toString());
@@ -607,16 +607,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 受注単価 */
+    /** JUCHU_PR */
     private java.math.BigDecimal juchuPr;
 
-    /** @return 受注単価 */
+    /** @return JUCHU_PR */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_PR", index = 25)
     public java.math.BigDecimal getJuchuPr() {
         return this.juchuPr;
     }
 
-    /** @param o 受注単価 */
+    /** @param o JUCHU_PR */
     public void setJuchuPr(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.juchuPr = new java.math.BigDecimal(o.toString());
@@ -625,16 +625,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 受注金額 */
+    /** JUCHU_AM */
     private java.math.BigDecimal juchuAm;
 
-    /** @return 受注金額 */
+    /** @return JUCHU_AM */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_AM", index = 26)
     public java.math.BigDecimal getJuchuAm() {
         return this.juchuAm;
     }
 
-    /** @param o 受注金額 */
+    /** @param o JUCHU_AM */
     public void setJuchuAm(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.juchuAm = new java.math.BigDecimal(o.toString());
@@ -643,16 +643,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 発注数量 */
+    /** HACCHU_QT */
     private java.math.BigDecimal hacchuQt;
 
-    /** @return 発注数量 */
+    /** @return HACCHU_QT */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_QT", index = 27)
     public java.math.BigDecimal getHacchuQt() {
         return this.hacchuQt;
     }
 
-    /** @param o 発注数量 */
+    /** @param o HACCHU_QT */
     public void setHacchuQt(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.hacchuQt = new java.math.BigDecimal(o.toString());
@@ -661,16 +661,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 発注単価 */
+    /** HACCHU_PR */
     private java.math.BigDecimal hacchuPr;
 
-    /** @return 発注単価 */
+    /** @return HACCHU_PR */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_PR", index = 28)
     public java.math.BigDecimal getHacchuPr() {
         return this.hacchuPr;
     }
 
-    /** @param o 発注単価 */
+    /** @param o HACCHU_PR */
     public void setHacchuPr(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.hacchuPr = new java.math.BigDecimal(o.toString());
@@ -679,16 +679,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 発注金額 */
+    /** HACCHU_AM */
     private java.math.BigDecimal hacchuAm;
 
-    /** @return 発注金額 */
+    /** @return HACCHU_AM */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_AM", index = 29)
     public java.math.BigDecimal getHacchuAm() {
         return this.hacchuAm;
     }
 
-    /** @param o 発注金額 */
+    /** @param o HACCHU_AM */
     public void setHacchuAm(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.hacchuAm = new java.math.BigDecimal(o.toString());
@@ -697,16 +697,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 削除フラグ */
+    /** DELETE_F */
     private String deleteF = "0";
 
-    /** @return 削除フラグ */
+    /** @return DELETE_F */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "DELETE_F", index = 30)
     public String getDeleteF() {
         return this.deleteF;
     }
 
-    /** @param o 削除フラグ */
+    /** @param o DELETE_F */
     public void setDeleteF(final Object o) {
         if (o != null) {
             this.deleteF = o.toString();
@@ -715,16 +715,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** ステータス区分 */
+    /** STATUS_KB */
     private String statusKb;
 
-    /** @return ステータス区分 */
+    /** @return STATUS_KB */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "STATUS_KB", index = 31)
     public String getStatusKb() {
         return this.statusKb;
     }
 
-    /** @param o ステータス区分 */
+    /** @param o STATUS_KB */
     public void setStatusKb(final Object o) {
         if (o != null) {
             this.statusKb = o.toString();
@@ -733,19 +733,19 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 作成タイムスタンプ */
+    /** INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     private java.time.LocalDateTime insertTs;
 
-    /** @return 作成タイムスタンプ */
+    /** @return INSERT_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 32)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
 
-    /** @param o 作成タイムスタンプ */
+    /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
@@ -763,16 +763,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 作成者 */
+    /** INSERT_USER_ID */
     private String insertUserId;
 
-    /** @return 作成者 */
+    /** @return INSERT_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 33)
     public String getInsertUserId() {
         return this.insertUserId;
     }
 
-    /** @param o 作成者 */
+    /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
         if (o != null) {
             this.insertUserId = o.toString();
@@ -800,21 +800,21 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 更新タイムスタンプ */
+    /** UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer.class)
     @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer.class)
     @jp.co.golorp.emarf.validation.OptLock
     private java.time.LocalDateTime updateTs;
 
-    /** @return 更新タイムスタンプ */
+    /** @return UPDATE_TS */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 35)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
     }
 
-    /** @param o 更新タイムスタンプ */
+    /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
         if (o != null && o instanceof Long) {
@@ -833,16 +833,16 @@ public class T00Entity implements IEntity {
         }
     }
 
-    /** 更新者 */
+    /** UPDATE_USER_ID */
     private String updateUserId;
 
-    /** @return 更新者 */
+    /** @return UPDATE_USER_ID */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 36)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
 
-    /** @param o 更新者 */
+    /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
         if (o != null) {
             this.updateUserId = o.toString();
