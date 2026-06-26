@@ -63,16 +63,16 @@ public class V13Henkan implements IEntity {
         }
     }
 
-    /** table_name */
+    /** TABLE_NAME */
     private String tableName;
 
-    /** @return table_name */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "table_name", index = 2)
+    /** @return TABLE_NAME */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_NAME", index = 2)
     public String getTableName() {
         return this.tableName;
     }
 
-    /** @param o table_name */
+    /** @param o TABLE_NAME */
     public void setTableName(final Object o) {
         if (o != null) {
             this.tableName = o.toString();
@@ -81,16 +81,16 @@ public class V13Henkan implements IEntity {
         }
     }
 
-    /** src_id */
+    /** SRC_ID */
     private Integer srcId;
 
-    /** @return src_id */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "src_id", index = 3)
+    /** @return SRC_ID */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "SRC_ID", index = 3)
     public Integer getSrcId() {
         return this.srcId;
     }
 
-    /** @param o src_id */
+    /** @param o SRC_ID */
     public void setSrcId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.srcId = Integer.valueOf(o.toString());
@@ -99,16 +99,16 @@ public class V13Henkan implements IEntity {
         }
     }
 
-    /** dest_info */
+    /** DEST_INFO */
     private String destInfo;
 
-    /** @return dest_info */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "dest_info", index = 4)
+    /** @return DEST_INFO */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEST_INFO", index = 4)
     public String getDestInfo() {
         return this.destInfo;
     }
 
-    /** @param o dest_info */
+    /** @param o DEST_INFO */
     public void setDestInfo(final Object o) {
         if (o != null) {
             this.destInfo = o.toString();

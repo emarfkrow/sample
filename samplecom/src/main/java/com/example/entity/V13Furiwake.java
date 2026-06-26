@@ -63,16 +63,16 @@ public class V13Furiwake implements IEntity {
         }
     }
 
-    /** table_name */
+    /** TABLE_NAME */
     private String tableName;
 
-    /** @return table_name */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "table_name", index = 2)
+    /** @return TABLE_NAME */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_NAME", index = 2)
     public String getTableName() {
         return this.tableName;
     }
 
-    /** @param o table_name */
+    /** @param o TABLE_NAME */
     public void setTableName(final Object o) {
         if (o != null) {
             this.tableName = o.toString();
@@ -99,16 +99,16 @@ public class V13Furiwake implements IEntity {
         }
     }
 
-    /** info */
+    /** INFO */
     private String info;
 
-    /** @return info */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "info", index = 4)
+    /** @return INFO */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INFO", index = 4)
     public String getInfo() {
         return this.info;
     }
 
-    /** @param o info */
+    /** @param o INFO */
     public void setInfo(final Object o) {
         if (o != null) {
             this.info = o.toString();

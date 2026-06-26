@@ -21,10 +21,10 @@
       <fieldset>
         <legend th:text="#{V13HenkanS.legend}">legend</legend>
         <div id="srcId">
-          <label for="V13Henkan.srcId" th:text="#{V13Henkan.srcId}">src_id</label><input type="text" id="V13Henkan.srcId" name="V13Henkan.srcId" maxlength="10" />
+          <label for="V13Henkan.srcId" th:text="#{V13Henkan.srcId}">SRC_ID</label><input type="text" id="V13Henkan.srcId" name="V13Henkan.srcId" maxlength="10" />
         </div>
         <div id="destInfo">
-          <label for="V13Henkan.destInfo" th:text="#{V13Henkan.destInfo}">dest_info</label><input type="text" id="V13Henkan.destInfo" name="V13Henkan.destInfo" maxlength="300" />
+          <label for="V13Henkan.destInfo" th:text="#{V13Henkan.destInfo}">DEST_INFO</label><input type="text" id="V13Henkan.destInfo" name="V13Henkan.destInfo" maxlength="300" />
         </div>
       </fieldset>
       <div class="buttons">
@@ -44,7 +44,6 @@
         <a th:href="@{V13HenkanSearch.xlsx(baseMei=#{V13HenkanS.h2})}" id="V13HenkanSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
-        <button id="RegistV13HenkanS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
       </div>
     </form>
   </div>

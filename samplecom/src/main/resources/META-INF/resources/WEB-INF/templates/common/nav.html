@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <body>
   <div class="nav" layout:fragment="nav" th:if="${#ctx.session != null && #ctx.session.get('AUTHN_KEY') != null}">
-    <a href="javascript: void(0);" class="toggle"></a>
+    <div class="toggle">
+      <a href="javascript: void(0);" class="toggle"></a>
+    </div>
     <dl>
       <dt id="04" style="clear: both;" th:text="#{nav.dt.04}">04</dt>
       <dd>
