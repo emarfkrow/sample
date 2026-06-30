@@ -507,6 +507,17 @@ public class MhrShokuiNinka implements IEntity {
     }
 
     /**
+     * 認可マスタ全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 認可マスタの削除
+        String sql = "TRUNCATE TABLE MHR_SHOKUI_NINKA";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

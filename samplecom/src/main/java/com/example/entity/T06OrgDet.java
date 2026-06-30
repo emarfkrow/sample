@@ -399,6 +399,17 @@ public class T06OrgDet implements IEntity {
     }
 
     /**
+     * 起源明細全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 起源明細の削除
+        String sql = "TRUNCATE TABLE T06_ORG_DET";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

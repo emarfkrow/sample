@@ -437,6 +437,17 @@ public class T10Choice implements IEntity {
     }
 
     /**
+     * 選抜全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 選抜の削除
+        String sql = "TRUNCATE TABLE T10_CHOICE";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

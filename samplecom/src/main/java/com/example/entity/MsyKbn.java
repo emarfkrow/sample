@@ -381,6 +381,22 @@ public class MsyKbn implements IEntity {
     }
 
     /**
+     * 区分マスタ全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 区分値マスタのチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM MSY_KBN_VAL", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "MSY_KBN by MSY_KBN_VAL");
+        }
+
+        // 区分マスタの削除
+        String sql = "TRUNCATE TABLE MSY_KBN";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

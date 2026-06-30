@@ -362,6 +362,17 @@ public class T09Sum implements IEntity {
     }
 
     /**
+     * 集約全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 集約の削除
+        String sql = "TRUNCATE TABLE T09_SUM";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

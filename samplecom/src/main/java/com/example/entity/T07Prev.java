@@ -396,6 +396,22 @@ public class T07Prev implements IEntity {
     }
 
     /**
+     * 前世全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 前世明細のチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T07_PREV_DET", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T07_PREV by T07_PREV_DET");
+        }
+
+        // 前世の削除
+        String sql = "TRUNCATE TABLE T07_PREV";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

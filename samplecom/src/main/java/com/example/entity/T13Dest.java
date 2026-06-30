@@ -362,6 +362,17 @@ public class T13Dest implements IEntity {
     }
 
     /**
+     * 変換先全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 変換先の削除
+        String sql = "TRUNCATE TABLE T13_DEST";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

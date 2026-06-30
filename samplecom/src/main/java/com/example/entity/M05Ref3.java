@@ -431,6 +431,17 @@ public class M05Ref3 implements IEntity {
     }
 
     /**
+     * マスタ参照３全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // マスタ参照３の削除
+        String sql = "TRUNCATE TABLE M05_REF3";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

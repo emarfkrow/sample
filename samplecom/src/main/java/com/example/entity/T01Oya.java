@@ -430,6 +430,27 @@ public class T01Oya implements IEntity {
     }
 
     /**
+     * 親全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 子なしのチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T01_DINKS", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T01_OYA by T01_DINKS");
+        }
+
+        // 子のチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T01_KO", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T01_OYA by T01_KO");
+        }
+
+        // 親の削除
+        String sql = "TRUNCATE TABLE T01_OYA";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

@@ -437,6 +437,17 @@ public class T08Kyosei implements IEntity {
     }
 
     /**
+     * 共生全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 共生の削除
+        String sql = "TRUNCATE TABLE T08_KYOSEI";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

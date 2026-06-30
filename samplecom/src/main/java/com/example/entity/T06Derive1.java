@@ -421,6 +421,22 @@ public class T06Derive1 implements IEntity {
     }
 
     /**
+     * 派生１全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 派生１明細のチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T06_DERIVE1_DET", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T06_DERIVE1 by T06_DERIVE1_DET");
+        }
+
+        // 派生１の削除
+        String sql = "TRUNCATE TABLE T06_DERIVE1";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

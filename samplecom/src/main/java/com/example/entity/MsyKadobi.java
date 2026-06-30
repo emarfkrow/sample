@@ -427,6 +427,17 @@ public class MsyKadobi implements IEntity {
     }
 
     /**
+     * 稼働日マスタ全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 稼働日マスタの削除
+        String sql = "TRUNCATE TABLE MSY_KADOBI";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

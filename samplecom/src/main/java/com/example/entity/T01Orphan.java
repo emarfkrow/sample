@@ -485,6 +485,22 @@ public class T01Orphan implements IEntity {
     }
 
     /**
+     * 孤児全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 孫のチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T01_MAGO", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T01_ORPHAN by T01_MAGO");
+        }
+
+        // 孤児の削除
+        String sql = "TRUNCATE TABLE T01_ORPHAN";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

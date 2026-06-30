@@ -396,6 +396,22 @@ public class T06Org implements IEntity {
     }
 
     /**
+     * 起源全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 起源明細のチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T06_ORG_DET", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T06_ORG by T06_ORG_DET");
+        }
+
+        // 起源の削除
+        String sql = "TRUNCATE TABLE T06_ORG";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

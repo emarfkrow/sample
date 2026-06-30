@@ -418,6 +418,17 @@ public class M04Idbn implements IEntity {
     }
 
     /**
+     * ID連番マスタ全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // ID連番マスタの削除
+        String sql = "TRUNCATE TABLE M04_IDBN";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

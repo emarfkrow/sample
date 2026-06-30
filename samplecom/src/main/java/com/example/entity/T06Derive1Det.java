@@ -399,6 +399,17 @@ public class T06Derive1Det implements IEntity {
     }
 
     /**
+     * 派生１明細全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 派生１明細の削除
+        String sql = "TRUNCATE TABLE T06_DERIVE1_DET";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

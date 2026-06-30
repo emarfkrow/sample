@@ -448,6 +448,17 @@ public class T03TransHis implements IEntity {
     }
 
     /**
+     * 変遷履歴全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 変遷履歴の削除
+        String sql = "TRUNCATE TABLE T03_TRANS_HIS";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

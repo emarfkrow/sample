@@ -362,6 +362,17 @@ public class T10Koho1 implements IEntity {
     }
 
     /**
+     * 候補１全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 候補１の削除
+        String sql = "TRUNCATE TABLE T10_KOHO1";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

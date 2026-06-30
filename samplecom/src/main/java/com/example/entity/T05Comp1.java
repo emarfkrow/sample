@@ -454,6 +454,22 @@ public class T05Comp1 implements IEntity {
     }
 
     /**
+     * 複合１全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 複合２のチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T05_COMP2", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T05_COMP1 by T05_COMP2");
+        }
+
+        // 複合１の削除
+        String sql = "TRUNCATE TABLE T05_COMP1";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

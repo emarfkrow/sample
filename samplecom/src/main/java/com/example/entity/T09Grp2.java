@@ -362,6 +362,17 @@ public class T09Grp2 implements IEntity {
     }
 
     /**
+     * 集団２全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 集団２の削除
+        String sql = "TRUNCATE TABLE T09_GRP2";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

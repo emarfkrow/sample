@@ -434,6 +434,17 @@ public class T01Mago implements IEntity {
     }
 
     /**
+     * 孫全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 孫の削除
+        String sql = "TRUNCATE TABLE T01_MAGO";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

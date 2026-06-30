@@ -81,8 +81,7 @@ FooterLeft=
 FooterCenter=
 FooterRight=
 ShowPageoutRelation=1
-RDBMSType=6
-RDBMSTypeName=MySQL
+RDBMSTypeName=Oracle Database
 GenerateDropTableStatement=1
 DropTableIfExists=0
 BackupRestoreTempTable=0
@@ -1560,7 +1559,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=600
-Top=1600
+Top=1550
 Field="変遷ID","TRANS_ID","*ID",,0,"","",$000028FF,""
 Field="変遷情報","TRANS_INFO","*TX",,,"","",$FFFFFFFF,""
 Field="ステータス区分","STATUS_KB","*KB",,,"","",$FFFFFFFF,""
@@ -1568,7 +1567,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260601084145
-Position="MAIN",600,1600
+Position="MAIN",600,1550
 ZOrder=96
 
 [Entity]
@@ -1579,7 +1578,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=1100
-Top=1600
+Top=1550
 Field="変遷ID","TRANS_ID","*ID",,0,"","",$000028FF,""
 Field="変遷枝番","TRANS_BN","*BN",,1,"","",$000028FF,""
 Field="変遷情報","TRANS_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1589,7 +1588,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260605073104
-Position="MAIN",1100,1600
+Position="MAIN",1100,1550
 ZOrder=98
 
 [Relation]
@@ -2386,7 +2385,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=1600
-Top=1600
+Top=1550
 Field="フローID","FLOW_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="テーブル名称","TABLE_NM","*NM",,,"","",$FFFFFFFF,""
 Field="主キー","PRIMARY_KEYS","*TX",,,"","",$FFFFFFFF,""
@@ -2398,7 +2397,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260605073116
-Position="MAIN",1600,1600
+Position="MAIN",1600,1550
 ZOrder=172
 
 [Entity]

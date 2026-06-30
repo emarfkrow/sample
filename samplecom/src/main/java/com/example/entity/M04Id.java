@@ -396,6 +396,22 @@ public class M04Id implements IEntity {
     }
 
     /**
+     * IDマスタ全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // ID連番マスタのチェック
+        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM M04_IDBN", null, null).size() > 0) {
+            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "M04_ID by M04_IDBN");
+        }
+
+        // IDマスタの削除
+        String sql = "TRUNCATE TABLE M04_ID";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

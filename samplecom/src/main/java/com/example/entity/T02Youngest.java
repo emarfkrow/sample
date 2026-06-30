@@ -362,6 +362,17 @@ public class T02Youngest implements IEntity {
     }
 
     /**
+     * 末弟全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 末弟の削除
+        String sql = "TRUNCATE TABLE T02_YOUNGEST";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

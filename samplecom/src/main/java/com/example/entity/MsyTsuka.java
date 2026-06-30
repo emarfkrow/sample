@@ -408,6 +408,17 @@ public class MsyTsuka implements IEntity {
     }
 
     /**
+     * 通貨マスタ全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // 通貨マスタの削除
+        String sql = "TRUNCATE TABLE MSY_TSUKA";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ

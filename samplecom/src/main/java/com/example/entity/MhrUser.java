@@ -493,6 +493,17 @@ public class MhrUser implements IEntity {
     }
 
     /**
+     * ユーザマスタ全件削除
+     * @return 削除件数
+     */
+    public static int truncate() {
+
+        // ユーザマスタの削除
+        String sql = "TRUNCATE TABLE MHR_USER";
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
+    }
+
+    /**
      * @param now システム日時
      * @param execId 実行ID
      * @return マップ化したエンティティ
