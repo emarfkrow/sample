@@ -10,13 +10,13 @@ import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.NoDataError;
 
 /**
- * 税マスタ照会
+ * MSY_TAX照会
  *
  * @author emarfkrow
  */
 public class MsyTaxGetAction extends BaseAction {
 
-    /** 税マスタ照会処理 */
+    /** MSY_TAX照会処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 

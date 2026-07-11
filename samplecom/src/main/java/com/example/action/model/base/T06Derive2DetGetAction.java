@@ -10,13 +10,13 @@ import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.NoDataError;
 
 /**
- * 派生２明細照会
+ * T06_DERIVE2_DET照会
  *
  * @author emarfkrow
  */
 public class T06Derive2DetGetAction extends BaseAction {
 
-    /** 派生２明細照会処理 */
+    /** T06_DERIVE2_DET照会処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 

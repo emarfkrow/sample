@@ -10,13 +10,13 @@ import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.NoDataError;
 
 /**
- * 転生明細照会
+ * T07_REBORN_DET照会
  *
  * @author emarfkrow
  */
 public class T07RebornDetGetAction extends BaseAction {
 
-    /** 転生明細照会処理 */
+    /** T07_REBORN_DET照会処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 

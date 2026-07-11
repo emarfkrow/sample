@@ -10,13 +10,13 @@ import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.NoDataError;
 
 /**
- * エンティティ照会
+ * T00_ENTITY照会
  *
  * @author emarfkrow
  */
 public class T00EntityGetAction extends BaseAction {
 
-    /** エンティティ照会処理 */
+    /** T00_ENTITY照会処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
