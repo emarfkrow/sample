@@ -41,12 +41,14 @@ public class M04SaikiSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.m04SaikiGrid.size(); i++) {
-            M04SaikiRegistForm form = this.m04SaikiGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "M04SaikiGrid", i, gridErrors);
+        if (this.m04SaikiGrid != null) {
+            for (int i = 0; i < this.m04SaikiGrid.size(); i++) {
+                M04SaikiRegistForm form = this.m04SaikiGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "M04SaikiGrid", i, gridErrors);
+                }
             }
         }
     }

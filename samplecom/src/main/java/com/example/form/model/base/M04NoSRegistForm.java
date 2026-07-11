@@ -41,12 +41,14 @@ public class M04NoSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.m04NoGrid.size(); i++) {
-            M04NoRegistForm form = this.m04NoGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "M04NoGrid", i, gridErrors);
+        if (this.m04NoGrid != null) {
+            for (int i = 0; i < this.m04NoGrid.size(); i++) {
+                M04NoRegistForm form = this.m04NoGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "M04NoGrid", i, gridErrors);
+                }
             }
         }
     }

@@ -41,12 +41,14 @@ public class T07RebornSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t07RebornGrid.size(); i++) {
-            T07RebornRegistForm form = this.t07RebornGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T07RebornGrid", i, gridErrors);
+        if (this.t07RebornGrid != null) {
+            for (int i = 0; i < this.t07RebornGrid.size(); i++) {
+                T07RebornRegistForm form = this.t07RebornGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T07RebornGrid", i, gridErrors);
+                }
             }
         }
     }

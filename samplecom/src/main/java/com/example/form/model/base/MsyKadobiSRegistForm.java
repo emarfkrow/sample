@@ -41,12 +41,14 @@ public class MsyKadobiSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.msyKadobiGrid.size(); i++) {
-            MsyKadobiRegistForm form = this.msyKadobiGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "MsyKadobiGrid", i, gridErrors);
+        if (this.msyKadobiGrid != null) {
+            for (int i = 0; i < this.msyKadobiGrid.size(); i++) {
+                MsyKadobiRegistForm form = this.msyKadobiGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "MsyKadobiGrid", i, gridErrors);
+                }
             }
         }
     }

@@ -41,12 +41,14 @@ public class T02YoungerSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t02YoungerGrid.size(); i++) {
-            T02YoungerRegistForm form = this.t02YoungerGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T02YoungerGrid", i, gridErrors);
+        if (this.t02YoungerGrid != null) {
+            for (int i = 0; i < this.t02YoungerGrid.size(); i++) {
+                T02YoungerRegistForm form = this.t02YoungerGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T02YoungerGrid", i, gridErrors);
+                }
             }
         }
     }

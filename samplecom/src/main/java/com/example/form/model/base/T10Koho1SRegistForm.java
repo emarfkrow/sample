@@ -41,12 +41,14 @@ public class T10Koho1SRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t10Koho1Grid.size(); i++) {
-            T10Koho1RegistForm form = this.t10Koho1Grid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T10Koho1Grid", i, gridErrors);
+        if (this.t10Koho1Grid != null) {
+            for (int i = 0; i < this.t10Koho1Grid.size(); i++) {
+                T10Koho1RegistForm form = this.t10Koho1Grid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T10Koho1Grid", i, gridErrors);
+                }
             }
         }
     }

@@ -41,12 +41,14 @@ public class M05Ref2SRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.m05Ref2Grid.size(); i++) {
-            M05Ref2RegistForm form = this.m05Ref2Grid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "M05Ref2Grid", i, gridErrors);
+        if (this.m05Ref2Grid != null) {
+            for (int i = 0; i < this.m05Ref2Grid.size(); i++) {
+                M05Ref2RegistForm form = this.m05Ref2Grid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "M05Ref2Grid", i, gridErrors);
+                }
             }
         }
     }

@@ -41,12 +41,14 @@ public class T07PrevSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t07PrevGrid.size(); i++) {
-            T07PrevRegistForm form = this.t07PrevGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T07PrevGrid", i, gridErrors);
+        if (this.t07PrevGrid != null) {
+            for (int i = 0; i < this.t07PrevGrid.size(); i++) {
+                T07PrevRegistForm form = this.t07PrevGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T07PrevGrid", i, gridErrors);
+                }
             }
         }
     }

@@ -41,12 +41,14 @@ public class MhrShokuiSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.mhrShokuiGrid.size(); i++) {
-            MhrShokuiRegistForm form = this.mhrShokuiGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "MhrShokuiGrid", i, gridErrors);
+        if (this.mhrShokuiGrid != null) {
+            for (int i = 0; i < this.mhrShokuiGrid.size(); i++) {
+                MhrShokuiRegistForm form = this.mhrShokuiGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "MhrShokuiGrid", i, gridErrors);
+                }
             }
         }
     }

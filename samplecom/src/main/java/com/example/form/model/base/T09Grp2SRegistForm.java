@@ -41,12 +41,14 @@ public class T09Grp2SRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t09Grp2Grid.size(); i++) {
-            T09Grp2RegistForm form = this.t09Grp2Grid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T09Grp2Grid", i, gridErrors);
+        if (this.t09Grp2Grid != null) {
+            for (int i = 0; i < this.t09Grp2Grid.size(); i++) {
+                T09Grp2RegistForm form = this.t09Grp2Grid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T09Grp2Grid", i, gridErrors);
+                }
             }
         }
     }

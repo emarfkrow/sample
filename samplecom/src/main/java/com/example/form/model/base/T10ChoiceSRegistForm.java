@@ -41,12 +41,14 @@ public class T10ChoiceSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t10ChoiceGrid.size(); i++) {
-            T10ChoiceRegistForm form = this.t10ChoiceGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T10ChoiceGrid", i, gridErrors);
+        if (this.t10ChoiceGrid != null) {
+            for (int i = 0; i < this.t10ChoiceGrid.size(); i++) {
+                T10ChoiceRegistForm form = this.t10ChoiceGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T10ChoiceGrid", i, gridErrors);
+                }
             }
         }
     }

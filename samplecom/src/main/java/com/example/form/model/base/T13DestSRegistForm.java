@@ -41,12 +41,14 @@ public class T13DestSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t13DestGrid.size(); i++) {
-            T13DestRegistForm form = this.t13DestGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T13DestGrid", i, gridErrors);
+        if (this.t13DestGrid != null) {
+            for (int i = 0; i < this.t13DestGrid.size(); i++) {
+                T13DestRegistForm form = this.t13DestGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T13DestGrid", i, gridErrors);
+                }
             }
         }
     }

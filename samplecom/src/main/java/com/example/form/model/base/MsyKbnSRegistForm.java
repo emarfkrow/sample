@@ -41,12 +41,14 @@ public class MsyKbnSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.msyKbnGrid.size(); i++) {
-            MsyKbnRegistForm form = this.msyKbnGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "MsyKbnGrid", i, gridErrors);
+        if (this.msyKbnGrid != null) {
+            for (int i = 0; i < this.msyKbnGrid.size(); i++) {
+                MsyKbnRegistForm form = this.msyKbnGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "MsyKbnGrid", i, gridErrors);
+                }
             }
         }
     }

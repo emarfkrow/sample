@@ -41,12 +41,14 @@ public class MhrUserPosSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.mhrUserPosGrid.size(); i++) {
-            MhrUserPosRegistForm form = this.mhrUserPosGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "MhrUserPosGrid", i, gridErrors);
+        if (this.mhrUserPosGrid != null) {
+            for (int i = 0; i < this.mhrUserPosGrid.size(); i++) {
+                MhrUserPosRegistForm form = this.mhrUserPosGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "MhrUserPosGrid", i, gridErrors);
+                }
             }
         }
     }

@@ -41,12 +41,14 @@ public class MhrBushoSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.mhrBushoGrid.size(); i++) {
-            MhrBushoRegistForm form = this.mhrBushoGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "MhrBushoGrid", i, gridErrors);
+        if (this.mhrBushoGrid != null) {
+            for (int i = 0; i < this.mhrBushoGrid.size(); i++) {
+                MhrBushoRegistForm form = this.mhrBushoGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "MhrBushoGrid", i, gridErrors);
+                }
             }
         }
     }

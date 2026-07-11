@@ -41,12 +41,14 @@ public class T00UniqueSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t00UniqueGrid.size(); i++) {
-            T00UniqueRegistForm form = this.t00UniqueGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T00UniqueGrid", i, gridErrors);
+        if (this.t00UniqueGrid != null) {
+            for (int i = 0; i < this.t00UniqueGrid.size(); i++) {
+                T00UniqueRegistForm form = this.t00UniqueGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T00UniqueGrid", i, gridErrors);
+                }
             }
         }
     }

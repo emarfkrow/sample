@@ -41,12 +41,14 @@ public class T08KyoseiSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t08KyoseiGrid.size(); i++) {
-            T08KyoseiRegistForm form = this.t08KyoseiGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T08KyoseiGrid", i, gridErrors);
+        if (this.t08KyoseiGrid != null) {
+            for (int i = 0; i < this.t08KyoseiGrid.size(); i++) {
+                T08KyoseiRegistForm form = this.t08KyoseiGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T08KyoseiGrid", i, gridErrors);
+                }
             }
         }
     }

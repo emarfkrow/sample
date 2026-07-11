@@ -41,12 +41,14 @@ public class M04CdSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.m04CdGrid.size(); i++) {
-            M04CdRegistForm form = this.m04CdGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "M04CdGrid", i, gridErrors);
+        if (this.m04CdGrid != null) {
+            for (int i = 0; i < this.m04CdGrid.size(); i++) {
+                M04CdRegistForm form = this.m04CdGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "M04CdGrid", i, gridErrors);
+                }
             }
         }
     }

@@ -41,12 +41,14 @@ public class T01KoSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t01KoGrid.size(); i++) {
-            T01KoRegistForm form = this.t01KoGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T01KoGrid", i, gridErrors);
+        if (this.t01KoGrid != null) {
+            for (int i = 0; i < this.t01KoGrid.size(); i++) {
+                T01KoRegistForm form = this.t01KoGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T01KoGrid", i, gridErrors);
+                }
             }
         }
     }

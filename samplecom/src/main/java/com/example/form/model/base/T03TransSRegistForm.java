@@ -41,12 +41,14 @@ public class T03TransSRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        for (int i = 0; i < this.t03TransGrid.size(); i++) {
-            T03TransRegistForm form = this.t03TransGrid.get(i);
-            if (form != null) {
-                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-                form.validate(gridErrors, baseProcess);
-                BaseProcess.copyGridErrors(errors, "T03TransGrid", i, gridErrors);
+        if (this.t03TransGrid != null) {
+            for (int i = 0; i < this.t03TransGrid.size(); i++) {
+                T03TransRegistForm form = this.t03TransGrid.get(i);
+                if (form != null) {
+                    Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                    form.validate(gridErrors, baseProcess);
+                    BaseProcess.copyGridErrors(errors, "T03TransGrid", i, gridErrors);
+                }
             }
         }
     }
