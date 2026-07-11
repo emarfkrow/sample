@@ -55,6 +55,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT11Tasho1S" th:text="#{common.reset}" onClick="Base.listReset('T11Tasho1');">reset</button>
         <a th:href="@{T11Tasho1Search.xlsx(baseMei=#{T11Tasho1S.h2})}" id="T11Tasho1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="T11Tasho1Grid.reborn2Id" th:href="@{/model/T11Reborn2S.html}" target="dialog" class="refer" th:text="#{T11Reborn2S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <button type="submit" id="DeleteT11Tasho1S" data-action="T11Tasho1SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">
