@@ -16,7 +16,7 @@
 <!-- 候補１の派生先モデルのグリッド定義 -->
 <script th:src="@{/model/T10Choice.js}"></script>
 <script th:src="@{/model/T10ChoiceGridColumns.js}"></script>
-  <!-- 選抜の参照モデルのグリッド定義 -->
+  <!-- 選抜の派生元モデルのグリッド定義 -->
   <script th:src="@{/model/T10Koho2.js}"></script>
   <script th:src="@{/model/T10Koho2GridColumns.js}"></script>
 </head>
@@ -33,7 +33,7 @@
           <label for="T10Koho1.koho1Id" th:text="#{T10Koho1.koho1Id}">KOHO1_ID</label><input type="text" id="T10Koho1.koho1Id" name="T10Koho1.koho1Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="koho1Info">
-          <label for="T10Koho1.koho1Info" th:text="#{T10Koho1.koho1Info}">KOHO1_INFO</label><input type="text" id="T10Koho1.koho1Info" name="T10Koho1.koho1Info" maxlength="300" />
+          <label for="T10Koho1.koho1Info" th:text="#{T10Koho1.koho1Info}">KOHO1_INFO</label><input type="text" id="T10Koho1.koho1Info" name="T10Koho1.koho1Info" maxlength="300" class="" />
         </div>
       </fieldset>
       <div class="buttons">

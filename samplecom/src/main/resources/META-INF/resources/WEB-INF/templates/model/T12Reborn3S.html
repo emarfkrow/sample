@@ -11,14 +11,14 @@
 <script th:src="@{/model/T12Reborn3.js}"></script>
 <script th:src="@{/model/T12Reborn3GridColumns.js}"></script>
 <!-- 転生３の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 転生３の転生元モデルのグリッド定義 -->
 <script th:src="@{/model/T12Tasho2.js}"></script>
 <script th:src="@{/model/T12Tasho2GridColumns.js}"></script>
-  <!-- 他生２の参照モデルのグリッド定義 -->
+  <!-- 他生２の派生元モデルのグリッド定義 -->
   <script th:src="@{/model/T12Koho3.js}"></script>
   <script th:src="@{/model/T12Koho3GridColumns.js}"></script>
-    <!-- 候補３の参照モデルのグリッド定義 -->
-    <script th:src="@{/model/MhrUser.js}"></script>
-    <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -33,7 +33,8 @@
           <label for="T12Reborn3.reborn3Id" th:text="#{T12Reborn3.reborn3Id}">REBORN3_ID</label><input type="text" id="T12Reborn3.reborn3Id" name="T12Reborn3.reborn3Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="tasho2Id">
-          <label for="T12Reborn3.tasho2Id" th:text="#{T12Reborn3.tasho2Id}">TASHO2_ID</label><input type="text" id="T12Reborn3.tasho2Id" name="T12Reborn3.tasho2Id" maxlength="10" class=" refer" /><a id="T12Reborn3.tasho2Id" th:href="@{/model/T12Tasho2S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T12Reborn3.tasho2Id" th:text="#{T12Reborn3.tasho2Id}">TASHO2_ID</label><input type="text" id="T12Reborn3.tasho2Id" name="T12Reborn3.tasho2Id" maxlength="10" class=" refer" />
+          <a id="T12Reborn3.tasho2Id" th:href="@{/model/T12Tasho2S.html}" target="dialog" class="refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
@@ -52,7 +53,6 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT12Reborn3S" th:text="#{common.reset}" onClick="Base.listReset('T12Reborn3');">reset</button>
         <a th:href="@{T12Reborn3Search.xlsx(baseMei=#{T12Reborn3S.h2})}" id="T12Reborn3Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="T12Reborn3Grid.tasho2Id" th:href="@{/model/T12Tasho2S.html}" target="dialog" class="refer" th:text="#{T12Tasho2S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <button type="submit" id="DeleteT12Reborn3S" data-action="T12Reborn3SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

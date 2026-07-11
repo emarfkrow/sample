@@ -86,9 +86,9 @@ public class T11Reborn2RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 前世２ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> prev2IdParams = new java.util.HashMap<String, Object>();
-        prev2IdParams.put("prev2Id", this.getPrev2Id());
-        baseProcess.masterCheck(errors, "T11Prev2Search", "prev2Id", prev2IdParams, jp.co.golorp.emarf.util.Messages.get("T11Reborn2.prev2Id"));
+        // 前世２ の転生元チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t11Prev2Params = new java.util.HashMap<String, Object>();
+        t11Prev2Params.put("prev2Id", this.getPrev2Id());
+        baseProcess.masterCheck(errors, "T11Prev2Search", "prev2Id", t11Prev2Params, jp.co.golorp.emarf.util.Messages.get("T11Reborn2"));
     }
 }

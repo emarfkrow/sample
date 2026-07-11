@@ -11,11 +11,11 @@
 <script th:src="@{/model/T09Grp2.js}"></script>
 <script th:src="@{/model/T09Grp2GridColumns.js}"></script>
 <!-- 集団２の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 集団２の集約先モデルのグリッド定義 -->
 <script th:src="@{/model/T09Sum.js}"></script>
 <script th:src="@{/model/T09SumGridColumns.js}"></script>
-  <!-- 集約の参照モデルのグリッド定義 -->
-  <script th:src="@{/model/MhrUser.js}"></script>
-  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
   <!-- 集約の集約元モデルのグリッド定義 -->
   <script th:src="@{/model/T09Grp1.js}"></script>
   <script th:src="@{/model/T09Grp1GridColumns.js}"></script>
@@ -33,7 +33,7 @@
           <label for="T09Grp2.grp2Id" th:text="#{T09Grp2.grp2Id}">GRP2_ID</label><input type="text" id="T09Grp2.grp2Id" name="T09Grp2.grp2Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="sumId">
-          <label for="T09Grp2.sumId" th:text="#{T09Grp2.sumId}">SUM_ID</label><input type="text" id="T09Grp2.sumId" name="T09Grp2.sumId" maxlength="10" class=" refer" /><a id="T09Grp2.sumId" th:href="@{/model/T09SumS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T09Grp2.sumId" th:text="#{T09Grp2.sumId}">SUM_ID</label><input type="text" id="T09Grp2.sumId" name="T09Grp2.sumId" maxlength="10" class="" />
         </div>
       </fieldset>
       <div class="buttons">

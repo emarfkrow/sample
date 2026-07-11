@@ -71,9 +71,9 @@ public class T09Grp2RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 集約ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> sumIdParams = new java.util.HashMap<String, Object>();
-        sumIdParams.put("sumId", this.getSumId());
-        baseProcess.masterCheck(errors, "T09SumSearch", "sumId", sumIdParams, jp.co.golorp.emarf.util.Messages.get("T09Grp2.sumId"));
+        // 集約 の集約先チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t09SumParams = new java.util.HashMap<String, Object>();
+        t09SumParams.put("sumId", this.getSumId());
+        baseProcess.masterCheck(errors, "T09SumSearch", "sumId", t09SumParams, jp.co.golorp.emarf.util.Messages.get("T09Grp2"));
     }
 }

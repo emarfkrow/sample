@@ -113,14 +113,14 @@ public class T10ChoiceRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 候補１ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> koho1IdParams = new java.util.HashMap<String, Object>();
-        koho1IdParams.put("koho1Id", this.getKoho1Id());
-        baseProcess.masterCheck(errors, "T10Koho1Search", "koho1Id", koho1IdParams, jp.co.golorp.emarf.util.Messages.get("T10Choice.koho1Id"));
+        // 候補１ の派生元チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t10Koho1Params = new java.util.HashMap<String, Object>();
+        t10Koho1Params.put("koho1Id", this.getKoho1Id());
+        baseProcess.masterCheck(errors, "T10Koho1Search", "koho1Id", t10Koho1Params, jp.co.golorp.emarf.util.Messages.get("T10Choice"));
 
-        // 候補２ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> koho2IdParams = new java.util.HashMap<String, Object>();
-        koho2IdParams.put("koho2Id", this.getKoho2Id());
-        baseProcess.masterCheck(errors, "T10Koho2Search", "koho2Id", koho2IdParams, jp.co.golorp.emarf.util.Messages.get("T10Choice.koho2Id"));
+        // 候補２ の派生元チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t10Koho2Params = new java.util.HashMap<String, Object>();
+        t10Koho2Params.put("koho2Id", this.getKoho2Id());
+        baseProcess.masterCheck(errors, "T10Koho2Search", "koho2Id", t10Koho2Params, jp.co.golorp.emarf.util.Messages.get("T10Choice"));
     }
 }

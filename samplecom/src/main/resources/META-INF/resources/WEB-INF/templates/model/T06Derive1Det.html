@@ -16,9 +16,6 @@
 <!-- 派生１明細の親モデルのグリッド定義 -->
 <script th:src="@{/model/T06Derive1.js}"></script>
 <script th:src="@{/model/T06Derive1GridColumns.js}"></script>
-  <!-- 派生１の参照モデルのグリッド定義 -->
-  <script th:src="@{/model/T06Org.js}"></script>
-  <script th:src="@{/model/T06OrgGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -30,7 +27,7 @@
           <label for="T06Derive1.derive1Id" th:text="#{T06Derive1.derive1Id}">DERIVE1_ID</label><input type="text" id="T06Derive1.derive1Id" name="T06Derive1.derive1Id" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="orgInfo">
-          <label for="T06Derive1.orgInfo" th:text="#{T06Derive1.orgInfo}">ORG_INFO</label><input type="text" id="T06Derive1.orgInfo" name="T06Derive1.orgInfo" maxlength="300" />
+          <label for="T06Derive1.orgInfo" th:text="#{T06Derive1.orgInfo}">ORG_INFO</label><input type="text" id="T06Derive1.orgInfo" name="T06Derive1.orgInfo" maxlength="300" class="" />
         </div>
         <div id="orgId">
           <label th:text="#{T06Derive1.orgId}">ORG_ID</label><span id="T06Derive1.orgId" class="derivee"></span><input type="text" id="T06Derive1.orgId" name="T06Derive1.orgId" style="display: none;" class="derivee" />
@@ -59,7 +56,7 @@
           <label for="T06Derive1Det.derive1Bn" th:text="#{T06Derive1Det.derive1Bn}">DERIVE1_BN</label><input type="text" id="T06Derive1Det.derive1Bn" name="T06Derive1Det.derive1Bn" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
         <div id="detInfo">
-          <label for="T06Derive1Det.detInfo" th:text="#{T06Derive1Det.detInfo}">DET_INFO</label><input type="text" id="T06Derive1Det.detInfo" name="T06Derive1Det.detInfo" maxlength="300" />
+          <label for="T06Derive1Det.detInfo" th:text="#{T06Derive1Det.detInfo}">DET_INFO</label><input type="text" id="T06Derive1Det.detInfo" name="T06Derive1Det.detInfo" maxlength="300" class="" />
         </div>
         <div id="insertTs">
           <label th:text="#{T06Derive1Det.insertTs}" class="meta">INSERT_TS</label><span id="T06Derive1Det.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Derive1Det.insertTs" name="T06Derive1Det.insertTs" class="meta" />

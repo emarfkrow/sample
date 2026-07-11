@@ -1,5 +1,5 @@
 -- Project Name : emarf
--- Date/Time    : 2026/06/23 12:30:45
+-- Date/Time    : 2026/07/09 11:38:12
 -- Author       : KTC0966
 -- RDBMS Type   : Oracle Database
 -- Application  : A5:SQL Mk-2
@@ -320,6 +320,21 @@ create table T00_ENTITY (
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
   , constraint T00_ENTITY_PKC primary key (ENTITY_ID)
+) ;
+
+-- 実績
+drop table T00_JISSEKI cascade constraints;
+
+create table T00_JISSEKI (
+  KOUTEI_ID NUMBER(10)
+  , JISSEKI_BN NUMBER(10)
+  , JISSHI_BI DATE not null
+  , KANRYO_BI DATE not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T00_JISSEKI_PKC primary key (KOUTEI_ID,JISSEKI_BN)
 ) ;
 
 -- 工程
@@ -940,6 +955,31 @@ create table T13_SRC (
   , constraint T13_SRC_PKC primary key (SRC_ID)
 ) ;
 
+-- 予実
+drop view V00_YOJITSU;
+
+create view V00_YOJITSU as 
+SELECT
+      k.koutei_id
+    , k.koutei_mei      AS koutei_tx
+    , k.kaishi_bi
+    , k.shuryo_bi
+    , k.oya_koutei_id
+    , MIN (j.jisshi_bi) AS jisshi_bi
+    , MAX (j.kanryo_bi) AS kanryo_bi 
+FROM
+    t00_koutei k 
+    LEFT OUTER JOIN t00_jisseki j 
+        ON j.koutei_id = k.koutei_id 
+GROUP BY
+    k.koutei_id
+    , k.koutei_mei
+    , k.kaishi_bi
+    , k.shuryo_bi
+    , k.oya_koutei_id
+
+;
+
 -- 振分ビュー
 drop view V13_FURIWAKE;
 
@@ -1202,6 +1242,16 @@ comment on column T00_ENTITY.INSERT_TS is '作成タイムスタンプ';
 comment on column T00_ENTITY.INSERT_USER_ID is '作成者';
 comment on column T00_ENTITY.UPDATE_TS is '更新タイムスタンプ';
 comment on column T00_ENTITY.UPDATE_USER_ID is '更新者';
+
+comment on table T00_JISSEKI is '実績';
+comment on column T00_JISSEKI.KOUTEI_ID is '工程ID';
+comment on column T00_JISSEKI.JISSEKI_BN is '実績連番';
+comment on column T00_JISSEKI.JISSHI_BI is '実施日';
+comment on column T00_JISSEKI.KANRYO_BI is '完了日';
+comment on column T00_JISSEKI.INSERT_TS is '作成タイムスタンプ';
+comment on column T00_JISSEKI.INSERT_USER_ID is '作成者';
+comment on column T00_JISSEKI.UPDATE_TS is '更新タイムスタンプ';
+comment on column T00_JISSEKI.UPDATE_USER_ID is '更新者';
 
 comment on table T00_KOUTEI is '工程';
 comment on column T00_KOUTEI.KOUTEI_ID is '工程ID';
@@ -1596,6 +1646,15 @@ comment on column T13_SRC.INSERT_TS is '作成タイムスタンプ';
 comment on column T13_SRC.INSERT_USER_ID is '作成者';
 comment on column T13_SRC.UPDATE_TS is '更新タイムスタンプ';
 comment on column T13_SRC.UPDATE_USER_ID is '更新者';
+
+comment on table V00_YOJITSU is '予実';
+comment on column V00_YOJITSU.koutei_id is 'koutei_id';
+comment on column V00_YOJITSU.koutei_tx is 'koutei_tx';
+comment on column V00_YOJITSU.kaishi_bi is 'kaishi_bi';
+comment on column V00_YOJITSU.shuryo_bi is 'shuryo_bi';
+comment on column V00_YOJITSU.oya_koutei_id is 'oya_koutei_id';
+comment on column V00_YOJITSU.jisshi_bi is 'jisshi_bi';
+comment on column V00_YOJITSU.kanryo_bi is 'kanryo_bi';
 
 comment on table V13_FURIWAKE is '振分ビュー';
 comment on column V13_FURIWAKE.table_name is 'テーブル名';

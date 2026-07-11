@@ -115,14 +115,14 @@ public class T08KyoseiRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 寄生１ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> kisei1IdParams = new java.util.HashMap<String, Object>();
-        kisei1IdParams.put("kisei1Id", this.getKisei1Id());
-        baseProcess.masterCheck(errors, "T08Kisei1Search", "kisei1Id", kisei1IdParams, jp.co.golorp.emarf.util.Messages.get("T08Kyosei.kisei1Id"));
+        // 寄生１ の共生元チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t08Kisei1Params = new java.util.HashMap<String, Object>();
+        t08Kisei1Params.put("kisei1Id", this.getKisei1Id());
+        baseProcess.masterCheck(errors, "T08Kisei1Search", "kisei1Id", t08Kisei1Params, jp.co.golorp.emarf.util.Messages.get("T08Kyosei"));
 
-        // 寄生２ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> kisei2IdParams = new java.util.HashMap<String, Object>();
-        kisei2IdParams.put("kisei2Id", this.getKisei2Id());
-        baseProcess.masterCheck(errors, "T08Kisei2Search", "kisei2Id", kisei2IdParams, jp.co.golorp.emarf.util.Messages.get("T08Kyosei.kisei2Id"));
+        // 寄生２ の共生元チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t08Kisei2Params = new java.util.HashMap<String, Object>();
+        t08Kisei2Params.put("kisei2Id", this.getKisei2Id());
+        baseProcess.masterCheck(errors, "T08Kisei2Search", "kisei2Id", t08Kisei2Params, jp.co.golorp.emarf.util.Messages.get("T08Kyosei"));
     }
 }

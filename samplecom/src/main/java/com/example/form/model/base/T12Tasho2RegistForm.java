@@ -71,9 +71,9 @@ public class T12Tasho2RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 候補３ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> koho3IdParams = new java.util.HashMap<String, Object>();
-        koho3IdParams.put("koho3Id", this.getKoho3Id());
-        baseProcess.masterCheck(errors, "T12Koho3Search", "koho3Id", koho3IdParams, jp.co.golorp.emarf.util.Messages.get("T12Tasho2.koho3Id"));
+        // 候補３ の派生元チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t12Koho3Params = new java.util.HashMap<String, Object>();
+        t12Koho3Params.put("koho3Id", this.getKoho3Id());
+        baseProcess.masterCheck(errors, "T12Koho3Search", "koho3Id", t12Koho3Params, jp.co.golorp.emarf.util.Messages.get("T12Tasho2"));
     }
 }

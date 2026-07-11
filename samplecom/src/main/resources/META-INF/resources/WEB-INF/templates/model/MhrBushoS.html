@@ -27,7 +27,7 @@
           <label for="MhrBusho.bushoId" th:text="#{MhrBusho.bushoId}">BUSHO_ID</label><input type="text" id="MhrBusho.bushoId" name="MhrBusho.bushoId" maxlength="10" class=" primaryKey" />
         </div>
         <div id="bushoMei">
-          <label for="MhrBusho.bushoMei" th:text="#{MhrBusho.bushoMei}">BUSHO_MEI</label><input type="text" id="MhrBusho.bushoMei" name="MhrBusho.bushoMei" maxlength="60" />
+          <label for="MhrBusho.bushoMei" th:text="#{MhrBusho.bushoMei}">BUSHO_MEI</label><input type="text" id="MhrBusho.bushoMei" name="MhrBusho.bushoMei" maxlength="60" class="" />
         </div>
         <div id="oyaBushoId">
           <label for="MhrBusho.oyaBushoId" th:text="#{MhrBusho.oyaBushoId}">OYA_BUSHO_ID</label><input type="text" id="MhrBusho.oyaBushoId" name="MhrBusho.oyaBushoId" maxlength="10" class=" refer" data-referFor="MhrBusho.oyaBushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI" /><a id="MhrBusho.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MhrBusho.oyaBushoMei" class=" refer" data-referFor="MhrBusho.oyaBushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrBusho.oyaBushoId" data-destDef="MhrBusho.oyaBushoMei:BUSHO_MEI"></span>

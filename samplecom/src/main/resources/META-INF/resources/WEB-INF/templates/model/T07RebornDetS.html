@@ -16,9 +16,6 @@
 <!-- 転生明細の親モデルのグリッド定義 -->
 <script th:src="@{/model/T07Reborn.js}"></script>
 <script th:src="@{/model/T07RebornGridColumns.js}"></script>
-  <!-- 転生の参照モデルのグリッド定義 -->
-  <script th:src="@{/model/T07Prev.js}"></script>
-  <script th:src="@{/model/T07PrevGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -36,7 +33,7 @@
           <label for="T07RebornDet.rebornBn" th:text="#{T07RebornDet.rebornBn}">REBORN_BN</label><input type="text" id="T07RebornDet.rebornBn" name="T07RebornDet.rebornBn" maxlength="10" class=" primaryKey" />
         </div>
         <div id="detInfo">
-          <label for="T07RebornDet.detInfo" th:text="#{T07RebornDet.detInfo}">DET_INFO</label><input type="text" id="T07RebornDet.detInfo" name="T07RebornDet.detInfo" maxlength="300" />
+          <label for="T07RebornDet.detInfo" th:text="#{T07RebornDet.detInfo}">DET_INFO</label><input type="text" id="T07RebornDet.detInfo" name="T07RebornDet.detInfo" maxlength="300" class="" />
         </div>
       </fieldset>
       <div class="buttons">

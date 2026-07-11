@@ -11,11 +11,11 @@
 <script th:src="@{/model/T11Reborn2.js}"></script>
 <script th:src="@{/model/T11Reborn2GridColumns.js}"></script>
 <!-- 転生２の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- 転生２の転生元モデルのグリッド定義 -->
 <script th:src="@{/model/T11Prev2.js}"></script>
 <script th:src="@{/model/T11Prev2GridColumns.js}"></script>
-  <!-- 前世２の参照モデルのグリッド定義 -->
-  <script th:src="@{/model/MhrUser.js}"></script>
-  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
     <!-- 転生２の派生先モデルのグリッド定義 -->
     <script th:src="@{/model/T11Tasho1.js}"></script>
     <script th:src="@{/model/T11Tasho1GridColumns.js}"></script>
@@ -33,10 +33,11 @@
           <label for="T11Reborn2.reborn2Id" th:text="#{T11Reborn2.reborn2Id}">REBORN2_ID</label><input type="text" id="T11Reborn2.reborn2Id" name="T11Reborn2.reborn2Id" maxlength="10" class=" primaryKey" />
         </div>
         <div id="prev2Info">
-          <label for="T11Reborn2.prev2Info" th:text="#{T11Reborn2.prev2Info}">PREV2_INFO</label><input type="text" id="T11Reborn2.prev2Info" name="T11Reborn2.prev2Info" maxlength="300" />
+          <label for="T11Reborn2.prev2Info" th:text="#{T11Reborn2.prev2Info}">PREV2_INFO</label><input type="text" id="T11Reborn2.prev2Info" name="T11Reborn2.prev2Info" maxlength="300" class="" />
         </div>
         <div id="prev2Id">
-          <label for="T11Reborn2.prev2Id" th:text="#{T11Reborn2.prev2Id}">PREV2_ID</label><input type="text" id="T11Reborn2.prev2Id" name="T11Reborn2.prev2Id" maxlength="10" class=" refer" /><a id="T11Reborn2.prev2Id" th:href="@{/model/T11Prev2S.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
+          <label for="T11Reborn2.prev2Id" th:text="#{T11Reborn2.prev2Id}">PREV2_ID</label><input type="text" id="T11Reborn2.prev2Id" name="T11Reborn2.prev2Id" maxlength="10" class=" refer" />
+          <a id="T11Reborn2.prev2Id" th:href="@{/model/T11Prev2S.html}" target="dialog" class="refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
       <div class="buttons">
@@ -55,7 +56,6 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT11Reborn2S" th:text="#{common.reset}" onClick="Base.listReset('T11Reborn2');">reset</button>
         <a th:href="@{T11Reborn2Search.xlsx(baseMei=#{T11Reborn2S.h2})}" id="T11Reborn2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="T11Reborn2Grid.prev2Id" th:href="@{/model/T11Prev2S.html}" target="dialog" class="refer" th:text="#{T11Prev2S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <button type="submit" id="DeleteT11Reborn2S" data-action="T11Reborn2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

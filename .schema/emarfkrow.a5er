@@ -2417,6 +2417,40 @@ Field="親工程ID","OYA_KOUTEI_ID","*ID",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260620165629
+ModifiedDateTime=20260709074142
 Position="MAIN",50,1950
 ZOrder=173
+
+[Entity]
+PName=T00_JISSEKI
+LName=実績
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=50
+Top=2200
+Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
+Field="実績連番","JISSEKI_BN","*BN",,1,"","",$FFFFFFFF,""
+Field="実施日","JISSHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
+Field="完了日","KANRYO_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260709080953
+Position="Main",50,2200
+ZOrder=174
+
+[View]
+PName=V00_YOJITSU
+LName=予実
+Comment=
+Query=SELECT\n      k.koutei_id\n    , k.koutei_mei      AS koutei_tx\n    , k.kaishi_bi\n    , k.shuryo_bi\n    , k.oya_koutei_id\n    , MIN (j.jisshi_bi) AS jisshi_bi\n    , MAX (j.kanryo_bi) AS kanryo_bi \nFROM\n    t00_koutei k \n    LEFT OUTER JOIN t00_jisseki j \n        ON j.koutei_id = k.koutei_id \nGROUP BY\n    k.koutei_id\n    , k.koutei_mei\n    , k.kaishi_bi\n    , k.shuryo_bi\n    , k.oya_koutei_id\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",50,2400
+ZOrder=175
+Page=Main
+Left=50
+Top=2400

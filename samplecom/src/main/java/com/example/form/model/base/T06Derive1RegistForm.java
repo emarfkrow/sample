@@ -104,9 +104,9 @@ public class T06Derive1RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 起源ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> orgIdParams = new java.util.HashMap<String, Object>();
-        orgIdParams.put("orgId", this.getOrgId());
-        baseProcess.masterCheck(errors, "T06OrgSearch", "orgId", orgIdParams, jp.co.golorp.emarf.util.Messages.get("T06Derive1.orgId"));
+        // 起源 の派生元チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t06OrgParams = new java.util.HashMap<String, Object>();
+        t06OrgParams.put("orgId", this.getOrgId());
+        baseProcess.masterCheck(errors, "T06OrgSearch", "orgId", t06OrgParams, jp.co.golorp.emarf.util.Messages.get("T06Derive1"));
     }
 }

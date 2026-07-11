@@ -104,9 +104,9 @@ public class T07RebornRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 前世ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> prevIdParams = new java.util.HashMap<String, Object>();
-        prevIdParams.put("prevId", this.getPrevId());
-        baseProcess.masterCheck(errors, "T07PrevSearch", "prevId", prevIdParams, jp.co.golorp.emarf.util.Messages.get("T07Reborn.prevId"));
+        // 前世 の転生元チェック TODO できればAssertTrueにしたい
+        Map<String, Object> t07PrevParams = new java.util.HashMap<String, Object>();
+        t07PrevParams.put("prevId", this.getPrevId());
+        baseProcess.masterCheck(errors, "T07PrevSearch", "prevId", t07PrevParams, jp.co.golorp.emarf.util.Messages.get("T07Reborn"));
     }
 }
