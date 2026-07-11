@@ -67,6 +67,8 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT10ChoiceS" th:text="#{common.reset}" onClick="Base.listReset('T10Choice');">reset</button>
         <a th:href="@{T10ChoiceSearch.xlsx(baseMei=#{T10ChoiceS.h2})}" id="T10ChoiceSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="T10ChoiceGrid.koho1Id" th:href="@{/model/T10Koho1S.html}" target="dialog" class="refer" th:text="#{T10Koho1S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T10ChoiceGrid.koho2Id" th:href="@{/model/T10Koho2S.html}" target="dialog" class="refer" th:text="#{T10Koho2S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <button type="submit" id="DeleteT10ChoiceS" data-action="T10ChoiceSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

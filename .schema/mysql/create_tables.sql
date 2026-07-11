@@ -1,6 +1,6 @@
 -- Project Name : emarf
--- Date/Time    : 2026/06/23 12:32:25
--- Author       : KTC0966
+-- Date/Time    : 2026/07/11 11:43:49
+-- Author       : t_fuk
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
 
@@ -321,6 +321,21 @@ create table T00_ENTITY (
   , UPDATE_USER_ID CHAR(10) not null comment '更新者'
   , constraint T00_ENTITY_PKC primary key (ENTITY_ID)
 ) comment 'エンティティ' ;
+
+-- 実績
+drop table T00_JISSEKI cascade;
+
+create table T00_JISSEKI (
+  KOUTEI_ID INT comment '工程ID'
+  , JISSEKI_BN INT comment '実績連番'
+  , JISSHI_BI DATE not null comment '実施日'
+  , KANRYO_BI DATE not null comment '完了日'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID CHAR(10) not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID CHAR(10) not null comment '更新者'
+  , constraint T00_JISSEKI_PKC primary key (KOUTEI_ID,JISSEKI_BN)
+) comment '実績' ;
 
 -- 工程
 drop table T00_KOUTEI cascade;
@@ -940,19 +955,44 @@ create table T13_SRC (
   , constraint T13_SRC_PKC primary key (SRC_ID)
 ) comment '変換元' ;
 
+-- 予実
+drop view V00_YOJITSU;
+
+create view V00_YOJITSU as 
+SELECT
+      k.koutei_id
+    , k.koutei_mei      AS koutei_tx
+    , k.kaishi_bi
+    , k.shuryo_bi
+    , k.oya_koutei_id
+    , MIN (j.jisshi_bi) AS jisshi_bi
+    , MAX (j.kanryo_bi) AS kanryo_bi 
+FROM
+    t00_koutei k 
+    LEFT OUTER JOIN t00_jisseki j 
+        ON j.koutei_id = k.koutei_id 
+GROUP BY
+    k.koutei_id
+    , k.koutei_mei
+    , k.kaishi_bi
+    , k.shuryo_bi
+    , k.oya_koutei_id
+
+;
+
 -- 振分ビュー
 drop view V13_FURIWAKE;
 
 create view V13_FURIWAKE as 
 SELECT
     a.table_name                                -- テーブル名
-    , a.`SRC_ID$DEST_ID`                        -- 振分ID
+    , a."SRC_ID$DEST_ID"                        -- 振分ID
     , a.info                                    -- 情報
 FROM
     ( 
         SELECT
             'T13_SRC' AS table_name
-            , s.src_id AS `SRC_ID$DEST_ID`
+            , s.src_id AS "SRC_ID$DEST_ID"
             , s.src_info AS info 
         FROM
             t13_src s 

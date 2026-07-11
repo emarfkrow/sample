@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{V00YojitsuS.title}">VIEW</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/V00Yojitsu.js}"></script>
+<script th:src="@{/model/V00YojitsuGridColumns.js}"></script>
+<script th:src="@{/model/V00YojitsuGanttTasks.js}"></script>
+<!-- VIEWの参照モデルのグリッド定義 -->
+<script th:src="@{/model/T00Koutei.js}"></script>
+<script th:src="@{/model/T00KouteiGridColumns.js}"></script>
+  <!-- 工程の参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{V00YojitsuS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="V00YojitsuSearchForm" action="V00YojitsuSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{V00YojitsuS.legend}">legend</legend>
+        <div id="kouteiId">
+          <label for="V00Yojitsu.kouteiId" th:text="#{V00Yojitsu.kouteiId}">KOUTEI_ID</label><input type="text" id="V00Yojitsu.kouteiId" name="V00Yojitsu.kouteiId" maxlength="10" class=" primaryKey refer" data-referFor="V00Yojitsu.kouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:V00Yojitsu.kouteiId" data-destDef="V00Yojitsu.kouteiMei:KOUTEI_MEI" /><a id="V00Yojitsu.kouteiId" th:href="@{/model/T00KouteiS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="V00Yojitsu.kouteiMei" class=" primaryKey refer" data-referFor="V00Yojitsu.kouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:V00Yojitsu.kouteiId" data-destDef="V00Yojitsu.kouteiMei:KOUTEI_MEI"></span>
+        </div>
+        <div id="kouteiTx">
+          <label for="V00Yojitsu.kouteiTx" th:text="#{V00Yojitsu.kouteiTx}">KOUTEI_TX</label><input type="text" id="V00Yojitsu.kouteiTx" name="V00Yojitsu.kouteiTx" maxlength="60" class="" />
+        </div>
+        <div id="kaishiBi">
+          <label for="V00Yojitsu.kaishiBi_1" th:text="#{V00Yojitsu.kaishiBi}">KAISHI_BI</label><input type="text" id="V00Yojitsu.kaishiBi_1" name="V00Yojitsu.kaishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="V00Yojitsu.kaishiBi_2" name="V00Yojitsu.kaishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="shuryoBi">
+          <label for="V00Yojitsu.shuryoBi_1" th:text="#{V00Yojitsu.shuryoBi}">SHURYO_BI</label><input type="text" id="V00Yojitsu.shuryoBi_1" name="V00Yojitsu.shuryoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="V00Yojitsu.shuryoBi_2" name="V00Yojitsu.shuryoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="oyaKouteiId">
+          <label for="V00Yojitsu.oyaKouteiId" th:text="#{V00Yojitsu.oyaKouteiId}">OYA_KOUTEI_ID</label><input type="text" id="V00Yojitsu.oyaKouteiId" name="V00Yojitsu.oyaKouteiId" maxlength="10" class=" refer" data-referFor="V00Yojitsu.oyaKouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:V00Yojitsu.oyaKouteiId" data-destDef="V00Yojitsu.oyaKouteiMei:KOUTEI_MEI" /><a id="V00Yojitsu.oyaKouteiId" th:href="@{/model/T00KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="V00Yojitsu.oyaKouteiMei" class=" refer" data-referFor="V00Yojitsu.oyaKouteiId" data-json="T00KouteiSearch.json" data-srcDef="KOUTEI_ID:V00Yojitsu.oyaKouteiId" data-destDef="V00Yojitsu.oyaKouteiMei:KOUTEI_MEI"></span>
+        </div>
+        <div id="jisshiBi">
+          <label for="V00Yojitsu.jisshiBi_1" th:text="#{V00Yojitsu.jisshiBi}">JISSHI_BI</label><input type="text" id="V00Yojitsu.jisshiBi_1" name="V00Yojitsu.jisshiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="V00Yojitsu.jisshiBi_2" name="V00Yojitsu.jisshiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="kanryoBi">
+          <label for="V00Yojitsu.kanryoBi_1" th:text="#{V00Yojitsu.kanryoBi}">KANRYO_BI</label><input type="text" id="V00Yojitsu.kanryoBi_1" name="V00Yojitsu.kanryoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="V00Yojitsu.kanryoBi_2" name="V00Yojitsu.kanryoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetV00Yojitsu" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchV00Yojitsu" type="submit" class="search" data-ganttId="V00YojitsuGantt" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <h3 th:text="#{V00Yojitsu.h3}">h3</h3>
+    <div class="ganttWrapper">
+      <svg id="V00YojitsuGantt" class="gantt" th:data-href="@{/model/V00Yojitsu.html}"></svg>
+    </div>
+  </div>
+</body>
+</html>
