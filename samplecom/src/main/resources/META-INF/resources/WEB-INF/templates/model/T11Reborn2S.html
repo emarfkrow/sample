@@ -16,9 +16,9 @@
 <!-- T11_REBORN2の転生元モデルのグリッド定義 -->
 <script th:src="@{/model/T11Prev2.js}"></script>
 <script th:src="@{/model/T11Prev2GridColumns.js}"></script>
-    <!-- T11_REBORN2の派生先モデルのグリッド定義 -->
-    <script th:src="@{/model/T11Tasho1.js}"></script>
-    <script th:src="@{/model/T11Tasho1GridColumns.js}"></script>
+<!-- T11_REBORN2の派生先モデルのグリッド定義 -->
+<script th:src="@{/model/T11Tasho1.js}"></script>
+<script th:src="@{/model/T11Tasho1GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -36,7 +36,7 @@
           <label for="T11Reborn2.prev2Info" th:text="#{T11Reborn2.prev2Info}">PREV2_INFO</label><input type="text" id="T11Reborn2.prev2Info" name="T11Reborn2.prev2Info" maxlength="300" class="" />
         </div>
         <div id="prev2Id">
-          <label for="T11Reborn2.prev2Id" th:text="#{T11Reborn2.prev2Id}">PREV2_ID</label><input type="text" id="T11Reborn2.prev2Id" name="T11Reborn2.prev2Id" maxlength="10" class=" refer" />
+          <label for="T11Reborn2.prev2Id" th:text="#{T11Reborn2.prev2Id}">PREV2_ID</label><input type="text" id="T11Reborn2.prev2Id" name="T11Reborn2.prev2Id" maxlength="10" class="" />
           <a id="T11Reborn2.prev2Id" th:href="@{/model/T11Prev2S.html}" target="dialog" class="refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>

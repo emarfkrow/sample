@@ -50,7 +50,7 @@
       <div class="buttons">
         <button type="button" id="RefreshT10Koho1" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T10Koho1Get.xlsx(baseMei=#{T10Koho1.h2})}" id="T10Koho1Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a th:href="@{/model/T10Choice.html}" id="T10Choice" target="dialog" th:text="#{T10Choice.add}" class="reborner" tabindex="-1">T10_CHOICE</a>
+        <a th:href="@{/model/T10Choice.html}" id="T10Choice" target="dialog" th:text="#{T10Choice.add}" class="deriveTo" tabindex="-1">T10_CHOICE</a>
       </div>
       <div class="submits">
         <button id="DeleteT10Koho1" type="submit" class="delete" data-action="T10Koho1Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>

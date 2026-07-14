@@ -16,9 +16,9 @@
 <!-- T11_REBORN2の転生元モデルのグリッド定義 -->
 <script th:src="@{/model/T11Prev2.js}"></script>
 <script th:src="@{/model/T11Prev2GridColumns.js}"></script>
-    <!-- T11_REBORN2の派生先モデルのグリッド定義 -->
-    <script th:src="@{/model/T11Tasho1.js}"></script>
-    <script th:src="@{/model/T11Tasho1GridColumns.js}"></script>
+<!-- T11_REBORN2の派生先モデルのグリッド定義 -->
+<script th:src="@{/model/T11Tasho1.js}"></script>
+<script th:src="@{/model/T11Tasho1GridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -53,7 +53,7 @@
       <div class="buttons">
         <button type="button" id="RefreshT11Reborn2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T11Reborn2Get.xlsx(baseMei=#{T11Reborn2.h2})}" id="T11Reborn2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a th:href="@{/model/T11Tasho1.html}" id="T11Tasho1" target="dialog" th:text="#{T11Tasho1.add}" class="reborner" tabindex="-1">T11_TASHO1</a>
+        <a th:href="@{/model/T11Tasho1.html}" id="T11Tasho1" target="dialog" th:text="#{T11Tasho1.add}" class="deriveTo" tabindex="-1">T11_TASHO1</a>
       </div>
       <div class="submits">
         <button id="DeleteT11Reborn2" type="submit" class="delete" data-action="T11Reborn2Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>

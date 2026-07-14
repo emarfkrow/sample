@@ -62,8 +62,8 @@
       <div class="buttons">
         <button type="button" id="RefreshT06Org" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T06OrgGet.xlsx(baseMei=#{T06Org.h2})}" id="T06OrgGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a th:href="@{/model/T06Derive1.html}" id="T06Derive1" target="dialog" th:text="#{T06Derive1.add}" class="reborner" tabindex="-1">T06_DERIVE1</a>
-        <a th:href="@{/model/T06Derive2.html}" id="T06Derive2" target="dialog" th:text="#{T06Derive2.add}" class="reborner" tabindex="-1">T06_DERIVE2</a>
+        <a th:href="@{/model/T06Derive1.html}" id="T06Derive1" target="dialog" th:text="#{T06Derive1.add}" class="deriveTo" tabindex="-1">T06_DERIVE1</a>
+        <a th:href="@{/model/T06Derive2.html}" id="T06Derive2" target="dialog" th:text="#{T06Derive2.add}" class="deriveTo" tabindex="-1">T06_DERIVE2</a>
       </div>
       <div class="submits">
         <button id="DeleteT06Org" type="submit" class="delete" data-action="T06OrgDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>

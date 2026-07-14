@@ -19,9 +19,6 @@
 <!-- T07_REBORNの転生元モデルのグリッド定義 -->
 <script th:src="@{/model/T07Prev.js}"></script>
 <script th:src="@{/model/T07PrevGridColumns.js}"></script>
-  <!-- T07_PREVの子モデルのグリッド定義 -->
-  <script th:src="@{/model/T07PrevDet.js}"></script>
-  <script th:src="@{/model/T07PrevDetGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -39,7 +36,7 @@
           <label for="T07Reborn.prevInfo" th:text="#{T07Reborn.prevInfo}">PREV_INFO</label><input type="text" id="T07Reborn.prevInfo" name="T07Reborn.prevInfo" maxlength="300" class="" />
         </div>
         <div id="prevId">
-          <label for="T07Reborn.prevId" th:text="#{T07Reborn.prevId}">PREV_ID</label><input type="text" id="T07Reborn.prevId" name="T07Reborn.prevId" maxlength="10" class=" refer" />
+          <label for="T07Reborn.prevId" th:text="#{T07Reborn.prevId}">PREV_ID</label><input type="text" id="T07Reborn.prevId" name="T07Reborn.prevId" maxlength="10" class="" />
           <a id="T07Reborn.prevId" th:href="@{/model/T07PrevS.html}" target="dialog" class="refer" th:text="#{common.refer}" tabindex="-1">...</a>
         </div>
       </fieldset>
