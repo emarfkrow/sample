@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{V14FukaSagyoku.title}">V14_FUKA_SAGYOKU</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/V14FukaSagyoku.js}"></script>
+<script th:src="@{/model/V14FukaSagyokuGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{V14FukaSagyoku.h2}">h2</h2>
+    <form name="V14FukaSagyokuRegistForm" action="V14FukaSagyokuRegist.ajax" class="regist">
+      <fieldset class="view">
+        <legend th:text="#{V14FukaSagyoku.legend}">legend</legend>
+        <div id="labels">
+          <label for="V14FukaSagyoku.labels" th:text="#{V14FukaSagyoku.labels}">LABELS</label><input type="text" id="V14FukaSagyoku.labels" name="V14FukaSagyoku.labels" maxlength="8" class=" notblank" />
+        </div>
+        <div id="type">
+          <label for="V14FukaSagyoku.type" th:text="#{V14FukaSagyoku.type}">TYPE</label><input type="text" id="V14FukaSagyoku.type" name="V14FukaSagyoku.type" maxlength="4" class="" />
+        </div>
+        <div id="stack">
+          <label for="V14FukaSagyoku.stack" th:text="#{V14FukaSagyoku.stack}">STACK</label><input type="text" id="V14FukaSagyoku.stack" name="V14FukaSagyoku.stack" maxlength="10" class="" />
+        </div>
+        <div id="label">
+          <label for="V14FukaSagyoku.label" th:text="#{V14FukaSagyoku.label}">LABEL</label><input type="text" id="V14FukaSagyoku.label" name="V14FukaSagyoku.label" maxlength="10" class="" />
+        </div>
+        <div id="data">
+          <label for="V14FukaSagyoku.data" th:text="#{V14FukaSagyoku.data}">DATA</label><input type="text" id="V14FukaSagyoku.data" name="V14FukaSagyoku.data" maxlength="19" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <a th:href="@{V14FukaSagyokuGet.xlsx(baseMei=#{V14FukaSagyoku.h2})}" id="V14FukaSagyokuGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{V14FukaKadobi.title}">V14_FUKA_KADOBI</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/V14FukaKadobi.js}"></script>
+<script th:src="@{/model/V14FukaKadobiGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{V14FukaKadobi.h2}">h2</h2>
+    <form name="V14FukaKadobiRegistForm" action="V14FukaKadobiRegist.ajax" class="regist">
+      <fieldset class="view">
+        <legend th:text="#{V14FukaKadobi.legend}">legend</legend>
+        <div id="labels">
+          <label for="V14FukaKadobi.labels" th:text="#{V14FukaKadobi.labels}">LABELS</label><input type="text" id="V14FukaKadobi.labels" name="V14FukaKadobi.labels" maxlength="8" class=" notblank" />
+        </div>
+        <div id="type">
+          <label for="V14FukaKadobi.type" th:text="#{V14FukaKadobi.type}">TYPE</label><input type="text" id="V14FukaKadobi.type" name="V14FukaKadobi.type" maxlength="3" class="" />
+        </div>
+        <div id="stack">
+          <label for="V14FukaKadobi.stack" th:text="#{V14FukaKadobi.stack}">STACK</label><input type="text" id="V14FukaKadobi.stack" name="V14FukaKadobi.stack" maxlength="5" class="" />
+        </div>
+        <div id="label">
+          <label for="V14FukaKadobi.label" th:text="#{V14FukaKadobi.label}">LABEL</label><input type="text" id="V14FukaKadobi.label" name="V14FukaKadobi.label" maxlength="10" class="" />
+        </div>
+        <div id="data">
+          <label for="V14FukaKadobi.data" th:text="#{V14FukaKadobi.data}">DATA</label><input type="text" id="V14FukaKadobi.data" name="V14FukaKadobi.data" maxlength="19" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <a th:href="@{V14FukaKadobiGet.xlsx(baseMei=#{V14FukaKadobi.h2})}" id="V14FukaKadobiGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

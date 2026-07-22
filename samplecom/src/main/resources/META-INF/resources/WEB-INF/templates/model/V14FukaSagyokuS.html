@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{V14FukaSagyokuS.title}">V14_FUKA_SAGYOKU</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/V14FukaSagyoku.js}"></script>
+<script th:src="@{/model/V14FukaSagyokuGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{V14FukaSagyokuS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="V14FukaSagyokuSearchForm" action="V14FukaSagyokuSearch.ajax" class="search">
+      <fieldset>
+        <legend th:text="#{V14FukaSagyokuS.legend}">legend</legend>
+        <div id="labels">
+          <label for="V14FukaSagyoku.labels_1" th:text="#{V14FukaSagyoku.labels}">LABELS</label><input type="text" id="V14FukaSagyoku.labels_1" name="V14FukaSagyoku.labels_1" maxlength="8" class=" notblank" required />～<input type="text" id="V14FukaSagyoku.labels_2" name="V14FukaSagyoku.labels_2" maxlength="8" class=" notblank" required />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetV14FukaSagyoku" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchV14FukaSagyoku" type="submit" class="search" data-graphId="V14FukaSagyokuGraph" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="V14FukaSagyokuSRegistForm" action="V14FukaSagyokuSRegist.ajax" class="regist">
+      <h3 th:text="#{V14FukaSagyoku.h3}">h3</h3>
+      <canvas id="V14FukaSagyokuGraph"></canvas>
+    </form>
+  </div>
+</body>
+</html>

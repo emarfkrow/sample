@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{V14FukaKadobiS.title}">V14_FUKA_KADOBI</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/V14FukaKadobi.js}"></script>
+<script th:src="@{/model/V14FukaKadobiGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{V14FukaKadobiS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="V14FukaKadobiSearchForm" action="V14FukaKadobiSearch.ajax" class="search">
+      <fieldset>
+        <legend th:text="#{V14FukaKadobiS.legend}">legend</legend>
+        <div id="labels">
+          <label for="V14FukaKadobi.labels_1" th:text="#{V14FukaKadobi.labels}">LABELS</label><input type="text" id="V14FukaKadobi.labels_1" name="V14FukaKadobi.labels_1" maxlength="8" class=" notblank" required />～<input type="text" id="V14FukaKadobi.labels_2" name="V14FukaKadobi.labels_2" maxlength="8" class=" notblank" required />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetV14FukaKadobi" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchV14FukaKadobi" type="submit" class="search" data-graphId="V14FukaKadobiGraph" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="V14FukaKadobiSRegistForm" action="V14FukaKadobiSRegist.ajax" class="regist">
+      <h3 th:text="#{V14FukaKadobi.h3}">h3</h3>
+      <canvas id="V14FukaKadobiGraph"></canvas>
+    </form>
+  </div>
+</body>
+</html>
