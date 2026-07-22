@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T14Koutei.title}">T14_KOUTEI</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T14Koutei.js}"></script>
+<script th:src="@{/model/T14KouteiGridColumns.js}"></script>
+<!-- T14_KOUTEIの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T14Koutei.h2}">h2</h2>
+    <form name="T14KouteiRegistForm" action="T14KouteiRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T14Koutei.legend}">legend</legend>
+        <div id="kouteiId">
+          <label for="T14Koutei.kouteiId" th:text="#{T14Koutei.kouteiId}">KOUTEI_ID</label><input type="text" id="T14Koutei.kouteiId" name="T14Koutei.kouteiId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="kouteiMei">
+          <label for="T14Koutei.kouteiMei" th:text="#{T14Koutei.kouteiMei}">KOUTEI_MEI</label><input type="text" id="T14Koutei.kouteiMei" name="T14Koutei.kouteiMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="kaishiBi">
+          <label for="T14Koutei.kaishiBi" th:text="#{T14Koutei.kaishiBi}">KAISHI_BI</label><input type="text" id="T14Koutei.kaishiBi" name="T14Koutei.kaishiBi" maxlength="10" class=" notblank datepicker" />
+        </div>
+        <div id="shuryoBi">
+          <label for="T14Koutei.shuryoBi" th:text="#{T14Koutei.shuryoBi}">SHURYO_BI</label><input type="text" id="T14Koutei.shuryoBi" name="T14Koutei.shuryoBi" maxlength="10" class=" notblank datepicker" />
+        </div>
+        <div id="sagyokuCd">
+          <label for="T14Koutei.sagyokuCd" th:text="#{T14Koutei.sagyokuCd}">SAGYOKU_CD</label><input type="text" id="T14Koutei.sagyokuCd" name="T14Koutei.sagyokuCd" maxlength="10" class=" notblank" />
+        </div>
+        <div id="oyaKouteiId">
+          <label for="T14Koutei.oyaKouteiId" th:text="#{T14Koutei.oyaKouteiId}">OYA_KOUTEI_ID</label><input type="text" id="T14Koutei.oyaKouteiId" name="T14Koutei.oyaKouteiId" maxlength="10" class=" refer" data-referFor="T14Koutei.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Koutei.oyaKouteiId" data-destDef="T14Koutei.oyaKouteiMei:KOUTEI_MEI" /><a id="T14Koutei.oyaKouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T14Koutei.oyaKouteiMei" class=" refer" data-referFor="T14Koutei.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Koutei.oyaKouteiId" data-destDef="T14Koutei.oyaKouteiMei:KOUTEI_MEI"></span>
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T14Koutei.insertTs}" class="meta">INSERT_TS</label><span id="T14Koutei.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Koutei.insertTs" name="T14Koutei.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T14Koutei.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T14Koutei.insertUserId" class="meta"></span><input type="hidden" id="T14Koutei.insertUserId" name="T14Koutei.insertUserId" class="meta" />
+          <span id="T14Koutei.insertUserSei" class="refer meta" data-referFor="T14Koutei.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Koutei.insertUserId" data-destDef="T14Koutei.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T14Koutei.updateTs}" class="meta">UPDATE_TS</label><span id="T14Koutei.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Koutei.updateTs" name="T14Koutei.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T14Koutei.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T14Koutei.updateUserId" class="meta"></span><input type="hidden" id="T14Koutei.updateUserId" name="T14Koutei.updateUserId" class="meta" />
+          <span id="T14Koutei.updateUserSei" class="refer meta" data-referFor="T14Koutei.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Koutei.updateUserId" data-destDef="T14Koutei.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT14Koutei" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T14KouteiGet.xlsx(baseMei=#{T14Koutei.h2})}" id="T14KouteiGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT14Koutei" type="submit" class="delete" data-action="T14KouteiDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT14Koutei" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T14KouteiS.title}">T14_KOUTEI</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T14Koutei.js}"></script>
+<script th:src="@{/model/T14KouteiGridColumns.js}"></script>
+<!-- T14_KOUTEIの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T14KouteiS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T14KouteiSearchForm" action="T14KouteiSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T14KouteiS.legend}">legend</legend>
+        <div id="kouteiId">
+          <label for="T14Koutei.kouteiId" th:text="#{T14Koutei.kouteiId}">KOUTEI_ID</label><input type="text" id="T14Koutei.kouteiId" name="T14Koutei.kouteiId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="kouteiMei">
+          <label for="T14Koutei.kouteiMei" th:text="#{T14Koutei.kouteiMei}">KOUTEI_MEI</label><input type="text" id="T14Koutei.kouteiMei" name="T14Koutei.kouteiMei" maxlength="60" class="" />
+        </div>
+        <div id="kaishiBi">
+          <label for="T14Koutei.kaishiBi_1" th:text="#{T14Koutei.kaishiBi}">KAISHI_BI</label><input type="text" id="T14Koutei.kaishiBi_1" name="T14Koutei.kaishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="T14Koutei.kaishiBi_2" name="T14Koutei.kaishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="shuryoBi">
+          <label for="T14Koutei.shuryoBi_1" th:text="#{T14Koutei.shuryoBi}">SHURYO_BI</label><input type="text" id="T14Koutei.shuryoBi_1" name="T14Koutei.shuryoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="T14Koutei.shuryoBi_2" name="T14Koutei.shuryoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="sagyokuCd">
+          <label for="T14Koutei.sagyokuCd" th:text="#{T14Koutei.sagyokuCd}">SAGYOKU_CD</label><input type="text" id="T14Koutei.sagyokuCd" name="T14Koutei.sagyokuCd" maxlength="10" class="" />
+        </div>
+        <div id="oyaKouteiId">
+          <label for="T14Koutei.oyaKouteiId" th:text="#{T14Koutei.oyaKouteiId}">OYA_KOUTEI_ID</label><input type="text" id="T14Koutei.oyaKouteiId" name="T14Koutei.oyaKouteiId" maxlength="10" class=" refer" data-referFor="T14Koutei.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Koutei.oyaKouteiId" data-destDef="T14Koutei.oyaKouteiMei:KOUTEI_MEI" /><a id="T14Koutei.oyaKouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T14Koutei.oyaKouteiMei" class=" refer" data-referFor="T14Koutei.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Koutei.oyaKouteiId" data-destDef="T14Koutei.oyaKouteiMei:KOUTEI_MEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT14Koutei" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/T14Koutei.html(anew)}" target="dialog" id="T14Koutei" class="anew" th:text="#{T14Koutei.add}" tabindex="-1">T14_KOUTEI</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT14Koutei" type="submit" class="search" data-gridId="T14KouteiGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T14KouteiSRegistForm" action="T14KouteiSRegist.ajax" class="regist">
+      <h3 th:text="#{T14Koutei.h3}">h3</h3>
+      <div id="T14KouteiGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/T14Koutei.html}"></div>
+      <div id="T14KouteiPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT14KouteiS" th:text="#{common.reset}" onClick="Base.listReset('T14Koutei');">reset</button>
+        <a th:href="@{T14KouteiSearch.xlsx(baseMei=#{T14KouteiS.h2})}" id="T14KouteiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="T14KouteiGrid.oyaKouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class="refer" th:text="#{T14KouteiS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteT14KouteiS" data-action="T14KouteiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT14KouteiS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

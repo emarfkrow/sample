@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.entity.T03Trans;
+import com.example.entity.T09Koho1;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.OptLockError;
@@ -13,13 +13,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 変遷一覧申請
+ * 候補１一覧削除
  *
  * @author emarfkrow
  */
-public class T03TransSApplyAction extends BaseAction {
+public class T09Koho1SDeleteAction extends BaseAction {
 
-    /** 変遷一覧申請処理 */
+    /** 候補１一覧削除処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
 
@@ -28,7 +28,7 @@ public class T03TransSApplyAction extends BaseAction {
         int count = 0;
 
         @SuppressWarnings("unchecked")
-        List<Map<String, Object>> data = (List<Map<String, Object>>) form.get("T03TransGrid");
+        List<Map<String, Object>> data = (List<Map<String, Object>>) form.get("T09Koho1Grid");
         if (data != null) {
             for (Map<String, Object> row : data) {
 
@@ -36,20 +36,14 @@ public class T03TransSApplyAction extends BaseAction {
                     continue;
                 }
 
-                T03Trans e = FormValidator.toBean(T03Trans.class.getName(), row);
-
                 // 主キーが不足していたらエラー
-                Object transId = e.getTransId();
-                if (transId == null) {
-                    throw new OptLockError("error.cant.apply", "変遷");
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("KOHO1_ID"))) {
+                    throw new OptLockError("error.cant.delete", "候補１");
                 }
 
-                if (e.getStatusKb() != null && !e.getStatusKb().equals("")) {
-                    throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("common.selectedRow"), Messages.get("common.notapply"));
-                }
-                e.setStatusKb(0);
-                if (e.update(now, execId) != 1) {
-                    throw new OptLockError("error.cant.apply", "変遷");
+                T09Koho1 e = FormValidator.toBean(T09Koho1.class.getName(), row);
+                if (e.delete() != 1) {
+                    throw new OptLockError("error.cant.delete", "候補１");
                 }
                 ++count;
             }
@@ -60,7 +54,7 @@ public class T03TransSApplyAction extends BaseAction {
             return map;
         }
 
-        map.put("INFO", Messages.get("info.apply"));
+        map.put("INFO", Messages.get("info.delete"));
         return map;
     }
 

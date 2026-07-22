@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T10Grp2.title}">T10_GRP2</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T10Grp2.js}"></script>
+<script th:src="@{/model/T10Grp2GridColumns.js}"></script>
+<!-- T10_GRP2の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T10_GRP2の集約先モデルのグリッド定義 -->
+<script th:src="@{/model/T10Sum.js}"></script>
+<script th:src="@{/model/T10SumGridColumns.js}"></script>
+  <!-- T10_SUMの集約元モデルのグリッド定義 -->
+  <script th:src="@{/model/T10Grp1.js}"></script>
+  <script th:src="@{/model/T10Grp1GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T10Grp2.h2}">h2</h2>
+    <form name="T10Grp2RegistForm" action="T10Grp2Regist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T10Grp2.legend}">legend</legend>
+        <div id="grp2Id">
+          <label for="T10Grp2.grp2Id" th:text="#{T10Grp2.grp2Id}">GRP2_ID</label><input type="text" id="T10Grp2.grp2Id" name="T10Grp2.grp2Id" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="sumId">
+          <label th:text="#{T10Grp2.sumId}">SUM_ID</label><span id="T10Grp2.sumId" class="summary"></span><input type="text" id="T10Grp2.sumId" name="T10Grp2.sumId" style="display: none;" class="summary" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T10Grp2.insertTs}" class="meta">INSERT_TS</label><span id="T10Grp2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T10Grp2.insertTs" name="T10Grp2.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T10Grp2.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T10Grp2.insertUserId" class="meta"></span><input type="hidden" id="T10Grp2.insertUserId" name="T10Grp2.insertUserId" class="meta" />
+          <span id="T10Grp2.insertUserSei" class="refer meta" data-referFor="T10Grp2.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T10Grp2.insertUserId" data-destDef="T10Grp2.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T10Grp2.updateTs}" class="meta">UPDATE_TS</label><span id="T10Grp2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T10Grp2.updateTs" name="T10Grp2.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T10Grp2.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T10Grp2.updateUserId" class="meta"></span><input type="hidden" id="T10Grp2.updateUserId" name="T10Grp2.updateUserId" class="meta" />
+          <span id="T10Grp2.updateUserSei" class="refer meta" data-referFor="T10Grp2.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T10Grp2.updateUserId" data-destDef="T10Grp2.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT10Grp2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T10Grp2Get.xlsx(baseMei=#{T10Grp2.h2})}" id="T10Grp2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT10Grp2" type="submit" class="delete" data-action="T10Grp2Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT10Grp2" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

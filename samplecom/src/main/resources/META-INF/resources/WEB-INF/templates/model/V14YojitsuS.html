@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{V14YojitsuS.title}">V14_YOJITSU</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/V14Yojitsu.js}"></script>
+<script th:src="@{/model/V14YojitsuGridColumns.js}"></script>
+<!-- V14_YOJITSUの参照モデルのグリッド定義 -->
+<script th:src="@{/model/T14Koutei.js}"></script>
+<script th:src="@{/model/T14KouteiGridColumns.js}"></script>
+  <!-- T14_KOUTEIの参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{V14YojitsuS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="V14YojitsuSearchForm" action="V14YojitsuSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{V14YojitsuS.legend}">legend</legend>
+        <div id="kouteiId">
+          <label for="V14Yojitsu.kouteiId" th:text="#{V14Yojitsu.kouteiId}">KOUTEI_ID</label><input type="text" id="V14Yojitsu.kouteiId" name="V14Yojitsu.kouteiId" maxlength="10" class=" primaryKey refer" data-referFor="V14Yojitsu.kouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:V14Yojitsu.kouteiId" data-destDef="V14Yojitsu.kouteiMei:KOUTEI_MEI" /><a id="V14Yojitsu.kouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="V14Yojitsu.kouteiMei" class=" primaryKey refer" data-referFor="V14Yojitsu.kouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:V14Yojitsu.kouteiId" data-destDef="V14Yojitsu.kouteiMei:KOUTEI_MEI"></span>
+        </div>
+        <div id="kouteiTx">
+          <label for="V14Yojitsu.kouteiTx" th:text="#{V14Yojitsu.kouteiTx}">KOUTEI_TX</label><input type="text" id="V14Yojitsu.kouteiTx" name="V14Yojitsu.kouteiTx" maxlength="60" class="" />
+        </div>
+        <div id="kaishiBi">
+          <label for="V14Yojitsu.kaishiBi_1" th:text="#{V14Yojitsu.kaishiBi}">KAISHI_BI</label><input type="text" id="V14Yojitsu.kaishiBi_1" name="V14Yojitsu.kaishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="V14Yojitsu.kaishiBi_2" name="V14Yojitsu.kaishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="shuryoBi">
+          <label for="V14Yojitsu.shuryoBi_1" th:text="#{V14Yojitsu.shuryoBi}">SHURYO_BI</label><input type="text" id="V14Yojitsu.shuryoBi_1" name="V14Yojitsu.shuryoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="V14Yojitsu.shuryoBi_2" name="V14Yojitsu.shuryoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="sagyokuCd">
+          <label for="V14Yojitsu.sagyokuCd" th:text="#{V14Yojitsu.sagyokuCd}">SAGYOKU_CD</label><input type="text" id="V14Yojitsu.sagyokuCd" name="V14Yojitsu.sagyokuCd" maxlength="10" class="" />
+        </div>
+        <div id="oyaKouteiId">
+          <label for="V14Yojitsu.oyaKouteiId" th:text="#{V14Yojitsu.oyaKouteiId}">OYA_KOUTEI_ID</label><input type="text" id="V14Yojitsu.oyaKouteiId" name="V14Yojitsu.oyaKouteiId" maxlength="10" class=" refer" data-referFor="V14Yojitsu.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:V14Yojitsu.oyaKouteiId" data-destDef="V14Yojitsu.oyaKouteiMei:KOUTEI_MEI" /><a id="V14Yojitsu.oyaKouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="V14Yojitsu.oyaKouteiMei" class=" refer" data-referFor="V14Yojitsu.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:V14Yojitsu.oyaKouteiId" data-destDef="V14Yojitsu.oyaKouteiMei:KOUTEI_MEI"></span>
+        </div>
+        <div id="jisshiBi">
+          <label for="V14Yojitsu.jisshiBi_1" th:text="#{V14Yojitsu.jisshiBi}">JISSHI_BI</label><input type="text" id="V14Yojitsu.jisshiBi_1" name="V14Yojitsu.jisshiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="V14Yojitsu.jisshiBi_2" name="V14Yojitsu.jisshiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="kanryoBi">
+          <label for="V14Yojitsu.kanryoBi_1" th:text="#{V14Yojitsu.kanryoBi}">KANRYO_BI</label><input type="text" id="V14Yojitsu.kanryoBi_1" name="V14Yojitsu.kanryoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="V14Yojitsu.kanryoBi_2" name="V14Yojitsu.kanryoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetV14Yojitsu" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchV14Yojitsu" type="submit" class="search" data-gridId="V14YojitsuGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="V14YojitsuSRegistForm" action="V14YojitsuSRegist.ajax" class="regist">
+      <h3 th:text="#{V14Yojitsu.h3}">h3</h3>
+      <div id="V14YojitsuGrid" data-selectionMode="checkbox" data-frozenColumn="-1" data-editable="false" th:data-href="@{/model/V14Yojitsu.html}"></div>
+      <div id="V14YojitsuPager"></div>
+      <div class="buttons">
+        <a th:href="@{V14YojitsuSearch.xlsx(baseMei=#{V14YojitsuS.h2})}" id="V14YojitsuSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

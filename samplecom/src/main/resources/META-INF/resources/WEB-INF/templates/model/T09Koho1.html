@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T09Koho1.title}">T09_KOHO1</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T09Koho1.js}"></script>
+<script th:src="@{/model/T09Koho1GridColumns.js}"></script>
+<!-- T09_KOHO1の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T09_KOHO1の派生先モデルのグリッド定義 -->
+<script th:src="@{/model/T09Choice.js}"></script>
+<script th:src="@{/model/T09ChoiceGridColumns.js}"></script>
+  <!-- T09_CHOICEの派生元モデルのグリッド定義 -->
+  <script th:src="@{/model/T09Koho2.js}"></script>
+  <script th:src="@{/model/T09Koho2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T09Koho1.h2}">h2</h2>
+    <form name="T09Koho1RegistForm" action="T09Koho1Regist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T09Koho1.legend}">legend</legend>
+        <div id="koho1Id">
+          <label for="T09Koho1.koho1Id" th:text="#{T09Koho1.koho1Id}">KOHO1_ID</label><input type="text" id="T09Koho1.koho1Id" name="T09Koho1.koho1Id" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koho1Info">
+          <label for="T09Koho1.koho1Info" th:text="#{T09Koho1.koho1Info}">KOHO1_INFO</label><input type="text" id="T09Koho1.koho1Info" name="T09Koho1.koho1Info" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T09Koho1.insertTs}" class="meta">INSERT_TS</label><span id="T09Koho1.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T09Koho1.insertTs" name="T09Koho1.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T09Koho1.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T09Koho1.insertUserId" class="meta"></span><input type="hidden" id="T09Koho1.insertUserId" name="T09Koho1.insertUserId" class="meta" />
+          <span id="T09Koho1.insertUserSei" class="refer meta" data-referFor="T09Koho1.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T09Koho1.insertUserId" data-destDef="T09Koho1.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T09Koho1.updateTs}" class="meta">UPDATE_TS</label><span id="T09Koho1.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T09Koho1.updateTs" name="T09Koho1.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T09Koho1.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T09Koho1.updateUserId" class="meta"></span><input type="hidden" id="T09Koho1.updateUserId" name="T09Koho1.updateUserId" class="meta" />
+          <span id="T09Koho1.updateUserSei" class="refer meta" data-referFor="T09Koho1.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T09Koho1.updateUserId" data-destDef="T09Koho1.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT09Koho1" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T09Koho1Get.xlsx(baseMei=#{T09Koho1.h2})}" id="T09Koho1Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{/model/T09Choice.html}" id="T09Choice" target="dialog" th:text="#{T09Choice.add}" class="deriveTo" tabindex="-1">T09_CHOICE</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT09Koho1" type="submit" class="delete" data-action="T09Koho1Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT09Koho1" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

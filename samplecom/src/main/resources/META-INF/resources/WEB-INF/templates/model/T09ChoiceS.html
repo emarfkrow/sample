@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T09ChoiceS.title}">T09_CHOICE</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T09Choice.js}"></script>
+<script th:src="@{/model/T09ChoiceGridColumns.js}"></script>
+<!-- T09_CHOICEの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T09_CHOICEの派生元モデルのグリッド定義 -->
+<script th:src="@{/model/T09Koho1.js}"></script>
+<script th:src="@{/model/T09Koho1GridColumns.js}"></script>
+    <!-- T09_CHOICEの派生元モデルのグリッド定義 -->
+    <script th:src="@{/model/T09Koho2.js}"></script>
+    <script th:src="@{/model/T09Koho2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T09ChoiceS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T09ChoiceSearchForm" action="T09ChoiceSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T09ChoiceS.legend}">legend</legend>
+        <div id="choiceId">
+          <label for="T09Choice.choiceId" th:text="#{T09Choice.choiceId}">CHOICE_ID</label><input type="text" id="T09Choice.choiceId" name="T09Choice.choiceId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="koho1Id">
+          <label for="T09Choice.koho1Id" th:text="#{T09Choice.koho1Id}">KOHO1_ID</label><input type="text" id="T09Choice.koho1Id" name="T09Choice.koho1Id" maxlength="10" class=" derivee" />
+          <a id="T09Choice.koho1Id" th:href="@{/model/T09Koho1S.html}" target="dialog" class="refer" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="koho1Info">
+          <label for="T09Choice.koho1Info" th:text="#{T09Choice.koho1Info}">KOHO1_INFO</label><input type="text" id="T09Choice.koho1Info" name="T09Choice.koho1Info" maxlength="300" class="" />
+        </div>
+        <div id="koho2Id">
+          <label for="T09Choice.koho2Id" th:text="#{T09Choice.koho2Id}">KOHO2_ID</label><input type="text" id="T09Choice.koho2Id" name="T09Choice.koho2Id" maxlength="10" class=" derivee" />
+          <a id="T09Choice.koho2Id" th:href="@{/model/T09Koho2S.html}" target="dialog" class="refer" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="koho2Info">
+          <label for="T09Choice.koho2Info" th:text="#{T09Choice.koho2Info}">KOHO2_INFO</label><input type="text" id="T09Choice.koho2Info" name="T09Choice.koho2Info" maxlength="300" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT09Choice" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/T09Choice.html(anew)}" target="dialog" id="T09Choice" class="anew derive" th:text="#{T09Choice.add}" tabindex="-1">T09_CHOICE</a>
+          <label for="T09Choice.deriveeKoho1Id" th:text="#{T09Choice.deriveeKoho1Id}">KOHO1_ID</label><input type="text" id="T09Choice.deriveeKoho1Id" name="T09Choice.deriveeKoho1Id" maxlength="10" class="" />
+          <a id="T09Choice.deriveeKoho1Id" th:href="@{/model/T09Koho1S.html?action=T09Koho1Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+          <label for="T09Choice.deriveeKoho2Id" th:text="#{T09Choice.deriveeKoho2Id}">KOHO2_ID</label><input type="text" id="T09Choice.deriveeKoho2Id" name="T09Choice.deriveeKoho2Id" maxlength="10" class="" />
+          <a id="T09Choice.deriveeKoho2Id" th:href="@{/model/T09Koho2S.html?action=T09Koho2Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT09Choice" type="submit" class="search" data-gridId="T09ChoiceGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T09ChoiceSRegistForm" action="T09ChoiceSRegist.ajax" class="regist">
+      <h3 th:text="#{T09Choice.h3}">h3</h3>
+      <div id="T09ChoiceGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/T09Choice.html}"></div>
+      <div id="T09ChoicePager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT09ChoiceS" th:text="#{common.reset}" onClick="Base.listReset('T09Choice');">reset</button>
+        <a th:href="@{T09ChoiceSearch.xlsx(baseMei=#{T09ChoiceS.h2})}" id="T09ChoiceSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="T09ChoiceGrid.koho1Id" th:href="@{/model/T09Koho1S.html}" target="dialog" class="refer" th:text="#{T09Koho1S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T09ChoiceGrid.koho2Id" th:href="@{/model/T09Koho2S.html}" target="dialog" class="refer" th:text="#{T09Koho2S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteT09ChoiceS" data-action="T09ChoiceSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT09ChoiceS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

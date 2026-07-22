@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T09Koho2S.title}">T09_KOHO2</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T09Koho2.js}"></script>
+<script th:src="@{/model/T09Koho2GridColumns.js}"></script>
+<!-- T09_KOHO2の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T09_KOHO2の派生先モデルのグリッド定義 -->
+<script th:src="@{/model/T09Choice.js}"></script>
+<script th:src="@{/model/T09ChoiceGridColumns.js}"></script>
+  <!-- T09_CHOICEの派生元モデルのグリッド定義 -->
+  <script th:src="@{/model/T09Koho1.js}"></script>
+  <script th:src="@{/model/T09Koho1GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T09Koho2S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T09Koho2SearchForm" action="T09Koho2Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T09Koho2S.legend}">legend</legend>
+        <div id="koho2Id">
+          <label for="T09Koho2.koho2Id" th:text="#{T09Koho2.koho2Id}">KOHO2_ID</label><input type="text" id="T09Koho2.koho2Id" name="T09Koho2.koho2Id" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="koho2Info">
+          <label for="T09Koho2.koho2Info" th:text="#{T09Koho2.koho2Info}">KOHO2_INFO</label><input type="text" id="T09Koho2.koho2Info" name="T09Koho2.koho2Info" maxlength="300" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT09Koho2" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/T09Koho2.html(anew)}" target="dialog" id="T09Koho2" class="anew" th:text="#{T09Koho2.add}" tabindex="-1">T09_KOHO2</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT09Koho2" type="submit" class="search" data-gridId="T09Koho2Grid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T09Koho2SRegistForm" action="T09Koho2SRegist.ajax" class="regist">
+      <h3 th:text="#{T09Koho2.h3}">h3</h3>
+      <div id="T09Koho2Grid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/T09Koho2.html}"></div>
+      <div id="T09Koho2Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT09Koho2S" th:text="#{common.reset}" onClick="Base.listReset('T09Koho2');">reset</button>
+        <a th:href="@{T09Koho2Search.xlsx(baseMei=#{T09Koho2S.h2})}" id="T09Koho2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteT09Koho2S" data-action="T09Koho2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT09Koho2S" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

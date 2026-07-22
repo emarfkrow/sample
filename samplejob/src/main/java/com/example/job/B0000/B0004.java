@@ -40,7 +40,7 @@ public class B0004 extends BaseJob {
 
         T02Foster.truncate();
 
-        for (int i = 0; i < 10001; i++) {
+        for (int i = 0; i < 10000; i++) {
             T02Foster e = new T02Foster();
             e.setFosterInfo(jobId);
             e.insert(now, jobId);

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T14Jisseki.title}">T14_JISSEKI</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T14Jisseki.js}"></script>
+<script th:src="@{/model/T14JissekiGridColumns.js}"></script>
+<!-- T14_JISSEKIの参照モデルのグリッド定義 -->
+<script th:src="@{/model/T14Koutei.js}"></script>
+<script th:src="@{/model/T14KouteiGridColumns.js}"></script>
+  <!-- T14_KOUTEIの参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T14Jisseki.h2}">h2</h2>
+    <form name="T14JissekiRegistForm" action="T14JissekiRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T14Jisseki.legend}">legend</legend>
+        <div id="kouteiId">
+          <label for="T14Jisseki.kouteiId" th:text="#{T14Jisseki.kouteiId}">KOUTEI_ID</label><input type="text" id="T14Jisseki.kouteiId" name="T14Jisseki.kouteiId" maxlength="10" class=" primaryKey numbering refer notblank" data-referFor="T14Jisseki.kouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Jisseki.kouteiId" data-destDef="T14Jisseki.kouteiMei:KOUTEI_MEI" /><a id="T14Jisseki.kouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T14Jisseki.kouteiMei" class=" primaryKey numbering refer" data-referFor="T14Jisseki.kouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Jisseki.kouteiId" data-destDef="T14Jisseki.kouteiMei:KOUTEI_MEI"></span>
+        </div>
+        <div id="jissekiBn">
+          <label for="T14Jisseki.jissekiBn" th:text="#{T14Jisseki.jissekiBn}">JISSEKI_BN</label><input type="text" id="T14Jisseki.jissekiBn" name="T14Jisseki.jissekiBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="jisshiBi">
+          <label for="T14Jisseki.jisshiBi" th:text="#{T14Jisseki.jisshiBi}">JISSHI_BI</label><input type="text" id="T14Jisseki.jisshiBi" name="T14Jisseki.jisshiBi" maxlength="10" class=" notblank datepicker" />
+        </div>
+        <div id="kanryoBi">
+          <label for="T14Jisseki.kanryoBi" th:text="#{T14Jisseki.kanryoBi}">KANRYO_BI</label><input type="text" id="T14Jisseki.kanryoBi" name="T14Jisseki.kanryoBi" maxlength="10" class=" notblank datepicker" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T14Jisseki.insertTs}" class="meta">INSERT_TS</label><span id="T14Jisseki.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Jisseki.insertTs" name="T14Jisseki.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T14Jisseki.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T14Jisseki.insertUserId" class="meta"></span><input type="hidden" id="T14Jisseki.insertUserId" name="T14Jisseki.insertUserId" class="meta" />
+          <span id="T14Jisseki.insertUserSei" class="refer meta" data-referFor="T14Jisseki.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Jisseki.insertUserId" data-destDef="T14Jisseki.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T14Jisseki.updateTs}" class="meta">UPDATE_TS</label><span id="T14Jisseki.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Jisseki.updateTs" name="T14Jisseki.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T14Jisseki.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T14Jisseki.updateUserId" class="meta"></span><input type="hidden" id="T14Jisseki.updateUserId" name="T14Jisseki.updateUserId" class="meta" />
+          <span id="T14Jisseki.updateUserSei" class="refer meta" data-referFor="T14Jisseki.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Jisseki.updateUserId" data-destDef="T14Jisseki.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT14Jisseki" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T14JissekiGet.xlsx(baseMei=#{T14Jisseki.h2})}" id="T14JissekiGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT14Jisseki" type="submit" class="delete" data-action="T14JissekiDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT14Jisseki" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

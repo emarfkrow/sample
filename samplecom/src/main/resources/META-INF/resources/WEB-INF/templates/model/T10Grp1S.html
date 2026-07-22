@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T10Grp1S.title}">T10_GRP1</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T10Grp1.js}"></script>
+<script th:src="@{/model/T10Grp1GridColumns.js}"></script>
+<!-- T10_GRP1の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T10_GRP1の集約先モデルのグリッド定義 -->
+<script th:src="@{/model/T10Sum.js}"></script>
+<script th:src="@{/model/T10SumGridColumns.js}"></script>
+  <!-- T10_SUMの集約元モデルのグリッド定義 -->
+  <script th:src="@{/model/T10Grp2.js}"></script>
+  <script th:src="@{/model/T10Grp2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T10Grp1S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T10Grp1SearchForm" action="T10Grp1Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T10Grp1S.legend}">legend</legend>
+        <div id="grp1Id">
+          <label for="T10Grp1.grp1Id" th:text="#{T10Grp1.grp1Id}">GRP1_ID</label><input type="text" id="T10Grp1.grp1Id" name="T10Grp1.grp1Id" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="sumId">
+          <label for="T10Grp1.sumId" th:text="#{T10Grp1.sumId}">SUM_ID</label><input type="text" id="T10Grp1.sumId" name="T10Grp1.sumId" maxlength="10" class="" />
+          <a id="T10Grp1.sumId" th:href="@{/model/T10SumS.html}" target="dialog" class="refer" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT10Grp1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/T10Grp1.html(anew)}" target="dialog" id="T10Grp1" class="anew" th:text="#{T10Grp1.add}" tabindex="-1">T10_GRP1</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT10Grp1" type="submit" class="search" data-gridId="T10Grp1Grid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T10Grp1SRegistForm" action="T10Grp1SRegist.ajax" class="regist">
+      <h3 th:text="#{T10Grp1.h3}">h3</h3>
+      <div id="T10Grp1Grid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/T10Grp1.html}"></div>
+      <div id="T10Grp1Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT10Grp1S" th:text="#{common.reset}" onClick="Base.listReset('T10Grp1');">reset</button>
+        <a th:href="@{T10Grp1Search.xlsx(baseMei=#{T10Grp1S.h2})}" id="T10Grp1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{/model/T10Sum.html}" id="T10Sum" target="dialog" th:text="#{T10Sum.sum}" class="summary" tabindex="-1">T10_SUM</a>
+        <a id="T10Grp1Grid.sumId" th:href="@{/model/T10SumS.html}" target="dialog" class="refer" th:text="#{T10SumS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteT10Grp1S" data-action="T10Grp1SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT10Grp1S" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T10Sum.title}">T10_SUM</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T10Sum.js}"></script>
+<script th:src="@{/model/T10SumGridColumns.js}"></script>
+<!-- T10_SUMの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T10_SUMの集約元モデルのグリッド定義 -->
+<script th:src="@{/model/T10Grp1.js}"></script>
+<script th:src="@{/model/T10Grp1GridColumns.js}"></script>
+    <!-- T10_SUMの集約元モデルのグリッド定義 -->
+    <script th:src="@{/model/T10Grp2.js}"></script>
+    <script th:src="@{/model/T10Grp2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T10Sum.h2}">h2</h2>
+    <form name="T10SumRegistForm" action="T10SumRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T10Sum.legend}">legend</legend>
+        <div id="sumId">
+          <label for="T10Sum.sumId" th:text="#{T10Sum.sumId}">SUM_ID</label><input type="text" id="T10Sum.sumId" name="T10Sum.sumId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="sumInfo">
+          <label for="T10Sum.sumInfo" th:text="#{T10Sum.sumInfo}">SUM_INFO</label><input type="text" id="T10Sum.sumInfo" name="T10Sum.sumInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T10Sum.insertTs}" class="meta">INSERT_TS</label><span id="T10Sum.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T10Sum.insertTs" name="T10Sum.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T10Sum.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T10Sum.insertUserId" class="meta"></span><input type="hidden" id="T10Sum.insertUserId" name="T10Sum.insertUserId" class="meta" />
+          <span id="T10Sum.insertUserSei" class="refer meta" data-referFor="T10Sum.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T10Sum.insertUserId" data-destDef="T10Sum.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T10Sum.updateTs}" class="meta">UPDATE_TS</label><span id="T10Sum.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T10Sum.updateTs" name="T10Sum.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T10Sum.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T10Sum.updateUserId" class="meta"></span><input type="hidden" id="T10Sum.updateUserId" name="T10Sum.updateUserId" class="meta" />
+          <span id="T10Sum.updateUserSei" class="refer meta" data-referFor="T10Sum.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T10Sum.updateUserId" data-destDef="T10Sum.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT10Sum" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T10SumGet.xlsx(baseMei=#{T10Sum.h2})}" id="T10SumGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <div class="summary T10Grp1s">
+          <label>GRP1_ID: </label>
+          <span id="T10Grp1.grp1Id"></span>
+          <input type="hidden" id="T10Grp1.grp1Id" name="T10Grp1.grp1Id" />
+        </div>
+        <div class="summary T10Grp2s">
+          <label>GRP2_ID: </label>
+          <span id="T10Grp2.grp2Id"></span>
+          <input type="hidden" id="T10Grp2.grp2Id" name="T10Grp2.grp2Id" />
+        </div>
+      </div>
+      <div class="submits">
+        <button id="DeleteT10Sum" type="submit" class="delete" data-action="T10SumDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT10Sum" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
