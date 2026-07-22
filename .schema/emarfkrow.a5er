@@ -150,7 +150,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2650
+Left=2700
 Top=650
 Field="起源ID","ORG_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="起源枝番","ORG_BN","*BN",,1,"","",$FFFFFFFF,""
@@ -159,7 +159,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210611
-Position="MAIN",2650,650
+Position="MAIN",2700,650
 ZOrder=113
 
 [Relation]
@@ -190,7 +190,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3550
+Left=3600
 Top=600
 Field="派生１ID","DERIVE1_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="派生１枝番","DERIVE1_BN","*BN",,1,"","",$FFFFFFFF,""
@@ -199,7 +199,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210558
-Position="MAIN",3550,600
+Position="MAIN",3600,600
 ZOrder=115
 
 [Entity]
@@ -209,7 +209,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3550
+Left=3600
 Top=800
 Field="派生２ID","DERIVE2_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="派生２枝番","DERIVE2_BN","*BN",,1,"","",$FFFFFFFF,""
@@ -218,7 +218,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210601
-Position="MAIN",3550,800
+Position="MAIN",3600,800
 ZOrder=116
 
 [Entity]
@@ -268,7 +268,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2650
+Left=2700
 Top=1050
 Field="前世ID","PREV_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="前世枝番","PREV_BN","*BN",,1,"","",$FFFFFFFF,""
@@ -277,7 +277,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210647
-Position="MAIN",2650,1050
+Position="MAIN",2700,1050
 ZOrder=36
 
 [Relation]
@@ -308,7 +308,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3150
+Left=3200
 Top=1050
 Field="転生ID","REBORN_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="転生枝番","REBORN_BN","*BN",,1,"","",$FFFFFFFF,""
@@ -317,7 +317,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210654
-Position="MAIN",3150,1050
+Position="MAIN",3200,1050
 ZOrder=38
 
 [Relation]
@@ -395,14 +395,14 @@ Fields1=IDREF_ID
 Fields2=IDREF_ID
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",2,2042,7181,3187,R,R,""
+Position="MAIN",2,2042,7804,3187,R,R,""
 Dependence=0
 Caption=
 PName=
 ModifiedDateTime=20220318213840
 LineMode=2
 Bar1=204
-Bar2=718
+Bar2=780
 Bar3=319
 TermPos1=R
 TermPos2=R
@@ -476,7 +476,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=600
+Left=650
 Top=1950
 Field="参照ID","IDREF_ID","*ID",,0,"","",$000028FF,""
 Field="ID参照名","IDREF_MEI","*MEI","NOT NULL",,"","",$000028FF,""
@@ -484,7 +484,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260124215027
-Position="MAIN",600,1950
+Position="MAIN",650,1950
 ZOrder=-32
 
 [Entity]
@@ -494,7 +494,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=800
+Left=1000
 Top=900
 Field="親ID","OYA_ID","*ID",,0,"","",$000028FF,""
 Field="子枝番","KO_BN","*BN",,1,"","",$000028FF,""
@@ -504,7 +504,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210225
-Position="MAIN",800,900
+Position="MAIN",1000,900
 ZOrder=-36
 
 [Entity]
@@ -514,7 +514,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=650
+Left=700
 Top=700
 Field="親ID","OYA_ID","*ID",,0,"","",$000028FF,""
 Field="子枝番","KO_BN","*BN",,1,"","",$000028FF,""
@@ -523,7 +523,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210200
-Position="MAIN",650,700
+Position="MAIN",700,700
 ZOrder=-38
 
 [Entity]
@@ -533,7 +533,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1100
+Left=1150
 Top=1950
 Field="再帰ID","SAIKI_ID","*ID",,0,"","",$000028FF,""
 Field="再帰名","SAIKI_MEI","*MEI","NOT NULL",,"","",$000028FF,""
@@ -547,7 +547,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260204094352
-Position="MAIN",1100,1950
+Position="MAIN",1150,1950
 ZOrder=-40
 
 [Entity]
@@ -557,7 +557,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=600
+Left=650
 Top=500
 Field="親ID","OYA_ID","*ID",,0,"","",$000028FF,""
 Field="親情報","OYA_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -565,7 +565,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210147
-Position="MAIN",600,500
+Position="MAIN",650,500
 ZOrder=-42
 
 [Entity]
@@ -575,7 +575,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2600
+Left=2650
 Top=900
 Field="前世ID","PREV_ID","*ID",,0,"","",$000028FF,""
 Field="前世情報","PREV_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -583,7 +583,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210643
-Position="MAIN",2600,900
+Position="MAIN",2650,900
 ZOrder=-43
 
 [Entity]
@@ -593,7 +593,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1650
+Left=1700
 Top=1950
 Field="参照CD","CDREF_CD","*CD",,0,"","",$000028FF,""
 Field="CD参照名","CDREF_MEI","*MEI","NOT NULL",,"","",$000028FF,""
@@ -601,7 +601,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260124215035
-Position="MAIN",1650,1950
+Position="MAIN",1700,1950
 ZOrder=0
 
 [Relation]
@@ -634,13 +634,13 @@ Fields1=IDREF_ID
 Fields2=EX_IDREF_ID
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",2,1915,7181,6758,R,R,""
+Position="MAIN",2,1915,6457,6758,R,R,""
 Dependence=0
 Caption=
 PName=
 LineMode=2
 Bar1=192
-Bar2=718
+Bar2=646
 Bar3=676
 TermPos1=R
 TermPos2=R
@@ -849,7 +849,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1650
+Left=1700
 Top=2100
 Field="参照NO","NOREF_NO","*NO",,0,"","",$000028FF,""
 Field="NO参照名","NOREF_MEI","*MEI","NOT NULL",,"","",$000028FF,""
@@ -857,7 +857,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260124215038
-Position="MAIN",1650,2100
+Position="MAIN",1700,2100
 ZOrder=16
 
 [Relation]
@@ -934,7 +934,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=900
 Field="転生ID","REBORN_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="前世情報","PREV_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -943,7 +943,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210651
-Position="MAIN",3100,900
+Position="MAIN",3150,900
 ZOrder=32
 
 [Relation]
@@ -1017,13 +1017,13 @@ Fields1=OYA_ID,KO_BN
 Fields2=OYA_ID,KO_BN
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",3,707,4424,5208,R,R,""
+Position="MAIN",3,5124,4424,5208,R,R,""
 Dependence=1
 Caption=
 PName=
 ModifiedDateTime=20250128091159
 LineMode=3
-Bar1=71
+Bar1=512
 Bar2=442
 Bar3=521
 TermPos1=R
@@ -1037,7 +1037,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1100
+Left=1150
 Top=700
 Field="親ID","OYA_ID","*ID","NOT NULL",0,"","",$000028FF,""
 Field="子枝番","KO_BN","*BN",,1,"","",$000028FF,""
@@ -1046,7 +1046,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210208
-Position="MAIN",1100,700
+Position="MAIN",1150,700
 ZOrder=44
 
 [Entity]
@@ -1056,7 +1056,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1600
+Left=1650
 Top=700
 Field="親ID","OYA_ID","*ID",,0,"","",$000028FF,""
 Field="子枝番","KO_BN","*BN",,1,"","",$000028FF,""
@@ -1065,7 +1065,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210213
-Position="MAIN",1600,700
+Position="MAIN",1650,700
 ZOrder=45
 
 [Entity]
@@ -1075,7 +1075,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1250
+Left=1400
 Top=2600
 Field="参照１ID","REF1_ID","*ID",,0,"","",$000028FF,""
 Field="参照２ID","REF2_ID","*ID",,1,"","",$000028FF,""
@@ -1086,7 +1086,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210555
-Position="MAIN",1250,2600
+Position="MAIN",1400,2600
 ZOrder=50
 
 [Entity]
@@ -1096,7 +1096,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=600
+Left=650
 Top=2350
 Field="参照１ID","REF1_ID","*ID",,0,"","",$000028FF,""
 Field="参照１名","REF1_MEI","*MEI","NOT NULL",,"","",$000028FF,""
@@ -1107,7 +1107,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260124215048
-Position="MAIN",600,2350
+Position="MAIN",650,2350
 ZOrder=51
 
 [Entity]
@@ -1117,7 +1117,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1400
+Left=1650
 Top=2350
 Field="参照３ID","REF3_ID","*ID",,0,"","",$000028FF,""
 Field="参照３名","REF3_MEI","*MEI","NOT NULL",,"","",$000028FF,""
@@ -1128,7 +1128,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260124215054
-Position="MAIN",1400,2350
+Position="MAIN",1650,2350
 ZOrder=52
 
 [Relation]
@@ -1154,44 +1154,44 @@ TermPos2=R
 ZOrder=54
 
 [Entity]
-PName=T09_GRP1
+PName=T10_GRP1
 LName=集団１
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=1800
 Field="集団１ID","GRP1_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="集約ID","SUM_ID","*ID",,,"","",$006BA135,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260123210743
-Position="MAIN",3100,1800
+ModifiedDateTime=20260722085606
+Position="MAIN",3150,1800
 ZOrder=56
 
 [Entity]
-PName=T09_SUM
+PName=T10_SUM
 LName=集約
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3550
+Left=3600
 Top=1800
 Field="集約ID","SUM_ID","*ID",,0,"","",$000028FF,""
 Field="集約情報","SUM_INFO","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FAEBB4
-ModifiedDateTime=20260711130007
-Position="MAIN",3550,1800
+ModifiedDateTime=20260722085622
+Position="MAIN",3600,1800
 ZOrder=55
 
 [Relation]
-Entity1=T09_SUM
-Entity2=T09_GRP1
+Entity1=T10_SUM
+Entity2=T10_GRP1
 RelationType1=1
 RelationType2=3
 Fields1=SUM_ID
@@ -1217,7 +1217,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2600
+Left=2650
 Top=500
 Field="起源ID","ORG_ID","*ID",,0,"","",$000028FF,""
 Field="起源情報","ORG_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1225,7 +1225,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210609
-Position="MAIN",2600,500
+Position="MAIN",2650,500
 ZOrder=59
 
 [Entity]
@@ -1235,7 +1235,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=500
 Field="派生１ID","DERIVE1_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="起源情報","ORG_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1244,7 +1244,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210556
-Position="MAIN",3100,500
+Position="MAIN",3150,500
 ZOrder=60
 
 [Entity]
@@ -1254,7 +1254,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=700
 Field="派生２ID","DERIVE2_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="起源情報","ORG_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1263,7 +1263,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210600
-Position="MAIN",3100,700
+Position="MAIN",3150,700
 ZOrder=61
 
 [Relation]
@@ -1297,14 +1297,14 @@ Fields1=ORG_ID
 Fields2=ORG_ID
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",0,2743,7807,8263,R,R,""
+Position="MAIN",0,2743,7532,8263,R,R,""
 Dependence=0
 Caption=
 PName=
 ModifiedDateTime=20250804144858
 LineMode=0
 Bar1=274
-Bar2=781
+Bar2=753
 Bar3=826
 TermPos1=R
 TermPos2=R
@@ -1317,7 +1317,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=2100
 Field="他生１ID","TASHO1_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="転生２ID","REBORN2_ID","*ID",,,"","",$006BA135,""
@@ -1325,7 +1325,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260124083452
-Position="MAIN",3100,2100
+Position="MAIN",3150,2100
 ZOrder=64
 
 [Entity]
@@ -1335,7 +1335,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=2300
 Field="他生２ID","TASHO2_ID","*ID",,0,"","",$000028FF,""
 Field="候補３ID","KOHO3_ID","*ID",,,"","",$006BA135,""
@@ -1343,7 +1343,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260124083606
-Position="MAIN",3100,2300
+Position="MAIN",3150,2300
 ZOrder=65
 
 [Entity]
@@ -1353,7 +1353,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2600
+Left=2650
 Top=2100
 Field="転生２ID","REBORN2_ID","*ID",,0,"","",$000028FF,""
 Field="前世２情報","PREV2_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1362,7 +1362,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FAEBB4
 ModifiedDateTime=20260711130000
-Position="MAIN",2600,2100
+Position="MAIN",2650,2100
 ZOrder=68
 
 [Relation]
@@ -1393,7 +1393,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2400
+Left=2450
 Top=2500
 Field="変換元ID","SRC_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="変換元情報","SRC_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1401,7 +1401,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260124083637
-Position="MAIN",2400,2500
+Position="MAIN",2450,2500
 ZOrder=72
 
 [Entity]
@@ -1411,7 +1411,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3250
+Left=3300
 Top=2500
 Field="変換先ID","DEST_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="変換先情報","DEST_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1419,7 +1419,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260124083650
-Position="MAIN",3250,2500
+Position="MAIN",3300,2500
 ZOrder=73
 
 [View]
@@ -1430,10 +1430,10 @@ Query=SELECT\n    \qT13_DEST\q AS table_name                    -- テーブル�
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",2850,2500
+Position="MAIN",2900,2500
 ZOrder=74
 Page=MAIN
-Left=2850
+Left=2900
 Top=2500
 
 [Relation]
@@ -1467,13 +1467,13 @@ Fields1=OYA_ID,KO_BN
 Fields2=OYA_ID,KO_BN
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",3,8980,4424,5208,R,R,""
+Position="MAIN",3,5179,4424,5208,R,R,""
 Dependence=0
 Caption=
 PName=
 ModifiedDateTime=20250212081812
 LineMode=3
-Bar1=898
+Bar1=518
 Bar2=442
 Bar3=521
 TermPos1=R
@@ -1487,7 +1487,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1250
+Left=1400
 Top=1200
 Field="兄弟ID","BRO_ID","*ID",,0,"","",$000028FF,""
 Field="里子情報","FOSTER_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1495,7 +1495,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210544
-Position="MAIN",1250,1200
+Position="MAIN",1400,1200
 ZOrder=81
 
 [Entity]
@@ -1505,7 +1505,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=600
+Left=650
 Top=1200
 Field="兄弟ID","BRO_ID","*ID",,0,"","",$000028FF,""
 Field="長兄情報","ELDEST_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1513,7 +1513,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210543
-Position="MAIN",600,1200
+Position="MAIN",650,1200
 ZOrder=91
 
 [Entity]
@@ -1523,7 +1523,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=700
+Left=800
 Top=1300
 Field="兄弟ID","BRO_ID","*ID",,0,"","",$000028FF,""
 Field="弟情報","YOUNGER_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1531,7 +1531,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210546
-Position="MAIN",700,1300
+Position="MAIN",800,1300
 ZOrder=92
 
 [Entity]
@@ -1541,7 +1541,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=800
+Left=950
 Top=1400
 Field="兄弟ID","BRO_ID","*ID",,0,"","",$000028FF,""
 Field="末弟情報","YOUNGEST_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1549,7 +1549,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210547
-Position="MAIN",800,1400
+Position="MAIN",950,1400
 ZOrder=93
 
 [Entity]
@@ -1559,7 +1559,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=600
+Left=650
 Top=1600
 Field="変遷ID","TRANS_ID","*ID",,0,"","",$000028FF,""
 Field="変遷情報","TRANS_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -1568,7 +1568,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260601084145
-Position="MAIN",600,1600
+Position="MAIN",650,1600
 ZOrder=96
 
 [Entity]
@@ -1578,7 +1578,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1100
+Left=1150
 Top=1600
 Field="変遷ID","TRANS_ID","*ID",,0,"","",$000028FF,""
 Field="変遷枝番","TRANS_BN","*BN",,1,"","",$000028FF,""
@@ -1589,7 +1589,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260605073104
-Position="MAIN",1100,1600
+Position="MAIN",1150,1600
 ZOrder=98
 
 [Relation]
@@ -1644,14 +1644,14 @@ Fields1=BRO_ID
 Fields2=BRO_ID
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",4,2436,8705,7085,R,R,""
+Position="MAIN",4,2436,9377,7085,R,R,""
 Dependence=0
 Caption=
 PName=
 ModifiedDateTime=20250215120130
 LineMode=4
 Bar1=244
-Bar2=870
+Bar2=938
 Bar3=708
 TermPos1=R
 TermPos2=R
@@ -1666,15 +1666,15 @@ Fields1=OYA_ID,KO_BN
 Fields2=OYA_ID,KO_BN
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",0,2192,3435,2192,R,R,""
+Position="MAIN",0,2927,3435,2927,R,R,""
 Dependence=0
 Caption=
 PName=
 ModifiedDateTime=20250429105028
 LineMode=0
-Bar1=219
+Bar1=293
 Bar2=344
-Bar3=219
+Bar3=293
 TermPos1=R
 TermPos2=R
 ZOrder=120
@@ -1688,15 +1688,15 @@ Fields1=OYA_ID,KO_BN
 Fields2=OYA_ID,KO_BN
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",0,544,2990,2485,R,R,""
+Position="MAIN",0,2927,3865,2927,R,R,""
 Dependence=0
 Caption=
 PName=
 ModifiedDateTime=20250429105038
 LineMode=0
-Bar1=54
-Bar2=299
-Bar3=248
+Bar1=293
+Bar2=386
+Bar3=293
 TermPos1=R
 TermPos2=R
 ZOrder=121
@@ -1730,7 +1730,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=600
+Left=650
 Top=2100
 Field="参照ID","IDREF_ID","*ID",,0,"","",$000028FF,""
 Field="参照連番","IDBN_BN","*BN",,1,"","",$000028FF,""
@@ -1739,7 +1739,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260203210118
-Position="MAIN",600,2100
+Position="MAIN",650,2100
 ZOrder=123
 
 [Relation]
@@ -1772,14 +1772,14 @@ Fields1=IDREF_ID,IDBN_BN
 Fields2=IDREF_ID,EX_IDBN_BN
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",0,1637,4281,8080,R,R,""
+Position="MAIN",0,1637,3574,8080,R,R,""
 Dependence=0
 Caption=
 PName=
 ModifiedDateTime=20250531181321
 LineMode=0
 Bar1=164
-Bar2=428
+Bar2=357
 Bar3=808
 TermPos1=R
 TermPos2=R
@@ -1849,13 +1849,13 @@ TermPos2=R
 ZOrder=128
 
 [Entity]
-PName=T10_CHOICE
+PName=T09_CHOICE
 LName=選抜
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=1550
 Field="選抜ID","CHOICE_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="候補１ID","KOHO1_ID","*ID",,,"","",$006BA135,""
@@ -1865,8 +1865,8 @@ Field="候補２情報","KOHO2_INFO","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260123210835
-Position="MAIN",3100,1550
+ModifiedDateTime=20260722085539
+Position="MAIN",3150,1550
 ZOrder=129
 
 [Relation]
@@ -1897,7 +1897,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1000
+Left=1150
 Top=2350
 Field="参照２ID","REF2_ID","*ID",,0,"","",$000028FF,""
 Field="参照２名","REF2_MEI","*MEI","NOT NULL",,"","",$000028FF,""
@@ -1908,7 +1908,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260124215052
-Position="MAIN",1000,2350
+Position="MAIN",1150,2350
 ZOrder=133
 
 [Entity]
@@ -1918,7 +1918,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=700
+Left=900
 Top=2600
 Field="参照１ID","REF1_ID","*ID",,0,"","",$000028FF,""
 Field="参照２ID","REF2_ID","*ID",,1,"","",$000028FF,""
@@ -1927,7 +1927,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260124185247
-Position="MAIN",700,2600
+Position="MAIN",900,2600
 ZOrder=136
 
 [Relation]
@@ -1960,11 +1960,11 @@ Fields1=REF1_ID
 Fields2=REF1_ID
 Cardinarity1=
 Cardinarity2=
-Position="MAIN",0,1213,4210,1180,R,R,""
+Position="MAIN",1,1213,4210,1180,R,R,""
 Dependence=1
 Caption=
 PName=
-LineMode=0
+LineMode=1
 Bar1=121
 Bar2=421
 Bar3=118
@@ -1979,7 +1979,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=1300
 Field="共生ID","KYOSEI_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="寄生１ID","KISEI1_ID","*ID","NOT NULL",,"","",$00FF4100,""
@@ -1990,7 +1990,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210711
-Position="MAIN",3100,1300
+Position="MAIN",3150,1300
 ZOrder=139
 
 [Entity]
@@ -2000,7 +2000,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3550
+Left=3600
 Top=2300
 Field="転生３ID","REBORN3_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="他生２ID","TASHO2_ID","*ID","NOT NULL",,"","",$00FF4100,""
@@ -2008,7 +2008,7 @@ EffectMode=None
 Color=$000000
 BkColor=$D1D1FF
 ModifiedDateTime=20260711130708
-Position="MAIN",3550,2300
+Position="MAIN",3600,2300
 ZOrder=143
 
 [Relation]
@@ -2033,26 +2033,26 @@ TermPos2=R
 ZOrder=145
 
 [Entity]
-PName=T09_GRP2
+PName=T10_GRP2
 LName=集団２
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=3100
+Left=3150
 Top=1900
 Field="集団２ID","GRP2_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="集約ID","SUM_ID","*ID",,,"","",$006BA135,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260123210746
-Position="MAIN",3100,1900
+ModifiedDateTime=20260722085613
+Position="MAIN",3150,1900
 ZOrder=148
 
 [Relation]
-Entity1=T09_SUM
-Entity2=T09_GRP2
+Entity1=T10_SUM
+Entity2=T10_GRP2
 RelationType1=1
 RelationType2=3
 Fields1=SUM_ID
@@ -2078,7 +2078,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2600
+Left=2650
 Top=2300
 Field="候補３ID","KOHO3_ID","*ID",,0,"","",$000028FF,""
 Field="候補３情報","KOHO3_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -2086,7 +2086,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FAEBB4
 ModifiedDateTime=20260711125951
-Position="MAIN",2600,2300
+Position="MAIN",2650,2300
 ZOrder=151
 
 [Relation]
@@ -2117,7 +2117,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2150
+Left=2200
 Top=2100
 Field="前世２ID","PREV2_ID","*ID",,0,"","",$000028FF,""
 Field="前世２情報","PREV2_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -2125,7 +2125,7 @@ EffectMode=None
 Color=$000000
 BkColor=$D1D1FF
 ModifiedDateTime=20260711130701
-Position="MAIN",2150,2100
+Position="MAIN",2200,2100
 ZOrder=153
 
 [Relation]
@@ -2157,10 +2157,10 @@ Query=SELECT\n    a.table_name                                -- テーブル名
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",2850,2650
+Position="MAIN",2900,2650
 ZOrder=157
 Page=MAIN
-Left=2850
+Left=2900
 Top=2650
 
 [Entity]
@@ -2170,7 +2170,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2650
+Left=2700
 Top=1300
 Field="寄生１ID","KISEI1_ID","*ID",,0,"","",$000028FF,""
 Field="寄生１情報","KISEI1_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -2178,7 +2178,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210704
-Position="MAIN",2650,1300
+Position="MAIN",2700,1300
 ZOrder=158
 
 [Comment]
@@ -2205,7 +2205,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2650
+Left=2700
 Top=1400
 Field="寄生２ID","KISEI2_ID","*ID",,0,"","",$000028FF,""
 Field="寄生２情報","KISEI2_INFO","*TX",,,"","",$FFFFFFFF,""
@@ -2213,7 +2213,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260123210707
-Position="MAIN",2650,1400
+Position="MAIN",2700,1400
 ZOrder=162
 
 [Relation]
@@ -2259,44 +2259,44 @@ TermPos2=R
 ZOrder=165
 
 [Entity]
-PName=T10_KOHO1
+PName=T09_KOHO1
 LName=候補１
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2650
+Left=2700
 Top=1550
 Field="候補１ID","KOHO1_ID","*ID",,0,"","",$000028FF,""
 Field="候補１情報","KOHO1_INFO","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260123210824
-Position="MAIN",2650,1550
+ModifiedDateTime=20260722085543
+Position="MAIN",2700,1550
 ZOrder=166
 
 [Entity]
-PName=T10_KOHO2
+PName=T09_KOHO2
 LName=候補２
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=2650
+Left=2700
 Top=1650
 Field="候補２ID","KOHO2_ID","*ID",,0,"","",$000028FF,""
 Field="候補２情報","KOHO2_INFO","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260123210826
-Position="MAIN",2650,1650
+ModifiedDateTime=20260722085552
+Position="MAIN",2700,1650
 ZOrder=167
 
 [Relation]
-Entity1=T10_KOHO1
-Entity2=T10_CHOICE
+Entity1=T09_KOHO1
+Entity2=T09_CHOICE
 RelationType1=1
 RelationType2=3
 Fields1=KOHO1_ID
@@ -2316,8 +2316,8 @@ TermPos2=R
 ZOrder=168
 
 [Relation]
-Entity1=T10_KOHO2
-Entity2=T10_CHOICE
+Entity1=T09_KOHO2
+Entity2=T09_CHOICE
 RelationType1=1
 RelationType2=3
 Fields1=KOHO2_ID
@@ -2385,7 +2385,7 @@ Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
-Left=1600
+Left=1650
 Top=1600
 Field="フローID","FLOW_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="テーブル名称","TABLE_NM","*NM",,,"","",$FFFFFFFF,""
@@ -2398,39 +2398,40 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260605073116
-Position="MAIN",1600,1600
+Position="MAIN",1650,1600
 ZOrder=172
 
 [Entity]
-PName=T00_KOUTEI
+PName=T14_KOUTEI
 LName=工程
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
-Top=1950
+Top=1900
 Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="工程名","KOUTEI_MEI","*MEI","NOT NULL",,"","",$FFFFFFFF,""
 Field="開始日","KAISHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
 Field="終了日","SHURYO_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
+Field="作業区CD","SAGYOKU_CD","*CD","NOT NULL",,"","",$FFFFFFFF,""
 Field="親工程ID","OYA_KOUTEI_ID","*ID",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260709074142
-Position="MAIN",50,1950
+ModifiedDateTime=20260722081220
+Position="MAIN",50,1900
 ZOrder=173
 
 [Entity]
-PName=T00_JISSEKI
+PName=T14_JISSEKI
 LName=実績
 Comment=
 TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
-Top=2200
+Top=2150
 Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="実績連番","JISSEKI_BN","*BN",,1,"","",$FFFFFFFF,""
 Field="実施日","JISSHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
@@ -2438,31 +2439,31 @@ Field="完了日","KANRYO_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260709080953
-Position="MAIN",50,2200
+ModifiedDateTime=20260722081226
+Position="MAIN",50,2150
 ZOrder=174
 
 [View]
-PName=V00_YOJITSU
+PName=V14_YOJITSU
 LName=予実
 Comment=
-Query=SELECT\n      k.koutei_id\n    , k.koutei_mei      AS koutei_tx\n    , k.kaishi_bi\n    , k.shuryo_bi\n    , k.oya_koutei_id\n    , MIN (j.jisshi_bi) AS jisshi_bi\n    , MAX (j.kanryo_bi) AS kanryo_bi \nFROM\n    t00_koutei k \n    LEFT OUTER JOIN t00_jisseki j \n        ON j.koutei_id = k.koutei_id \nGROUP BY\n    k.koutei_id\n    , k.koutei_mei\n    , k.kaishi_bi\n    , k.shuryo_bi\n    , k.oya_koutei_id\n
+Query=SELECT\n      k.koutei_id\n    , k.koutei_mei      AS koutei_tx\n    , k.kaishi_bi\n    , k.shuryo_bi\n    , k.sagyoku_cd\n    , k.oya_koutei_id\n    , MIN (j.jisshi_bi) AS jisshi_bi\n    , MAX (j.kanryo_bi) AS kanryo_bi \nFROM\n    t14_koutei k \n    LEFT OUTER JOIN t14_jisseki j \n        ON j.koutei_id = k.koutei_id \nGROUP BY\n    k.koutei_id\n    , k.koutei_mei\n    , k.kaishi_bi\n    , k.shuryo_bi\n    , k.sagyoku_cd\n    , k.oya_koutei_id\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",50,2400
+Position="MAIN",50,2350
 ZOrder=175
 Page=MAIN
 Left=50
-Top=2400
+Top=2350
 
 [Shape]
 Page=Main
-Left=3061
-Top=415
+Left=3135
+Top=413
 ZOrder=-44
-Width=478
-Height=593
+Width=451
+Height=595
 BrushColor=$F0FBFF
 ShapeType=Rectangle
 Text=外部キー参照抑止
@@ -2473,8 +2474,8 @@ TextAlign=$0
 
 [Shape]
 Page=Main
-Left=2574
-Top=2011
+Left=2631
+Top=2004
 ZOrder=-46
 Width=466
 Height=205
@@ -2488,8 +2489,8 @@ TextAlign=$0
 
 [Shape]
 Page=Main
-Left=3522
-Top=2201
+Left=3579
+Top=2195
 ZOrder=-47
 Width=466
 Height=205
@@ -2503,8 +2504,8 @@ TextAlign=$0
 
 [Shape]
 Page=Main
-Left=3065
-Top=1217
+Left=3112
+Top=1215
 ZOrder=-48
 Width=506
 Height=256
@@ -2515,3 +2516,31 @@ FontName=Tahoma
 FontSize=9
 FontColor=$0000FF
 TextAlign=$0
+
+[View]
+PName=V14_FUKA_SAGYOKU
+LName=作業区負荷
+Comment=
+Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qline\q                          AS type\n    , b.sagyoku_cd                    AS stack\n    , b.sagyoku_cd                    AS label\n    , NVL (k.koutei_count, 0)         AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            ( \n                SELECT\n                      b.kado_bi \n                FROM\n                    msy_kadobi b \n                WHERE\n                    b.busho_id = 0\n            ) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_bi\n            , k.sagyoku_cd\n            , COUNT (k.koutei_id) AS koutei_count \n        FROM\n            msy_kadobi b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_bi <= b.kado_bi \n                AND b.kado_bi <= k.shuryo_bi \n                AND b.kadobi_f = 1 \n        WHERE\n            b.busho_id = 0 \n        GROUP BY\n            b.kado_bi\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_bi = b.kado_bi \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_bi\n    , b.sagyoku_cd\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",50,2650
+ZOrder=176
+Page=MAIN
+Left=50
+Top=2650
+
+[View]
+PName=V14_FUKA_KADOBI
+LName=稼働日負荷
+Comment=
+Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qbar\q                           AS type\n    , \qstack\q                         AS stack\n    , b.sagyoku_cd                    AS label\n    , NVL (k.koutei_count, 0)         AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            ( \n                SELECT\n                      b.kado_bi \n                FROM\n                    msy_kadobi b \n                WHERE\n                    b.busho_id = 0\n            ) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_bi\n            , k.sagyoku_cd\n            , COUNT (k.koutei_id) AS koutei_count \n        FROM\n            msy_kadobi b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_bi <= b.kado_bi \n                AND b.kado_bi <= k.shuryo_bi \n                AND b.kadobi_f = 1 \n        WHERE\n            b.busho_id = 0 \n        GROUP BY\n            b.kado_bi\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_bi = b.kado_bi \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_bi\n    , b.sagyoku_cd\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",300,2700
+ZOrder=177
+Page=MAIN
+Left=300
+Top=2700
