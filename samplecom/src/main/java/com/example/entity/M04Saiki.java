@@ -297,11 +297,30 @@ public class M04Saiki implements IEntity {
         }
     }
 
+    /** ID連番参照 */
+    @jp.co.golorp.emarf.validation.ReferMei
+    private String exIdbnNo;
+
+    /** @return ID連番参照 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_IDBN_NO", index = 13)
+    public String getExIdbnNo() {
+        return this.exIdbnNo;
+    }
+
+    /** @param o ID連番参照 */
+    public void setExIdbnNo(final Object o) {
+        if (o != null) {
+            this.exIdbnNo = o.toString();
+        } else {
+            this.exIdbnNo = null;
+        }
+    }
+
     /** OYA_SAIKI_ID */
     private Integer oyaSaikiId;
 
     /** @return OYA_SAIKI_ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_ID", index = 13)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_ID", index = 14)
     public Integer getOyaSaikiId() {
         return this.oyaSaikiId;
     }
@@ -320,7 +339,7 @@ public class M04Saiki implements IEntity {
     private String oyaSaikiMei;
 
     /** @return 親再帰ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_MEI", index = 14)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_MEI", index = 15)
     public String getOyaSaikiMei() {
         return this.oyaSaikiMei;
     }
@@ -341,7 +360,7 @@ public class M04Saiki implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return INSERT_TS */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 15)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 16)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -368,7 +387,7 @@ public class M04Saiki implements IEntity {
     private String insertUserId;
 
     /** @return INSERT_USER_ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 16)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 17)
     public String getInsertUserId() {
         return this.insertUserId;
     }
@@ -387,7 +406,7 @@ public class M04Saiki implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 17)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 18)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -409,7 +428,7 @@ public class M04Saiki implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return UPDATE_TS */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 18)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 19)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -438,7 +457,7 @@ public class M04Saiki implements IEntity {
     private String updateUserId;
 
     /** @return UPDATE_USER_ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 19)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 20)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
@@ -457,7 +476,7 @@ public class M04Saiki implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 20)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 21)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
