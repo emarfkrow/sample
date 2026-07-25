@@ -81,8 +81,7 @@ FooterLeft=
 FooterCenter=
 FooterRight=
 ShowPageoutRelation=1
-RDBMSType=6
-RDBMSTypeName=MySQL
+RDBMSTypeName=Oracle Database
 GenerateDropTableStatement=1
 DropTableIfExists=0
 BackupRestoreTempTable=0
@@ -2431,7 +2430,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
-Top=2150
+Top=2400
 Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="実績連番","JISSEKI_BN","*BN",,1,"","",$FFFFFFFF,""
 Field="実施日","JISSHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
@@ -2440,22 +2439,22 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260722081226
-Position="MAIN",50,2150
+Position="MAIN",50,2400
 ZOrder=174
 
 [View]
 PName=V14_YOJITSU
 LName=予実
 Comment=
-Query=SELECT\n      k.koutei_id\n    , k.koutei_mei      AS koutei_tx\n    , k.kaishi_bi\n    , k.shuryo_bi\n    , k.sagyoku_cd\n    , k.oya_koutei_id\n    , MIN (j.jisshi_bi) AS jisshi_bi\n    , MAX (j.kanryo_bi) AS kanryo_bi \nFROM\n    t14_koutei k \n    LEFT OUTER JOIN t14_jisseki j \n        ON j.koutei_id = k.koutei_id \nGROUP BY\n    k.koutei_id\n    , k.koutei_mei\n    , k.kaishi_bi\n    , k.shuryo_bi\n    , k.sagyoku_cd\n    , k.oya_koutei_id\n
+Query=SELECT\n      * \nFROM\n    ( \n        SELECT\n              a.koutei_id\n            , a.koutei_mei                                      AS koutei_tx\n            , a.kaishi_bi\n            , a.shuryo_bi\n            , a.sagyoku_cd\n            , a.oya_koutei_id\n            , j.jisshi_bi\n            , j.kanryo_bi\n            , b.dependencies                    --前工程\n            , SUBSTR (sys_connect_by_path(a.koutei_id, \q,\q), 2) AS koutei_path\n            , CONNECT_BY_ROOT a.koutei_id                       AS root \n        FROM\n            t14_koutei a \n            LEFT OUTER JOIN t14_jisseki j \n                ON j.koutei_id = a.koutei_id \n            LEFT OUTER JOIN ( \n                SELECT\n                      oya_koutei_id\n                    , LISTAGG (koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies \n                FROM\n                    t14_koutei \n                WHERE\n                    oya_koutei_id IS NOT NULL \n                GROUP BY\n                    oya_koutei_id\n            ) b \n                ON b.oya_koutei_id = a.koutei_id \n        START WITH\n            a.oya_koutei_id IS NULL \n        CONNECT BY\n            PRIOR a.koutei_id = a.oya_koutei_id\n    ) a \nORDER BY\n    a.koutei_path DESC\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",50,2350
+Position="MAIN",50,2600
 ZOrder=175
 Page=MAIN
 Left=50
-Top=2350
+Top=2600
 
 [Shape]
 Page=Main
@@ -2521,26 +2520,26 @@ TextAlign=$0
 PName=V14_FUKA_SAGYOKU
 LName=作業区負荷
 Comment=
-Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qline\q                          AS type\n    , b.sagyoku_cd                    AS stack\n    , b.sagyoku_cd                    AS label\n    , NVL (k.koutei_count, 0)         AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_bi\n            , k.sagyoku_cd\n            , COUNT (k.koutei_id) AS koutei_count \n        FROM\n            msy_kadobi b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_bi <= b.kado_bi \n                AND b.kado_bi <= k.shuryo_bi \n                AND b.kadobi_f = 1 \n        WHERE\n            b.busho_id = 0 \n        GROUP BY\n            b.kado_bi\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_bi = b.kado_bi \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_bi\n    , b.sagyoku_cd\n
+Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qline\q                          AS type\n    , b.sagyoku_cd                    AS stack\n    , b.sagyoku_cd                    AS label\n    , NVL (k.koutei_count, 0)         AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_bi\n            , k.sagyoku_cd\n            , COUNT (k.koutei_id) AS koutei_count \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b WHERE b.kadobi_f = 1) b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_bi <= b.kado_bi \n                AND b.kado_bi <= k.shuryo_bi \n        GROUP BY\n            b.kado_bi\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_bi = b.kado_bi \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_bi\n    , b.sagyoku_cd\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",50,2650
+Position="MAIN",300,2200
 ZOrder=176
 Page=MAIN
-Left=50
-Top=2650
+Left=300
+Top=2200
 
 [View]
 PName=V14_FUKA_KADOBI
 LName=稼働日負荷
 Comment=
-Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qbar\q                           AS type\n    , \qstack\q                         AS stack\n    , b.sagyoku_cd                    AS label\n    , NVL (k.koutei_count, 0)         AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_bi\n            , k.sagyoku_cd\n            , COUNT (k.koutei_id) AS koutei_count \n        FROM\n            msy_kadobi b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_bi <= b.kado_bi \n                AND b.kado_bi <= k.shuryo_bi \n                AND b.kadobi_f = 1 \n        WHERE\n            b.busho_id = 0 \n        GROUP BY\n            b.kado_bi\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_bi = b.kado_bi \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_bi\n    , b.sagyoku_cd\n
+Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qbar\q                           AS type\n    , \qstack\q                         AS stack\n    , b.sagyoku_cd                    AS label\n    , NVL (k.koutei_count, 0)         AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_bi\n            , k.sagyoku_cd\n            , COUNT (k.koutei_id) AS koutei_count \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b WHERE b.kadobi_f = 1) b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_bi <= b.kado_bi \n                AND b.kado_bi <= k.shuryo_bi \n        GROUP BY\n            b.kado_bi\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_bi = b.kado_bi \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_bi\n    , b.sagyoku_cd\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",300,2700
+Position="MAIN",50,2150
 ZOrder=177
 Page=MAIN
-Left=300
-Top=2700
+Left=50
+Top=2150

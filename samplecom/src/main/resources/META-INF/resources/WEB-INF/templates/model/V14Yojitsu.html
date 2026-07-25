@@ -24,20 +24,20 @@
       <fieldset class="view">
         <legend th:text="#{V14Yojitsu.legend}">legend</legend>
         <div id="kouteiId">
-          <label for="V14Yojitsu.kouteiId" th:text="#{V14Yojitsu.kouteiId}">KOUTEI_ID</label><input type="text" id="V14Yojitsu.kouteiId" name="V14Yojitsu.kouteiId" maxlength="10" class=" primaryKey refer notblank" />
+          <label for="V14Yojitsu.kouteiId" th:text="#{V14Yojitsu.kouteiId}">KOUTEI_ID</label><input type="text" id="V14Yojitsu.kouteiId" name="V14Yojitsu.kouteiId" maxlength="10" class=" primaryKey refer" />
         </div>
         <div id="kouteiTx">
           <label for="V14Yojitsu.kouteiTx" th:text="#{V14Yojitsu.kouteiTx}">KOUTEI_TX</label>
-          <textarea id="V14Yojitsu.kouteiTx" name="V14Yojitsu.kouteiTx" class=" notblank"></textarea>
+          <textarea id="V14Yojitsu.kouteiTx" name="V14Yojitsu.kouteiTx"></textarea>
         </div>
         <div id="kaishiBi">
-          <label for="V14Yojitsu.kaishiBi" th:text="#{V14Yojitsu.kaishiBi}">KAISHI_BI</label><input type="text" id="V14Yojitsu.kaishiBi" name="V14Yojitsu.kaishiBi" maxlength="10" class=" notblank datepicker" />
+          <label for="V14Yojitsu.kaishiBi" th:text="#{V14Yojitsu.kaishiBi}">KAISHI_BI</label><input type="text" id="V14Yojitsu.kaishiBi" name="V14Yojitsu.kaishiBi" maxlength="10" class=" datepicker" />
         </div>
         <div id="shuryoBi">
-          <label for="V14Yojitsu.shuryoBi" th:text="#{V14Yojitsu.shuryoBi}">SHURYO_BI</label><input type="text" id="V14Yojitsu.shuryoBi" name="V14Yojitsu.shuryoBi" maxlength="10" class=" notblank datepicker" />
+          <label for="V14Yojitsu.shuryoBi" th:text="#{V14Yojitsu.shuryoBi}">SHURYO_BI</label><input type="text" id="V14Yojitsu.shuryoBi" name="V14Yojitsu.shuryoBi" maxlength="10" class=" datepicker" />
         </div>
         <div id="sagyokuCd">
-          <label for="V14Yojitsu.sagyokuCd" th:text="#{V14Yojitsu.sagyokuCd}">SAGYOKU_CD</label><input type="text" id="V14Yojitsu.sagyokuCd" name="V14Yojitsu.sagyokuCd" maxlength="10" class=" notblank" />
+          <label for="V14Yojitsu.sagyokuCd" th:text="#{V14Yojitsu.sagyokuCd}">SAGYOKU_CD</label><input type="text" id="V14Yojitsu.sagyokuCd" name="V14Yojitsu.sagyokuCd" maxlength="10" class="" />
         </div>
         <div id="oyaKouteiId">
           <label for="V14Yojitsu.oyaKouteiId" th:text="#{V14Yojitsu.oyaKouteiId}">OYA_KOUTEI_ID</label><input type="text" id="V14Yojitsu.oyaKouteiId" name="V14Yojitsu.oyaKouteiId" maxlength="10" class=" refer" />
@@ -47,6 +47,15 @@
         </div>
         <div id="kanryoBi">
           <label for="V14Yojitsu.kanryoBi" th:text="#{V14Yojitsu.kanryoBi}">KANRYO_BI</label><input type="text" id="V14Yojitsu.kanryoBi" name="V14Yojitsu.kanryoBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="dependencies">
+          <label for="V14Yojitsu.dependencies" th:text="#{V14Yojitsu.dependencies}">DEPENDENCIES</label><input type="text" id="V14Yojitsu.dependencies" name="V14Yojitsu.dependencies" maxlength="4000" class="" />
+        </div>
+        <div id="kouteiPath">
+          <label for="V14Yojitsu.kouteiPath" th:text="#{V14Yojitsu.kouteiPath}">KOUTEI_PATH</label><input type="text" id="V14Yojitsu.kouteiPath" name="V14Yojitsu.kouteiPath" maxlength="4000" class="" />
+        </div>
+        <div id="root">
+          <label for="V14Yojitsu.root" th:text="#{V14Yojitsu.root}">ROOT</label><input type="text" id="V14Yojitsu.root" name="V14Yojitsu.root" maxlength="11" class="" />
         </div>
       </fieldset>
       <div class="buttons">
