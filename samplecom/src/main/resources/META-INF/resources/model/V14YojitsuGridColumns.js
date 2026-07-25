@@ -14,8 +14,8 @@ $(function() {
         Column.text('OYA_KOUTEI_ID', Messages['V14YojitsuGrid.oyaKouteiId'], 100, '', null),
         Column.date('JISSHI_BI', Messages['V14YojitsuGrid.jisshiBi'], 100, '', Slick.Formatters.Extends.Date),
         Column.date('KANRYO_BI', Messages['V14YojitsuGrid.kanryoBi'], 100, '', Slick.Formatters.Extends.Date),
-        Column.text('DEPENDENCIES', Messages['V14YojitsuGrid.dependencies'], 300, '', null),
         Column.text('KOUTEI_PATH', Messages['V14YojitsuGrid.kouteiPath'], 300, '', null),
-        Column.dec0('ROOT', Messages['V14YojitsuGrid.root'], 110, '', null),
+        Column.dec0('ROOT', Messages['V14YojitsuGrid.root'], 100, '', null),
+        Column.text('DEPENDENCIES', Messages['V14YojitsuGrid.dependencies'], 300, '', null),
     ];
 });
