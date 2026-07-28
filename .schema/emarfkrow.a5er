@@ -81,8 +81,7 @@ FooterLeft=
 FooterCenter=
 FooterRight=
 ShowPageoutRelation=1
-RDBMSType=6
-RDBMSTypeName=MySQL
+RDBMSTypeName=Oracle Database
 GenerateDropTableStatement=1
 DropTableIfExists=0
 BackupRestoreTempTable=0
@@ -2365,7 +2364,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
-Top=1700
+Top=1650
 Field="列Ａ","A_MEI","*MEI",,,"","",$FFFFFFFF,""
 Field="列Ｂ","B_MEI","*MEI",,,"","",$FFFFFFFF,""
 Field="列Ｃ","C_MEI","*MEI",,,"","",$FFFFFFFF,""
@@ -2375,7 +2374,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260305093518
-Position="MAIN",50,1700
+Position="MAIN",50,1650
 ZOrder=171
 
 [Entity]
@@ -2409,7 +2408,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
-Top=1900
+Top=1850
 Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="工程名","KOUTEI_MEI","*MEI","NOT NULL",,"","",$FFFFFFFF,""
 Field="開始日","KAISHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
@@ -2420,7 +2419,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260722081220
-Position="MAIN",50,1900
+Position="MAIN",50,1850
 ZOrder=173
 
 [Entity]
@@ -2431,7 +2430,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
-Top=2400
+Top=2350
 Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="実績連番","JISSEKI_BN","*BN",,1,"","",$FFFFFFFF,""
 Field="実施日","JISSHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
@@ -2440,7 +2439,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260722081226
-Position="MAIN",50,2400
+Position="MAIN",50,2350
 ZOrder=174
 
 [View]
@@ -2451,11 +2450,11 @@ Query=SELECT\n      * \nFROM\n    ( \n        SELECT\n              a.koutei_id\
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",50,2600
+Position="MAIN",50,2500
 ZOrder=175
 Page=MAIN
 Left=50
-Top=2600
+Top=2500
 
 [Shape]
 Page=Main
@@ -2525,11 +2524,11 @@ Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qline\q 
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",300,2200
+Position="MAIN",300,2150
 ZOrder=176
 Page=MAIN
 Left=300
-Top=2200
+Top=2150
 
 [View]
 PName=V14_FUKA_KADOBI
@@ -2539,8 +2538,8 @@ Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qbar\q  
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",50,2150
+Position="MAIN",50,2100
 ZOrder=177
 Page=MAIN
 Left=50
-Top=2150
+Top=2100
