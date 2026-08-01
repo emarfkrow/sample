@@ -76,12 +76,12 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetM04SaikiS" th:text="#{common.reset}" onClick="Base.listReset('M04Saiki');">reset</button>
         <a th:href="@{M04SaikiSearch.xlsx(baseMei=#{M04SaikiS.h2})}" id="M04SaikiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="M04SaikiGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="#{M04IdS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="M04SaikiGrid.cdrefCd" th:href="@{/model/M04CdS.html}" target="dialog" class="refer" th:text="#{M04CdS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="M04SaikiGrid.norefNo" th:href="@{/model/M04NoS.html}" target="dialog" class="refer" th:text="#{M04NoS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="M04SaikiGrid.exIdrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="#{M04IdS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="M04SaikiGrid.exIdbnBn" th:href="@{/model/M04IdbnS.html}" target="dialog" class="refer" th:text="#{M04IdbnS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="M04SaikiGrid.oyaSaikiId" th:href="@{/model/M04SaikiS.html}" target="dialog" class="refer" th:text="#{M04SaikiS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="M04SaikiGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer gridRefer" th:text="#{M04IdS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M04SaikiGrid.cdrefCd" th:href="@{/model/M04CdS.html}" target="dialog" class="refer gridRefer" th:text="#{M04CdS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M04SaikiGrid.norefNo" th:href="@{/model/M04NoS.html}" target="dialog" class="refer gridRefer" th:text="#{M04NoS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M04SaikiGrid.exIdrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer gridRefer" th:text="#{M04IdS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M04SaikiGrid.exIdbnBn" th:href="@{/model/M04IdbnS.html}" target="dialog" class="refer gridRefer" th:text="#{M04IdbnS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M04SaikiGrid.oyaSaikiId" th:href="@{/model/M04SaikiS.html}" target="dialog" class="refer gridRefer" th:text="#{M04SaikiS.title} + #{common.refer}" tabindex="-1">...</a>
         <button type="submit" id="DeleteM04SaikiS" data-action="M04SaikiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

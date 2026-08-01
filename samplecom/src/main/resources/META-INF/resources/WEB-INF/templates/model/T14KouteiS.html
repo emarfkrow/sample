@@ -58,7 +58,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT14KouteiS" th:text="#{common.reset}" onClick="Base.listReset('T14Koutei');">reset</button>
         <a th:href="@{T14KouteiSearch.xlsx(baseMei=#{T14KouteiS.h2})}" id="T14KouteiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="T14KouteiGrid.oyaKouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class="refer" th:text="#{T14KouteiS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T14KouteiGrid.oyaKouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class="refer gridRefer" th:text="#{T14KouteiS.title} + #{common.refer}" tabindex="-1">...</a>
         <button type="submit" id="DeleteT14KouteiS" data-action="T14KouteiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

@@ -61,8 +61,8 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT05Comp1S" th:text="#{common.reset}" onClick="Base.listReset('T05Comp1');">reset</button>
         <a th:href="@{T05Comp1Search.xlsx(baseMei=#{T05Comp1S.h2})}" id="T05Comp1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="T05Comp1Grid.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class="refer" th:text="#{M05Ref1S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="T05Comp1Grid.ref2Id" th:href="@{/model/M05Ref2S.html}" target="dialog" class="refer" th:text="#{M05Ref2S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T05Comp1Grid.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class="refer gridRefer" th:text="#{M05Ref1S.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="T05Comp1Grid.ref2Id" th:href="@{/model/M05Ref2S.html}" target="dialog" class="refer gridRefer" th:text="#{M05Ref2S.title} + #{common.refer}" tabindex="-1">...</a>
       </div>
       <div class="submits">
       </div>

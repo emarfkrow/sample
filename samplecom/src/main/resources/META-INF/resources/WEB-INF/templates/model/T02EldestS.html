@@ -33,8 +33,6 @@
       <div class="buttons">
         <button type="button" id="ResetT02Eldest" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
         <a th:href="@{/model/T02Eldest.html(anew)}" target="dialog" id="T02Eldest" class="anew" th:text="#{T02Eldest.add}" tabindex="-1">T02_ELDEST</a>
-        <a th:href="@{/model/T02Younger.html}" target="dialog" id="T02Younger" class="anew" style="display: none;" th:text="#{T02Younger.add}" tabindex="-1">T02_YOUNGER</a>
-        <a th:href="@{/model/T02Youngest.html}" target="dialog" id="T02Youngest" class="anew" style="display: none;" th:text="#{T02Youngest.add}" tabindex="-1">T02_YOUNGEST</a>
       </div>
       <div class="submits">
         <button id="SearchT02Eldest" type="submit" class="search" data-gridId="T02EldestGrid" th:text="#{common.search}">search</button>

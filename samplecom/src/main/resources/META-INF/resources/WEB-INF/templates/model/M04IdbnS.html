@@ -51,7 +51,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetM04IdbnS" th:text="#{common.reset}" onClick="Base.listReset('M04Idbn');">reset</button>
         <a th:href="@{M04IdbnSearch.xlsx(baseMei=#{M04IdbnS.h2})}" id="M04IdbnSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="M04IdbnGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer" th:text="#{M04IdS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="M04IdbnGrid.idrefId" th:href="@{/model/M04IdS.html}" target="dialog" class="refer gridRefer" th:text="#{M04IdS.title} + #{common.refer}" tabindex="-1">...</a>
         <button type="submit" id="DeleteM04IdbnS" data-action="M04IdbnSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

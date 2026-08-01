@@ -57,7 +57,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetMsyKbnValS" th:text="#{common.reset}" onClick="Base.listReset('MsyKbnVal');">reset</button>
         <a th:href="@{MsyKbnValSearch.xlsx(baseMei=#{MsyKbnValS.h2})}" id="MsyKbnValSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="MsyKbnValGrid.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class="refer" th:text="#{MsyKbnS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="MsyKbnValGrid.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class="refer gridRefer" th:text="#{MsyKbnS.title} + #{common.refer}" tabindex="-1">...</a>
         <button type="submit" id="DeleteMsyKbnValS" data-action="MsyKbnValSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

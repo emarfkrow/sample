@@ -57,7 +57,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetMsyKadobiS" th:text="#{common.reset}" onClick="Base.listReset('MsyKadobi');">reset</button>
         <a th:href="@{MsyKadobiSearch.xlsx(baseMei=#{MsyKadobiS.h2})}" id="MsyKadobiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="MsyKadobiGrid.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer" th:text="#{MhrBushoS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="MsyKadobiGrid.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer gridRefer" th:text="#{MhrBushoS.title} + #{common.refer}" tabindex="-1">...</a>
         <button type="submit" id="DeleteMsyKadobiS" data-action="MsyKadobiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

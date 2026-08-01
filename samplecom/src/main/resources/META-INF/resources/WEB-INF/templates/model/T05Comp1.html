@@ -59,9 +59,9 @@
       <h3 th:text="#{T05Comp2.h3}">h3</h3>
       <a th:href="@{/model/T05Comp2.html(anew)}" id="T05Comp2" target="dialog" th:text="#{T05Comp2.add}" class="addChild" tabindex="-1">T05_COMP2</a>
       <div id="T05Comp2Grid" data-selectionMode="link" data-addRow="true" data-frozenColumn="2" th:data-href="@{/model/T05Comp2.html}" class="childs"></div>
-        <a id="T05Comp2Grid.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class="refer" th:text="#{M05Ref1S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="T05Comp2Grid.ref2Id" th:href="@{/model/M05Ref2S.html?action=M05Ref2Correct.ajax}" target="dialog" class="refer correct" th:text="#{M05Ref2S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="T05Comp2Grid.ref3Id" th:href="@{/model/M05Ref3S.html}" target="dialog" class="refer" th:text="#{M05Ref3S.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T05Comp2Grid.ref1Id" th:href="@{/model/M05Ref1S.html}" target="dialog" class="refer gridRefer" th:text="#{M05Ref1S.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="T05Comp2Grid.ref2Id" th:href="@{/model/M05Ref2S.html?action=M05Ref2Correct.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M05Ref2S.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="T05Comp2Grid.ref3Id" th:href="@{/model/M05Ref3S.html}" target="dialog" class="refer gridRefer" th:text="#{M05Ref3S.title} + #{common.refer}" tabindex="-1">...</a>
       <div class="buttons">
         <button type="button" id="RefreshT05Comp1" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T05Comp1Get.xlsx(baseMei=#{T05Comp1.h2})}" id="T05Comp1Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>

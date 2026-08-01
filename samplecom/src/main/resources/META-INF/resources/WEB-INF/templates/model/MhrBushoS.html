@@ -55,7 +55,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetMhrBushoS" th:text="#{common.reset}" onClick="Base.listReset('MhrBusho');">reset</button>
         <a th:href="@{MhrBushoSearch.xlsx(baseMei=#{MhrBushoS.h2})}" id="MhrBushoSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="MhrBushoGrid.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer" th:text="#{MhrBushoS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="MhrBushoGrid.oyaBushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer gridRefer" th:text="#{MhrBushoS.title} + #{common.refer}" tabindex="-1">...</a>
       </div>
       <div class="submits">
         <button id="RegistMhrBushoS" type="submit" class="regist" th:text="#{common.regist}">regist</button>

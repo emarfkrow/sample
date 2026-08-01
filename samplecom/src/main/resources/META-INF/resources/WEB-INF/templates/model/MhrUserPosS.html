@@ -61,9 +61,9 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetMhrUserPosS" th:text="#{common.reset}" onClick="Base.listReset('MhrUserPos');">reset</button>
         <a th:href="@{MhrUserPosSearch.xlsx(baseMei=#{MhrUserPosS.h2})}" id="MhrUserPosSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="MhrUserPosGrid.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer" th:text="#{MhrBushoS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="MhrUserPosGrid.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class="refer" th:text="#{MhrShokuiS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="MhrUserPosGrid.userId" th:href="@{/model/MhrUserS.html}" target="dialog" class="refer" th:text="#{MhrUserS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="MhrUserPosGrid.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer gridRefer" th:text="#{MhrBushoS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="MhrUserPosGrid.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class="refer gridRefer" th:text="#{MhrShokuiS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="MhrUserPosGrid.userId" th:href="@{/model/MhrUserS.html}" target="dialog" class="refer gridRefer" th:text="#{MhrUserS.title} + #{common.refer}" tabindex="-1">...</a>
       </div>
       <div class="submits">
         <button id="RegistMhrUserPosS" type="submit" class="regist" th:text="#{common.regist}">regist</button>

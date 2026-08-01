@@ -47,7 +47,7 @@
       <h3 th:text="#{MsyKbnVal.h3}">h3</h3>
       <a th:href="@{/model/MsyKbnVal.html(anew)}" id="MsyKbnVal" target="dialog" th:text="#{MsyKbnVal.add}" class="addChild" tabindex="-1">MSY_KBN_VAL</a>
       <div id="MsyKbnValGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/MsyKbnVal.html}" class="childs"></div>
-        <a id="MsyKbnValGrid.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class="refer" th:text="#{MsyKbnS.title} + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="MsyKbnValGrid.kbnNm" th:href="@{/model/MsyKbnS.html}" target="dialog" class="refer gridRefer" th:text="#{MsyKbnS.title} + #{common.refer}" tabindex="-1">...</a>
       <div class="buttons">
         <button type="button" id="RefreshMsyKbn" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{MsyKbnGet.xlsx(baseMei=#{MsyKbn.h2})}" id="MsyKbnGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
