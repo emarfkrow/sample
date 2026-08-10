@@ -21,16 +21,16 @@ let V14YojitsuGanttTasks = {
             task.since = row.JISSHI_BI;
             task.until = row.KANRYO_BI;
 
-            task.kouteiId = row.KOUTEI_ID;
-            task.kouteiTx = row.KOUTEI_TX;
-            task.kaishiBi = row.KAISHI_BI;
-            task.shuryoBi = row.SHURYO_BI;
-            task.sagyokuCd = row.SAGYOKU_CD;
-            task.oyaKouteiId = row.OYA_KOUTEI_ID;
-            task.jisshiBi = row.JISSHI_BI;
-            task.kanryoBi = row.KANRYO_BI;
-            task.kouteiPath = row.KOUTEI_PATH;
-            task.root = row.ROOT;
+            task.kouteiId = row.koutei_id;
+            task.kouteiTx = row.koutei_tx;
+            task.kaishiBi = row.kaishi_bi;
+            task.shuryoBi = row.shuryo_bi;
+            task.sagyokuCd = row.sagyoku_cd;
+            task.oyaKouteiId = row.oya_koutei_id;
+            task.jisshiBi = row.jisshi_bi;
+            task.kanryoBi = row.kanryo_bi;
+            task.kouteiPath = row.koutei_path;
+            task.root = row.root;
 
             tasks.push(task);
         }

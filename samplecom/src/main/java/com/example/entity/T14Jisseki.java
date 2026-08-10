@@ -330,18 +330,18 @@ public class T14Jisseki implements IEntity {
      */
     public static T14Jisseki get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"KOUTEI_ID\" = :koutei_id");
-        whereList.add("\"JISSEKI_BN\" = :jisseki_bn");
+        whereList.add("`KOUTEI_ID` = :koutei_id");
+        whereList.add("`JISSEKI_BN` = :jisseki_bn");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"KOUTEI_ID\" \n";
-        sql += "    , a.\"JISSEKI_BN\" \n";
-        sql += "    , TO_CHAR (a.\"JISSHI_BI\", 'YYYY-MM-DD') AS JISSHI_BI \n";
-        sql += "    , TO_CHAR (a.\"KANRYO_BI\", 'YYYY-MM-DD') AS KANRYO_BI \n";
-        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
-        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
-        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
-        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
+        sql += "      a.`KOUTEI_ID` \n";
+        sql += "    , a.`JISSEKI_BN` \n";
+        sql += "    , a.`JISSHI_BI` AS JISSHI_BI \n";
+        sql += "    , a.`KANRYO_BI` AS KANRYO_BI \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    T14_JISSEKI a \n";
         sql += "WHERE \n";
@@ -371,14 +371,14 @@ public class T14Jisseki implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"KOUTEI_ID\" -- :koutei_id");
-        nameList.add("\"JISSEKI_BN\" -- :jisseki_bn");
-        nameList.add("\"JISSHI_BI\" -- :jisshi_bi");
-        nameList.add("\"KANRYO_BI\" -- :kanryo_bi");
-        nameList.add("\"INSERT_TS\" -- :insert_ts");
-        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
-        nameList.add("\"UPDATE_TS\" -- :update_ts");
-        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
+        nameList.add("`KOUTEI_ID` -- :koutei_id");
+        nameList.add("`JISSEKI_BN` -- :jisseki_bn");
+        nameList.add("`JISSHI_BI` -- :jisshi_bi");
+        nameList.add("`KANRYO_BI` -- :kanryo_bi");
+        nameList.add("`INSERT_TS` -- :insert_ts");
+        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
+        nameList.add("`UPDATE_TS` -- :update_ts");
+        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -387,11 +387,11 @@ public class T14Jisseki implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":koutei_id");
         valueList.add(":jisseki_bn");
-        valueList.add("TO_DATE (SUBSTR (:jisshi_bi, 0, 10), 'YYYY-MM-DD')");
-        valueList.add("TO_DATE (SUBSTR (:kanryo_bi, 0, 10), 'YYYY-MM-DD')");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":jisshi_bi");
+        valueList.add(":kanryo_bi");
+        valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":update_ts");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -401,10 +401,10 @@ public class T14Jisseki implements IEntity {
         if (this.jissekiBn != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.\"JISSEKI_BN\") IS NULL THEN 0 ELSE MAX(e.\"JISSEKI_BN\") * 1 END + 1 AS \"JISSEKI_BN\" FROM T14_JISSEKI e";
+        String sql = "SELECT CASE WHEN MAX(e.`JISSEKI_BN`) IS NULL THEN 0 ELSE MAX(e.`JISSEKI_BN`) * 1 END + 1 AS `JISSEKI_BN` FROM T14_JISSEKI e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("e.\"KOUTEI_ID\" = :koutei_id");
+        whereList.add("e.`KOUTEI_ID` = :koutei_id");
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("koutei_id", this.kouteiId);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
@@ -428,12 +428,12 @@ public class T14Jisseki implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"KOUTEI_ID\" = :koutei_id");
-        setList.add("\"JISSEKI_BN\" = :jisseki_bn");
-        setList.add("\"JISSHI_BI\" = TO_DATE (SUBSTR (:jisshi_bi, 0, 10), 'YYYY-MM-DD')");
-        setList.add("\"KANRYO_BI\" = TO_DATE (SUBSTR (:kanryo_bi, 0, 10), 'YYYY-MM-DD')");
-        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
+        setList.add("`KOUTEI_ID` = :koutei_id");
+        setList.add("`JISSEKI_BN` = :jisseki_bn");
+        setList.add("`JISSHI_BI` = :jisshi_bi");
+        setList.add("`KANRYO_BI` = :kanryo_bi");
+        setList.add("`UPDATE_TS` = :update_ts");
+        setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -480,9 +480,9 @@ public class T14Jisseki implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"KOUTEI_ID\" = :koutei_id");
-        whereList.add("\"JISSEKI_BN\" = :jisseki_bn");
-        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("`KOUTEI_ID` = :koutei_id");
+        whereList.add("`JISSEKI_BN` = :jisseki_bn");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
 }

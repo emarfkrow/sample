@@ -23,9 +23,9 @@ public class V14Yojitsu implements IEntity {
         this.setOyaKouteiId(values[5]);
         this.setJisshiBi(values[6]);
         this.setKanryoBi(values[7]);
-        this.setDependencies(values[8]);
-        this.setKouteiPath(values[9]);
-        this.setRoot(values[10]);
+        this.setKouteiPath(values[8]);
+        this.setRoot(values[9]);
+        this.setDependencies(values[10]);
     }
 
     /** @param map */
@@ -38,9 +38,9 @@ public class V14Yojitsu implements IEntity {
         this.setOyaKouteiId(IgnoreCaseLinkedMap.get(map, "OYA_KOUTEI_ID"));
         this.setJisshiBi(IgnoreCaseLinkedMap.get(map, "JISSHI_BI"));
         this.setKanryoBi(IgnoreCaseLinkedMap.get(map, "KANRYO_BI"));
-        this.setDependencies(IgnoreCaseLinkedMap.get(map, "DEPENDENCIES"));
         this.setKouteiPath(IgnoreCaseLinkedMap.get(map, "KOUTEI_PATH"));
         this.setRoot(IgnoreCaseLinkedMap.get(map, "ROOT"));
+        this.setDependencies(IgnoreCaseLinkedMap.get(map, "DEPENDENCIES"));
     }
 
     /** @return boolean */
@@ -64,9 +64,9 @@ public class V14Yojitsu implements IEntity {
         isEmpty &= this.oyaKouteiId == null || this.oyaKouteiId.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.jisshiBi == null || this.jisshiBi.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.kanryoBi == null || this.kanryoBi.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.dependencies == null || this.dependencies.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.kouteiPath == null || this.kouteiPath.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.root == null || this.root.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.dependencies == null || this.dependencies.toString().replaceAll("　| ", "").equals("");
         return isEmpty;
     }
 
@@ -248,29 +248,11 @@ public class V14Yojitsu implements IEntity {
         }
     }
 
-    /** DEPENDENCIES */
-    private String dependencies;
-
-    /** @return DEPENDENCIES */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEPENDENCIES", index = 10)
-    public String getDependencies() {
-        return this.dependencies;
-    }
-
-    /** @param o DEPENDENCIES */
-    public void setDependencies(final Object o) {
-        if (o != null) {
-            this.dependencies = o.toString();
-        } else {
-            this.dependencies = null;
-        }
-    }
-
     /** KOUTEI_PATH */
     private String kouteiPath;
 
     /** @return KOUTEI_PATH */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KOUTEI_PATH", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KOUTEI_PATH", index = 10)
     public String getKouteiPath() {
         return this.kouteiPath;
     }
@@ -285,44 +267,62 @@ public class V14Yojitsu implements IEntity {
     }
 
     /** ROOT */
-    private java.math.BigDecimal root;
+    private Integer root;
 
     /** @return ROOT */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "ROOT", index = 12)
-    public java.math.BigDecimal getRoot() {
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "ROOT", index = 11)
+    public Integer getRoot() {
         return this.root;
     }
 
     /** @param o ROOT */
     public void setRoot(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.root = new java.math.BigDecimal(o.toString());
+            this.root = Integer.valueOf(o.toString());
         } else {
             this.root = null;
         }
     }
 
+    /** DEPENDENCIES */
+    private String dependencies;
+
+    /** @return DEPENDENCIES */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEPENDENCIES", index = 12)
+    public String getDependencies() {
+        return this.dependencies;
+    }
+
+    /** @param o DEPENDENCIES */
+    public void setDependencies(final Object o) {
+        if (o != null) {
+            this.dependencies = o.toString();
+        } else {
+            this.dependencies = null;
+        }
+    }
+
     /**
-     * 予実照会
+     * VIEW照会
      * @param param1 koutei_id
-     * @return 予実
+     * @return VIEW
      */
     public static V14Yojitsu get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"KOUTEI_ID\" = :koutei_id");
+        whereList.add("`KOUTEI_ID` = :koutei_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"KOUTEI_ID\" \n";
-        sql += "    , a.\"KOUTEI_TX\" \n";
-        sql += "    , TO_CHAR (a.\"KAISHI_BI\", 'YYYY-MM-DD') AS KAISHI_BI \n";
-        sql += "    , TO_CHAR (a.\"SHURYO_BI\", 'YYYY-MM-DD') AS SHURYO_BI \n";
-        sql += "    , RTRIM (RTRIM (a.\"SAGYOKU_CD\"), '　') AS SAGYOKU_CD \n";
-        sql += "    , a.\"OYA_KOUTEI_ID\" \n";
-        sql += "    , TO_CHAR (a.\"JISSHI_BI\", 'YYYY-MM-DD') AS JISSHI_BI \n";
-        sql += "    , TO_CHAR (a.\"KANRYO_BI\", 'YYYY-MM-DD') AS KANRYO_BI \n";
-        sql += "    , a.\"DEPENDENCIES\" \n";
-        sql += "    , a.\"KOUTEI_PATH\" \n";
-        sql += "    , a.\"ROOT\" \n";
+        sql += "      a.`koutei_id` \n";
+        sql += "    , a.`koutei_tx` \n";
+        sql += "    , a.`kaishi_bi` AS kaishi_bi \n";
+        sql += "    , a.`shuryo_bi` AS shuryo_bi \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`sagyoku_cd`) AS sagyoku_cd \n";
+        sql += "    , a.`oya_koutei_id` \n";
+        sql += "    , a.`jisshi_bi` AS jisshi_bi \n";
+        sql += "    , a.`kanryo_bi` AS kanryo_bi \n";
+        sql += "    , a.`koutei_path` \n";
+        sql += "    , a.`root` \n";
+        sql += "    , a.`dependencies` \n";
         sql += "FROM \n";
         sql += "    V14_YOJITSU a \n";
         sql += "WHERE \n";
