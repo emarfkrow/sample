@@ -1,39 +1,75 @@
 -- Project Name : emarf
--- Date/Time    : 2026/07/09 11:38:12
+-- Date/Time    : 2026/08/11 9:50:23
 -- Author       : KTC0966
 -- RDBMS Type   : Oracle Database
 -- Application  : A5:SQL Mk-2
 
--- CDマスタ
-drop table M04_CD cascade constraints;
+-- マスタ参照１
+create table M04_REF1 (
+  REF1_ID NUMBER(10)
+  , REF1_MEI VARCHAR2(60) not null
+  , DELETE_F CHAR(1)
+  , TEKIYO_BI DATE
+  , HAISHI_BI DATE
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint M04_REF1_PKC primary key (REF1_ID)
+) ;
 
-create table M04_CD (
+-- マスタ参照２
+create table M04_REF2 (
+  REF2_ID NUMBER(10)
+  , REF2_MEI VARCHAR2(60) not null
+  , DELETE_F CHAR(1)
+  , TEKIYO_BI DATE
+  , HAISHI_BI DATE
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint M04_REF2_PKC primary key (REF2_ID)
+) ;
+
+-- マスタ参照３
+create table M04_REF3 (
+  REF3_ID NUMBER(10)
+  , REF3_MEI VARCHAR2(60) not null
+  , DELETE_F CHAR(1)
+  , TEKIYO_BI DATE
+  , HAISHI_BI DATE
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint M04_REF3_PKC primary key (REF3_ID)
+) ;
+
+-- CDマスタ
+create table M05_CD (
   CDREF_CD CHAR(10)
   , CDREF_MEI VARCHAR2(60) not null
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint M04_CD_PKC primary key (CDREF_CD)
+  , constraint M05_CD_PKC primary key (CDREF_CD)
 ) ;
 
 -- IDマスタ
-drop table M04_ID cascade constraints;
-
-create table M04_ID (
+create table M05_ID (
   IDREF_ID NUMBER(10)
   , IDREF_MEI VARCHAR2(60) not null
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint M04_ID_PKC primary key (IDREF_ID)
+  , constraint M05_ID_PKC primary key (IDREF_ID)
 ) ;
 
 -- ID連番マスタ
-drop table M04_IDBN cascade constraints;
-
-create table M04_IDBN (
+create table M05_IDBN (
   IDREF_ID NUMBER(10)
   , IDBN_BN NUMBER(10)
   , IDBN_NO CHAR(10) not null
@@ -41,26 +77,22 @@ create table M04_IDBN (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint M04_IDBN_PKC primary key (IDREF_ID,IDBN_BN)
+  , constraint M05_IDBN_PKC primary key (IDREF_ID,IDBN_BN)
 ) ;
 
 -- NOマスタ
-drop table M04_NO cascade constraints;
-
-create table M04_NO (
+create table M05_NO (
   NOREF_NO CHAR(10)
   , NOREF_MEI VARCHAR2(60) not null
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint M04_NO_PKC primary key (NOREF_NO)
+  , constraint M05_NO_PKC primary key (NOREF_NO)
 ) ;
 
 -- 再帰
-drop table M04_SAIKI cascade constraints;
-
-create table M04_SAIKI (
+create table M05_SAIKI (
   SAIKI_ID NUMBER(10)
   , SAIKI_MEI VARCHAR2(60) not null
   , IDREF_ID NUMBER(10)
@@ -73,60 +105,10 @@ create table M04_SAIKI (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint M04_SAIKI_PKC primary key (SAIKI_ID)
-) ;
-
--- マスタ参照１
-drop table M05_REF1 cascade constraints;
-
-create table M05_REF1 (
-  REF1_ID NUMBER(10)
-  , REF1_MEI VARCHAR2(60) not null
-  , DELETE_F CHAR(1)
-  , TEKIYO_BI DATE
-  , HAISHI_BI DATE
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint M05_REF1_PKC primary key (REF1_ID)
-) ;
-
--- マスタ参照２
-drop table M05_REF2 cascade constraints;
-
-create table M05_REF2 (
-  REF2_ID NUMBER(10)
-  , REF2_MEI VARCHAR2(60) not null
-  , DELETE_F CHAR(1)
-  , TEKIYO_BI DATE
-  , HAISHI_BI DATE
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint M05_REF2_PKC primary key (REF2_ID)
-) ;
-
--- マスタ参照３
-drop table M05_REF3 cascade constraints;
-
-create table M05_REF3 (
-  REF3_ID NUMBER(10)
-  , REF3_MEI VARCHAR2(60) not null
-  , DELETE_F CHAR(1)
-  , TEKIYO_BI DATE
-  , HAISHI_BI DATE
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint M05_REF3_PKC primary key (REF3_ID)
+  , constraint M05_SAIKI_PKC primary key (SAIKI_ID)
 ) ;
 
 -- 部署マスタ
-drop table MHR_BUSHO cascade constraints;
-
 create table MHR_BUSHO (
   BUSHO_ID NUMBER(10) not null
   , BUSHO_MEI VARCHAR2(60) not null
@@ -141,8 +123,6 @@ create table MHR_BUSHO (
 ) ;
 
 -- 職位マスタ
-drop table MHR_SHOKUI cascade constraints;
-
 create table MHR_SHOKUI (
   SHOKUI_ID NUMBER(10) not null
   , SHOKUI_MEI VARCHAR2(60) not null
@@ -157,8 +137,6 @@ create table MHR_SHOKUI (
 ) ;
 
 -- 認可マスタ
-drop table MHR_SHOKUI_NINKA cascade constraints;
-
 create table MHR_SHOKUI_NINKA (
   BUSHO_ID NUMBER(10) not null
   , SHOKUI_ID NUMBER(10) not null
@@ -174,8 +152,6 @@ create table MHR_SHOKUI_NINKA (
 ) ;
 
 -- ユーザマスタ
-drop table MHR_USER cascade constraints;
-
 create table MHR_USER (
   USER_ID NUMBER(10) not null
   , USER_SEI VARCHAR2(60) not null
@@ -192,8 +168,6 @@ create table MHR_USER (
 ) ;
 
 -- 所属マスタ
-drop table MHR_USER_POS cascade constraints;
-
 create table MHR_USER_POS (
   BUSHO_ID NUMBER(10) not null
   , SHOKUI_ID NUMBER(10) not null
@@ -208,8 +182,6 @@ create table MHR_USER_POS (
 ) ;
 
 -- 稼働日マスタ
-drop table MSY_KADOBI cascade constraints;
-
 create table MSY_KADOBI (
   KADO_BI DATE
   , BUSHO_ID NUMBER(10)
@@ -223,8 +195,6 @@ create table MSY_KADOBI (
 ) ;
 
 -- 区分マスタ
-drop table MSY_KBN cascade constraints;
-
 create table MSY_KBN (
   KBN_NM VARCHAR2(20) not null
   , KBN_MEI VARCHAR2(60) not null
@@ -236,8 +206,6 @@ create table MSY_KBN (
 ) ;
 
 -- 区分値マスタ
-drop table MSY_KBN_VAL cascade constraints;
-
 create table MSY_KBN_VAL (
   KBN_NM VARCHAR2(20) not null
   , KBN_VAL VARCHAR2(2) not null
@@ -252,8 +220,6 @@ create table MSY_KBN_VAL (
 ) ;
 
 -- 税マスタ
-drop table MSY_TAX cascade constraints;
-
 create table MSY_TAX (
   TAX_KB VARCHAR2(2)
   , TEKIYO_BI DATE
@@ -267,8 +233,6 @@ create table MSY_TAX (
 ) ;
 
 -- 通貨マスタ
-drop table MSY_TSUKA cascade constraints;
-
 create table MSY_TSUKA (
   TSUKA_KB VARCHAR2(2)
   , TEKIYO_BI DATE
@@ -282,8 +246,6 @@ create table MSY_TSUKA (
 ) ;
 
 -- エンティティ
-drop table T00_ENTITY cascade constraints;
-
 create table T00_ENTITY (
   ENTITY_ID NUMBER(10) not null
   , ENTITY_NM VARCHAR2(20) not null
@@ -322,40 +284,7 @@ create table T00_ENTITY (
   , constraint T00_ENTITY_PKC primary key (ENTITY_ID)
 ) ;
 
--- 実績
-drop table T00_JISSEKI cascade constraints;
-
-create table T00_JISSEKI (
-  KOUTEI_ID NUMBER(10)
-  , JISSEKI_BN NUMBER(10)
-  , JISSHI_BI DATE not null
-  , KANRYO_BI DATE not null
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T00_JISSEKI_PKC primary key (KOUTEI_ID,JISSEKI_BN)
-) ;
-
--- 工程
-drop table T00_KOUTEI cascade constraints;
-
-create table T00_KOUTEI (
-  KOUTEI_ID NUMBER(10)
-  , KOUTEI_MEI VARCHAR2(60) not null
-  , KAISHI_BI DATE not null
-  , SHURYO_BI DATE not null
-  , OYA_KOUTEI_ID NUMBER(10)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T00_KOUTEI_PKC primary key (KOUTEI_ID)
-) ;
-
 -- キーなし
-drop table T00_NOKEY cascade constraints;
-
 create table T00_NOKEY (
   A_MEI VARCHAR2(60)
   , B_MEI VARCHAR2(60)
@@ -369,8 +298,6 @@ create table T00_NOKEY (
 ) ;
 
 -- ユニークキー
-drop table T00_UNIQUE cascade constraints;
-
 create table T00_UNIQUE (
   A_MEI VARCHAR2(60)
   , B_MEI VARCHAR2(60)
@@ -389,10 +316,52 @@ create unique index T00_UNIQUE_IX1
 create unique index T00_UNIQUE_IX2
   on T00_UNIQUE(D_MEI,E_MEI);
 
--- 子なし
-drop table T01_DINKS cascade constraints;
+-- 長兄
+create table T01_ELDEST (
+  BRO_ID NUMBER(10)
+  , ELDEST_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T01_ELDEST_PKC primary key (BRO_ID)
+) ;
 
-create table T01_DINKS (
+-- 里子
+create table T01_FOSTER (
+  BRO_ID NUMBER(10)
+  , FOSTER_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T01_FOSTER_PKC primary key (BRO_ID)
+) ;
+
+-- 弟
+create table T01_YOUNGER (
+  BRO_ID NUMBER(10)
+  , YOUNGER_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T01_YOUNGER_PKC primary key (BRO_ID)
+) ;
+
+-- 末弟
+create table T01_YOUNGEST (
+  BRO_ID NUMBER(10)
+  , YOUNGEST_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T01_YOUNGEST_PKC primary key (BRO_ID)
+) ;
+
+-- 子なし
+create table T02_DINKS (
   OYA_ID NUMBER(10) not null
   , KO_BN NUMBER(10)
   , DINKS_INFO VARCHAR2(300)
@@ -400,13 +369,11 @@ create table T01_DINKS (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T01_DINKS_PKC primary key (OYA_ID,KO_BN)
+  , constraint T02_DINKS_PKC primary key (OYA_ID,KO_BN)
 ) ;
 
 -- 子
-drop table T01_KO cascade constraints;
-
-create table T01_KO (
+create table T02_KO (
   OYA_ID NUMBER(10)
   , KO_BN NUMBER(10)
   , KO_INFO VARCHAR2(300)
@@ -414,13 +381,11 @@ create table T01_KO (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T01_KO_PKC primary key (OYA_ID,KO_BN)
+  , constraint T02_KO_PKC primary key (OYA_ID,KO_BN)
 ) ;
 
 -- 孫
-drop table T01_MAGO cascade constraints;
-
-create table T01_MAGO (
+create table T02_MAGO (
   OYA_ID NUMBER(10)
   , KO_BN NUMBER(10)
   , MAGO_BN NUMBER(10)
@@ -429,13 +394,11 @@ create table T01_MAGO (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T01_MAGO_PKC primary key (OYA_ID,KO_BN,MAGO_BN)
+  , constraint T02_MAGO_PKC primary key (OYA_ID,KO_BN,MAGO_BN)
 ) ;
 
 -- 孤児
-drop table T01_ORPHAN cascade constraints;
-
-create table T01_ORPHAN (
+create table T02_ORPHAN (
   OYA_ID NUMBER(10)
   , KO_BN NUMBER(10)
   , ORPHAN_INFO VARCHAR2(300)
@@ -443,77 +406,21 @@ create table T01_ORPHAN (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T01_ORPHAN_PKC primary key (OYA_ID,KO_BN)
+  , constraint T02_ORPHAN_PKC primary key (OYA_ID,KO_BN)
 ) ;
 
 -- 親
-drop table T01_OYA cascade constraints;
-
-create table T01_OYA (
+create table T02_OYA (
   OYA_ID NUMBER(10)
   , OYA_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T01_OYA_PKC primary key (OYA_ID)
-) ;
-
--- 長兄
-drop table T02_ELDEST cascade constraints;
-
-create table T02_ELDEST (
-  BRO_ID NUMBER(10)
-  , ELDEST_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T02_ELDEST_PKC primary key (BRO_ID)
-) ;
-
--- 里子
-drop table T02_FOSTER cascade constraints;
-
-create table T02_FOSTER (
-  BRO_ID NUMBER(10)
-  , FOSTER_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T02_FOSTER_PKC primary key (BRO_ID)
-) ;
-
--- 弟
-drop table T02_YOUNGER cascade constraints;
-
-create table T02_YOUNGER (
-  BRO_ID NUMBER(10)
-  , YOUNGER_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T02_YOUNGER_PKC primary key (BRO_ID)
-) ;
-
--- 末弟
-drop table T02_YOUNGEST cascade constraints;
-
-create table T02_YOUNGEST (
-  BRO_ID NUMBER(10)
-  , YOUNGEST_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T02_YOUNGEST_PKC primary key (BRO_ID)
+  , constraint T02_OYA_PKC primary key (OYA_ID)
 ) ;
 
 -- 決裁フロー
-drop table T03_STATUS_KB cascade constraints;
-
 create table T03_STATUS_KB (
   FLOW_ID NUMBER(10)
   , TABLE_NM VARCHAR2(20)
@@ -530,8 +437,6 @@ create table T03_STATUS_KB (
 ) ;
 
 -- 変遷
-drop table T03_TRANS cascade constraints;
-
 create table T03_TRANS (
   TRANS_ID NUMBER(10)
   , TRANS_INFO VARCHAR2(300)
@@ -544,8 +449,6 @@ create table T03_TRANS (
 ) ;
 
 -- 変遷履歴
-drop table T03_TRANS_HIS cascade constraints;
-
 create table T03_TRANS_HIS (
   TRANS_ID NUMBER(10)
   , TRANS_BN NUMBER(10)
@@ -560,9 +463,7 @@ create table T03_TRANS_HIS (
 ) ;
 
 -- 複合１
-drop table T05_COMP1 cascade constraints;
-
-create table T05_COMP1 (
+create table T04_COMP1 (
   REF1_ID NUMBER(10)
   , REF2_ID NUMBER(10)
   , COMP1_MEI VARCHAR2(300)
@@ -570,13 +471,11 @@ create table T05_COMP1 (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T05_COMP1_PKC primary key (REF1_ID,REF2_ID)
+  , constraint T04_COMP1_PKC primary key (REF1_ID,REF2_ID)
 ) ;
 
 -- 複合２
-drop table T05_COMP2 cascade constraints;
-
-create table T05_COMP2 (
+create table T04_COMP2 (
   REF1_ID NUMBER(10)
   , REF2_ID NUMBER(10)
   , REF3_ID NUMBER(10)
@@ -586,109 +485,22 @@ create table T05_COMP2 (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T05_COMP2_PKC primary key (REF1_ID,REF2_ID,REF3_ID,TEKIYO_BI)
-) ;
-
--- 派生１
-drop table T06_DERIVE1 cascade constraints;
-
-create table T06_DERIVE1 (
-  DERIVE1_ID NUMBER(10)
-  , ORG_INFO VARCHAR2(300)
-  , ORG_ID NUMBER(10) not null
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T06_DERIVE1_PKC primary key (DERIVE1_ID)
-) ;
-
--- 派生１明細
-drop table T06_DERIVE1_DET cascade constraints;
-
-create table T06_DERIVE1_DET (
-  DERIVE1_ID NUMBER(10)
-  , DERIVE1_BN NUMBER(10)
-  , DET_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T06_DERIVE1_DET_PKC primary key (DERIVE1_ID,DERIVE1_BN)
-) ;
-
--- 派生２
-drop table T06_DERIVE2 cascade constraints;
-
-create table T06_DERIVE2 (
-  DERIVE2_ID NUMBER(10)
-  , ORG_INFO VARCHAR2(300)
-  , ORG_ID NUMBER(10) not null
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T06_DERIVE2_PKC primary key (DERIVE2_ID)
-) ;
-
--- 派生２明細
-drop table T06_DERIVE2_DET cascade constraints;
-
-create table T06_DERIVE2_DET (
-  DERIVE2_ID NUMBER(10)
-  , DERIVE2_BN NUMBER(10)
-  , DET_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T06_DERIVE2_DET_PKC primary key (DERIVE2_ID,DERIVE2_BN)
-) ;
-
--- 起源
-drop table T06_ORG cascade constraints;
-
-create table T06_ORG (
-  ORG_ID NUMBER(10)
-  , ORG_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T06_ORG_PKC primary key (ORG_ID)
-) ;
-
--- 起源明細
-drop table T06_ORG_DET cascade constraints;
-
-create table T06_ORG_DET (
-  ORG_ID NUMBER(10)
-  , ORG_BN NUMBER(10)
-  , DET_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T06_ORG_DET_PKC primary key (ORG_ID,ORG_BN)
+  , constraint T04_COMP2_PKC primary key (REF1_ID,REF2_ID,REF3_ID,TEKIYO_BI)
 ) ;
 
 -- 前世
-drop table T07_PREV cascade constraints;
-
-create table T07_PREV (
+create table T06_PREV (
   PREV_ID NUMBER(10)
   , PREV_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T07_PREV_PKC primary key (PREV_ID)
+  , constraint T06_PREV_PKC primary key (PREV_ID)
 ) ;
 
 -- 前世明細
-drop table T07_PREV_DET cascade constraints;
-
-create table T07_PREV_DET (
+create table T06_PREV_DET (
   PREV_ID NUMBER(10)
   , PREV_BN NUMBER(10)
   , DET_INFO VARCHAR2(300)
@@ -696,13 +508,11 @@ create table T07_PREV_DET (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T07_PREV_DET_PKC primary key (PREV_ID,PREV_BN)
+  , constraint T06_PREV_DET_PKC primary key (PREV_ID,PREV_BN)
 ) ;
 
 -- 転生
-drop table T07_REBORN cascade constraints;
-
-create table T07_REBORN (
+create table T06_REBORN (
   REBORN_ID NUMBER(10)
   , PREV_INFO VARCHAR2(300)
   , PREV_ID NUMBER(10) not null
@@ -710,13 +520,11 @@ create table T07_REBORN (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T07_REBORN_PKC primary key (REBORN_ID)
+  , constraint T06_REBORN_PKC primary key (REBORN_ID)
 ) ;
 
 -- 転生明細
-drop table T07_REBORN_DET cascade constraints;
-
-create table T07_REBORN_DET (
+create table T06_REBORN_DET (
   REBORN_ID NUMBER(10)
   , REBORN_BN NUMBER(10)
   , DET_INFO VARCHAR2(300)
@@ -724,12 +532,81 @@ create table T07_REBORN_DET (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T07_REBORN_DET_PKC primary key (REBORN_ID,REBORN_BN)
+  , constraint T06_REBORN_DET_PKC primary key (REBORN_ID,REBORN_BN)
+) ;
+
+-- 派生１
+create table T07_DERIVE1 (
+  DERIVE1_ID NUMBER(10)
+  , ORG_INFO VARCHAR2(300)
+  , ORG_ID NUMBER(10) not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T07_DERIVE1_PKC primary key (DERIVE1_ID)
+) ;
+
+-- 派生１明細
+create table T07_DERIVE1_DET (
+  DERIVE1_ID NUMBER(10)
+  , DERIVE1_BN NUMBER(10)
+  , DET_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T07_DERIVE1_DET_PKC primary key (DERIVE1_ID,DERIVE1_BN)
+) ;
+
+-- 派生２
+create table T07_DERIVE2 (
+  DERIVE2_ID NUMBER(10)
+  , ORG_INFO VARCHAR2(300)
+  , ORG_ID NUMBER(10) not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T07_DERIVE2_PKC primary key (DERIVE2_ID)
+) ;
+
+-- 派生２明細
+create table T07_DERIVE2_DET (
+  DERIVE2_ID NUMBER(10)
+  , DERIVE2_BN NUMBER(10)
+  , DET_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T07_DERIVE2_DET_PKC primary key (DERIVE2_ID,DERIVE2_BN)
+) ;
+
+-- 起源
+create table T07_ORG (
+  ORG_ID NUMBER(10)
+  , ORG_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T07_ORG_PKC primary key (ORG_ID)
+) ;
+
+-- 起源明細
+create table T07_ORG_DET (
+  ORG_ID NUMBER(10)
+  , ORG_BN NUMBER(10)
+  , DET_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T07_ORG_DET_PKC primary key (ORG_ID,ORG_BN)
 ) ;
 
 -- 寄生１
-drop table T08_KISEI1 cascade constraints;
-
 create table T08_KISEI1 (
   KISEI1_ID NUMBER(10)
   , KISEI1_INFO VARCHAR2(300)
@@ -741,8 +618,6 @@ create table T08_KISEI1 (
 ) ;
 
 -- 寄生２
-drop table T08_KISEI2 cascade constraints;
-
 create table T08_KISEI2 (
   KISEI2_ID NUMBER(10)
   , KISEI2_INFO VARCHAR2(300)
@@ -754,8 +629,6 @@ create table T08_KISEI2 (
 ) ;
 
 -- 共生
-drop table T08_KYOSEI cascade constraints;
-
 create table T08_KYOSEI (
   KYOSEI_ID NUMBER(10)
   , KISEI1_ID NUMBER(10) not null
@@ -769,49 +642,8 @@ create table T08_KYOSEI (
   , constraint T08_KYOSEI_PKC primary key (KYOSEI_ID)
 ) ;
 
--- 集団１
-drop table T09_GRP1 cascade constraints;
-
-create table T09_GRP1 (
-  GRP1_ID NUMBER(10)
-  , SUM_ID NUMBER(10)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T09_GRP1_PKC primary key (GRP1_ID)
-) ;
-
--- 集団２
-drop table T09_GRP2 cascade constraints;
-
-create table T09_GRP2 (
-  GRP2_ID NUMBER(10)
-  , SUM_ID NUMBER(10)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T09_GRP2_PKC primary key (GRP2_ID)
-) ;
-
--- 集約
-drop table T09_SUM cascade constraints;
-
-create table T09_SUM (
-  SUM_ID NUMBER(10)
-  , SUM_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID CHAR(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID CHAR(10) not null
-  , constraint T09_SUM_PKC primary key (SUM_ID)
-) ;
-
--- 選抜
-drop table T10_CHOICE cascade constraints;
-
-create table T10_CHOICE (
+-- 選択
+create table T09_CHOICE (
   CHOICE_ID NUMBER(10)
   , KOHO1_ID NUMBER(10)
   , KOHO1_INFO VARCHAR2(300)
@@ -821,38 +653,65 @@ create table T10_CHOICE (
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T10_CHOICE_PKC primary key (CHOICE_ID)
+  , constraint T09_CHOICE_PKC primary key (CHOICE_ID)
 ) ;
 
 -- 候補１
-drop table T10_KOHO1 cascade constraints;
-
-create table T10_KOHO1 (
+create table T09_KOHO1 (
   KOHO1_ID NUMBER(10)
   , KOHO1_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T10_KOHO1_PKC primary key (KOHO1_ID)
+  , constraint T09_KOHO1_PKC primary key (KOHO1_ID)
 ) ;
 
 -- 候補２
-drop table T10_KOHO2 cascade constraints;
-
-create table T10_KOHO2 (
+create table T09_KOHO2 (
   KOHO2_ID NUMBER(10)
   , KOHO2_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID CHAR(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID CHAR(10) not null
-  , constraint T10_KOHO2_PKC primary key (KOHO2_ID)
+  , constraint T09_KOHO2_PKC primary key (KOHO2_ID)
+) ;
+
+-- 集団１
+create table T10_GRP1 (
+  GRP1_ID NUMBER(10)
+  , SUM_ID NUMBER(10)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T10_GRP1_PKC primary key (GRP1_ID)
+) ;
+
+-- 集団２
+create table T10_GRP2 (
+  GRP2_ID NUMBER(10)
+  , SUM_ID NUMBER(10)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T10_GRP2_PKC primary key (GRP2_ID)
+) ;
+
+-- 集約
+create table T10_SUM (
+  SUM_ID NUMBER(10)
+  , SUM_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T10_SUM_PKC primary key (SUM_ID)
 ) ;
 
 -- 前世２
-drop table T11_PREV2 cascade constraints;
-
 create table T11_PREV2 (
   PREV2_ID NUMBER(10)
   , PREV2_INFO VARCHAR2(300)
@@ -864,8 +723,6 @@ create table T11_PREV2 (
 ) ;
 
 -- 転生２
-drop table T11_REBORN2 cascade constraints;
-
 create table T11_REBORN2 (
   REBORN2_ID NUMBER(10)
   , PREV2_INFO VARCHAR2(300)
@@ -878,8 +735,6 @@ create table T11_REBORN2 (
 ) ;
 
 -- 他生１
-drop table T11_TASHO1 cascade constraints;
-
 create table T11_TASHO1 (
   TASHO1_ID NUMBER(10)
   , REBORN2_ID NUMBER(10)
@@ -891,8 +746,6 @@ create table T11_TASHO1 (
 ) ;
 
 -- 候補３
-drop table T12_KOHO3 cascade constraints;
-
 create table T12_KOHO3 (
   KOHO3_ID NUMBER(10)
   , KOHO3_INFO VARCHAR2(300)
@@ -904,8 +757,6 @@ create table T12_KOHO3 (
 ) ;
 
 -- 転生３
-drop table T12_REBORN3 cascade constraints;
-
 create table T12_REBORN3 (
   REBORN3_ID NUMBER(10)
   , TASHO2_ID NUMBER(10) not null
@@ -917,8 +768,6 @@ create table T12_REBORN3 (
 ) ;
 
 -- 他生２
-drop table T12_TASHO2 cascade constraints;
-
 create table T12_TASHO2 (
   TASHO2_ID NUMBER(10)
   , KOHO3_ID NUMBER(10)
@@ -930,8 +779,6 @@ create table T12_TASHO2 (
 ) ;
 
 -- 変換先
-drop table T13_DEST cascade constraints;
-
 create table T13_DEST (
   DEST_ID NUMBER(10)
   , DEST_INFO VARCHAR2(300)
@@ -943,8 +790,6 @@ create table T13_DEST (
 ) ;
 
 -- 変換元
-drop table T13_SRC cascade constraints;
-
 create table T13_SRC (
   SRC_ID NUMBER(10)
   , SRC_INFO VARCHAR2(300)
@@ -955,34 +800,35 @@ create table T13_SRC (
   , constraint T13_SRC_PKC primary key (SRC_ID)
 ) ;
 
--- 予実
-drop view V00_YOJITSU;
+-- 実績
+create table T14_JISSEKI (
+  KOUTEI_ID NUMBER(10)
+  , JISSEKI_BN NUMBER(10)
+  , JISSHI_BI DATE not null
+  , KANRYO_BI DATE not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T14_JISSEKI_PKC primary key (KOUTEI_ID,JISSEKI_BN)
+) ;
 
-create view V00_YOJITSU as 
-SELECT
-      k.koutei_id
-    , k.koutei_mei      AS koutei_tx
-    , k.kaishi_bi
-    , k.shuryo_bi
-    , k.oya_koutei_id
-    , MIN (j.jisshi_bi) AS jisshi_bi
-    , MAX (j.kanryo_bi) AS kanryo_bi 
-FROM
-    t00_koutei k 
-    LEFT OUTER JOIN t00_jisseki j 
-        ON j.koutei_id = k.koutei_id 
-GROUP BY
-    k.koutei_id
-    , k.koutei_mei
-    , k.kaishi_bi
-    , k.shuryo_bi
-    , k.oya_koutei_id
-
-;
+-- 工程
+create table T14_KOUTEI (
+  KOUTEI_ID NUMBER(10)
+  , KOUTEI_MEI VARCHAR2(60) not null
+  , KAISHI_BI DATE not null
+  , SHURYO_BI DATE not null
+  , SAGYOKU_CD CHAR(10) not null
+  , OYA_KOUTEI_ID NUMBER(10)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID CHAR(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID CHAR(10) not null
+  , constraint T14_KOUTEI_PKC primary key (KOUTEI_ID)
+) ;
 
 -- 振分ビュー
-drop view V13_FURIWAKE;
-
 create view V13_FURIWAKE as 
 SELECT
     a.table_name                                -- テーブル名
@@ -1008,8 +854,6 @@ FROM
 ;
 
 -- 変換ビュー
-drop view V13_HENKAN;
-
 create view V13_HENKAN as 
 SELECT
     'T13_DEST' AS table_name                    -- テーブル名
@@ -1020,85 +864,205 @@ FROM
 
 ;
 
-comment on table M04_CD is 'CDマスタ';
-comment on column M04_CD.CDREF_CD is '参照CD';
-comment on column M04_CD.CDREF_MEI is 'CD参照名';
-comment on column M04_CD.INSERT_TS is '作成タイムスタンプ';
-comment on column M04_CD.INSERT_USER_ID is '作成者';
-comment on column M04_CD.UPDATE_TS is '更新タイムスタンプ';
-comment on column M04_CD.UPDATE_USER_ID is '更新者';
+-- 稼働日負荷
+create view V14_FUKA_KADOBI as 
+SELECT
+      TO_CHAR (b.kado_bi, 'YYYYMMDD') AS labels
+    , 'bar'                           AS type
+    , 'stack'                         AS stack
+    , b.sagyoku_cd                    AS label
+    , NVL (k.koutei_count, 0)         AS DATA 
+FROM
+    ( 
+        SELECT
+              * 
+        FROM
+            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b) b 
+            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k
+    ) b 
+    LEFT OUTER JOIN ( 
+        SELECT
+              b.kado_bi
+            , k.sagyoku_cd
+            , COUNT (k.koutei_id) AS koutei_count 
+        FROM
+            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b WHERE b.kadobi_f = 1) b 
+            INNER JOIN t14_koutei k 
+                ON k.kaishi_bi <= b.kado_bi 
+                AND b.kado_bi <= k.shuryo_bi 
+        GROUP BY
+            b.kado_bi
+            , k.sagyoku_cd
+    ) k 
+        ON k.kado_bi = b.kado_bi 
+        AND k.sagyoku_cd = b.sagyoku_cd 
+ORDER BY
+    b.kado_bi
+    , b.sagyoku_cd
 
-comment on table M04_ID is 'IDマスタ';
-comment on column M04_ID.IDREF_ID is '参照ID';
-comment on column M04_ID.IDREF_MEI is 'ID参照名';
-comment on column M04_ID.INSERT_TS is '作成タイムスタンプ';
-comment on column M04_ID.INSERT_USER_ID is '作成者';
-comment on column M04_ID.UPDATE_TS is '更新タイムスタンプ';
-comment on column M04_ID.UPDATE_USER_ID is '更新者';
+;
 
-comment on table M04_IDBN is 'ID連番マスタ';
-comment on column M04_IDBN.IDREF_ID is '参照ID';
-comment on column M04_IDBN.IDBN_BN is '参照連番';
-comment on column M04_IDBN.IDBN_NO is 'ID連番NO';
-comment on column M04_IDBN.INSERT_TS is '作成タイムスタンプ';
-comment on column M04_IDBN.INSERT_USER_ID is '作成者';
-comment on column M04_IDBN.UPDATE_TS is '更新タイムスタンプ';
-comment on column M04_IDBN.UPDATE_USER_ID is '更新者';
+-- 作業区負荷
+create view V14_FUKA_SAGYOKU as 
+SELECT
+      TO_CHAR (b.kado_bi, 'YYYYMMDD') AS labels
+    , 'line'                          AS type
+    , b.sagyoku_cd                    AS stack
+    , b.sagyoku_cd                    AS label
+    , NVL (k.koutei_count, 0)         AS DATA 
+FROM
+    ( 
+        SELECT
+              * 
+        FROM
+            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b) b 
+            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k
+    ) b 
+    LEFT OUTER JOIN ( 
+        SELECT
+              b.kado_bi
+            , k.sagyoku_cd
+            , COUNT (k.koutei_id) AS koutei_count 
+        FROM
+            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b WHERE b.kadobi_f = 1) b 
+            INNER JOIN t14_koutei k 
+                ON k.kaishi_bi <= b.kado_bi 
+                AND b.kado_bi <= k.shuryo_bi 
+        GROUP BY
+            b.kado_bi
+            , k.sagyoku_cd
+    ) k 
+        ON k.kado_bi = b.kado_bi 
+        AND k.sagyoku_cd = b.sagyoku_cd 
+ORDER BY
+    b.kado_bi
+    , b.sagyoku_cd
 
-comment on table M04_NO is 'NOマスタ';
-comment on column M04_NO.NOREF_NO is '参照NO';
-comment on column M04_NO.NOREF_MEI is 'NO参照名';
-comment on column M04_NO.INSERT_TS is '作成タイムスタンプ';
-comment on column M04_NO.INSERT_USER_ID is '作成者';
-comment on column M04_NO.UPDATE_TS is '更新タイムスタンプ';
-comment on column M04_NO.UPDATE_USER_ID is '更新者';
+;
 
-comment on table M04_SAIKI is '再帰';
-comment on column M04_SAIKI.SAIKI_ID is '再帰ID';
-comment on column M04_SAIKI.SAIKI_MEI is '再帰名';
-comment on column M04_SAIKI.IDREF_ID is '参照ID';
-comment on column M04_SAIKI.CDREF_CD is '参照CD';
-comment on column M04_SAIKI.NOREF_NO is '参照NO';
-comment on column M04_SAIKI.EX_IDREF_ID is 'ID連番ID';
-comment on column M04_SAIKI.EX_IDBN_BN is 'ID連番';
-comment on column M04_SAIKI.OYA_SAIKI_ID is '親再帰ID';
-comment on column M04_SAIKI.INSERT_TS is '作成タイムスタンプ';
-comment on column M04_SAIKI.INSERT_USER_ID is '作成者';
-comment on column M04_SAIKI.UPDATE_TS is '更新タイムスタンプ';
-comment on column M04_SAIKI.UPDATE_USER_ID is '更新者';
+-- 予実
+create view V14_YOJITSU as 
+SELECT
+      * 
+FROM
+    ( 
+        SELECT
+              a.koutei_id
+            , a.koutei_mei                                      AS koutei_tx
+            , a.kaishi_bi
+            , a.shuryo_bi
+            , a.sagyoku_cd
+            , a.oya_koutei_id
+            , j.jisshi_bi
+            , j.kanryo_bi
+            , b.dependencies                    --前工程
+            , SUBSTR (sys_connect_by_path(a.koutei_id, ','), 2) AS koutei_path
+            , CONNECT_BY_ROOT a.koutei_id                       AS root 
+        FROM
+            t14_koutei a 
+            LEFT OUTER JOIN t14_jisseki j 
+                ON j.koutei_id = a.koutei_id 
+            LEFT OUTER JOIN ( 
+                SELECT
+                      oya_koutei_id
+                    , LISTAGG (koutei_id, ',') WITHIN GROUP (ORDER BY koutei_id) AS dependencies 
+                FROM
+                    t14_koutei 
+                WHERE
+                    oya_koutei_id IS NOT NULL 
+                GROUP BY
+                    oya_koutei_id
+            ) b 
+                ON b.oya_koutei_id = a.koutei_id 
+        START WITH
+            a.oya_koutei_id IS NULL 
+        CONNECT BY
+            PRIOR a.koutei_id = a.oya_koutei_id
+    ) a 
+ORDER BY
+    a.koutei_path DESC
 
-comment on table M05_REF1 is 'マスタ参照１';
-comment on column M05_REF1.REF1_ID is '参照１ID';
-comment on column M05_REF1.REF1_MEI is '参照１名';
-comment on column M05_REF1.DELETE_F is '削除フラグ';
-comment on column M05_REF1.TEKIYO_BI is '適用日';
-comment on column M05_REF1.HAISHI_BI is '廃止日';
-comment on column M05_REF1.INSERT_TS is '作成タイムスタンプ';
-comment on column M05_REF1.INSERT_USER_ID is '作成者';
-comment on column M05_REF1.UPDATE_TS is '更新タイムスタンプ';
-comment on column M05_REF1.UPDATE_USER_ID is '更新者';
+;
 
-comment on table M05_REF2 is 'マスタ参照２';
-comment on column M05_REF2.REF2_ID is '参照２ID';
-comment on column M05_REF2.REF2_MEI is '参照２名';
-comment on column M05_REF2.DELETE_F is '削除フラグ';
-comment on column M05_REF2.TEKIYO_BI is '適用日';
-comment on column M05_REF2.HAISHI_BI is '廃止日';
-comment on column M05_REF2.INSERT_TS is '作成タイムスタンプ';
-comment on column M05_REF2.INSERT_USER_ID is '作成者';
-comment on column M05_REF2.UPDATE_TS is '更新タイムスタンプ';
-comment on column M05_REF2.UPDATE_USER_ID is '更新者';
+comment on table M04_REF1 is 'マスタ参照１';
+comment on column M04_REF1.REF1_ID is '参照１ID';
+comment on column M04_REF1.REF1_MEI is '参照１名';
+comment on column M04_REF1.DELETE_F is '削除フラグ';
+comment on column M04_REF1.TEKIYO_BI is '適用日';
+comment on column M04_REF1.HAISHI_BI is '廃止日';
+comment on column M04_REF1.INSERT_TS is '作成タイムスタンプ';
+comment on column M04_REF1.INSERT_USER_ID is '作成者';
+comment on column M04_REF1.UPDATE_TS is '更新タイムスタンプ';
+comment on column M04_REF1.UPDATE_USER_ID is '更新者';
 
-comment on table M05_REF3 is 'マスタ参照３';
-comment on column M05_REF3.REF3_ID is '参照３ID';
-comment on column M05_REF3.REF3_MEI is '参照３名';
-comment on column M05_REF3.DELETE_F is '削除フラグ';
-comment on column M05_REF3.TEKIYO_BI is '適用日';
-comment on column M05_REF3.HAISHI_BI is '廃止日';
-comment on column M05_REF3.INSERT_TS is '作成タイムスタンプ';
-comment on column M05_REF3.INSERT_USER_ID is '作成者';
-comment on column M05_REF3.UPDATE_TS is '更新タイムスタンプ';
-comment on column M05_REF3.UPDATE_USER_ID is '更新者';
+comment on table M04_REF2 is 'マスタ参照２';
+comment on column M04_REF2.REF2_ID is '参照２ID';
+comment on column M04_REF2.REF2_MEI is '参照２名';
+comment on column M04_REF2.DELETE_F is '削除フラグ';
+comment on column M04_REF2.TEKIYO_BI is '適用日';
+comment on column M04_REF2.HAISHI_BI is '廃止日';
+comment on column M04_REF2.INSERT_TS is '作成タイムスタンプ';
+comment on column M04_REF2.INSERT_USER_ID is '作成者';
+comment on column M04_REF2.UPDATE_TS is '更新タイムスタンプ';
+comment on column M04_REF2.UPDATE_USER_ID is '更新者';
+
+comment on table M04_REF3 is 'マスタ参照３';
+comment on column M04_REF3.REF3_ID is '参照３ID';
+comment on column M04_REF3.REF3_MEI is '参照３名';
+comment on column M04_REF3.DELETE_F is '削除フラグ';
+comment on column M04_REF3.TEKIYO_BI is '適用日';
+comment on column M04_REF3.HAISHI_BI is '廃止日';
+comment on column M04_REF3.INSERT_TS is '作成タイムスタンプ';
+comment on column M04_REF3.INSERT_USER_ID is '作成者';
+comment on column M04_REF3.UPDATE_TS is '更新タイムスタンプ';
+comment on column M04_REF3.UPDATE_USER_ID is '更新者';
+
+comment on table M05_CD is 'CDマスタ';
+comment on column M05_CD.CDREF_CD is '参照CD';
+comment on column M05_CD.CDREF_MEI is 'CD参照名';
+comment on column M05_CD.INSERT_TS is '作成タイムスタンプ';
+comment on column M05_CD.INSERT_USER_ID is '作成者';
+comment on column M05_CD.UPDATE_TS is '更新タイムスタンプ';
+comment on column M05_CD.UPDATE_USER_ID is '更新者';
+
+comment on table M05_ID is 'IDマスタ';
+comment on column M05_ID.IDREF_ID is '参照ID';
+comment on column M05_ID.IDREF_MEI is 'ID参照名';
+comment on column M05_ID.INSERT_TS is '作成タイムスタンプ';
+comment on column M05_ID.INSERT_USER_ID is '作成者';
+comment on column M05_ID.UPDATE_TS is '更新タイムスタンプ';
+comment on column M05_ID.UPDATE_USER_ID is '更新者';
+
+comment on table M05_IDBN is 'ID連番マスタ';
+comment on column M05_IDBN.IDREF_ID is '参照ID';
+comment on column M05_IDBN.IDBN_BN is '参照連番';
+comment on column M05_IDBN.IDBN_NO is 'ID連番NO';
+comment on column M05_IDBN.INSERT_TS is '作成タイムスタンプ';
+comment on column M05_IDBN.INSERT_USER_ID is '作成者';
+comment on column M05_IDBN.UPDATE_TS is '更新タイムスタンプ';
+comment on column M05_IDBN.UPDATE_USER_ID is '更新者';
+
+comment on table M05_NO is 'NOマスタ';
+comment on column M05_NO.NOREF_NO is '参照NO';
+comment on column M05_NO.NOREF_MEI is 'NO参照名';
+comment on column M05_NO.INSERT_TS is '作成タイムスタンプ';
+comment on column M05_NO.INSERT_USER_ID is '作成者';
+comment on column M05_NO.UPDATE_TS is '更新タイムスタンプ';
+comment on column M05_NO.UPDATE_USER_ID is '更新者';
+
+comment on table M05_SAIKI is '再帰';
+comment on column M05_SAIKI.SAIKI_ID is '再帰ID';
+comment on column M05_SAIKI.SAIKI_MEI is '再帰名';
+comment on column M05_SAIKI.IDREF_ID is '参照ID';
+comment on column M05_SAIKI.CDREF_CD is '参照CD';
+comment on column M05_SAIKI.NOREF_NO is '参照NO';
+comment on column M05_SAIKI.EX_IDREF_ID is 'ID連番ID';
+comment on column M05_SAIKI.EX_IDBN_BN is 'ID連番';
+comment on column M05_SAIKI.OYA_SAIKI_ID is '親再帰ID';
+comment on column M05_SAIKI.INSERT_TS is '作成タイムスタンプ';
+comment on column M05_SAIKI.INSERT_USER_ID is '作成者';
+comment on column M05_SAIKI.UPDATE_TS is '更新タイムスタンプ';
+comment on column M05_SAIKI.UPDATE_USER_ID is '更新者';
 
 comment on table MHR_BUSHO is '部署マスタ';
 comment on column MHR_BUSHO.BUSHO_ID is '部署ID';
@@ -1243,27 +1207,6 @@ comment on column T00_ENTITY.INSERT_USER_ID is '作成者';
 comment on column T00_ENTITY.UPDATE_TS is '更新タイムスタンプ';
 comment on column T00_ENTITY.UPDATE_USER_ID is '更新者';
 
-comment on table T00_JISSEKI is '実績';
-comment on column T00_JISSEKI.KOUTEI_ID is '工程ID';
-comment on column T00_JISSEKI.JISSEKI_BN is '実績連番';
-comment on column T00_JISSEKI.JISSHI_BI is '実施日';
-comment on column T00_JISSEKI.KANRYO_BI is '完了日';
-comment on column T00_JISSEKI.INSERT_TS is '作成タイムスタンプ';
-comment on column T00_JISSEKI.INSERT_USER_ID is '作成者';
-comment on column T00_JISSEKI.UPDATE_TS is '更新タイムスタンプ';
-comment on column T00_JISSEKI.UPDATE_USER_ID is '更新者';
-
-comment on table T00_KOUTEI is '工程';
-comment on column T00_KOUTEI.KOUTEI_ID is '工程ID';
-comment on column T00_KOUTEI.KOUTEI_MEI is '工程名';
-comment on column T00_KOUTEI.KAISHI_BI is '開始日';
-comment on column T00_KOUTEI.SHURYO_BI is '終了日';
-comment on column T00_KOUTEI.OYA_KOUTEI_ID is '親工程ID';
-comment on column T00_KOUTEI.INSERT_TS is '作成タイムスタンプ';
-comment on column T00_KOUTEI.INSERT_USER_ID is '作成者';
-comment on column T00_KOUTEI.UPDATE_TS is '更新タイムスタンプ';
-comment on column T00_KOUTEI.UPDATE_USER_ID is '更新者';
-
 comment on table T00_NOKEY is 'キーなし';
 comment on column T00_NOKEY.A_MEI is '列Ａ';
 comment on column T00_NOKEY.B_MEI is '列Ｂ';
@@ -1286,82 +1229,82 @@ comment on column T00_UNIQUE.INSERT_USER_ID is '作成者';
 comment on column T00_UNIQUE.UPDATE_TS is '更新タイムスタンプ';
 comment on column T00_UNIQUE.UPDATE_USER_ID is '更新者';
 
-comment on table T01_DINKS is '子なし';
-comment on column T01_DINKS.OYA_ID is '親ID';
-comment on column T01_DINKS.KO_BN is '子枝番';
-comment on column T01_DINKS.DINKS_INFO is '子なし情報';
-comment on column T01_DINKS.INSERT_TS is '作成タイムスタンプ';
-comment on column T01_DINKS.INSERT_USER_ID is '作成者';
-comment on column T01_DINKS.UPDATE_TS is '更新タイムスタンプ';
-comment on column T01_DINKS.UPDATE_USER_ID is '更新者';
+comment on table T01_ELDEST is '長兄';
+comment on column T01_ELDEST.BRO_ID is '兄弟ID';
+comment on column T01_ELDEST.ELDEST_INFO is '長兄情報';
+comment on column T01_ELDEST.INSERT_TS is '作成タイムスタンプ';
+comment on column T01_ELDEST.INSERT_USER_ID is '作成者';
+comment on column T01_ELDEST.UPDATE_TS is '更新タイムスタンプ';
+comment on column T01_ELDEST.UPDATE_USER_ID is '更新者';
 
-comment on table T01_KO is '子';
-comment on column T01_KO.OYA_ID is '親ID';
-comment on column T01_KO.KO_BN is '子枝番';
-comment on column T01_KO.KO_INFO is '子情報';
-comment on column T01_KO.INSERT_TS is '作成タイムスタンプ';
-comment on column T01_KO.INSERT_USER_ID is '作成者';
-comment on column T01_KO.UPDATE_TS is '更新タイムスタンプ';
-comment on column T01_KO.UPDATE_USER_ID is '更新者';
+comment on table T01_FOSTER is '里子';
+comment on column T01_FOSTER.BRO_ID is '兄弟ID';
+comment on column T01_FOSTER.FOSTER_INFO is '里子情報';
+comment on column T01_FOSTER.INSERT_TS is '作成タイムスタンプ';
+comment on column T01_FOSTER.INSERT_USER_ID is '作成者';
+comment on column T01_FOSTER.UPDATE_TS is '更新タイムスタンプ';
+comment on column T01_FOSTER.UPDATE_USER_ID is '更新者';
 
-comment on table T01_MAGO is '孫';
-comment on column T01_MAGO.OYA_ID is '親ID';
-comment on column T01_MAGO.KO_BN is '子枝番';
-comment on column T01_MAGO.MAGO_BN is '孫枝番';
-comment on column T01_MAGO.MAGO_INFO is '孫情報';
-comment on column T01_MAGO.INSERT_TS is '作成タイムスタンプ';
-comment on column T01_MAGO.INSERT_USER_ID is '作成者';
-comment on column T01_MAGO.UPDATE_TS is '更新タイムスタンプ';
-comment on column T01_MAGO.UPDATE_USER_ID is '更新者';
+comment on table T01_YOUNGER is '弟';
+comment on column T01_YOUNGER.BRO_ID is '兄弟ID';
+comment on column T01_YOUNGER.YOUNGER_INFO is '弟情報';
+comment on column T01_YOUNGER.INSERT_TS is '作成タイムスタンプ';
+comment on column T01_YOUNGER.INSERT_USER_ID is '作成者';
+comment on column T01_YOUNGER.UPDATE_TS is '更新タイムスタンプ';
+comment on column T01_YOUNGER.UPDATE_USER_ID is '更新者';
 
-comment on table T01_ORPHAN is '孤児';
-comment on column T01_ORPHAN.OYA_ID is '親ID';
-comment on column T01_ORPHAN.KO_BN is '子枝番';
-comment on column T01_ORPHAN.ORPHAN_INFO is '孤児情報';
-comment on column T01_ORPHAN.INSERT_TS is '作成タイムスタンプ';
-comment on column T01_ORPHAN.INSERT_USER_ID is '作成者';
-comment on column T01_ORPHAN.UPDATE_TS is '更新タイムスタンプ';
-comment on column T01_ORPHAN.UPDATE_USER_ID is '更新者';
+comment on table T01_YOUNGEST is '末弟';
+comment on column T01_YOUNGEST.BRO_ID is '兄弟ID';
+comment on column T01_YOUNGEST.YOUNGEST_INFO is '末弟情報';
+comment on column T01_YOUNGEST.INSERT_TS is '作成タイムスタンプ';
+comment on column T01_YOUNGEST.INSERT_USER_ID is '作成者';
+comment on column T01_YOUNGEST.UPDATE_TS is '更新タイムスタンプ';
+comment on column T01_YOUNGEST.UPDATE_USER_ID is '更新者';
 
-comment on table T01_OYA is '親';
-comment on column T01_OYA.OYA_ID is '親ID';
-comment on column T01_OYA.OYA_INFO is '親情報';
-comment on column T01_OYA.INSERT_TS is '作成タイムスタンプ';
-comment on column T01_OYA.INSERT_USER_ID is '作成者';
-comment on column T01_OYA.UPDATE_TS is '更新タイムスタンプ';
-comment on column T01_OYA.UPDATE_USER_ID is '更新者';
+comment on table T02_DINKS is '子なし';
+comment on column T02_DINKS.OYA_ID is '親ID';
+comment on column T02_DINKS.KO_BN is '子枝番';
+comment on column T02_DINKS.DINKS_INFO is '子なし情報';
+comment on column T02_DINKS.INSERT_TS is '作成タイムスタンプ';
+comment on column T02_DINKS.INSERT_USER_ID is '作成者';
+comment on column T02_DINKS.UPDATE_TS is '更新タイムスタンプ';
+comment on column T02_DINKS.UPDATE_USER_ID is '更新者';
 
-comment on table T02_ELDEST is '長兄';
-comment on column T02_ELDEST.BRO_ID is '兄弟ID';
-comment on column T02_ELDEST.ELDEST_INFO is '長兄情報';
-comment on column T02_ELDEST.INSERT_TS is '作成タイムスタンプ';
-comment on column T02_ELDEST.INSERT_USER_ID is '作成者';
-comment on column T02_ELDEST.UPDATE_TS is '更新タイムスタンプ';
-comment on column T02_ELDEST.UPDATE_USER_ID is '更新者';
+comment on table T02_KO is '子';
+comment on column T02_KO.OYA_ID is '親ID';
+comment on column T02_KO.KO_BN is '子枝番';
+comment on column T02_KO.KO_INFO is '子情報';
+comment on column T02_KO.INSERT_TS is '作成タイムスタンプ';
+comment on column T02_KO.INSERT_USER_ID is '作成者';
+comment on column T02_KO.UPDATE_TS is '更新タイムスタンプ';
+comment on column T02_KO.UPDATE_USER_ID is '更新者';
 
-comment on table T02_FOSTER is '里子';
-comment on column T02_FOSTER.BRO_ID is '兄弟ID';
-comment on column T02_FOSTER.FOSTER_INFO is '里子情報';
-comment on column T02_FOSTER.INSERT_TS is '作成タイムスタンプ';
-comment on column T02_FOSTER.INSERT_USER_ID is '作成者';
-comment on column T02_FOSTER.UPDATE_TS is '更新タイムスタンプ';
-comment on column T02_FOSTER.UPDATE_USER_ID is '更新者';
+comment on table T02_MAGO is '孫';
+comment on column T02_MAGO.OYA_ID is '親ID';
+comment on column T02_MAGO.KO_BN is '子枝番';
+comment on column T02_MAGO.MAGO_BN is '孫枝番';
+comment on column T02_MAGO.MAGO_INFO is '孫情報';
+comment on column T02_MAGO.INSERT_TS is '作成タイムスタンプ';
+comment on column T02_MAGO.INSERT_USER_ID is '作成者';
+comment on column T02_MAGO.UPDATE_TS is '更新タイムスタンプ';
+comment on column T02_MAGO.UPDATE_USER_ID is '更新者';
 
-comment on table T02_YOUNGER is '弟';
-comment on column T02_YOUNGER.BRO_ID is '兄弟ID';
-comment on column T02_YOUNGER.YOUNGER_INFO is '弟情報';
-comment on column T02_YOUNGER.INSERT_TS is '作成タイムスタンプ';
-comment on column T02_YOUNGER.INSERT_USER_ID is '作成者';
-comment on column T02_YOUNGER.UPDATE_TS is '更新タイムスタンプ';
-comment on column T02_YOUNGER.UPDATE_USER_ID is '更新者';
+comment on table T02_ORPHAN is '孤児';
+comment on column T02_ORPHAN.OYA_ID is '親ID';
+comment on column T02_ORPHAN.KO_BN is '子枝番';
+comment on column T02_ORPHAN.ORPHAN_INFO is '孤児情報';
+comment on column T02_ORPHAN.INSERT_TS is '作成タイムスタンプ';
+comment on column T02_ORPHAN.INSERT_USER_ID is '作成者';
+comment on column T02_ORPHAN.UPDATE_TS is '更新タイムスタンプ';
+comment on column T02_ORPHAN.UPDATE_USER_ID is '更新者';
 
-comment on table T02_YOUNGEST is '末弟';
-comment on column T02_YOUNGEST.BRO_ID is '兄弟ID';
-comment on column T02_YOUNGEST.YOUNGEST_INFO is '末弟情報';
-comment on column T02_YOUNGEST.INSERT_TS is '作成タイムスタンプ';
-comment on column T02_YOUNGEST.INSERT_USER_ID is '作成者';
-comment on column T02_YOUNGEST.UPDATE_TS is '更新タイムスタンプ';
-comment on column T02_YOUNGEST.UPDATE_USER_ID is '更新者';
+comment on table T02_OYA is '親';
+comment on column T02_OYA.OYA_ID is '親ID';
+comment on column T02_OYA.OYA_INFO is '親情報';
+comment on column T02_OYA.INSERT_TS is '作成タイムスタンプ';
+comment on column T02_OYA.INSERT_USER_ID is '作成者';
+comment on column T02_OYA.UPDATE_TS is '更新タイムスタンプ';
+comment on column T02_OYA.UPDATE_USER_ID is '更新者';
 
 comment on table T03_STATUS_KB is '決裁フロー';
 comment on column T03_STATUS_KB.FLOW_ID is 'フローID';
@@ -1396,113 +1339,113 @@ comment on column T03_TRANS_HIS.INSERT_USER_ID is '作成者';
 comment on column T03_TRANS_HIS.UPDATE_TS is '更新タイムスタンプ';
 comment on column T03_TRANS_HIS.UPDATE_USER_ID is '更新者';
 
-comment on table T05_COMP1 is '複合１';
-comment on column T05_COMP1.REF1_ID is '参照１ID';
-comment on column T05_COMP1.REF2_ID is '参照２ID';
-comment on column T05_COMP1.COMP1_MEI is '複合１名';
-comment on column T05_COMP1.INSERT_TS is '作成タイムスタンプ';
-comment on column T05_COMP1.INSERT_USER_ID is '作成者';
-comment on column T05_COMP1.UPDATE_TS is '更新タイムスタンプ';
-comment on column T05_COMP1.UPDATE_USER_ID is '更新者';
+comment on table T04_COMP1 is '複合１';
+comment on column T04_COMP1.REF1_ID is '参照１ID';
+comment on column T04_COMP1.REF2_ID is '参照２ID';
+comment on column T04_COMP1.COMP1_MEI is '複合１名';
+comment on column T04_COMP1.INSERT_TS is '作成タイムスタンプ';
+comment on column T04_COMP1.INSERT_USER_ID is '作成者';
+comment on column T04_COMP1.UPDATE_TS is '更新タイムスタンプ';
+comment on column T04_COMP1.UPDATE_USER_ID is '更新者';
 
-comment on table T05_COMP2 is '複合２';
-comment on column T05_COMP2.REF1_ID is '参照１ID';
-comment on column T05_COMP2.REF2_ID is '参照２ID';
-comment on column T05_COMP2.REF3_ID is '参照３ID';
-comment on column T05_COMP2.TEKIYO_BI is '適用日';
-comment on column T05_COMP2.COMP2_INFO is '複合２情報';
-comment on column T05_COMP2.INSERT_TS is '作成タイムスタンプ';
-comment on column T05_COMP2.INSERT_USER_ID is '作成者';
-comment on column T05_COMP2.UPDATE_TS is '更新タイムスタンプ';
-comment on column T05_COMP2.UPDATE_USER_ID is '更新者';
+comment on table T04_COMP2 is '複合２';
+comment on column T04_COMP2.REF1_ID is '参照１ID';
+comment on column T04_COMP2.REF2_ID is '参照２ID';
+comment on column T04_COMP2.REF3_ID is '参照３ID';
+comment on column T04_COMP2.TEKIYO_BI is '適用日';
+comment on column T04_COMP2.COMP2_INFO is '複合２情報';
+comment on column T04_COMP2.INSERT_TS is '作成タイムスタンプ';
+comment on column T04_COMP2.INSERT_USER_ID is '作成者';
+comment on column T04_COMP2.UPDATE_TS is '更新タイムスタンプ';
+comment on column T04_COMP2.UPDATE_USER_ID is '更新者';
 
-comment on table T06_DERIVE1 is '派生１';
-comment on column T06_DERIVE1.DERIVE1_ID is '派生１ID';
-comment on column T06_DERIVE1.ORG_INFO is '起源情報';
-comment on column T06_DERIVE1.ORG_ID is '起源ID';
-comment on column T06_DERIVE1.INSERT_TS is '作成タイムスタンプ';
-comment on column T06_DERIVE1.INSERT_USER_ID is '作成者';
-comment on column T06_DERIVE1.UPDATE_TS is '更新タイムスタンプ';
-comment on column T06_DERIVE1.UPDATE_USER_ID is '更新者';
+comment on table T06_PREV is '前世';
+comment on column T06_PREV.PREV_ID is '前世ID';
+comment on column T06_PREV.PREV_INFO is '前世情報';
+comment on column T06_PREV.INSERT_TS is '作成タイムスタンプ';
+comment on column T06_PREV.INSERT_USER_ID is '作成者';
+comment on column T06_PREV.UPDATE_TS is '更新タイムスタンプ';
+comment on column T06_PREV.UPDATE_USER_ID is '更新者';
 
-comment on table T06_DERIVE1_DET is '派生１明細';
-comment on column T06_DERIVE1_DET.DERIVE1_ID is '派生１ID';
-comment on column T06_DERIVE1_DET.DERIVE1_BN is '派生１枝番';
-comment on column T06_DERIVE1_DET.DET_INFO is '明細情報';
-comment on column T06_DERIVE1_DET.INSERT_TS is '作成タイムスタンプ';
-comment on column T06_DERIVE1_DET.INSERT_USER_ID is '作成者';
-comment on column T06_DERIVE1_DET.UPDATE_TS is '更新タイムスタンプ';
-comment on column T06_DERIVE1_DET.UPDATE_USER_ID is '更新者';
+comment on table T06_PREV_DET is '前世明細';
+comment on column T06_PREV_DET.PREV_ID is '前世ID';
+comment on column T06_PREV_DET.PREV_BN is '前世枝番';
+comment on column T06_PREV_DET.DET_INFO is '明細情報';
+comment on column T06_PREV_DET.INSERT_TS is '作成タイムスタンプ';
+comment on column T06_PREV_DET.INSERT_USER_ID is '作成者';
+comment on column T06_PREV_DET.UPDATE_TS is '更新タイムスタンプ';
+comment on column T06_PREV_DET.UPDATE_USER_ID is '更新者';
 
-comment on table T06_DERIVE2 is '派生２';
-comment on column T06_DERIVE2.DERIVE2_ID is '派生２ID';
-comment on column T06_DERIVE2.ORG_INFO is '起源情報';
-comment on column T06_DERIVE2.ORG_ID is '起源ID';
-comment on column T06_DERIVE2.INSERT_TS is '作成タイムスタンプ';
-comment on column T06_DERIVE2.INSERT_USER_ID is '作成者';
-comment on column T06_DERIVE2.UPDATE_TS is '更新タイムスタンプ';
-comment on column T06_DERIVE2.UPDATE_USER_ID is '更新者';
+comment on table T06_REBORN is '転生';
+comment on column T06_REBORN.REBORN_ID is '転生ID';
+comment on column T06_REBORN.PREV_INFO is '前世情報';
+comment on column T06_REBORN.PREV_ID is '前世ID';
+comment on column T06_REBORN.INSERT_TS is '作成タイムスタンプ';
+comment on column T06_REBORN.INSERT_USER_ID is '作成者';
+comment on column T06_REBORN.UPDATE_TS is '更新タイムスタンプ';
+comment on column T06_REBORN.UPDATE_USER_ID is '更新者';
 
-comment on table T06_DERIVE2_DET is '派生２明細';
-comment on column T06_DERIVE2_DET.DERIVE2_ID is '派生２ID';
-comment on column T06_DERIVE2_DET.DERIVE2_BN is '派生２枝番';
-comment on column T06_DERIVE2_DET.DET_INFO is '明細情報';
-comment on column T06_DERIVE2_DET.INSERT_TS is '作成タイムスタンプ';
-comment on column T06_DERIVE2_DET.INSERT_USER_ID is '作成者';
-comment on column T06_DERIVE2_DET.UPDATE_TS is '更新タイムスタンプ';
-comment on column T06_DERIVE2_DET.UPDATE_USER_ID is '更新者';
+comment on table T06_REBORN_DET is '転生明細';
+comment on column T06_REBORN_DET.REBORN_ID is '転生ID';
+comment on column T06_REBORN_DET.REBORN_BN is '転生枝番';
+comment on column T06_REBORN_DET.DET_INFO is '明細情報';
+comment on column T06_REBORN_DET.INSERT_TS is '作成タイムスタンプ';
+comment on column T06_REBORN_DET.INSERT_USER_ID is '作成者';
+comment on column T06_REBORN_DET.UPDATE_TS is '更新タイムスタンプ';
+comment on column T06_REBORN_DET.UPDATE_USER_ID is '更新者';
 
-comment on table T06_ORG is '起源';
-comment on column T06_ORG.ORG_ID is '起源ID';
-comment on column T06_ORG.ORG_INFO is '起源情報';
-comment on column T06_ORG.INSERT_TS is '作成タイムスタンプ';
-comment on column T06_ORG.INSERT_USER_ID is '作成者';
-comment on column T06_ORG.UPDATE_TS is '更新タイムスタンプ';
-comment on column T06_ORG.UPDATE_USER_ID is '更新者';
+comment on table T07_DERIVE1 is '派生１';
+comment on column T07_DERIVE1.DERIVE1_ID is '派生１ID';
+comment on column T07_DERIVE1.ORG_INFO is '起源情報';
+comment on column T07_DERIVE1.ORG_ID is '起源ID';
+comment on column T07_DERIVE1.INSERT_TS is '作成タイムスタンプ';
+comment on column T07_DERIVE1.INSERT_USER_ID is '作成者';
+comment on column T07_DERIVE1.UPDATE_TS is '更新タイムスタンプ';
+comment on column T07_DERIVE1.UPDATE_USER_ID is '更新者';
 
-comment on table T06_ORG_DET is '起源明細';
-comment on column T06_ORG_DET.ORG_ID is '起源ID';
-comment on column T06_ORG_DET.ORG_BN is '起源枝番';
-comment on column T06_ORG_DET.DET_INFO is '明細情報';
-comment on column T06_ORG_DET.INSERT_TS is '作成タイムスタンプ';
-comment on column T06_ORG_DET.INSERT_USER_ID is '作成者';
-comment on column T06_ORG_DET.UPDATE_TS is '更新タイムスタンプ';
-comment on column T06_ORG_DET.UPDATE_USER_ID is '更新者';
+comment on table T07_DERIVE1_DET is '派生１明細';
+comment on column T07_DERIVE1_DET.DERIVE1_ID is '派生１ID';
+comment on column T07_DERIVE1_DET.DERIVE1_BN is '派生１枝番';
+comment on column T07_DERIVE1_DET.DET_INFO is '明細情報';
+comment on column T07_DERIVE1_DET.INSERT_TS is '作成タイムスタンプ';
+comment on column T07_DERIVE1_DET.INSERT_USER_ID is '作成者';
+comment on column T07_DERIVE1_DET.UPDATE_TS is '更新タイムスタンプ';
+comment on column T07_DERIVE1_DET.UPDATE_USER_ID is '更新者';
 
-comment on table T07_PREV is '前世';
-comment on column T07_PREV.PREV_ID is '前世ID';
-comment on column T07_PREV.PREV_INFO is '前世情報';
-comment on column T07_PREV.INSERT_TS is '作成タイムスタンプ';
-comment on column T07_PREV.INSERT_USER_ID is '作成者';
-comment on column T07_PREV.UPDATE_TS is '更新タイムスタンプ';
-comment on column T07_PREV.UPDATE_USER_ID is '更新者';
+comment on table T07_DERIVE2 is '派生２';
+comment on column T07_DERIVE2.DERIVE2_ID is '派生２ID';
+comment on column T07_DERIVE2.ORG_INFO is '起源情報';
+comment on column T07_DERIVE2.ORG_ID is '起源ID';
+comment on column T07_DERIVE2.INSERT_TS is '作成タイムスタンプ';
+comment on column T07_DERIVE2.INSERT_USER_ID is '作成者';
+comment on column T07_DERIVE2.UPDATE_TS is '更新タイムスタンプ';
+comment on column T07_DERIVE2.UPDATE_USER_ID is '更新者';
 
-comment on table T07_PREV_DET is '前世明細';
-comment on column T07_PREV_DET.PREV_ID is '前世ID';
-comment on column T07_PREV_DET.PREV_BN is '前世枝番';
-comment on column T07_PREV_DET.DET_INFO is '明細情報';
-comment on column T07_PREV_DET.INSERT_TS is '作成タイムスタンプ';
-comment on column T07_PREV_DET.INSERT_USER_ID is '作成者';
-comment on column T07_PREV_DET.UPDATE_TS is '更新タイムスタンプ';
-comment on column T07_PREV_DET.UPDATE_USER_ID is '更新者';
+comment on table T07_DERIVE2_DET is '派生２明細';
+comment on column T07_DERIVE2_DET.DERIVE2_ID is '派生２ID';
+comment on column T07_DERIVE2_DET.DERIVE2_BN is '派生２枝番';
+comment on column T07_DERIVE2_DET.DET_INFO is '明細情報';
+comment on column T07_DERIVE2_DET.INSERT_TS is '作成タイムスタンプ';
+comment on column T07_DERIVE2_DET.INSERT_USER_ID is '作成者';
+comment on column T07_DERIVE2_DET.UPDATE_TS is '更新タイムスタンプ';
+comment on column T07_DERIVE2_DET.UPDATE_USER_ID is '更新者';
 
-comment on table T07_REBORN is '転生';
-comment on column T07_REBORN.REBORN_ID is '転生ID';
-comment on column T07_REBORN.PREV_INFO is '前世情報';
-comment on column T07_REBORN.PREV_ID is '前世ID';
-comment on column T07_REBORN.INSERT_TS is '作成タイムスタンプ';
-comment on column T07_REBORN.INSERT_USER_ID is '作成者';
-comment on column T07_REBORN.UPDATE_TS is '更新タイムスタンプ';
-comment on column T07_REBORN.UPDATE_USER_ID is '更新者';
+comment on table T07_ORG is '起源';
+comment on column T07_ORG.ORG_ID is '起源ID';
+comment on column T07_ORG.ORG_INFO is '起源情報';
+comment on column T07_ORG.INSERT_TS is '作成タイムスタンプ';
+comment on column T07_ORG.INSERT_USER_ID is '作成者';
+comment on column T07_ORG.UPDATE_TS is '更新タイムスタンプ';
+comment on column T07_ORG.UPDATE_USER_ID is '更新者';
 
-comment on table T07_REBORN_DET is '転生明細';
-comment on column T07_REBORN_DET.REBORN_ID is '転生ID';
-comment on column T07_REBORN_DET.REBORN_BN is '転生枝番';
-comment on column T07_REBORN_DET.DET_INFO is '明細情報';
-comment on column T07_REBORN_DET.INSERT_TS is '作成タイムスタンプ';
-comment on column T07_REBORN_DET.INSERT_USER_ID is '作成者';
-comment on column T07_REBORN_DET.UPDATE_TS is '更新タイムスタンプ';
-comment on column T07_REBORN_DET.UPDATE_USER_ID is '更新者';
+comment on table T07_ORG_DET is '起源明細';
+comment on column T07_ORG_DET.ORG_ID is '起源ID';
+comment on column T07_ORG_DET.ORG_BN is '起源枝番';
+comment on column T07_ORG_DET.DET_INFO is '明細情報';
+comment on column T07_ORG_DET.INSERT_TS is '作成タイムスタンプ';
+comment on column T07_ORG_DET.INSERT_USER_ID is '作成者';
+comment on column T07_ORG_DET.UPDATE_TS is '更新タイムスタンプ';
+comment on column T07_ORG_DET.UPDATE_USER_ID is '更新者';
 
 comment on table T08_KISEI1 is '寄生１';
 comment on column T08_KISEI1.KISEI1_ID is '寄生１ID';
@@ -1531,56 +1474,56 @@ comment on column T08_KYOSEI.INSERT_USER_ID is '作成者';
 comment on column T08_KYOSEI.UPDATE_TS is '更新タイムスタンプ';
 comment on column T08_KYOSEI.UPDATE_USER_ID is '更新者';
 
-comment on table T09_GRP1 is '集団１';
-comment on column T09_GRP1.GRP1_ID is '集団１ID';
-comment on column T09_GRP1.SUM_ID is '集約ID';
-comment on column T09_GRP1.INSERT_TS is '作成タイムスタンプ';
-comment on column T09_GRP1.INSERT_USER_ID is '作成者';
-comment on column T09_GRP1.UPDATE_TS is '更新タイムスタンプ';
-comment on column T09_GRP1.UPDATE_USER_ID is '更新者';
+comment on table T09_CHOICE is '選択';
+comment on column T09_CHOICE.CHOICE_ID is '選択ID';
+comment on column T09_CHOICE.KOHO1_ID is '候補１ID';
+comment on column T09_CHOICE.KOHO1_INFO is '候補１情報';
+comment on column T09_CHOICE.KOHO2_ID is '候補２ID';
+comment on column T09_CHOICE.KOHO2_INFO is '候補２情報';
+comment on column T09_CHOICE.INSERT_TS is '作成タイムスタンプ';
+comment on column T09_CHOICE.INSERT_USER_ID is '作成者';
+comment on column T09_CHOICE.UPDATE_TS is '更新タイムスタンプ';
+comment on column T09_CHOICE.UPDATE_USER_ID is '更新者';
 
-comment on table T09_GRP2 is '集団２';
-comment on column T09_GRP2.GRP2_ID is '集団２ID';
-comment on column T09_GRP2.SUM_ID is '集約ID';
-comment on column T09_GRP2.INSERT_TS is '作成タイムスタンプ';
-comment on column T09_GRP2.INSERT_USER_ID is '作成者';
-comment on column T09_GRP2.UPDATE_TS is '更新タイムスタンプ';
-comment on column T09_GRP2.UPDATE_USER_ID is '更新者';
+comment on table T09_KOHO1 is '候補１';
+comment on column T09_KOHO1.KOHO1_ID is '候補１ID';
+comment on column T09_KOHO1.KOHO1_INFO is '候補１情報';
+comment on column T09_KOHO1.INSERT_TS is '作成タイムスタンプ';
+comment on column T09_KOHO1.INSERT_USER_ID is '作成者';
+comment on column T09_KOHO1.UPDATE_TS is '更新タイムスタンプ';
+comment on column T09_KOHO1.UPDATE_USER_ID is '更新者';
 
-comment on table T09_SUM is '集約';
-comment on column T09_SUM.SUM_ID is '集約ID';
-comment on column T09_SUM.SUM_INFO is '集約情報';
-comment on column T09_SUM.INSERT_TS is '作成タイムスタンプ';
-comment on column T09_SUM.INSERT_USER_ID is '作成者';
-comment on column T09_SUM.UPDATE_TS is '更新タイムスタンプ';
-comment on column T09_SUM.UPDATE_USER_ID is '更新者';
+comment on table T09_KOHO2 is '候補２';
+comment on column T09_KOHO2.KOHO2_ID is '候補２ID';
+comment on column T09_KOHO2.KOHO2_INFO is '候補２情報';
+comment on column T09_KOHO2.INSERT_TS is '作成タイムスタンプ';
+comment on column T09_KOHO2.INSERT_USER_ID is '作成者';
+comment on column T09_KOHO2.UPDATE_TS is '更新タイムスタンプ';
+comment on column T09_KOHO2.UPDATE_USER_ID is '更新者';
 
-comment on table T10_CHOICE is '選抜';
-comment on column T10_CHOICE.CHOICE_ID is '選抜ID';
-comment on column T10_CHOICE.KOHO1_ID is '候補１ID';
-comment on column T10_CHOICE.KOHO1_INFO is '候補１情報';
-comment on column T10_CHOICE.KOHO2_ID is '候補２ID';
-comment on column T10_CHOICE.KOHO2_INFO is '候補２情報';
-comment on column T10_CHOICE.INSERT_TS is '作成タイムスタンプ';
-comment on column T10_CHOICE.INSERT_USER_ID is '作成者';
-comment on column T10_CHOICE.UPDATE_TS is '更新タイムスタンプ';
-comment on column T10_CHOICE.UPDATE_USER_ID is '更新者';
+comment on table T10_GRP1 is '集団１';
+comment on column T10_GRP1.GRP1_ID is '集団１ID';
+comment on column T10_GRP1.SUM_ID is '集約ID';
+comment on column T10_GRP1.INSERT_TS is '作成タイムスタンプ';
+comment on column T10_GRP1.INSERT_USER_ID is '作成者';
+comment on column T10_GRP1.UPDATE_TS is '更新タイムスタンプ';
+comment on column T10_GRP1.UPDATE_USER_ID is '更新者';
 
-comment on table T10_KOHO1 is '候補１';
-comment on column T10_KOHO1.KOHO1_ID is '候補１ID';
-comment on column T10_KOHO1.KOHO1_INFO is '候補１情報';
-comment on column T10_KOHO1.INSERT_TS is '作成タイムスタンプ';
-comment on column T10_KOHO1.INSERT_USER_ID is '作成者';
-comment on column T10_KOHO1.UPDATE_TS is '更新タイムスタンプ';
-comment on column T10_KOHO1.UPDATE_USER_ID is '更新者';
+comment on table T10_GRP2 is '集団２';
+comment on column T10_GRP2.GRP2_ID is '集団２ID';
+comment on column T10_GRP2.SUM_ID is '集約ID';
+comment on column T10_GRP2.INSERT_TS is '作成タイムスタンプ';
+comment on column T10_GRP2.INSERT_USER_ID is '作成者';
+comment on column T10_GRP2.UPDATE_TS is '更新タイムスタンプ';
+comment on column T10_GRP2.UPDATE_USER_ID is '更新者';
 
-comment on table T10_KOHO2 is '候補２';
-comment on column T10_KOHO2.KOHO2_ID is '候補２ID';
-comment on column T10_KOHO2.KOHO2_INFO is '候補２情報';
-comment on column T10_KOHO2.INSERT_TS is '作成タイムスタンプ';
-comment on column T10_KOHO2.INSERT_USER_ID is '作成者';
-comment on column T10_KOHO2.UPDATE_TS is '更新タイムスタンプ';
-comment on column T10_KOHO2.UPDATE_USER_ID is '更新者';
+comment on table T10_SUM is '集約';
+comment on column T10_SUM.SUM_ID is '集約ID';
+comment on column T10_SUM.SUM_INFO is '集約情報';
+comment on column T10_SUM.INSERT_TS is '作成タイムスタンプ';
+comment on column T10_SUM.INSERT_USER_ID is '作成者';
+comment on column T10_SUM.UPDATE_TS is '更新タイムスタンプ';
+comment on column T10_SUM.UPDATE_USER_ID is '更新者';
 
 comment on table T11_PREV2 is '前世２';
 comment on column T11_PREV2.PREV2_ID is '前世２ID';
@@ -1647,14 +1590,27 @@ comment on column T13_SRC.INSERT_USER_ID is '作成者';
 comment on column T13_SRC.UPDATE_TS is '更新タイムスタンプ';
 comment on column T13_SRC.UPDATE_USER_ID is '更新者';
 
-comment on table V00_YOJITSU is '予実';
-comment on column V00_YOJITSU.koutei_id is 'koutei_id';
-comment on column V00_YOJITSU.koutei_tx is 'koutei_tx';
-comment on column V00_YOJITSU.kaishi_bi is 'kaishi_bi';
-comment on column V00_YOJITSU.shuryo_bi is 'shuryo_bi';
-comment on column V00_YOJITSU.oya_koutei_id is 'oya_koutei_id';
-comment on column V00_YOJITSU.jisshi_bi is 'jisshi_bi';
-comment on column V00_YOJITSU.kanryo_bi is 'kanryo_bi';
+comment on table T14_JISSEKI is '実績';
+comment on column T14_JISSEKI.KOUTEI_ID is '工程ID';
+comment on column T14_JISSEKI.JISSEKI_BN is '実績連番';
+comment on column T14_JISSEKI.JISSHI_BI is '実施日';
+comment on column T14_JISSEKI.KANRYO_BI is '完了日';
+comment on column T14_JISSEKI.INSERT_TS is '作成タイムスタンプ';
+comment on column T14_JISSEKI.INSERT_USER_ID is '作成者';
+comment on column T14_JISSEKI.UPDATE_TS is '更新タイムスタンプ';
+comment on column T14_JISSEKI.UPDATE_USER_ID is '更新者';
+
+comment on table T14_KOUTEI is '工程';
+comment on column T14_KOUTEI.KOUTEI_ID is '工程ID';
+comment on column T14_KOUTEI.KOUTEI_MEI is '工程名';
+comment on column T14_KOUTEI.KAISHI_BI is '開始日';
+comment on column T14_KOUTEI.SHURYO_BI is '終了日';
+comment on column T14_KOUTEI.SAGYOKU_CD is '作業区CD';
+comment on column T14_KOUTEI.OYA_KOUTEI_ID is '親工程ID';
+comment on column T14_KOUTEI.INSERT_TS is '作成タイムスタンプ';
+comment on column T14_KOUTEI.INSERT_USER_ID is '作成者';
+comment on column T14_KOUTEI.UPDATE_TS is '更新タイムスタンプ';
+comment on column T14_KOUTEI.UPDATE_USER_ID is '更新者';
 
 comment on table V13_FURIWAKE is '振分ビュー';
 comment on column V13_FURIWAKE.table_name is 'テーブル名';
@@ -1665,4 +1621,31 @@ comment on table V13_HENKAN is '変換ビュー';
 comment on column V13_HENKAN.table_name is 'テーブル名';
 comment on column V13_HENKAN.src_id is '変換元ID';
 comment on column V13_HENKAN.dest_info is '変換元情報';
+
+comment on table V14_FUKA_KADOBI is '稼働日負荷';
+comment on column V14_FUKA_KADOBI.labels is 'labels';
+comment on column V14_FUKA_KADOBI.type is 'type';
+comment on column V14_FUKA_KADOBI.stack is 'stack';
+comment on column V14_FUKA_KADOBI.label is 'label';
+comment on column V14_FUKA_KADOBI.DATA is 'DATA';
+
+comment on table V14_FUKA_SAGYOKU is '作業区負荷';
+comment on column V14_FUKA_SAGYOKU.labels is 'labels';
+comment on column V14_FUKA_SAGYOKU.type is 'type';
+comment on column V14_FUKA_SAGYOKU.stack is 'stack';
+comment on column V14_FUKA_SAGYOKU.label is 'label';
+comment on column V14_FUKA_SAGYOKU.DATA is 'DATA';
+
+comment on table V14_YOJITSU is '予実';
+comment on column V14_YOJITSU.koutei_id is 'koutei_id';
+comment on column V14_YOJITSU.koutei_tx is 'koutei_tx';
+comment on column V14_YOJITSU.kaishi_bi is 'kaishi_bi';
+comment on column V14_YOJITSU.shuryo_bi is 'shuryo_bi';
+comment on column V14_YOJITSU.sagyoku_cd is 'sagyoku_cd';
+comment on column V14_YOJITSU.oya_koutei_id is 'oya_koutei_id';
+comment on column V14_YOJITSU.jisshi_bi is 'jisshi_bi';
+comment on column V14_YOJITSU.kanryo_bi is 'kanryo_bi';
+comment on column V14_YOJITSU.dependencies is 'dependencies';
+comment on column V14_YOJITSU.koutei_path is 'koutei_path';
+comment on column V14_YOJITSU.root is 'root';
 
