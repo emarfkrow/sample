@@ -2507,7 +2507,7 @@ TableInnerOption=
 TableOption=
 Page=予実
 Left=100
-Top=500
+Top=600
 Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
 Field="実績連番","JISSEKI_BN","*BN",,1,"","",$FFFFFFFF,""
 Field="実施日","JISSHI_YMD","*YMD","NOT NULL",,"","",$FFFFFFFF,""
@@ -2516,22 +2516,22 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260816144216
-Position="予実",100,500
+Position="予実",100,600
 ZOrder=179
 
 [View]
 PName=V14_YOJITSU
 LName=予実
-Comment=
+Comment=標準SQL
 Query=WITH RECURSIVE\n-- 1. 前工程（dependencies）を集約（標準SQL準拠のLISTAGG構文）\ndeps AS (\n    SELECT\n          oya_koutei_id\n        , LISTAGG(koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies\n    FROM\n        t14_koutei\n    WHERE\n        oya_koutei_id IS NOT NULL\n    GROUP BY\n        oya_koutei_id\n),\n\n-- 2. 階層構造（CONNECT BYの代替）を再帰CTEで構築\ntree AS (\n    -- アンカーメンバー (START WITH a.oya_koutei_id IS NULL の代替)\n    SELECT\n          a.koutei_id\n        , a.koutei_mei\n        , a.kaishi_bi\n        , a.shuryo_bi\n        , a.sagyoku_cd\n        , a.oya_koutei_id\n        -- 最初のカンマを省くため、初期値はkoutei_idのみ（SUBSTRの処理を不要に）\n        , CAST(a.koutei_id AS CHARACTER VARYING(4000)) AS koutei_path\n        , a.koutei_id                                  AS root         -- CONNECT_BY_ROOT の代替\n    FROM\n        t14_koutei a\n    WHERE\n        a.oya_koutei_id IS NULL\n\n    UNION ALL\n\n    -- 再帰メンバー (CONNECT BY PRIOR の代替)\n    SELECT\n          child.koutei_id\n        , child.koutei_mei\n        , child.kaishi_bi\n        , child.shuryo_bi\n        , child.sagyoku_cd\n        , child.oya_koutei_id\n        -- 前のパスにカンマと自身のIDを結合し、型と長さを明示的にキャスト\n        , CAST(parent.koutei_path || \q,\q || child.koutei_id AS CHARACTER VARYING(4000)) AS koutei_path\n        , parent.root                                  -- 親のrootを引き継ぐ\n    FROM\n        t14_koutei child\n    INNER JOIN tree parent\n        ON child.oya_koutei_id = parent.koutei_id\n)\n\n-- 3. 実績テーブル(jisseki)・集約データ(deps)を結合して最終取得\nSELECT\n      t.koutei_id\n    , t.koutei_mei AS koutei_tx\n    , t.kaishi_bi\n    , t.shuryo_bi\n    , t.sagyoku_cd\n    , t.oya_koutei_id\n    , j.jisshi_bi\n    , j.kanryo_bi\n    , b.dependencies\n    , t.koutei_path\n    , t.root\nFROM\n    tree t\nLEFT OUTER JOIN t14_jisseki j\n    ON j.koutei_id = t.koutei_id\nLEFT OUTER JOIN deps b\n    ON b.oya_koutei_id = t.koutei_id\nORDER BY\n    t.koutei_path DESC\n;\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="予実",600,500
+Position="予実",600,600
 ZOrder=180
 Page=予実
 Left=600
-Top=500
+Top=600
 
 [View]
 PName=V14_FUKA_SAGYOKU
@@ -2567,41 +2567,41 @@ Height=144
 [View]
 PName=V14_YOJITSU
 LName=予実
-Comment=
+Comment=oracle
 Query=SELECT\n      * \nFROM\n    ( \n        SELECT\n              a.koutei_id\n            , a.koutei_mei                                      AS koutei_tx\n            , a.kaishi_ymd\n            , a.shuryo_ymd\n            , a.sagyoku_cd\n            , a.oya_koutei_id\n            , j.jisshi_ymd\n            , j.kanryo_ymd\n            , b.dependencies                    --前工程\n            , SUBSTR (sys_connect_by_path(a.koutei_id, \q,\q), 2) AS koutei_path\n            , CONNECT_BY_ROOT a.koutei_id                       AS root \n        FROM\n            t14_koutei a \n            LEFT OUTER JOIN t14_jisseki j \n                ON j.koutei_id = a.koutei_id \n            LEFT OUTER JOIN ( \n                SELECT\n                      oya_koutei_id\n                    , LISTAGG (koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies \n                FROM\n                    t14_koutei \n                WHERE\n                    oya_koutei_id IS NOT NULL \n                GROUP BY\n                    oya_koutei_id\n            ) b \n                ON b.oya_koutei_id = a.koutei_id \n        START WITH\n            a.oya_koutei_id IS NULL \n        CONNECT BY\n            PRIOR a.koutei_id = a.oya_koutei_id\n    ) a \nORDER BY\n    a.koutei_path DESC\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="予実",1000,500
+Position="予実",1000,600
 ZOrder=184
 Page=予実
 Left=1000
-Top=500
+Top=600
 
 [View]
 PName=V14_YOJITSU
 LName=予実
-Comment=
+Comment=mysql
 Query=WITH RECURSIVE                                  -- 1. 前工程（dependencies）を集約（MySQL用のGROUP_CONCAT構文へ変更）\ndeps AS ( \n    SELECT\n          oya_koutei_id\n        , group_concat(koutei_id ORDER BY koutei_id separator \q,\q) AS dependencies \n    FROM\n        t14_koutei \n    WHERE\n        oya_koutei_id IS NOT NULL \n    GROUP BY\n        oya_koutei_id\n) \n,                                               -- 2. 階層構造（CONNECT BYの代替）を再帰CTEで構築\ntree AS ( \n                                                -- アンカーメンバー (START WITH a.oya_koutei_id IS NULL の代替)\n    SELECT\n          a.koutei_id\n        , a.koutei_mei\n        , a.kaishi_ymd\n        , a.shuryo_ymd\n        , a.sagyoku_cd\n        , a.oya_koutei_id                       -- MySQLでの安全な再帰長確保のため、CHAR(4000)にキャスト（SUBSTR処理を不要にするため先頭カンマは無し）\n        , CAST(a.koutei_id AS CHAR (4000))                  AS koutei_path\n        , a.koutei_id                                       AS root-- CONNECT_BY_ROOT の代替\n    FROM\n        t14_koutei a \n    WHERE\n        a.oya_koutei_id IS NULL \n    UNION ALL                                   -- 再帰メンバー (CONNECT BY PRIOR の代替)\n    SELECT\n          child.koutei_id\n        , child.koutei_mei\n        , child.kaishi_ymd\n        , child.shuryo_ymd\n        , child.sagyoku_cd\n        , child.oya_koutei_id                   -- MySQL標準の CONCAT 関数でパスを結合\n        , CONCAT (parent.koutei_path, \q,\q, child.koutei_id) AS koutei_path\n        , parent.root                           -- 親のrootを引き継ぐ\n    FROM\n        t14_koutei child \n        INNER JOIN tree parent \n            ON child.oya_koutei_id = parent.koutei_id\n)                                               -- 3. 実績テーブル(jisseki)・集約データ(deps)を結合して最終取得\nSELECT\n      t.koutei_id\n    , t.koutei_mei AS koutei_tx\n    , t.kaishi_ymd\n    , t.shuryo_ymd\n    , t.sagyoku_cd\n    , t.oya_koutei_id\n    , j.jisshi_ymd\n    , j.kanryo_ymd\n    , b.dependencies\n    , t.koutei_path\n    , t.root \nFROM\n    tree t \n    LEFT OUTER JOIN t14_jisseki j \n        ON j.koutei_id = t.koutei_id \n    LEFT OUTER JOIN deps b \n        ON b.oya_koutei_id = t.koutei_id \nORDER BY\n    t.koutei_path DESC\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="予実",1400,500
+Position="予実",1400,600
 ZOrder=185
 Page=予実
 Left=1400
-Top=500
+Top=600
 
 [View]
 PName=V14_YOJITSU
 LName=予実
-Comment=
+Comment=postgresql
 Query=WITH RECURSIVE\n-- 1. 前工程（dependencies）を集約（PostgreSQL用のSTRING_AGG構文へ変更）\ndeps AS (\n    SELECT\n          oya_koutei_id\n         -- 数値型でも動作するよう ::text を追加し、STRING_AGG で集約\n        , STRING_AGG(koutei_id::text, \q,\q ORDER BY koutei_id) AS dependencies \n    FROM\n        t14_koutei \n    WHERE\n        oya_koutei_id IS NOT NULL \n    GROUP BY\n        oya_koutei_id\n),\n\n-- 2. 階層構造（CONNECT BYの代替）を再帰CTEで構築\ntree AS (\n    -- アンカーメンバー (START WITH a.oya_koutei_id IS NULL の代替)\n    SELECT\n          a.koutei_id\n        , a.koutei_mei\n        , a.kaishi_ymd\n        , a.shuryo_ymd\n        , a.sagyoku_cd\n        , a.oya_koutei_id\n        -- 型を一致させるため、明示的に CHARACTER VARYING(4000) にキャスト\n        , CAST(a.koutei_id AS CHARACTER VARYING(4000)) AS koutei_path\n        , a.koutei_id                                  AS root        -- CONNECT_BY_ROOT の代替\n    FROM\n        t14_koutei a \n    WHERE\n        a.oya_koutei_id IS NULL \n\n    UNION ALL\n\n    -- 再帰メンバー (CONNECT BY PRIOR の代替)\n    SELECT\n          child.koutei_id\n        , child.koutei_mei\n        , child.kaishi_ymd\n        , child.shuryo_ymd\n        , child.sagyoku_cd\n        , child.oya_koutei_id\n        -- パイプ演算子 || でパスを結合し、アンカー側と型・長さを完全に一致させるため CAST\n        , CAST(parent.koutei_path || \q,\q || child.koutei_id AS CHARACTER VARYING(4000)) AS koutei_path\n        , parent.root                                  -- 親のrootを引き継ぐ\n    FROM\n        t14_koutei child \n    INNER JOIN tree parent \n        ON child.oya_koutei_id = parent.koutei_id\n)\n\n-- 3. 実績テーブル(jisseki)・集約データ(deps)を結合して最終取得\nSELECT\n      t.koutei_id\n    , t.koutei_mei AS koutei_tx\n    , t.kaishi_ymd\n    , t.shuryo_ymd\n    , t.sagyoku_cd\n    , t.oya_koutei_id\n    , j.jisshi_ymd\n    , j.kanryo_ymd\n    , b.dependencies\n    , t.koutei_path\n    , t.root \nFROM\n    tree t\nLEFT OUTER JOIN t14_jisseki j \n    ON j.koutei_id = t.koutei_id \nLEFT OUTER JOIN deps b \n    ON b.oya_koutei_id = t.koutei_id \nORDER BY\n    t.koutei_path DESC\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="予実",1800,500
+Position="予実",1800,600
 ZOrder=186
 Page=予実
 Left=1800
-Top=500
+Top=600
