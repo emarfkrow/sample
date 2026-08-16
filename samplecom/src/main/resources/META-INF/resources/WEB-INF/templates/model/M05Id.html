@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M05Id.title}">M05_ID</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M05Id.js}"></script>
+<script th:src="@{/model/M05IdGridColumns.js}"></script>
+<!-- M05_IDの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- M05_IDの子モデルのグリッド定義 -->
+<script th:src="@{/model/M05Idbn.js}"></script>
+<script th:src="@{/model/M05IdbnGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M05Id.h2}">h2</h2>
+    <form name="M05IdRegistForm" action="M05IdRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{M05Id.legend}">legend</legend>
+        <div id="idrefId">
+          <label for="M05Id.idrefId" th:text="#{M05Id.idrefId}">IDREF_ID</label><input type="text" id="M05Id.idrefId" name="M05Id.idrefId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="idrefMei">
+          <label for="M05Id.idrefMei" th:text="#{M05Id.idrefMei}">IDREF_MEI</label><input type="text" id="M05Id.idrefMei" name="M05Id.idrefMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{M05Id.insertTs}" class="meta">INSERT_TS</label><span id="M05Id.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M05Id.insertTs" name="M05Id.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{M05Id.insertUserId}" class="meta">INSERT_USER_ID</label><span id="M05Id.insertUserId" class="meta"></span><input type="hidden" id="M05Id.insertUserId" name="M05Id.insertUserId" class="meta" />
+          <span id="M05Id.insertUserSei" class="refer meta" data-referFor="M05Id.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M05Id.insertUserId" data-destDef="M05Id.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{M05Id.updateTs}" class="meta">UPDATE_TS</label><span id="M05Id.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M05Id.updateTs" name="M05Id.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{M05Id.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="M05Id.updateUserId" class="meta"></span><input type="hidden" id="M05Id.updateUserId" name="M05Id.updateUserId" class="meta" />
+          <span id="M05Id.updateUserSei" class="refer meta" data-referFor="M05Id.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M05Id.updateUserId" data-destDef="M05Id.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <h3 th:text="#{M05Idbn.h3}">h3</h3>
+      <a th:href="@{/model/M05Idbn.html(anew)}" id="M05Idbn" target="dialog" th:text="#{M05Idbn.add}" class="addChild" tabindex="-1">M05_IDBN</a>
+      <div id="M05IdbnGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/M05Idbn.html}" class="childs"></div>
+        <a id="M05IdbnGrid.idrefId" th:href="@{/model/M05IdS.html}" target="dialog" class="refer gridRefer" th:text="#{M05IdS.title} + #{common.refer}" tabindex="-1">...</a>
+      <div class="buttons">
+        <button type="button" id="RefreshM05Id" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{M05IdGet.xlsx(baseMei=#{M05Id.h2})}" id="M05IdGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteM05Id" type="submit" class="delete" data-action="M05IdDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistM05Id" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

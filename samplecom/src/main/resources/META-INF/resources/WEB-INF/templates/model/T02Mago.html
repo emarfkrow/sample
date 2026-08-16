@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T02Mago.title}">T02_MAGO</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T02Mago.js}"></script>
+<script th:src="@{/model/T02MagoGridColumns.js}"></script>
+<!-- T02_MAGOの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T02_MAGOの親モデルのグリッド定義 -->
+<script th:src="@{/model/T02Dinks.js}"></script>
+<script th:src="@{/model/T02DinksGridColumns.js}"></script>
+<!-- T02_MAGOの親モデルのグリッド定義 -->
+<script th:src="@{/model/T02Ko.js}"></script>
+<script th:src="@{/model/T02KoGridColumns.js}"></script>
+<!-- T02_MAGOの親モデルのグリッド定義 -->
+<script th:src="@{/model/T02Orphan.js}"></script>
+<script th:src="@{/model/T02OrphanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T02Mago.h2}">h2</h2>
+    <form name="T02MagoRegistForm" action="T02MagoRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{T02Dinks.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T02Dinks.oyaId" th:text="#{T02Dinks.oyaId}">OYA_ID</label><input type="text" id="T02Dinks.oyaId" name="T02Dinks.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="T02Dinks.koBn" th:text="#{T02Dinks.koBn}">KO_BN</label><input type="text" id="T02Dinks.koBn" name="T02Dinks.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="dinksInfo">
+          <label for="T02Dinks.dinksInfo" th:text="#{T02Dinks.dinksInfo}">DINKS_INFO</label><input type="text" id="T02Dinks.dinksInfo" name="T02Dinks.dinksInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T02Dinks.insertTs}" class="meta">INSERT_TS</label><span id="T02Dinks.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Dinks.insertTs" name="T02Dinks.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T02Dinks.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T02Dinks.insertUserId" class="meta"></span><input type="hidden" id="T02Dinks.insertUserId" name="T02Dinks.insertUserId" class="meta" />
+          <span id="T02Dinks.insertUserSei" class="refer meta" data-referFor="T02Dinks.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Dinks.insertUserId" data-destDef="T02Dinks.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T02Dinks.updateTs}" class="meta">UPDATE_TS</label><span id="T02Dinks.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Dinks.updateTs" name="T02Dinks.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T02Dinks.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T02Dinks.updateUserId" class="meta"></span><input type="hidden" id="T02Dinks.updateUserId" name="T02Dinks.updateUserId" class="meta" />
+          <span id="T02Dinks.updateUserSei" class="refer meta" data-referFor="T02Dinks.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Dinks.updateUserId" data-destDef="T02Dinks.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset class="parent">
+        <legend th:text="#{T02Ko.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T02Ko.oyaId" th:text="#{T02Ko.oyaId}">OYA_ID</label><input type="text" id="T02Ko.oyaId" name="T02Ko.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="T02Ko.koBn" th:text="#{T02Ko.koBn}">KO_BN</label><input type="text" id="T02Ko.koBn" name="T02Ko.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koInfo">
+          <label for="T02Ko.koInfo" th:text="#{T02Ko.koInfo}">KO_INFO</label><input type="text" id="T02Ko.koInfo" name="T02Ko.koInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T02Ko.insertTs}" class="meta">INSERT_TS</label><span id="T02Ko.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Ko.insertTs" name="T02Ko.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T02Ko.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T02Ko.insertUserId" class="meta"></span><input type="hidden" id="T02Ko.insertUserId" name="T02Ko.insertUserId" class="meta" />
+          <span id="T02Ko.insertUserSei" class="refer meta" data-referFor="T02Ko.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Ko.insertUserId" data-destDef="T02Ko.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T02Ko.updateTs}" class="meta">UPDATE_TS</label><span id="T02Ko.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Ko.updateTs" name="T02Ko.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T02Ko.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T02Ko.updateUserId" class="meta"></span><input type="hidden" id="T02Ko.updateUserId" name="T02Ko.updateUserId" class="meta" />
+          <span id="T02Ko.updateUserSei" class="refer meta" data-referFor="T02Ko.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Ko.updateUserId" data-destDef="T02Ko.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset class="parent">
+        <legend th:text="#{T02Orphan.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T02Orphan.oyaId" th:text="#{T02Orphan.oyaId}">OYA_ID</label><input type="text" id="T02Orphan.oyaId" name="T02Orphan.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="T02Orphan.koBn" th:text="#{T02Orphan.koBn}">KO_BN</label><input type="text" id="T02Orphan.koBn" name="T02Orphan.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orphanInfo">
+          <label for="T02Orphan.orphanInfo" th:text="#{T02Orphan.orphanInfo}">ORPHAN_INFO</label><input type="text" id="T02Orphan.orphanInfo" name="T02Orphan.orphanInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T02Orphan.insertTs}" class="meta">INSERT_TS</label><span id="T02Orphan.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Orphan.insertTs" name="T02Orphan.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T02Orphan.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T02Orphan.insertUserId" class="meta"></span><input type="hidden" id="T02Orphan.insertUserId" name="T02Orphan.insertUserId" class="meta" />
+          <span id="T02Orphan.insertUserSei" class="refer meta" data-referFor="T02Orphan.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Orphan.insertUserId" data-destDef="T02Orphan.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T02Orphan.updateTs}" class="meta">UPDATE_TS</label><span id="T02Orphan.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Orphan.updateTs" name="T02Orphan.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T02Orphan.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T02Orphan.updateUserId" class="meta"></span><input type="hidden" id="T02Orphan.updateUserId" name="T02Orphan.updateUserId" class="meta" />
+          <span id="T02Orphan.updateUserSei" class="refer meta" data-referFor="T02Orphan.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Orphan.updateUserId" data-destDef="T02Orphan.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T02Mago.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T02Mago.oyaId" th:text="#{T02Mago.oyaId}">OYA_ID</label><input type="text" id="T02Mago.oyaId" name="T02Mago.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="T02Mago.koBn" th:text="#{T02Mago.koBn}">KO_BN</label><input type="text" id="T02Mago.koBn" name="T02Mago.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="magoBn">
+          <label for="T02Mago.magoBn" th:text="#{T02Mago.magoBn}">MAGO_BN</label><input type="text" id="T02Mago.magoBn" name="T02Mago.magoBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="magoInfo">
+          <label for="T02Mago.magoInfo" th:text="#{T02Mago.magoInfo}">MAGO_INFO</label><input type="text" id="T02Mago.magoInfo" name="T02Mago.magoInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T02Mago.insertTs}" class="meta">INSERT_TS</label><span id="T02Mago.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Mago.insertTs" name="T02Mago.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T02Mago.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T02Mago.insertUserId" class="meta"></span><input type="hidden" id="T02Mago.insertUserId" name="T02Mago.insertUserId" class="meta" />
+          <span id="T02Mago.insertUserSei" class="refer meta" data-referFor="T02Mago.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Mago.insertUserId" data-destDef="T02Mago.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T02Mago.updateTs}" class="meta">UPDATE_TS</label><span id="T02Mago.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Mago.updateTs" name="T02Mago.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T02Mago.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T02Mago.updateUserId" class="meta"></span><input type="hidden" id="T02Mago.updateUserId" name="T02Mago.updateUserId" class="meta" />
+          <span id="T02Mago.updateUserSei" class="refer meta" data-referFor="T02Mago.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Mago.updateUserId" data-destDef="T02Mago.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT02Mago" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T02MagoGet.xlsx(baseMei=#{T02Mago.h2})}" id="T02MagoGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT02Mago" type="submit" class="delete" data-action="T02MagoDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT02Mago" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

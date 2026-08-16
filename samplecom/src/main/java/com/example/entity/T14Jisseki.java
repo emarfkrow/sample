@@ -17,8 +17,8 @@ public class T14Jisseki implements IEntity {
     public T14Jisseki(final String[] values) {
         this.setKouteiId(values[0]);
         this.setJissekiBn(values[1]);
-        this.setJisshiBi(values[2]);
-        this.setKanryoBi(values[3]);
+        this.setJisshiYmd(values[2]);
+        this.setKanryoYmd(values[3]);
         this.setInsertTs(values[4]);
         this.setInsertUserId(values[5]);
         this.setUpdateTs(values[6]);
@@ -29,8 +29,8 @@ public class T14Jisseki implements IEntity {
     public T14Jisseki(final java.util.Map<String, Object> map) {
         this.setKouteiId(IgnoreCaseLinkedMap.get(map, "KOUTEI_ID"));
         this.setJissekiBn(IgnoreCaseLinkedMap.get(map, "JISSEKI_BN"));
-        this.setJisshiBi(IgnoreCaseLinkedMap.get(map, "JISSHI_BI"));
-        this.setKanryoBi(IgnoreCaseLinkedMap.get(map, "KANRYO_BI"));
+        this.setJisshiYmd(IgnoreCaseLinkedMap.get(map, "JISSHI_YMD"));
+        this.setKanryoYmd(IgnoreCaseLinkedMap.get(map, "KANRYO_YMD"));
         this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
         this.setInsertUserId(IgnoreCaseLinkedMap.get(map, "INSERT_USER_ID"));
         this.setUpdateTs(IgnoreCaseLinkedMap.get(map, "UPDATE_TS"));
@@ -58,8 +58,8 @@ public class T14Jisseki implements IEntity {
     /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
-        isEmpty &= this.jisshiBi == null || this.jisshiBi.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.kanryoBi == null || this.kanryoBi.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.jisshiYmd == null || this.jisshiYmd.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.kanryoYmd == null || this.kanryoYmd.toString().replaceAll("　| ", "").equals("");
         return isEmpty;
     }
 
@@ -143,45 +143,39 @@ public class T14Jisseki implements IEntity {
         }
     }
 
-    /** JISSHI_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
-    private java.time.LocalDate jisshiBi;
+    /** JISSHI_YMD */
+    private String jisshiYmd;
 
-    /** @return JISSHI_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "JISSHI_BI", index = 5)
-    public java.time.LocalDate getJisshiBi() {
-        return this.jisshiBi;
+    /** @return JISSHI_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JISSHI_YMD", index = 5)
+    public String getJisshiYmd() {
+        return this.jisshiYmd;
     }
 
-    /** @param o JISSHI_BI */
-    public void setJisshiBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.jisshiBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    /** @param o JISSHI_YMD */
+    public void setJisshiYmd(final Object o) {
+        if (o != null) {
+            this.jisshiYmd = o.toString();
         } else {
-            this.jisshiBi = null;
+            this.jisshiYmd = null;
         }
     }
 
-    /** KANRYO_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
-    private java.time.LocalDate kanryoBi;
+    /** KANRYO_YMD */
+    private String kanryoYmd;
 
-    /** @return KANRYO_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KANRYO_BI", index = 6)
-    public java.time.LocalDate getKanryoBi() {
-        return this.kanryoBi;
+    /** @return KANRYO_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KANRYO_YMD", index = 6)
+    public String getKanryoYmd() {
+        return this.kanryoYmd;
     }
 
-    /** @param o KANRYO_BI */
-    public void setKanryoBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.kanryoBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    /** @param o KANRYO_YMD */
+    public void setKanryoYmd(final Object o) {
+        if (o != null) {
+            this.kanryoYmd = o.toString();
         } else {
-            this.kanryoBi = null;
+            this.kanryoYmd = null;
         }
     }
 
@@ -336,8 +330,8 @@ public class T14Jisseki implements IEntity {
         sql += "SELECT \n";
         sql += "      a.`KOUTEI_ID` \n";
         sql += "    , a.`JISSEKI_BN` \n";
-        sql += "    , a.`JISSHI_BI` AS JISSHI_BI \n";
-        sql += "    , a.`KANRYO_BI` AS KANRYO_BI \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`JISSHI_YMD`) AS JISSHI_YMD \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`KANRYO_YMD`) AS KANRYO_YMD \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
         sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
@@ -373,8 +367,8 @@ public class T14Jisseki implements IEntity {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`KOUTEI_ID` -- :koutei_id");
         nameList.add("`JISSEKI_BN` -- :jisseki_bn");
-        nameList.add("`JISSHI_BI` -- :jisshi_bi");
-        nameList.add("`KANRYO_BI` -- :kanryo_bi");
+        nameList.add("`JISSHI_YMD` -- :jisshi_ymd");
+        nameList.add("`KANRYO_YMD` -- :kanryo_ymd");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -387,8 +381,8 @@ public class T14Jisseki implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":koutei_id");
         valueList.add(":jisseki_bn");
-        valueList.add(":jisshi_bi");
-        valueList.add(":kanryo_bi");
+        valueList.add(":jisshi_ymd");
+        valueList.add(":kanryo_ymd");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -430,8 +424,8 @@ public class T14Jisseki implements IEntity {
         java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`KOUTEI_ID` = :koutei_id");
         setList.add("`JISSEKI_BN` = :jisseki_bn");
-        setList.add("`JISSHI_BI` = :jisshi_bi");
-        setList.add("`KANRYO_BI` = :kanryo_bi");
+        setList.add("`JISSHI_YMD` = :jisshi_ymd");
+        setList.add("`KANRYO_YMD` = :kanryo_ymd");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
@@ -468,8 +462,8 @@ public class T14Jisseki implements IEntity {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("koutei_id", this.kouteiId);
         map.put("jisseki_bn", this.jissekiBn);
-        map.put("jisshi_bi", this.jisshiBi);
-        map.put("kanryo_bi", this.kanryoBi);
+        map.put("jisshi_ymd", this.jisshiYmd);
+        map.put("kanryo_ymd", this.kanryoYmd);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);

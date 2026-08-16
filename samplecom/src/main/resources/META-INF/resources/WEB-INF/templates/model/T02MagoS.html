@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T02MagoS.title}">T02_MAGO</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T02Mago.js}"></script>
+<script th:src="@{/model/T02MagoGridColumns.js}"></script>
+<!-- T02_MAGOの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T02_MAGOの親モデルのグリッド定義 -->
+<script th:src="@{/model/T02Dinks.js}"></script>
+<script th:src="@{/model/T02DinksGridColumns.js}"></script>
+<!-- T02_MAGOの親モデルのグリッド定義 -->
+<script th:src="@{/model/T02Ko.js}"></script>
+<script th:src="@{/model/T02KoGridColumns.js}"></script>
+<!-- T02_MAGOの親モデルのグリッド定義 -->
+<script th:src="@{/model/T02Orphan.js}"></script>
+<script th:src="@{/model/T02OrphanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T02MagoS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T02MagoSearchForm" action="T02MagoSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T02MagoS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T02Mago.oyaId" th:text="#{T02Mago.oyaId}">OYA_ID</label><input type="text" id="T02Mago.oyaId" name="T02Mago.oyaId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="koBn">
+          <label for="T02Mago.koBn" th:text="#{T02Mago.koBn}">KO_BN</label><input type="text" id="T02Mago.koBn" name="T02Mago.koBn" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="magoBn">
+          <label for="T02Mago.magoBn" th:text="#{T02Mago.magoBn}">MAGO_BN</label><input type="text" id="T02Mago.magoBn" name="T02Mago.magoBn" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="magoInfo">
+          <label for="T02Mago.magoInfo" th:text="#{T02Mago.magoInfo}">MAGO_INFO</label><input type="text" id="T02Mago.magoInfo" name="T02Mago.magoInfo" maxlength="300" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT02Mago" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchT02Mago" type="submit" class="search" data-gridId="T02MagoGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T02MagoSRegistForm" action="T02MagoSRegist.ajax" class="regist">
+      <h3 th:text="#{T02Mago.h3}">h3</h3>
+      <div id="T02MagoGrid" data-selectionMode="checkbox" data-frozenColumn="2" th:data-href="@{/model/T02Mago.html}"></div>
+      <div id="T02MagoPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT02MagoS" th:text="#{common.reset}" onClick="Base.listReset('T02Mago');">reset</button>
+        <a th:href="@{T02MagoSearch.xlsx(baseMei=#{T02MagoS.h2})}" id="T02MagoSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteT02MagoS" data-action="T02MagoSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT02MagoS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

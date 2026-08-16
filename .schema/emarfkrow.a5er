@@ -11,6 +11,8 @@ MaxEntityRowShow=1000
 ReadOnlyRecommend=0
 Page=Main
 PageInfo="Main",7,"A3Landscape",$FFFFFF
+Page=予実
+PageInfo="予実",7,"A3Landscape",$FFFFFF
 Domain=ID=@INT
 DomainInfo="ID","@INT","無意味連番のユニーク識別子","_ID"
 Domain=BN=@INT
@@ -81,7 +83,10 @@ FooterLeft=
 FooterCenter=
 FooterRight=
 ShowPageoutRelation=1
-RDBMSTypeName=Oracle Database
+RDBMSType=7
+RDBMSTypeName=PostgreSQL
+GenerateDropTableStatement=1
+DropTableIfExists=1
 BackupRestoreTempTable=0
 CommonField="作成タイムスタンプ","INSERT_TS","*TS","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF
 CommonField="作成者","INSERT_USER_ID","*CD","NOT NULL",,"","",$FFFFFFFF
@@ -474,14 +479,14 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=600
-Top=2250
+Top=2200
 Field="参照ID","IDREF_ID","*ID",,0,"","",$000028FF,""
 Field="ID参照名","IDREF_MEI","*MEI","NOT NULL",,"","",$000028FF,""
 EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260725183606
-Position="MAIN",600,2250
+Position="MAIN",600,2200
 ZOrder=-32
 
 [Entity]
@@ -531,7 +536,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=1100
-Top=2250
+Top=2200
 Field="再帰ID","SAIKI_ID","*ID",,0,"","",$000028FF,""
 Field="再帰名","SAIKI_MEI","*MEI","NOT NULL",,"","",$000028FF,""
 Field="参照ID","IDREF_ID","*ID",,,"","",$006BA135,""
@@ -544,7 +549,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260725183614
-Position="MAIN",1100,2250
+Position="MAIN",1100,2200
 ZOrder=-40
 
 [Entity]
@@ -591,14 +596,14 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=1650
-Top=2250
+Top=2200
 Field="参照CD","CDREF_CD","*CD",,0,"","",$000028FF,""
 Field="CD参照名","CDREF_MEI","*MEI","NOT NULL",,"","",$000028FF,""
 EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260725183604
-Position="MAIN",1650,2250
+Position="MAIN",1650,2200
 ZOrder=0
 
 [Relation]
@@ -847,14 +852,14 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=1650
-Top=2400
+Top=2350
 Field="参照NO","NOREF_NO","*NO",,0,"","",$000028FF,""
 Field="NO参照名","NOREF_MEI","*MEI","NOT NULL",,"","",$000028FF,""
 EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260725183611
-Position="MAIN",1650,2400
+Position="MAIN",1650,2350
 ZOrder=16
 
 [Relation]
@@ -973,14 +978,14 @@ TableOption=
 Page=MAIN
 Left=1300
 Top=50
-Field="稼働日","KADO_BI","*BI",,0,"","",$FFFFFFFF,""
+Field="稼働年月日","KADO_YMD","*YMD",,0,"","",$FFFFFFFF,""
 Field="部署ID","BUSHO_ID","*ID",,1,"","",$FFFFFFFF,""
 Field="稼働日フラグ","KADOBI_F","*F",,,"","",$FFFFFFFF,""
 Field="メモ","MEMO","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
-ModifiedDateTime=20260308152422
+ModifiedDateTime=20260816115018
 Position="MAIN",1300,50
 ZOrder=40
 
@@ -1728,7 +1733,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=600
-Top=2400
+Top=2350
 Field="参照ID","IDREF_ID","*ID",,0,"","",$000028FF,""
 Field="参照連番","IDBN_BN","*BN",,1,"","",$000028FF,""
 Field="ID連番NO","IDBN_NO","*NO","NOT NULL",,"","",$000028FF,""
@@ -1736,7 +1741,7 @@ EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
 ModifiedDateTime=20260725183609
-Position="MAIN",600,2400
+Position="MAIN",600,2350
 ZOrder=123
 
 [Relation]
@@ -2398,62 +2403,6 @@ ModifiedDateTime=20260605073116
 Position="MAIN",1600,1350
 ZOrder=172
 
-[Entity]
-PName=T14_KOUTEI
-LName=工程
-Comment=
-TableInnerOption=
-TableOption=
-Page=MAIN
-Left=50
-Top=1850
-Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
-Field="工程名","KOUTEI_MEI","*MEI","NOT NULL",,"","",$FFFFFFFF,""
-Field="開始日","KAISHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
-Field="終了日","SHURYO_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
-Field="作業区CD","SAGYOKU_CD","*CD","NOT NULL",,"","",$FFFFFFFF,""
-Field="親工程ID","OYA_KOUTEI_ID","*ID",,,"","",$FFFFFFFF,""
-EffectMode=None
-Color=$000000
-BkColor=$FFFFFF
-ModifiedDateTime=20260722081220
-Position="MAIN",50,1850
-ZOrder=173
-
-[Entity]
-PName=T14_JISSEKI
-LName=実績
-Comment=
-TableInnerOption=
-TableOption=
-Page=MAIN
-Left=50
-Top=2350
-Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
-Field="実績連番","JISSEKI_BN","*BN",,1,"","",$FFFFFFFF,""
-Field="実施日","JISSHI_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
-Field="完了日","KANRYO_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
-EffectMode=None
-Color=$000000
-BkColor=$FFFFFF
-ModifiedDateTime=20260722081226
-Position="MAIN",50,2350
-ZOrder=174
-
-[View]
-PName=V14_YOJITSU
-LName=予実
-Comment=
-Query=SELECT\n      * \nFROM\n    ( \n        SELECT\n              a.koutei_id\n            , a.koutei_mei                                      AS koutei_tx\n            , a.kaishi_bi\n            , a.shuryo_bi\n            , a.sagyoku_cd\n            , a.oya_koutei_id\n            , j.jisshi_bi\n            , j.kanryo_bi\n            , b.dependencies                    --前工程\n            , SUBSTR (sys_connect_by_path(a.koutei_id, \q,\q), 2) AS koutei_path\n            , CONNECT_BY_ROOT a.koutei_id                       AS root \n        FROM\n            t14_koutei a \n            LEFT OUTER JOIN t14_jisseki j \n                ON j.koutei_id = a.koutei_id \n            LEFT OUTER JOIN ( \n                SELECT\n                      oya_koutei_id\n                    , LISTAGG (koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies \n                FROM\n                    t14_koutei \n                WHERE\n                    oya_koutei_id IS NOT NULL \n                GROUP BY\n                    oya_koutei_id\n            ) b \n                ON b.oya_koutei_id = a.koutei_id \n        START WITH\n            a.oya_koutei_id IS NULL \n        CONNECT BY\n            PRIOR a.koutei_id = a.oya_koutei_id\n    ) a \nORDER BY\n    a.koutei_path DESC\n
-LNameByComment=1
-Color=$000000
-BkColor=$FFFFFF
-Position="MAIN",50,2500
-ZOrder=175
-Page=MAIN
-Left=50
-Top=2500
-
 [Shape]
 Page=Main
 Left=3122
@@ -2515,29 +2464,144 @@ FontColor=$0000FF
 TextAlign=$0
 
 [View]
-PName=V14_FUKA_SAGYOKU
-LName=作業区負荷
-Comment=
-Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qline\q                          AS type\n    , b.sagyoku_cd                    AS stack\n    , b.sagyoku_cd                    AS label\n    , NVL (k.koutei_count, 0)         AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_bi\n            , k.sagyoku_cd\n            , COUNT (k.koutei_id) AS koutei_count \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b WHERE b.kadobi_f = 1) b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_bi <= b.kado_bi \n                AND b.kado_bi <= k.shuryo_bi \n        GROUP BY\n            b.kado_bi\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_bi = b.kado_bi \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_bi\n    , b.sagyoku_cd\n
-LNameByComment=1
-Color=$000000
-BkColor=$FFFFFF
-Position="MAIN",300,2150
-ZOrder=176
-Page=MAIN
-Left=300
-Top=2150
-
-[View]
 PName=V14_FUKA_KADOBI
 LName=稼働日負荷
 Comment=
-Query=SELECT\n      TO_CHAR (b.kado_bi, \qYYYYMMDD\q) AS labels\n    , \qbar\q                           AS type\n    , \qstack\q                         AS stack\n    , b.sagyoku_cd                    AS label\n    , NVL (k.koutei_count, 0)         AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_bi\n            , k.sagyoku_cd\n            , COUNT (k.koutei_id) AS koutei_count \n        FROM\n            (SELECT DISTINCT b.kado_bi FROM msy_kadobi b WHERE b.kadobi_f = 1) b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_bi <= b.kado_bi \n                AND b.kado_bi <= k.shuryo_bi \n        GROUP BY\n            b.kado_bi\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_bi = b.kado_bi \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_bi\n    , b.sagyoku_cd\n
+Query=SELECT\n      b.kado_ymd                   AS labels\n    , \qbar\q                        AS type\n    , \qstack\q                      AS stack\n    , b.sagyoku_cd                 AS label\n    , COALESCE (k.koutei_count, 0) AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            (SELECT DISTINCT b.kado_ymd FROM msy_kadobi b) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_ymd\n            , k.sagyoku_cd\n            , COUNT(k.koutei_id) AS koutei_count \n        FROM\n            ( \n                SELECT DISTINCT\n                      b.kado_ymd \n                FROM\n                    msy_kadobi b \n                WHERE\n                    b.kadobi_f = \q1\q\n            ) b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_ymd <= b.kado_ymd \n                AND b.kado_ymd <= k.shuryo_ymd \n        GROUP BY\n            b.kado_ymd\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_ymd = b.kado_ymd \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_ymd\n    , b.sagyoku_cd\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="MAIN",50,2100
-ZOrder=177
-Page=MAIN
-Left=50
-Top=2100
+Position="予実",600,100
+ZOrder=182
+Page=予実
+Left=600
+Top=100
+
+[Entity]
+PName=T14_KOUTEI
+LName=工程
+Comment=
+TableInnerOption=
+TableOption=
+Page=予実
+Left=100
+Top=100
+Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
+Field="工程名","KOUTEI_MEI","*MEI","NOT NULL",,"","",$FFFFFFFF,""
+Field="開始年月日","KAISHI_YMD","*YMD","NOT NULL",,"","",$FFFFFFFF,""
+Field="終了年月日","SHURYO_YMD","*YMD","NOT NULL",,"","",$FFFFFFFF,""
+Field="作業区CD","SAGYOKU_CD","*CD","NOT NULL",,"","",$FFFFFFFF,""
+Field="親工程ID","OYA_KOUTEI_ID","*ID",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260816144137
+Position="予実",100,100
+ZOrder=178
+
+[Entity]
+PName=T14_JISSEKI
+LName=実績
+Comment=
+TableInnerOption=
+TableOption=
+Page=予実
+Left=100
+Top=500
+Field="工程ID","KOUTEI_ID","*ID",,0,"","",$FFFFFFFF,""
+Field="実績連番","JISSEKI_BN","*BN",,1,"","",$FFFFFFFF,""
+Field="実施日","JISSHI_YMD","*YMD","NOT NULL",,"","",$FFFFFFFF,""
+Field="完了日","KANRYO_YMD","*YMD","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260816144216
+Position="予実",100,500
+ZOrder=179
+
+[View]
+PName=V14_YOJITSU
+LName=予実
+Comment=
+Query=WITH RECURSIVE\n-- 1. 前工程（dependencies）を集約（標準SQL準拠のLISTAGG構文）\ndeps AS (\n    SELECT\n          oya_koutei_id\n        , LISTAGG(koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies\n    FROM\n        t14_koutei\n    WHERE\n        oya_koutei_id IS NOT NULL\n    GROUP BY\n        oya_koutei_id\n),\n\n-- 2. 階層構造（CONNECT BYの代替）を再帰CTEで構築\ntree AS (\n    -- アンカーメンバー (START WITH a.oya_koutei_id IS NULL の代替)\n    SELECT\n          a.koutei_id\n        , a.koutei_mei\n        , a.kaishi_bi\n        , a.shuryo_bi\n        , a.sagyoku_cd\n        , a.oya_koutei_id\n        -- 最初のカンマを省くため、初期値はkoutei_idのみ（SUBSTRの処理を不要に）\n        , CAST(a.koutei_id AS CHARACTER VARYING(4000)) AS koutei_path\n        , a.koutei_id                                  AS root         -- CONNECT_BY_ROOT の代替\n    FROM\n        t14_koutei a\n    WHERE\n        a.oya_koutei_id IS NULL\n\n    UNION ALL\n\n    -- 再帰メンバー (CONNECT BY PRIOR の代替)\n    SELECT\n          child.koutei_id\n        , child.koutei_mei\n        , child.kaishi_bi\n        , child.shuryo_bi\n        , child.sagyoku_cd\n        , child.oya_koutei_id\n        -- 前のパスにカンマと自身のIDを結合し、型と長さを明示的にキャスト\n        , CAST(parent.koutei_path || \q,\q || child.koutei_id AS CHARACTER VARYING(4000)) AS koutei_path\n        , parent.root                                  -- 親のrootを引き継ぐ\n    FROM\n        t14_koutei child\n    INNER JOIN tree parent\n        ON child.oya_koutei_id = parent.koutei_id\n)\n\n-- 3. 実績テーブル(jisseki)・集約データ(deps)を結合して最終取得\nSELECT\n      t.koutei_id\n    , t.koutei_mei AS koutei_tx\n    , t.kaishi_bi\n    , t.shuryo_bi\n    , t.sagyoku_cd\n    , t.oya_koutei_id\n    , j.jisshi_bi\n    , j.kanryo_bi\n    , b.dependencies\n    , t.koutei_path\n    , t.root\nFROM\n    tree t\nLEFT OUTER JOIN t14_jisseki j\n    ON j.koutei_id = t.koutei_id\nLEFT OUTER JOIN deps b\n    ON b.oya_koutei_id = t.koutei_id\nORDER BY\n    t.koutei_path DESC\n;\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="予実",600,500
+ZOrder=180
+Page=予実
+Left=600
+Top=500
+
+[View]
+PName=V14_FUKA_SAGYOKU
+LName=作業区負荷
+Comment=
+Query=SELECT\n      b.kado_ymd                   AS labels\n    , \qline\q                       AS type\n    , b.sagyoku_cd                 AS stack\n    , b.sagyoku_cd                 AS label\n    , COALESCE (k.koutei_count, 0) AS DATA \nFROM\n    ( \n        SELECT\n              * \n        FROM\n            (SELECT DISTINCT b.kado_ymd FROM msy_kadobi b) b \n            CROSS JOIN (SELECT DISTINCT k.sagyoku_cd FROM t14_koutei k) k\n    ) b \n    LEFT OUTER JOIN ( \n        SELECT\n              b.kado_ymd\n            , k.sagyoku_cd\n            , COUNT(k.koutei_id) AS koutei_count \n        FROM\n            ( \n                SELECT DISTINCT\n                      b.kado_ymd \n                FROM\n                    msy_kadobi b \n                WHERE\n                    b.kadobi_f = \q1\q\n            ) b \n            INNER JOIN t14_koutei k \n                ON k.kaishi_ymd <= b.kado_ymd \n                AND b.kado_ymd <= k.shuryo_ymd \n        GROUP BY\n            b.kado_ymd\n            , k.sagyoku_cd\n    ) k \n        ON k.kado_ymd = b.kado_ymd \n        AND k.sagyoku_cd = b.sagyoku_cd \nORDER BY\n    b.kado_ymd\n    , b.sagyoku_cd\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="予実",600,300
+ZOrder=181
+Page=予実
+Left=600
+Top=300
+
+[Comment]
+Comment=SET session sql_mode = CONCAT(@@sql_mode, ',ANSI_QUOTES,IGNORE_SPACE,PIPES_AS_CONCAT');\n
+FontName=Tahoma
+FontBold=0
+FontItalic=0
+FontUnderline=0
+FontSize=9
+FontColor=$000000
+LineColor=$000000
+BkColor=$FFFFFF
+Page=Main
+Left=1808
+Top=658
+ZOrder=183
+Width=574
+Height=144
+
+[View]
+PName=V14_YOJITSU
+LName=予実
+Comment=
+Query=SELECT\n      * \nFROM\n    ( \n        SELECT\n              a.koutei_id\n            , a.koutei_mei                                      AS koutei_tx\n            , a.kaishi_ymd\n            , a.shuryo_ymd\n            , a.sagyoku_cd\n            , a.oya_koutei_id\n            , j.jisshi_ymd\n            , j.kanryo_ymd\n            , b.dependencies                    --前工程\n            , SUBSTR (sys_connect_by_path(a.koutei_id, \q,\q), 2) AS koutei_path\n            , CONNECT_BY_ROOT a.koutei_id                       AS root \n        FROM\n            t14_koutei a \n            LEFT OUTER JOIN t14_jisseki j \n                ON j.koutei_id = a.koutei_id \n            LEFT OUTER JOIN ( \n                SELECT\n                      oya_koutei_id\n                    , LISTAGG (koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies \n                FROM\n                    t14_koutei \n                WHERE\n                    oya_koutei_id IS NOT NULL \n                GROUP BY\n                    oya_koutei_id\n            ) b \n                ON b.oya_koutei_id = a.koutei_id \n        START WITH\n            a.oya_koutei_id IS NULL \n        CONNECT BY\n            PRIOR a.koutei_id = a.oya_koutei_id\n    ) a \nORDER BY\n    a.koutei_path DESC\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="予実",1000,500
+ZOrder=184
+Page=予実
+Left=1000
+Top=500
+
+[View]
+PName=V14_YOJITSU
+LName=予実
+Comment=
+Query=WITH RECURSIVE                                  -- 1. 前工程（dependencies）を集約（MySQL用のGROUP_CONCAT構文へ変更）\ndeps AS ( \n    SELECT\n          oya_koutei_id\n        , group_concat(koutei_id ORDER BY koutei_id separator \q,\q) AS dependencies \n    FROM\n        t14_koutei \n    WHERE\n        oya_koutei_id IS NOT NULL \n    GROUP BY\n        oya_koutei_id\n) \n,                                               -- 2. 階層構造（CONNECT BYの代替）を再帰CTEで構築\ntree AS ( \n                                                -- アンカーメンバー (START WITH a.oya_koutei_id IS NULL の代替)\n    SELECT\n          a.koutei_id\n        , a.koutei_mei\n        , a.kaishi_ymd\n        , a.shuryo_ymd\n        , a.sagyoku_cd\n        , a.oya_koutei_id                       -- MySQLでの安全な再帰長確保のため、CHAR(4000)にキャスト（SUBSTR処理を不要にするため先頭カンマは無し）\n        , CAST(a.koutei_id AS CHAR (4000))                  AS koutei_path\n        , a.koutei_id                                       AS root-- CONNECT_BY_ROOT の代替\n    FROM\n        t14_koutei a \n    WHERE\n        a.oya_koutei_id IS NULL \n    UNION ALL                                   -- 再帰メンバー (CONNECT BY PRIOR の代替)\n    SELECT\n          child.koutei_id\n        , child.koutei_mei\n        , child.kaishi_ymd\n        , child.shuryo_ymd\n        , child.sagyoku_cd\n        , child.oya_koutei_id                   -- MySQL標準の CONCAT 関数でパスを結合\n        , CONCAT (parent.koutei_path, \q,\q, child.koutei_id) AS koutei_path\n        , parent.root                           -- 親のrootを引き継ぐ\n    FROM\n        t14_koutei child \n        INNER JOIN tree parent \n            ON child.oya_koutei_id = parent.koutei_id\n)                                               -- 3. 実績テーブル(jisseki)・集約データ(deps)を結合して最終取得\nSELECT\n      t.koutei_id\n    , t.koutei_mei AS koutei_tx\n    , t.kaishi_ymd\n    , t.shuryo_ymd\n    , t.sagyoku_cd\n    , t.oya_koutei_id\n    , j.jisshi_ymd\n    , j.kanryo_ymd\n    , b.dependencies\n    , t.koutei_path\n    , t.root \nFROM\n    tree t \n    LEFT OUTER JOIN t14_jisseki j \n        ON j.koutei_id = t.koutei_id \n    LEFT OUTER JOIN deps b \n        ON b.oya_koutei_id = t.koutei_id \nORDER BY\n    t.koutei_path DESC\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="予実",1400,500
+ZOrder=185
+Page=予実
+Left=1400
+Top=500
+
+[View]
+PName=V14_YOJITSU
+LName=予実
+Comment=
+Query=WITH RECURSIVE\n-- 1. 前工程（dependencies）を集約（PostgreSQL用のSTRING_AGG構文へ変更）\ndeps AS (\n    SELECT\n          oya_koutei_id\n         -- 数値型でも動作するよう ::text を追加し、STRING_AGG で集約\n        , STRING_AGG(koutei_id::text, \q,\q ORDER BY koutei_id) AS dependencies \n    FROM\n        t14_koutei \n    WHERE\n        oya_koutei_id IS NOT NULL \n    GROUP BY\n        oya_koutei_id\n),\n\n-- 2. 階層構造（CONNECT BYの代替）を再帰CTEで構築\ntree AS (\n    -- アンカーメンバー (START WITH a.oya_koutei_id IS NULL の代替)\n    SELECT\n          a.koutei_id\n        , a.koutei_mei\n        , a.kaishi_ymd\n        , a.shuryo_ymd\n        , a.sagyoku_cd\n        , a.oya_koutei_id\n        -- 型を一致させるため、明示的に CHARACTER VARYING(4000) にキャスト\n        , CAST(a.koutei_id AS CHARACTER VARYING(4000)) AS koutei_path\n        , a.koutei_id                                  AS root        -- CONNECT_BY_ROOT の代替\n    FROM\n        t14_koutei a \n    WHERE\n        a.oya_koutei_id IS NULL \n\n    UNION ALL\n\n    -- 再帰メンバー (CONNECT BY PRIOR の代替)\n    SELECT\n          child.koutei_id\n        , child.koutei_mei\n        , child.kaishi_ymd\n        , child.shuryo_ymd\n        , child.sagyoku_cd\n        , child.oya_koutei_id\n        -- パイプ演算子 || でパスを結合し、アンカー側と型・長さを完全に一致させるため CAST\n        , CAST(parent.koutei_path || \q,\q || child.koutei_id AS CHARACTER VARYING(4000)) AS koutei_path\n        , parent.root                                  -- 親のrootを引き継ぐ\n    FROM\n        t14_koutei child \n    INNER JOIN tree parent \n        ON child.oya_koutei_id = parent.koutei_id\n)\n\n-- 3. 実績テーブル(jisseki)・集約データ(deps)を結合して最終取得\nSELECT\n      t.koutei_id\n    , t.koutei_mei AS koutei_tx\n    , t.kaishi_ymd\n    , t.shuryo_ymd\n    , t.sagyoku_cd\n    , t.oya_koutei_id\n    , j.jisshi_ymd\n    , j.kanryo_ymd\n    , b.dependencies\n    , t.koutei_path\n    , t.root \nFROM\n    tree t\nLEFT OUTER JOIN t14_jisseki j \n    ON j.koutei_id = t.koutei_id \nLEFT OUTER JOIN deps b \n    ON b.oya_koutei_id = t.koutei_id \nORDER BY\n    t.koutei_path DESC\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="予実",1800,500
+ZOrder=186
+Page=予実
+Left=1800
+Top=500

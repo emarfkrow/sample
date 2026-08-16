@@ -54,32 +54,32 @@ public class T14JissekiRegistForm implements IForm {
 
     /** 実施日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
-    private String jisshiBi;
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    private String jisshiYmd;
 
     /** @return 実施日 */
-    public String getJisshiBi() {
-        return jisshiBi;
+    public String getJisshiYmd() {
+        return jisshiYmd;
     }
 
     /** @param p 実施日 */
-    public void setJisshiBi(final String p) {
-        this.jisshiBi = p;
+    public void setJisshiYmd(final String p) {
+        this.jisshiYmd = p;
     }
 
     /** 完了日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
-    private String kanryoBi;
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    private String kanryoYmd;
 
     /** @return 完了日 */
-    public String getKanryoBi() {
-        return kanryoBi;
+    public String getKanryoYmd() {
+        return kanryoYmd;
     }
 
     /** @param p 完了日 */
-    public void setKanryoBi(final String p) {
-        this.kanryoBi = p;
+    public void setKanryoYmd(final String p) {
+        this.kanryoYmd = p;
     }
 
     /** 更新タイムスタンプ */

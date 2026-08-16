@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T01Younger.title}">T01_YOUNGER</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T01Younger.js}"></script>
+<script th:src="@{/model/T01YoungerGridColumns.js}"></script>
+<!-- T01_YOUNGERの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T01Younger.h2}">h2</h2>
+    <form name="T01YoungerRegistForm" action="T01YoungerRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T01Younger.legend}">legend</legend>
+        <div id="broId">
+          <label for="T01Younger.broId" th:text="#{T01Younger.broId}">BRO_ID</label><input type="text" id="T01Younger.broId" name="T01Younger.broId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="youngerInfo">
+          <label for="T01Younger.youngerInfo" th:text="#{T01Younger.youngerInfo}">YOUNGER_INFO</label><input type="text" id="T01Younger.youngerInfo" name="T01Younger.youngerInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T01Younger.insertTs}" class="meta">INSERT_TS</label><span id="T01Younger.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Younger.insertTs" name="T01Younger.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T01Younger.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T01Younger.insertUserId" class="meta"></span><input type="hidden" id="T01Younger.insertUserId" name="T01Younger.insertUserId" class="meta" />
+          <span id="T01Younger.insertUserSei" class="refer meta" data-referFor="T01Younger.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Younger.insertUserId" data-destDef="T01Younger.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T01Younger.updateTs}" class="meta">UPDATE_TS</label><span id="T01Younger.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T01Younger.updateTs" name="T01Younger.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T01Younger.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T01Younger.updateUserId" class="meta"></span><input type="hidden" id="T01Younger.updateUserId" name="T01Younger.updateUserId" class="meta" />
+          <span id="T01Younger.updateUserSei" class="refer meta" data-referFor="T01Younger.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Younger.updateUserId" data-destDef="T01Younger.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T01Eldest.legend}">legend</legend>
+        <div id="eldestInfo">
+          <label for="T01Eldest.eldestInfo" th:text="#{T01Eldest.eldestInfo}">ELDEST_INFO</label><input type="text" id="T01Eldest.eldestInfo" name="T01Eldest.eldestInfo" maxlength="300" class="" />
+        </div>
+        <input type="hidden" name="T01Eldest.updateTs" />
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T01Foster.legend}">legend</legend>
+        <div id="fosterInfo">
+          <label for="T01Foster.fosterInfo" th:text="#{T01Foster.fosterInfo}">FOSTER_INFO</label><input type="text" id="T01Foster.fosterInfo" name="T01Foster.fosterInfo" maxlength="300" class="" />
+        </div>
+        <input type="hidden" name="T01Foster.updateTs" />
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T01Youngest.legend}">legend</legend>
+        <div id="youngestInfo">
+          <label for="T01Youngest.youngestInfo" th:text="#{T01Youngest.youngestInfo}">YOUNGEST_INFO</label><input type="text" id="T01Youngest.youngestInfo" name="T01Youngest.youngestInfo" maxlength="300" class="" />
+        </div>
+        <input type="hidden" name="T01Youngest.updateTs" />
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT01Younger" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T01YoungerGet.xlsx(baseMei=#{T01Younger.h2})}" id="T01YoungerGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT01Younger" type="submit" class="delete" data-action="T01YoungerDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT01Younger" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

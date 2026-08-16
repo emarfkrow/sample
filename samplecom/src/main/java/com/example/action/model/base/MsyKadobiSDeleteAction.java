@@ -37,7 +37,7 @@ public class MsyKadobiSDeleteAction extends BaseAction {
                 }
 
                 // 主キーが不足していたらエラー
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("KADO_BI"))) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("KADO_YMD"))) {
                     throw new OptLockError("error.cant.delete", "稼働日マスタ");
                 }
                 if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("BUSHO_ID"))) {

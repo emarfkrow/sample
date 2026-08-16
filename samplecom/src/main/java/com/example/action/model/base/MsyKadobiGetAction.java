@@ -25,11 +25,11 @@ public class MsyKadobiGetAction extends BaseAction {
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object kadoBi = postJson.get("kadoBi");
-        if (kadoBi == null) {
-            kadoBi = postJson.get("MsyKadobi.kadoBi");
+        Object kadoYmd = postJson.get("kadoYmd");
+        if (kadoYmd == null) {
+            kadoYmd = postJson.get("MsyKadobi.kadoYmd");
         }
-        if (kadoBi == null) {
+        if (kadoYmd == null) {
             isAllKey = false;
         }
 
@@ -47,7 +47,7 @@ public class MsyKadobiGetAction extends BaseAction {
         }
 
         try {
-            MsyKadobi msyKadobi = MsyKadobi.get(kadoBi, bushoId);
+            MsyKadobi msyKadobi = MsyKadobi.get(kadoYmd, bushoId);
             map.put("MsyKadobi", msyKadobi);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

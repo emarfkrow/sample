@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T01YoungerS.title}">T01_YOUNGER</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T01Younger.js}"></script>
+<script th:src="@{/model/T01YoungerGridColumns.js}"></script>
+<!-- T01_YOUNGERの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T01YoungerS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T01YoungerSearchForm" action="T01YoungerSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T01YoungerS.legend}">legend</legend>
+        <div id="broId">
+          <label for="T01Younger.broId" th:text="#{T01Younger.broId}">BRO_ID</label><input type="text" id="T01Younger.broId" name="T01Younger.broId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="youngerInfo">
+          <label for="T01Younger.youngerInfo" th:text="#{T01Younger.youngerInfo}">YOUNGER_INFO</label><input type="text" id="T01Younger.youngerInfo" name="T01Younger.youngerInfo" maxlength="300" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT01Younger" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/T01Younger.html(anew)}" target="dialog" id="T01Younger" class="anew" th:text="#{T01Younger.add}" tabindex="-1">T01_YOUNGER</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT01Younger" type="submit" class="search" data-gridId="T01YoungerGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T01YoungerSRegistForm" action="T01YoungerSRegist.ajax" class="regist">
+      <h3 th:text="#{T01Younger.h3}">h3</h3>
+      <div id="T01YoungerGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/T01Younger.html}"></div>
+      <div id="T01YoungerPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT01YoungerS" th:text="#{common.reset}" onClick="Base.listReset('T01Younger');">reset</button>
+        <a th:href="@{T01YoungerSearch.xlsx(baseMei=#{T01YoungerS.h2})}" id="T01YoungerSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteT01YoungerS" data-action="T01YoungerSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT01YoungerS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

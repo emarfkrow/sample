@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T06PrevDetS.title}">T06_PREV_DET</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T06PrevDet.js}"></script>
+<script th:src="@{/model/T06PrevDetGridColumns.js}"></script>
+<!-- T06_PREV_DETの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T06_PREV_DETの親モデルのグリッド定義 -->
+<script th:src="@{/model/T06Prev.js}"></script>
+<script th:src="@{/model/T06PrevGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T06PrevDetS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T06PrevDetSearchForm" action="T06PrevDetSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T06PrevDetS.legend}">legend</legend>
+        <div id="prevId">
+          <label for="T06PrevDet.prevId" th:text="#{T06PrevDet.prevId}">PREV_ID</label><input type="text" id="T06PrevDet.prevId" name="T06PrevDet.prevId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="prevBn">
+          <label for="T06PrevDet.prevBn" th:text="#{T06PrevDet.prevBn}">PREV_BN</label><input type="text" id="T06PrevDet.prevBn" name="T06PrevDet.prevBn" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="detInfo">
+          <label for="T06PrevDet.detInfo" th:text="#{T06PrevDet.detInfo}">DET_INFO</label><input type="text" id="T06PrevDet.detInfo" name="T06PrevDet.detInfo" maxlength="300" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT06PrevDet" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchT06PrevDet" type="submit" class="search" data-gridId="T06PrevDetGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T06PrevDetSRegistForm" action="T06PrevDetSRegist.ajax" class="regist">
+      <h3 th:text="#{T06PrevDet.h3}">h3</h3>
+      <div id="T06PrevDetGrid" data-selectionMode="checkbox" data-frozenColumn="1" th:data-href="@{/model/T06PrevDet.html}"></div>
+      <div id="T06PrevDetPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT06PrevDetS" th:text="#{common.reset}" onClick="Base.listReset('T06PrevDet');">reset</button>
+        <a th:href="@{T06PrevDetSearch.xlsx(baseMei=#{T06PrevDetS.h2})}" id="T06PrevDetSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteT06PrevDetS" data-action="T06PrevDetSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT06PrevDetS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

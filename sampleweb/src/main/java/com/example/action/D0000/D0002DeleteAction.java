@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.entity.T01Ko;
-import com.example.entity.T01Oya;
+import com.example.entity.T02Ko;
+import com.example.entity.T02Oya;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.OptLockError;
@@ -25,11 +25,11 @@ public class D0002DeleteAction extends BaseAction {
     public Map<String, Object> running(final LocalDateTime now, final String id, final Map<String, Object> postJson) {
 
         Object oyaId = postJson.get("oyaId");
-        T01Oya e = T01Oya.get(oyaId);
-        e.referT01Dinkss();
-        e.referT01Kos();
-        for (T01Ko t01Ko : e.getT01Kos()) {
-            t01Ko.referT01Magos();
+        T02Oya e = T02Oya.get(oyaId);
+        e.referT02Dinkss();
+        e.referT02Kos();
+        for (T02Ko t01Ko : e.getT02Kos()) {
+            t01Ko.referT02Magos();
         }
 
         if (e.delete() != 1) {

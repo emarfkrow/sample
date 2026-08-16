@@ -26,8 +26,8 @@
       <input type="hidden" name="page" value="0" />
       <fieldset>
         <legend th:text="#{MsyKadobiS.legend}">legend</legend>
-        <div id="kadoBi">
-          <label for="MsyKadobi.kadoBi_1" th:text="#{MsyKadobi.kadoBi}">KADO_BI</label><input type="text" id="MsyKadobi.kadoBi_1" name="MsyKadobi.kadoBi_1" maxlength="10" class=" primaryKey datepicker" />～<input type="text" id="MsyKadobi.kadoBi_2" name="MsyKadobi.kadoBi_2" maxlength="10" class=" primaryKey datepicker" />
+        <div id="kadoYmd">
+          <label for="MsyKadobi.kadoYmd_1" th:text="#{MsyKadobi.kadoYmd}">KADO_YMD</label><input type="text" id="MsyKadobi.kadoYmd_1" name="MsyKadobi.kadoYmd_1" maxlength="8" class=" primaryKey datepicker" data-format="yymmdd" />～<input type="text" id="MsyKadobi.kadoYmd_2" name="MsyKadobi.kadoYmd_2" maxlength="8" class=" primaryKey datepicker" data-format="yymmdd" />
         </div>
         <div id="bushoId">
           <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">BUSHO_ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" class=" primaryKey refer" data-referFor="MsyKadobi.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" class=" primaryKey refer" data-referFor="MsyKadobi.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>

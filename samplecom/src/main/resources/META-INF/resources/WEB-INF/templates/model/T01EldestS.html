@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T01EldestS.title}">T01_ELDEST</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T01Eldest.js}"></script>
+<script th:src="@{/model/T01EldestGridColumns.js}"></script>
+<!-- T01_ELDESTの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T01EldestS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T01EldestSearchForm" action="T01EldestSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T01EldestS.legend}">legend</legend>
+        <div id="broId">
+          <label for="T01Eldest.broId" th:text="#{T01Eldest.broId}">BRO_ID</label><input type="text" id="T01Eldest.broId" name="T01Eldest.broId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="eldestInfo">
+          <label for="T01Eldest.eldestInfo" th:text="#{T01Eldest.eldestInfo}">ELDEST_INFO</label><input type="text" id="T01Eldest.eldestInfo" name="T01Eldest.eldestInfo" maxlength="300" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT01Eldest" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/T01Eldest.html(anew)}" target="dialog" id="T01Eldest" class="anew" th:text="#{T01Eldest.add}" tabindex="-1">T01_ELDEST</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT01Eldest" type="submit" class="search" data-gridId="T01EldestGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T01EldestSRegistForm" action="T01EldestSRegist.ajax" class="regist">
+      <h3 th:text="#{T01Eldest.h3}">h3</h3>
+      <div id="T01EldestGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/T01Eldest.html}"></div>
+      <div id="T01EldestPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT01EldestS" th:text="#{common.reset}" onClick="Base.listReset('T01Eldest');">reset</button>
+        <a th:href="@{T01EldestSearch.xlsx(baseMei=#{T01EldestS.h2})}" id="T01EldestSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteT01EldestS" data-action="T01EldestSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT01EldestS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

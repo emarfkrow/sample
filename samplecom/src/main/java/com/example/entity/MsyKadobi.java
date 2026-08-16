@@ -15,7 +15,7 @@ public class MsyKadobi implements IEntity {
 
     /** @param values */
     public MsyKadobi(final String[] values) {
-        this.setKadoBi(values[0]);
+        this.setKadoYmd(values[0]);
         this.setBushoId(values[1]);
         this.setKadobiF(values[2]);
         this.setMemo(values[3]);
@@ -27,7 +27,7 @@ public class MsyKadobi implements IEntity {
 
     /** @param map */
     public MsyKadobi(final java.util.Map<String, Object> map) {
-        this.setKadoBi(IgnoreCaseLinkedMap.get(map, "KADO_BI"));
+        this.setKadoYmd(IgnoreCaseLinkedMap.get(map, "KADO_YMD"));
         this.setBushoId(IgnoreCaseLinkedMap.get(map, "BUSHO_ID"));
         this.setKadobiF(IgnoreCaseLinkedMap.get(map, "KADOBI_F"));
         this.setMemo(IgnoreCaseLinkedMap.get(map, "MEMO"));
@@ -42,7 +42,7 @@ public class MsyKadobi implements IEntity {
         boolean isNew = false;
 
         // 主キーが不足していたらINSERT
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kadoBi)) {
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kadoYmd)) {
             isNew = true;
         }
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.bushoId)) {
@@ -82,27 +82,24 @@ public class MsyKadobi implements IEntity {
         }
     }
 
-    /** KADO_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
+    /** KADO_YMD */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private java.time.LocalDate kadoBi;
+    private String kadoYmd;
 
-    /** @return KADO_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KADO_BI", index = 2)
+    /** @return KADO_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KADO_YMD", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public java.time.LocalDate getKadoBi() {
-        return this.kadoBi;
+    public String getKadoYmd() {
+        return this.kadoYmd;
     }
 
-    /** @param o KADO_BI */
+    /** @param o KADO_YMD */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setKadoBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.kadoBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    public void setKadoYmd(final Object o) {
+        if (o != null) {
+            this.kadoYmd = o.toString();
         } else {
-            this.kadoBi = null;
+            this.kadoYmd = null;
         }
     }
 
@@ -321,17 +318,17 @@ public class MsyKadobi implements IEntity {
 
     /**
      * 稼働日マスタ照会
-     * @param param1 稼働日
+     * @param param1 稼働年月日
      * @param param2 部署ID
      * @return 稼働日マスタ
      */
     public static MsyKadobi get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KADO_BI` = :kado_bi");
+        whereList.add("TRIM(TRAILING ' ' FROM `KADO_YMD`) = TRIM(TRAILING ' ' FROM :kado_ymd)");
         whereList.add("`BUSHO_ID` = :busho_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`KADO_BI` AS KADO_BI \n";
+        sql += "      TRIM(TRAILING ' ' FROM a.`KADO_YMD`) AS KADO_YMD \n";
         sql += "    , a.`BUSHO_ID` \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`KADOBI_F`) AS KADOBI_F \n";
         sql += "    , a.`MEMO` \n";
@@ -344,7 +341,7 @@ public class MsyKadobi implements IEntity {
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("kado_bi", param1);
+        map.put("kado_ymd", param1);
         map.put("busho_id", param2);
         return jp.co.golorp.emarf.sql.Queries.get(sql, map, MsyKadobi.class);
     }
@@ -365,7 +362,7 @@ public class MsyKadobi implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`KADO_BI` -- :kado_bi");
+        nameList.add("`KADO_YMD` -- :kado_ymd");
         nameList.add("`BUSHO_ID` -- :busho_id");
         nameList.add("`KADOBI_F` -- :kadobi_f");
         nameList.add("`MEMO` -- :memo");
@@ -379,7 +376,7 @@ public class MsyKadobi implements IEntity {
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add(":kado_bi");
+        valueList.add(":kado_ymd");
         valueList.add(":busho_id");
         valueList.add(":kadobi_f");
         valueList.add(":memo");
@@ -406,7 +403,7 @@ public class MsyKadobi implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`KADO_BI` = :kado_bi");
+        setList.add("`KADO_YMD` = :kado_ymd");
         setList.add("`BUSHO_ID` = :busho_id");
         setList.add("`KADOBI_F` = :kadobi_f");
         setList.add("`MEMO` = :memo");
@@ -444,7 +441,7 @@ public class MsyKadobi implements IEntity {
      */
     private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("kado_bi", this.kadoBi);
+        map.put("kado_ymd", this.kadoYmd);
         map.put("busho_id", this.bushoId);
         map.put("kadobi_f", this.kadobiF);
         map.put("memo", this.memo);
@@ -458,7 +455,7 @@ public class MsyKadobi implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KADO_BI` = :kado_bi");
+        whereList.add("TRIM(TRAILING ' ' FROM `KADO_YMD`) = TRIM(TRAILING ' ' FROM :kado_ymd)");
         whereList.add("`BUSHO_ID` = :busho_id");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T02OrphanS.title}">T02_ORPHAN</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T02Orphan.js}"></script>
+<script th:src="@{/model/T02OrphanGridColumns.js}"></script>
+<!-- T02_ORPHANの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T02_ORPHANの親モデルのグリッド定義 -->
+<script th:src="@{/model/T02Oya.js}"></script>
+<script th:src="@{/model/T02OyaGridColumns.js}"></script>
+<!-- T02_ORPHANの子モデルのグリッド定義 -->
+<script th:src="@{/model/T02Mago.js}"></script>
+<script th:src="@{/model/T02MagoGridColumns.js}"></script>
+  <!-- T02_MAGOの親モデルのグリッド定義 -->
+  <script th:src="@{/model/T02Dinks.js}"></script>
+  <script th:src="@{/model/T02DinksGridColumns.js}"></script>
+  <!-- T02_MAGOの親モデルのグリッド定義 -->
+  <script th:src="@{/model/T02Ko.js}"></script>
+  <script th:src="@{/model/T02KoGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T02OrphanS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T02OrphanSearchForm" action="T02OrphanSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T02OrphanS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T02Orphan.oyaId" th:text="#{T02Orphan.oyaId}">OYA_ID</label><input type="text" id="T02Orphan.oyaId" name="T02Orphan.oyaId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="koBn">
+          <label for="T02Orphan.koBn" th:text="#{T02Orphan.koBn}">KO_BN</label><input type="text" id="T02Orphan.koBn" name="T02Orphan.koBn" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="orphanInfo">
+          <label for="T02Orphan.orphanInfo" th:text="#{T02Orphan.orphanInfo}">ORPHAN_INFO</label><input type="text" id="T02Orphan.orphanInfo" name="T02Orphan.orphanInfo" maxlength="300" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT02Orphan" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchT02Orphan" type="submit" class="search" data-gridId="T02OrphanGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T02OrphanSRegistForm" action="T02OrphanSRegist.ajax" class="regist">
+      <h3 th:text="#{T02Orphan.h3}">h3</h3>
+      <div id="T02OrphanGrid" data-selectionMode="checkbox" data-frozenColumn="1" data-editable="false" th:data-href="@{/model/T02Orphan.html}"></div>
+      <div id="T02OrphanPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT02OrphanS" th:text="#{common.reset}" onClick="Base.listReset('T02Orphan');">reset</button>
+        <a th:href="@{T02OrphanSearch.xlsx(baseMei=#{T02OrphanS.h2})}" id="T02OrphanSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

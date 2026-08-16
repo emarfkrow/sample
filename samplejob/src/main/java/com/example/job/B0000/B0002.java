@@ -7,7 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.entity.T01Oya;
+import com.example.entity.T02Oya;
 
 import jp.co.golorp.emarf.exception.AppError;
 import jp.co.golorp.emarf.job.BaseJob;
@@ -46,7 +46,7 @@ public class B0002 extends BaseJob {
     public void running(final LocalDateTime now, final String jobId, final String[] args) {
 
         // 追加
-        T01Oya e = new T01Oya();
+        T02Oya e = new T02Oya();
         e.setOyaInfo("親情報");
         if (e.insert(now, jobId) != 1) {
             throw new AppError("error.cant.insert");

@@ -13,13 +13,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 選抜一覧削除
+ * 選択一覧削除
  *
  * @author emarfkrow
  */
 public class T09ChoiceSDeleteAction extends BaseAction {
 
-    /** 選抜一覧削除処理 */
+    /** 選択一覧削除処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
 
@@ -38,12 +38,12 @@ public class T09ChoiceSDeleteAction extends BaseAction {
 
                 // 主キーが不足していたらエラー
                 if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("CHOICE_ID"))) {
-                    throw new OptLockError("error.cant.delete", "選抜");
+                    throw new OptLockError("error.cant.delete", "選択");
                 }
 
                 T09Choice e = FormValidator.toBean(T09Choice.class.getName(), row);
                 if (e.delete() != 1) {
-                    throw new OptLockError("error.cant.delete", "選抜");
+                    throw new OptLockError("error.cant.delete", "選択");
                 }
                 ++count;
             }

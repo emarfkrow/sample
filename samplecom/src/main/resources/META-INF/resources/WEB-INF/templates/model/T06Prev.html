@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T06Prev.title}">T06_PREV</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T06Prev.js}"></script>
+<script th:src="@{/model/T06PrevGridColumns.js}"></script>
+<!-- T06_PREVの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T06_PREVの子モデルのグリッド定義 -->
+<script th:src="@{/model/T06PrevDet.js}"></script>
+<script th:src="@{/model/T06PrevDetGridColumns.js}"></script>
+<!-- T06_PREVの転生先モデルのグリッド定義 -->
+<script th:src="@{/model/T06Reborn.js}"></script>
+<script th:src="@{/model/T06RebornGridColumns.js}"></script>
+  <!-- T06_REBORNの子モデルのグリッド定義 -->
+  <script th:src="@{/model/T06RebornDet.js}"></script>
+  <script th:src="@{/model/T06RebornDetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T06Prev.h2}">h2</h2>
+    <form name="T06PrevRegistForm" action="T06PrevRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T06Prev.legend}">legend</legend>
+        <div id="prevId">
+          <label for="T06Prev.prevId" th:text="#{T06Prev.prevId}">PREV_ID</label><input type="text" id="T06Prev.prevId" name="T06Prev.prevId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="prevInfo">
+          <label for="T06Prev.prevInfo" th:text="#{T06Prev.prevInfo}">PREV_INFO</label><input type="text" id="T06Prev.prevInfo" name="T06Prev.prevInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T06Prev.insertTs}" class="meta">INSERT_TS</label><span id="T06Prev.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Prev.insertTs" name="T06Prev.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T06Prev.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T06Prev.insertUserId" class="meta"></span><input type="hidden" id="T06Prev.insertUserId" name="T06Prev.insertUserId" class="meta" />
+          <span id="T06Prev.insertUserSei" class="refer meta" data-referFor="T06Prev.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Prev.insertUserId" data-destDef="T06Prev.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T06Prev.updateTs}" class="meta">UPDATE_TS</label><span id="T06Prev.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Prev.updateTs" name="T06Prev.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T06Prev.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T06Prev.updateUserId" class="meta"></span><input type="hidden" id="T06Prev.updateUserId" name="T06Prev.updateUserId" class="meta" />
+          <span id="T06Prev.updateUserSei" class="refer meta" data-referFor="T06Prev.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Prev.updateUserId" data-destDef="T06Prev.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <h3 th:text="#{T06PrevDet.h3}">h3</h3>
+      <a th:href="@{/model/T06PrevDet.html(anew)}" id="T06PrevDet" target="dialog" th:text="#{T06PrevDet.add}" class="addChild" tabindex="-1">T06_PREV_DET</a>
+      <div id="T06PrevDetGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T06PrevDet.html}" class="childs"></div>
+      <div class="buttons">
+        <button type="button" id="RefreshT06Prev" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T06PrevGet.xlsx(baseMei=#{T06Prev.h2})}" id="T06PrevGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{/model/T06Reborn.html}" id="T06Reborn" target="dialog" th:text="#{T06Reborn.add}" class="reborner" tabindex="-1">T06_REBORN</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT06Prev" type="submit" class="delete" data-action="T06PrevDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT06Prev" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+      <h3 th:text="#{T06Reborn.h3}">h3</h3>
+      <div id="T06RebornGrid" data-selectionMode="link" data-frozenColumn="1" th:data-href="@{/model/T06Reborn.html}" class="reborners"></div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M05Saiki.title}">M05_SAIKI</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M05Saiki.js}"></script>
+<script th:src="@{/model/M05SaikiGridColumns.js}"></script>
+<!-- M05_SAIKIの参照モデルのグリッド定義 -->
+<script th:src="@{/model/M05Id.js}"></script>
+<script th:src="@{/model/M05IdGridColumns.js}"></script>
+  <!-- M05_IDの参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- M05_SAIKIの参照モデルのグリッド定義 -->
+<script th:src="@{/model/M05Cd.js}"></script>
+<script th:src="@{/model/M05CdGridColumns.js}"></script>
+<!-- M05_SAIKIの参照モデルのグリッド定義 -->
+<script th:src="@{/model/M05No.js}"></script>
+<script th:src="@{/model/M05NoGridColumns.js}"></script>
+<!-- M05_SAIKIの参照モデルのグリッド定義 -->
+<script th:src="@{/model/M05Idbn.js}"></script>
+<script th:src="@{/model/M05IdbnGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M05Saiki.h2}">h2</h2>
+    <form name="M05SaikiRegistForm" action="M05SaikiRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{M05Saiki.legend}">legend</legend>
+        <div id="saikiId">
+          <label for="M05Saiki.saikiId" th:text="#{M05Saiki.saikiId}">SAIKI_ID</label><input type="text" id="M05Saiki.saikiId" name="M05Saiki.saikiId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="saikiMei">
+          <label for="M05Saiki.saikiMei" th:text="#{M05Saiki.saikiMei}">SAIKI_MEI</label><input type="text" id="M05Saiki.saikiMei" name="M05Saiki.saikiMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="idrefId">
+          <label for="M05Saiki.idrefId" th:text="#{M05Saiki.idrefId}">IDREF_ID</label><input type="text" id="M05Saiki.idrefId" name="M05Saiki.idrefId" maxlength="10" class=" refer" data-referFor="M05Saiki.idrefId" data-json="M05IdSearch.json" data-srcDef="IDREF_ID:M05Saiki.idrefId" data-destDef="M05Saiki.idrefMei:IDREF_MEI" /><a id="M05Saiki.idrefId" th:href="@{/model/M05IdS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M05Saiki.idrefMei" class=" refer" data-referFor="M05Saiki.idrefId" data-json="M05IdSearch.json" data-srcDef="IDREF_ID:M05Saiki.idrefId" data-destDef="M05Saiki.idrefMei:IDREF_MEI"></span>
+        </div>
+        <div id="cdrefCd">
+          <label for="M05Saiki.cdrefCd" th:text="#{M05Saiki.cdrefCd}">CDREF_CD</label><input type="text" id="M05Saiki.cdrefCd" name="M05Saiki.cdrefCd" maxlength="10" class=" refer" data-referFor="M05Saiki.cdrefCd" data-json="M05CdSearch.json" data-srcDef="CDREF_CD:M05Saiki.cdrefCd" data-destDef="M05Saiki.cdrefMei:CDREF_MEI" /><a id="M05Saiki.cdrefCd" th:href="@{/model/M05CdS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M05Saiki.cdrefMei" class=" refer" data-referFor="M05Saiki.cdrefCd" data-json="M05CdSearch.json" data-srcDef="CDREF_CD:M05Saiki.cdrefCd" data-destDef="M05Saiki.cdrefMei:CDREF_MEI"></span>
+        </div>
+        <div id="norefNo">
+          <label for="M05Saiki.norefNo" th:text="#{M05Saiki.norefNo}">NOREF_NO</label><input type="text" id="M05Saiki.norefNo" name="M05Saiki.norefNo" maxlength="10" class=" refer" data-referFor="M05Saiki.norefNo" data-json="M05NoSearch.json" data-srcDef="NOREF_NO:M05Saiki.norefNo" data-destDef="M05Saiki.norefMei:NOREF_MEI" /><a id="M05Saiki.norefNo" th:href="@{/model/M05NoS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M05Saiki.norefMei" class=" refer" data-referFor="M05Saiki.norefNo" data-json="M05NoSearch.json" data-srcDef="NOREF_NO:M05Saiki.norefNo" data-destDef="M05Saiki.norefMei:NOREF_MEI"></span>
+        </div>
+        <div id="exIdrefId">
+          <label for="M05Saiki.exIdrefId" th:text="#{M05Saiki.exIdrefId}">EX_IDREF_ID</label><input type="text" id="M05Saiki.exIdrefId" name="M05Saiki.exIdrefId" maxlength="10" class=" refer" data-referFor="M05Saiki.exIdrefId" data-json="M05IdSearch.json" data-srcDef="IDREF_ID:M05Saiki.exIdrefId" data-destDef="M05Saiki.exIdrefMei:IDREF_MEI" /><a id="M05Saiki.exIdrefId" th:href="@{/model/M05IdS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M05Saiki.exIdrefMei" class=" refer" data-referFor="M05Saiki.exIdrefId" data-json="M05IdSearch.json" data-srcDef="IDREF_ID:M05Saiki.exIdrefId" data-destDef="M05Saiki.exIdrefMei:IDREF_MEI"></span>
+        </div>
+        <div id="exIdbnBn">
+          <label for="M05Saiki.exIdbnBn" th:text="#{M05Saiki.exIdbnBn}">EX_IDBN_BN</label><input type="text" id="M05Saiki.exIdbnBn" name="M05Saiki.exIdbnBn" maxlength="10" class=" refer" data-referFor="M05Saiki.exIdbnBn" data-json="M05IdbnSearch.json" data-srcDef="IDREF_ID:M05Saiki.exIdrefId,IDBN_BN:M05Saiki.exIdbnBn" data-destDef="M05Saiki.exIdbnNo:IDBN_NO" /><a id="M05Saiki.exIdbnBn" th:href="@{/model/M05IdbnS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M05Saiki.exIdbnNo" class=" refer" data-referFor="M05Saiki.exIdbnBn" data-json="M05IdbnSearch.json" data-srcDef="IDREF_ID:M05Saiki.exIdrefId,IDBN_BN:M05Saiki.exIdbnBn" data-destDef="M05Saiki.exIdbnNo:IDBN_NO"></span>
+        </div>
+        <div id="oyaSaikiId">
+          <label for="M05Saiki.oyaSaikiId" th:text="#{M05Saiki.oyaSaikiId}">OYA_SAIKI_ID</label><input type="text" id="M05Saiki.oyaSaikiId" name="M05Saiki.oyaSaikiId" maxlength="10" class=" refer" data-referFor="M05Saiki.oyaSaikiId" data-json="M05SaikiSearch.json" data-srcDef="SAIKI_ID:M05Saiki.oyaSaikiId" data-destDef="M05Saiki.oyaSaikiMei:SAIKI_MEI" /><a id="M05Saiki.oyaSaikiId" th:href="@{/model/M05SaikiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M05Saiki.oyaSaikiMei" class=" refer" data-referFor="M05Saiki.oyaSaikiId" data-json="M05SaikiSearch.json" data-srcDef="SAIKI_ID:M05Saiki.oyaSaikiId" data-destDef="M05Saiki.oyaSaikiMei:SAIKI_MEI"></span>
+        </div>
+        <div id="insertTs">
+          <label th:text="#{M05Saiki.insertTs}" class="meta">INSERT_TS</label><span id="M05Saiki.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M05Saiki.insertTs" name="M05Saiki.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{M05Saiki.insertUserId}" class="meta">INSERT_USER_ID</label><span id="M05Saiki.insertUserId" class="meta"></span><input type="hidden" id="M05Saiki.insertUserId" name="M05Saiki.insertUserId" class="meta" />
+          <span id="M05Saiki.insertUserSei" class="refer meta" data-referFor="M05Saiki.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M05Saiki.insertUserId" data-destDef="M05Saiki.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{M05Saiki.updateTs}" class="meta">UPDATE_TS</label><span id="M05Saiki.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M05Saiki.updateTs" name="M05Saiki.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{M05Saiki.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="M05Saiki.updateUserId" class="meta"></span><input type="hidden" id="M05Saiki.updateUserId" name="M05Saiki.updateUserId" class="meta" />
+          <span id="M05Saiki.updateUserSei" class="refer meta" data-referFor="M05Saiki.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M05Saiki.updateUserId" data-destDef="M05Saiki.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshM05Saiki" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{M05SaikiGet.xlsx(baseMei=#{M05Saiki.h2})}" id="M05SaikiGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteM05Saiki" type="submit" class="delete" data-action="M05SaikiDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistM05Saiki" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

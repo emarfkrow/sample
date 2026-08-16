@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T07OrgDet.title}">T07_ORG_DET</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T07OrgDet.js}"></script>
+<script th:src="@{/model/T07OrgDetGridColumns.js}"></script>
+<!-- T07_ORG_DETの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T07_ORG_DETの親モデルのグリッド定義 -->
+<script th:src="@{/model/T07Org.js}"></script>
+<script th:src="@{/model/T07OrgGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T07OrgDet.h2}">h2</h2>
+    <form name="T07OrgDetRegistForm" action="T07OrgDetRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{T07Org.legend}">legend</legend>
+        <div id="orgId">
+          <label for="T07Org.orgId" th:text="#{T07Org.orgId}">ORG_ID</label><input type="text" id="T07Org.orgId" name="T07Org.orgId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orgInfo">
+          <label for="T07Org.orgInfo" th:text="#{T07Org.orgInfo}">ORG_INFO</label><input type="text" id="T07Org.orgInfo" name="T07Org.orgInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T07Org.insertTs}" class="meta">INSERT_TS</label><span id="T07Org.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Org.insertTs" name="T07Org.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T07Org.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T07Org.insertUserId" class="meta"></span><input type="hidden" id="T07Org.insertUserId" name="T07Org.insertUserId" class="meta" />
+          <span id="T07Org.insertUserSei" class="refer meta" data-referFor="T07Org.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Org.insertUserId" data-destDef="T07Org.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T07Org.updateTs}" class="meta">UPDATE_TS</label><span id="T07Org.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Org.updateTs" name="T07Org.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T07Org.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T07Org.updateUserId" class="meta"></span><input type="hidden" id="T07Org.updateUserId" name="T07Org.updateUserId" class="meta" />
+          <span id="T07Org.updateUserSei" class="refer meta" data-referFor="T07Org.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Org.updateUserId" data-destDef="T07Org.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T07OrgDet.legend}">legend</legend>
+        <div id="orgId">
+          <label for="T07OrgDet.orgId" th:text="#{T07OrgDet.orgId}">ORG_ID</label><input type="text" id="T07OrgDet.orgId" name="T07OrgDet.orgId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orgBn">
+          <label for="T07OrgDet.orgBn" th:text="#{T07OrgDet.orgBn}">ORG_BN</label><input type="text" id="T07OrgDet.orgBn" name="T07OrgDet.orgBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="detInfo">
+          <label for="T07OrgDet.detInfo" th:text="#{T07OrgDet.detInfo}">DET_INFO</label><input type="text" id="T07OrgDet.detInfo" name="T07OrgDet.detInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T07OrgDet.insertTs}" class="meta">INSERT_TS</label><span id="T07OrgDet.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07OrgDet.insertTs" name="T07OrgDet.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T07OrgDet.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T07OrgDet.insertUserId" class="meta"></span><input type="hidden" id="T07OrgDet.insertUserId" name="T07OrgDet.insertUserId" class="meta" />
+          <span id="T07OrgDet.insertUserSei" class="refer meta" data-referFor="T07OrgDet.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07OrgDet.insertUserId" data-destDef="T07OrgDet.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T07OrgDet.updateTs}" class="meta">UPDATE_TS</label><span id="T07OrgDet.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07OrgDet.updateTs" name="T07OrgDet.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T07OrgDet.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T07OrgDet.updateUserId" class="meta"></span><input type="hidden" id="T07OrgDet.updateUserId" name="T07OrgDet.updateUserId" class="meta" />
+          <span id="T07OrgDet.updateUserSei" class="refer meta" data-referFor="T07OrgDet.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07OrgDet.updateUserId" data-destDef="T07OrgDet.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT07OrgDet" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T07OrgDetGet.xlsx(baseMei=#{T07OrgDet.h2})}" id="T07OrgDetGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT07OrgDet" type="submit" class="delete" data-action="T07OrgDetDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT07OrgDet" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

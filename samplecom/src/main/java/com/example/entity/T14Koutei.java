@@ -17,8 +17,8 @@ public class T14Koutei implements IEntity {
     public T14Koutei(final String[] values) {
         this.setKouteiId(values[0]);
         this.setKouteiMei(values[1]);
-        this.setKaishiBi(values[2]);
-        this.setShuryoBi(values[3]);
+        this.setKaishiYmd(values[2]);
+        this.setShuryoYmd(values[3]);
         this.setSagyokuCd(values[4]);
         this.setOyaKouteiId(values[5]);
         this.setInsertTs(values[6]);
@@ -31,8 +31,8 @@ public class T14Koutei implements IEntity {
     public T14Koutei(final java.util.Map<String, Object> map) {
         this.setKouteiId(IgnoreCaseLinkedMap.get(map, "KOUTEI_ID"));
         this.setKouteiMei(IgnoreCaseLinkedMap.get(map, "KOUTEI_MEI"));
-        this.setKaishiBi(IgnoreCaseLinkedMap.get(map, "KAISHI_BI"));
-        this.setShuryoBi(IgnoreCaseLinkedMap.get(map, "SHURYO_BI"));
+        this.setKaishiYmd(IgnoreCaseLinkedMap.get(map, "KAISHI_YMD"));
+        this.setShuryoYmd(IgnoreCaseLinkedMap.get(map, "SHURYO_YMD"));
         this.setSagyokuCd(IgnoreCaseLinkedMap.get(map, "SAGYOKU_CD"));
         this.setOyaKouteiId(IgnoreCaseLinkedMap.get(map, "OYA_KOUTEI_ID"));
         this.setInsertTs(IgnoreCaseLinkedMap.get(map, "INSERT_TS"));
@@ -60,8 +60,8 @@ public class T14Koutei implements IEntity {
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.kouteiMei == null || this.kouteiMei.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.kaishiBi == null || this.kaishiBi.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.shuryoBi == null || this.shuryoBi.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.kaishiYmd == null || this.kaishiYmd.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.shuryoYmd == null || this.shuryoYmd.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.sagyokuCd == null || this.sagyokuCd.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.oyaKouteiId == null || this.oyaKouteiId.toString().replaceAll("　| ", "").equals("");
         return isEmpty;
@@ -125,45 +125,39 @@ public class T14Koutei implements IEntity {
         }
     }
 
-    /** KAISHI_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
-    private java.time.LocalDate kaishiBi;
+    /** KAISHI_YMD */
+    private String kaishiYmd;
 
-    /** @return KAISHI_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KAISHI_BI", index = 4)
-    public java.time.LocalDate getKaishiBi() {
-        return this.kaishiBi;
+    /** @return KAISHI_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KAISHI_YMD", index = 4)
+    public String getKaishiYmd() {
+        return this.kaishiYmd;
     }
 
-    /** @param o KAISHI_BI */
-    public void setKaishiBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.kaishiBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    /** @param o KAISHI_YMD */
+    public void setKaishiYmd(final Object o) {
+        if (o != null) {
+            this.kaishiYmd = o.toString();
         } else {
-            this.kaishiBi = null;
+            this.kaishiYmd = null;
         }
     }
 
-    /** SHURYO_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
-    private java.time.LocalDate shuryoBi;
+    /** SHURYO_YMD */
+    private String shuryoYmd;
 
-    /** @return SHURYO_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "SHURYO_BI", index = 5)
-    public java.time.LocalDate getShuryoBi() {
-        return this.shuryoBi;
+    /** @return SHURYO_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "SHURYO_YMD", index = 5)
+    public String getShuryoYmd() {
+        return this.shuryoYmd;
     }
 
-    /** @param o SHURYO_BI */
-    public void setShuryoBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.shuryoBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    /** @param o SHURYO_YMD */
+    public void setShuryoYmd(final Object o) {
+        if (o != null) {
+            this.shuryoYmd = o.toString();
         } else {
-            this.shuryoBi = null;
+            this.shuryoYmd = null;
         }
     }
 
@@ -371,8 +365,8 @@ public class T14Koutei implements IEntity {
         sql += "SELECT \n";
         sql += "      a.`KOUTEI_ID` \n";
         sql += "    , a.`KOUTEI_MEI` \n";
-        sql += "    , a.`KAISHI_BI` AS KAISHI_BI \n";
-        sql += "    , a.`SHURYO_BI` AS SHURYO_BI \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`KAISHI_YMD`) AS KAISHI_YMD \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`SHURYO_YMD`) AS SHURYO_YMD \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`SAGYOKU_CD`) AS SAGYOKU_CD \n";
         sql += "    , a.`OYA_KOUTEI_ID` \n";
         sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
@@ -409,8 +403,8 @@ public class T14Koutei implements IEntity {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
         nameList.add("`KOUTEI_ID` -- :koutei_id");
         nameList.add("`KOUTEI_MEI` -- :koutei_mei");
-        nameList.add("`KAISHI_BI` -- :kaishi_bi");
-        nameList.add("`SHURYO_BI` -- :shuryo_bi");
+        nameList.add("`KAISHI_YMD` -- :kaishi_ymd");
+        nameList.add("`SHURYO_YMD` -- :shuryo_ymd");
         nameList.add("`SAGYOKU_CD` -- :sagyoku_cd");
         nameList.add("`OYA_KOUTEI_ID` -- :oya_koutei_id");
         nameList.add("`INSERT_TS` -- :insert_ts");
@@ -425,8 +419,8 @@ public class T14Koutei implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":koutei_id");
         valueList.add(":koutei_mei");
-        valueList.add(":kaishi_bi");
-        valueList.add(":shuryo_bi");
+        valueList.add(":kaishi_ymd");
+        valueList.add(":shuryo_ymd");
         valueList.add(":sagyoku_cd");
         valueList.add(":oya_koutei_id");
         valueList.add(":insert_ts");
@@ -466,8 +460,8 @@ public class T14Koutei implements IEntity {
         java.util.List<String> setList = new java.util.ArrayList<String>();
         setList.add("`KOUTEI_ID` = :koutei_id");
         setList.add("`KOUTEI_MEI` = :koutei_mei");
-        setList.add("`KAISHI_BI` = :kaishi_bi");
-        setList.add("`SHURYO_BI` = :shuryo_bi");
+        setList.add("`KAISHI_YMD` = :kaishi_ymd");
+        setList.add("`SHURYO_YMD` = :shuryo_ymd");
         setList.add("`SAGYOKU_CD` = :sagyoku_cd");
         setList.add("`OYA_KOUTEI_ID` = :oya_koutei_id");
         setList.add("`UPDATE_TS` = :update_ts");
@@ -506,8 +500,8 @@ public class T14Koutei implements IEntity {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("koutei_id", this.kouteiId);
         map.put("koutei_mei", this.kouteiMei);
-        map.put("kaishi_bi", this.kaishiBi);
-        map.put("shuryo_bi", this.shuryoBi);
+        map.put("kaishi_ymd", this.kaishiYmd);
+        map.put("shuryo_ymd", this.shuryoYmd);
         map.put("sagyoku_cd", this.sagyokuCd);
         map.put("oya_koutei_id", this.oyaKouteiId);
         map.put("insert_ts", now);

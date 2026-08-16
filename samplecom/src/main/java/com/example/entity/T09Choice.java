@@ -314,9 +314,9 @@ public class T09Choice implements IEntity {
     }
 
     /**
-     * 選抜照会
-     * @param param1 選抜ID
-     * @return 選抜
+     * 選択照会
+     * @param param1 選択ID
+     * @return 選択
      */
     public static T09Choice get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
@@ -342,17 +342,17 @@ public class T09Choice implements IEntity {
     }
 
     /**
-     * 選抜追加
+     * 選択追加
      * @param now システム日時
      * @param execId 登録者
      * @return 追加件数
      */
     public int insert(final java.time.LocalDateTime now, final String execId) {
 
-        // 選抜IDの採番処理
+        // 選択IDの採番処理
         numbering();
 
-        // 選抜の登録
+        // 選択の登録
         String sql = "INSERT INTO T09_CHOICE(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
@@ -387,7 +387,7 @@ public class T09Choice implements IEntity {
         return String.join("\r\n    , ", valueList);
     }
 
-    /** 選抜IDの採番処理 */
+    /** 選択IDの採番処理 */
     private void numbering() {
         if (this.choiceId != null) {
             return;
@@ -400,14 +400,14 @@ public class T09Choice implements IEntity {
     }
 
     /**
-     * 選抜更新
+     * 選択更新
      * @param now システム日時
      * @param execId 更新者
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime now, final String execId) {
 
-        // 選抜の登録
+        // 選択の登録
         String sql = "UPDATE T09_CHOICE\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
     }
@@ -426,23 +426,23 @@ public class T09Choice implements IEntity {
     }
 
     /**
-     * 選抜削除
+     * 選択削除
      * @return 削除件数
      */
     public int delete() {
 
-        // 選抜の削除
+        // 選択の削除
         String sql = "DELETE FROM T09_CHOICE WHERE " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
     /**
-     * 選抜全件削除
+     * 選択全件削除
      * @return 削除件数
      */
     public static int truncate() {
 
-        // 選抜の削除
+        // 選択の削除
         String sql = "TRUNCATE TABLE T09_CHOICE";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
     }

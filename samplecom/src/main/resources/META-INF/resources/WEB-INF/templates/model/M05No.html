@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M05No.title}">M05_NO</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M05No.js}"></script>
+<script th:src="@{/model/M05NoGridColumns.js}"></script>
+<!-- M05_NOの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M05No.h2}">h2</h2>
+    <form name="M05NoRegistForm" action="M05NoRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{M05No.legend}">legend</legend>
+        <div id="norefNo">
+          <label for="M05No.norefNo" th:text="#{M05No.norefNo}">NOREF_NO</label><input type="text" id="M05No.norefNo" name="M05No.norefNo" maxlength="10" class=" primaryKey notblank" />
+        </div>
+        <div id="norefMei">
+          <label for="M05No.norefMei" th:text="#{M05No.norefMei}">NOREF_MEI</label><input type="text" id="M05No.norefMei" name="M05No.norefMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{M05No.insertTs}" class="meta">INSERT_TS</label><span id="M05No.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M05No.insertTs" name="M05No.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{M05No.insertUserId}" class="meta">INSERT_USER_ID</label><span id="M05No.insertUserId" class="meta"></span><input type="hidden" id="M05No.insertUserId" name="M05No.insertUserId" class="meta" />
+          <span id="M05No.insertUserSei" class="refer meta" data-referFor="M05No.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M05No.insertUserId" data-destDef="M05No.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{M05No.updateTs}" class="meta">UPDATE_TS</label><span id="M05No.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M05No.updateTs" name="M05No.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{M05No.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="M05No.updateUserId" class="meta"></span><input type="hidden" id="M05No.updateUserId" name="M05No.updateUserId" class="meta" />
+          <span id="M05No.updateUserSei" class="refer meta" data-referFor="M05No.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M05No.updateUserId" data-destDef="M05No.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshM05No" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{M05NoGet.xlsx(baseMei=#{M05No.h2})}" id="M05NoGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteM05No" type="submit" class="delete" data-action="M05NoDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistM05No" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

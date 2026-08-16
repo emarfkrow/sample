@@ -2,7 +2,7 @@ package com.example.job.B1000;
 
 import java.time.LocalDateTime;
 
-import com.example.entity.T01Oya;
+import com.example.entity.T02Oya;
 
 import jp.co.golorp.emarf.job.BaseJob;
 import jp.co.golorp.emarf.report.TextUtil;
@@ -39,10 +39,10 @@ public class B1002 extends BaseJob {
     public void running(final LocalDateTime now, final String jobId, final String[] args) {
 
         // 入力チェックなし
-        TextUtil.walkIn(now, jobId, "out/output_fixed.csv", true, T01Oya.class);
+        TextUtil.walkIn(now, jobId, "out/output_fixed.csv", true, T02Oya.class);
 
         // 入力チェックあり
-        TextUtil.checkIn(now, jobId, "out/output_fixed.csv", true, T01Oya.class);
+        TextUtil.checkIn(now, jobId, "out/output_fixed.csv", true, T02Oya.class);
     }
 
 }

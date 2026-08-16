@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M05NoS.title}">M05_NO</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M05No.js}"></script>
+<script th:src="@{/model/M05NoGridColumns.js}"></script>
+<!-- M05_NOの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M05NoS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="M05NoSearchForm" action="M05NoSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{M05NoS.legend}">legend</legend>
+        <div id="norefNo">
+          <label for="M05No.norefNo" th:text="#{M05No.norefNo}">NOREF_NO</label><input type="text" id="M05No.norefNo" name="M05No.norefNo" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="norefMei">
+          <label for="M05No.norefMei" th:text="#{M05No.norefMei}">NOREF_MEI</label><input type="text" id="M05No.norefMei" name="M05No.norefMei" maxlength="60" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetM05No" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/M05No.html(anew)}" target="dialog" id="M05No" class="anew" th:text="#{M05No.add}" tabindex="-1">M05_NO</a>
+      </div>
+      <div class="submits">
+        <button id="SearchM05No" type="submit" class="search" data-gridId="M05NoGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="M05NoSRegistForm" action="M05NoSRegist.ajax" class="regist">
+      <h3 th:text="#{M05No.h3}">h3</h3>
+      <div id="M05NoGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/M05No.html}"></div>
+      <div id="M05NoPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetM05NoS" th:text="#{common.reset}" onClick="Base.listReset('M05No');">reset</button>
+        <a th:href="@{M05NoSearch.xlsx(baseMei=#{M05NoS.h2})}" id="M05NoSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteM05NoS" data-action="M05NoSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistM05NoS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

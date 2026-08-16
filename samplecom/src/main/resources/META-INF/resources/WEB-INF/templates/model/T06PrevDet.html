@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T06PrevDet.title}">T06_PREV_DET</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T06PrevDet.js}"></script>
+<script th:src="@{/model/T06PrevDetGridColumns.js}"></script>
+<!-- T06_PREV_DETの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T06_PREV_DETの親モデルのグリッド定義 -->
+<script th:src="@{/model/T06Prev.js}"></script>
+<script th:src="@{/model/T06PrevGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T06PrevDet.h2}">h2</h2>
+    <form name="T06PrevDetRegistForm" action="T06PrevDetRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{T06Prev.legend}">legend</legend>
+        <div id="prevId">
+          <label for="T06Prev.prevId" th:text="#{T06Prev.prevId}">PREV_ID</label><input type="text" id="T06Prev.prevId" name="T06Prev.prevId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="prevInfo">
+          <label for="T06Prev.prevInfo" th:text="#{T06Prev.prevInfo}">PREV_INFO</label><input type="text" id="T06Prev.prevInfo" name="T06Prev.prevInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T06Prev.insertTs}" class="meta">INSERT_TS</label><span id="T06Prev.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Prev.insertTs" name="T06Prev.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T06Prev.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T06Prev.insertUserId" class="meta"></span><input type="hidden" id="T06Prev.insertUserId" name="T06Prev.insertUserId" class="meta" />
+          <span id="T06Prev.insertUserSei" class="refer meta" data-referFor="T06Prev.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Prev.insertUserId" data-destDef="T06Prev.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T06Prev.updateTs}" class="meta">UPDATE_TS</label><span id="T06Prev.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Prev.updateTs" name="T06Prev.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T06Prev.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T06Prev.updateUserId" class="meta"></span><input type="hidden" id="T06Prev.updateUserId" name="T06Prev.updateUserId" class="meta" />
+          <span id="T06Prev.updateUserSei" class="refer meta" data-referFor="T06Prev.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Prev.updateUserId" data-destDef="T06Prev.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T06PrevDet.legend}">legend</legend>
+        <div id="prevId">
+          <label for="T06PrevDet.prevId" th:text="#{T06PrevDet.prevId}">PREV_ID</label><input type="text" id="T06PrevDet.prevId" name="T06PrevDet.prevId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="prevBn">
+          <label for="T06PrevDet.prevBn" th:text="#{T06PrevDet.prevBn}">PREV_BN</label><input type="text" id="T06PrevDet.prevBn" name="T06PrevDet.prevBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="detInfo">
+          <label for="T06PrevDet.detInfo" th:text="#{T06PrevDet.detInfo}">DET_INFO</label><input type="text" id="T06PrevDet.detInfo" name="T06PrevDet.detInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T06PrevDet.insertTs}" class="meta">INSERT_TS</label><span id="T06PrevDet.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06PrevDet.insertTs" name="T06PrevDet.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T06PrevDet.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T06PrevDet.insertUserId" class="meta"></span><input type="hidden" id="T06PrevDet.insertUserId" name="T06PrevDet.insertUserId" class="meta" />
+          <span id="T06PrevDet.insertUserSei" class="refer meta" data-referFor="T06PrevDet.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06PrevDet.insertUserId" data-destDef="T06PrevDet.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T06PrevDet.updateTs}" class="meta">UPDATE_TS</label><span id="T06PrevDet.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T06PrevDet.updateTs" name="T06PrevDet.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T06PrevDet.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T06PrevDet.updateUserId" class="meta"></span><input type="hidden" id="T06PrevDet.updateUserId" name="T06PrevDet.updateUserId" class="meta" />
+          <span id="T06PrevDet.updateUserSei" class="refer meta" data-referFor="T06PrevDet.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06PrevDet.updateUserId" data-destDef="T06PrevDet.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT06PrevDet" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T06PrevDetGet.xlsx(baseMei=#{T06PrevDet.h2})}" id="T06PrevDetGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT06PrevDet" type="submit" class="delete" data-action="T06PrevDetDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT06PrevDet" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

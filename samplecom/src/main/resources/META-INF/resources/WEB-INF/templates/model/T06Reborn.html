@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T06Reborn.title}">T06_REBORN</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T06Reborn.js}"></script>
+<script th:src="@{/model/T06RebornGridColumns.js}"></script>
+<!-- T06_REBORNの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T06_REBORNの転生元モデルのグリッド定義 -->
+<script th:src="@{/model/T06Prev.js}"></script>
+<script th:src="@{/model/T06PrevGridColumns.js}"></script>
+<!-- T06_REBORNの子モデルのグリッド定義 -->
+<script th:src="@{/model/T06RebornDet.js}"></script>
+<script th:src="@{/model/T06RebornDetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T06Reborn.h2}">h2</h2>
+    <form name="T06RebornRegistForm" action="T06RebornRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T06Reborn.legend}">legend</legend>
+        <div id="rebornId">
+          <label for="T06Reborn.rebornId" th:text="#{T06Reborn.rebornId}">REBORN_ID</label><input type="text" id="T06Reborn.rebornId" name="T06Reborn.rebornId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="prevInfo">
+          <label for="T06Reborn.prevInfo" th:text="#{T06Reborn.prevInfo}">PREV_INFO</label><input type="text" id="T06Reborn.prevInfo" name="T06Reborn.prevInfo" maxlength="300" class="" />
+        </div>
+        <div id="prevId">
+          <label th:text="#{T06Reborn.prevId}">PREV_ID</label><span id="T06Reborn.prevId" class="rebornee"></span><input type="hidden" id="T06Reborn.prevId" name="T06Reborn.prevId" class="rebornee" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T06Reborn.insertTs}" class="meta">INSERT_TS</label><span id="T06Reborn.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Reborn.insertTs" name="T06Reborn.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T06Reborn.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T06Reborn.insertUserId" class="meta"></span><input type="hidden" id="T06Reborn.insertUserId" name="T06Reborn.insertUserId" class="meta" />
+          <span id="T06Reborn.insertUserSei" class="refer meta" data-referFor="T06Reborn.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Reborn.insertUserId" data-destDef="T06Reborn.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T06Reborn.updateTs}" class="meta">UPDATE_TS</label><span id="T06Reborn.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T06Reborn.updateTs" name="T06Reborn.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T06Reborn.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T06Reborn.updateUserId" class="meta"></span><input type="hidden" id="T06Reborn.updateUserId" name="T06Reborn.updateUserId" class="meta" />
+          <span id="T06Reborn.updateUserSei" class="refer meta" data-referFor="T06Reborn.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T06Reborn.updateUserId" data-destDef="T06Reborn.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <h3 th:text="#{T06RebornDet.h3}">h3</h3>
+      <a th:href="@{/model/T06RebornDet.html(anew)}" id="T06RebornDet" target="dialog" th:text="#{T06RebornDet.add}" class="addChild" tabindex="-1">T06_REBORN_DET</a>
+      <div id="T06RebornDetGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T06RebornDet.html}" class="childs"></div>
+      <div class="buttons">
+        <button type="button" id="RefreshT06Reborn" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T06RebornGet.xlsx(baseMei=#{T06Reborn.h2})}" id="T06RebornGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT06Reborn" type="submit" class="delete" data-action="T06RebornDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT06Reborn" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

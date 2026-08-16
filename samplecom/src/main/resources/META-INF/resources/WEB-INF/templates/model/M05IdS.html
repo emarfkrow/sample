@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M05IdS.title}">M05_ID</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M05Id.js}"></script>
+<script th:src="@{/model/M05IdGridColumns.js}"></script>
+<!-- M05_IDの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- M05_IDの子モデルのグリッド定義 -->
+<script th:src="@{/model/M05Idbn.js}"></script>
+<script th:src="@{/model/M05IdbnGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M05IdS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="M05IdSearchForm" action="M05IdSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{M05IdS.legend}">legend</legend>
+        <div id="idrefId">
+          <label for="M05Id.idrefId" th:text="#{M05Id.idrefId}">IDREF_ID</label><input type="text" id="M05Id.idrefId" name="M05Id.idrefId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="idrefMei">
+          <label for="M05Id.idrefMei" th:text="#{M05Id.idrefMei}">IDREF_MEI</label><input type="text" id="M05Id.idrefMei" name="M05Id.idrefMei" maxlength="60" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetM05Id" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/M05Id.html(anew)}" target="dialog" id="M05Id" class="anew" th:text="#{M05Id.add}" tabindex="-1">M05_ID</a>
+      </div>
+      <div class="submits">
+        <button id="SearchM05Id" type="submit" class="search" data-gridId="M05IdGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="M05IdSRegistForm" action="M05IdSRegist.ajax" class="regist">
+      <h3 th:text="#{M05Id.h3}">h3</h3>
+      <div id="M05IdGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/M05Id.html}"></div>
+      <div id="M05IdPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetM05IdS" th:text="#{common.reset}" onClick="Base.listReset('M05Id');">reset</button>
+        <a th:href="@{M05IdSearch.xlsx(baseMei=#{M05IdS.h2})}" id="M05IdSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

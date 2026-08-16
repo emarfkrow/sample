@@ -12,13 +12,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 選抜削除
+ * 選択削除
  *
  * @author emarfkrow
  */
 public class T09ChoiceDeleteAction extends BaseAction {
 
-    /** 選抜削除処理 */
+    /** 選択削除処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
@@ -28,12 +28,12 @@ public class T09ChoiceDeleteAction extends BaseAction {
             choiceId = postJson.get("T09Choice.choiceId");
         }
         if (choiceId == null) {
-            throw new OptLockError("error.cant.delete", "選抜");
+            throw new OptLockError("error.cant.delete", "選択");
         }
 
         T09Choice e = FormValidator.toBean(T09Choice.class.getName(), postJson);
         if (e.delete() != 1) {
-            throw new OptLockError("error.cant.delete", "選抜");
+            throw new OptLockError("error.cant.delete", "選択");
         }
 
         Map<String, Object> map = new HashMap<String, Object>();

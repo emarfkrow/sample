@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T02DinksS.title}">T02_DINKS</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T02Dinks.js}"></script>
+<script th:src="@{/model/T02DinksGridColumns.js}"></script>
+<!-- T02_DINKSの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T02_DINKSの親モデルのグリッド定義 -->
+<script th:src="@{/model/T02Oya.js}"></script>
+<script th:src="@{/model/T02OyaGridColumns.js}"></script>
+<!-- T02_DINKSの子モデルのグリッド定義 -->
+<script th:src="@{/model/T02Mago.js}"></script>
+<script th:src="@{/model/T02MagoGridColumns.js}"></script>
+  <!-- T02_MAGOの親モデルのグリッド定義 -->
+  <script th:src="@{/model/T02Ko.js}"></script>
+  <script th:src="@{/model/T02KoGridColumns.js}"></script>
+  <!-- T02_MAGOの親モデルのグリッド定義 -->
+  <script th:src="@{/model/T02Orphan.js}"></script>
+  <script th:src="@{/model/T02OrphanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T02DinksS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T02DinksSearchForm" action="T02DinksSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T02DinksS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T02Dinks.oyaId" th:text="#{T02Dinks.oyaId}">OYA_ID</label><input type="text" id="T02Dinks.oyaId" name="T02Dinks.oyaId" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="koBn">
+          <label for="T02Dinks.koBn" th:text="#{T02Dinks.koBn}">KO_BN</label><input type="text" id="T02Dinks.koBn" name="T02Dinks.koBn" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="dinksInfo">
+          <label for="T02Dinks.dinksInfo" th:text="#{T02Dinks.dinksInfo}">DINKS_INFO</label><input type="text" id="T02Dinks.dinksInfo" name="T02Dinks.dinksInfo" maxlength="300" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT02Dinks" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchT02Dinks" type="submit" class="search" data-gridId="T02DinksGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T02DinksSRegistForm" action="T02DinksSRegist.ajax" class="regist">
+      <h3 th:text="#{T02Dinks.h3}">h3</h3>
+      <div id="T02DinksGrid" data-selectionMode="checkbox" data-frozenColumn="1" data-editable="false" th:data-href="@{/model/T02Dinks.html}"></div>
+      <div id="T02DinksPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT02DinksS" th:text="#{common.reset}" onClick="Base.listReset('T02Dinks');">reset</button>
+        <a th:href="@{T02DinksSearch.xlsx(baseMei=#{T02DinksS.h2})}" id="T02DinksSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

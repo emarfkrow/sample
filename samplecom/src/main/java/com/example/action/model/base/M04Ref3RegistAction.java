@@ -1,0 +1,51 @@
+package com.example.action.model.base;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.example.entity.M04Ref3;
+
+import jp.co.golorp.emarf.action.BaseAction;
+import jp.co.golorp.emarf.exception.OptLockError;
+import jp.co.golorp.emarf.util.Messages;
+import jp.co.golorp.emarf.validation.FormValidator;
+
+/**
+ * マスタ参照３登録
+ *
+ * @author emarfkrow
+ */
+public class M04Ref3RegistAction extends BaseAction {
+
+    /** マスタ参照３登録処理 */
+    @Override
+    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        M04Ref3 e = FormValidator.toBean(M04Ref3.class.getName(), postJson);
+
+        if (e.isNew()) {
+
+            if (e.insert(now, execId) != 1) {
+                throw new OptLockError("error.cant.insert", "マスタ参照３");
+            }
+
+            map.put("INFO", Messages.get("info.insert"));
+
+        } else {
+
+            if (e.update(now, execId) == 1) {
+                map.put("INFO", Messages.get("info.update"));
+            } else if (e.insert(now, execId) == 1) {
+                map.put("INFO", Messages.get("info.insert"));
+            } else {
+                throw new OptLockError("error.cant.update", "マスタ参照３");
+            }
+        }
+
+        return map;
+    }
+
+}

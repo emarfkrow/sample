@@ -1,5 +1,5 @@
 SELECT
-      a.`labels` AS `labels`
+      TRIM(TRAILING ' ' FROM a.`labels`) AS `labels`
     , a.`type` AS `type`
     , a.`stack` AS `stack`
     , TRIM(TRAILING ' ' FROM a.`label`) AS `label`

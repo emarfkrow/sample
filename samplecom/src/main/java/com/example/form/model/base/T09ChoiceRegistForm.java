@@ -9,7 +9,7 @@ import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
 /**
- * 選抜登録フォーム
+ * 選択登録フォーム
  *
  * @author emarfkrow
  */
@@ -18,18 +18,18 @@ public class T09ChoiceRegistForm implements IForm {
     /** logger */
     private static final Logger LOG = LoggerFactory.getLogger(T09ChoiceRegistForm.class);
 
-    /** 選抜ID */
+    /** 選択ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String choiceId;
 
-    /** @return 選抜ID */
+    /** @return 選択ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public String getChoiceId() {
         return choiceId;
     }
 
-    /** @param p 選抜ID */
+    /** @param p 選択ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setChoiceId(final String p) {
         this.choiceId = p;

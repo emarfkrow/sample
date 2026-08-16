@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T07Derive2.title}">T07_DERIVE2</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T07Derive2.js}"></script>
+<script th:src="@{/model/T07Derive2GridColumns.js}"></script>
+<!-- T07_DERIVE2の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T07_DERIVE2の派生元モデルのグリッド定義 -->
+<script th:src="@{/model/T07Org.js}"></script>
+<script th:src="@{/model/T07OrgGridColumns.js}"></script>
+<!-- T07_DERIVE2の子モデルのグリッド定義 -->
+<script th:src="@{/model/T07Derive2Det.js}"></script>
+<script th:src="@{/model/T07Derive2DetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T07Derive2.h2}">h2</h2>
+    <form name="T07Derive2RegistForm" action="T07Derive2Regist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T07Derive2.legend}">legend</legend>
+        <div id="derive2Id">
+          <label for="T07Derive2.derive2Id" th:text="#{T07Derive2.derive2Id}">DERIVE2_ID</label><input type="text" id="T07Derive2.derive2Id" name="T07Derive2.derive2Id" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orgInfo">
+          <label for="T07Derive2.orgInfo" th:text="#{T07Derive2.orgInfo}">ORG_INFO</label><input type="text" id="T07Derive2.orgInfo" name="T07Derive2.orgInfo" maxlength="300" class="" />
+        </div>
+        <div id="orgId">
+          <label th:text="#{T07Derive2.orgId}">ORG_ID</label><span id="T07Derive2.orgId" class="derivee"></span><input type="hidden" id="T07Derive2.orgId" name="T07Derive2.orgId" class="derivee" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T07Derive2.insertTs}" class="meta">INSERT_TS</label><span id="T07Derive2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Derive2.insertTs" name="T07Derive2.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T07Derive2.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T07Derive2.insertUserId" class="meta"></span><input type="hidden" id="T07Derive2.insertUserId" name="T07Derive2.insertUserId" class="meta" />
+          <span id="T07Derive2.insertUserSei" class="refer meta" data-referFor="T07Derive2.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Derive2.insertUserId" data-destDef="T07Derive2.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T07Derive2.updateTs}" class="meta">UPDATE_TS</label><span id="T07Derive2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T07Derive2.updateTs" name="T07Derive2.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T07Derive2.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T07Derive2.updateUserId" class="meta"></span><input type="hidden" id="T07Derive2.updateUserId" name="T07Derive2.updateUserId" class="meta" />
+          <span id="T07Derive2.updateUserSei" class="refer meta" data-referFor="T07Derive2.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T07Derive2.updateUserId" data-destDef="T07Derive2.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <h3 th:text="#{T07Derive2Det.h3}">h3</h3>
+      <a th:href="@{/model/T07Derive2Det.html(anew)}" id="T07Derive2Det" target="dialog" th:text="#{T07Derive2Det.add}" class="addChild" tabindex="-1">T07_DERIVE2_DET</a>
+      <div id="T07Derive2DetGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T07Derive2Det.html}" class="childs"></div>
+      <div class="buttons">
+        <button type="button" id="RefreshT07Derive2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T07Derive2Get.xlsx(baseMei=#{T07Derive2.h2})}" id="T07Derive2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT07Derive2" type="submit" class="delete" data-action="T07Derive2Delete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT07Derive2" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

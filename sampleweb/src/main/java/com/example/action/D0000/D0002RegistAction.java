@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.entity.T01Ko;
-import com.example.entity.T01Mago;
-import com.example.entity.T01Oya;
+import com.example.entity.T02Ko;
+import com.example.entity.T02Mago;
+import com.example.entity.T02Oya;
 
 import jp.co.golorp.emarf.action.BaseAction;
 import jp.co.golorp.emarf.exception.AppError;
@@ -28,19 +28,19 @@ public class D0002RegistAction extends BaseAction {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
-        T01Oya oya = FormValidator.toBean(T01Oya.class.getName(), postJson);
+        T02Oya oya = FormValidator.toBean(T02Oya.class.getName(), postJson);
         if (oya.isEmpty()) {
             throw new AppError("error.cant.regist");
         }
 
-        T01Ko ko = FormValidator.toBean(T01Ko.class.getName(), postJson);
+        T02Ko ko = FormValidator.toBean(T02Ko.class.getName(), postJson);
 
         if (!ko.isEmpty()) {
-            oya.addT01Kos(ko);
+            oya.addT02Kos(ko);
 
-            T01Mago mago = FormValidator.toBean(T01Mago.class.getName(), postJson);
+            T02Mago mago = FormValidator.toBean(T02Mago.class.getName(), postJson);
             if (!mago.isEmpty()) {
-                ko.addT01Magos(mago);
+                ko.addT02Magos(mago);
             }
         }
 

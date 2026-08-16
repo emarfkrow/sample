@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T02Oya.title}">T02_OYA</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T02Oya.js}"></script>
+<script th:src="@{/model/T02OyaGridColumns.js}"></script>
+<!-- T02_OYAの参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T02_OYAの子モデルのグリッド定義 -->
+<script th:src="@{/model/T02Dinks.js}"></script>
+<script th:src="@{/model/T02DinksGridColumns.js}"></script>
+  <!-- T02_DINKSの子モデルのグリッド定義 -->
+  <script th:src="@{/model/T02Mago.js}"></script>
+  <script th:src="@{/model/T02MagoGridColumns.js}"></script>
+    <!-- T02_MAGOの親モデルのグリッド定義 -->
+    <script th:src="@{/model/T02Ko.js}"></script>
+    <script th:src="@{/model/T02KoGridColumns.js}"></script>
+    <!-- T02_MAGOの親モデルのグリッド定義 -->
+    <script th:src="@{/model/T02Orphan.js}"></script>
+    <script th:src="@{/model/T02OrphanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T02Oya.h2}">h2</h2>
+    <form name="T02OyaRegistForm" action="T02OyaRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T02Oya.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T02Oya.oyaId" th:text="#{T02Oya.oyaId}">OYA_ID</label><input type="text" id="T02Oya.oyaId" name="T02Oya.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="oyaInfo">
+          <label for="T02Oya.oyaInfo" th:text="#{T02Oya.oyaInfo}">OYA_INFO</label><input type="text" id="T02Oya.oyaInfo" name="T02Oya.oyaInfo" maxlength="300" class="" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T02Oya.insertTs}" class="meta">INSERT_TS</label><span id="T02Oya.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Oya.insertTs" name="T02Oya.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T02Oya.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T02Oya.insertUserId" class="meta"></span><input type="hidden" id="T02Oya.insertUserId" name="T02Oya.insertUserId" class="meta" />
+          <span id="T02Oya.insertUserSei" class="refer meta" data-referFor="T02Oya.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Oya.insertUserId" data-destDef="T02Oya.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T02Oya.updateTs}" class="meta">UPDATE_TS</label><span id="T02Oya.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Oya.updateTs" name="T02Oya.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T02Oya.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T02Oya.updateUserId" class="meta"></span><input type="hidden" id="T02Oya.updateUserId" name="T02Oya.updateUserId" class="meta" />
+          <span id="T02Oya.updateUserSei" class="refer meta" data-referFor="T02Oya.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Oya.updateUserId" data-destDef="T02Oya.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <h3 th:text="#{T02Dinks.h3}">h3</h3>
+      <a th:href="@{/model/T02Dinks.html(anew)}" id="T02Dinks" target="dialog" th:text="#{T02Dinks.add}" class="addChild" tabindex="-1">T02_DINKS</a>
+      <div id="T02DinksGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T02Dinks.html}" class="childs"></div>
+      <h3 th:text="#{T02Ko.h3}">h3</h3>
+      <a th:href="@{/model/T02Ko.html(anew)}" id="T02Ko" target="dialog" th:text="#{T02Ko.add}" class="addChild" tabindex="-1">T02_KO</a>
+      <div id="T02KoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T02Ko.html}" class="childs"></div>
+      <h3 th:text="#{T02Orphan.h3}">h3</h3>
+      <a th:href="@{/model/T02Orphan.html(anew)}" id="T02Orphan" target="dialog" th:text="#{T02Orphan.add}" class="addChild" tabindex="-1">T02_ORPHAN</a>
+      <div id="T02OrphanGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T02Orphan.html}" class="childs"></div>
+      <div class="buttons">
+        <button type="button" id="RefreshT02Oya" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T02OyaGet.xlsx(baseMei=#{T02Oya.h2})}" id="T02OyaGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT02Oya" type="submit" class="delete" data-action="T02OyaDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
+        <button id="RegistT02Oya" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

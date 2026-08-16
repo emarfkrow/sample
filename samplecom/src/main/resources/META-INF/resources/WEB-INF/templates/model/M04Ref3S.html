@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M04Ref3S.title}">M04_REF3</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M04Ref3.js}"></script>
+<script th:src="@{/model/M04Ref3GridColumns.js}"></script>
+<!-- M04_REF3の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M04Ref3S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="M04Ref3SearchForm" action="M04Ref3Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{M04Ref3S.legend}">legend</legend>
+        <div id="ref3Id">
+          <label for="M04Ref3.ref3Id" th:text="#{M04Ref3.ref3Id}">REF3_ID</label><input type="text" id="M04Ref3.ref3Id" name="M04Ref3.ref3Id" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="ref3Mei">
+          <label for="M04Ref3.ref3Mei" th:text="#{M04Ref3.ref3Mei}">REF3_MEI</label><input type="text" id="M04Ref3.ref3Mei" name="M04Ref3.ref3Mei" maxlength="60" class="" />
+        </div>
+        <div id="deleteF">
+          <fieldset id="M04Ref3.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{M04Ref3.deleteF}">DELETE_F</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="M04Ref3.tekiyoBi_1" th:text="#{M04Ref3.tekiyoBi}">TEKIYO_BI</label><input type="text" id="M04Ref3.tekiyoBi_1" name="M04Ref3.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="M04Ref3.tekiyoBi_2" name="M04Ref3.tekiyoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="M04Ref3.haishiBi_1" th:text="#{M04Ref3.haishiBi}">HAISHI_BI</label><input type="text" id="M04Ref3.haishiBi_1" name="M04Ref3.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="M04Ref3.haishiBi_2" name="M04Ref3.haishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetM04Ref3" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/M04Ref3.html(anew)}" target="dialog" id="M04Ref3" class="anew" th:text="#{M04Ref3.add}" tabindex="-1">M04_REF3</a>
+      </div>
+      <div class="submits">
+        <button id="SearchM04Ref3" type="submit" class="search" data-gridId="M04Ref3Grid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="M04Ref3SRegistForm" action="M04Ref3SRegist.ajax" class="regist">
+      <h3 th:text="#{M04Ref3.h3}">h3</h3>
+      <div id="M04Ref3Grid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/M04Ref3.html}"></div>
+      <div id="M04Ref3Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetM04Ref3S" th:text="#{common.reset}" onClick="Base.listReset('M04Ref3');">reset</button>
+        <a th:href="@{M04Ref3Search.xlsx(baseMei=#{M04Ref3S.h2})}" id="M04Ref3Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="RegistM04Ref3S" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

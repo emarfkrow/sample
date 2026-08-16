@@ -23,8 +23,8 @@
     <form name="MsyKadobiRegistForm" action="MsyKadobiRegist.ajax" class="regist">
       <fieldset>
         <legend th:text="#{MsyKadobi.legend}">legend</legend>
-        <div id="kadoBi">
-          <label for="MsyKadobi.kadoBi" th:text="#{MsyKadobi.kadoBi}">KADO_BI</label><input type="text" id="MsyKadobi.kadoBi" name="MsyKadobi.kadoBi" maxlength="10" class=" primaryKey notblank datepicker" />
+        <div id="kadoYmd">
+          <label for="MsyKadobi.kadoYmd" th:text="#{MsyKadobi.kadoYmd}">KADO_YMD</label><input type="text" id="MsyKadobi.kadoYmd" name="MsyKadobi.kadoYmd" maxlength="8" class=" primaryKey notblank datepicker" data-format="yymmdd" />
         </div>
         <div id="bushoId">
           <label for="MsyKadobi.bushoId" th:text="#{MsyKadobi.bushoId}">BUSHO_ID</label><input type="text" id="MsyKadobi.bushoId" name="MsyKadobi.bushoId" maxlength="10" class=" primaryKey refer notblank" data-referFor="MsyKadobi.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI" /><a id="MsyKadobi.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="MsyKadobi.bushoMei" class=" primaryKey refer" data-referFor="MsyKadobi.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MsyKadobi.bushoId" data-destDef="MsyKadobi.bushoMei:BUSHO_MEI"></span>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T07Derive1S.title}">T07_DERIVE1</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T07Derive1.js}"></script>
+<script th:src="@{/model/T07Derive1GridColumns.js}"></script>
+<!-- T07_DERIVE1の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<!-- T07_DERIVE1の派生元モデルのグリッド定義 -->
+<script th:src="@{/model/T07Org.js}"></script>
+<script th:src="@{/model/T07OrgGridColumns.js}"></script>
+<!-- T07_DERIVE1の子モデルのグリッド定義 -->
+<script th:src="@{/model/T07Derive1Det.js}"></script>
+<script th:src="@{/model/T07Derive1DetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T07Derive1S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T07Derive1SearchForm" action="T07Derive1Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T07Derive1S.legend}">legend</legend>
+        <div id="derive1Id">
+          <label for="T07Derive1.derive1Id" th:text="#{T07Derive1.derive1Id}">DERIVE1_ID</label><input type="text" id="T07Derive1.derive1Id" name="T07Derive1.derive1Id" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="orgInfo">
+          <label for="T07Derive1.orgInfo" th:text="#{T07Derive1.orgInfo}">ORG_INFO</label><input type="text" id="T07Derive1.orgInfo" name="T07Derive1.orgInfo" maxlength="300" class="" />
+        </div>
+        <div id="orgId">
+          <label for="T07Derive1.orgId" th:text="#{T07Derive1.orgId}">ORG_ID</label><input type="text" id="T07Derive1.orgId" name="T07Derive1.orgId" maxlength="10" class=" derivee" />
+          <a id="T07Derive1.orgId" th:href="@{/model/T07OrgS.html}" target="dialog" class="refer" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetT07Derive1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+        <a th:href="@{/model/T07Derive1.html(anew)}" target="dialog" id="T07Derive1" class="anew derive" th:text="#{T07Derive1.add}" tabindex="-1">T07_DERIVE1</a>
+          <label for="T07Derive1.deriveeOrgId" th:text="#{T07Derive1.deriveeOrgId}">ORG_ID</label><input type="text" id="T07Derive1.deriveeOrgId" name="T07Derive1.deriveeOrgId" maxlength="10" class="" />
+          <a id="T07Derive1.deriveeOrgId" th:href="@{/model/T07OrgS.html?action=T07OrgCorrect.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT07Derive1" type="submit" class="search" data-gridId="T07Derive1Grid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T07Derive1SRegistForm" action="T07Derive1SRegist.ajax" class="regist">
+      <h3 th:text="#{T07Derive1.h3}">h3</h3>
+      <div id="T07Derive1Grid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/T07Derive1.html}"></div>
+      <div id="T07Derive1Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT07Derive1S" th:text="#{common.reset}" onClick="Base.listReset('T07Derive1');">reset</button>
+        <a th:href="@{T07Derive1Search.xlsx(baseMei=#{T07Derive1S.h2})}" id="T07Derive1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

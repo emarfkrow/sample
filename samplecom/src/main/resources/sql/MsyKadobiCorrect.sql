@@ -1,5 +1,5 @@
 SELECT
-      a.`KADO_BI` AS `KADO_BI`
+      TRIM(TRAILING ' ' FROM a.`KADO_YMD`) AS `KADO_YMD`
     , a.`BUSHO_ID` AS `BUSHO_ID`
     , (SELECT r0.`BUSHO_MEI` FROM MHR_BUSHO r0 WHERE r0.`BUSHO_ID` = a.`BUSHO_ID`) AS `BUSHO_MEI`
     , TRIM(TRAILING ' ' FROM a.`KADOBI_F`) AS `KADOBI_F`
@@ -14,9 +14,10 @@ FROM
     MSY_KADOBI a 
 WHERE
     1 = 1 
-    AND a.`KADO_BI` = :kado_bi 
-    AND a.`KADO_BI` >= :kado_bi_1 
-    AND a.`KADO_BI` <= :kado_bi_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`KADO_YMD`)) = UPPER (:kado_ymd_full) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`KADO_YMD`)) LIKE UPPER (CONCAT ('%', :kado_ymd, '%')) 
+    AND a.`KADO_YMD` >= :kado_ymd_1 
+    AND a.`KADO_YMD` <= :kado_ymd_2 
     AND a.`BUSHO_ID` = :busho_id 
     AND CASE WHEN TRIM(TRAILING ' ' FROM a.`KADOBI_F`) IS NULL THEN '0' ELSE TO_CHAR (a.`KADOBI_F`) END IN (:kadobi_f) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`MEMO`)) LIKE UPPER (CONCAT ('%', :memo, '%')) 
@@ -29,5 +30,5 @@ WHERE
     AND a.`UPDATE_TS` <= :update_ts_2 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`)) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
 ORDER BY
-    a.`KADO_BI`
+    a.`KADO_YMD`
     , a.`BUSHO_ID`

@@ -11,7 +11,7 @@ import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
 /**
- * 選抜一覧登録フォーム
+ * 選択一覧登録フォーム
  *
  * @author emarfkrow
  */
@@ -20,19 +20,19 @@ public class T09ChoiceSRegistForm implements IForm {
     // /** logger */
     // private static final Logger LOG = LoggerFactory.getLogger(T09ChoiceRegistForm.class);
 
-    /** 選抜登録フォームのリスト */
+    /** 選択登録フォームのリスト */
     @Valid
     private List<T09ChoiceRegistForm> t09ChoiceGrid;
 
     /**
-     * @return 選抜登録フォームのリスト
+     * @return 選択登録フォームのリスト
      */
     public List<T09ChoiceRegistForm> getT09ChoiceGrid() {
         return t09ChoiceGrid;
     }
 
     /**
-     * @param p 選抜登録フォームのリスト
+     * @param p 選択登録フォームのリスト
      */
     public void setT09ChoiceGrid(final List<T09ChoiceRegistForm> p) {
         this.t09ChoiceGrid = p;

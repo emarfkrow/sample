@@ -13,13 +13,13 @@ import jp.co.golorp.emarf.util.Messages;
 import jp.co.golorp.emarf.validation.FormValidator;
 
 /**
- * 選抜一覧登録
+ * 選択一覧登録
  *
  * @author emarfkrow
  */
 public class T09ChoiceSRegistAction extends BaseAction {
 
-    /** 選抜一覧登録処理 */
+    /** 選択一覧登録処理 */
     @Override
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
 
@@ -41,14 +41,14 @@ public class T09ChoiceSRegistAction extends BaseAction {
                 if (e.isNew()) {
 
                     if (e.insert(now, execId) != 1) {
-                        throw new OptLockError("error.cant.insert", "選抜");
+                        throw new OptLockError("error.cant.insert", "選択");
                     }
                     ++count;
 
                 } else {
 
                     if (e.update(now, execId) != 1) {
-                        throw new OptLockError("error.cant.update", "選抜");
+                        throw new OptLockError("error.cant.update", "選択");
                     }
                     ++count;
                 }

@@ -1,0 +1,190 @@
+package com.example.form.model.base;
+
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import jp.co.golorp.emarf.process.BaseProcess;
+import jp.co.golorp.emarf.validation.IForm;
+
+/**
+ * 再帰登録フォーム
+ *
+ * @author emarfkrow
+ */
+public class M05SaikiRegistForm implements IForm {
+
+    /** logger */
+    private static final Logger LOG = LoggerFactory.getLogger(M05SaikiRegistForm.class);
+
+    /** 再帰ID */
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    private String saikiId;
+
+    /** @return 再帰ID */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    public String getSaikiId() {
+        return saikiId;
+    }
+
+    /** @param p 再帰ID */
+    @jp.co.golorp.emarf.validation.PrimaryKeys
+    public void setSaikiId(final String p) {
+        this.saikiId = p;
+    }
+
+    /** 再帰名 */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 60)
+    private String saikiMei;
+
+    /** @return 再帰名 */
+    public String getSaikiMei() {
+        return saikiMei;
+    }
+
+    /** @param p 再帰名 */
+    public void setSaikiMei(final String p) {
+        this.saikiMei = p;
+    }
+
+    /** 参照ID */
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    private String idrefId;
+
+    /** @return 参照ID */
+    public String getIdrefId() {
+        return idrefId;
+    }
+
+    /** @param p 参照ID */
+    public void setIdrefId(final String p) {
+        this.idrefId = p;
+    }
+
+    /** 参照CD */
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([\\-0-9A-Za-z]{1,10})?")
+    private String cdrefCd;
+
+    /** @return 参照CD */
+    public String getCdrefCd() {
+        return cdrefCd;
+    }
+
+    /** @param p 参照CD */
+    public void setCdrefCd(final String p) {
+        this.cdrefCd = p;
+    }
+
+    /** 参照NO */
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,10})?")
+    private String norefNo;
+
+    /** @return 参照NO */
+    public String getNorefNo() {
+        return norefNo;
+    }
+
+    /** @param p 参照NO */
+    public void setNorefNo(final String p) {
+        this.norefNo = p;
+    }
+
+    /** ID連番ID */
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    private String exIdrefId;
+
+    /** @return ID連番ID */
+    public String getExIdrefId() {
+        return exIdrefId;
+    }
+
+    /** @param p ID連番ID */
+    public void setExIdrefId(final String p) {
+        this.exIdrefId = p;
+    }
+
+    /** ID連番 */
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    private String exIdbnBn;
+
+    /** @return ID連番 */
+    public String getExIdbnBn() {
+        return exIdbnBn;
+    }
+
+    /** @param p ID連番 */
+    public void setExIdbnBn(final String p) {
+        this.exIdbnBn = p;
+    }
+
+    /** 親再帰ID */
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    private String oyaSaikiId;
+
+    /** @return 親再帰ID */
+    public String getOyaSaikiId() {
+        return oyaSaikiId;
+    }
+
+    /** @param p 親再帰ID */
+    public void setOyaSaikiId(final String p) {
+        this.oyaSaikiId = p;
+    }
+
+    /** 更新タイムスタンプ */
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3}(\\+\\d{2}:\\d{2})?)?)?)?")
+    @jp.co.golorp.emarf.validation.OptLock
+    private String updateTs;
+
+    /** @return 更新タイムスタンプ */
+    @jp.co.golorp.emarf.validation.OptLock
+    public String getUpdateTs() {
+        return updateTs;
+    }
+
+    /** @param p 更新タイムスタンプ */
+    @jp.co.golorp.emarf.validation.OptLock
+    public void setUpdateTs(final String p) {
+        this.updateTs = p;
+    }
+
+    /** 関連チェック */
+    @Override
+    public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
+        LOG.trace("validate() not overridden in subclasses.");
+
+        // 参照ID のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> idrefIdParams = new java.util.HashMap<String, Object>();
+        idrefIdParams.put("idrefId", this.getIdrefId());
+        baseProcess.masterCheck(errors, "M05IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.idrefId"));
+
+        // 参照CD のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> cdrefCdParams = new java.util.HashMap<String, Object>();
+        cdrefCdParams.put("cdrefCdFull", this.getCdrefCd());
+        baseProcess.masterCheck(errors, "M05CdSearch", "cdrefCd", cdrefCdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.cdrefCd"));
+
+        // 参照NO のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> norefNoParams = new java.util.HashMap<String, Object>();
+        norefNoParams.put("norefNoFull", this.getNorefNo());
+        baseProcess.masterCheck(errors, "M05NoSearch", "norefNo", norefNoParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.norefNo"));
+
+        // ID連番ID のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> exIdrefIdParams = new java.util.HashMap<String, Object>();
+        exIdrefIdParams.put("idrefId", this.getExIdrefId());
+        baseProcess.masterCheck(errors, "M05IdSearch", "exIdrefId", exIdrefIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.exIdrefId"));
+
+        // ID連番 のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> exIdbnBnParams = new java.util.HashMap<String, Object>();
+        exIdbnBnParams.put("idrefId", this.getExIdrefId());
+        exIdbnBnParams.put("idbnBn", this.getExIdbnBn());
+        baseProcess.masterCheck(errors, "M05IdbnSearch", "exIdbnBn", exIdbnBnParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.exIdbnBn"));
+
+        // 親再帰ID のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> oyaSaikiIdParams = new java.util.HashMap<String, Object>();
+        oyaSaikiIdParams.put("saikiId", this.getOyaSaikiId());
+        baseProcess.masterCheck(errors, "M05SaikiSearch", "oyaSaikiId", oyaSaikiIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.oyaSaikiId"));
+    }
+}

@@ -17,30 +17,30 @@ public class V14Yojitsu implements IEntity {
     public V14Yojitsu(final String[] values) {
         this.setKouteiId(values[0]);
         this.setKouteiTx(values[1]);
-        this.setKaishiBi(values[2]);
-        this.setShuryoBi(values[3]);
+        this.setKaishiYmd(values[2]);
+        this.setShuryoYmd(values[3]);
         this.setSagyokuCd(values[4]);
         this.setOyaKouteiId(values[5]);
-        this.setJisshiBi(values[6]);
-        this.setKanryoBi(values[7]);
-        this.setKouteiPath(values[8]);
-        this.setRoot(values[9]);
-        this.setDependencies(values[10]);
+        this.setJisshiYmd(values[6]);
+        this.setKanryoYmd(values[7]);
+        this.setDependencies(values[8]);
+        this.setKouteiPath(values[9]);
+        this.setRoot(values[10]);
     }
 
     /** @param map */
     public V14Yojitsu(final java.util.Map<String, Object> map) {
         this.setKouteiId(IgnoreCaseLinkedMap.get(map, "KOUTEI_ID"));
         this.setKouteiTx(IgnoreCaseLinkedMap.get(map, "KOUTEI_TX"));
-        this.setKaishiBi(IgnoreCaseLinkedMap.get(map, "KAISHI_BI"));
-        this.setShuryoBi(IgnoreCaseLinkedMap.get(map, "SHURYO_BI"));
+        this.setKaishiYmd(IgnoreCaseLinkedMap.get(map, "KAISHI_YMD"));
+        this.setShuryoYmd(IgnoreCaseLinkedMap.get(map, "SHURYO_YMD"));
         this.setSagyokuCd(IgnoreCaseLinkedMap.get(map, "SAGYOKU_CD"));
         this.setOyaKouteiId(IgnoreCaseLinkedMap.get(map, "OYA_KOUTEI_ID"));
-        this.setJisshiBi(IgnoreCaseLinkedMap.get(map, "JISSHI_BI"));
-        this.setKanryoBi(IgnoreCaseLinkedMap.get(map, "KANRYO_BI"));
+        this.setJisshiYmd(IgnoreCaseLinkedMap.get(map, "JISSHI_YMD"));
+        this.setKanryoYmd(IgnoreCaseLinkedMap.get(map, "KANRYO_YMD"));
+        this.setDependencies(IgnoreCaseLinkedMap.get(map, "DEPENDENCIES"));
         this.setKouteiPath(IgnoreCaseLinkedMap.get(map, "KOUTEI_PATH"));
         this.setRoot(IgnoreCaseLinkedMap.get(map, "ROOT"));
-        this.setDependencies(IgnoreCaseLinkedMap.get(map, "DEPENDENCIES"));
     }
 
     /** @return boolean */
@@ -58,15 +58,15 @@ public class V14Yojitsu implements IEntity {
     public boolean isEmpty() {
         boolean isEmpty = true;
         isEmpty &= this.kouteiTx == null || this.kouteiTx.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.kaishiBi == null || this.kaishiBi.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.shuryoBi == null || this.shuryoBi.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.kaishiYmd == null || this.kaishiYmd.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.shuryoYmd == null || this.shuryoYmd.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.sagyokuCd == null || this.sagyokuCd.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.oyaKouteiId == null || this.oyaKouteiId.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.jisshiBi == null || this.jisshiBi.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.kanryoBi == null || this.kanryoBi.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.jisshiYmd == null || this.jisshiYmd.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.kanryoYmd == null || this.kanryoYmd.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.dependencies == null || this.dependencies.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.kouteiPath == null || this.kouteiPath.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.root == null || this.root.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.dependencies == null || this.dependencies.toString().replaceAll("　| ", "").equals("");
         return isEmpty;
     }
 
@@ -128,45 +128,39 @@ public class V14Yojitsu implements IEntity {
         }
     }
 
-    /** KAISHI_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
-    private java.time.LocalDate kaishiBi;
+    /** KAISHI_YMD */
+    private String kaishiYmd;
 
-    /** @return KAISHI_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KAISHI_BI", index = 4)
-    public java.time.LocalDate getKaishiBi() {
-        return this.kaishiBi;
+    /** @return KAISHI_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KAISHI_YMD", index = 4)
+    public String getKaishiYmd() {
+        return this.kaishiYmd;
     }
 
-    /** @param o KAISHI_BI */
-    public void setKaishiBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.kaishiBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    /** @param o KAISHI_YMD */
+    public void setKaishiYmd(final Object o) {
+        if (o != null) {
+            this.kaishiYmd = o.toString();
         } else {
-            this.kaishiBi = null;
+            this.kaishiYmd = null;
         }
     }
 
-    /** SHURYO_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
-    private java.time.LocalDate shuryoBi;
+    /** SHURYO_YMD */
+    private String shuryoYmd;
 
-    /** @return SHURYO_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "SHURYO_BI", index = 5)
-    public java.time.LocalDate getShuryoBi() {
-        return this.shuryoBi;
+    /** @return SHURYO_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "SHURYO_YMD", index = 5)
+    public String getShuryoYmd() {
+        return this.shuryoYmd;
     }
 
-    /** @param o SHURYO_BI */
-    public void setShuryoBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.shuryoBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    /** @param o SHURYO_YMD */
+    public void setShuryoYmd(final Object o) {
+        if (o != null) {
+            this.shuryoYmd = o.toString();
         } else {
-            this.shuryoBi = null;
+            this.shuryoYmd = null;
         }
     }
 
@@ -206,45 +200,57 @@ public class V14Yojitsu implements IEntity {
         }
     }
 
-    /** JISSHI_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
-    private java.time.LocalDate jisshiBi;
+    /** JISSHI_YMD */
+    private String jisshiYmd;
 
-    /** @return JISSHI_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "JISSHI_BI", index = 8)
-    public java.time.LocalDate getJisshiBi() {
-        return this.jisshiBi;
+    /** @return JISSHI_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JISSHI_YMD", index = 8)
+    public String getJisshiYmd() {
+        return this.jisshiYmd;
     }
 
-    /** @param o JISSHI_BI */
-    public void setJisshiBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.jisshiBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    /** @param o JISSHI_YMD */
+    public void setJisshiYmd(final Object o) {
+        if (o != null) {
+            this.jisshiYmd = o.toString();
         } else {
-            this.jisshiBi = null;
+            this.jisshiYmd = null;
         }
     }
 
-    /** KANRYO_BI */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "yyyy-MM-dd")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer.class)
-    private java.time.LocalDate kanryoBi;
+    /** KANRYO_YMD */
+    private String kanryoYmd;
 
-    /** @return KANRYO_BI */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KANRYO_BI", index = 9)
-    public java.time.LocalDate getKanryoBi() {
-        return this.kanryoBi;
+    /** @return KANRYO_YMD */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KANRYO_YMD", index = 9)
+    public String getKanryoYmd() {
+        return this.kanryoYmd;
     }
 
-    /** @param o KANRYO_BI */
-    public void setKanryoBi(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.kanryoBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
+    /** @param o KANRYO_YMD */
+    public void setKanryoYmd(final Object o) {
+        if (o != null) {
+            this.kanryoYmd = o.toString();
         } else {
-            this.kanryoBi = null;
+            this.kanryoYmd = null;
+        }
+    }
+
+    /** DEPENDENCIES */
+    private String dependencies;
+
+    /** @return DEPENDENCIES */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEPENDENCIES", index = 10)
+    public String getDependencies() {
+        return this.dependencies;
+    }
+
+    /** @param o DEPENDENCIES */
+    public void setDependencies(final Object o) {
+        if (o != null) {
+            this.dependencies = o.toString();
+        } else {
+            this.dependencies = null;
         }
     }
 
@@ -252,7 +258,7 @@ public class V14Yojitsu implements IEntity {
     private String kouteiPath;
 
     /** @return KOUTEI_PATH */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KOUTEI_PATH", index = 10)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KOUTEI_PATH", index = 11)
     public String getKouteiPath() {
         return this.kouteiPath;
     }
@@ -270,7 +276,7 @@ public class V14Yojitsu implements IEntity {
     private Integer root;
 
     /** @return ROOT */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "ROOT", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "ROOT", index = 12)
     public Integer getRoot() {
         return this.root;
     }
@@ -281,24 +287,6 @@ public class V14Yojitsu implements IEntity {
             this.root = Integer.valueOf(o.toString());
         } else {
             this.root = null;
-        }
-    }
-
-    /** DEPENDENCIES */
-    private String dependencies;
-
-    /** @return DEPENDENCIES */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEPENDENCIES", index = 12)
-    public String getDependencies() {
-        return this.dependencies;
-    }
-
-    /** @param o DEPENDENCIES */
-    public void setDependencies(final Object o) {
-        if (o != null) {
-            this.dependencies = o.toString();
-        } else {
-            this.dependencies = null;
         }
     }
 
@@ -314,15 +302,15 @@ public class V14Yojitsu implements IEntity {
         sql += "SELECT \n";
         sql += "      a.`koutei_id` \n";
         sql += "    , a.`koutei_tx` \n";
-        sql += "    , a.`kaishi_bi` AS kaishi_bi \n";
-        sql += "    , a.`shuryo_bi` AS shuryo_bi \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`kaishi_ymd`) AS kaishi_ymd \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`shuryo_ymd`) AS shuryo_ymd \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`sagyoku_cd`) AS sagyoku_cd \n";
         sql += "    , a.`oya_koutei_id` \n";
-        sql += "    , a.`jisshi_bi` AS jisshi_bi \n";
-        sql += "    , a.`kanryo_bi` AS kanryo_bi \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`jisshi_ymd`) AS jisshi_ymd \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`kanryo_ymd`) AS kanryo_ymd \n";
+        sql += "    , a.`dependencies` \n";
         sql += "    , a.`koutei_path` \n";
         sql += "    , a.`root` \n";
-        sql += "    , a.`dependencies` \n";
         sql += "FROM \n";
         sql += "    V14_YOJITSU a \n";
         sql += "WHERE \n";

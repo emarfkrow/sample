@@ -1,8 +1,8 @@
 SELECT
       a.`KOUTEI_ID` AS `KOUTEI_ID`
     , a.`KOUTEI_MEI` AS `KOUTEI_MEI`
-    , a.`KAISHI_BI` AS `KAISHI_BI`
-    , a.`SHURYO_BI` AS `SHURYO_BI`
+    , TRIM(TRAILING ' ' FROM a.`KAISHI_YMD`) AS `KAISHI_YMD`
+    , TRIM(TRAILING ' ' FROM a.`SHURYO_YMD`) AS `SHURYO_YMD`
     , TRIM(TRAILING ' ' FROM a.`SAGYOKU_CD`) AS `SAGYOKU_CD`
     , a.`OYA_KOUTEI_ID` AS `OYA_KOUTEI_ID`
     , (SELECT r0.`KOUTEI_MEI` FROM T14_KOUTEI r0 WHERE r0.`KOUTEI_ID` = a.`OYA_KOUTEI_ID`) AS `OYA_KOUTEI_MEI`
@@ -18,12 +18,12 @@ WHERE
     1 = 1 
     AND a.`KOUTEI_ID` = :koutei_id 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`KOUTEI_MEI`)) LIKE UPPER (CONCAT ('%', :koutei_mei, '%')) 
-    AND a.`KAISHI_BI` = :kaishi_bi 
-    AND a.`KAISHI_BI` >= :kaishi_bi_1 
-    AND a.`KAISHI_BI` <= :kaishi_bi_2 
-    AND a.`SHURYO_BI` = :shuryo_bi 
-    AND a.`SHURYO_BI` >= :shuryo_bi_1 
-    AND a.`SHURYO_BI` <= :shuryo_bi_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`KAISHI_YMD`)) LIKE UPPER (CONCAT ('%', :kaishi_ymd, '%')) 
+    AND a.`KAISHI_YMD` >= :kaishi_ymd_1 
+    AND a.`KAISHI_YMD` <= :kaishi_ymd_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`SHURYO_YMD`)) LIKE UPPER (CONCAT ('%', :shuryo_ymd, '%')) 
+    AND a.`SHURYO_YMD` >= :shuryo_ymd_1 
+    AND a.`SHURYO_YMD` <= :shuryo_ymd_2 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`SAGYOKU_CD`)) LIKE UPPER (CONCAT ('%', :sagyoku_cd, '%')) 
     AND a.`OYA_KOUTEI_ID` = :oya_koutei_id 
     AND a.`INSERT_TS` = :insert_ts 

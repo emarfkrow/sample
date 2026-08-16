@@ -18,22 +18,22 @@ public class MsyKadobiRegistForm implements IForm {
     /** logger */
     private static final Logger LOG = LoggerFactory.getLogger(MsyKadobiRegistForm.class);
 
-    /** 稼働日 */
+    /** 稼働年月日 */
     @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String kadoBi;
+    private String kadoYmd;
 
-    /** @return 稼働日 */
+    /** @return 稼働年月日 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getKadoBi() {
-        return kadoBi;
+    public String getKadoYmd() {
+        return kadoYmd;
     }
 
-    /** @param p 稼働日 */
+    /** @param p 稼働年月日 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setKadoBi(final String p) {
-        this.kadoBi = p;
+    public void setKadoYmd(final String p) {
+        this.kadoYmd = p;
     }
 
     /** 部署ID */

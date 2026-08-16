@@ -23,11 +23,11 @@ public class MsyKadobiDeleteAction extends BaseAction {
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
         // 主キーが不足していたらエラー
-        Object kadoBi = postJson.get("kadoBi");
-        if (kadoBi == null) {
-            kadoBi = postJson.get("MsyKadobi.kadoBi");
+        Object kadoYmd = postJson.get("kadoYmd");
+        if (kadoYmd == null) {
+            kadoYmd = postJson.get("MsyKadobi.kadoYmd");
         }
-        if (kadoBi == null) {
+        if (kadoYmd == null) {
             throw new OptLockError("error.cant.delete", "稼働日マスタ");
         }
         Object bushoId = postJson.get("bushoId");

@@ -50,34 +50,34 @@ public class T14KouteiRegistForm implements IForm {
         this.kouteiMei = p;
     }
 
-    /** 開始日 */
+    /** 開始年月日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
-    private String kaishiBi;
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    private String kaishiYmd;
 
-    /** @return 開始日 */
-    public String getKaishiBi() {
-        return kaishiBi;
+    /** @return 開始年月日 */
+    public String getKaishiYmd() {
+        return kaishiYmd;
     }
 
-    /** @param p 開始日 */
-    public void setKaishiBi(final String p) {
-        this.kaishiBi = p;
+    /** @param p 開始年月日 */
+    public void setKaishiYmd(final String p) {
+        this.kaishiYmd = p;
     }
 
-    /** 終了日 */
+    /** 終了年月日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2})?")
-    private String shuryoBi;
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    private String shuryoYmd;
 
-    /** @return 終了日 */
-    public String getShuryoBi() {
-        return shuryoBi;
+    /** @return 終了年月日 */
+    public String getShuryoYmd() {
+        return shuryoYmd;
     }
 
-    /** @param p 終了日 */
-    public void setShuryoBi(final String p) {
-        this.shuryoBi = p;
+    /** @param p 終了年月日 */
+    public void setShuryoYmd(final String p) {
+        this.shuryoYmd = p;
     }
 
     /** 作業区CD */

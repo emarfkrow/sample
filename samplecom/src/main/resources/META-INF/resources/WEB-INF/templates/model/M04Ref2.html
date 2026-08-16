@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M04Ref2.title}">M04_REF2</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M04Ref2.js}"></script>
+<script th:src="@{/model/M04Ref2GridColumns.js}"></script>
+<!-- M04_REF2の参照モデルのグリッド定義 -->
+<script th:src="@{/model/MhrUser.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M04Ref2.h2}">h2</h2>
+    <form name="M04Ref2RegistForm" action="M04Ref2Regist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{M04Ref2.legend}">legend</legend>
+        <div id="ref2Id">
+          <label for="M04Ref2.ref2Id" th:text="#{M04Ref2.ref2Id}">REF2_ID</label><input type="text" id="M04Ref2.ref2Id" name="M04Ref2.ref2Id" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="ref2Mei">
+          <label for="M04Ref2.ref2Mei" th:text="#{M04Ref2.ref2Mei}">REF2_MEI</label><input type="text" id="M04Ref2.ref2Mei" name="M04Ref2.ref2Mei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="deleteF">
+          <fieldset id="M04Ref2.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{M04Ref2.deleteF}">DELETE_F</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="M04Ref2.tekiyoBi" th:text="#{M04Ref2.tekiyoBi}">TEKIYO_BI</label><input type="text" id="M04Ref2.tekiyoBi" name="M04Ref2.tekiyoBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="M04Ref2.haishiBi" th:text="#{M04Ref2.haishiBi}">HAISHI_BI</label><input type="text" id="M04Ref2.haishiBi" name="M04Ref2.haishiBi" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{M04Ref2.insertTs}" class="meta">INSERT_TS</label><span id="M04Ref2.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Ref2.insertTs" name="M04Ref2.insertTs" class="meta" />
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{M04Ref2.insertUserId}" class="meta">INSERT_USER_ID</label><span id="M04Ref2.insertUserId" class="meta"></span><input type="hidden" id="M04Ref2.insertUserId" name="M04Ref2.insertUserId" class="meta" />
+          <span id="M04Ref2.insertUserSei" class="refer meta" data-referFor="M04Ref2.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Ref2.insertUserId" data-destDef="M04Ref2.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{M04Ref2.updateTs}" class="meta">UPDATE_TS</label><span id="M04Ref2.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="M04Ref2.updateTs" name="M04Ref2.updateTs" class="meta" />
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{M04Ref2.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="M04Ref2.updateUserId" class="meta"></span><input type="hidden" id="M04Ref2.updateUserId" name="M04Ref2.updateUserId" class="meta" />
+          <span id="M04Ref2.updateUserSei" class="refer meta" data-referFor="M04Ref2.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:M04Ref2.updateUserId" data-destDef="M04Ref2.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshM04Ref2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{M04Ref2Get.xlsx(baseMei=#{M04Ref2.h2})}" id="M04Ref2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="RegistM04Ref2" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M05IdbnS.title}">M05_IDBN</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M05Idbn.js}"></script>
+<script th:src="@{/model/M05IdbnGridColumns.js}"></script>
+<!-- M05_IDBNの参照モデルのグリッド定義 -->
+<script th:src="@{/model/M05Id.js}"></script>
+<script th:src="@{/model/M05IdGridColumns.js}"></script>
+  <!-- M05_IDの参照モデルのグリッド定義 -->
+  <script th:src="@{/model/MhrUser.js}"></script>
+  <script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M05IdbnS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="M05IdbnSearchForm" action="M05IdbnSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{M05IdbnS.legend}">legend</legend>
+        <div id="idrefId">
+          <label for="M05Idbn.idrefId" th:text="#{M05Idbn.idrefId}">IDREF_ID</label><input type="text" id="M05Idbn.idrefId" name="M05Idbn.idrefId" maxlength="10" class=" primaryKey refer" data-referFor="M05Idbn.idrefId" data-json="M05IdSearch.json" data-srcDef="IDREF_ID:M05Idbn.idrefId" data-destDef="M05Idbn.idrefMei:IDREF_MEI" /><a id="M05Idbn.idrefId" th:href="@{/model/M05IdS.html}" target="dialog" class=" primaryKey refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="M05Idbn.idrefMei" class=" primaryKey refer" data-referFor="M05Idbn.idrefId" data-json="M05IdSearch.json" data-srcDef="IDREF_ID:M05Idbn.idrefId" data-destDef="M05Idbn.idrefMei:IDREF_MEI"></span>
+        </div>
+        <div id="idbnBn">
+          <label for="M05Idbn.idbnBn" th:text="#{M05Idbn.idbnBn}">IDBN_BN</label><input type="text" id="M05Idbn.idbnBn" name="M05Idbn.idbnBn" maxlength="10" class=" primaryKey" />
+        </div>
+        <div id="idbnNo">
+          <label for="M05Idbn.idbnNo" th:text="#{M05Idbn.idbnNo}">IDBN_NO</label><input type="text" id="M05Idbn.idbnNo" name="M05Idbn.idbnNo" maxlength="10" class="" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="ResetM05Idbn" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchM05Idbn" type="submit" class="search" data-gridId="M05IdbnGrid" th:text="#{common.search}">search</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="M05IdbnSRegistForm" action="M05IdbnSRegist.ajax" class="regist">
+      <h3 th:text="#{M05Idbn.h3}">h3</h3>
+      <div id="M05IdbnGrid" data-selectionMode="checkbox" data-frozenColumn="1" th:data-href="@{/model/M05Idbn.html}"></div>
+      <div id="M05IdbnPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetM05IdbnS" th:text="#{common.reset}" onClick="Base.listReset('M05Idbn');">reset</button>
+        <a th:href="@{M05IdbnSearch.xlsx(baseMei=#{M05IdbnS.h2})}" id="M05IdbnSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="M05IdbnGrid.idrefId" th:href="@{/model/M05IdS.html}" target="dialog" class="refer gridRefer" th:text="#{M05IdS.title} + #{common.refer}" tabindex="-1">...</a>
+        <button type="submit" id="DeleteM05IdbnS" data-action="M05IdbnSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
+      </div>
+      <div class="submits">
+        <button id="RegistM05IdbnS" type="submit" class="regist" th:text="#{common.regist}">regist</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
