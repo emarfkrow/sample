@@ -21,7 +21,7 @@ public class T12Koho3SRegistAction extends BaseAction {
 
     /** 候補３一覧登録処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
@@ -40,14 +40,14 @@ public class T12Koho3SRegistAction extends BaseAction {
 
                 if (e.isNew()) {
 
-                    if (e.insert(now, execId) != 1) {
+                    if (e.insert(at, by) != 1) {
                         throw new OptLockError("error.cant.insert", "候補３");
                     }
                     ++count;
 
                 } else {
 
-                    if (e.update(now, execId) != 1) {
+                    if (e.update(at, by) != 1) {
                         throw new OptLockError("error.cant.update", "候補３");
                     }
                     ++count;

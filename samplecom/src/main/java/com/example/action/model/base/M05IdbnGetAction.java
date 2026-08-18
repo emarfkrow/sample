@@ -18,24 +18,24 @@ public class M05IdbnGetAction extends BaseAction {
 
     /** M05_IDBN照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object idrefId = postJson.get("idrefId");
+        Object idrefId = form.get("idrefId");
         if (idrefId == null) {
-            idrefId = postJson.get("M05Idbn.idrefId");
+            idrefId = form.get("M05Idbn.idrefId");
         }
         if (idrefId == null) {
             isAllKey = false;
         }
 
-        Object idbnBn = postJson.get("idbnBn");
+        Object idbnBn = form.get("idbnBn");
         if (idbnBn == null) {
-            idbnBn = postJson.get("M05Idbn.idbnBn");
+            idbnBn = form.get("M05Idbn.idbnBn");
         }
         if (idbnBn == null) {
             isAllKey = false;
@@ -57,7 +57,7 @@ public class M05IdbnGetAction extends BaseAction {
             M05Idbn m05Idbn = M05Idbn.get(idrefId, idbnBn);
             map.put("M05Idbn", m05Idbn);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

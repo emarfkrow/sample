@@ -20,18 +20,18 @@ public class T11Reborn2DeleteAction extends BaseAction {
 
     /** 転生２削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object reborn2Id = postJson.get("reborn2Id");
+        Object reborn2Id = form.get("reborn2Id");
         if (reborn2Id == null) {
-            reborn2Id = postJson.get("T11Reborn2.reborn2Id");
+            reborn2Id = form.get("T11Reborn2.reborn2Id");
         }
         if (reborn2Id == null) {
             throw new OptLockError("error.cant.delete", "転生２");
         }
 
-        T11Reborn2 e = FormValidator.toBean(T11Reborn2.class.getName(), postJson);
+        T11Reborn2 e = FormValidator.toBean(T11Reborn2.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "転生２");
         }

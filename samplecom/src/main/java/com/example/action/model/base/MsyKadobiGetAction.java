@@ -18,24 +18,24 @@ public class MsyKadobiGetAction extends BaseAction {
 
     /** MSY_KADOBI照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object kadoYmd = postJson.get("kadoYmd");
+        Object kadoYmd = form.get("kadoYmd");
         if (kadoYmd == null) {
-            kadoYmd = postJson.get("MsyKadobi.kadoYmd");
+            kadoYmd = form.get("MsyKadobi.kadoYmd");
         }
         if (kadoYmd == null) {
             isAllKey = false;
         }
 
-        Object bushoId = postJson.get("bushoId");
+        Object bushoId = form.get("bushoId");
         if (bushoId == null) {
-            bushoId = postJson.get("MsyKadobi.bushoId");
+            bushoId = form.get("MsyKadobi.bushoId");
         }
         if (bushoId == null) {
             isAllKey = false;
@@ -50,7 +50,7 @@ public class MsyKadobiGetAction extends BaseAction {
             MsyKadobi msyKadobi = MsyKadobi.get(kadoYmd, bushoId);
             map.put("MsyKadobi", msyKadobi);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

@@ -20,18 +20,18 @@ public class T13DestDeleteAction extends BaseAction {
 
     /** 変換先削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object destId = postJson.get("destId");
+        Object destId = form.get("destId");
         if (destId == null) {
-            destId = postJson.get("T13Dest.destId");
+            destId = form.get("T13Dest.destId");
         }
         if (destId == null) {
             throw new OptLockError("error.cant.delete", "変換先");
         }
 
-        T13Dest e = FormValidator.toBean(T13Dest.class.getName(), postJson);
+        T13Dest e = FormValidator.toBean(T13Dest.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "変換先");
         }

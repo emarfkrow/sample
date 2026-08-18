@@ -20,18 +20,18 @@ public class T09Koho2DeleteAction extends BaseAction {
 
     /** 候補２削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object koho2Id = postJson.get("koho2Id");
+        Object koho2Id = form.get("koho2Id");
         if (koho2Id == null) {
-            koho2Id = postJson.get("T09Koho2.koho2Id");
+            koho2Id = form.get("T09Koho2.koho2Id");
         }
         if (koho2Id == null) {
             throw new OptLockError("error.cant.delete", "候補２");
         }
 
-        T09Koho2 e = FormValidator.toBean(T09Koho2.class.getName(), postJson);
+        T09Koho2 e = FormValidator.toBean(T09Koho2.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "候補２");
         }

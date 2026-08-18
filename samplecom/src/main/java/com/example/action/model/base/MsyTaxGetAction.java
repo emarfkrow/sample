@@ -18,24 +18,24 @@ public class MsyTaxGetAction extends BaseAction {
 
     /** MSY_TAX照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object taxKb = postJson.get("taxKb");
+        Object taxKb = form.get("taxKb");
         if (taxKb == null) {
-            taxKb = postJson.get("MsyTax.taxKb");
+            taxKb = form.get("MsyTax.taxKb");
         }
         if (taxKb == null) {
             isAllKey = false;
         }
 
-        Object tekiyoBi = postJson.get("tekiyoBi");
+        Object tekiyoBi = form.get("tekiyoBi");
         if (tekiyoBi == null) {
-            tekiyoBi = postJson.get("MsyTax.tekiyoBi");
+            tekiyoBi = form.get("MsyTax.tekiyoBi");
         }
         if (tekiyoBi == null) {
             isAllKey = false;
@@ -50,7 +50,7 @@ public class MsyTaxGetAction extends BaseAction {
             MsyTax msyTax = MsyTax.get(taxKb, tekiyoBi);
             map.put("MsyTax", msyTax);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

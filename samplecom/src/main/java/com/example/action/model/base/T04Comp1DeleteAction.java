@@ -20,25 +20,25 @@ public class T04Comp1DeleteAction extends BaseAction {
 
     /** 複合１削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object ref1Id = postJson.get("ref1Id");
+        Object ref1Id = form.get("ref1Id");
         if (ref1Id == null) {
-            ref1Id = postJson.get("T04Comp1.ref1Id");
+            ref1Id = form.get("T04Comp1.ref1Id");
         }
         if (ref1Id == null) {
             throw new OptLockError("error.cant.delete", "複合１");
         }
-        Object ref2Id = postJson.get("ref2Id");
+        Object ref2Id = form.get("ref2Id");
         if (ref2Id == null) {
-            ref2Id = postJson.get("T04Comp1.ref2Id");
+            ref2Id = form.get("T04Comp1.ref2Id");
         }
         if (ref2Id == null) {
             throw new OptLockError("error.cant.delete", "複合１");
         }
 
-        T04Comp1 e = FormValidator.toBean(T04Comp1.class.getName(), postJson);
+        T04Comp1 e = FormValidator.toBean(T04Comp1.class.getName(), form);
 
         java.util.List<com.example.entity.T04Comp2> t04Comp2s = e.referT04Comp2s();
         if (t04Comp2s != null) {

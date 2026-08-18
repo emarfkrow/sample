@@ -20,18 +20,18 @@ public class T01FosterDeleteAction extends BaseAction {
 
     /** 里子削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object broId = postJson.get("broId");
+        Object broId = form.get("broId");
         if (broId == null) {
-            broId = postJson.get("T01Foster.broId");
+            broId = form.get("T01Foster.broId");
         }
         if (broId == null) {
             throw new OptLockError("error.cant.delete", "里子");
         }
 
-        T01Foster e = FormValidator.toBean(T01Foster.class.getName(), postJson);
+        T01Foster e = FormValidator.toBean(T01Foster.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "里子");
         }

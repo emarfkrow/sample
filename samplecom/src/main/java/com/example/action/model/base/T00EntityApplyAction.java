@@ -20,24 +20,25 @@ public class T00EntityApplyAction extends BaseAction {
 
     /** エンティティ申請処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object entityId = postJson.get("entityId");
+        Object entityId = form.get("entityId");
         if (entityId == null) {
-            entityId = postJson.get("T00Entity.entityId");
+            entityId = form.get("T00Entity.entityId");
         }
         if (entityId == null) {
             throw new OptLockError("error.cant.apply", "エンティティ");
         }
 
-        T00Entity e = FormValidator.toBean(T00Entity.class.getName(), postJson);
+        T00Entity e = FormValidator.toBean(T00Entity.class.getName(), form);
 
         if (e.getStatusKb() != null && !e.getStatusKb().equals("")) {
-            throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("T00Entity.statusKb"), Messages.get("common.notapply"));
+            throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
+                    Messages.get("T00Entity.statusKb"), Messages.get("common.notapply"));
         }
         e.setStatusKb(0);
-        if (e.update(now, execId) != 1) {
+        if (e.update(at, by) != 1) {
             throw new OptLockError("error.cant.apply", "エンティティ");
         }
 

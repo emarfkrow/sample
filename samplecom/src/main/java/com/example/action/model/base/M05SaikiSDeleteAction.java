@@ -21,7 +21,7 @@ public class M05SaikiSDeleteAction extends BaseAction {
 
     /** 再帰一覧削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 

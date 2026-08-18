@@ -18,24 +18,24 @@ public class T06PrevDetGetAction extends BaseAction {
 
     /** T06_PREV_DET照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object prevId = postJson.get("prevId");
+        Object prevId = form.get("prevId");
         if (prevId == null) {
-            prevId = postJson.get("T06PrevDet.prevId");
+            prevId = form.get("T06PrevDet.prevId");
         }
         if (prevId == null) {
             isAllKey = false;
         }
 
-        Object prevBn = postJson.get("prevBn");
+        Object prevBn = form.get("prevBn");
         if (prevBn == null) {
-            prevBn = postJson.get("T06PrevDet.prevBn");
+            prevBn = form.get("T06PrevDet.prevBn");
         }
         if (prevBn == null) {
             isAllKey = false;
@@ -57,7 +57,7 @@ public class T06PrevDetGetAction extends BaseAction {
             T06PrevDet t06PrevDet = T06PrevDet.get(prevId, prevBn);
             map.put("T06PrevDet", t06PrevDet);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

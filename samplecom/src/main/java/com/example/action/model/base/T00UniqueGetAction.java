@@ -18,24 +18,24 @@ public class T00UniqueGetAction extends BaseAction {
 
     /** T00_UNIQUE照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object dMei = postJson.get("dMei");
+        Object dMei = form.get("dMei");
         if (dMei == null) {
-            dMei = postJson.get("T00Unique.dMei");
+            dMei = form.get("T00Unique.dMei");
         }
         if (dMei == null) {
             isAllKey = false;
         }
 
-        Object eMei = postJson.get("eMei");
+        Object eMei = form.get("eMei");
         if (eMei == null) {
-            eMei = postJson.get("T00Unique.eMei");
+            eMei = form.get("T00Unique.eMei");
         }
         if (eMei == null) {
             isAllKey = false;
@@ -50,7 +50,7 @@ public class T00UniqueGetAction extends BaseAction {
             T00Unique t00Unique = T00Unique.get(dMei, eMei);
             map.put("T00Unique", t00Unique);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

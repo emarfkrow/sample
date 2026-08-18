@@ -18,16 +18,16 @@ public class T10SumGetAction extends BaseAction {
 
     /** T10_SUM照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object sumId = postJson.get("sumId");
+        Object sumId = form.get("sumId");
         if (sumId == null) {
-            sumId = postJson.get("T10Sum.sumId");
+            sumId = form.get("T10Sum.sumId");
         }
         if (sumId == null) {
             isAllKey = false;
@@ -45,7 +45,7 @@ public class T10SumGetAction extends BaseAction {
             t10Sum.referT10Grp2s();
             map.put("T10Sum", t10Sum);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

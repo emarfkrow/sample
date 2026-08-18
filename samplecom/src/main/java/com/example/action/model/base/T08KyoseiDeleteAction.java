@@ -20,18 +20,18 @@ public class T08KyoseiDeleteAction extends BaseAction {
 
     /** 共生削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object kyoseiId = postJson.get("kyoseiId");
+        Object kyoseiId = form.get("kyoseiId");
         if (kyoseiId == null) {
-            kyoseiId = postJson.get("T08Kyosei.kyoseiId");
+            kyoseiId = form.get("T08Kyosei.kyoseiId");
         }
         if (kyoseiId == null) {
             throw new OptLockError("error.cant.delete", "共生");
         }
 
-        T08Kyosei e = FormValidator.toBean(T08Kyosei.class.getName(), postJson);
+        T08Kyosei e = FormValidator.toBean(T08Kyosei.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "共生");
         }

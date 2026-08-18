@@ -18,16 +18,16 @@ public class T08KyoseiGetAction extends BaseAction {
 
     /** T08_KYOSEI照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object kyoseiId = postJson.get("kyoseiId");
+        Object kyoseiId = form.get("kyoseiId");
         if (kyoseiId == null) {
-            kyoseiId = postJson.get("T08Kyosei.kyoseiId");
+            kyoseiId = form.get("T08Kyosei.kyoseiId");
         }
         if (kyoseiId == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class T08KyoseiGetAction extends BaseAction {
             T08Kyosei t08Kyosei = T08Kyosei.get(kyoseiId);
             map.put("T08Kyosei", t08Kyosei);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

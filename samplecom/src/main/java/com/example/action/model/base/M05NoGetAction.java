@@ -18,16 +18,16 @@ public class M05NoGetAction extends BaseAction {
 
     /** M05_NO照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object norefNo = postJson.get("norefNo");
+        Object norefNo = form.get("norefNo");
         if (norefNo == null) {
-            norefNo = postJson.get("M05No.norefNo");
+            norefNo = form.get("M05No.norefNo");
         }
         if (norefNo == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class M05NoGetAction extends BaseAction {
             M05No m05No = M05No.get(norefNo);
             map.put("M05No", m05No);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

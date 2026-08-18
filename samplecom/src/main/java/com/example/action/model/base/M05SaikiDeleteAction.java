@@ -20,18 +20,18 @@ public class M05SaikiDeleteAction extends BaseAction {
 
     /** 再帰削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object saikiId = postJson.get("saikiId");
+        Object saikiId = form.get("saikiId");
         if (saikiId == null) {
-            saikiId = postJson.get("M05Saiki.saikiId");
+            saikiId = form.get("M05Saiki.saikiId");
         }
         if (saikiId == null) {
             throw new OptLockError("error.cant.delete", "再帰");
         }
 
-        M05Saiki e = FormValidator.toBean(M05Saiki.class.getName(), postJson);
+        M05Saiki e = FormValidator.toBean(M05Saiki.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "再帰");
         }

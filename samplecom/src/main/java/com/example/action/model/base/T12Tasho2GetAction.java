@@ -18,25 +18,25 @@ public class T12Tasho2GetAction extends BaseAction {
 
     /** T12_TASHO2照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object tasho2Id = postJson.get("tasho2Id");
+        Object tasho2Id = form.get("tasho2Id");
         if (tasho2Id == null) {
-            tasho2Id = postJson.get("T12Tasho2.tasho2Id");
+            tasho2Id = form.get("T12Tasho2.tasho2Id");
         }
         if (tasho2Id == null) {
 
             T12Tasho2 t12Tasho2 = new T12Tasho2();
 
             // 派生先になる場合は派生元から情報をコピー
-            Object koho3Id1 = postJson.get("koho3Id");
+            Object koho3Id1 = form.get("koho3Id");
             if (koho3Id1 == null) {
-                koho3Id1 = postJson.get("T12Tasho2.koho3Id");
+                koho3Id1 = form.get("T12Tasho2.koho3Id");
             }
             if (koho3Id1 != null) {
                 com.example.entity.T12Koho3 t12Koho3 = com.example.entity.T12Koho3.get(koho3Id1);
@@ -58,7 +58,7 @@ public class T12Tasho2GetAction extends BaseAction {
             t12Tasho2.referT12Reborn3s();
             map.put("T12Tasho2", t12Tasho2);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

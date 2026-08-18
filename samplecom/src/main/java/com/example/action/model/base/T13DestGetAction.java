@@ -18,16 +18,16 @@ public class T13DestGetAction extends BaseAction {
 
     /** T13_DEST照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object destId = postJson.get("destId");
+        Object destId = form.get("destId");
         if (destId == null) {
-            destId = postJson.get("T13Dest.destId");
+            destId = form.get("T13Dest.destId");
         }
         if (destId == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class T13DestGetAction extends BaseAction {
             T13Dest t13Dest = T13Dest.get(destId);
             map.put("T13Dest", t13Dest);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

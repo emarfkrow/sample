@@ -20,24 +20,25 @@ public class T03TransForbidAction extends BaseAction {
 
     /** 変遷否認処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object transId = postJson.get("transId");
+        Object transId = form.get("transId");
         if (transId == null) {
-            transId = postJson.get("T03Trans.transId");
+            transId = form.get("T03Trans.transId");
         }
         if (transId == null) {
             throw new OptLockError("error.cant.forbid", "変遷");
         }
 
-        T03Trans e = FormValidator.toBean(T03Trans.class.getName(), postJson);
+        T03Trans e = FormValidator.toBean(T03Trans.class.getName(), form);
 
         if (!e.getStatusKb().equals("0") && !e.getStatusKb().equals("1")) {
-            throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("T03Trans.statusKb"), Messages.get("common.apply.permit"));
+            throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
+                    Messages.get("T03Trans.statusKb"), Messages.get("common.apply.permit"));
         }
         e.setStatusKb(-1);
-        if (e.update(now, execId) != 1) {
+        if (e.update(at, by) != 1) {
             throw new OptLockError("error.cant.forbid", "変遷");
         }
 

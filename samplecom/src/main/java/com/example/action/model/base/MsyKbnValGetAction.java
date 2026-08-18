@@ -18,24 +18,24 @@ public class MsyKbnValGetAction extends BaseAction {
 
     /** MSY_KBN_VAL照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object kbnNm = postJson.get("kbnNm");
+        Object kbnNm = form.get("kbnNm");
         if (kbnNm == null) {
-            kbnNm = postJson.get("MsyKbnVal.kbnNm");
+            kbnNm = form.get("MsyKbnVal.kbnNm");
         }
         if (kbnNm == null) {
             isAllKey = false;
         }
 
-        Object kbnVal = postJson.get("kbnVal");
+        Object kbnVal = form.get("kbnVal");
         if (kbnVal == null) {
-            kbnVal = postJson.get("MsyKbnVal.kbnVal");
+            kbnVal = form.get("MsyKbnVal.kbnVal");
         }
         if (kbnVal == null) {
             isAllKey = false;
@@ -57,7 +57,7 @@ public class MsyKbnValGetAction extends BaseAction {
             MsyKbnVal msyKbnVal = MsyKbnVal.get(kbnNm, kbnVal);
             map.put("MsyKbnVal", msyKbnVal);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

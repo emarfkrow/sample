@@ -20,18 +20,18 @@ public class T09ChoiceDeleteAction extends BaseAction {
 
     /** 選択削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object choiceId = postJson.get("choiceId");
+        Object choiceId = form.get("choiceId");
         if (choiceId == null) {
-            choiceId = postJson.get("T09Choice.choiceId");
+            choiceId = form.get("T09Choice.choiceId");
         }
         if (choiceId == null) {
             throw new OptLockError("error.cant.delete", "選択");
         }
 
-        T09Choice e = FormValidator.toBean(T09Choice.class.getName(), postJson);
+        T09Choice e = FormValidator.toBean(T09Choice.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "選択");
         }

@@ -21,7 +21,7 @@ public class MhrShokuiNinkaSRegistAction extends BaseAction {
 
     /** 認可マスタ一覧登録処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
@@ -40,14 +40,14 @@ public class MhrShokuiNinkaSRegistAction extends BaseAction {
 
                 if (e.isNew()) {
 
-                    if (e.insert(now, execId) != 1) {
+                    if (e.insert(at, by) != 1) {
                         throw new OptLockError("error.cant.insert", "認可マスタ");
                     }
                     ++count;
 
                 } else {
 
-                    if (e.update(now, execId) != 1) {
+                    if (e.update(at, by) != 1) {
                         throw new OptLockError("error.cant.update", "認可マスタ");
                     }
                     ++count;

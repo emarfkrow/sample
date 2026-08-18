@@ -18,24 +18,24 @@ public class MsyTsukaGetAction extends BaseAction {
 
     /** MSY_TSUKA照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object tsukaKb = postJson.get("tsukaKb");
+        Object tsukaKb = form.get("tsukaKb");
         if (tsukaKb == null) {
-            tsukaKb = postJson.get("MsyTsuka.tsukaKb");
+            tsukaKb = form.get("MsyTsuka.tsukaKb");
         }
         if (tsukaKb == null) {
             isAllKey = false;
         }
 
-        Object tekiyoBi = postJson.get("tekiyoBi");
+        Object tekiyoBi = form.get("tekiyoBi");
         if (tekiyoBi == null) {
-            tekiyoBi = postJson.get("MsyTsuka.tekiyoBi");
+            tekiyoBi = form.get("MsyTsuka.tekiyoBi");
         }
         if (tekiyoBi == null) {
             isAllKey = false;
@@ -50,7 +50,7 @@ public class MsyTsukaGetAction extends BaseAction {
             MsyTsuka msyTsuka = MsyTsuka.get(tsukaKb, tekiyoBi);
             map.put("MsyTsuka", msyTsuka);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

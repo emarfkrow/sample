@@ -373,20 +373,20 @@ public class T03StatusKb implements IEntity {
      */
     public static T03StatusKb get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`FLOW_ID` = :flow_id");
+        whereList.add("\"FLOW_ID\" = :flow_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`FLOW_ID` \n";
-        sql += "    , a.`TABLE_NM` \n";
-        sql += "    , a.`PRIMARY_KEYS` \n";
-        sql += "    , a.`STATUS_KB` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`KESSAI_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS KESSAI_TS \n";
-        sql += "    , a.`KESSAI_ID` \n";
-        sql += "    , a.`RIYU_TX` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"FLOW_ID\" \n";
+        sql += "    , a.\"TABLE_NM\" \n";
+        sql += "    , a.\"PRIMARY_KEYS\" \n";
+        sql += "    , a.\"STATUS_KB\" \n";
+        sql += "    , TO_CHAR (a.\"KESSAI_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS KESSAI_TS \n";
+        sql += "    , a.\"KESSAI_ID\" \n";
+        sql += "    , a.\"RIYU_TX\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    T03_STATUS_KB a \n";
         sql += "WHERE \n";
@@ -398,34 +398,34 @@ public class T03StatusKb implements IEntity {
 
     /**
      * 決裁フロー追加
-     * @param now システム日時
-     * @param execId 登録者
+     * @param at システム日時
+     * @param by 登録者
      * @return 追加件数
      */
-    public int insert(final java.time.LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime at, final String by) {
 
         // フローIDの採番処理
         numbering();
 
         // 決裁フローの登録
         String sql = "INSERT INTO T03_STATUS_KB(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`FLOW_ID` -- :flow_id");
-        nameList.add("`TABLE_NM` -- :table_nm");
-        nameList.add("`PRIMARY_KEYS` -- :primary_keys");
-        nameList.add("`STATUS_KB` -- :status_kb");
-        nameList.add("`KESSAI_TS` -- :kessai_ts");
-        nameList.add("`KESSAI_ID` -- :kessai_id");
-        nameList.add("`RIYU_TX` -- :riyu_tx");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"FLOW_ID\" -- :flow_id");
+        nameList.add("\"TABLE_NM\" -- :table_nm");
+        nameList.add("\"PRIMARY_KEYS\" -- :primary_keys");
+        nameList.add("\"STATUS_KB\" -- :status_kb");
+        nameList.add("\"KESSAI_TS\" -- :kessai_ts");
+        nameList.add("\"KESSAI_ID\" -- :kessai_id");
+        nameList.add("\"RIYU_TX\" -- :riyu_tx");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -436,12 +436,12 @@ public class T03StatusKb implements IEntity {
         valueList.add(":table_nm");
         valueList.add(":primary_keys");
         valueList.add(":status_kb");
-        valueList.add("LEFT(DATE_FORMAT (now(3), '%Y-%m-%dT%H:%i:%s.%f'), 23)");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (TO_CHAR (SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI:SS.FF3'), 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":kessai_id");
         valueList.add(":riyu_tx");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -451,7 +451,7 @@ public class T03StatusKb implements IEntity {
         if (this.flowId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`FLOW_ID`) IS NULL THEN 0 ELSE MAX(e.`FLOW_ID`) * 1 END + 1 AS `FLOW_ID` FROM T03_STATUS_KB e";
+        String sql = "SELECT CASE WHEN MAX(e.\"FLOW_ID\") IS NULL THEN 0 ELSE MAX(e.\"FLOW_ID\") * 1 END + 1 AS \"FLOW_ID\" FROM T03_STATUS_KB e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("FLOW_ID");
@@ -459,11 +459,11 @@ public class T03StatusKb implements IEntity {
     }
 
     /**
-     * @param now システム日時
-     * @param execId 実行ID
+     * @param at システム日時
+     * @param by 実行ID
      * @return マップ化したエンティティ
      */
-    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime at, final String by) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("flow_id", this.flowId);
         map.put("table_nm", this.tableNm);
@@ -472,10 +472,10 @@ public class T03StatusKb implements IEntity {
         map.put("kessai_ts", this.kessaiTs);
         map.put("kessai_id", this.kessaiId);
         map.put("riyu_tx", this.riyuTx);
-        map.put("insert_ts", now);
-        map.put("insert_user_id", execId);
-        map.put("update_ts", now);
-        map.put("update_user_id", execId);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
         return map;
     }
 }

@@ -20,18 +20,18 @@ public class M05IdDeleteAction extends BaseAction {
 
     /** IDマスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object idrefId = postJson.get("idrefId");
+        Object idrefId = form.get("idrefId");
         if (idrefId == null) {
-            idrefId = postJson.get("M05Id.idrefId");
+            idrefId = form.get("M05Id.idrefId");
         }
         if (idrefId == null) {
             throw new OptLockError("error.cant.delete", "IDマスタ");
         }
 
-        M05Id e = FormValidator.toBean(M05Id.class.getName(), postJson);
+        M05Id e = FormValidator.toBean(M05Id.class.getName(), form);
 
         java.util.List<com.example.entity.M05Idbn> m05Idbns = e.referM05Idbns();
         if (m05Idbns != null) {

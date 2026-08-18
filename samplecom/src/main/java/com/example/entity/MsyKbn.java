@@ -257,15 +257,15 @@ public class MsyKbn implements IEntity {
      */
     public static MsyKbn get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KBN_NM` = :kbn_nm");
+        whereList.add("\"KBN_NM\" = :kbn_nm");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`KBN_NM` \n";
-        sql += "    , a.`KBN_MEI` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"KBN_NM\" \n";
+        sql += "    , a.\"KBN_MEI\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    MSY_KBN a \n";
         sql += "WHERE \n";
@@ -277,36 +277,36 @@ public class MsyKbn implements IEntity {
 
     /**
      * 区分マスタ追加
-     * @param now システム日時
-     * @param execId 登録者
+     * @param at システム日時
+     * @param by 登録者
      * @return 追加件数
      */
-    public int insert(final java.time.LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime at, final String by) {
 
         // 区分値マスタの登録
         if (this.msyKbnVals != null) {
             for (MsyKbnVal msyKbnVal : this.msyKbnVals) {
                 if (msyKbnVal != null) {
                     msyKbnVal.setKbnNm(this.getKbnNm());
+                    msyKbnVal.insert(at, by);
                 }
-                msyKbnVal.insert(now, execId);
             }
         }
 
         // 区分マスタの登録
         String sql = "INSERT INTO MSY_KBN(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`KBN_NM` -- :kbn_nm");
-        nameList.add("`KBN_MEI` -- :kbn_mei");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"KBN_NM\" -- :kbn_nm");
+        nameList.add("\"KBN_MEI\" -- :kbn_mei");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -315,20 +315,20 @@ public class MsyKbn implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":kbn_nm");
         valueList.add(":kbn_mei");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
 
     /**
      * 区分マスタ更新
-     * @param now システム日時
-     * @param execId 更新者
+     * @param at システム日時
+     * @param by 更新者
      * @return 更新件数
      */
-    public int update(final java.time.LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime at, final String by) {
 
         // 区分値マスタの登録
         if (this.msyKbnVals != null) {
@@ -338,25 +338,25 @@ public class MsyKbn implements IEntity {
                 }
                 msyKbnVal.setKbnNm(this.kbnNm);
                 if (msyKbnVal.isNew()) {
-                    msyKbnVal.insert(now, execId);
+                    msyKbnVal.insert(at, by);
                 } else {
-                    msyKbnVal.update(now, execId);
+                    msyKbnVal.update(at, by);
                 }
             }
         }
 
         // 区分マスタの登録
         String sql = "UPDATE MSY_KBN\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`KBN_NM` = :kbn_nm");
-        setList.add("`KBN_MEI` = :kbn_mei");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"KBN_NM\" = :kbn_nm");
+        setList.add("\"KBN_MEI\" = :kbn_mei");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -397,26 +397,26 @@ public class MsyKbn implements IEntity {
     }
 
     /**
-     * @param now システム日時
-     * @param execId 実行ID
+     * @param at システム日時
+     * @param by 実行ID
      * @return マップ化したエンティティ
      */
-    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime at, final String by) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("kbn_nm", this.kbnNm);
         map.put("kbn_mei", this.kbnMei);
-        map.put("insert_ts", now);
-        map.put("insert_user_id", execId);
-        map.put("update_ts", now);
-        map.put("update_user_id", execId);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
         return map;
     }
 
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KBN_NM` = :kbn_nm");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"KBN_NM\" = :kbn_nm");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 
@@ -460,17 +460,17 @@ public class MsyKbn implements IEntity {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("KBN_NM = :kbn_nm");
         String sql = "SELECT ";
-        sql += "`KBN_NM`";
-        sql += ", `KBN_VAL`";
-        sql += ", `KBN_VAL_MEI`";
-        sql += ", `HYOJI_ON`";
-        sql += ", `CRITERIA`";
-        sql += ", LEFT(DATE_FORMAT (`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS";
-        sql += ", `INSERT_USER_ID`";
-        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", LEFT(DATE_FORMAT (`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS";
-        sql += ", `UPDATE_USER_ID`";
-        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
+        sql += "\"KBN_NM\"";
+        sql += ", \"KBN_VAL\"";
+        sql += ", \"KBN_VAL_MEI\"";
+        sql += ", \"HYOJI_ON\"";
+        sql += ", \"CRITERIA\"";
+        sql += ", TO_CHAR (\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS";
+        sql += ", \"INSERT_USER_ID\"";
+        sql += ", (SELECT r0.\"USER_SEI\" FROM MHR_USER r0 WHERE TO_CHAR (r0.\"USER_ID\") = a.\"INSERT_USER_ID\") AS \"INSERT_USER_SEI\"";
+        sql += ", TO_CHAR (\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS";
+        sql += ", \"UPDATE_USER_ID\"";
+        sql += ", (SELECT r1.\"USER_SEI\" FROM MHR_USER r1 WHERE TO_CHAR (r1.\"USER_ID\") = a.\"UPDATE_USER_ID\") AS \"UPDATE_USER_SEI\"";
         sql += " FROM MSY_KBN_VAL a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "KBN_NM, KBN_VAL";

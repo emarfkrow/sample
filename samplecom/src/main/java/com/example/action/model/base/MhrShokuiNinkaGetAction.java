@@ -18,32 +18,32 @@ public class MhrShokuiNinkaGetAction extends BaseAction {
 
     /** MHR_SHOKUI_NINKA照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object bushoId = postJson.get("bushoId");
+        Object bushoId = form.get("bushoId");
         if (bushoId == null) {
-            bushoId = postJson.get("MhrShokuiNinka.bushoId");
+            bushoId = form.get("MhrShokuiNinka.bushoId");
         }
         if (bushoId == null) {
             isAllKey = false;
         }
 
-        Object shokuiId = postJson.get("shokuiId");
+        Object shokuiId = form.get("shokuiId");
         if (shokuiId == null) {
-            shokuiId = postJson.get("MhrShokuiNinka.shokuiId");
+            shokuiId = form.get("MhrShokuiNinka.shokuiId");
         }
         if (shokuiId == null) {
             isAllKey = false;
         }
 
-        Object tableRe = postJson.get("tableRe");
+        Object tableRe = form.get("tableRe");
         if (tableRe == null) {
-            tableRe = postJson.get("MhrShokuiNinka.tableRe");
+            tableRe = form.get("MhrShokuiNinka.tableRe");
         }
         if (tableRe == null) {
             isAllKey = false;
@@ -58,7 +58,7 @@ public class MhrShokuiNinkaGetAction extends BaseAction {
             MhrShokuiNinka mhrShokuiNinka = MhrShokuiNinka.get(bushoId, shokuiId, tableRe);
             map.put("MhrShokuiNinka", mhrShokuiNinka);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

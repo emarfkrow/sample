@@ -18,16 +18,16 @@ public class M05SaikiGetAction extends BaseAction {
 
     /** M05_SAIKI照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object saikiId = postJson.get("saikiId");
+        Object saikiId = form.get("saikiId");
         if (saikiId == null) {
-            saikiId = postJson.get("M05Saiki.saikiId");
+            saikiId = form.get("M05Saiki.saikiId");
         }
         if (saikiId == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class M05SaikiGetAction extends BaseAction {
             M05Saiki m05Saiki = M05Saiki.get(saikiId);
             map.put("M05Saiki", m05Saiki);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

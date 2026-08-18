@@ -20,25 +20,25 @@ public class MsyTaxDeleteAction extends BaseAction {
 
     /** 税マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object taxKb = postJson.get("taxKb");
+        Object taxKb = form.get("taxKb");
         if (taxKb == null) {
-            taxKb = postJson.get("MsyTax.taxKb");
+            taxKb = form.get("MsyTax.taxKb");
         }
         if (taxKb == null) {
             throw new OptLockError("error.cant.delete", "税マスタ");
         }
-        Object tekiyoBi = postJson.get("tekiyoBi");
+        Object tekiyoBi = form.get("tekiyoBi");
         if (tekiyoBi == null) {
-            tekiyoBi = postJson.get("MsyTax.tekiyoBi");
+            tekiyoBi = form.get("MsyTax.tekiyoBi");
         }
         if (tekiyoBi == null) {
             throw new OptLockError("error.cant.delete", "税マスタ");
         }
 
-        MsyTax e = FormValidator.toBean(MsyTax.class.getName(), postJson);
+        MsyTax e = FormValidator.toBean(MsyTax.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "税マスタ");
         }

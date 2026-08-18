@@ -257,15 +257,15 @@ public class M05Cd implements IEntity {
      */
     public static M05Cd get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("TRIM(TRAILING ' ' FROM `CDREF_CD`) = TRIM(TRAILING ' ' FROM :cdref_cd)");
+        whereList.add("RTRIM (RTRIM (\"CDREF_CD\"), '　') = RTRIM (RTRIM (:cdref_cd), '　')");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      TRIM(TRAILING ' ' FROM a.`CDREF_CD`) AS CDREF_CD \n";
-        sql += "    , a.`CDREF_MEI` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      RTRIM (RTRIM (a.\"CDREF_CD\"), '　') AS CDREF_CD \n";
+        sql += "    , a.\"CDREF_MEI\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    M05_CD a \n";
         sql += "WHERE \n";
@@ -277,26 +277,26 @@ public class M05Cd implements IEntity {
 
     /**
      * CDマスタ追加
-     * @param now システム日時
-     * @param execId 登録者
+     * @param at システム日時
+     * @param by 登録者
      * @return 追加件数
      */
-    public int insert(final java.time.LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime at, final String by) {
 
         // CDマスタの登録
         String sql = "INSERT INTO M05_CD(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`CDREF_CD` -- :cdref_cd");
-        nameList.add("`CDREF_MEI` -- :cdref_mei");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"CDREF_CD\" -- :cdref_cd");
+        nameList.add("\"CDREF_MEI\" -- :cdref_mei");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -305,33 +305,33 @@ public class M05Cd implements IEntity {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
         valueList.add(":cdref_cd");
         valueList.add(":cdref_mei");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
 
     /**
      * CDマスタ更新
-     * @param now システム日時
-     * @param execId 更新者
+     * @param at システム日時
+     * @param by 更新者
      * @return 更新件数
      */
-    public int update(final java.time.LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime at, final String by) {
 
         // CDマスタの登録
         String sql = "UPDATE M05_CD\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`CDREF_CD` = :cdref_cd");
-        setList.add("`CDREF_MEI` = :cdref_mei");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"CDREF_CD\" = :cdref_cd");
+        setList.add("\"CDREF_MEI\" = :cdref_mei");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -358,26 +358,26 @@ public class M05Cd implements IEntity {
     }
 
     /**
-     * @param now システム日時
-     * @param execId 実行ID
+     * @param at システム日時
+     * @param by 実行ID
      * @return マップ化したエンティティ
      */
-    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime at, final String by) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("cdref_cd", this.cdrefCd);
         map.put("cdref_mei", this.cdrefMei);
-        map.put("insert_ts", now);
-        map.put("insert_user_id", execId);
-        map.put("update_ts", now);
-        map.put("update_user_id", execId);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
         return map;
     }
 
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("TRIM(TRAILING ' ' FROM `CDREF_CD`) = TRIM(TRAILING ' ' FROM :cdref_cd)");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("RTRIM (RTRIM (\"CDREF_CD\"), '　') = RTRIM (RTRIM (:cdref_cd), '　')");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

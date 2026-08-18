@@ -18,16 +18,16 @@ public class T12Koho3GetAction extends BaseAction {
 
     /** T12_KOHO3照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object koho3Id = postJson.get("koho3Id");
+        Object koho3Id = form.get("koho3Id");
         if (koho3Id == null) {
-            koho3Id = postJson.get("T12Koho3.koho3Id");
+            koho3Id = form.get("T12Koho3.koho3Id");
         }
         if (koho3Id == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class T12Koho3GetAction extends BaseAction {
             T12Koho3 t12Koho3 = T12Koho3.get(koho3Id);
             map.put("T12Koho3", t12Koho3);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

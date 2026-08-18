@@ -20,18 +20,18 @@ public class T08Kisei1DeleteAction extends BaseAction {
 
     /** 寄生１削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object kisei1Id = postJson.get("kisei1Id");
+        Object kisei1Id = form.get("kisei1Id");
         if (kisei1Id == null) {
-            kisei1Id = postJson.get("T08Kisei1.kisei1Id");
+            kisei1Id = form.get("T08Kisei1.kisei1Id");
         }
         if (kisei1Id == null) {
             throw new OptLockError("error.cant.delete", "寄生１");
         }
 
-        T08Kisei1 e = FormValidator.toBean(T08Kisei1.class.getName(), postJson);
+        T08Kisei1 e = FormValidator.toBean(T08Kisei1.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "寄生１");
         }

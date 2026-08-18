@@ -20,39 +20,39 @@ public class MhrUserPosDeleteAction extends BaseAction {
 
     /** 所属マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object bushoId = postJson.get("bushoId");
+        Object bushoId = form.get("bushoId");
         if (bushoId == null) {
-            bushoId = postJson.get("MhrUserPos.bushoId");
+            bushoId = form.get("MhrUserPos.bushoId");
         }
         if (bushoId == null) {
             throw new OptLockError("error.cant.delete", "所属マスタ");
         }
-        Object shokuiId = postJson.get("shokuiId");
+        Object shokuiId = form.get("shokuiId");
         if (shokuiId == null) {
-            shokuiId = postJson.get("MhrUserPos.shokuiId");
+            shokuiId = form.get("MhrUserPos.shokuiId");
         }
         if (shokuiId == null) {
             throw new OptLockError("error.cant.delete", "所属マスタ");
         }
-        Object userId = postJson.get("userId");
+        Object userId = form.get("userId");
         if (userId == null) {
-            userId = postJson.get("MhrUserPos.userId");
+            userId = form.get("MhrUserPos.userId");
         }
         if (userId == null) {
             throw new OptLockError("error.cant.delete", "所属マスタ");
         }
-        Object tekiyoBi = postJson.get("tekiyoBi");
+        Object tekiyoBi = form.get("tekiyoBi");
         if (tekiyoBi == null) {
-            tekiyoBi = postJson.get("MhrUserPos.tekiyoBi");
+            tekiyoBi = form.get("MhrUserPos.tekiyoBi");
         }
         if (tekiyoBi == null) {
             throw new OptLockError("error.cant.delete", "所属マスタ");
         }
 
-        MhrUserPos e = FormValidator.toBean(MhrUserPos.class.getName(), postJson);
+        MhrUserPos e = FormValidator.toBean(MhrUserPos.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "所属マスタ");
         }

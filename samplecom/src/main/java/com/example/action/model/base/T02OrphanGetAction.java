@@ -18,24 +18,24 @@ public class T02OrphanGetAction extends BaseAction {
 
     /** T02_ORPHAN照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object oyaId = postJson.get("oyaId");
+        Object oyaId = form.get("oyaId");
         if (oyaId == null) {
-            oyaId = postJson.get("T02Orphan.oyaId");
+            oyaId = form.get("T02Orphan.oyaId");
         }
         if (oyaId == null) {
             isAllKey = false;
         }
 
-        Object koBn = postJson.get("koBn");
+        Object koBn = form.get("koBn");
         if (koBn == null) {
-            koBn = postJson.get("T02Orphan.koBn");
+            koBn = form.get("T02Orphan.koBn");
         }
         if (koBn == null) {
             isAllKey = false;
@@ -62,7 +62,7 @@ public class T02OrphanGetAction extends BaseAction {
             t02Orphan.referT02Magos();
             map.put("T02Orphan", t02Orphan);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

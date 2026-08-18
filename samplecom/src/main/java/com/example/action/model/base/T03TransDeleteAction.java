@@ -20,18 +20,18 @@ public class T03TransDeleteAction extends BaseAction {
 
     /** 変遷削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object transId = postJson.get("transId");
+        Object transId = form.get("transId");
         if (transId == null) {
-            transId = postJson.get("T03Trans.transId");
+            transId = form.get("T03Trans.transId");
         }
         if (transId == null) {
             throw new OptLockError("error.cant.delete", "変遷");
         }
 
-        T03Trans e = FormValidator.toBean(T03Trans.class.getName(), postJson);
+        T03Trans e = FormValidator.toBean(T03Trans.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "変遷");
         }

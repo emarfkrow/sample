@@ -20,18 +20,18 @@ public class T14KouteiDeleteAction extends BaseAction {
 
     /** 工程削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object kouteiId = postJson.get("kouteiId");
+        Object kouteiId = form.get("kouteiId");
         if (kouteiId == null) {
-            kouteiId = postJson.get("T14Koutei.kouteiId");
+            kouteiId = form.get("T14Koutei.kouteiId");
         }
         if (kouteiId == null) {
             throw new OptLockError("error.cant.delete", "工程");
         }
 
-        T14Koutei e = FormValidator.toBean(T14Koutei.class.getName(), postJson);
+        T14Koutei e = FormValidator.toBean(T14Koutei.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "工程");
         }

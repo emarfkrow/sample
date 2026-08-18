@@ -18,16 +18,16 @@ public class MhrUserGetAction extends BaseAction {
 
     /** MHR_USER照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object userId = postJson.get("userId");
+        Object userId = form.get("userId");
         if (userId == null) {
-            userId = postJson.get("MhrUser.userId");
+            userId = form.get("MhrUser.userId");
         }
         if (userId == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class MhrUserGetAction extends BaseAction {
             MhrUser mhrUser = MhrUser.get(userId);
             map.put("MhrUser", mhrUser);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

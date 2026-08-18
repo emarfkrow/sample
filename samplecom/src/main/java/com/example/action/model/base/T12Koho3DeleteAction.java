@@ -20,18 +20,18 @@ public class T12Koho3DeleteAction extends BaseAction {
 
     /** 候補３削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object koho3Id = postJson.get("koho3Id");
+        Object koho3Id = form.get("koho3Id");
         if (koho3Id == null) {
-            koho3Id = postJson.get("T12Koho3.koho3Id");
+            koho3Id = form.get("T12Koho3.koho3Id");
         }
         if (koho3Id == null) {
             throw new OptLockError("error.cant.delete", "候補３");
         }
 
-        T12Koho3 e = FormValidator.toBean(T12Koho3.class.getName(), postJson);
+        T12Koho3 e = FormValidator.toBean(T12Koho3.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "候補３");
         }

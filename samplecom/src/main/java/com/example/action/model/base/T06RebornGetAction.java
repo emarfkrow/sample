@@ -18,25 +18,25 @@ public class T06RebornGetAction extends BaseAction {
 
     /** T06_REBORN照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object rebornId = postJson.get("rebornId");
+        Object rebornId = form.get("rebornId");
         if (rebornId == null) {
-            rebornId = postJson.get("T06Reborn.rebornId");
+            rebornId = form.get("T06Reborn.rebornId");
         }
         if (rebornId == null) {
 
             T06Reborn t06Reborn = new T06Reborn();
 
             // 転生先になる場合は転生元から情報をコピー
-            Object prevId1 = postJson.get("prevId");
+            Object prevId1 = form.get("prevId");
             if (prevId1 == null) {
-                prevId1 = postJson.get("T06Reborn.prevId");
+                prevId1 = form.get("T06Reborn.prevId");
             }
             if (prevId1 != null) {
                 com.example.entity.T06Prev t06Prev = com.example.entity.T06Prev.get(prevId1);
@@ -68,7 +68,7 @@ public class T06RebornGetAction extends BaseAction {
             t06Reborn.referT06RebornDets();
             map.put("T06Reborn", t06Reborn);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

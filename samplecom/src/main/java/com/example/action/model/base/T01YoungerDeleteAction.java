@@ -20,18 +20,18 @@ public class T01YoungerDeleteAction extends BaseAction {
 
     /** 弟削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object broId = postJson.get("broId");
+        Object broId = form.get("broId");
         if (broId == null) {
-            broId = postJson.get("T01Younger.broId");
+            broId = form.get("T01Younger.broId");
         }
         if (broId == null) {
             throw new OptLockError("error.cant.delete", "弟");
         }
 
-        T01Younger e = FormValidator.toBean(T01Younger.class.getName(), postJson);
+        T01Younger e = FormValidator.toBean(T01Younger.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "弟");
         }

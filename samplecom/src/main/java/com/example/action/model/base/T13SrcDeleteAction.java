@@ -20,18 +20,18 @@ public class T13SrcDeleteAction extends BaseAction {
 
     /** 変換元削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object srcId = postJson.get("srcId");
+        Object srcId = form.get("srcId");
         if (srcId == null) {
-            srcId = postJson.get("T13Src.srcId");
+            srcId = form.get("T13Src.srcId");
         }
         if (srcId == null) {
             throw new OptLockError("error.cant.delete", "変換元");
         }
 
-        T13Src e = FormValidator.toBean(T13Src.class.getName(), postJson);
+        T13Src e = FormValidator.toBean(T13Src.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "変換元");
         }

@@ -20,20 +20,20 @@ public class T10SumRegistAction extends BaseAction {
 
     /** 集約登録処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
-        T10Sum e = FormValidator.toBean(T10Sum.class.getName(), postJson);
+        T10Sum e = FormValidator.toBean(T10Sum.class.getName(), form);
 
         if (e.isNew()) {
 
-            if (e.insert(now, execId) != 1) {
+            if (e.insert(at, by) != 1) {
                 throw new OptLockError("error.cant.insert", "集約");
             }
 
             //集約先に該当する場合は、集約元に主キーを反映
-            String summaryKey1 = postJson.get("T10Grp1.grp1Id").toString();
+            String summaryKey1 = form.get("T10Grp1.grp1Id").toString();
             if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(summaryKey1)) {
                 String[] summaryKeys = summaryKey1.trim().split(",");
                 for (String pk : summaryKeys) {
@@ -43,14 +43,14 @@ public class T10SumRegistAction extends BaseAction {
                         throw new OptLockError("error.already.summary", "集団１");
                     }
                     t10Grp1.setSumId(e.getSumId());
-                    if (t10Grp1.update(now, execId) != 1) {
+                    if (t10Grp1.update(at, by) != 1) {
                         throw new OptLockError("error.cant.insert", "集団１");
                     }
                 }
             }
 
             //集約先に該当する場合は、集約元に主キーを反映
-            String summaryKey2 = postJson.get("T10Grp2.grp2Id").toString();
+            String summaryKey2 = form.get("T10Grp2.grp2Id").toString();
             if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(summaryKey2)) {
                 String[] summaryKeys = summaryKey2.trim().split(",");
                 for (String pk : summaryKeys) {
@@ -60,7 +60,7 @@ public class T10SumRegistAction extends BaseAction {
                         throw new OptLockError("error.already.summary", "集団２");
                     }
                     t10Grp2.setSumId(e.getSumId());
-                    if (t10Grp2.update(now, execId) != 1) {
+                    if (t10Grp2.update(at, by) != 1) {
                         throw new OptLockError("error.cant.insert", "集団２");
                     }
                 }
@@ -70,9 +70,9 @@ public class T10SumRegistAction extends BaseAction {
 
         } else {
 
-            if (e.update(now, execId) == 1) {
+            if (e.update(at, by) == 1) {
                 map.put("INFO", Messages.get("info.update"));
-            } else if (e.insert(now, execId) == 1) {
+            } else if (e.insert(at, by) == 1) {
                 map.put("INFO", Messages.get("info.insert"));
             } else {
                 throw new OptLockError("error.cant.update", "集約");

@@ -20,18 +20,18 @@ public class T10Grp2DeleteAction extends BaseAction {
 
     /** 集団２削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object grp2Id = postJson.get("grp2Id");
+        Object grp2Id = form.get("grp2Id");
         if (grp2Id == null) {
-            grp2Id = postJson.get("T10Grp2.grp2Id");
+            grp2Id = form.get("T10Grp2.grp2Id");
         }
         if (grp2Id == null) {
             throw new OptLockError("error.cant.delete", "集団２");
         }
 
-        T10Grp2 e = FormValidator.toBean(T10Grp2.class.getName(), postJson);
+        T10Grp2 e = FormValidator.toBean(T10Grp2.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "集団２");
         }

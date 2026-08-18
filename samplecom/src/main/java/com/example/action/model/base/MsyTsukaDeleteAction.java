@@ -20,25 +20,25 @@ public class MsyTsukaDeleteAction extends BaseAction {
 
     /** 通貨マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object tsukaKb = postJson.get("tsukaKb");
+        Object tsukaKb = form.get("tsukaKb");
         if (tsukaKb == null) {
-            tsukaKb = postJson.get("MsyTsuka.tsukaKb");
+            tsukaKb = form.get("MsyTsuka.tsukaKb");
         }
         if (tsukaKb == null) {
             throw new OptLockError("error.cant.delete", "通貨マスタ");
         }
-        Object tekiyoBi = postJson.get("tekiyoBi");
+        Object tekiyoBi = form.get("tekiyoBi");
         if (tekiyoBi == null) {
-            tekiyoBi = postJson.get("MsyTsuka.tekiyoBi");
+            tekiyoBi = form.get("MsyTsuka.tekiyoBi");
         }
         if (tekiyoBi == null) {
             throw new OptLockError("error.cant.delete", "通貨マスタ");
         }
 
-        MsyTsuka e = FormValidator.toBean(MsyTsuka.class.getName(), postJson);
+        MsyTsuka e = FormValidator.toBean(MsyTsuka.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "通貨マスタ");
         }

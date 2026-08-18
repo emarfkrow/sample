@@ -18,25 +18,25 @@ public class T09ChoiceGetAction extends BaseAction {
 
     /** T09_CHOICE照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object choiceId = postJson.get("choiceId");
+        Object choiceId = form.get("choiceId");
         if (choiceId == null) {
-            choiceId = postJson.get("T09Choice.choiceId");
+            choiceId = form.get("T09Choice.choiceId");
         }
         if (choiceId == null) {
 
             T09Choice t09Choice = new T09Choice();
 
             // 選抜先になる場合は選抜元から情報をコピー
-            Object koho1Id1 = postJson.get("koho1Id");
+            Object koho1Id1 = form.get("koho1Id");
             if (koho1Id1 == null) {
-                koho1Id1 = postJson.get("T09Choice.koho1Id");
+                koho1Id1 = form.get("T09Choice.koho1Id");
             }
             if (koho1Id1 != null) {
                 com.example.entity.T09Koho1 t09Koho1 = com.example.entity.T09Koho1.get(koho1Id1);
@@ -45,9 +45,9 @@ public class T09ChoiceGetAction extends BaseAction {
             }
 
             // 選抜先になる場合は選抜元から情報をコピー
-            Object koho2Id2 = postJson.get("koho2Id");
+            Object koho2Id2 = form.get("koho2Id");
             if (koho2Id2 == null) {
-                koho2Id2 = postJson.get("T09Choice.koho2Id");
+                koho2Id2 = form.get("T09Choice.koho2Id");
             }
             if (koho2Id2 != null) {
                 com.example.entity.T09Koho2 t09Koho2 = com.example.entity.T09Koho2.get(koho2Id2);
@@ -68,7 +68,7 @@ public class T09ChoiceGetAction extends BaseAction {
             T09Choice t09Choice = T09Choice.get(choiceId);
             map.put("T09Choice", t09Choice);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

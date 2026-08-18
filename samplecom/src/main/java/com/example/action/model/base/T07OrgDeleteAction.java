@@ -20,18 +20,18 @@ public class T07OrgDeleteAction extends BaseAction {
 
     /** 起源削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object orgId = postJson.get("orgId");
+        Object orgId = form.get("orgId");
         if (orgId == null) {
-            orgId = postJson.get("T07Org.orgId");
+            orgId = form.get("T07Org.orgId");
         }
         if (orgId == null) {
             throw new OptLockError("error.cant.delete", "起源");
         }
 
-        T07Org e = FormValidator.toBean(T07Org.class.getName(), postJson);
+        T07Org e = FormValidator.toBean(T07Org.class.getName(), form);
 
         java.util.List<com.example.entity.T07OrgDet> t07OrgDets = e.referT07OrgDets();
         if (t07OrgDets != null) {

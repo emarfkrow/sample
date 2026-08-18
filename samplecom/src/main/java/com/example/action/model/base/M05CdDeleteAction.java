@@ -20,18 +20,18 @@ public class M05CdDeleteAction extends BaseAction {
 
     /** CDマスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object cdrefCd = postJson.get("cdrefCd");
+        Object cdrefCd = form.get("cdrefCd");
         if (cdrefCd == null) {
-            cdrefCd = postJson.get("M05Cd.cdrefCd");
+            cdrefCd = form.get("M05Cd.cdrefCd");
         }
         if (cdrefCd == null) {
             throw new OptLockError("error.cant.delete", "CDマスタ");
         }
 
-        M05Cd e = FormValidator.toBean(M05Cd.class.getName(), postJson);
+        M05Cd e = FormValidator.toBean(M05Cd.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "CDマスタ");
         }

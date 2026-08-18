@@ -18,16 +18,16 @@ public class MhrShokuiGetAction extends BaseAction {
 
     /** MHR_SHOKUI照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object shokuiId = postJson.get("shokuiId");
+        Object shokuiId = form.get("shokuiId");
         if (shokuiId == null) {
-            shokuiId = postJson.get("MhrShokui.shokuiId");
+            shokuiId = form.get("MhrShokui.shokuiId");
         }
         if (shokuiId == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class MhrShokuiGetAction extends BaseAction {
             MhrShokui mhrShokui = MhrShokui.get(shokuiId);
             map.put("MhrShokui", mhrShokui);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

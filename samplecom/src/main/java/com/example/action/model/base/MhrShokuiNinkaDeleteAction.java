@@ -20,32 +20,32 @@ public class MhrShokuiNinkaDeleteAction extends BaseAction {
 
     /** 認可マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object bushoId = postJson.get("bushoId");
+        Object bushoId = form.get("bushoId");
         if (bushoId == null) {
-            bushoId = postJson.get("MhrShokuiNinka.bushoId");
+            bushoId = form.get("MhrShokuiNinka.bushoId");
         }
         if (bushoId == null) {
             throw new OptLockError("error.cant.delete", "認可マスタ");
         }
-        Object shokuiId = postJson.get("shokuiId");
+        Object shokuiId = form.get("shokuiId");
         if (shokuiId == null) {
-            shokuiId = postJson.get("MhrShokuiNinka.shokuiId");
+            shokuiId = form.get("MhrShokuiNinka.shokuiId");
         }
         if (shokuiId == null) {
             throw new OptLockError("error.cant.delete", "認可マスタ");
         }
-        Object tableRe = postJson.get("tableRe");
+        Object tableRe = form.get("tableRe");
         if (tableRe == null) {
-            tableRe = postJson.get("MhrShokuiNinka.tableRe");
+            tableRe = form.get("MhrShokuiNinka.tableRe");
         }
         if (tableRe == null) {
             throw new OptLockError("error.cant.delete", "認可マスタ");
         }
 
-        MhrShokuiNinka e = FormValidator.toBean(MhrShokuiNinka.class.getName(), postJson);
+        MhrShokuiNinka e = FormValidator.toBean(MhrShokuiNinka.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "認可マスタ");
         }

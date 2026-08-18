@@ -18,16 +18,16 @@ public class T09Koho1GetAction extends BaseAction {
 
     /** T09_KOHO1照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object koho1Id = postJson.get("koho1Id");
+        Object koho1Id = form.get("koho1Id");
         if (koho1Id == null) {
-            koho1Id = postJson.get("T09Koho1.koho1Id");
+            koho1Id = form.get("T09Koho1.koho1Id");
         }
         if (koho1Id == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class T09Koho1GetAction extends BaseAction {
             T09Koho1 t09Koho1 = T09Koho1.get(koho1Id);
             map.put("T09Koho1", t09Koho1);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

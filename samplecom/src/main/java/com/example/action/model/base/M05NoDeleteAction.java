@@ -20,18 +20,18 @@ public class M05NoDeleteAction extends BaseAction {
 
     /** NOマスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object norefNo = postJson.get("norefNo");
+        Object norefNo = form.get("norefNo");
         if (norefNo == null) {
-            norefNo = postJson.get("M05No.norefNo");
+            norefNo = form.get("M05No.norefNo");
         }
         if (norefNo == null) {
             throw new OptLockError("error.cant.delete", "NOマスタ");
         }
 
-        M05No e = FormValidator.toBean(M05No.class.getName(), postJson);
+        M05No e = FormValidator.toBean(M05No.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "NOマスタ");
         }

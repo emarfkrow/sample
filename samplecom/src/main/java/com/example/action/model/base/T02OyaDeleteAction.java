@@ -20,18 +20,18 @@ public class T02OyaDeleteAction extends BaseAction {
 
     /** 親削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object oyaId = postJson.get("oyaId");
+        Object oyaId = form.get("oyaId");
         if (oyaId == null) {
-            oyaId = postJson.get("T02Oya.oyaId");
+            oyaId = form.get("T02Oya.oyaId");
         }
         if (oyaId == null) {
             throw new OptLockError("error.cant.delete", "親");
         }
 
-        T02Oya e = FormValidator.toBean(T02Oya.class.getName(), postJson);
+        T02Oya e = FormValidator.toBean(T02Oya.class.getName(), form);
 
         java.util.List<com.example.entity.T02Dinks> t02Dinkss = e.referT02Dinkss();
         if (t02Dinkss != null) {

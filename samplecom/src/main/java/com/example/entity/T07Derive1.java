@@ -278,16 +278,16 @@ public class T07Derive1 implements IEntity {
      */
     public static T07Derive1 get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`DERIVE1_ID` = :derive_1_id");
+        whereList.add("\"DERIVE1_ID\" = :derive_1_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`DERIVE1_ID` \n";
-        sql += "    , a.`ORG_INFO` \n";
-        sql += "    , a.`ORG_ID` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"DERIVE1_ID\" \n";
+        sql += "    , a.\"ORG_INFO\" \n";
+        sql += "    , a.\"ORG_ID\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    T07_DERIVE1 a \n";
         sql += "WHERE \n";
@@ -299,11 +299,11 @@ public class T07Derive1 implements IEntity {
 
     /**
      * 派生１追加
-     * @param now システム日時
-     * @param execId 登録者
+     * @param at システム日時
+     * @param by 登録者
      * @return 追加件数
      */
-    public int insert(final java.time.LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime at, final String by) {
 
         // 派生１IDの採番処理
         numbering();
@@ -313,26 +313,26 @@ public class T07Derive1 implements IEntity {
             for (T07Derive1Det t07Derive1Det : this.t07Derive1Dets) {
                 if (t07Derive1Det != null) {
                     t07Derive1Det.setDerive1Id(this.getDerive1Id());
+                    t07Derive1Det.insert(at, by);
                 }
-                t07Derive1Det.insert(now, execId);
             }
         }
 
         // 派生１の登録
         String sql = "INSERT INTO T07_DERIVE1(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`DERIVE1_ID` -- :derive_1_id");
-        nameList.add("`ORG_INFO` -- :org_info");
-        nameList.add("`ORG_ID` -- :org_id");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"DERIVE1_ID\" -- :derive_1_id");
+        nameList.add("\"ORG_INFO\" -- :org_info");
+        nameList.add("\"ORG_ID\" -- :org_id");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -342,9 +342,9 @@ public class T07Derive1 implements IEntity {
         valueList.add(":derive_1_id");
         valueList.add(":org_info");
         valueList.add(":org_id");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -354,7 +354,7 @@ public class T07Derive1 implements IEntity {
         if (this.derive1Id != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`DERIVE1_ID`) IS NULL THEN 0 ELSE MAX(e.`DERIVE1_ID`) * 1 END + 1 AS `DERIVE1_ID` FROM T07_DERIVE1 e";
+        String sql = "SELECT CASE WHEN MAX(e.\"DERIVE1_ID\") IS NULL THEN 0 ELSE MAX(e.\"DERIVE1_ID\") * 1 END + 1 AS \"DERIVE1_ID\" FROM T07_DERIVE1 e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("DERIVE1_ID");
@@ -363,11 +363,11 @@ public class T07Derive1 implements IEntity {
 
     /**
      * 派生１更新
-     * @param now システム日時
-     * @param execId 更新者
+     * @param at システム日時
+     * @param by 更新者
      * @return 更新件数
      */
-    public int update(final java.time.LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime at, final String by) {
 
         // 派生１明細の登録
         if (this.t07Derive1Dets != null) {
@@ -377,26 +377,26 @@ public class T07Derive1 implements IEntity {
                 }
                 t07Derive1Det.setDerive1Id(this.derive1Id);
                 if (t07Derive1Det.isNew()) {
-                    t07Derive1Det.insert(now, execId);
+                    t07Derive1Det.insert(at, by);
                 } else {
-                    t07Derive1Det.update(now, execId);
+                    t07Derive1Det.update(at, by);
                 }
             }
         }
 
         // 派生１の登録
         String sql = "UPDATE T07_DERIVE1\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`DERIVE1_ID` = :derive_1_id");
-        setList.add("`ORG_INFO` = :org_info");
-        setList.add("`ORG_ID` = :org_id");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"DERIVE1_ID\" = :derive_1_id");
+        setList.add("\"ORG_INFO\" = :org_info");
+        setList.add("\"ORG_ID\" = :org_id");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -437,27 +437,27 @@ public class T07Derive1 implements IEntity {
     }
 
     /**
-     * @param now システム日時
-     * @param execId 実行ID
+     * @param at システム日時
+     * @param by 実行ID
      * @return マップ化したエンティティ
      */
-    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime at, final String by) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("derive_1_id", this.derive1Id);
         map.put("org_info", this.orgInfo);
         map.put("org_id", this.orgId);
-        map.put("insert_ts", now);
-        map.put("insert_user_id", execId);
-        map.put("update_ts", now);
-        map.put("update_user_id", execId);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
         return map;
     }
 
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`DERIVE1_ID` = :derive_1_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"DERIVE1_ID\" = :derive_1_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 
@@ -501,15 +501,15 @@ public class T07Derive1 implements IEntity {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("DERIVE1_ID = :derive_1_id");
         String sql = "SELECT ";
-        sql += "`DERIVE1_ID`";
-        sql += ", `DERIVE1_BN`";
-        sql += ", `DET_INFO`";
-        sql += ", LEFT(DATE_FORMAT (`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS";
-        sql += ", `INSERT_USER_ID`";
-        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", LEFT(DATE_FORMAT (`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS";
-        sql += ", `UPDATE_USER_ID`";
-        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
+        sql += "\"DERIVE1_ID\"";
+        sql += ", \"DERIVE1_BN\"";
+        sql += ", \"DET_INFO\"";
+        sql += ", TO_CHAR (\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS";
+        sql += ", \"INSERT_USER_ID\"";
+        sql += ", (SELECT r0.\"USER_SEI\" FROM MHR_USER r0 WHERE TO_CHAR (r0.\"USER_ID\") = a.\"INSERT_USER_ID\") AS \"INSERT_USER_SEI\"";
+        sql += ", TO_CHAR (\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS";
+        sql += ", \"UPDATE_USER_ID\"";
+        sql += ", (SELECT r1.\"USER_SEI\" FROM MHR_USER r1 WHERE TO_CHAR (r1.\"USER_ID\") = a.\"UPDATE_USER_ID\") AS \"UPDATE_USER_SEI\"";
         sql += " FROM T07_DERIVE1_DET a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "DERIVE1_ID, DERIVE1_BN";

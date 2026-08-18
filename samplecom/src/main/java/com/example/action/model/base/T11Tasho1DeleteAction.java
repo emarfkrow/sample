@@ -20,18 +20,18 @@ public class T11Tasho1DeleteAction extends BaseAction {
 
     /** 他生１削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object tasho1Id = postJson.get("tasho1Id");
+        Object tasho1Id = form.get("tasho1Id");
         if (tasho1Id == null) {
-            tasho1Id = postJson.get("T11Tasho1.tasho1Id");
+            tasho1Id = form.get("T11Tasho1.tasho1Id");
         }
         if (tasho1Id == null) {
             throw new OptLockError("error.cant.delete", "他生１");
         }
 
-        T11Tasho1 e = FormValidator.toBean(T11Tasho1.class.getName(), postJson);
+        T11Tasho1 e = FormValidator.toBean(T11Tasho1.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "他生１");
         }

@@ -20,18 +20,18 @@ public class MsyKbnDeleteAction extends BaseAction {
 
     /** 区分マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object kbnNm = postJson.get("kbnNm");
+        Object kbnNm = form.get("kbnNm");
         if (kbnNm == null) {
-            kbnNm = postJson.get("MsyKbn.kbnNm");
+            kbnNm = form.get("MsyKbn.kbnNm");
         }
         if (kbnNm == null) {
             throw new OptLockError("error.cant.delete", "区分マスタ");
         }
 
-        MsyKbn e = FormValidator.toBean(MsyKbn.class.getName(), postJson);
+        MsyKbn e = FormValidator.toBean(MsyKbn.class.getName(), form);
 
         java.util.List<com.example.entity.MsyKbnVal> msyKbnVals = e.referMsyKbnVals();
         if (msyKbnVals != null) {

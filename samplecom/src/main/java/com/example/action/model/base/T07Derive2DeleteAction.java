@@ -20,18 +20,18 @@ public class T07Derive2DeleteAction extends BaseAction {
 
     /** 派生２削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object derive2Id = postJson.get("derive2Id");
+        Object derive2Id = form.get("derive2Id");
         if (derive2Id == null) {
-            derive2Id = postJson.get("T07Derive2.derive2Id");
+            derive2Id = form.get("T07Derive2.derive2Id");
         }
         if (derive2Id == null) {
             throw new OptLockError("error.cant.delete", "派生２");
         }
 
-        T07Derive2 e = FormValidator.toBean(T07Derive2.class.getName(), postJson);
+        T07Derive2 e = FormValidator.toBean(T07Derive2.class.getName(), form);
 
         java.util.List<com.example.entity.T07Derive2Det> t07Derive2Dets = e.referT07Derive2Dets();
         if (t07Derive2Dets != null) {

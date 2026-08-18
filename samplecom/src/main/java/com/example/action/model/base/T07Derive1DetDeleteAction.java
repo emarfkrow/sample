@@ -20,25 +20,25 @@ public class T07Derive1DetDeleteAction extends BaseAction {
 
     /** 派生１明細削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object derive1Id = postJson.get("derive1Id");
+        Object derive1Id = form.get("derive1Id");
         if (derive1Id == null) {
-            derive1Id = postJson.get("T07Derive1Det.derive1Id");
+            derive1Id = form.get("T07Derive1Det.derive1Id");
         }
         if (derive1Id == null) {
             throw new OptLockError("error.cant.delete", "派生１明細");
         }
-        Object derive1Bn = postJson.get("derive1Bn");
+        Object derive1Bn = form.get("derive1Bn");
         if (derive1Bn == null) {
-            derive1Bn = postJson.get("T07Derive1Det.derive1Bn");
+            derive1Bn = form.get("T07Derive1Det.derive1Bn");
         }
         if (derive1Bn == null) {
             throw new OptLockError("error.cant.delete", "派生１明細");
         }
 
-        T07Derive1Det e = FormValidator.toBean(T07Derive1Det.class.getName(), postJson);
+        T07Derive1Det e = FormValidator.toBean(T07Derive1Det.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "派生１明細");
         }

@@ -20,25 +20,25 @@ public class T02KoDeleteAction extends BaseAction {
 
     /** 子削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object oyaId = postJson.get("oyaId");
+        Object oyaId = form.get("oyaId");
         if (oyaId == null) {
-            oyaId = postJson.get("T02Ko.oyaId");
+            oyaId = form.get("T02Ko.oyaId");
         }
         if (oyaId == null) {
             throw new OptLockError("error.cant.delete", "子");
         }
-        Object koBn = postJson.get("koBn");
+        Object koBn = form.get("koBn");
         if (koBn == null) {
-            koBn = postJson.get("T02Ko.koBn");
+            koBn = form.get("T02Ko.koBn");
         }
         if (koBn == null) {
             throw new OptLockError("error.cant.delete", "子");
         }
 
-        T02Ko e = FormValidator.toBean(T02Ko.class.getName(), postJson);
+        T02Ko e = FormValidator.toBean(T02Ko.class.getName(), form);
 
         // child:T02Mago, parents:3
 

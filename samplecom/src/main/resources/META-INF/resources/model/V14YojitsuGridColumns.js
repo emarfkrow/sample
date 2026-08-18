@@ -16,6 +16,6 @@ $(function() {
         Column.date8('KANRYO_YMD', Messages['V14YojitsuGrid.kanryoYmd'], 80, '', null),
         Column.text('DEPENDENCIES', Messages['V14YojitsuGrid.dependencies'], 300, '', null),
         Column.text('KOUTEI_PATH', Messages['V14YojitsuGrid.kouteiPath'], 300, '', null),
-        Column.dec0('ROOT', Messages['V14YojitsuGrid.root'], 100, '', null),
+        Column.dec0('ROOT', Messages['V14YojitsuGrid.root'], 110, '', null),
     ];
 });

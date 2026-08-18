@@ -18,24 +18,24 @@ public class T02KoGetAction extends BaseAction {
 
     /** T02_KO照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object oyaId = postJson.get("oyaId");
+        Object oyaId = form.get("oyaId");
         if (oyaId == null) {
-            oyaId = postJson.get("T02Ko.oyaId");
+            oyaId = form.get("T02Ko.oyaId");
         }
         if (oyaId == null) {
             isAllKey = false;
         }
 
-        Object koBn = postJson.get("koBn");
+        Object koBn = form.get("koBn");
         if (koBn == null) {
-            koBn = postJson.get("T02Ko.koBn");
+            koBn = form.get("T02Ko.koBn");
         }
         if (koBn == null) {
             isAllKey = false;
@@ -62,7 +62,7 @@ public class T02KoGetAction extends BaseAction {
             t02Ko.referT02Magos();
             map.put("T02Ko", t02Ko);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

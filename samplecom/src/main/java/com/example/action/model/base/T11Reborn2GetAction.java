@@ -18,25 +18,25 @@ public class T11Reborn2GetAction extends BaseAction {
 
     /** T11_REBORN2照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object reborn2Id = postJson.get("reborn2Id");
+        Object reborn2Id = form.get("reborn2Id");
         if (reborn2Id == null) {
-            reborn2Id = postJson.get("T11Reborn2.reborn2Id");
+            reborn2Id = form.get("T11Reborn2.reborn2Id");
         }
         if (reborn2Id == null) {
 
             T11Reborn2 t11Reborn2 = new T11Reborn2();
 
             // 転生先になる場合は転生元から情報をコピー
-            Object prev2Id1 = postJson.get("prev2Id");
+            Object prev2Id1 = form.get("prev2Id");
             if (prev2Id1 == null) {
-                prev2Id1 = postJson.get("T11Reborn2.prev2Id");
+                prev2Id1 = form.get("T11Reborn2.prev2Id");
             }
             if (prev2Id1 != null) {
                 com.example.entity.T11Prev2 t11Prev2 = com.example.entity.T11Prev2.get(prev2Id1);
@@ -57,7 +57,7 @@ public class T11Reborn2GetAction extends BaseAction {
             T11Reborn2 t11Reborn2 = T11Reborn2.get(reborn2Id);
             map.put("T11Reborn2", t11Reborn2);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

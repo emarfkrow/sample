@@ -20,25 +20,25 @@ public class MsyKadobiDeleteAction extends BaseAction {
 
     /** 稼働日マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object kadoYmd = postJson.get("kadoYmd");
+        Object kadoYmd = form.get("kadoYmd");
         if (kadoYmd == null) {
-            kadoYmd = postJson.get("MsyKadobi.kadoYmd");
+            kadoYmd = form.get("MsyKadobi.kadoYmd");
         }
         if (kadoYmd == null) {
             throw new OptLockError("error.cant.delete", "稼働日マスタ");
         }
-        Object bushoId = postJson.get("bushoId");
+        Object bushoId = form.get("bushoId");
         if (bushoId == null) {
-            bushoId = postJson.get("MsyKadobi.bushoId");
+            bushoId = form.get("MsyKadobi.bushoId");
         }
         if (bushoId == null) {
             throw new OptLockError("error.cant.delete", "稼働日マスタ");
         }
 
-        MsyKadobi e = FormValidator.toBean(MsyKadobi.class.getName(), postJson);
+        MsyKadobi e = FormValidator.toBean(MsyKadobi.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "稼働日マスタ");
         }

@@ -18,16 +18,16 @@ public class T02OyaGetAction extends BaseAction {
 
     /** T02_OYA照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object oyaId = postJson.get("oyaId");
+        Object oyaId = form.get("oyaId");
         if (oyaId == null) {
-            oyaId = postJson.get("T02Oya.oyaId");
+            oyaId = form.get("T02Oya.oyaId");
         }
         if (oyaId == null) {
             isAllKey = false;
@@ -46,7 +46,7 @@ public class T02OyaGetAction extends BaseAction {
             t02Oya.referT02Orphans();
             map.put("T02Oya", t02Oya);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

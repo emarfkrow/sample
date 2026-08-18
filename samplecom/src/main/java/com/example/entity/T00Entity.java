@@ -893,43 +893,43 @@ public class T00Entity implements IEntity {
      */
     public static T00Entity get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`ENTITY_ID` = :entity_id");
+        whereList.add("\"ENTITY_ID\" = :entity_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`ENTITY_ID` \n";
-        sql += "    , a.`ENTITY_NM` \n";
-        sql += "    , a.`ENTITY_MEI` \n";
-        sql += "    , a.`BIT_B` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`CHECK_F`) AS CHECK_F \n";
-        sql += "    , a.`RADIO_KB` \n";
-        sql += "    , a.`PULLDOWN_KB` \n";
-        sql += "    , a.`PULLDOWN_SB` \n";
-        sql += "    , a.`MEMO_TX` \n";
-        sql += "    , a.`MEMO` \n";
-        sql += "    , a.`TENPU_FILE` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`NEN_Y`) AS NEN_Y \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`TSUKI_M`) AS TSUKI_M \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`HI_D`) AS HI_D \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`NENGETSU_YM`) AS NENGETSU_YM \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_YMD`) AS NENGAPPI_YMD \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`TIMESTAMP_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS TIMESTAMP_TS \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`NICHIJI_DT`, '%Y-%m-%dT%H:%i:%s'), 19) AS NICHIJI_DT \n";
-        sql += "    , a.`HIDUKE_BI` AS HIDUKE_BI \n";
-        sql += "    , a.`JIKOKU_HM` \n";
-        sql += "    , a.`JIKAN_TM` \n";
-        sql += "    , a.`TSUKA_KB` \n";
-        sql += "    , a.`JUCHU_QT` \n";
-        sql += "    , a.`JUCHU_PR` \n";
-        sql += "    , a.`JUCHU_AM` \n";
-        sql += "    , a.`HACCHU_QT` \n";
-        sql += "    , a.`HACCHU_PR` \n";
-        sql += "    , a.`HACCHU_AM` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`DELETE_F`) AS DELETE_F \n";
-        sql += "    , a.`STATUS_KB` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"ENTITY_ID\" \n";
+        sql += "    , a.\"ENTITY_NM\" \n";
+        sql += "    , a.\"ENTITY_MEI\" \n";
+        sql += "    , a.\"BIT_B\" \n";
+        sql += "    , RTRIM (RTRIM (a.\"CHECK_F\"), '　') AS CHECK_F \n";
+        sql += "    , a.\"RADIO_KB\" \n";
+        sql += "    , a.\"PULLDOWN_KB\" \n";
+        sql += "    , a.\"PULLDOWN_SB\" \n";
+        sql += "    , a.\"MEMO_TX\" \n";
+        sql += "    , a.\"MEMO\" \n";
+        sql += "    , a.\"TENPU_FILE\" \n";
+        sql += "    , RTRIM (RTRIM (a.\"NEN_Y\"), '　') AS NEN_Y \n";
+        sql += "    , RTRIM (RTRIM (a.\"TSUKI_M\"), '　') AS TSUKI_M \n";
+        sql += "    , RTRIM (RTRIM (a.\"HI_D\"), '　') AS HI_D \n";
+        sql += "    , RTRIM (RTRIM (a.\"NENGETSU_YM\"), '　') AS NENGETSU_YM \n";
+        sql += "    , RTRIM (RTRIM (a.\"NENGAPPI_YMD\"), '　') AS NENGAPPI_YMD \n";
+        sql += "    , TO_CHAR (a.\"TIMESTAMP_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS TIMESTAMP_TS \n";
+        sql += "    , TO_CHAR (a.\"NICHIJI_DT\", 'YYYY-MM-DD HH24:MI:SS') AS NICHIJI_DT \n";
+        sql += "    , TO_CHAR (a.\"HIDUKE_BI\", 'YYYY-MM-DD') AS HIDUKE_BI \n";
+        sql += "    , a.\"JIKOKU_HM\" \n";
+        sql += "    , a.\"JIKAN_TM\" \n";
+        sql += "    , a.\"TSUKA_KB\" \n";
+        sql += "    , a.\"JUCHU_QT\" \n";
+        sql += "    , a.\"JUCHU_PR\" \n";
+        sql += "    , a.\"JUCHU_AM\" \n";
+        sql += "    , a.\"HACCHU_QT\" \n";
+        sql += "    , a.\"HACCHU_PR\" \n";
+        sql += "    , a.\"HACCHU_AM\" \n";
+        sql += "    , RTRIM (RTRIM (a.\"DELETE_F\"), '　') AS DELETE_F \n";
+        sql += "    , a.\"STATUS_KB\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    T00_ENTITY a \n";
         sql += "WHERE \n";
@@ -941,57 +941,57 @@ public class T00Entity implements IEntity {
 
     /**
      * エンティティ追加
-     * @param now システム日時
-     * @param execId 登録者
+     * @param at システム日時
+     * @param by 登録者
      * @return 追加件数
      */
-    public int insert(final java.time.LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime at, final String by) {
 
         // エンティティIDの採番処理
         numbering();
 
         // エンティティの登録
         String sql = "INSERT INTO T00_ENTITY(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`ENTITY_ID` -- :entity_id");
-        nameList.add("`ENTITY_NM` -- :entity_nm");
-        nameList.add("`ENTITY_MEI` -- :entity_mei");
-        nameList.add("`BIT_B` -- :bit_b");
-        nameList.add("`CHECK_F` -- :check_f");
-        nameList.add("`RADIO_KB` -- :radio_kb");
-        nameList.add("`PULLDOWN_KB` -- :pulldown_kb");
-        nameList.add("`PULLDOWN_SB` -- :pulldown_sb");
-        nameList.add("`MEMO_TX` -- :memo_tx");
-        nameList.add("`MEMO` -- :memo");
-        nameList.add("`TENPU_FILE` -- :tenpu_file");
-        nameList.add("`NEN_Y` -- :nen_y");
-        nameList.add("`TSUKI_M` -- :tsuki_m");
-        nameList.add("`HI_D` -- :hi_d");
-        nameList.add("`NENGETSU_YM` -- :nengetsu_ym");
-        nameList.add("`NENGAPPI_YMD` -- :nengappi_ymd");
-        nameList.add("`TIMESTAMP_TS` -- :timestamp_ts");
-        nameList.add("`NICHIJI_DT` -- :nichiji_dt");
-        nameList.add("`HIDUKE_BI` -- :hiduke_bi");
-        nameList.add("`JIKOKU_HM` -- :jikoku_hm");
-        nameList.add("`JIKAN_TM` -- :jikan_tm");
-        nameList.add("`TSUKA_KB` -- :tsuka_kb");
-        nameList.add("`JUCHU_QT` -- :juchu_qt");
-        nameList.add("`JUCHU_PR` -- :juchu_pr");
-        nameList.add("`JUCHU_AM` -- :juchu_am");
-        nameList.add("`HACCHU_QT` -- :hacchu_qt");
-        nameList.add("`HACCHU_PR` -- :hacchu_pr");
-        nameList.add("`HACCHU_AM` -- :hacchu_am");
-        nameList.add("`DELETE_F` -- :delete_f");
-        nameList.add("`STATUS_KB` -- :status_kb");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"ENTITY_ID\" -- :entity_id");
+        nameList.add("\"ENTITY_NM\" -- :entity_nm");
+        nameList.add("\"ENTITY_MEI\" -- :entity_mei");
+        nameList.add("\"BIT_B\" -- :bit_b");
+        nameList.add("\"CHECK_F\" -- :check_f");
+        nameList.add("\"RADIO_KB\" -- :radio_kb");
+        nameList.add("\"PULLDOWN_KB\" -- :pulldown_kb");
+        nameList.add("\"PULLDOWN_SB\" -- :pulldown_sb");
+        nameList.add("\"MEMO_TX\" -- :memo_tx");
+        nameList.add("\"MEMO\" -- :memo");
+        nameList.add("\"TENPU_FILE\" -- :tenpu_file");
+        nameList.add("\"NEN_Y\" -- :nen_y");
+        nameList.add("\"TSUKI_M\" -- :tsuki_m");
+        nameList.add("\"HI_D\" -- :hi_d");
+        nameList.add("\"NENGETSU_YM\" -- :nengetsu_ym");
+        nameList.add("\"NENGAPPI_YMD\" -- :nengappi_ymd");
+        nameList.add("\"TIMESTAMP_TS\" -- :timestamp_ts");
+        nameList.add("\"NICHIJI_DT\" -- :nichiji_dt");
+        nameList.add("\"HIDUKE_BI\" -- :hiduke_bi");
+        nameList.add("\"JIKOKU_HM\" -- :jikoku_hm");
+        nameList.add("\"JIKAN_TM\" -- :jikan_tm");
+        nameList.add("\"TSUKA_KB\" -- :tsuka_kb");
+        nameList.add("\"JUCHU_QT\" -- :juchu_qt");
+        nameList.add("\"JUCHU_PR\" -- :juchu_pr");
+        nameList.add("\"JUCHU_AM\" -- :juchu_am");
+        nameList.add("\"HACCHU_QT\" -- :hacchu_qt");
+        nameList.add("\"HACCHU_PR\" -- :hacchu_pr");
+        nameList.add("\"HACCHU_AM\" -- :hacchu_am");
+        nameList.add("\"DELETE_F\" -- :delete_f");
+        nameList.add("\"STATUS_KB\" -- :status_kb");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -1014,9 +1014,9 @@ public class T00Entity implements IEntity {
         valueList.add(":hi_d");
         valueList.add(":nengetsu_ym");
         valueList.add(":nengappi_ymd");
-        valueList.add("LEFT(DATE_FORMAT (now(3), '%Y-%m-%dT%H:%i:%s.%f'), 23)");
-        valueList.add(":nichiji_dt");
-        valueList.add(":hiduke_bi");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (TO_CHAR (SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI:SS.FF3'), 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:nichiji_dt, 0, 19), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS')");
+        valueList.add("TO_DATE (SUBSTR (:hiduke_bi, 0, 10), 'YYYY-MM-DD')");
         valueList.add(":jikoku_hm");
         valueList.add(":jikan_tm");
         valueList.add(":tsuka_kb");
@@ -1028,9 +1028,9 @@ public class T00Entity implements IEntity {
         valueList.add(":hacchu_am");
         valueList.add(":delete_f");
         valueList.add(":status_kb");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -1040,7 +1040,7 @@ public class T00Entity implements IEntity {
         if (this.entityId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`ENTITY_ID`) IS NULL THEN 0 ELSE MAX(e.`ENTITY_ID`) * 1 END + 1 AS `ENTITY_ID` FROM T00_ENTITY e";
+        String sql = "SELECT CASE WHEN MAX(e.\"ENTITY_ID\") IS NULL THEN 0 ELSE MAX(e.\"ENTITY_ID\") * 1 END + 1 AS \"ENTITY_ID\" FROM T00_ENTITY e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("ENTITY_ID");
@@ -1049,11 +1049,11 @@ public class T00Entity implements IEntity {
 
     /**
      * エンティティ更新
-     * @param now システム日時
-     * @param execId 更新者
+     * @param at システム日時
+     * @param by 更新者
      * @return 更新件数
      */
-    public int update(final java.time.LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime at, final String by) {
 
         // 決裁フローの登録
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.statusKb) && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.riyuTx)) {
@@ -1061,56 +1061,56 @@ public class T00Entity implements IEntity {
             t03StatusKb.setTableNm("T00_ENTITY");
             t03StatusKb.setPrimaryKeys(String.join(",", this.getEntityId().toString()));
             t03StatusKb.setStatusKb(this.statusKb);
-            t03StatusKb.setKessaiTs(now);
-            t03StatusKb.setKessaiId(execId);
+            t03StatusKb.setKessaiTs(at);
+            t03StatusKb.setKessaiId(by);
             t03StatusKb.setRiyuTx(this.riyuTx);
             t03StatusKb.setInsertTs(this.insertTs);
             t03StatusKb.setInsertUserId(this.insertUserId);
             t03StatusKb.setUpdateTs(this.updateTs);
             t03StatusKb.setUpdateUserId(this.updateUserId);
-            t03StatusKb.insert(now, execId);
+            t03StatusKb.insert(at, by);
         }
 
         // エンティティの登録
         String sql = "UPDATE T00_ENTITY\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`ENTITY_ID` = :entity_id");
-        setList.add("`ENTITY_NM` = :entity_nm");
-        setList.add("`ENTITY_MEI` = :entity_mei");
-        setList.add("`BIT_B` = :bit_b");
-        setList.add("`CHECK_F` = :check_f");
-        setList.add("`RADIO_KB` = :radio_kb");
-        setList.add("`PULLDOWN_KB` = :pulldown_kb");
-        setList.add("`PULLDOWN_SB` = :pulldown_sb");
-        setList.add("`MEMO_TX` = :memo_tx");
-        setList.add("`MEMO` = :memo");
-        setList.add("`TENPU_FILE` = :tenpu_file");
-        setList.add("`NEN_Y` = :nen_y");
-        setList.add("`TSUKI_M` = :tsuki_m");
-        setList.add("`HI_D` = :hi_d");
-        setList.add("`NENGETSU_YM` = :nengetsu_ym");
-        setList.add("`NENGAPPI_YMD` = :nengappi_ymd");
-        setList.add("`TIMESTAMP_TS` = :timestamp_ts");
-        setList.add("`NICHIJI_DT` = :nichiji_dt");
-        setList.add("`HIDUKE_BI` = :hiduke_bi");
-        setList.add("`JIKOKU_HM` = :jikoku_hm");
-        setList.add("`JIKAN_TM` = :jikan_tm");
-        setList.add("`TSUKA_KB` = :tsuka_kb");
-        setList.add("`JUCHU_QT` = :juchu_qt");
-        setList.add("`JUCHU_PR` = :juchu_pr");
-        setList.add("`JUCHU_AM` = :juchu_am");
-        setList.add("`HACCHU_QT` = :hacchu_qt");
-        setList.add("`HACCHU_PR` = :hacchu_pr");
-        setList.add("`HACCHU_AM` = :hacchu_am");
-        setList.add("`DELETE_F` = :delete_f");
-        setList.add("`STATUS_KB` = :status_kb");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"ENTITY_ID\" = :entity_id");
+        setList.add("\"ENTITY_NM\" = :entity_nm");
+        setList.add("\"ENTITY_MEI\" = :entity_mei");
+        setList.add("\"BIT_B\" = :bit_b");
+        setList.add("\"CHECK_F\" = :check_f");
+        setList.add("\"RADIO_KB\" = :radio_kb");
+        setList.add("\"PULLDOWN_KB\" = :pulldown_kb");
+        setList.add("\"PULLDOWN_SB\" = :pulldown_sb");
+        setList.add("\"MEMO_TX\" = :memo_tx");
+        setList.add("\"MEMO\" = :memo");
+        setList.add("\"TENPU_FILE\" = :tenpu_file");
+        setList.add("\"NEN_Y\" = :nen_y");
+        setList.add("\"TSUKI_M\" = :tsuki_m");
+        setList.add("\"HI_D\" = :hi_d");
+        setList.add("\"NENGETSU_YM\" = :nengetsu_ym");
+        setList.add("\"NENGAPPI_YMD\" = :nengappi_ymd");
+        setList.add("\"TIMESTAMP_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:timestamp_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"NICHIJI_DT\" = TO_TIMESTAMP (REPLACE (SUBSTR (:nichiji_dt, 0, 19), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS')");
+        setList.add("\"HIDUKE_BI\" = TO_DATE (SUBSTR (:hiduke_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"JIKOKU_HM\" = :jikoku_hm");
+        setList.add("\"JIKAN_TM\" = :jikan_tm");
+        setList.add("\"TSUKA_KB\" = :tsuka_kb");
+        setList.add("\"JUCHU_QT\" = :juchu_qt");
+        setList.add("\"JUCHU_PR\" = :juchu_pr");
+        setList.add("\"JUCHU_AM\" = :juchu_am");
+        setList.add("\"HACCHU_QT\" = :hacchu_qt");
+        setList.add("\"HACCHU_PR\" = :hacchu_pr");
+        setList.add("\"HACCHU_AM\" = :hacchu_am");
+        setList.add("\"DELETE_F\" = :delete_f");
+        setList.add("\"STATUS_KB\" = :status_kb");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -1126,11 +1126,11 @@ public class T00Entity implements IEntity {
     }
 
     /**
-     * @param now システム日時
-     * @param execId 実行ID
+     * @param at システム日時
+     * @param by 実行ID
      * @return マップ化したエンティティ
      */
-    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime at, final String by) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("entity_id", this.entityId);
         map.put("entity_nm", this.entityNm);
@@ -1162,18 +1162,18 @@ public class T00Entity implements IEntity {
         map.put("hacchu_am", this.hacchuAm);
         map.put("delete_f", this.deleteF);
         map.put("status_kb", this.statusKb);
-        map.put("insert_ts", now);
-        map.put("insert_user_id", execId);
-        map.put("update_ts", now);
-        map.put("update_user_id", execId);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
         return map;
     }
 
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`ENTITY_ID` = :entity_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"ENTITY_ID\" = :entity_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

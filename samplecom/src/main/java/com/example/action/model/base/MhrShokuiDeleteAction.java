@@ -20,18 +20,18 @@ public class MhrShokuiDeleteAction extends BaseAction {
 
     /** 職位マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object shokuiId = postJson.get("shokuiId");
+        Object shokuiId = form.get("shokuiId");
         if (shokuiId == null) {
-            shokuiId = postJson.get("MhrShokui.shokuiId");
+            shokuiId = form.get("MhrShokui.shokuiId");
         }
         if (shokuiId == null) {
             throw new OptLockError("error.cant.delete", "職位マスタ");
         }
 
-        MhrShokui e = FormValidator.toBean(MhrShokui.class.getName(), postJson);
+        MhrShokui e = FormValidator.toBean(MhrShokui.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "職位マスタ");
         }

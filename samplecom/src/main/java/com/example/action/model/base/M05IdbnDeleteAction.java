@@ -20,25 +20,25 @@ public class M05IdbnDeleteAction extends BaseAction {
 
     /** ID連番マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object idrefId = postJson.get("idrefId");
+        Object idrefId = form.get("idrefId");
         if (idrefId == null) {
-            idrefId = postJson.get("M05Idbn.idrefId");
+            idrefId = form.get("M05Idbn.idrefId");
         }
         if (idrefId == null) {
             throw new OptLockError("error.cant.delete", "ID連番マスタ");
         }
-        Object idbnBn = postJson.get("idbnBn");
+        Object idbnBn = form.get("idbnBn");
         if (idbnBn == null) {
-            idbnBn = postJson.get("M05Idbn.idbnBn");
+            idbnBn = form.get("M05Idbn.idbnBn");
         }
         if (idbnBn == null) {
             throw new OptLockError("error.cant.delete", "ID連番マスタ");
         }
 
-        M05Idbn e = FormValidator.toBean(M05Idbn.class.getName(), postJson);
+        M05Idbn e = FormValidator.toBean(M05Idbn.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "ID連番マスタ");
         }

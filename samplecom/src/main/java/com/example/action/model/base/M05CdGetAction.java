@@ -18,16 +18,16 @@ public class M05CdGetAction extends BaseAction {
 
     /** M05_CD照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object cdrefCd = postJson.get("cdrefCd");
+        Object cdrefCd = form.get("cdrefCd");
         if (cdrefCd == null) {
-            cdrefCd = postJson.get("M05Cd.cdrefCd");
+            cdrefCd = form.get("M05Cd.cdrefCd");
         }
         if (cdrefCd == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class M05CdGetAction extends BaseAction {
             M05Cd m05Cd = M05Cd.get(cdrefCd);
             map.put("M05Cd", m05Cd);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

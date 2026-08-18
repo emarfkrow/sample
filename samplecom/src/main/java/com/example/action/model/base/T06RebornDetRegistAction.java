@@ -20,15 +20,15 @@ public class T06RebornDetRegistAction extends BaseAction {
 
     /** 転生明細登録処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
-        T06RebornDet e = FormValidator.toBean(T06RebornDet.class.getName(), postJson);
+        T06RebornDet e = FormValidator.toBean(T06RebornDet.class.getName(), form);
 
         if (e.isNew()) {
 
-            if (e.insert(now, execId) != 1) {
+            if (e.insert(at, by) != 1) {
                 throw new OptLockError("error.cant.insert", "転生明細");
             }
 
@@ -36,9 +36,9 @@ public class T06RebornDetRegistAction extends BaseAction {
 
         } else {
 
-            if (e.update(now, execId) == 1) {
+            if (e.update(at, by) == 1) {
                 map.put("INFO", Messages.get("info.update"));
-            } else if (e.insert(now, execId) == 1) {
+            } else if (e.insert(at, by) == 1) {
                 map.put("INFO", Messages.get("info.insert"));
             } else {
                 throw new OptLockError("error.cant.update", "転生明細");

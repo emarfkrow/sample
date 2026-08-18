@@ -20,39 +20,39 @@ public class T04Comp2DeleteAction extends BaseAction {
 
     /** 複合２削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object ref1Id = postJson.get("ref1Id");
+        Object ref1Id = form.get("ref1Id");
         if (ref1Id == null) {
-            ref1Id = postJson.get("T04Comp2.ref1Id");
+            ref1Id = form.get("T04Comp2.ref1Id");
         }
         if (ref1Id == null) {
             throw new OptLockError("error.cant.delete", "複合２");
         }
-        Object ref2Id = postJson.get("ref2Id");
+        Object ref2Id = form.get("ref2Id");
         if (ref2Id == null) {
-            ref2Id = postJson.get("T04Comp2.ref2Id");
+            ref2Id = form.get("T04Comp2.ref2Id");
         }
         if (ref2Id == null) {
             throw new OptLockError("error.cant.delete", "複合２");
         }
-        Object ref3Id = postJson.get("ref3Id");
+        Object ref3Id = form.get("ref3Id");
         if (ref3Id == null) {
-            ref3Id = postJson.get("T04Comp2.ref3Id");
+            ref3Id = form.get("T04Comp2.ref3Id");
         }
         if (ref3Id == null) {
             throw new OptLockError("error.cant.delete", "複合２");
         }
-        Object tekiyoBi = postJson.get("tekiyoBi");
+        Object tekiyoBi = form.get("tekiyoBi");
         if (tekiyoBi == null) {
-            tekiyoBi = postJson.get("T04Comp2.tekiyoBi");
+            tekiyoBi = form.get("T04Comp2.tekiyoBi");
         }
         if (tekiyoBi == null) {
             throw new OptLockError("error.cant.delete", "複合２");
         }
 
-        T04Comp2 e = FormValidator.toBean(T04Comp2.class.getName(), postJson);
+        T04Comp2 e = FormValidator.toBean(T04Comp2.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "複合２");
         }

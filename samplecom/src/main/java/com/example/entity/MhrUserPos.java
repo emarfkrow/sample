@@ -401,21 +401,21 @@ public class MhrUserPos implements IEntity {
      */
     public static MhrUserPos get(final Object param1, final Object param2, final Object param3, final Object param4) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`BUSHO_ID` = :busho_id");
-        whereList.add("`SHOKUI_ID` = :shokui_id");
-        whereList.add("`USER_ID` = :user_id");
-        whereList.add("`TEKIYO_BI` = :tekiyo_bi");
+        whereList.add("\"BUSHO_ID\" = :busho_id");
+        whereList.add("\"SHOKUI_ID\" = :shokui_id");
+        whereList.add("\"USER_ID\" = :user_id");
+        whereList.add("\"TEKIYO_BI\" = :tekiyo_bi");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`BUSHO_ID` \n";
-        sql += "    , a.`SHOKUI_ID` \n";
-        sql += "    , a.`USER_ID` \n";
-        sql += "    , a.`TEKIYO_BI` AS TEKIYO_BI \n";
-        sql += "    , a.`HAISHI_BI` AS HAISHI_BI \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"BUSHO_ID\" \n";
+        sql += "    , a.\"SHOKUI_ID\" \n";
+        sql += "    , a.\"USER_ID\" \n";
+        sql += "    , TO_CHAR (a.\"TEKIYO_BI\", 'YYYY-MM-DD') AS TEKIYO_BI \n";
+        sql += "    , TO_CHAR (a.\"HAISHI_BI\", 'YYYY-MM-DD') AS HAISHI_BI \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    MHR_USER_POS a \n";
         sql += "WHERE \n";
@@ -430,29 +430,29 @@ public class MhrUserPos implements IEntity {
 
     /**
      * 所属マスタ追加
-     * @param now システム日時
-     * @param execId 登録者
+     * @param at システム日時
+     * @param by 登録者
      * @return 追加件数
      */
-    public int insert(final java.time.LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime at, final String by) {
 
         // 所属マスタの登録
         String sql = "INSERT INTO MHR_USER_POS(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`BUSHO_ID` -- :busho_id");
-        nameList.add("`SHOKUI_ID` -- :shokui_id");
-        nameList.add("`USER_ID` -- :user_id");
-        nameList.add("`TEKIYO_BI` -- :tekiyo_bi");
-        nameList.add("`HAISHI_BI` -- :haishi_bi");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"BUSHO_ID\" -- :busho_id");
+        nameList.add("\"SHOKUI_ID\" -- :shokui_id");
+        nameList.add("\"USER_ID\" -- :user_id");
+        nameList.add("\"TEKIYO_BI\" -- :tekiyo_bi");
+        nameList.add("\"HAISHI_BI\" -- :haishi_bi");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -462,38 +462,38 @@ public class MhrUserPos implements IEntity {
         valueList.add(":busho_id");
         valueList.add(":shokui_id");
         valueList.add(":user_id");
-        valueList.add(":tekiyo_bi");
-        valueList.add(":haishi_bi");
-        valueList.add(":insert_ts");
+        valueList.add("TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        valueList.add("TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
 
     /**
      * 所属マスタ更新
-     * @param now システム日時
-     * @param execId 更新者
+     * @param at システム日時
+     * @param by 更新者
      * @return 更新件数
      */
-    public int update(final java.time.LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime at, final String by) {
 
         // 所属マスタの登録
         String sql = "UPDATE MHR_USER_POS\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`BUSHO_ID` = :busho_id");
-        setList.add("`SHOKUI_ID` = :shokui_id");
-        setList.add("`USER_ID` = :user_id");
-        setList.add("`TEKIYO_BI` = :tekiyo_bi");
-        setList.add("`HAISHI_BI` = :haishi_bi");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"BUSHO_ID\" = :busho_id");
+        setList.add("\"SHOKUI_ID\" = :shokui_id");
+        setList.add("\"USER_ID\" = :user_id");
+        setList.add("\"TEKIYO_BI\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"HAISHI_BI\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -520,32 +520,32 @@ public class MhrUserPos implements IEntity {
     }
 
     /**
-     * @param now システム日時
-     * @param execId 実行ID
+     * @param at システム日時
+     * @param by 実行ID
      * @return マップ化したエンティティ
      */
-    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime at, final String by) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("busho_id", this.bushoId);
         map.put("shokui_id", this.shokuiId);
         map.put("user_id", this.userId);
         map.put("tekiyo_bi", this.tekiyoBi);
         map.put("haishi_bi", this.haishiBi);
-        map.put("insert_ts", now);
-        map.put("insert_user_id", execId);
-        map.put("update_ts", now);
-        map.put("update_user_id", execId);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
         return map;
     }
 
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`BUSHO_ID` = :busho_id");
-        whereList.add("`SHOKUI_ID` = :shokui_id");
-        whereList.add("`USER_ID` = :user_id");
-        whereList.add("`TEKIYO_BI` = :tekiyo_bi");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"BUSHO_ID\" = :busho_id");
+        whereList.add("\"SHOKUI_ID\" = :shokui_id");
+        whereList.add("\"USER_ID\" = :user_id");
+        whereList.add("\"TEKIYO_BI\" = :tekiyo_bi");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

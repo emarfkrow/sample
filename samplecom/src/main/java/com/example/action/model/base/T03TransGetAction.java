@@ -18,16 +18,16 @@ public class T03TransGetAction extends BaseAction {
 
     /** T03_TRANS照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object transId = postJson.get("transId");
+        Object transId = form.get("transId");
         if (transId == null) {
-            transId = postJson.get("T03Trans.transId");
+            transId = form.get("T03Trans.transId");
         }
         if (transId == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class T03TransGetAction extends BaseAction {
             T03Trans t03Trans = T03Trans.get(transId);
             map.put("T03Trans", t03Trans);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

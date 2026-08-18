@@ -18,40 +18,40 @@ public class MhrUserPosGetAction extends BaseAction {
 
     /** MHR_USER_POS照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object bushoId = postJson.get("bushoId");
+        Object bushoId = form.get("bushoId");
         if (bushoId == null) {
-            bushoId = postJson.get("MhrUserPos.bushoId");
+            bushoId = form.get("MhrUserPos.bushoId");
         }
         if (bushoId == null) {
             isAllKey = false;
         }
 
-        Object shokuiId = postJson.get("shokuiId");
+        Object shokuiId = form.get("shokuiId");
         if (shokuiId == null) {
-            shokuiId = postJson.get("MhrUserPos.shokuiId");
+            shokuiId = form.get("MhrUserPos.shokuiId");
         }
         if (shokuiId == null) {
             isAllKey = false;
         }
 
-        Object userId = postJson.get("userId");
+        Object userId = form.get("userId");
         if (userId == null) {
-            userId = postJson.get("MhrUserPos.userId");
+            userId = form.get("MhrUserPos.userId");
         }
         if (userId == null) {
             isAllKey = false;
         }
 
-        Object tekiyoBi = postJson.get("tekiyoBi");
+        Object tekiyoBi = form.get("tekiyoBi");
         if (tekiyoBi == null) {
-            tekiyoBi = postJson.get("MhrUserPos.tekiyoBi");
+            tekiyoBi = form.get("MhrUserPos.tekiyoBi");
         }
         if (tekiyoBi == null) {
             isAllKey = false;
@@ -66,7 +66,7 @@ public class MhrUserPosGetAction extends BaseAction {
             MhrUserPos mhrUserPos = MhrUserPos.get(bushoId, shokuiId, userId, tekiyoBi);
             map.put("MhrUserPos", mhrUserPos);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

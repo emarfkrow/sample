@@ -20,25 +20,25 @@ public class T14JissekiDeleteAction extends BaseAction {
 
     /** 実績削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object kouteiId = postJson.get("kouteiId");
+        Object kouteiId = form.get("kouteiId");
         if (kouteiId == null) {
-            kouteiId = postJson.get("T14Jisseki.kouteiId");
+            kouteiId = form.get("T14Jisseki.kouteiId");
         }
         if (kouteiId == null) {
             throw new OptLockError("error.cant.delete", "実績");
         }
-        Object jissekiBn = postJson.get("jissekiBn");
+        Object jissekiBn = form.get("jissekiBn");
         if (jissekiBn == null) {
-            jissekiBn = postJson.get("T14Jisseki.jissekiBn");
+            jissekiBn = form.get("T14Jisseki.jissekiBn");
         }
         if (jissekiBn == null) {
             throw new OptLockError("error.cant.delete", "実績");
         }
 
-        T14Jisseki e = FormValidator.toBean(T14Jisseki.class.getName(), postJson);
+        T14Jisseki e = FormValidator.toBean(T14Jisseki.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "実績");
         }

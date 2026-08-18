@@ -142,18 +142,18 @@ public class V14FukaKadobi implements IEntity {
     }
 
     /** DATA */
-    private String data;
+    private java.math.BigDecimal data;
 
     /** @return DATA */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "DATA", index = 6)
-    public String getData() {
+    public java.math.BigDecimal getData() {
         return this.data;
     }
 
     /** @param o DATA */
     public void setData(final Object o) {
-        if (o != null) {
-            this.data = o.toString();
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
+            this.data = new java.math.BigDecimal(o.toString());
         } else {
             this.data = null;
         }

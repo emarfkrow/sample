@@ -20,25 +20,25 @@ public class T02OrphanDeleteAction extends BaseAction {
 
     /** 孤児削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object oyaId = postJson.get("oyaId");
+        Object oyaId = form.get("oyaId");
         if (oyaId == null) {
-            oyaId = postJson.get("T02Orphan.oyaId");
+            oyaId = form.get("T02Orphan.oyaId");
         }
         if (oyaId == null) {
             throw new OptLockError("error.cant.delete", "孤児");
         }
-        Object koBn = postJson.get("koBn");
+        Object koBn = form.get("koBn");
         if (koBn == null) {
-            koBn = postJson.get("T02Orphan.koBn");
+            koBn = form.get("T02Orphan.koBn");
         }
         if (koBn == null) {
             throw new OptLockError("error.cant.delete", "孤児");
         }
 
-        T02Orphan e = FormValidator.toBean(T02Orphan.class.getName(), postJson);
+        T02Orphan e = FormValidator.toBean(T02Orphan.class.getName(), form);
 
         // child:T02Mago, parents:3
 

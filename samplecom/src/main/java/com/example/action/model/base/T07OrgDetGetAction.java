@@ -18,24 +18,24 @@ public class T07OrgDetGetAction extends BaseAction {
 
     /** T07_ORG_DET照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object orgId = postJson.get("orgId");
+        Object orgId = form.get("orgId");
         if (orgId == null) {
-            orgId = postJson.get("T07OrgDet.orgId");
+            orgId = form.get("T07OrgDet.orgId");
         }
         if (orgId == null) {
             isAllKey = false;
         }
 
-        Object orgBn = postJson.get("orgBn");
+        Object orgBn = form.get("orgBn");
         if (orgBn == null) {
-            orgBn = postJson.get("T07OrgDet.orgBn");
+            orgBn = form.get("T07OrgDet.orgBn");
         }
         if (orgBn == null) {
             isAllKey = false;
@@ -57,7 +57,7 @@ public class T07OrgDetGetAction extends BaseAction {
             T07OrgDet t07OrgDet = T07OrgDet.get(orgId, orgBn);
             map.put("T07OrgDet", t07OrgDet);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

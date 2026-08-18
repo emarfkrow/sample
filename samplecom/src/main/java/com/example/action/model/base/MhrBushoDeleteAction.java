@@ -20,18 +20,18 @@ public class MhrBushoDeleteAction extends BaseAction {
 
     /** 部署マスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object bushoId = postJson.get("bushoId");
+        Object bushoId = form.get("bushoId");
         if (bushoId == null) {
-            bushoId = postJson.get("MhrBusho.bushoId");
+            bushoId = form.get("MhrBusho.bushoId");
         }
         if (bushoId == null) {
             throw new OptLockError("error.cant.delete", "部署マスタ");
         }
 
-        MhrBusho e = FormValidator.toBean(MhrBusho.class.getName(), postJson);
+        MhrBusho e = FormValidator.toBean(MhrBusho.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "部署マスタ");
         }

@@ -18,16 +18,16 @@ public class M04Ref2GetAction extends BaseAction {
 
     /** M04_REF2照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object ref2Id = postJson.get("ref2Id");
+        Object ref2Id = form.get("ref2Id");
         if (ref2Id == null) {
-            ref2Id = postJson.get("M04Ref2.ref2Id");
+            ref2Id = form.get("M04Ref2.ref2Id");
         }
         if (ref2Id == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class M04Ref2GetAction extends BaseAction {
             M04Ref2 m04Ref2 = M04Ref2.get(ref2Id);
             map.put("M04Ref2", m04Ref2);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

@@ -18,16 +18,16 @@ public class V14YojitsuGetAction extends BaseAction {
 
     /** V14_YOJITSU照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object kouteiId = postJson.get("kouteiId");
+        Object kouteiId = form.get("kouteiId");
         if (kouteiId == null) {
-            kouteiId = postJson.get("V14Yojitsu.kouteiId");
+            kouteiId = form.get("V14Yojitsu.kouteiId");
         }
         if (kouteiId == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class V14YojitsuGetAction extends BaseAction {
             V14Yojitsu v14Yojitsu = V14Yojitsu.get(kouteiId);
             map.put("V14Yojitsu", v14Yojitsu);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

@@ -18,16 +18,16 @@ public class T00EntityGetAction extends BaseAction {
 
     /** T00_ENTITY照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object entityId = postJson.get("entityId");
+        Object entityId = form.get("entityId");
         if (entityId == null) {
-            entityId = postJson.get("T00Entity.entityId");
+            entityId = form.get("T00Entity.entityId");
         }
         if (entityId == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class T00EntityGetAction extends BaseAction {
             T00Entity t00Entity = T00Entity.get(entityId);
             map.put("T00Entity", t00Entity);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

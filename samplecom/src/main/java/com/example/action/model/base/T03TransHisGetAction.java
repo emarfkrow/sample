@@ -18,24 +18,24 @@ public class T03TransHisGetAction extends BaseAction {
 
     /** T03_TRANS_HIS照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object transId = postJson.get("transId");
+        Object transId = form.get("transId");
         if (transId == null) {
-            transId = postJson.get("T03TransHis.transId");
+            transId = form.get("T03TransHis.transId");
         }
         if (transId == null) {
             isAllKey = false;
         }
 
-        Object transBn = postJson.get("transBn");
+        Object transBn = form.get("transBn");
         if (transBn == null) {
-            transBn = postJson.get("T03TransHis.transBn");
+            transBn = form.get("T03TransHis.transBn");
         }
         if (transBn == null) {
             isAllKey = false;
@@ -50,7 +50,7 @@ public class T03TransHisGetAction extends BaseAction {
             T03TransHis t03TransHis = T03TransHis.get(transId, transBn);
             map.put("T03TransHis", t03TransHis);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

@@ -20,18 +20,18 @@ public class T11Prev2DeleteAction extends BaseAction {
 
     /** 前世２削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object prev2Id = postJson.get("prev2Id");
+        Object prev2Id = form.get("prev2Id");
         if (prev2Id == null) {
-            prev2Id = postJson.get("T11Prev2.prev2Id");
+            prev2Id = form.get("T11Prev2.prev2Id");
         }
         if (prev2Id == null) {
             throw new OptLockError("error.cant.delete", "前世２");
         }
 
-        T11Prev2 e = FormValidator.toBean(T11Prev2.class.getName(), postJson);
+        T11Prev2 e = FormValidator.toBean(T11Prev2.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "前世２");
         }

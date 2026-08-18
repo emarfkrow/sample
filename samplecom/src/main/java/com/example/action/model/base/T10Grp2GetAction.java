@@ -18,16 +18,16 @@ public class T10Grp2GetAction extends BaseAction {
 
     /** T10_GRP2照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object grp2Id = postJson.get("grp2Id");
+        Object grp2Id = form.get("grp2Id");
         if (grp2Id == null) {
-            grp2Id = postJson.get("T10Grp2.grp2Id");
+            grp2Id = form.get("T10Grp2.grp2Id");
         }
         if (grp2Id == null) {
             isAllKey = false;
@@ -42,7 +42,7 @@ public class T10Grp2GetAction extends BaseAction {
             T10Grp2 t10Grp2 = T10Grp2.get(grp2Id);
             map.put("T10Grp2", t10Grp2);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

@@ -20,32 +20,32 @@ public class T02MagoDeleteAction extends BaseAction {
 
     /** 孫削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object oyaId = postJson.get("oyaId");
+        Object oyaId = form.get("oyaId");
         if (oyaId == null) {
-            oyaId = postJson.get("T02Mago.oyaId");
+            oyaId = form.get("T02Mago.oyaId");
         }
         if (oyaId == null) {
             throw new OptLockError("error.cant.delete", "孫");
         }
-        Object koBn = postJson.get("koBn");
+        Object koBn = form.get("koBn");
         if (koBn == null) {
-            koBn = postJson.get("T02Mago.koBn");
+            koBn = form.get("T02Mago.koBn");
         }
         if (koBn == null) {
             throw new OptLockError("error.cant.delete", "孫");
         }
-        Object magoBn = postJson.get("magoBn");
+        Object magoBn = form.get("magoBn");
         if (magoBn == null) {
-            magoBn = postJson.get("T02Mago.magoBn");
+            magoBn = form.get("T02Mago.magoBn");
         }
         if (magoBn == null) {
             throw new OptLockError("error.cant.delete", "孫");
         }
 
-        T02Mago e = FormValidator.toBean(T02Mago.class.getName(), postJson);
+        T02Mago e = FormValidator.toBean(T02Mago.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "孫");
         }

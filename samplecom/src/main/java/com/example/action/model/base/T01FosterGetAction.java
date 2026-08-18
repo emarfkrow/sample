@@ -18,16 +18,16 @@ public class T01FosterGetAction extends BaseAction {
 
     /** T01_FOSTER照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object broId = postJson.get("broId");
+        Object broId = form.get("broId");
         if (broId == null) {
-            broId = postJson.get("T01Foster.broId");
+            broId = form.get("T01Foster.broId");
         }
         if (broId == null) {
             isAllKey = false;
@@ -46,7 +46,7 @@ public class T01FosterGetAction extends BaseAction {
             t01Foster.referT01Youngest();
             map.put("T01Foster", t01Foster);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

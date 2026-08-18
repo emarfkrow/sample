@@ -21,7 +21,7 @@ public class T03TransSCancelAction extends BaseAction {
 
     /** 変遷一覧取消処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> form) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
@@ -45,10 +45,11 @@ public class T03TransSCancelAction extends BaseAction {
                 }
 
                 if (!e.getStatusKb().equals("0") && !e.getStatusKb().equals("-1")) {
-                    throw new jp.co.golorp.emarf.exception.AppError("error.notmatch", Messages.get("common.selectedRow"), Messages.get("common.apply.forbid"));
+                    throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
+                            Messages.get("common.selectedRow"), Messages.get("common.apply.forbid"));
                 }
                 e.setStatusKb(null);
-                if (e.update(now, execId) != 1) {
+                if (e.update(at, by) != 1) {
                     throw new OptLockError("error.cant.cancel", "変遷");
                 }
                 ++count;

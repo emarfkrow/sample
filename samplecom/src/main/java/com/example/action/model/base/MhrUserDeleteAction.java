@@ -20,18 +20,18 @@ public class MhrUserDeleteAction extends BaseAction {
 
     /** ユーザマスタ削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object userId = postJson.get("userId");
+        Object userId = form.get("userId");
         if (userId == null) {
-            userId = postJson.get("MhrUser.userId");
+            userId = form.get("MhrUser.userId");
         }
         if (userId == null) {
             throw new OptLockError("error.cant.delete", "ユーザマスタ");
         }
 
-        MhrUser e = FormValidator.toBean(MhrUser.class.getName(), postJson);
+        MhrUser e = FormValidator.toBean(MhrUser.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "ユーザマスタ");
         }

@@ -293,16 +293,16 @@ public class T03Trans implements IEntity {
      */
     public static T03Trans get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`TRANS_ID` = :trans_id");
+        whereList.add("\"TRANS_ID\" = :trans_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`TRANS_ID` \n";
-        sql += "    , a.`TRANS_INFO` \n";
-        sql += "    , a.`STATUS_KB` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"TRANS_ID\" \n";
+        sql += "    , a.\"TRANS_INFO\" \n";
+        sql += "    , a.\"STATUS_KB\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    T03_TRANS a \n";
         sql += "WHERE \n";
@@ -314,11 +314,11 @@ public class T03Trans implements IEntity {
 
     /**
      * 変遷追加
-     * @param now システム日時
-     * @param execId 登録者
+     * @param at システム日時
+     * @param by 登録者
      * @return 追加件数
      */
-    public int insert(final java.time.LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime at, final String by) {
 
         // 変遷IDの採番処理
         numbering();
@@ -333,23 +333,23 @@ public class T03Trans implements IEntity {
         t03TransHis.setUpdateTs(this.updateTs);
         t03TransHis.setUpdateUserId(this.updateUserId);
         t03TransHis.setRiyuTx(this.riyuTx);
-        t03TransHis.insert(now, execId);
+        t03TransHis.insert(at, by);
 
         // 変遷の登録
         String sql = "INSERT INTO T03_TRANS(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`TRANS_ID` -- :trans_id");
-        nameList.add("`TRANS_INFO` -- :trans_info");
-        nameList.add("`STATUS_KB` -- :status_kb");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"TRANS_ID\" -- :trans_id");
+        nameList.add("\"TRANS_INFO\" -- :trans_info");
+        nameList.add("\"STATUS_KB\" -- :status_kb");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -359,9 +359,9 @@ public class T03Trans implements IEntity {
         valueList.add(":trans_id");
         valueList.add(":trans_info");
         valueList.add(":status_kb");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -371,7 +371,7 @@ public class T03Trans implements IEntity {
         if (this.transId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`TRANS_ID`) IS NULL THEN 0 ELSE MAX(e.`TRANS_ID`) * 1 END + 1 AS `TRANS_ID` FROM T03_TRANS e";
+        String sql = "SELECT CASE WHEN MAX(e.\"TRANS_ID\") IS NULL THEN 0 ELSE MAX(e.\"TRANS_ID\") * 1 END + 1 AS \"TRANS_ID\" FROM T03_TRANS e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("TRANS_ID");
@@ -380,11 +380,11 @@ public class T03Trans implements IEntity {
 
     /**
      * 変遷更新
-     * @param now システム日時
-     * @param execId 更新者
+     * @param at システム日時
+     * @param by 更新者
      * @return 更新件数
      */
-    public int update(final java.time.LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime at, final String by) {
 
         // 決裁フローの登録
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.statusKb) && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.riyuTx)) {
@@ -392,14 +392,14 @@ public class T03Trans implements IEntity {
             t03StatusKb.setTableNm("T03_TRANS");
             t03StatusKb.setPrimaryKeys(String.join(",", this.getTransId().toString()));
             t03StatusKb.setStatusKb(this.statusKb);
-            t03StatusKb.setKessaiTs(now);
-            t03StatusKb.setKessaiId(execId);
+            t03StatusKb.setKessaiTs(at);
+            t03StatusKb.setKessaiId(by);
             t03StatusKb.setRiyuTx(this.riyuTx);
             t03StatusKb.setInsertTs(this.insertTs);
             t03StatusKb.setInsertUserId(this.insertUserId);
             t03StatusKb.setUpdateTs(this.updateTs);
             t03StatusKb.setUpdateUserId(this.updateUserId);
-            t03StatusKb.insert(now, execId);
+            t03StatusKb.insert(at, by);
         }
 
         // 変遷履歴の登録
@@ -412,21 +412,21 @@ public class T03Trans implements IEntity {
         t03TransHis.setUpdateTs(this.updateTs);
         t03TransHis.setUpdateUserId(this.updateUserId);
         t03TransHis.setRiyuTx(this.riyuTx);
-        t03TransHis.insert(now, execId);
+        t03TransHis.insert(at, by);
 
         // 変遷の登録
         String sql = "UPDATE T03_TRANS\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`TRANS_ID` = :trans_id");
-        setList.add("`TRANS_INFO` = :trans_info");
-        setList.add("`STATUS_KB` = :status_kb");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"TRANS_ID\" = :trans_id");
+        setList.add("\"TRANS_INFO\" = :trans_info");
+        setList.add("\"STATUS_KB\" = :status_kb");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -453,27 +453,27 @@ public class T03Trans implements IEntity {
     }
 
     /**
-     * @param now システム日時
-     * @param execId 実行ID
+     * @param at システム日時
+     * @param by 実行ID
      * @return マップ化したエンティティ
      */
-    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime at, final String by) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("trans_id", this.transId);
         map.put("trans_info", this.transInfo);
         map.put("status_kb", this.statusKb);
-        map.put("insert_ts", now);
-        map.put("insert_user_id", execId);
-        map.put("update_ts", now);
-        map.put("update_user_id", execId);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
         return map;
     }
 
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`TRANS_ID` = :trans_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"TRANS_ID\" = :trans_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

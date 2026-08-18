@@ -326,19 +326,19 @@ public class T00Unique implements IEntity {
      */
     public static T00Unique get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`D_MEI` = :d_mei");
-        whereList.add("`E_MEI` = :e_mei");
+        whereList.add("\"D_MEI\" = :d_mei");
+        whereList.add("\"E_MEI\" = :e_mei");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`A_MEI` \n";
-        sql += "    , a.`B_MEI` \n";
-        sql += "    , a.`C_MEI` \n";
-        sql += "    , a.`D_MEI` \n";
-        sql += "    , a.`E_MEI` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"A_MEI\" \n";
+        sql += "    , a.\"B_MEI\" \n";
+        sql += "    , a.\"C_MEI\" \n";
+        sql += "    , a.\"D_MEI\" \n";
+        sql += "    , a.\"E_MEI\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    T00_UNIQUE a \n";
         sql += "WHERE \n";
@@ -351,29 +351,29 @@ public class T00Unique implements IEntity {
 
     /**
      * ユニークキー追加
-     * @param now システム日時
-     * @param execId 登録者
+     * @param at システム日時
+     * @param by 登録者
      * @return 追加件数
      */
-    public int insert(final java.time.LocalDateTime now, final String execId) {
+    public int insert(final java.time.LocalDateTime at, final String by) {
 
         // ユニークキーの登録
         String sql = "INSERT INTO T00_UNIQUE(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`A_MEI` -- :a_mei");
-        nameList.add("`B_MEI` -- :b_mei");
-        nameList.add("`C_MEI` -- :c_mei");
-        nameList.add("`D_MEI` -- :d_mei");
-        nameList.add("`E_MEI` -- :e_mei");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"A_MEI\" -- :a_mei");
+        nameList.add("\"B_MEI\" -- :b_mei");
+        nameList.add("\"C_MEI\" -- :c_mei");
+        nameList.add("\"D_MEI\" -- :d_mei");
+        nameList.add("\"E_MEI\" -- :e_mei");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -385,36 +385,36 @@ public class T00Unique implements IEntity {
         valueList.add(":c_mei");
         valueList.add(":d_mei");
         valueList.add(":e_mei");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
 
     /**
      * ユニークキー更新
-     * @param now システム日時
-     * @param execId 更新者
+     * @param at システム日時
+     * @param by 更新者
      * @return 更新件数
      */
-    public int update(final java.time.LocalDateTime now, final String execId) {
+    public int update(final java.time.LocalDateTime at, final String by) {
 
         // ユニークキーの登録
         String sql = "UPDATE T00_UNIQUE\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(now, execId));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
 
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`A_MEI` = :a_mei");
-        setList.add("`B_MEI` = :b_mei");
-        setList.add("`C_MEI` = :c_mei");
-        setList.add("`D_MEI` = :d_mei");
-        setList.add("`E_MEI` = :e_mei");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"A_MEI\" = :a_mei");
+        setList.add("\"B_MEI\" = :b_mei");
+        setList.add("\"C_MEI\" = :c_mei");
+        setList.add("\"D_MEI\" = :d_mei");
+        setList.add("\"E_MEI\" = :e_mei");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -441,30 +441,30 @@ public class T00Unique implements IEntity {
     }
 
     /**
-     * @param now システム日時
-     * @param execId 実行ID
+     * @param at システム日時
+     * @param by 実行ID
      * @return マップ化したエンティティ
      */
-    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime now, final String execId) {
+    private java.util.Map<String, Object> toMap(final java.time.LocalDateTime at, final String by) {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("a_mei", this.aMei);
         map.put("b_mei", this.bMei);
         map.put("c_mei", this.cMei);
         map.put("d_mei", this.dMei);
         map.put("e_mei", this.eMei);
-        map.put("insert_ts", now);
-        map.put("insert_user_id", execId);
-        map.put("update_ts", now);
-        map.put("update_user_id", execId);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
         return map;
     }
 
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`D_MEI` = :d_mei");
-        whereList.add("`E_MEI` = :e_mei");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"D_MEI\" = :d_mei");
+        whereList.add("\"E_MEI\" = :e_mei");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

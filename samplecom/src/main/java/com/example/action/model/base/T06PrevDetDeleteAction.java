@@ -20,25 +20,25 @@ public class T06PrevDetDeleteAction extends BaseAction {
 
     /** 前世明細削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object prevId = postJson.get("prevId");
+        Object prevId = form.get("prevId");
         if (prevId == null) {
-            prevId = postJson.get("T06PrevDet.prevId");
+            prevId = form.get("T06PrevDet.prevId");
         }
         if (prevId == null) {
             throw new OptLockError("error.cant.delete", "前世明細");
         }
-        Object prevBn = postJson.get("prevBn");
+        Object prevBn = form.get("prevBn");
         if (prevBn == null) {
-            prevBn = postJson.get("T06PrevDet.prevBn");
+            prevBn = form.get("T06PrevDet.prevBn");
         }
         if (prevBn == null) {
             throw new OptLockError("error.cant.delete", "前世明細");
         }
 
-        T06PrevDet e = FormValidator.toBean(T06PrevDet.class.getName(), postJson);
+        T06PrevDet e = FormValidator.toBean(T06PrevDet.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "前世明細");
         }

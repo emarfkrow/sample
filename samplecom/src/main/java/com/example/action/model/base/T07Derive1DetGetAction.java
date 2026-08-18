@@ -18,24 +18,24 @@ public class T07Derive1DetGetAction extends BaseAction {
 
     /** T07_DERIVE1_DET照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object derive1Id = postJson.get("derive1Id");
+        Object derive1Id = form.get("derive1Id");
         if (derive1Id == null) {
-            derive1Id = postJson.get("T07Derive1Det.derive1Id");
+            derive1Id = form.get("T07Derive1Det.derive1Id");
         }
         if (derive1Id == null) {
             isAllKey = false;
         }
 
-        Object derive1Bn = postJson.get("derive1Bn");
+        Object derive1Bn = form.get("derive1Bn");
         if (derive1Bn == null) {
-            derive1Bn = postJson.get("T07Derive1Det.derive1Bn");
+            derive1Bn = form.get("T07Derive1Det.derive1Bn");
         }
         if (derive1Bn == null) {
             isAllKey = false;
@@ -57,7 +57,7 @@ public class T07Derive1DetGetAction extends BaseAction {
             T07Derive1Det t07Derive1Det = T07Derive1Det.get(derive1Id, derive1Bn);
             map.put("T07Derive1Det", t07Derive1Det);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

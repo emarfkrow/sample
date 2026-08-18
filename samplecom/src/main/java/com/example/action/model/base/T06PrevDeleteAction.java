@@ -20,18 +20,18 @@ public class T06PrevDeleteAction extends BaseAction {
 
     /** 前世削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object prevId = postJson.get("prevId");
+        Object prevId = form.get("prevId");
         if (prevId == null) {
-            prevId = postJson.get("T06Prev.prevId");
+            prevId = form.get("T06Prev.prevId");
         }
         if (prevId == null) {
             throw new OptLockError("error.cant.delete", "前世");
         }
 
-        T06Prev e = FormValidator.toBean(T06Prev.class.getName(), postJson);
+        T06Prev e = FormValidator.toBean(T06Prev.class.getName(), form);
 
         java.util.List<com.example.entity.T06PrevDet> t06PrevDets = e.referT06PrevDets();
         if (t06PrevDets != null) {

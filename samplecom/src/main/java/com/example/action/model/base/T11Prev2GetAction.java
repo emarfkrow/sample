@@ -18,16 +18,16 @@ public class T11Prev2GetAction extends BaseAction {
 
     /** T11_PREV2照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object prev2Id = postJson.get("prev2Id");
+        Object prev2Id = form.get("prev2Id");
         if (prev2Id == null) {
-            prev2Id = postJson.get("T11Prev2.prev2Id");
+            prev2Id = form.get("T11Prev2.prev2Id");
         }
         if (prev2Id == null) {
             isAllKey = false;
@@ -44,7 +44,7 @@ public class T11Prev2GetAction extends BaseAction {
             t11Prev2.referT11Reborn2s();
             map.put("T11Prev2", t11Prev2);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

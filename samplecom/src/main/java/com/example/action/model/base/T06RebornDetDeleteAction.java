@@ -20,25 +20,25 @@ public class T06RebornDetDeleteAction extends BaseAction {
 
     /** 転生明細削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object rebornId = postJson.get("rebornId");
+        Object rebornId = form.get("rebornId");
         if (rebornId == null) {
-            rebornId = postJson.get("T06RebornDet.rebornId");
+            rebornId = form.get("T06RebornDet.rebornId");
         }
         if (rebornId == null) {
             throw new OptLockError("error.cant.delete", "転生明細");
         }
-        Object rebornBn = postJson.get("rebornBn");
+        Object rebornBn = form.get("rebornBn");
         if (rebornBn == null) {
-            rebornBn = postJson.get("T06RebornDet.rebornBn");
+            rebornBn = form.get("T06RebornDet.rebornBn");
         }
         if (rebornBn == null) {
             throw new OptLockError("error.cant.delete", "転生明細");
         }
 
-        T06RebornDet e = FormValidator.toBean(T06RebornDet.class.getName(), postJson);
+        T06RebornDet e = FormValidator.toBean(T06RebornDet.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "転生明細");
         }

@@ -18,16 +18,16 @@ public class M05IdGetAction extends BaseAction {
 
     /** M05_ID照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object idrefId = postJson.get("idrefId");
+        Object idrefId = form.get("idrefId");
         if (idrefId == null) {
-            idrefId = postJson.get("M05Id.idrefId");
+            idrefId = form.get("M05Id.idrefId");
         }
         if (idrefId == null) {
             isAllKey = false;
@@ -44,7 +44,7 @@ public class M05IdGetAction extends BaseAction {
             m05Id.referM05Idbns();
             map.put("M05Id", m05Id);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

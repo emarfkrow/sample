@@ -18,24 +18,24 @@ public class T04Comp1GetAction extends BaseAction {
 
     /** T04_COMP1照会処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object ref1Id = postJson.get("ref1Id");
+        Object ref1Id = form.get("ref1Id");
         if (ref1Id == null) {
-            ref1Id = postJson.get("T04Comp1.ref1Id");
+            ref1Id = form.get("T04Comp1.ref1Id");
         }
         if (ref1Id == null) {
             isAllKey = false;
         }
 
-        Object ref2Id = postJson.get("ref2Id");
+        Object ref2Id = form.get("ref2Id");
         if (ref2Id == null) {
-            ref2Id = postJson.get("T04Comp1.ref2Id");
+            ref2Id = form.get("T04Comp1.ref2Id");
         }
         if (ref2Id == null) {
             isAllKey = false;
@@ -52,7 +52,7 @@ public class T04Comp1GetAction extends BaseAction {
             t04Comp1.referT04Comp2s();
             map.put("T04Comp1", t04Comp1);
         } catch (NoDataError e) {
-            if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {
+            if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {
                 throw e;
             }
         }

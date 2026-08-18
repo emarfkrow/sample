@@ -20,18 +20,18 @@ public class T10SumDeleteAction extends BaseAction {
 
     /** 集約削除処理 */
     @Override
-    public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
 
         // 主キーが不足していたらエラー
-        Object sumId = postJson.get("sumId");
+        Object sumId = form.get("sumId");
         if (sumId == null) {
-            sumId = postJson.get("T10Sum.sumId");
+            sumId = form.get("T10Sum.sumId");
         }
         if (sumId == null) {
             throw new OptLockError("error.cant.delete", "集約");
         }
 
-        T10Sum e = FormValidator.toBean(T10Sum.class.getName(), postJson);
+        T10Sum e = FormValidator.toBean(T10Sum.class.getName(), form);
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "集約");
         }
