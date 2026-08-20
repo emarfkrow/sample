@@ -324,18 +324,18 @@ public class MsyKadobi implements IEntity {
      */
     public static MsyKadobi get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("RTRIM (RTRIM (\"KADO_YMD\"), '　') = RTRIM (RTRIM (:kado_ymd), '　')");
-        whereList.add("\"BUSHO_ID\" = :busho_id");
+        whereList.add("TRIM(TRAILING ' ' FROM `KADO_YMD`) = TRIM(TRAILING ' ' FROM :kado_ymd)");
+        whereList.add("`BUSHO_ID` = :busho_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      RTRIM (RTRIM (a.\"KADO_YMD\"), '　') AS KADO_YMD \n";
-        sql += "    , a.\"BUSHO_ID\" \n";
-        sql += "    , RTRIM (RTRIM (a.\"KADOBI_F\"), '　') AS KADOBI_F \n";
-        sql += "    , a.\"MEMO\" \n";
-        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
-        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
-        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
-        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
+        sql += "      TRIM(TRAILING ' ' FROM a.`KADO_YMD`) AS KADO_YMD \n";
+        sql += "    , a.`BUSHO_ID` \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`KADOBI_F`) AS KADOBI_F \n";
+        sql += "    , a.`MEMO` \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
+        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    MSY_KADOBI a \n";
         sql += "WHERE \n";
@@ -362,14 +362,14 @@ public class MsyKadobi implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"KADO_YMD\" -- :kado_ymd");
-        nameList.add("\"BUSHO_ID\" -- :busho_id");
-        nameList.add("\"KADOBI_F\" -- :kadobi_f");
-        nameList.add("\"MEMO\" -- :memo");
-        nameList.add("\"INSERT_TS\" -- :insert_ts");
-        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
-        nameList.add("\"UPDATE_TS\" -- :update_ts");
-        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
+        nameList.add("`KADO_YMD` -- :kado_ymd");
+        nameList.add("`BUSHO_ID` -- :busho_id");
+        nameList.add("`KADOBI_F` -- :kadobi_f");
+        nameList.add("`MEMO` -- :memo");
+        nameList.add("`INSERT_TS` -- :insert_ts");
+        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
+        nameList.add("`UPDATE_TS` -- :update_ts");
+        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -380,9 +380,9 @@ public class MsyKadobi implements IEntity {
         valueList.add(":busho_id");
         valueList.add(":kadobi_f");
         valueList.add(":memo");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
-        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add(":update_ts");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -403,12 +403,12 @@ public class MsyKadobi implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"KADO_YMD\" = :kado_ymd");
-        setList.add("\"BUSHO_ID\" = :busho_id");
-        setList.add("\"KADOBI_F\" = :kadobi_f");
-        setList.add("\"MEMO\" = :memo");
-        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
+        setList.add("`KADO_YMD` = :kado_ymd");
+        setList.add("`BUSHO_ID` = :busho_id");
+        setList.add("`KADOBI_F` = :kadobi_f");
+        setList.add("`MEMO` = :memo");
+        setList.add("`UPDATE_TS` = :update_ts");
+        setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -455,9 +455,9 @@ public class MsyKadobi implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("RTRIM (RTRIM (\"KADO_YMD\"), '　') = RTRIM (RTRIM (:kado_ymd), '　')");
-        whereList.add("\"BUSHO_ID\" = :busho_id");
-        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("TRIM(TRAILING ' ' FROM `KADO_YMD`) = TRIM(TRAILING ' ' FROM :kado_ymd)");
+        whereList.add("`BUSHO_ID` = :busho_id");
+        whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
 }

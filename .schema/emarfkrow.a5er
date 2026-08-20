@@ -2558,11 +2558,11 @@ FontColor=$000000
 LineColor=$000000
 BkColor=$FFFFFF
 Page=Main
-Left=1808
-Top=658
+Left=2218
+Top=296
 ZOrder=183
-Width=574
-Height=144
+Width=1452
+Height=66
 
 [View]
 PName=V14_YOJITSU
