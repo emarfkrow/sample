@@ -218,7 +218,7 @@ public class T02Mago implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 8)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 8)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -288,7 +288,7 @@ public class T02Mago implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 11)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -311,19 +311,19 @@ public class T02Mago implements IEntity {
      */
     public static T02Mago get(final Object param1, final Object param2, final Object param3) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`OYA_ID` = :oya_id");
-        whereList.add("`KO_BN` = :ko_bn");
-        whereList.add("`MAGO_BN` = :mago_bn");
+        whereList.add("\"oya_id\" = CAST (:oya_id AS INTEGER)");
+        whereList.add("\"ko_bn\" = CAST (:ko_bn AS INTEGER)");
+        whereList.add("\"mago_bn\" = CAST (:mago_bn AS INTEGER)");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`OYA_ID` \n";
-        sql += "    , a.`KO_BN` \n";
-        sql += "    , a.`MAGO_BN` \n";
-        sql += "    , a.`MAGO_INFO` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"oya_id\" \n";
+        sql += "    , a.\"ko_bn\" \n";
+        sql += "    , a.\"mago_bn\" \n";
+        sql += "    , a.\"mago_info\" \n";
+        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
+        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
         sql += "FROM \n";
         sql += "    T02_MAGO a \n";
         sql += "WHERE \n";
@@ -354,27 +354,27 @@ public class T02Mago implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`OYA_ID` -- :oya_id");
-        nameList.add("`KO_BN` -- :ko_bn");
-        nameList.add("`MAGO_BN` -- :mago_bn");
-        nameList.add("`MAGO_INFO` -- :mago_info");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"oya_id\" -- :oya_id");
+        nameList.add("\"ko_bn\" -- :ko_bn");
+        nameList.add("\"mago_bn\" -- :mago_bn");
+        nameList.add("\"mago_info\" -- :mago_info");
+        nameList.add("\"insert_ts\" -- :insert_ts");
+        nameList.add("\"insert_user_id\" -- :insert_user_id");
+        nameList.add("\"update_ts\" -- :update_ts");
+        nameList.add("\"update_user_id\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add(":oya_id");
-        valueList.add(":ko_bn");
-        valueList.add(":mago_bn");
+        valueList.add("CAST (:oya_id AS INTEGER)");
+        valueList.add("CAST (:ko_bn AS INTEGER)");
+        valueList.add("CAST (:mago_bn AS INTEGER)");
         valueList.add(":mago_info");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -384,16 +384,16 @@ public class T02Mago implements IEntity {
         if (this.magoBn != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`MAGO_BN`) IS NULL THEN 0 ELSE MAX(e.`MAGO_BN`) * 1 END + 1 AS `MAGO_BN` FROM T02_MAGO e";
+        String sql = "SELECT CASE WHEN MAX(e.\"mago_bn\") IS NULL THEN 0 ELSE MAX(e.\"mago_bn\") * 1 END + 1 AS \"mago_bn\" FROM T02_MAGO e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("e.`OYA_ID` = :oya_id");
-        whereList.add("e.`KO_BN` = :ko_bn");
+        whereList.add("e.\"oya_id\" = :oya_id");
+        whereList.add("e.\"ko_bn\" = :ko_bn");
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("oya_id", this.oyaId);
         map.put("ko_bn", this.koBn);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("MAGO_BN");
+        Object o = mapList.get(0).get("mago_bn");
         this.setMagoBn(o);
     }
 
@@ -413,12 +413,12 @@ public class T02Mago implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`OYA_ID` = :oya_id");
-        setList.add("`KO_BN` = :ko_bn");
-        setList.add("`MAGO_BN` = :mago_bn");
-        setList.add("`MAGO_INFO` = :mago_info");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"oya_id\" = CAST (:oya_id AS INTEGER)");
+        setList.add("\"ko_bn\" = CAST (:ko_bn AS INTEGER)");
+        setList.add("\"mago_bn\" = CAST (:mago_bn AS INTEGER)");
+        setList.add("\"mago_info\" = :mago_info");
+        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"update_user_id\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -465,10 +465,10 @@ public class T02Mago implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`OYA_ID` = :oya_id");
-        whereList.add("`KO_BN` = :ko_bn");
-        whereList.add("`MAGO_BN` = :mago_bn");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"oya_id\" = CAST (:oya_id AS INTEGER)");
+        whereList.add("\"ko_bn\" = CAST (:ko_bn AS INTEGER)");
+        whereList.add("\"mago_bn\" = CAST (:mago_bn AS INTEGER)");
+        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

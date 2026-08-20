@@ -166,7 +166,7 @@ public class T10Grp1 implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 6)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 6)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -236,7 +236,7 @@ public class T10Grp1 implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 9)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 9)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -257,15 +257,15 @@ public class T10Grp1 implements IEntity {
      */
     public static T10Grp1 get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`GRP1_ID` = :grp_1_id");
+        whereList.add("\"grp1_id\" = CAST (:grp_1_id AS INTEGER)");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`GRP1_ID` \n";
-        sql += "    , a.`SUM_ID` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"grp1_id\" \n";
+        sql += "    , a.\"sum_id\" \n";
+        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
+        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
         sql += "FROM \n";
         sql += "    T10_GRP1 a \n";
         sql += "WHERE \n";
@@ -294,23 +294,23 @@ public class T10Grp1 implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`GRP1_ID` -- :grp_1_id");
-        nameList.add("`SUM_ID` -- :sum_id");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"grp1_id\" -- :grp_1_id");
+        nameList.add("\"sum_id\" -- :sum_id");
+        nameList.add("\"insert_ts\" -- :insert_ts");
+        nameList.add("\"insert_user_id\" -- :insert_user_id");
+        nameList.add("\"update_ts\" -- :update_ts");
+        nameList.add("\"update_user_id\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add(":grp_1_id");
-        valueList.add(":sum_id");
-        valueList.add(":insert_ts");
+        valueList.add("CAST (:grp_1_id AS INTEGER)");
+        valueList.add("CAST (:sum_id AS INTEGER)");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -320,10 +320,10 @@ public class T10Grp1 implements IEntity {
         if (this.grp1Id != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`GRP1_ID`) IS NULL THEN 0 ELSE MAX(e.`GRP1_ID`) * 1 END + 1 AS `GRP1_ID` FROM T10_GRP1 e";
+        String sql = "SELECT CASE WHEN MAX(e.\"grp1_id\") IS NULL THEN 0 ELSE MAX(e.\"grp1_id\") * 1 END + 1 AS \"grp1_id\" FROM T10_GRP1 e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("GRP1_ID");
+        Object o = mapList.get(0).get("grp1_id");
         this.setGrp1Id(o);
     }
 
@@ -343,10 +343,10 @@ public class T10Grp1 implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`GRP1_ID` = :grp_1_id");
-        setList.add("`SUM_ID` = :sum_id");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"grp1_id\" = CAST (:grp_1_id AS INTEGER)");
+        setList.add("\"sum_id\" = CAST (:sum_id AS INTEGER)");
+        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"update_user_id\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -391,8 +391,8 @@ public class T10Grp1 implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`GRP1_ID` = :grp_1_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"grp1_id\" = CAST (:grp_1_id AS INTEGER)");
+        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

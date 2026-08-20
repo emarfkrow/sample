@@ -282,7 +282,7 @@ public class T03StatusKb implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 11)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -352,7 +352,7 @@ public class T03StatusKb implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 14)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 14)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -373,20 +373,20 @@ public class T03StatusKb implements IEntity {
      */
     public static T03StatusKb get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`FLOW_ID` = :flow_id");
+        whereList.add("\"flow_id\" = CAST (:flow_id AS INTEGER)");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`FLOW_ID` \n";
-        sql += "    , a.`TABLE_NM` \n";
-        sql += "    , a.`PRIMARY_KEYS` \n";
-        sql += "    , a.`STATUS_KB` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`KESSAI_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS KESSAI_TS \n";
-        sql += "    , a.`KESSAI_ID` \n";
-        sql += "    , a.`RIYU_TX` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"flow_id\" \n";
+        sql += "    , a.\"table_nm\" \n";
+        sql += "    , a.\"primary_keys\" \n";
+        sql += "    , a.\"status_kb\" \n";
+        sql += "    , TO_CHAR (a.\"kessai_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS kessai_ts \n";
+        sql += "    , a.\"kessai_id\" \n";
+        sql += "    , a.\"riyu_tx\" \n";
+        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
+        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
         sql += "FROM \n";
         sql += "    T03_STATUS_KB a \n";
         sql += "WHERE \n";
@@ -415,33 +415,33 @@ public class T03StatusKb implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`FLOW_ID` -- :flow_id");
-        nameList.add("`TABLE_NM` -- :table_nm");
-        nameList.add("`PRIMARY_KEYS` -- :primary_keys");
-        nameList.add("`STATUS_KB` -- :status_kb");
-        nameList.add("`KESSAI_TS` -- :kessai_ts");
-        nameList.add("`KESSAI_ID` -- :kessai_id");
-        nameList.add("`RIYU_TX` -- :riyu_tx");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"flow_id\" -- :flow_id");
+        nameList.add("\"table_nm\" -- :table_nm");
+        nameList.add("\"primary_keys\" -- :primary_keys");
+        nameList.add("\"status_kb\" -- :status_kb");
+        nameList.add("\"kessai_ts\" -- :kessai_ts");
+        nameList.add("\"kessai_id\" -- :kessai_id");
+        nameList.add("\"riyu_tx\" -- :riyu_tx");
+        nameList.add("\"insert_ts\" -- :insert_ts");
+        nameList.add("\"insert_user_id\" -- :insert_user_id");
+        nameList.add("\"update_ts\" -- :update_ts");
+        nameList.add("\"update_user_id\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add(":flow_id");
+        valueList.add("CAST (:flow_id AS INTEGER)");
         valueList.add(":table_nm");
         valueList.add(":primary_keys");
         valueList.add(":status_kb");
-        valueList.add("LEFT(DATE_FORMAT (now(3), '%Y-%m-%dT%H:%i:%s.%f'), 23)");
-        valueList.add(":kessai_id");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (TO_CHAR (CURRENT_TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS.MS'), 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        valueList.add("CAST (:kessai_id AS INTEGER)");
         valueList.add(":riyu_tx");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -451,10 +451,10 @@ public class T03StatusKb implements IEntity {
         if (this.flowId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`FLOW_ID`) IS NULL THEN 0 ELSE MAX(e.`FLOW_ID`) * 1 END + 1 AS `FLOW_ID` FROM T03_STATUS_KB e";
+        String sql = "SELECT CASE WHEN MAX(e.\"flow_id\") IS NULL THEN 0 ELSE MAX(e.\"flow_id\") * 1 END + 1 AS \"flow_id\" FROM T03_STATUS_KB e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("FLOW_ID");
+        Object o = mapList.get(0).get("flow_id");
         this.setFlowId(o);
     }
 

@@ -1,35 +1,35 @@
 SELECT
-      a.`KOUTEI_ID` AS `KOUTEI_ID`
-    , (SELECT r0.`KOUTEI_MEI` FROM T14_KOUTEI r0 WHERE r0.`KOUTEI_ID` = a.`KOUTEI_ID`) AS `KOUTEI_MEI`
-    , a.`JISSEKI_BN` AS `JISSEKI_BN`
-    , TRIM(TRAILING ' ' FROM a.`JISSHI_YMD`) AS `JISSHI_YMD`
-    , TRIM(TRAILING ' ' FROM a.`KANRYO_YMD`) AS `KANRYO_YMD`
-    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS `INSERT_USER_ID`
-    , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
-    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS `UPDATE_USER_ID`
-    , (SELECT r2.`USER_SEI` FROM MHR_USER r2 WHERE r2.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
+      a."koutei_id" AS "koutei_id"
+    , (SELECT r0."koutei_mei" FROM T14_KOUTEI r0 WHERE r0."koutei_id" = a."koutei_idkoutei_id") AS "koutei_mei"
+    , a."jisseki_bn" AS "jisseki_bn"
+    , TRIM(TRAILING ' ' FROM a."jisshi_ymd") AS "jisshi_ymd"
+    , TRIM(TRAILING ' ' FROM a."kanryo_ymd") AS "kanryo_ymd"
+    , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
+    , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
+    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = a."insert_user_iduser_id") AS "insert_user_sei"
+    , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
+    , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
+    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = a."update_user_iduser_id") AS "update_user_sei"
 FROM
     T14_JISSEKI a 
 WHERE
     1 = 1 
-    AND a.`KOUTEI_ID` = :koutei_id 
-    AND a.`JISSEKI_BN` = :jisseki_bn 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`JISSHI_YMD`)) LIKE UPPER (CONCAT ('%', :jisshi_ymd, '%')) 
-    AND a.`JISSHI_YMD` >= :jisshi_ymd_1 
-    AND a.`JISSHI_YMD` <= :jisshi_ymd_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`KANRYO_YMD`)) LIKE UPPER (CONCAT ('%', :kanryo_ymd, '%')) 
-    AND a.`KANRYO_YMD` >= :kanryo_ymd_1 
-    AND a.`KANRYO_YMD` <= :kanryo_ymd_2 
-    AND a.`INSERT_TS` = :insert_ts 
-    AND a.`INSERT_TS` >= :insert_ts_1 
-    AND a.`INSERT_TS` <= :insert_ts_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`)) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
-    AND a.`UPDATE_TS` = :update_ts 
-    AND a.`UPDATE_TS` >= :update_ts_1 
-    AND a.`UPDATE_TS` <= :update_ts_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`)) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
+    AND a."koutei_id" = CAST (:koutei_id AS INTEGER) 
+    AND a."jisseki_bn" = CAST (:jisseki_bn AS INTEGER) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."jisshi_ymd")) LIKE UPPER (CONCAT ('%', :jisshi_ymd, '%')) 
+    AND a."jisshi_ymd" >= :jisshi_ymd_1 
+    AND a."jisshi_ymd" <= :jisshi_ymd_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."kanryo_ymd")) LIKE UPPER (CONCAT ('%', :kanryo_ymd, '%')) 
+    AND a."kanryo_ymd" >= :kanryo_ymd_1 
+    AND a."kanryo_ymd" <= :kanryo_ymd_2 
+    AND a."insert_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."insert_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."insert_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (TRIM(TRAILING ' ' FROM a."insert_user_id")) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
+    AND a."update_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."update_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."update_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (TRIM(TRAILING ' ' FROM a."update_user_id")) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
 ORDER BY
-    a.`KOUTEI_ID`
-    , a.`JISSEKI_BN`
+    a."koutei_id"
+    , a."jisseki_bn"

@@ -1,113 +1,113 @@
 SELECT
-      a.`ENTITY_ID` AS `ENTITY_ID`
-    , a.`ENTITY_NM` AS `ENTITY_NM`
-    , a.`ENTITY_MEI` AS `ENTITY_MEI`
-    , a.`BIT_B` AS `BIT_B`
-    , TRIM(TRAILING ' ' FROM a.`CHECK_F`) AS `CHECK_F`
-    , a.`RADIO_KB` AS `RADIO_KB`
-    , a.`PULLDOWN_KB` AS `PULLDOWN_KB`
-    , a.`PULLDOWN_SB` AS `PULLDOWN_SB`
-    , a.`MEMO_TX` AS `MEMO_TX`
-    , a.`MEMO` AS `MEMO`
-    , a.`TENPU_FILE` AS `TENPU_FILE`
-    , TRIM(TRAILING ' ' FROM a.`NEN_Y`) AS `NEN_Y`
-    , TRIM(TRAILING ' ' FROM a.`TSUKI_M`) AS `TSUKI_M`
-    , TRIM(TRAILING ' ' FROM a.`HI_D`) AS `HI_D`
-    , TRIM(TRAILING ' ' FROM a.`NENGETSU_YM`) AS `NENGETSU_YM`
-    , TRIM(TRAILING ' ' FROM a.`NENGAPPI_YMD`) AS `NENGAPPI_YMD`
-    , LEFT(DATE_FORMAT (a.`TIMESTAMP_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `TIMESTAMP_TS`
-    , LEFT(DATE_FORMAT (a.`NICHIJI_DT`, '%Y-%m-%dT%H:%i:%s'), 19) AS `NICHIJI_DT`
-    , a.`HIDUKE_BI` AS `HIDUKE_BI`
-    , a.`JIKOKU_HM` AS `JIKOKU_HM`
-    , a.`JIKAN_TM` AS `JIKAN_TM`
-    , a.`TSUKA_KB` AS `TSUKA_KB`
-    , a.`JUCHU_QT` AS `JUCHU_QT`
-    , a.`JUCHU_PR` AS `JUCHU_PR`
-    , a.`JUCHU_AM` AS `JUCHU_AM`
-    , a.`HACCHU_QT` AS `HACCHU_QT`
-    , a.`HACCHU_PR` AS `HACCHU_PR`
-    , a.`HACCHU_AM` AS `HACCHU_AM`
-    , TRIM(TRAILING ' ' FROM a.`DELETE_F`) AS `DELETE_F`
-    , a.`STATUS_KB` AS `STATUS_KB`
-    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS `INSERT_USER_ID`
-    , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
-    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS `UPDATE_USER_ID`
-    , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
+      a."entity_id" AS "entity_id"
+    , a."entity_nm" AS "entity_nm"
+    , a."entity_mei" AS "entity_mei"
+    , a."bit_b" AS "bit_b"
+    , TRIM(TRAILING ' ' FROM a."check_f") AS "check_f"
+    , a."radio_kb" AS "radio_kb"
+    , a."pulldown_kb" AS "pulldown_kb"
+    , a."pulldown_sb" AS "pulldown_sb"
+    , a."memo_tx" AS "memo_tx"
+    , a."memo" AS "memo"
+    , a."tenpu_file" AS "tenpu_file"
+    , TRIM(TRAILING ' ' FROM a."nen_y") AS "nen_y"
+    , TRIM(TRAILING ' ' FROM a."tsuki_m") AS "tsuki_m"
+    , TRIM(TRAILING ' ' FROM a."hi_d") AS "hi_d"
+    , TRIM(TRAILING ' ' FROM a."nengetsu_ym") AS "nengetsu_ym"
+    , TRIM(TRAILING ' ' FROM a."nengappi_ymd") AS "nengappi_ymd"
+    , TO_CHAR (a."timestamp_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "timestamp_ts"
+    , TO_CHAR (a."nichiji_dt", 'YYYY-MM-DD HH24:MI:SS') AS "nichiji_dt"
+    , TO_CHAR (a."hiduke_bi", 'YYYY-MM-DD') AS "hiduke_bi"
+    , TO_CHAR (a."jikoku_hm", 'HH24:MI') AS "jikoku_hm"
+    , a."jikan_tm" AS "jikan_tm"
+    , a."tsuka_kb" AS "tsuka_kb"
+    , a."juchu_qt" AS "juchu_qt"
+    , a."juchu_pr" AS "juchu_pr"
+    , a."juchu_am" AS "juchu_am"
+    , a."hacchu_qt" AS "hacchu_qt"
+    , a."hacchu_pr" AS "hacchu_pr"
+    , a."hacchu_am" AS "hacchu_am"
+    , TRIM(TRAILING ' ' FROM a."delete_f") AS "delete_f"
+    , a."status_kb" AS "status_kb"
+    , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
+    , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
+    , (SELECT r0."user_sei" FROM MHR_USER r0 WHERE r0."user_id" = a."insert_user_iduser_id") AS "insert_user_sei"
+    , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
+    , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
+    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = a."update_user_iduser_id") AS "update_user_sei"
 FROM
     T00_ENTITY a 
 WHERE
     1 = 1 
-    AND a.`ENTITY_ID` = :entity_id 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`ENTITY_NM`)) LIKE UPPER (CONCAT ('%', :entity_nm, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`ENTITY_MEI`)) LIKE UPPER (CONCAT ('%', :entity_mei, '%')) 
-    AND a.`BIT_B` = :bit_b 
-    AND CASE WHEN TRIM(TRAILING ' ' FROM a.`CHECK_F`) IS NULL THEN '0' ELSE TO_CHAR (a.`CHECK_F`) END IN (:check_f) 
-    AND TRIM(TRAILING ' ' FROM a.`RADIO_KB`) IN (:radio_kb) 
-    AND TRIM(TRAILING ' ' FROM a.`PULLDOWN_KB`) IN (:pulldown_kb) 
-    AND TRIM(TRAILING ' ' FROM a.`PULLDOWN_SB`) IN (:pulldown_sb) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`MEMO_TX`)) LIKE UPPER (CONCAT ('%', :memo_tx, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`MEMO`)) LIKE UPPER (CONCAT ('%', :memo, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`TENPU_FILE`)) LIKE UPPER (CONCAT ('%', :tenpu_file, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`NEN_Y`)) LIKE UPPER (CONCAT ('%', :nen_y, '%')) 
-    AND a.`NEN_Y` >= :nen_y_1 
-    AND a.`NEN_Y` <= :nen_y_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`TSUKI_M`)) LIKE UPPER (CONCAT ('%', :tsuki_m, '%')) 
-    AND a.`TSUKI_M` >= :tsuki_m_1 
-    AND a.`TSUKI_M` <= :tsuki_m_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`HI_D`)) LIKE UPPER (CONCAT ('%', :hi_d, '%')) 
-    AND a.`HI_D` >= :hi_d_1 
-    AND a.`HI_D` <= :hi_d_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`NENGETSU_YM`)) LIKE UPPER (CONCAT ('%', :nengetsu_ym, '%')) 
-    AND a.`NENGETSU_YM` >= :nengetsu_ym_1 
-    AND a.`NENGETSU_YM` <= :nengetsu_ym_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`NENGAPPI_YMD`)) LIKE UPPER (CONCAT ('%', :nengappi_ymd, '%')) 
-    AND a.`NENGAPPI_YMD` >= :nengappi_ymd_1 
-    AND a.`NENGAPPI_YMD` <= :nengappi_ymd_2 
-    AND a.`TIMESTAMP_TS` = :timestamp_ts 
-    AND a.`TIMESTAMP_TS` >= :timestamp_ts_1 
-    AND a.`TIMESTAMP_TS` <= :timestamp_ts_2 
-    AND a.`NICHIJI_DT` = :nichiji_dt 
-    AND a.`NICHIJI_DT` >= :nichiji_dt_1 
-    AND a.`NICHIJI_DT` <= :nichiji_dt_2 
-    AND a.`HIDUKE_BI` = :hiduke_bi 
-    AND a.`HIDUKE_BI` >= :hiduke_bi_1 
-    AND a.`HIDUKE_BI` <= :hiduke_bi_2 
-    AND a.`JIKOKU_HM` = :jikoku_hm 
-    AND a.`JIKOKU_HM` >= :jikoku_hm_1 
-    AND a.`JIKOKU_HM` <= :jikoku_hm_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`JIKAN_TM`)) LIKE UPPER (CONCAT ('%', :jikan_tm, '%')) 
-    AND a.`JIKAN_TM` >= :jikan_tm_1 
-    AND a.`JIKAN_TM` <= :jikan_tm_2 
-    AND TRIM(TRAILING ' ' FROM a.`TSUKA_KB`) IN (:tsuka_kb) 
-    AND a.`JUCHU_QT` = :juchu_qt 
-    AND a.`JUCHU_QT` >= :juchu_qt_1 
-    AND a.`JUCHU_QT` <= :juchu_qt_2 
-    AND a.`JUCHU_PR` = :juchu_pr 
-    AND a.`JUCHU_PR` >= :juchu_pr_1 
-    AND a.`JUCHU_PR` <= :juchu_pr_2 
-    AND a.`JUCHU_AM` = :juchu_am 
-    AND a.`JUCHU_AM` >= :juchu_am_1 
-    AND a.`JUCHU_AM` <= :juchu_am_2 
-    AND a.`HACCHU_QT` = :hacchu_qt 
-    AND a.`HACCHU_QT` >= :hacchu_qt_1 
-    AND a.`HACCHU_QT` <= :hacchu_qt_2 
-    AND a.`HACCHU_PR` = :hacchu_pr 
-    AND a.`HACCHU_PR` >= :hacchu_pr_1 
-    AND a.`HACCHU_PR` <= :hacchu_pr_2 
-    AND a.`HACCHU_AM` = :hacchu_am 
-    AND a.`HACCHU_AM` >= :hacchu_am_1 
-    AND a.`HACCHU_AM` <= :hacchu_am_2 
-    AND CASE WHEN TRIM(TRAILING ' ' FROM a.`DELETE_F`) IS NULL THEN '0' ELSE TO_CHAR (a.`DELETE_F`) END IN (:delete_f) 
-    AND TRIM(TRAILING ' ' FROM a.`STATUS_KB`) IN (:status_kb) 
-    AND a.`INSERT_TS` = :insert_ts 
-    AND a.`INSERT_TS` >= :insert_ts_1 
-    AND a.`INSERT_TS` <= :insert_ts_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`)) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
-    AND a.`UPDATE_TS` = :update_ts 
-    AND a.`UPDATE_TS` >= :update_ts_1 
-    AND a.`UPDATE_TS` <= :update_ts_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`)) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
+    AND a."entity_id" = CAST (:entity_id AS INTEGER) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."entity_nm")) LIKE UPPER (CONCAT ('%', :entity_nm, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."entity_mei")) LIKE UPPER (CONCAT ('%', :entity_mei, '%')) 
+    AND a."bit_b" = CAST (:bit_b AS INTEGER) 
+    AND CASE WHEN TRIM(TRAILING ' ' FROM a."check_f") IS NULL THEN '0' ELSE TO_CHAR (a."check_f") END IN (:check_f) 
+    AND TRIM(TRAILING ' ' FROM a."radio_kb") IN (:radio_kb) 
+    AND TRIM(TRAILING ' ' FROM a."pulldown_kb") IN (:pulldown_kb) 
+    AND TRIM(TRAILING ' ' FROM a."pulldown_sb") IN (:pulldown_sb) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."memo_tx")) LIKE UPPER (CONCAT ('%', :memo_tx, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."memo")) LIKE UPPER (CONCAT ('%', :memo, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."tenpu_file")) LIKE UPPER (CONCAT ('%', :tenpu_file, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."nen_y")) LIKE UPPER (CONCAT ('%', :nen_y, '%')) 
+    AND a."nen_y" >= :nen_y_1 
+    AND a."nen_y" <= :nen_y_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."tsuki_m")) LIKE UPPER (CONCAT ('%', :tsuki_m, '%')) 
+    AND a."tsuki_m" >= :tsuki_m_1 
+    AND a."tsuki_m" <= :tsuki_m_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."hi_d")) LIKE UPPER (CONCAT ('%', :hi_d, '%')) 
+    AND a."hi_d" >= :hi_d_1 
+    AND a."hi_d" <= :hi_d_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."nengetsu_ym")) LIKE UPPER (CONCAT ('%', :nengetsu_ym, '%')) 
+    AND a."nengetsu_ym" >= :nengetsu_ym_1 
+    AND a."nengetsu_ym" <= :nengetsu_ym_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."nengappi_ymd")) LIKE UPPER (CONCAT ('%', :nengappi_ymd, '%')) 
+    AND a."nengappi_ymd" >= :nengappi_ymd_1 
+    AND a."nengappi_ymd" <= :nengappi_ymd_2 
+    AND a."timestamp_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:timestamp_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."timestamp_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:timestamp_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."timestamp_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:timestamp_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."nichiji_dt" = TO_TIMESTAMP (REPLACE (SUBSTR (:nichiji_dt, 0, 19), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS') 
+    AND a."nichiji_dt" >= TO_TIMESTAMP (REPLACE (SUBSTR (:nichiji_dt_1 , 0, 19), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS')
+    AND a."nichiji_dt" <= TO_TIMESTAMP (REPLACE (SUBSTR (:nichiji_dt_2 , 0, 19), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS')
+    AND a."hiduke_bi" = TO_DATE (SUBSTR (:hiduke_bi, 0, 10), 'YYYY-MM-DD') 
+    AND a."hiduke_bi" >= TO_DATE (SUBSTR (:hiduke_bi_1 , 0, 10), 'YYYY-MM-DD')
+    AND a."hiduke_bi" <= TO_DATE (SUBSTR (:hiduke_bi_2 , 0, 10), 'YYYY-MM-DD')
+    AND a."jikoku_hm" = :jikoku_hm 
+    AND a."jikoku_hm" >= :jikoku_hm_1 
+    AND a."jikoku_hm" <= :jikoku_hm_2 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."jikan_tm")) LIKE UPPER (CONCAT ('%', :jikan_tm, '%')) 
+    AND a."jikan_tm" >= :jikan_tm_1 
+    AND a."jikan_tm" <= :jikan_tm_2 
+    AND TRIM(TRAILING ' ' FROM a."tsuka_kb") IN (:tsuka_kb) 
+    AND a."juchu_qt" = :juchu_qt 
+    AND a."juchu_qt" >= :juchu_qt_1 
+    AND a."juchu_qt" <= :juchu_qt_2 
+    AND a."juchu_pr" = :juchu_pr 
+    AND a."juchu_pr" >= :juchu_pr_1 
+    AND a."juchu_pr" <= :juchu_pr_2 
+    AND a."juchu_am" = :juchu_am 
+    AND a."juchu_am" >= :juchu_am_1 
+    AND a."juchu_am" <= :juchu_am_2 
+    AND a."hacchu_qt" = :hacchu_qt 
+    AND a."hacchu_qt" >= :hacchu_qt_1 
+    AND a."hacchu_qt" <= :hacchu_qt_2 
+    AND a."hacchu_pr" = :hacchu_pr 
+    AND a."hacchu_pr" >= :hacchu_pr_1 
+    AND a."hacchu_pr" <= :hacchu_pr_2 
+    AND a."hacchu_am" = :hacchu_am 
+    AND a."hacchu_am" >= :hacchu_am_1 
+    AND a."hacchu_am" <= :hacchu_am_2 
+    AND CASE WHEN TRIM(TRAILING ' ' FROM a."delete_f") IS NULL THEN '0' ELSE TO_CHAR (a."delete_f") END IN (:delete_f) 
+    AND TRIM(TRAILING ' ' FROM a."status_kb") IN (:status_kb) 
+    AND a."insert_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."insert_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."insert_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (TRIM(TRAILING ' ' FROM a."insert_user_id")) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
+    AND a."update_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."update_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."update_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (TRIM(TRAILING ' ' FROM a."update_user_id")) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
 ORDER BY
-    a.`ENTITY_ID`
+    a."entity_id"

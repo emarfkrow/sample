@@ -14,8 +14,8 @@ $(function() {
         Column.text('OYA_KOUTEI_ID', Messages['V14YojitsuGrid.oyaKouteiId'], 100, '', null),
         Column.date8('JISSHI_YMD', Messages['V14YojitsuGrid.jisshiYmd'], 80, '', null),
         Column.date8('KANRYO_YMD', Messages['V14YojitsuGrid.kanryoYmd'], 80, '', null),
-        Column.text('DEPENDENCIES', Messages['V14YojitsuGrid.dependencies'], 300, '', null),
+        Column.text('DEPENDENCIES', Messages['V14YojitsuGrid.dependencies'], 30, '', null),
         Column.text('KOUTEI_PATH', Messages['V14YojitsuGrid.kouteiPath'], 300, '', null),
-        Column.dec0('ROOT', Messages['V14YojitsuGrid.root'], 100, '', null),
+        Column.text('ROOT', Messages['V14YojitsuGrid.root'], 100, '', null),
     ];
 });

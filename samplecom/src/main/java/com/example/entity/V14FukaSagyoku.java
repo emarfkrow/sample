@@ -142,18 +142,18 @@ public class V14FukaSagyoku implements IEntity {
     }
 
     /** DATA */
-    private String data;
+    private Integer data;
 
     /** @return DATA */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "DATA", index = 6)
-    public String getData() {
+    public Integer getData() {
         return this.data;
     }
 
     /** @param o DATA */
     public void setData(final Object o) {
-        if (o != null) {
-            this.data = o.toString();
+        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
+            this.data = Integer.valueOf(o.toString());
         } else {
             this.data = null;
         }

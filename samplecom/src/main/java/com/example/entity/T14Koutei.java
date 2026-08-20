@@ -202,7 +202,7 @@ public class T14Koutei implements IEntity {
     private String oyaKouteiMei;
 
     /** @return 親工程ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_KOUTEI_MEI", index = 8)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "oya_koutei_mei", index = 8)
     public String getOyaKouteiMei() {
         return this.oyaKouteiMei;
     }
@@ -269,7 +269,7 @@ public class T14Koutei implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 11)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -339,7 +339,7 @@ public class T14Koutei implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 14)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 14)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -360,19 +360,19 @@ public class T14Koutei implements IEntity {
      */
     public static T14Koutei get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KOUTEI_ID` = :koutei_id");
+        whereList.add("\"koutei_id\" = CAST (:koutei_id AS INTEGER)");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`KOUTEI_ID` \n";
-        sql += "    , a.`KOUTEI_MEI` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`KAISHI_YMD`) AS KAISHI_YMD \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`SHURYO_YMD`) AS SHURYO_YMD \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`SAGYOKU_CD`) AS SAGYOKU_CD \n";
-        sql += "    , a.`OYA_KOUTEI_ID` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"koutei_id\" \n";
+        sql += "    , a.\"koutei_mei\" \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"kaishi_ymd\") AS kaishi_ymd \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"shuryo_ymd\") AS shuryo_ymd \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"sagyoku_cd\") AS sagyoku_cd \n";
+        sql += "    , a.\"oya_koutei_id\" \n";
+        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
+        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
         sql += "FROM \n";
         sql += "    T14_KOUTEI a \n";
         sql += "WHERE \n";
@@ -401,31 +401,31 @@ public class T14Koutei implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`KOUTEI_ID` -- :koutei_id");
-        nameList.add("`KOUTEI_MEI` -- :koutei_mei");
-        nameList.add("`KAISHI_YMD` -- :kaishi_ymd");
-        nameList.add("`SHURYO_YMD` -- :shuryo_ymd");
-        nameList.add("`SAGYOKU_CD` -- :sagyoku_cd");
-        nameList.add("`OYA_KOUTEI_ID` -- :oya_koutei_id");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"koutei_id\" -- :koutei_id");
+        nameList.add("\"koutei_mei\" -- :koutei_mei");
+        nameList.add("\"kaishi_ymd\" -- :kaishi_ymd");
+        nameList.add("\"shuryo_ymd\" -- :shuryo_ymd");
+        nameList.add("\"sagyoku_cd\" -- :sagyoku_cd");
+        nameList.add("\"oya_koutei_id\" -- :oya_koutei_id");
+        nameList.add("\"insert_ts\" -- :insert_ts");
+        nameList.add("\"insert_user_id\" -- :insert_user_id");
+        nameList.add("\"update_ts\" -- :update_ts");
+        nameList.add("\"update_user_id\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add(":koutei_id");
+        valueList.add("CAST (:koutei_id AS INTEGER)");
         valueList.add(":koutei_mei");
         valueList.add(":kaishi_ymd");
         valueList.add(":shuryo_ymd");
         valueList.add(":sagyoku_cd");
-        valueList.add(":oya_koutei_id");
-        valueList.add(":insert_ts");
+        valueList.add("CAST (:oya_koutei_id AS INTEGER)");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -435,10 +435,10 @@ public class T14Koutei implements IEntity {
         if (this.kouteiId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`KOUTEI_ID`) IS NULL THEN 0 ELSE MAX(e.`KOUTEI_ID`) * 1 END + 1 AS `KOUTEI_ID` FROM T14_KOUTEI e";
+        String sql = "SELECT CASE WHEN MAX(e.\"koutei_id\") IS NULL THEN 0 ELSE MAX(e.\"koutei_id\") * 1 END + 1 AS \"koutei_id\" FROM T14_KOUTEI e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("KOUTEI_ID");
+        Object o = mapList.get(0).get("koutei_id");
         this.setKouteiId(o);
     }
 
@@ -458,14 +458,14 @@ public class T14Koutei implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`KOUTEI_ID` = :koutei_id");
-        setList.add("`KOUTEI_MEI` = :koutei_mei");
-        setList.add("`KAISHI_YMD` = :kaishi_ymd");
-        setList.add("`SHURYO_YMD` = :shuryo_ymd");
-        setList.add("`SAGYOKU_CD` = :sagyoku_cd");
-        setList.add("`OYA_KOUTEI_ID` = :oya_koutei_id");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"koutei_id\" = CAST (:koutei_id AS INTEGER)");
+        setList.add("\"koutei_mei\" = :koutei_mei");
+        setList.add("\"kaishi_ymd\" = :kaishi_ymd");
+        setList.add("\"shuryo_ymd\" = :shuryo_ymd");
+        setList.add("\"sagyoku_cd\" = :sagyoku_cd");
+        setList.add("\"oya_koutei_id\" = CAST (:oya_koutei_id AS INTEGER)");
+        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"update_user_id\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -514,8 +514,8 @@ public class T14Koutei implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KOUTEI_ID` = :koutei_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"koutei_id\" = CAST (:koutei_id AS INTEGER)");
+        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

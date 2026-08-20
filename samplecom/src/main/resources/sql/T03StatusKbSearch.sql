@@ -1,37 +1,37 @@
 SELECT
-      a.`FLOW_ID` AS `FLOW_ID`
-    , a.`TABLE_NM` AS `TABLE_NM`
-    , a.`PRIMARY_KEYS` AS `PRIMARY_KEYS`
-    , a.`STATUS_KB` AS `STATUS_KB`
-    , LEFT(DATE_FORMAT (a.`KESSAI_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `KESSAI_TS`
-    , a.`KESSAI_ID` AS `KESSAI_ID`
-    , a.`RIYU_TX` AS `RIYU_TX`
-    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS `INSERT_USER_ID`
-    , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
-    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS `UPDATE_USER_ID`
-    , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
+      a."flow_id" AS "flow_id"
+    , a."table_nm" AS "table_nm"
+    , a."primary_keys" AS "primary_keys"
+    , a."status_kb" AS "status_kb"
+    , TO_CHAR (a."kessai_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "kessai_ts"
+    , a."kessai_id" AS "kessai_id"
+    , a."riyu_tx" AS "riyu_tx"
+    , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
+    , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
+    , (SELECT r0."user_sei" FROM MHR_USER r0 WHERE r0."user_id" = a."insert_user_iduser_id") AS "insert_user_sei"
+    , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
+    , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
+    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = a."update_user_iduser_id") AS "update_user_sei"
 FROM
     T03_STATUS_KB a 
 WHERE
     1 = 1 
-    AND a.`FLOW_ID` = :flow_id 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`TABLE_NM`)) LIKE UPPER (CONCAT ('%', :table_nm, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`PRIMARY_KEYS`)) LIKE UPPER (CONCAT ('%', :primary_keys, '%')) 
-    AND TRIM(TRAILING ' ' FROM a.`STATUS_KB`) IN (:status_kb) 
-    AND a.`KESSAI_TS` = :kessai_ts 
-    AND a.`KESSAI_TS` >= :kessai_ts_1 
-    AND a.`KESSAI_TS` <= :kessai_ts_2 
-    AND a.`KESSAI_ID` = :kessai_id 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`RIYU_TX`)) LIKE UPPER (CONCAT ('%', :riyu_tx, '%')) 
-    AND a.`INSERT_TS` = :insert_ts 
-    AND a.`INSERT_TS` >= :insert_ts_1 
-    AND a.`INSERT_TS` <= :insert_ts_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`)) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
-    AND a.`UPDATE_TS` = :update_ts 
-    AND a.`UPDATE_TS` >= :update_ts_1 
-    AND a.`UPDATE_TS` <= :update_ts_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`)) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
+    AND a."flow_id" = CAST (:flow_id AS INTEGER) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."table_nm")) LIKE UPPER (CONCAT ('%', :table_nm, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."primary_keys")) LIKE UPPER (CONCAT ('%', :primary_keys, '%')) 
+    AND TRIM(TRAILING ' ' FROM a."status_kb") IN (:status_kb) 
+    AND a."kessai_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:kessai_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."kessai_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:kessai_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."kessai_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:kessai_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."kessai_id" = CAST (:kessai_id AS INTEGER) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."riyu_tx")) LIKE UPPER (CONCAT ('%', :riyu_tx, '%')) 
+    AND a."insert_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."insert_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."insert_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (TRIM(TRAILING ' ' FROM a."insert_user_id")) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
+    AND a."update_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."update_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."update_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (TRIM(TRAILING ' ' FROM a."update_user_id")) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
 ORDER BY
-    a.`FLOW_ID`
+    a."flow_id"

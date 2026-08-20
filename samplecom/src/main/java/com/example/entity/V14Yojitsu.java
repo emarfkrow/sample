@@ -291,26 +291,26 @@ public class V14Yojitsu implements IEntity {
     }
 
     /**
-     * VIEW照会
+     * 予実照会
      * @param param1 koutei_id
-     * @return VIEW
+     * @return 予実
      */
     public static V14Yojitsu get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`KOUTEI_ID` = :koutei_id");
+        whereList.add("\"koutei_id\" = CAST (:koutei_id AS INTEGER)");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`koutei_id` \n";
-        sql += "    , a.`koutei_tx` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`kaishi_ymd`) AS kaishi_ymd \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`shuryo_ymd`) AS shuryo_ymd \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`sagyoku_cd`) AS sagyoku_cd \n";
-        sql += "    , a.`oya_koutei_id` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`jisshi_ymd`) AS jisshi_ymd \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`kanryo_ymd`) AS kanryo_ymd \n";
-        sql += "    , a.`dependencies` \n";
-        sql += "    , a.`koutei_path` \n";
-        sql += "    , a.`root` \n";
+        sql += "      a.\"koutei_id\" \n";
+        sql += "    , a.\"koutei_tx\" \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"kaishi_ymd\") AS kaishi_ymd \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"shuryo_ymd\") AS shuryo_ymd \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"sagyoku_cd\") AS sagyoku_cd \n";
+        sql += "    , a.\"oya_koutei_id\" \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"jisshi_ymd\") AS jisshi_ymd \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"kanryo_ymd\") AS kanryo_ymd \n";
+        sql += "    , a.\"dependencies\" \n";
+        sql += "    , a.\"koutei_path\" \n";
+        sql += "    , a.\"root\" \n";
         sql += "FROM \n";
         sql += "    V14_YOJITSU a \n";
         sql += "WHERE \n";

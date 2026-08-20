@@ -192,7 +192,7 @@ public class T07Derive1Det implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 7)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 7)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -262,7 +262,7 @@ public class T07Derive1Det implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 10)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 10)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -284,17 +284,17 @@ public class T07Derive1Det implements IEntity {
      */
     public static T07Derive1Det get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`DERIVE1_ID` = :derive_1_id");
-        whereList.add("`DERIVE1_BN` = :derive_1_bn");
+        whereList.add("\"derive1_id\" = CAST (:derive_1_id AS INTEGER)");
+        whereList.add("\"derive1_bn\" = CAST (:derive_1_bn AS INTEGER)");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`DERIVE1_ID` \n";
-        sql += "    , a.`DERIVE1_BN` \n";
-        sql += "    , a.`DET_INFO` \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"derive1_id\" \n";
+        sql += "    , a.\"derive1_bn\" \n";
+        sql += "    , a.\"det_info\" \n";
+        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
+        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
         sql += "FROM \n";
         sql += "    T07_DERIVE1_DET a \n";
         sql += "WHERE \n";
@@ -324,25 +324,25 @@ public class T07Derive1Det implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`DERIVE1_ID` -- :derive_1_id");
-        nameList.add("`DERIVE1_BN` -- :derive_1_bn");
-        nameList.add("`DET_INFO` -- :det_info");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"derive1_id\" -- :derive_1_id");
+        nameList.add("\"derive1_bn\" -- :derive_1_bn");
+        nameList.add("\"det_info\" -- :det_info");
+        nameList.add("\"insert_ts\" -- :insert_ts");
+        nameList.add("\"insert_user_id\" -- :insert_user_id");
+        nameList.add("\"update_ts\" -- :update_ts");
+        nameList.add("\"update_user_id\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add(":derive_1_id");
-        valueList.add(":derive_1_bn");
+        valueList.add("CAST (:derive_1_id AS INTEGER)");
+        valueList.add("CAST (:derive_1_bn AS INTEGER)");
         valueList.add(":det_info");
-        valueList.add(":insert_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -352,14 +352,14 @@ public class T07Derive1Det implements IEntity {
         if (this.derive1Bn != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`DERIVE1_BN`) IS NULL THEN 0 ELSE MAX(e.`DERIVE1_BN`) * 1 END + 1 AS `DERIVE1_BN` FROM T07_DERIVE1_DET e";
+        String sql = "SELECT CASE WHEN MAX(e.\"derive1_bn\") IS NULL THEN 0 ELSE MAX(e.\"derive1_bn\") * 1 END + 1 AS \"derive1_bn\" FROM T07_DERIVE1_DET e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("e.`DERIVE1_ID` = :derive_1_id");
+        whereList.add("e.\"derive1_id\" = :derive_1_id");
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("derive_1_id", this.derive1Id);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("DERIVE1_BN");
+        Object o = mapList.get(0).get("derive1_bn");
         this.setDerive1Bn(o);
     }
 
@@ -379,11 +379,11 @@ public class T07Derive1Det implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`DERIVE1_ID` = :derive_1_id");
-        setList.add("`DERIVE1_BN` = :derive_1_bn");
-        setList.add("`DET_INFO` = :det_info");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"derive1_id\" = CAST (:derive_1_id AS INTEGER)");
+        setList.add("\"derive1_bn\" = CAST (:derive_1_bn AS INTEGER)");
+        setList.add("\"det_info\" = :det_info");
+        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"update_user_id\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -429,9 +429,9 @@ public class T07Derive1Det implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`DERIVE1_ID` = :derive_1_id");
-        whereList.add("`DERIVE1_BN` = :derive_1_bn");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"derive1_id\" = CAST (:derive_1_id AS INTEGER)");
+        whereList.add("\"derive1_bn\" = CAST (:derive_1_bn AS INTEGER)");
+        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

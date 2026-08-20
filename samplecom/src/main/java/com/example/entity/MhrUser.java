@@ -277,7 +277,7 @@ public class MhrUser implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 11)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -347,7 +347,7 @@ public class MhrUser implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 14)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 14)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -368,20 +368,20 @@ public class MhrUser implements IEntity {
      */
     public static MhrUser get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`USER_ID` = :user_id");
+        whereList.add("\"user_id\" = CAST (:user_id AS INTEGER)");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`USER_ID` \n";
-        sql += "    , a.`USER_SEI` \n";
-        sql += "    , a.`USER_MEI` \n";
-        sql += "    , a.`E_MAIL` \n";
-        sql += "    , a.`PASSWORD` \n";
-        sql += "    , a.`TEKIYO_BI` AS TEKIYO_BI \n";
-        sql += "    , a.`HAISHI_BI` AS HAISHI_BI \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS INSERT_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS INSERT_USER_ID \n";
-        sql += "    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS UPDATE_TS \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS UPDATE_USER_ID \n";
+        sql += "      a.\"user_id\" \n";
+        sql += "    , a.\"user_sei\" \n";
+        sql += "    , a.\"user_mei\" \n";
+        sql += "    , a.\"e_mail\" \n";
+        sql += "    , a.\"password\" \n";
+        sql += "    , TO_CHAR (a.\"tekiyo_bi\", 'YYYY-MM-DD') AS tekiyo_bi \n";
+        sql += "    , TO_CHAR (a.\"haishi_bi\", 'YYYY-MM-DD') AS haishi_bi \n";
+        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
+        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
         sql += "FROM \n";
         sql += "    MHR_USER a \n";
         sql += "WHERE \n";
@@ -410,33 +410,33 @@ public class MhrUser implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("`USER_ID` -- :user_id");
-        nameList.add("`USER_SEI` -- :user_sei");
-        nameList.add("`USER_MEI` -- :user_mei");
-        nameList.add("`E_MAIL` -- :e_mail");
-        nameList.add("`PASSWORD` -- :password");
-        nameList.add("`TEKIYO_BI` -- :tekiyo_bi");
-        nameList.add("`HAISHI_BI` -- :haishi_bi");
-        nameList.add("`INSERT_TS` -- :insert_ts");
-        nameList.add("`INSERT_USER_ID` -- :insert_user_id");
-        nameList.add("`UPDATE_TS` -- :update_ts");
-        nameList.add("`UPDATE_USER_ID` -- :update_user_id");
+        nameList.add("\"user_id\" -- :user_id");
+        nameList.add("\"user_sei\" -- :user_sei");
+        nameList.add("\"user_mei\" -- :user_mei");
+        nameList.add("\"e_mail\" -- :e_mail");
+        nameList.add("\"password\" -- :password");
+        nameList.add("\"tekiyo_bi\" -- :tekiyo_bi");
+        nameList.add("\"haishi_bi\" -- :haishi_bi");
+        nameList.add("\"insert_ts\" -- :insert_ts");
+        nameList.add("\"insert_user_id\" -- :insert_user_id");
+        nameList.add("\"update_ts\" -- :update_ts");
+        nameList.add("\"update_user_id\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add(":user_id");
+        valueList.add("CAST (:user_id AS INTEGER)");
         valueList.add(":user_sei");
         valueList.add(":user_mei");
         valueList.add(":e_mail");
         valueList.add(":password");
-        valueList.add(":tekiyo_bi");
-        valueList.add(":haishi_bi");
-        valueList.add(":insert_ts");
+        valueList.add("TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        valueList.add("TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
-        valueList.add(":update_ts");
+        valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":update_user_id");
         return String.join("\r\n    , ", valueList);
     }
@@ -446,10 +446,10 @@ public class MhrUser implements IEntity {
         if (this.userId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`USER_ID`) IS NULL THEN 0 ELSE MAX(e.`USER_ID`) * 1 END + 1 AS `USER_ID` FROM MHR_USER e";
+        String sql = "SELECT CASE WHEN MAX(e.\"user_id\") IS NULL THEN 0 ELSE MAX(e.\"user_id\") * 1 END + 1 AS \"user_id\" FROM MHR_USER e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("USER_ID");
+        Object o = mapList.get(0).get("user_id");
         this.setUserId(o);
     }
 
@@ -469,15 +469,15 @@ public class MhrUser implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("`USER_ID` = :user_id");
-        setList.add("`USER_SEI` = :user_sei");
-        setList.add("`USER_MEI` = :user_mei");
-        setList.add("`E_MAIL` = :e_mail");
-        setList.add("`PASSWORD` = :password");
-        setList.add("`TEKIYO_BI` = :tekiyo_bi");
-        setList.add("`HAISHI_BI` = :haishi_bi");
-        setList.add("`UPDATE_TS` = :update_ts");
-        setList.add("`UPDATE_USER_ID` = :update_user_id");
+        setList.add("\"user_id\" = CAST (:user_id AS INTEGER)");
+        setList.add("\"user_sei\" = :user_sei");
+        setList.add("\"user_mei\" = :user_mei");
+        setList.add("\"e_mail\" = :e_mail");
+        setList.add("\"password\" = :password");
+        setList.add("\"tekiyo_bi\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"haishi_bi\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"update_user_id\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -527,8 +527,8 @@ public class MhrUser implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("`USER_ID` = :user_id");
-        whereList.add("`update_ts` = '" + this.updateTs + "'");
+        whereList.add("\"user_id\" = CAST (:user_id AS INTEGER)");
+        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

@@ -1,36 +1,36 @@
 SELECT
-      a.`KBN_NM` AS `KBN_NM`
-    , (SELECT r0.`KBN_MEI` FROM MSY_KBN r0 WHERE r0.`KBN_NM` = a.`KBN_NM`) AS `KBN_MEI`
-    , a.`KBN_VAL` AS `KBN_VAL`
-    , a.`KBN_VAL_MEI` AS `KBN_VAL_MEI`
-    , a.`HYOJI_ON` AS `HYOJI_ON`
-    , a.`CRITERIA` AS `CRITERIA`
-    , LEFT(DATE_FORMAT (a.`INSERT_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `INSERT_TS`
-    , TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`) AS `INSERT_USER_ID`
-    , (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
-    , LEFT(DATE_FORMAT (a.`UPDATE_TS`, '%Y-%m-%dT%H:%i:%s.%f'), 23) AS `UPDATE_TS`
-    , TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`) AS `UPDATE_USER_ID`
-    , (SELECT r2.`USER_SEI` FROM MHR_USER r2 WHERE r2.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`
+      a."kbn_nm" AS "kbn_nm"
+    , (SELECT r0."kbn_mei" FROM MSY_KBN r0 WHERE r0."kbn_nm" = a."kbn_nmkbn_nm") AS "kbn_mei"
+    , a."kbn_val" AS "kbn_val"
+    , a."kbn_val_mei" AS "kbn_val_mei"
+    , a."hyoji_on" AS "hyoji_on"
+    , a."criteria" AS "criteria"
+    , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
+    , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
+    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = a."insert_user_iduser_id") AS "insert_user_sei"
+    , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
+    , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
+    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = a."update_user_iduser_id") AS "update_user_sei"
 FROM
     MSY_KBN_VAL a 
 WHERE
     1 = 1 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`KBN_NM`)) = UPPER (:kbn_nm_full) 
-    AND UPPER (:kbn_nm) LIKE UPPER (CONCAT ('%', TRIM(TRAILING ' ' FROM a.`KBN_NM`))) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`KBN_VAL`)) = UPPER (:kbn_val_full) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`KBN_VAL`)) LIKE UPPER (CONCAT ('%', :kbn_val, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`KBN_VAL_MEI`)) LIKE UPPER (CONCAT ('%', :kbn_val_mei, '%')) 
-    AND a.`HYOJI_ON` = :hyoji_on 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`CRITERIA`)) LIKE UPPER (CONCAT ('%', :criteria, '%')) 
-    AND a.`INSERT_TS` = :insert_ts 
-    AND a.`INSERT_TS` >= :insert_ts_1 
-    AND a.`INSERT_TS` <= :insert_ts_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`INSERT_USER_ID`)) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
-    AND a.`UPDATE_TS` = :update_ts 
-    AND a.`UPDATE_TS` >= :update_ts_1 
-    AND a.`UPDATE_TS` <= :update_ts_2 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`UPDATE_USER_ID`)) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."kbn_nm")) = UPPER (:kbn_nm_full) 
+    AND UPPER (:kbn_nm) LIKE UPPER (CONCAT ('%', TRIM(TRAILING ' ' FROM a."kbn_nm"))) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."kbn_val")) = UPPER (:kbn_val_full) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."kbn_val")) LIKE UPPER (CONCAT ('%', :kbn_val, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."kbn_val_mei")) LIKE UPPER (CONCAT ('%', :kbn_val_mei, '%')) 
+    AND a."hyoji_on" = CAST (:hyoji_on AS INTEGER) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a."criteria")) LIKE UPPER (CONCAT ('%', :criteria, '%')) 
+    AND a."insert_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."insert_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."insert_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (TRIM(TRAILING ' ' FROM a."insert_user_id")) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
+    AND a."update_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."update_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."update_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (TRIM(TRAILING ' ' FROM a."update_user_id")) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
 ORDER BY
-    a.`KBN_NM`
-    , a.`KBN_VAL`
-    , a.`HYOJI_ON`
+    a."kbn_nm"
+    , a."kbn_val"
+    , a."hyoji_on"
