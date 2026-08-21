@@ -6,10 +6,10 @@ SELECT
     , a."comp1_mei" AS "comp1_mei"
     , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
     , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
-    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = a."insert_user_id") AS "insert_user_sei"
+    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = CAST (a."insert_user_id" AS INTEGER)) AS "insert_user_sei"
     , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
     , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
-    , (SELECT r3."user_sei" FROM MHR_USER r3 WHERE r3."user_id" = a."update_user_id") AS "update_user_sei"
+    , (SELECT r3."user_sei" FROM MHR_USER r3 WHERE r3."user_id" = CAST (a."update_user_id" AS INTEGER)) AS "update_user_sei"
 FROM
     T04_COMP1 a 
 WHERE

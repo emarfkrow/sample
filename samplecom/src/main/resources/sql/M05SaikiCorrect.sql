@@ -15,10 +15,10 @@ SELECT
     , (SELECT r5."saiki_mei" FROM M05_SAIKI r5 WHERE r5."saiki_id" = a."oya_saiki_id") AS "oya_saiki_mei"
     , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
     , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
-    , (SELECT r6."user_sei" FROM MHR_USER r6 WHERE r6."user_id" = a."insert_user_id") AS "insert_user_sei"
+    , (SELECT r6."user_sei" FROM MHR_USER r6 WHERE r6."user_id" = CAST (a."insert_user_id" AS INTEGER)) AS "insert_user_sei"
     , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
     , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
-    , (SELECT r7."user_sei" FROM MHR_USER r7 WHERE r7."user_id" = a."update_user_id") AS "update_user_sei"
+    , (SELECT r7."user_sei" FROM MHR_USER r7 WHERE r7."user_id" = CAST (a."update_user_id" AS INTEGER)) AS "update_user_sei"
 FROM
     M05_SAIKI a 
 WHERE

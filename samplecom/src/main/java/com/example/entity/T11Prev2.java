@@ -441,10 +441,10 @@ public class T11Prev2 implements IEntity {
         sql += ", \"prev2_id\"";
         sql += ", TO_CHAR (\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts";
         sql += ", \"insert_user_id\"";
-        sql += ", (SELECT r0.\"user_sei\" FROM MHR_USER r0 WHERE r0.\"user_id\" = a.\"insert_user_id\") AS \"insert_user_sei\"";
+        sql += ", (SELECT r0.\"user_sei\" FROM MHR_USER r0 WHERE r0.\"user_id\" = CAST (a.\"insert_user_id\" AS INTEGER)) AS \"insert_user_sei\"";
         sql += ", TO_CHAR (\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts";
         sql += ", \"update_user_id\"";
-        sql += ", (SELECT r1.\"user_sei\" FROM MHR_USER r1 WHERE r1.\"user_id\" = a.\"update_user_id\") AS \"update_user_sei\"";
+        sql += ", (SELECT r1.\"user_sei\" FROM MHR_USER r1 WHERE r1.\"user_id\" = CAST (a.\"update_user_id\" AS INTEGER)) AS \"update_user_sei\"";
         sql += " FROM T11_REBORN2 a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "REBORN2_ID";
