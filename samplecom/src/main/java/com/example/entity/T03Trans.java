@@ -389,11 +389,11 @@ public class T03Trans implements IEntity {
         // 決裁フローの登録
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.statusKb) && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.riyuTx)) {
             T03StatusKb t03StatusKb = new T03StatusKb();
-            t03StatusKb.setTableNm(this.tableNm);
-            t03StatusKb.setPrimaryKeys(this.primaryKeys);
+            t03StatusKb.setTableNm("T03_TRANS");
+            t03StatusKb.setPrimaryKeys(String.join(",", this.getTransId().toString()));
             t03StatusKb.setStatusKb(this.statusKb);
-            t03StatusKb.setKessaiTs(this.kessaiTs);
-            t03StatusKb.setKessaiId(this.kessaiId);
+            t03StatusKb.setKessaiTs(at);
+            t03StatusKb.setKessaiId(by);
             t03StatusKb.setRiyuTx(this.riyuTx);
             t03StatusKb.setInsertTs(this.insertTs);
             t03StatusKb.setInsertUserId(this.insertUserId);
