@@ -1,16 +1,16 @@
 SELECT
       a."kbn_nm" AS "kbn_nm"
-    , (SELECT r0."kbn_mei" FROM MSY_KBN r0 WHERE r0."kbn_nm" = a."kbn_nmkbn_nm") AS "kbn_mei"
+    , (SELECT r0."kbn_mei" FROM MSY_KBN r0 WHERE r0."kbn_nm" = a."kbn_nm") AS "kbn_mei"
     , a."kbn_val" AS "kbn_val"
     , a."kbn_val_mei" AS "kbn_val_mei"
     , a."hyoji_on" AS "hyoji_on"
     , a."criteria" AS "criteria"
     , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
     , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
-    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = a."insert_user_iduser_id") AS "insert_user_sei"
+    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = a."insert_user_id") AS "insert_user_sei"
     , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
     , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
-    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = a."update_user_iduser_id") AS "update_user_sei"
+    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = a."update_user_id") AS "update_user_sei"
 FROM
     MSY_KBN_VAL a 
 WHERE

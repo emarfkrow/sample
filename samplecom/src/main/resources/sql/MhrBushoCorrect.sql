@@ -2,15 +2,15 @@ SELECT
       a."busho_id" AS "busho_id"
     , a."busho_mei" AS "busho_mei"
     , a."oya_busho_id" AS "oya_busho_id"
-    , (SELECT r0."busho_mei" FROM MHR_BUSHO r0 WHERE r0."busho_id" = a."oya_busho_idbusho_id") AS "oya_busho_mei"
+    , (SELECT r0."busho_mei" FROM MHR_BUSHO r0 WHERE r0."busho_id" = a."oya_busho_id") AS "oya_busho_mei"
     , TO_CHAR (a."tekiyo_bi", 'YYYY-MM-DD') AS "tekiyo_bi"
     , TO_CHAR (a."haishi_bi", 'YYYY-MM-DD') AS "haishi_bi"
     , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
     , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
-    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = a."insert_user_iduser_id") AS "insert_user_sei"
+    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = a."insert_user_id") AS "insert_user_sei"
     , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
     , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
-    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = a."update_user_iduser_id") AS "update_user_sei"
+    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = a."update_user_id") AS "update_user_sei"
 FROM
     MHR_BUSHO a 
 WHERE
