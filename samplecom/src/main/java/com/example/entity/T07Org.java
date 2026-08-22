@@ -333,7 +333,7 @@ public class T07Org implements IEntity {
         String sql = "SELECT CASE WHEN MAX(e.\"org_id\") IS NULL THEN 0 ELSE MAX(e.\"org_id\") * 1 END + 1 AS \"org_id\" FROM T07_ORG e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("org_id");
+        Object o = mapList.get(0).get("ORG_ID");
         this.setOrgId(o);
     }
 

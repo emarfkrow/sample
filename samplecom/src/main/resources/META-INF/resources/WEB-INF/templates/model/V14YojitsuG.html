@@ -10,6 +10,7 @@
 </script>
 <script th:src="@{/model/V14Yojitsu.js}"></script>
 <script th:src="@{/model/V14YojitsuGridColumns.js}"></script>
+<script th:src="@{/model/V14YojitsuGanttTasks.js}"></script>
 <!-- V14_YOJITSUの参照モデルのグリッド定義 -->
 <script th:src="@{/model/T14Koutei.js}"></script>
 <script th:src="@{/model/T14KouteiGridColumns.js}"></script>
@@ -22,8 +23,6 @@
     <h2 th:text="#{V14YojitsuS.h2}">h2</h2>
     <!-- 検索フォーム -->
     <form name="V14YojitsuSearchForm" action="V14YojitsuSearch.ajax" class="search">
-      <input type="hidden" name="rows" value="1000" />
-      <input type="hidden" name="page" value="0" />
       <fieldset>
         <legend th:text="#{V14YojitsuS.legend}">legend</legend>
         <div id="kouteiId">
@@ -64,20 +63,14 @@
         <button type="button" id="ResetV14Yojitsu" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
       </div>
       <div class="submits">
-        <button id="SearchV14Yojitsu" type="submit" class="search" data-gridId="V14YojitsuGrid" th:text="#{common.search}">search</button>
+        <button id="SearchV14Yojitsu" type="submit" class="search" data-ganttId="V14YojitsuGantt" th:text="#{common.search}">search</button>
       </div>
     </form>
     <!-- 一覧フォーム -->
-    <form name="V14YojitsuSRegistForm" action="V14YojitsuSRegist.ajax" class="regist">
-      <h3 th:text="#{V14Yojitsu.h3}">h3</h3>
-      <div id="V14YojitsuGrid" data-selectionMode="checkbox" data-frozenColumn="-1" data-editable="false" th:data-href="@{/model/V14Yojitsu.html}"></div>
-      <div id="V14YojitsuPager"></div>
-      <div class="buttons">
-        <a th:href="@{V14YojitsuSearch.xlsx(baseMei=#{V14YojitsuS.h2})}" id="V14YojitsuSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-      </div>
-      <div class="submits">
-      </div>
-    </form>
+    <h3 th:text="#{V14Yojitsu.h3}">h3</h3>
+    <div class="ganttWrapper">
+      <svg id="V14YojitsuGantt" class="gantt" th:data-href="@{/model/V14Yojitsu.html}"></svg>
+    </div>
   </div>
 </body>
 </html>

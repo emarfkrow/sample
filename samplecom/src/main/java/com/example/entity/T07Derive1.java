@@ -357,7 +357,7 @@ public class T07Derive1 implements IEntity {
         String sql = "SELECT CASE WHEN MAX(e.\"derive1_id\") IS NULL THEN 0 ELSE MAX(e.\"derive1_id\") * 1 END + 1 AS \"derive1_id\" FROM T07_DERIVE1 e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("derive1_id");
+        Object o = mapList.get(0).get("DERIVE1_ID");
         this.setDerive1Id(o);
     }
 

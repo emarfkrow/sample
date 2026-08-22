@@ -402,7 +402,7 @@ public class T14Jisseki implements IEntity {
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("koutei_id", this.kouteiId);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("jisseki_bn");
+        Object o = mapList.get(0).get("JISSEKI_BN");
         this.setJissekiBn(o);
     }
 

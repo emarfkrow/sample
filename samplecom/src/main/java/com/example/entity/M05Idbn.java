@@ -378,7 +378,7 @@ public class M05Idbn implements IEntity {
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("idref_id", this.idrefId);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("idbn_bn");
+        Object o = mapList.get(0).get("IDBN_BN");
         this.setIdbnBn(o);
     }
 

@@ -359,7 +359,7 @@ public class T06PrevDet implements IEntity {
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("prev_id", this.prevId);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("prev_bn");
+        Object o = mapList.get(0).get("PREV_BN");
         this.setPrevBn(o);
     }
 

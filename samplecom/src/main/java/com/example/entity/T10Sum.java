@@ -323,7 +323,7 @@ public class T10Sum implements IEntity {
         String sql = "SELECT CASE WHEN MAX(e.\"sum_id\") IS NULL THEN 0 ELSE MAX(e.\"sum_id\") * 1 END + 1 AS \"sum_id\" FROM T10_SUM e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("sum_id");
+        Object o = mapList.get(0).get("SUM_ID");
         this.setSumId(o);
     }
 

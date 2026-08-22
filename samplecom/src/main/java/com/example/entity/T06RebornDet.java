@@ -359,7 +359,7 @@ public class T06RebornDet implements IEntity {
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("reborn_id", this.rebornId);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("reborn_bn");
+        Object o = mapList.get(0).get("REBORN_BN");
         this.setRebornBn(o);
     }
 

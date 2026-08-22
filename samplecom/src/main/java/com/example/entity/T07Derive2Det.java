@@ -359,7 +359,7 @@ public class T07Derive2Det implements IEntity {
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("derive_2_id", this.derive2Id);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("derive2_bn");
+        Object o = mapList.get(0).get("DERIVE2_BN");
         this.setDerive2Bn(o);
     }
 

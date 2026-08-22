@@ -400,7 +400,7 @@ public class M04Ref1 implements IEntity {
         String sql = "SELECT CASE WHEN MAX(e.\"ref1_id\") IS NULL THEN 0 ELSE MAX(e.\"ref1_id\") * 1 END + 1 AS \"ref1_id\" FROM M04_REF1 e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("ref1_id");
+        Object o = mapList.get(0).get("REF1_ID");
         this.setRef1Id(o);
     }
 

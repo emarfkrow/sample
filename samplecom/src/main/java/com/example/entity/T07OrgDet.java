@@ -359,7 +359,7 @@ public class T07OrgDet implements IEntity {
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("org_id", this.orgId);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("org_bn");
+        Object o = mapList.get(0).get("ORG_BN");
         this.setOrgBn(o);
     }
 

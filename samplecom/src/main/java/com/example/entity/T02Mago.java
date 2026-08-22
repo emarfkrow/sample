@@ -393,7 +393,7 @@ public class T02Mago implements IEntity {
         map.put("oya_id", this.oyaId);
         map.put("ko_bn", this.koBn);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("mago_bn");
+        Object o = mapList.get(0).get("MAGO_BN");
         this.setMagoBn(o);
     }
 

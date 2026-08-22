@@ -384,7 +384,7 @@ public class T02Ko implements IEntity {
         sql += " WHERE " + String.join(" AND ", whereList);
         map.put("oya_id", this.oyaId);
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("ko_bn");
+        Object o = mapList.get(0).get("KO_BN");
         this.setKoBn(o);
     }
 

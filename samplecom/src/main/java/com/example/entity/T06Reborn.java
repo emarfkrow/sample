@@ -357,7 +357,7 @@ public class T06Reborn implements IEntity {
         String sql = "SELECT CASE WHEN MAX(e.\"reborn_id\") IS NULL THEN 0 ELSE MAX(e.\"reborn_id\") * 1 END + 1 AS \"reborn_id\" FROM T06_REBORN e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("reborn_id");
+        Object o = mapList.get(0).get("REBORN_ID");
         this.setRebornId(o);
     }
 
