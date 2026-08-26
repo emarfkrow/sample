@@ -306,16 +306,6 @@ public class T02Oya implements IEntity {
             }
         }
 
-        // 孤児の登録
-        if (this.t02Orphans != null) {
-            for (T02Orphan t02Orphan : this.t02Orphans) {
-                if (t02Orphan != null) {
-                    t02Orphan.setOyaId(this.getOyaId());
-                    t02Orphan.insert(at, by);
-                }
-            }
-        }
-
         // 親の登録
         String sql = "INSERT INTO T02_OYA(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
@@ -395,21 +385,6 @@ public class T02Oya implements IEntity {
             }
         }
 
-        // 孤児の登録
-        if (this.t02Orphans != null) {
-            for (T02Orphan t02Orphan : this.t02Orphans) {
-                if (t02Orphan == null) {
-                    continue;
-                }
-                t02Orphan.setOyaId(this.oyaId);
-                if (t02Orphan.isNew()) {
-                    t02Orphan.insert(at, by);
-                } else {
-                    t02Orphan.update(at, by);
-                }
-            }
-        }
-
         // 親の登録
         String sql = "UPDATE T02_OYA\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
@@ -449,15 +424,6 @@ public class T02Oya implements IEntity {
             }
         }
 
-        // 孤児の削除
-        if (this.t02Orphans != null) {
-            for (T02Orphan t02Orphan : this.t02Orphans) {
-                if (t02Orphan.delete() != 1) {
-                    throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "孤児");
-                }
-            }
-        }
-
         // 親の削除
         String sql = "DELETE FROM T02_OYA WHERE " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
@@ -477,11 +443,6 @@ public class T02Oya implements IEntity {
         // 子のチェック
         if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T02_KO", null, null).size() > 0) {
             throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T02_OYA by T02_KO");
-        }
-
-        // 孤児のチェック
-        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T02_ORPHAN", null, null).size() > 0) {
-            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T02_OYA by T02_ORPHAN");
         }
 
         // 親の削除
@@ -633,66 +594,5 @@ public class T02Oya implements IEntity {
             return list;
         }
         return new java.util.ArrayList<T02Ko>();
-    }
-
-    /*
-     * 子モデル：孤児
-     */
-
-    /** 孤児のリスト */
-    private java.util.List<T02Orphan> t02Orphans;
-
-    /** @return 孤児のリスト */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T02Orphans", index = 12)
-    public java.util.List<T02Orphan> getT02Orphans() {
-        return this.t02Orphans;
-    }
-
-    /** @param list 孤児のリスト */
-    public void setT02Orphans(final java.util.List<T02Orphan> list) {
-        this.t02Orphans = list;
-    }
-
-    /** @param t02Orphan */
-    public void addT02Orphans(final T02Orphan t02Orphan) {
-        if (this.t02Orphans == null) {
-            this.t02Orphans = new java.util.ArrayList<T02Orphan>();
-        }
-        this.t02Orphans.add(t02Orphan);
-    }
-
-    /** @return 孤児のリスト */
-    public java.util.List<T02Orphan> referT02Orphans() {
-        this.t02Orphans = T02Oya.referT02Orphans(this.oyaId);
-        return this.t02Orphans;
-    }
-
-    /**
-     * @param param1 oyaId
-     * @return java.util.List<T02Orphan>
-     */
-    public static java.util.List<T02Orphan> referT02Orphans(final Integer param1) {
-        java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("OYA_ID = :oya_id");
-        String sql = "SELECT ";
-        sql += "\"oya_id\"";
-        sql += ", \"ko_bn\"";
-        sql += ", \"orphan_info\"";
-        sql += ", TO_CHAR (\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts";
-        sql += ", \"insert_user_id\"";
-        sql += ", (SELECT r0.\"user_sei\" FROM MHR_USER r0 WHERE r0.\"user_id\" = CAST (a.\"insert_user_id\" AS INTEGER)) AS \"insert_user_sei\"";
-        sql += ", TO_CHAR (\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts";
-        sql += ", \"update_user_id\"";
-        sql += ", (SELECT r1.\"user_sei\" FROM MHR_USER r1 WHERE r1.\"user_id\" = CAST (a.\"update_user_id\" AS INTEGER)) AS \"update_user_sei\"";
-        sql += " FROM T02_ORPHAN a WHERE " + String.join(" AND ", whereList);
-        sql += " ORDER BY ";
-        sql += "OYA_ID, KO_BN";
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("oya_id", param1);
-        java.util.List<T02Orphan> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T02Orphan.class, null, null);
-        if (list != null) {
-            return list;
-        }
-        return new java.util.ArrayList<T02Orphan>();
     }
 }

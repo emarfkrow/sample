@@ -46,7 +46,7 @@ public class T02OrphanSDeleteAction extends BaseAction {
 
                 T02Orphan e = FormValidator.toBean(T02Orphan.class.getName(), row);
 
-                // child:T02Mago, parents:3
+                // child:T02Mago, parents:2
 
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "孤児");

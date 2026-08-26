@@ -42,20 +42,13 @@
         </div>
       </fieldset>
       <fieldset>
-        <legend th:text="#{T01Foster.legend}">legend</legend>
-        <div id="fosterInfo">
-          <label for="T01Foster.fosterInfo" th:text="#{T01Foster.fosterInfo}">FOSTER_INFO</label><input type="text" id="T01Foster.fosterInfo" name="T01Foster.fosterInfo" maxlength="300" class="" />
-        </div>
-        <input type="hidden" name="T01Foster.updateTs" />
-      </fieldset>
-      <fieldset>
         <legend th:text="#{T01Younger.legend}">legend</legend>
         <div id="youngerInfo">
           <label for="T01Younger.youngerInfo" th:text="#{T01Younger.youngerInfo}">YOUNGER_INFO</label><input type="text" id="T01Younger.youngerInfo" name="T01Younger.youngerInfo" maxlength="300" class="" />
         </div>
         <input type="hidden" name="T01Younger.updateTs" />
       </fieldset>
-      <fieldset>
+      <fieldset class="youngest">
         <legend th:text="#{T01Youngest.legend}">legend</legend>
         <div id="youngestInfo">
           <label for="T01Youngest.youngestInfo" th:text="#{T01Youngest.youngestInfo}">YOUNGEST_INFO</label><input type="text" id="T01Youngest.youngestInfo" name="T01Youngest.youngestInfo" maxlength="300" class="" />

@@ -16,15 +16,6 @@
 <!-- T02_DINKSの親モデルのグリッド定義 -->
 <script th:src="@{/model/T02Oya.js}"></script>
 <script th:src="@{/model/T02OyaGridColumns.js}"></script>
-<!-- T02_DINKSの子モデルのグリッド定義 -->
-<script th:src="@{/model/T02Mago.js}"></script>
-<script th:src="@{/model/T02MagoGridColumns.js}"></script>
-  <!-- T02_MAGOの親モデルのグリッド定義 -->
-  <script th:src="@{/model/T02Ko.js}"></script>
-  <script th:src="@{/model/T02KoGridColumns.js}"></script>
-  <!-- T02_MAGOの親モデルのグリッド定義 -->
-  <script th:src="@{/model/T02Orphan.js}"></script>
-  <script th:src="@{/model/T02OrphanGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -93,9 +84,6 @@
         </div>
         <input type="hidden" name="T02Orphan.updateTs" />
       </fieldset>
-      <h3 th:text="#{T02Mago.h3}">h3</h3>
-      <a th:href="@{/model/T02Mago.html(anew)}" id="T02Mago" target="dialog" th:text="#{T02Mago.add}" class="addChild" tabindex="-1">T02_MAGO</a>
-      <div id="T02MagoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="2" th:data-href="@{/model/T02Mago.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshT02Dinks" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T02DinksGet.xlsx(baseMei=#{T02Dinks.h2})}" id="T02DinksGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>

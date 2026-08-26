@@ -286,18 +286,6 @@ public class T01Younger implements IEntity {
         // 兄弟IDの採番処理
         numbering();
 
-        // 長兄の登録
-        if (this.t01Eldest != null) {
-            this.t01Eldest.setBroId(this.getBroId());
-            this.t01Eldest.insert(at, by);
-        }
-
-        // 里子の登録
-        if (this.t01Foster != null) {
-            this.t01Foster.setBroId(this.getBroId());
-            this.t01Foster.insert(at, by);
-        }
-
         // 末弟の登録
         if (this.t01Youngest != null) {
             this.t01Youngest.setBroId(this.getBroId());
@@ -352,26 +340,6 @@ public class T01Younger implements IEntity {
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime at, final String by) {
-
-        // 長兄の登録
-        if (this.t01Eldest != null) {
-            t01Eldest.setBroId(this.getBroId());
-            if (t01Eldest.isNew()) {
-                t01Eldest.insert(at, by);
-            } else {
-                t01Eldest.update(at, by);
-            }
-        }
-
-        // 里子の登録
-        if (this.t01Foster != null) {
-            t01Foster.setBroId(this.getBroId());
-            if (t01Foster.isNew()) {
-                t01Foster.insert(at, by);
-            } else {
-                t01Foster.update(at, by);
-            }
-        }
 
         // 末弟の登録
         if (this.t01Youngest != null) {
@@ -444,61 +412,11 @@ public class T01Younger implements IEntity {
         return String.join(" AND ", whereList);
     }
 
-    /** 兄弟：長兄 */
-    private T01Eldest t01Eldest;
-
-    /** @return 長兄 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Eldest", index = 10)
-    public T01Eldest getT01Eldest() {
-        return this.t01Eldest;
-    }
-
-    /** @param p 長兄 */
-    public void setT01Eldest(final T01Eldest p) {
-        this.t01Eldest = p;
-    }
-
-    /** @return 長兄 */
-    public T01Eldest referT01Eldest() {
-        if (this.t01Eldest == null) {
-            try {
-                this.t01Eldest = T01Eldest.get(this.broId);
-            } catch (jp.co.golorp.emarf.exception.NoDataError e) {
-            }
-        }
-        return this.t01Eldest;
-    }
-
-    /** 兄弟：里子 */
-    private T01Foster t01Foster;
-
-    /** @return 里子 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Foster", index = 11)
-    public T01Foster getT01Foster() {
-        return this.t01Foster;
-    }
-
-    /** @param p 里子 */
-    public void setT01Foster(final T01Foster p) {
-        this.t01Foster = p;
-    }
-
-    /** @return 里子 */
-    public T01Foster referT01Foster() {
-        if (this.t01Foster == null) {
-            try {
-                this.t01Foster = T01Foster.get(this.broId);
-            } catch (jp.co.golorp.emarf.exception.NoDataError e) {
-            }
-        }
-        return this.t01Foster;
-    }
-
     /** 兄弟：末弟 */
     private T01Youngest t01Youngest;
 
     /** @return 末弟 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Youngest", index = 12)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Youngest", index = 10)
     public T01Youngest getT01Youngest() {
         return this.t01Youngest;
     }

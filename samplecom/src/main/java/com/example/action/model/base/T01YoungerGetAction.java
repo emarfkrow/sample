@@ -41,8 +41,6 @@ public class T01YoungerGetAction extends BaseAction {
         try {
             T01Younger t01Younger = T01Younger.get(broId);
             // 兄弟
-            t01Younger.referT01Eldest();
-            t01Younger.referT01Foster();
             t01Younger.referT01Youngest();
             map.put("T01Younger", t01Younger);
         } catch (NoDataError e) {

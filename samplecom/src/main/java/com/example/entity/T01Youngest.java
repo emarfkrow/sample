@@ -286,24 +286,6 @@ public class T01Youngest implements IEntity {
         // 兄弟IDの採番処理
         numbering();
 
-        // 長兄の登録
-        if (this.t01Eldest != null) {
-            this.t01Eldest.setBroId(this.getBroId());
-            this.t01Eldest.insert(at, by);
-        }
-
-        // 里子の登録
-        if (this.t01Foster != null) {
-            this.t01Foster.setBroId(this.getBroId());
-            this.t01Foster.insert(at, by);
-        }
-
-        // 弟の登録
-        if (this.t01Younger != null) {
-            this.t01Younger.setBroId(this.getBroId());
-            this.t01Younger.insert(at, by);
-        }
-
         // 末弟の登録
         String sql = "INSERT INTO T01_YOUNGEST(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
@@ -352,36 +334,6 @@ public class T01Youngest implements IEntity {
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime at, final String by) {
-
-        // 長兄の登録
-        if (this.t01Eldest != null) {
-            t01Eldest.setBroId(this.getBroId());
-            if (t01Eldest.isNew()) {
-                t01Eldest.insert(at, by);
-            } else {
-                t01Eldest.update(at, by);
-            }
-        }
-
-        // 里子の登録
-        if (this.t01Foster != null) {
-            t01Foster.setBroId(this.getBroId());
-            if (t01Foster.isNew()) {
-                t01Foster.insert(at, by);
-            } else {
-                t01Foster.update(at, by);
-            }
-        }
-
-        // 弟の登録
-        if (this.t01Younger != null) {
-            t01Younger.setBroId(this.getBroId());
-            if (t01Younger.isNew()) {
-                t01Younger.insert(at, by);
-            } else {
-                t01Younger.update(at, by);
-            }
-        }
 
         // 末弟の登録
         String sql = "UPDATE T01_YOUNGEST\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
@@ -442,80 +394,5 @@ public class T01Youngest implements IEntity {
         whereList.add("\"bro_id\" = CAST (:bro_id AS INTEGER)");
         whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
-    }
-
-    /** 兄弟：長兄 */
-    private T01Eldest t01Eldest;
-
-    /** @return 長兄 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Eldest", index = 10)
-    public T01Eldest getT01Eldest() {
-        return this.t01Eldest;
-    }
-
-    /** @param p 長兄 */
-    public void setT01Eldest(final T01Eldest p) {
-        this.t01Eldest = p;
-    }
-
-    /** @return 長兄 */
-    public T01Eldest referT01Eldest() {
-        if (this.t01Eldest == null) {
-            try {
-                this.t01Eldest = T01Eldest.get(this.broId);
-            } catch (jp.co.golorp.emarf.exception.NoDataError e) {
-            }
-        }
-        return this.t01Eldest;
-    }
-
-    /** 兄弟：里子 */
-    private T01Foster t01Foster;
-
-    /** @return 里子 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Foster", index = 11)
-    public T01Foster getT01Foster() {
-        return this.t01Foster;
-    }
-
-    /** @param p 里子 */
-    public void setT01Foster(final T01Foster p) {
-        this.t01Foster = p;
-    }
-
-    /** @return 里子 */
-    public T01Foster referT01Foster() {
-        if (this.t01Foster == null) {
-            try {
-                this.t01Foster = T01Foster.get(this.broId);
-            } catch (jp.co.golorp.emarf.exception.NoDataError e) {
-            }
-        }
-        return this.t01Foster;
-    }
-
-    /** 兄弟：弟 */
-    private T01Younger t01Younger;
-
-    /** @return 弟 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Younger", index = 12)
-    public T01Younger getT01Younger() {
-        return this.t01Younger;
-    }
-
-    /** @param p 弟 */
-    public void setT01Younger(final T01Younger p) {
-        this.t01Younger = p;
-    }
-
-    /** @return 弟 */
-    public T01Younger referT01Younger() {
-        if (this.t01Younger == null) {
-            try {
-                this.t01Younger = T01Younger.get(this.broId);
-            } catch (jp.co.golorp.emarf.exception.NoDataError e) {
-            }
-        }
-        return this.t01Younger;
     }
 }

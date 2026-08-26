@@ -316,17 +316,6 @@ public class T02Dinks implements IEntity {
         // 子枝番の採番処理
         numbering();
 
-        // 孫の登録
-        if (this.t02Magos != null) {
-            for (T02Mago t02Mago : this.t02Magos) {
-                if (t02Mago != null) {
-                    t02Mago.setOyaId(this.getOyaId());
-                    t02Mago.setKoBn(this.getKoBn());
-                    t02Mago.insert(at, by);
-                }
-            }
-        }
-
         // 子の登録
         if (this.t02Ko != null) {
             this.t02Ko.setOyaId(this.getOyaId());
@@ -396,22 +385,6 @@ public class T02Dinks implements IEntity {
      */
     public int update(final java.time.LocalDateTime at, final String by) {
 
-        // 孫の登録
-        if (this.t02Magos != null) {
-            for (T02Mago t02Mago : this.t02Magos) {
-                if (t02Mago == null) {
-                    continue;
-                }
-                t02Mago.setOyaId(this.oyaId);
-                t02Mago.setKoBn(this.koBn);
-                if (t02Mago.isNew()) {
-                    t02Mago.insert(at, by);
-                } else {
-                    t02Mago.update(at, by);
-                }
-            }
-        }
-
         // 子の登録
         if (this.t02Ko != null) {
             t02Ko.setOyaId(this.getOyaId());
@@ -456,26 +429,10 @@ public class T02Dinks implements IEntity {
      */
     public int delete() {
 
-        // 孫の削除
-        if (this.t02Magos != null) {
-            for (T02Mago t02Mago : this.t02Magos) {
-                if (t02Mago.delete() != 1) {
-                    throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "孫");
-                }
-            }
-        }
-
         // 子の削除
         if (this.t02Ko != null) {
             if (this.t02Ko.delete() != 1) {
                 throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "子");
-            }
-        }
-
-        // 孤児の削除
-        if (this.t02Orphan != null) {
-            if (this.t02Orphan.delete() != 1) {
-                throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "孤児");
             }
         }
 
@@ -489,11 +446,6 @@ public class T02Dinks implements IEntity {
      * @return 削除件数
      */
     public static int truncate() {
-
-        // 孫のチェック
-        if (jp.co.golorp.emarf.sql.Queries.select("SELECT COUNT (1) FROM T02_MAGO", null, null).size() > 0) {
-            throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T02_DINKS by T02_MAGO");
-        }
 
         // 子なしの削除
         String sql = "TRUNCATE TABLE T02_DINKS";
@@ -574,70 +526,5 @@ public class T02Dinks implements IEntity {
             }
         }
         return this.t02Orphan;
-    }
-
-    /*
-     * 子モデル：孫
-     */
-
-    /** 孫のリスト */
-    private java.util.List<T02Mago> t02Magos;
-
-    /** @return 孫のリスト */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T02Magos", index = 13)
-    public java.util.List<T02Mago> getT02Magos() {
-        return this.t02Magos;
-    }
-
-    /** @param list 孫のリスト */
-    public void setT02Magos(final java.util.List<T02Mago> list) {
-        this.t02Magos = list;
-    }
-
-    /** @param t02Mago */
-    public void addT02Magos(final T02Mago t02Mago) {
-        if (this.t02Magos == null) {
-            this.t02Magos = new java.util.ArrayList<T02Mago>();
-        }
-        this.t02Magos.add(t02Mago);
-    }
-
-    /** @return 孫のリスト */
-    public java.util.List<T02Mago> referT02Magos() {
-        this.t02Magos = T02Dinks.referT02Magos(this.oyaId, this.koBn);
-        return this.t02Magos;
-    }
-
-    /**
-     * @param param1 oyaId
-     * @param param2 koBn
-     * @return java.util.List<T02Mago>
-     */
-    public static java.util.List<T02Mago> referT02Magos(final Integer param1, final Integer param2) {
-        java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("OYA_ID = :oya_id");
-        whereList.add("KO_BN = :ko_bn");
-        String sql = "SELECT ";
-        sql += "\"oya_id\"";
-        sql += ", \"ko_bn\"";
-        sql += ", \"mago_bn\"";
-        sql += ", \"mago_info\"";
-        sql += ", TO_CHAR (\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts";
-        sql += ", \"insert_user_id\"";
-        sql += ", (SELECT r0.\"user_sei\" FROM MHR_USER r0 WHERE r0.\"user_id\" = CAST (a.\"insert_user_id\" AS INTEGER)) AS \"insert_user_sei\"";
-        sql += ", TO_CHAR (\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts";
-        sql += ", \"update_user_id\"";
-        sql += ", (SELECT r1.\"user_sei\" FROM MHR_USER r1 WHERE r1.\"user_id\" = CAST (a.\"update_user_id\" AS INTEGER)) AS \"update_user_sei\"";
-        sql += " FROM T02_MAGO a WHERE " + String.join(" AND ", whereList);
-        sql += " ORDER BY ";
-        sql += "OYA_ID, KO_BN, MAGO_BN";
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("oya_id", param1);
-        map.put("ko_bn", param2);
-        java.util.List<T02Mago> list = jp.co.golorp.emarf.sql.Queries.select(sql, map, T02Mago.class, null, null);
-        if (list != null) {
-            return list;
-        }
-        return new java.util.ArrayList<T02Mago>();
     }
 }

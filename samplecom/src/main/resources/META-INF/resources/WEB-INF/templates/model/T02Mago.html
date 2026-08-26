@@ -14,9 +14,6 @@
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
 <!-- T02_MAGOの親モデルのグリッド定義 -->
-<script th:src="@{/model/T02Dinks.js}"></script>
-<script th:src="@{/model/T02DinksGridColumns.js}"></script>
-<!-- T02_MAGOの親モデルのグリッド定義 -->
 <script th:src="@{/model/T02Ko.js}"></script>
 <script th:src="@{/model/T02KoGridColumns.js}"></script>
 <!-- T02_MAGOの親モデルのグリッド定義 -->
@@ -27,32 +24,6 @@
   <div layout:fragment="article">
     <h2 th:text="#{T02Mago.h2}">h2</h2>
     <form name="T02MagoRegistForm" action="T02MagoRegist.ajax" class="regist">
-      <fieldset class="parent">
-        <legend th:text="#{T02Dinks.legend}">legend</legend>
-        <div id="oyaId">
-          <label for="T02Dinks.oyaId" th:text="#{T02Dinks.oyaId}">OYA_ID</label><input type="text" id="T02Dinks.oyaId" name="T02Dinks.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
-        </div>
-        <div id="koBn">
-          <label for="T02Dinks.koBn" th:text="#{T02Dinks.koBn}">KO_BN</label><input type="text" id="T02Dinks.koBn" name="T02Dinks.koBn" maxlength="10" class=" primaryKey numbering notblank" />
-        </div>
-        <div id="dinksInfo">
-          <label for="T02Dinks.dinksInfo" th:text="#{T02Dinks.dinksInfo}">DINKS_INFO</label><input type="text" id="T02Dinks.dinksInfo" name="T02Dinks.dinksInfo" maxlength="300" class="" />
-        </div>
-        <div id="insertTs">
-          <label th:text="#{T02Dinks.insertTs}" class="meta">insert_ts</label><span id="T02Dinks.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Dinks.insertTs" name="T02Dinks.insertTs" class="meta" />
-        </div>
-        <div id="insertUserId">
-          <label th:text="#{T02Dinks.insertUserId}" class="meta">insert_user_id</label><span id="T02Dinks.insertUserId" class="meta"></span><input type="hidden" id="T02Dinks.insertUserId" name="T02Dinks.insertUserId" class="meta" />
-          <span id="T02Dinks.insertUserSei" class="refer meta" data-referFor="T02Dinks.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Dinks.insertUserId" data-destDef="T02Dinks.insertUserSei:user_sei"></span>
-        </div>
-        <div id="updateTs">
-          <label th:text="#{T02Dinks.updateTs}" class="meta">update_ts</label><span id="T02Dinks.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Dinks.updateTs" name="T02Dinks.updateTs" class="meta" />
-        </div>
-        <div id="updateUserId">
-          <label th:text="#{T02Dinks.updateUserId}" class="meta">update_user_id</label><span id="T02Dinks.updateUserId" class="meta"></span><input type="hidden" id="T02Dinks.updateUserId" name="T02Dinks.updateUserId" class="meta" />
-          <span id="T02Dinks.updateUserSei" class="refer meta" data-referFor="T02Dinks.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Dinks.updateUserId" data-destDef="T02Dinks.updateUserSei:user_sei"></span>
-        </div>
-      </fieldset>
       <fieldset class="parent">
         <legend th:text="#{T02Ko.legend}">legend</legend>
         <div id="oyaId">

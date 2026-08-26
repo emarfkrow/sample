@@ -7,8 +7,18 @@ SELECT
     , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
     , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
     , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = CAST (a."update_user_id" AS INTEGER)) AS "update_user_sei"
+    , c1."younger_info" AS "t01_younger.younger_info"
+    , TO_CHAR (c1."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "t01_younger.update_ts"
+    , c2."youngest_info" AS "t01_youngest.youngest_info"
+    , TO_CHAR (c2."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "t01_youngest.update_ts"
 FROM
     T01_ELDEST a 
+    LEFT OUTER JOIN T01_YOUNGER c1 
+        ON 1 = 1 
+        AND c1.BRO_ID = a.BRO_ID 
+    LEFT OUTER JOIN T01_YOUNGEST c2 
+        ON 1 = 1 
+        AND c2.BRO_ID = a.BRO_ID 
 WHERE
     1 = 1 
     AND a."bro_id" = CAST (:bro_id AS INTEGER) 

@@ -13,15 +13,9 @@
 <!-- T02_ORPHANの参照モデルのグリッド定義 -->
 <script th:src="@{/model/MhrUser.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<!-- T02_ORPHANの親モデルのグリッド定義 -->
-<script th:src="@{/model/T02Oya.js}"></script>
-<script th:src="@{/model/T02OyaGridColumns.js}"></script>
 <!-- T02_ORPHANの子モデルのグリッド定義 -->
 <script th:src="@{/model/T02Mago.js}"></script>
 <script th:src="@{/model/T02MagoGridColumns.js}"></script>
-  <!-- T02_MAGOの親モデルのグリッド定義 -->
-  <script th:src="@{/model/T02Dinks.js}"></script>
-  <script th:src="@{/model/T02DinksGridColumns.js}"></script>
   <!-- T02_MAGOの親モデルのグリッド定義 -->
   <script th:src="@{/model/T02Ko.js}"></script>
   <script th:src="@{/model/T02KoGridColumns.js}"></script>
@@ -30,29 +24,6 @@
   <div layout:fragment="article">
     <h2 th:text="#{T02Orphan.h2}">h2</h2>
     <form name="T02OrphanRegistForm" action="T02OrphanRegist.ajax" class="regist">
-      <fieldset class="parent">
-        <legend th:text="#{T02Oya.legend}">legend</legend>
-        <div id="oyaId">
-          <label for="T02Oya.oyaId" th:text="#{T02Oya.oyaId}">OYA_ID</label><input type="text" id="T02Oya.oyaId" name="T02Oya.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
-        </div>
-        <div id="oyaInfo">
-          <label for="T02Oya.oyaInfo" th:text="#{T02Oya.oyaInfo}">OYA_INFO</label><input type="text" id="T02Oya.oyaInfo" name="T02Oya.oyaInfo" maxlength="300" class="" />
-        </div>
-        <div id="insertTs">
-          <label th:text="#{T02Oya.insertTs}" class="meta">insert_ts</label><span id="T02Oya.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Oya.insertTs" name="T02Oya.insertTs" class="meta" />
-        </div>
-        <div id="insertUserId">
-          <label th:text="#{T02Oya.insertUserId}" class="meta">insert_user_id</label><span id="T02Oya.insertUserId" class="meta"></span><input type="hidden" id="T02Oya.insertUserId" name="T02Oya.insertUserId" class="meta" />
-          <span id="T02Oya.insertUserSei" class="refer meta" data-referFor="T02Oya.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Oya.insertUserId" data-destDef="T02Oya.insertUserSei:user_sei"></span>
-        </div>
-        <div id="updateTs">
-          <label th:text="#{T02Oya.updateTs}" class="meta">update_ts</label><span id="T02Oya.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T02Oya.updateTs" name="T02Oya.updateTs" class="meta" />
-        </div>
-        <div id="updateUserId">
-          <label th:text="#{T02Oya.updateUserId}" class="meta">update_user_id</label><span id="T02Oya.updateUserId" class="meta"></span><input type="hidden" id="T02Oya.updateUserId" name="T02Oya.updateUserId" class="meta" />
-          <span id="T02Oya.updateUserSei" class="refer meta" data-referFor="T02Oya.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T02Oya.updateUserId" data-destDef="T02Oya.updateUserSei:user_sei"></span>
-        </div>
-      </fieldset>
       <fieldset>
         <legend th:text="#{T02Orphan.legend}">legend</legend>
         <div id="oyaId">

@@ -286,12 +286,6 @@ public class T01Eldest implements IEntity {
         // 兄弟IDの採番処理
         numbering();
 
-        // 里子の登録
-        if (this.t01Foster != null) {
-            this.t01Foster.setBroId(this.getBroId());
-            this.t01Foster.insert(at, by);
-        }
-
         // 弟の登録
         if (this.t01Younger != null) {
             this.t01Younger.setBroId(this.getBroId());
@@ -352,16 +346,6 @@ public class T01Eldest implements IEntity {
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime at, final String by) {
-
-        // 里子の登録
-        if (this.t01Foster != null) {
-            t01Foster.setBroId(this.getBroId());
-            if (t01Foster.isNew()) {
-                t01Foster.insert(at, by);
-            } else {
-                t01Foster.update(at, by);
-            }
-        }
 
         // 弟の登録
         if (this.t01Younger != null) {
@@ -444,36 +428,11 @@ public class T01Eldest implements IEntity {
         return String.join(" AND ", whereList);
     }
 
-    /** 兄弟：里子 */
-    private T01Foster t01Foster;
-
-    /** @return 里子 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Foster", index = 10)
-    public T01Foster getT01Foster() {
-        return this.t01Foster;
-    }
-
-    /** @param p 里子 */
-    public void setT01Foster(final T01Foster p) {
-        this.t01Foster = p;
-    }
-
-    /** @return 里子 */
-    public T01Foster referT01Foster() {
-        if (this.t01Foster == null) {
-            try {
-                this.t01Foster = T01Foster.get(this.broId);
-            } catch (jp.co.golorp.emarf.exception.NoDataError e) {
-            }
-        }
-        return this.t01Foster;
-    }
-
     /** 兄弟：弟 */
     private T01Younger t01Younger;
 
     /** @return 弟 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Younger", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Younger", index = 10)
     public T01Younger getT01Younger() {
         return this.t01Younger;
     }
@@ -498,7 +457,7 @@ public class T01Eldest implements IEntity {
     private T01Youngest t01Youngest;
 
     /** @return 末弟 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Youngest", index = 12)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Youngest", index = 11)
     public T01Youngest getT01Youngest() {
         return this.t01Youngest;
     }

@@ -44,7 +44,7 @@ public class T03TransSPermitAction extends BaseAction {
                     throw new OptLockError("error.cant.permit", "変遷");
                 }
 
-                if (!e.getStatusKb().equals("0")) {
+                if (e.getStatusKb() != null && !e.getStatusKb().equals("0")) {
                     throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
                             Messages.get("common.selectedRow"), Messages.get("common.applied"));
                 }

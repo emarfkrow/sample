@@ -47,9 +47,6 @@ public class T02OyaSDeleteAction extends BaseAction {
                 if (t02Dinkss != null) {
                     for (com.example.entity.T02Dinks t02Dinks : t02Dinkss) {
 
-                        // child:T02Mago, parents:3
-
-
                         if (t02Dinks.delete() != 1) {
                             throw new OptLockError("error.cant.delete", "子なし");
                         }
@@ -61,25 +58,11 @@ public class T02OyaSDeleteAction extends BaseAction {
                 if (t02Kos != null) {
                     for (com.example.entity.T02Ko t02Ko : t02Kos) {
 
-                        // child:T02Mago, parents:3
+                        // child:T02Mago, parents:2
 
 
                         if (t02Ko.delete() != 1) {
                             throw new OptLockError("error.cant.delete", "子");
-                        }
-                    }
-                }
-
-
-                java.util.List<com.example.entity.T02Orphan> t02Orphans = e.referT02Orphans();
-                if (t02Orphans != null) {
-                    for (com.example.entity.T02Orphan t02Orphan : t02Orphans) {
-
-                        // child:T02Mago, parents:3
-
-
-                        if (t02Orphan.delete() != 1) {
-                            throw new OptLockError("error.cant.delete", "孤児");
                         }
                     }
                 }

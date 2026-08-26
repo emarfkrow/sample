@@ -66,20 +66,6 @@ public class T01EldestRegistForm implements IForm {
         this.updateTs = p;
     }
 
-    /** 里子 */
-    @jakarta.validation.Valid
-    private T01FosterRegistForm t01FosterRegistForm;
-
-    /** @return T01FosterRegistForm */
-    public T01FosterRegistForm getT01FosterRegistForm() {
-        return t01FosterRegistForm;
-    }
-
-    /** @param p */
-    public void setT01FosterRegistForm(final T01FosterRegistForm p) {
-        this.t01FosterRegistForm = p;
-    }
-
     /** 弟 */
     @jakarta.validation.Valid
     private T01YoungerRegistForm t01YoungerRegistForm;

@@ -40,10 +40,6 @@ public class T01FosterGetAction extends BaseAction {
 
         try {
             T01Foster t01Foster = T01Foster.get(broId);
-            // 兄弟
-            t01Foster.referT01Eldest();
-            t01Foster.referT01Younger();
-            t01Foster.referT01Youngest();
             map.put("T01Foster", t01Foster);
         } catch (NoDataError e) {
             if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {

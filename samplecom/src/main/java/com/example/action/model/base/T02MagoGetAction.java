@@ -51,11 +51,6 @@ public class T02MagoGetAction extends BaseAction {
 
         // 親モデルの取得
         try {
-            com.example.entity.T02Dinks t02Dinks = com.example.entity.T02Dinks.get(oyaId, koBn);
-            map.put("T02Dinks", t02Dinks);
-        } catch (Exception e) {
-        }
-        try {
             com.example.entity.T02Ko t02Ko = com.example.entity.T02Ko.get(oyaId, koBn);
             map.put("T02Ko", t02Ko);
         } catch (Exception e) {

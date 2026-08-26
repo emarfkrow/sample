@@ -9,5 +9,7 @@ $(function() {
         Column.text('BRO_ID', Messages['T01EldestGrid.broId'], 100, 'primaryKey numbering', null),
         Column.text('ELDEST_INFO', Messages['T01EldestGrid.eldestInfo'], 300, '', null),
         Column.cell('UPDATE_TS', Messages['T01EldestGrid.updateTs'], 230, 'metaInfo optLock', Slick.Formatters.Extends.Timestamp),
+        Column.text('T01_YOUNGER.YOUNGER_INFO', Messages['T01YoungerGrid.youngerInfo'], 300, '', null),
+        Column.text('T01_YOUNGEST.YOUNGEST_INFO', Messages['T01YoungestGrid.youngestInfo'], 300, '', null),
     ];
 });

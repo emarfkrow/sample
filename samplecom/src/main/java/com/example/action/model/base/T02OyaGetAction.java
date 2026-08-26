@@ -43,7 +43,6 @@ public class T02OyaGetAction extends BaseAction {
             // 子
             t02Oya.referT02Dinkss();
             t02Oya.referT02Kos();
-            t02Oya.referT02Orphans();
             map.put("T02Oya", t02Oya);
         } catch (NoDataError e) {
             if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {

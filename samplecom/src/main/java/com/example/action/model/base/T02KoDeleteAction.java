@@ -40,7 +40,7 @@ public class T02KoDeleteAction extends BaseAction {
 
         T02Ko e = FormValidator.toBean(T02Ko.class.getName(), form);
 
-        // child:T02Mago, parents:3
+        // child:T02Mago, parents:2
 
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "子");

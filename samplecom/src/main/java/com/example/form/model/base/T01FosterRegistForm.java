@@ -66,48 +66,6 @@ public class T01FosterRegistForm implements IForm {
         this.updateTs = p;
     }
 
-    /** 長兄 */
-    @jakarta.validation.Valid
-    private T01EldestRegistForm t01EldestRegistForm;
-
-    /** @return T01EldestRegistForm */
-    public T01EldestRegistForm getT01EldestRegistForm() {
-        return t01EldestRegistForm;
-    }
-
-    /** @param p */
-    public void setT01EldestRegistForm(final T01EldestRegistForm p) {
-        this.t01EldestRegistForm = p;
-    }
-
-    /** 弟 */
-    @jakarta.validation.Valid
-    private T01YoungerRegistForm t01YoungerRegistForm;
-
-    /** @return T01YoungerRegistForm */
-    public T01YoungerRegistForm getT01YoungerRegistForm() {
-        return t01YoungerRegistForm;
-    }
-
-    /** @param p */
-    public void setT01YoungerRegistForm(final T01YoungerRegistForm p) {
-        this.t01YoungerRegistForm = p;
-    }
-
-    /** 末弟 */
-    @jakarta.validation.Valid
-    private T01YoungestRegistForm t01YoungestRegistForm;
-
-    /** @return T01YoungestRegistForm */
-    public T01YoungestRegistForm getT01YoungestRegistForm() {
-        return t01YoungestRegistForm;
-    }
-
-    /** @param p */
-    public void setT01YoungestRegistForm(final T01YoungestRegistForm p) {
-        this.t01YoungestRegistForm = p;
-    }
-
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {

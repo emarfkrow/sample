@@ -111,24 +111,6 @@ public class T02DinksRegistForm implements IForm {
         this.t02OrphanRegistForm = p;
     }
 
-    /** 孫 */
-    @jakarta.validation.Valid
-    private java.util.List<T02MagoRegistForm> t02MagoGrid;
-
-    /**
-     * @return 孫
-     */
-    public java.util.List<T02MagoRegistForm> getT02MagoGrid() {
-        return t02MagoGrid;
-    }
-
-    /**
-     * @param p
-     */
-    public void setT02MagoGrid(final java.util.List<T02MagoRegistForm> p) {
-        this.t02MagoGrid = p;
-    }
-
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {

@@ -33,7 +33,7 @@ public class T00EntityPermitAction extends BaseAction {
 
         T00Entity e = FormValidator.toBean(T00Entity.class.getName(), form);
 
-        if (!e.getStatusKb().equals("0")) {
+        if (e.getStatusKb() != null && !e.getStatusKb().equals("0")) {
             throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
                     Messages.get("T00Entity.statusKb"), Messages.get("common.applied"));
         }

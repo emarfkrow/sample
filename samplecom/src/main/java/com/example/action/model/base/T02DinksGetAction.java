@@ -58,8 +58,6 @@ public class T02DinksGetAction extends BaseAction {
             // 兄弟
             t02Dinks.referT02Ko();
             t02Dinks.referT02Orphan();
-            // 子
-            t02Dinks.referT02Magos();
             map.put("T02Dinks", t02Dinks);
         } catch (NoDataError e) {
             if (form.get("IsSilent") == null || !form.get("IsSilent").equals("true")) {

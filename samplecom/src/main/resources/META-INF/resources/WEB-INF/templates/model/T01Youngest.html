@@ -41,27 +41,6 @@
           <span id="T01Youngest.updateUserSei" class="refer meta" data-referFor="T01Youngest.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Youngest.updateUserId" data-destDef="T01Youngest.updateUserSei:user_sei"></span>
         </div>
       </fieldset>
-      <fieldset>
-        <legend th:text="#{T01Eldest.legend}">legend</legend>
-        <div id="eldestInfo">
-          <label for="T01Eldest.eldestInfo" th:text="#{T01Eldest.eldestInfo}">ELDEST_INFO</label><input type="text" id="T01Eldest.eldestInfo" name="T01Eldest.eldestInfo" maxlength="300" class="" />
-        </div>
-        <input type="hidden" name="T01Eldest.updateTs" />
-      </fieldset>
-      <fieldset>
-        <legend th:text="#{T01Foster.legend}">legend</legend>
-        <div id="fosterInfo">
-          <label for="T01Foster.fosterInfo" th:text="#{T01Foster.fosterInfo}">FOSTER_INFO</label><input type="text" id="T01Foster.fosterInfo" name="T01Foster.fosterInfo" maxlength="300" class="" />
-        </div>
-        <input type="hidden" name="T01Foster.updateTs" />
-      </fieldset>
-      <fieldset>
-        <legend th:text="#{T01Younger.legend}">legend</legend>
-        <div id="youngerInfo">
-          <label for="T01Younger.youngerInfo" th:text="#{T01Younger.youngerInfo}">YOUNGER_INFO</label><input type="text" id="T01Younger.youngerInfo" name="T01Younger.youngerInfo" maxlength="300" class="" />
-        </div>
-        <input type="hidden" name="T01Younger.updateTs" />
-      </fieldset>
       <div class="buttons">
         <button type="button" id="RefreshT01Youngest" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T01YoungestGet.xlsx(baseMei=#{T01Youngest.h2})}" id="T01YoungestGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>

@@ -16,12 +16,12 @@
 <!-- T02_OYAの子モデルのグリッド定義 -->
 <script th:src="@{/model/T02Dinks.js}"></script>
 <script th:src="@{/model/T02DinksGridColumns.js}"></script>
-  <!-- T02_DINKSの子モデルのグリッド定義 -->
+<!-- T02_OYAの子モデルのグリッド定義 -->
+<script th:src="@{/model/T02Ko.js}"></script>
+<script th:src="@{/model/T02KoGridColumns.js}"></script>
+  <!-- T02_KOの子モデルのグリッド定義 -->
   <script th:src="@{/model/T02Mago.js}"></script>
   <script th:src="@{/model/T02MagoGridColumns.js}"></script>
-    <!-- T02_MAGOの親モデルのグリッド定義 -->
-    <script th:src="@{/model/T02Ko.js}"></script>
-    <script th:src="@{/model/T02KoGridColumns.js}"></script>
     <!-- T02_MAGOの親モデルのグリッド定義 -->
     <script th:src="@{/model/T02Orphan.js}"></script>
     <script th:src="@{/model/T02OrphanGridColumns.js}"></script>
@@ -59,9 +59,6 @@
       <h3 th:text="#{T02Ko.h3}">h3</h3>
       <a th:href="@{/model/T02Ko.html(anew)}" id="T02Ko" target="dialog" th:text="#{T02Ko.add}" class="addChild" tabindex="-1">T02_KO</a>
       <div id="T02KoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T02Ko.html}" class="childs"></div>
-      <h3 th:text="#{T02Orphan.h3}">h3</h3>
-      <a th:href="@{/model/T02Orphan.html(anew)}" id="T02Orphan" target="dialog" th:text="#{T02Orphan.add}" class="addChild" tabindex="-1">T02_ORPHAN</a>
-      <div id="T02OrphanGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T02Orphan.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshT02Oya" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T02OyaGet.xlsx(baseMei=#{T02Oya.h2})}" id="T02OyaGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
