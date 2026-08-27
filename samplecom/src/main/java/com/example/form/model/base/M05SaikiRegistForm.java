@@ -66,6 +66,7 @@ public class M05SaikiRegistForm implements IForm {
 
     /** 参照CD */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([\\-0-9A-Za-z]{1,10})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 10)
     private String cdrefCd;
 
     /** @return 参照CD */
@@ -80,6 +81,7 @@ public class M05SaikiRegistForm implements IForm {
 
     /** 参照NO */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,10})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 10)
     private String norefNo;
 
     /** @return 参照NO */

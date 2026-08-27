@@ -21,6 +21,7 @@ public class M05NoRegistForm implements IForm {
     /** 参照NO */
     @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,10})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 10)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String norefNo;
 

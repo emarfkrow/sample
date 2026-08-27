@@ -21,6 +21,7 @@ public class MsyKadobiRegistForm implements IForm {
     /** 稼働年月日 */
     @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 8)
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String kadoYmd;
 

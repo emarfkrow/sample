@@ -55,6 +55,7 @@ public class M05IdbnRegistForm implements IForm {
     /** ID連番NO */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,10})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 10)
     private String idbnNo;
 
     /** @return ID連番NO */

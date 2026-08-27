@@ -53,6 +53,7 @@ public class T14KouteiRegistForm implements IForm {
     /** 開始年月日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 8)
     private String kaishiYmd;
 
     /** @return 開始年月日 */
@@ -68,6 +69,7 @@ public class T14KouteiRegistForm implements IForm {
     /** 終了年月日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 8)
     private String shuryoYmd;
 
     /** @return 終了年月日 */
@@ -83,6 +85,7 @@ public class T14KouteiRegistForm implements IForm {
     /** 作業区CD */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([\\-0-9A-Za-z]{1,10})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 10)
     private String sagyokuCd;
 
     /** @return 作業区CD */

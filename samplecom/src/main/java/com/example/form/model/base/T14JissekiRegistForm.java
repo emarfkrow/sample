@@ -55,6 +55,7 @@ public class T14JissekiRegistForm implements IForm {
     /** 実施日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 8)
     private String jisshiYmd;
 
     /** @return 実施日 */
@@ -70,6 +71,7 @@ public class T14JissekiRegistForm implements IForm {
     /** 完了日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 8)
     private String kanryoYmd;
 
     /** @return 完了日 */

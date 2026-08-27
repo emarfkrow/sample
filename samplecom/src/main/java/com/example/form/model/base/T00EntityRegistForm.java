@@ -37,6 +37,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** エンティティ名称 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([ -~]+)?")
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 20)
     private String entityNm;
 
@@ -248,6 +249,7 @@ public class T00EntityRegistForm implements IForm {
     /** 年月日 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{8})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 8)
     private String nengappiYmd;
 
     /** @return 年月日 */
@@ -322,6 +324,7 @@ public class T00EntityRegistForm implements IForm {
     /** 時間 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,}:[0-9]{1,2})?")
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 9)
     private String jikanTm;
 
     /** @return 時間 */
