@@ -17,10 +17,10 @@ SELECT
     , m.mago_info
     , m.update_ts AS "T01_MAGO.UPDATE_TS" 
 FROM
-    t01_oya o 
-    LEFT OUTER JOIN t01_ko k 
+    t02_oya o 
+    LEFT OUTER JOIN t02_ko k 
         ON k.oya_id = o.oya_id 
-    LEFT OUTER JOIN t01_mago m 
+    LEFT OUTER JOIN t02_mago m 
         ON m.oya_id = k.oya_id 
         AND m.ko_bn = k.ko_bn 
 WHERE
