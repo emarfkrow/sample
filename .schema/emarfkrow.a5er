@@ -83,10 +83,9 @@ FooterLeft=
 FooterCenter=
 FooterRight=
 ShowPageoutRelation=1
-RDBMSType=7
-RDBMSTypeName=PostgreSQL
+RDBMSTypeName=Oracle Database
 GenerateDropTableStatement=1
-DropTableIfExists=1
+DropTableIfExists=0
 BackupRestoreTempTable=0
 CommonField="作成タイムスタンプ","INSERT_TS","*TS","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF
 CommonField="作成者","INSERT_USER_ID","*CD","NOT NULL",,"","",$FFFFFFFF
@@ -2568,7 +2567,7 @@ Height=66
 PName=V14_YOJITSU
 LName=予実
 Comment=oracle
-Query=SELECT\n      * \nFROM\n    ( \n        SELECT\n              a.koutei_id\n            , a.koutei_mei                                      AS koutei_tx\n            , a.kaishi_ymd\n            , a.shuryo_ymd\n            , a.sagyoku_cd\n            , a.oya_koutei_id\n            , j.jisshi_ymd\n            , j.kanryo_ymd\n            , b.dependencies                    --前工程\n            , SUBSTR (sys_connect_by_path(a.koutei_id, \q,\q), 2) AS koutei_path\n            , CONNECT_BY_ROOT a.koutei_id                       AS root \n        FROM\n            t14_koutei a \n            LEFT OUTER JOIN t14_jisseki j \n                ON j.koutei_id = a.koutei_id \n            LEFT OUTER JOIN ( \n                SELECT\n                      oya_koutei_id\n                    , LISTAGG (koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies \n                FROM\n                    t14_koutei \n                WHERE\n                    oya_koutei_id IS NOT NULL \n                GROUP BY\n                    oya_koutei_id\n            ) b \n                ON b.oya_koutei_id = a.koutei_id \n        START WITH\n            a.oya_koutei_id IS NULL \n        CONNECT BY\n            PRIOR a.koutei_id = a.oya_koutei_id\n    ) a \nORDER BY\n    a.koutei_path DESC\n
+Query=SELECT\n      * \nFROM\n    ( \n        SELECT\n              a.koutei_id\n            , a.koutei_mei                                       AS koutei_tx\n            , TO_CHAR ( \n                TO_DATE (a.kaishi_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS kaishi_ymd\n            , TO_CHAR ( \n                TO_DATE (a.shuryo_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS shuryo_ymd\n            , a.sagyoku_cd\n            , a.oya_koutei_id\n            , TO_CHAR ( \n                TO_DATE (j.jisshi_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS jisshi_ymd\n            , TO_CHAR ( \n                TO_DATE (j.kanryo_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS kanryo_ymd\n            , b.dependencies                    --前工程\n            , SUBSTR (SYS_CONNECT_BY_PATH (a.koutei_id, \q,\q), 2) AS koutei_path\n            , CONNECT_BY_ROOT a.koutei_id                        AS root \n        FROM\n            t14_koutei a \n            LEFT OUTER JOIN t14_jisseki j \n                ON j.koutei_id = a.koutei_id \n            LEFT OUTER JOIN ( \n                SELECT\n                      oya_koutei_id\n                    , LISTAGG (koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies \n                FROM\n                    t14_koutei \n                WHERE\n                    oya_koutei_id IS NOT NULL \n                GROUP BY\n                    oya_koutei_id\n            ) b \n                ON b.oya_koutei_id = a.koutei_id \n        START WITH\n            a.oya_koutei_id IS NULL \n        CONNECT BY\n            PRIOR a.koutei_id = a.oya_koutei_id\n    ) a \nORDER BY\n    a.koutei_path DESC\n
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
