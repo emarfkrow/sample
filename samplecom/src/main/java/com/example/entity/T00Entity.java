@@ -89,19 +89,16 @@ public class T00Entity implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.entityId)) {
-            isNew = true;
+            return true;
         }
         // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            isNew = true;
+            return true;
         }
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -149,10 +146,9 @@ public class T00Entity implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -170,10 +166,9 @@ public class T00Entity implements IEntity {
     /** @param o ENTITY_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setEntityId(final Object o) {
+        this.entityId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.entityId = Integer.valueOf(o.toString());
-        } else {
-            this.entityId = null;
         }
     }
 
@@ -188,10 +183,9 @@ public class T00Entity implements IEntity {
 
     /** @param o ENTITY_NM */
     public void setEntityNm(final Object o) {
+        this.entityNm = null;
         if (o != null) {
             this.entityNm = o.toString();
-        } else {
-            this.entityNm = null;
         }
     }
 
@@ -206,10 +200,9 @@ public class T00Entity implements IEntity {
 
     /** @param o ENTITY_MEI */
     public void setEntityMei(final Object o) {
+        this.entityMei = null;
         if (o != null) {
             this.entityMei = o.toString();
-        } else {
-            this.entityMei = null;
         }
     }
 
@@ -224,10 +217,9 @@ public class T00Entity implements IEntity {
 
     /** @param o BIT_B */
     public void setBitB(final Object o) {
+        this.bitB = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.bitB = Integer.valueOf(o.toString());
-        } else {
-            this.bitB = null;
         }
     }
 
@@ -242,10 +234,9 @@ public class T00Entity implements IEntity {
 
     /** @param o CHECK_F */
     public void setCheckF(final Object o) {
+        this.checkF = null;
         if (o != null) {
             this.checkF = o.toString();
-        } else {
-            this.checkF = null;
         }
     }
 
@@ -260,10 +251,9 @@ public class T00Entity implements IEntity {
 
     /** @param o RADIO_KB */
     public void setRadioKb(final Object o) {
+        this.radioKb = null;
         if (o != null) {
             this.radioKb = o.toString();
-        } else {
-            this.radioKb = null;
         }
     }
 
@@ -278,10 +268,9 @@ public class T00Entity implements IEntity {
 
     /** @param o PULLDOWN_KB */
     public void setPulldownKb(final Object o) {
+        this.pulldownKb = null;
         if (o != null) {
             this.pulldownKb = o.toString();
-        } else {
-            this.pulldownKb = null;
         }
     }
 
@@ -296,10 +285,9 @@ public class T00Entity implements IEntity {
 
     /** @param o PULLDOWN_SB */
     public void setPulldownSb(final Object o) {
+        this.pulldownSb = null;
         if (o != null) {
             this.pulldownSb = o.toString();
-        } else {
-            this.pulldownSb = null;
         }
     }
 
@@ -314,10 +302,9 @@ public class T00Entity implements IEntity {
 
     /** @param o MEMO_TX */
     public void setMemoTx(final Object o) {
+        this.memoTx = null;
         if (o != null) {
             this.memoTx = o.toString();
-        } else {
-            this.memoTx = null;
         }
     }
 
@@ -332,10 +319,9 @@ public class T00Entity implements IEntity {
 
     /** @param o MEMO */
     public void setMemo(final Object o) {
+        this.memo = null;
         if (o != null) {
             this.memo = o.toString();
-        } else {
-            this.memo = null;
         }
     }
 
@@ -350,10 +336,9 @@ public class T00Entity implements IEntity {
 
     /** @param o TENPU_FILE */
     public void setTenpuFile(final Object o) {
+        this.tenpuFile = null;
         if (o != null) {
             this.tenpuFile = o.toString();
-        } else {
-            this.tenpuFile = null;
         }
     }
 
@@ -368,10 +353,9 @@ public class T00Entity implements IEntity {
 
     /** @param o NEN_Y */
     public void setNenY(final Object o) {
+        this.nenY = null;
         if (o != null) {
             this.nenY = o.toString();
-        } else {
-            this.nenY = null;
         }
     }
 
@@ -386,10 +370,9 @@ public class T00Entity implements IEntity {
 
     /** @param o TSUKI_M */
     public void setTsukiM(final Object o) {
+        this.tsukiM = null;
         if (o != null) {
             this.tsukiM = o.toString();
-        } else {
-            this.tsukiM = null;
         }
     }
 
@@ -404,10 +387,9 @@ public class T00Entity implements IEntity {
 
     /** @param o HI_D */
     public void setHiD(final Object o) {
+        this.hiD = null;
         if (o != null) {
             this.hiD = o.toString();
-        } else {
-            this.hiD = null;
         }
     }
 
@@ -425,10 +407,9 @@ public class T00Entity implements IEntity {
 
     /** @param o NENGETSU_YM */
     public void setNengetsuYm(final Object o) {
+        this.nengetsuYm = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.nengetsuYm = String.valueOf(o.toString().replace("-", ""));
-        } else {
-            this.nengetsuYm = null;
         }
     }
 
@@ -443,10 +424,9 @@ public class T00Entity implements IEntity {
 
     /** @param o NENGAPPI_YMD */
     public void setNengappiYmd(final Object o) {
+        this.nengappiYmd = null;
         if (o != null) {
             this.nengappiYmd = o.toString();
-        } else {
-            this.nengappiYmd = null;
         }
     }
 
@@ -464,6 +444,7 @@ public class T00Entity implements IEntity {
 
     /** @param o TIMESTAMP_TS */
     public void setTimestampTs(final Object o) {
+        this.timestampTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.timestampTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -475,8 +456,6 @@ public class T00Entity implements IEntity {
             this.timestampTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.timestampTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.timestampTs = null;
         }
     }
 
@@ -494,6 +473,7 @@ public class T00Entity implements IEntity {
 
     /** @param o NICHIJI_DT */
     public void setNichijiDt(final Object o) {
+        this.nichijiDt = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.nichijiDt = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -505,8 +485,6 @@ public class T00Entity implements IEntity {
             this.nichijiDt = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.nichijiDt = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.nichijiDt = null;
         }
     }
 
@@ -524,10 +502,9 @@ public class T00Entity implements IEntity {
 
     /** @param o HIDUKE_BI */
     public void setHidukeBi(final Object o) {
+        this.hidukeBi = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.hidukeBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
-        } else {
-            this.hidukeBi = null;
         }
     }
 
@@ -545,11 +522,10 @@ public class T00Entity implements IEntity {
 
     /** @param o JIKOKU_HM */
     public void setJikokuHm(final Object o) {
+        this.jikokuHm = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             String text = o.toString().replaceFirst("^\\d+[\\/|\\-]\\d+[\\/|\\-]\\d+ ", "");
             this.jikokuHm = java.time.LocalTime.parse(text);
-        } else {
-            this.jikokuHm = null;
         }
     }
 
@@ -564,10 +540,9 @@ public class T00Entity implements IEntity {
 
     /** @param o JIKAN_TM */
     public void setJikanTm(final Object o) {
+        this.jikanTm = null;
         if (o != null) {
             this.jikanTm = o.toString();
-        } else {
-            this.jikanTm = null;
         }
     }
 
@@ -582,10 +557,9 @@ public class T00Entity implements IEntity {
 
     /** @param o TSUKA_KB */
     public void setTsukaKb(final Object o) {
+        this.tsukaKb = null;
         if (o != null) {
             this.tsukaKb = o.toString();
-        } else {
-            this.tsukaKb = null;
         }
     }
 
@@ -600,10 +574,9 @@ public class T00Entity implements IEntity {
 
     /** @param o JUCHU_QT */
     public void setJuchuQt(final Object o) {
+        this.juchuQt = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.juchuQt = new java.math.BigDecimal(o.toString());
-        } else {
-            this.juchuQt = null;
         }
     }
 
@@ -618,10 +591,9 @@ public class T00Entity implements IEntity {
 
     /** @param o JUCHU_PR */
     public void setJuchuPr(final Object o) {
+        this.juchuPr = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.juchuPr = new java.math.BigDecimal(o.toString());
-        } else {
-            this.juchuPr = null;
         }
     }
 
@@ -636,10 +608,9 @@ public class T00Entity implements IEntity {
 
     /** @param o JUCHU_AM */
     public void setJuchuAm(final Object o) {
+        this.juchuAm = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.juchuAm = new java.math.BigDecimal(o.toString());
-        } else {
-            this.juchuAm = null;
         }
     }
 
@@ -654,10 +625,9 @@ public class T00Entity implements IEntity {
 
     /** @param o HACCHU_QT */
     public void setHacchuQt(final Object o) {
+        this.hacchuQt = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.hacchuQt = new java.math.BigDecimal(o.toString());
-        } else {
-            this.hacchuQt = null;
         }
     }
 
@@ -672,10 +642,9 @@ public class T00Entity implements IEntity {
 
     /** @param o HACCHU_PR */
     public void setHacchuPr(final Object o) {
+        this.hacchuPr = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.hacchuPr = new java.math.BigDecimal(o.toString());
-        } else {
-            this.hacchuPr = null;
         }
     }
 
@@ -690,10 +659,9 @@ public class T00Entity implements IEntity {
 
     /** @param o HACCHU_AM */
     public void setHacchuAm(final Object o) {
+        this.hacchuAm = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.hacchuAm = new java.math.BigDecimal(o.toString());
-        } else {
-            this.hacchuAm = null;
         }
     }
 
@@ -708,10 +676,9 @@ public class T00Entity implements IEntity {
 
     /** @param o DELETE_F */
     public void setDeleteF(final Object o) {
+        this.deleteF = null;
         if (o != null) {
             this.deleteF = o.toString();
-        } else {
-            this.deleteF = null;
         }
     }
 
@@ -726,10 +693,9 @@ public class T00Entity implements IEntity {
 
     /** @param o STATUS_KB */
     public void setStatusKb(final Object o) {
+        this.statusKb = null;
         if (o != null) {
             this.statusKb = o.toString();
-        } else {
-            this.statusKb = null;
         }
     }
 
@@ -747,6 +713,7 @@ public class T00Entity implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
+        this.insertTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -758,8 +725,6 @@ public class T00Entity implements IEntity {
             this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.insertTs = null;
         }
     }
 
@@ -774,10 +739,9 @@ public class T00Entity implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
+        this.insertUserId = null;
         if (o != null) {
             this.insertUserId = o.toString();
-        } else {
-            this.insertUserId = null;
         }
     }
 
@@ -793,10 +757,9 @@ public class T00Entity implements IEntity {
 
     /** @param o 作成者参照 */
     public void setInsertUserSei(final Object o) {
+        this.insertUserSei = null;
         if (o != null) {
             this.insertUserSei = o.toString();
-        } else {
-            this.insertUserSei = null;
         }
     }
 
@@ -817,6 +780,7 @@ public class T00Entity implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
+        this.updateTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -828,8 +792,6 @@ public class T00Entity implements IEntity {
             this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.updateTs = null;
         }
     }
 
@@ -844,10 +806,9 @@ public class T00Entity implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
+        this.updateUserId = null;
         if (o != null) {
             this.updateUserId = o.toString();
-        } else {
-            this.updateUserId = null;
         }
     }
 
@@ -863,10 +824,9 @@ public class T00Entity implements IEntity {
 
     /** @param o 更新者参照 */
     public void setUpdateUserSei(final Object o) {
+        this.updateUserSei = null;
         if (o != null) {
             this.updateUserSei = o.toString();
-        } else {
-            this.updateUserSei = null;
         }
     }
 
@@ -950,7 +910,6 @@ public class T00Entity implements IEntity {
         // エンティティIDの採番処理
         numbering();
 
-        // エンティティの登録
         String sql = "INSERT INTO T00_ENTITY(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -1055,7 +1014,7 @@ public class T00Entity implements IEntity {
      */
     public int update(final java.time.LocalDateTime at, final String by) {
 
-        // 決裁フローの登録
+        // 決裁：決裁フローの登録
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.statusKb) && !jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.riyuTx)) {
             T03StatusKb t03StatusKb = new T03StatusKb();
             t03StatusKb.setTableNm("T00_ENTITY");
@@ -1071,7 +1030,6 @@ public class T00Entity implements IEntity {
             t03StatusKb.insert(at, by);
         }
 
-        // エンティティの登録
         String sql = "UPDATE T00_ENTITY\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -1114,13 +1072,8 @@ public class T00Entity implements IEntity {
         return String.join("\r\n    , ", setList);
     }
 
-    /**
-     * エンティティ全件削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public static int truncate() {
-
-        // エンティティの削除
         String sql = "TRUNCATE TABLE T00_ENTITY";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
     }

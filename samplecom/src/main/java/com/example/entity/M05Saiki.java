@@ -45,19 +45,16 @@ public class M05Saiki implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.saikiId)) {
-            isNew = true;
+            return true;
         }
         // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            isNew = true;
+            return true;
         }
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -85,10 +82,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -106,10 +102,9 @@ public class M05Saiki implements IEntity {
     /** @param o SAIKI_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setSaikiId(final Object o) {
+        this.saikiId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.saikiId = Integer.valueOf(o.toString());
-        } else {
-            this.saikiId = null;
         }
     }
 
@@ -124,10 +119,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o SAIKI_MEI */
     public void setSaikiMei(final Object o) {
+        this.saikiMei = null;
         if (o != null) {
             this.saikiMei = o.toString();
-        } else {
-            this.saikiMei = null;
         }
     }
 
@@ -142,10 +136,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o IDREF_ID */
     public void setIdrefId(final Object o) {
+        this.idrefId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.idrefId = Integer.valueOf(o.toString());
-        } else {
-            this.idrefId = null;
         }
     }
 
@@ -161,10 +154,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o 参照ID参照 */
     public void setIdrefMei(final Object o) {
+        this.idrefMei = null;
         if (o != null) {
             this.idrefMei = o.toString();
-        } else {
-            this.idrefMei = null;
         }
     }
 
@@ -179,10 +171,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o CDREF_CD */
     public void setCdrefCd(final Object o) {
+        this.cdrefCd = null;
         if (o != null) {
             this.cdrefCd = o.toString();
-        } else {
-            this.cdrefCd = null;
         }
     }
 
@@ -198,10 +189,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o 参照CD参照 */
     public void setCdrefMei(final Object o) {
+        this.cdrefMei = null;
         if (o != null) {
             this.cdrefMei = o.toString();
-        } else {
-            this.cdrefMei = null;
         }
     }
 
@@ -216,10 +206,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o NOREF_NO */
     public void setNorefNo(final Object o) {
+        this.norefNo = null;
         if (o != null) {
             this.norefNo = o.toString();
-        } else {
-            this.norefNo = null;
         }
     }
 
@@ -235,10 +224,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o 参照NO参照 */
     public void setNorefMei(final Object o) {
+        this.norefMei = null;
         if (o != null) {
             this.norefMei = o.toString();
-        } else {
-            this.norefMei = null;
         }
     }
 
@@ -253,10 +241,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o EX_IDREF_ID */
     public void setExIdrefId(final Object o) {
+        this.exIdrefId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.exIdrefId = Integer.valueOf(o.toString());
-        } else {
-            this.exIdrefId = null;
         }
     }
 
@@ -272,10 +259,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o ID連番ID参照 */
     public void setExIdrefMei(final Object o) {
+        this.exIdrefMei = null;
         if (o != null) {
             this.exIdrefMei = o.toString();
-        } else {
-            this.exIdrefMei = null;
         }
     }
 
@@ -290,10 +276,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o EX_IDBN_BN */
     public void setExIdbnBn(final Object o) {
+        this.exIdbnBn = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.exIdbnBn = Integer.valueOf(o.toString());
-        } else {
-            this.exIdbnBn = null;
         }
     }
 
@@ -309,10 +294,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o ID連番参照 */
     public void setExIdbnNo(final Object o) {
+        this.exIdbnNo = null;
         if (o != null) {
             this.exIdbnNo = o.toString();
-        } else {
-            this.exIdbnNo = null;
         }
     }
 
@@ -327,10 +311,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o OYA_SAIKI_ID */
     public void setOyaSaikiId(final Object o) {
+        this.oyaSaikiId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.oyaSaikiId = Integer.valueOf(o.toString());
-        } else {
-            this.oyaSaikiId = null;
         }
     }
 
@@ -346,10 +329,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o 親再帰ID参照 */
     public void setOyaSaikiMei(final Object o) {
+        this.oyaSaikiMei = null;
         if (o != null) {
             this.oyaSaikiMei = o.toString();
-        } else {
-            this.oyaSaikiMei = null;
         }
     }
 
@@ -367,6 +349,7 @@ public class M05Saiki implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
+        this.insertTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -378,8 +361,6 @@ public class M05Saiki implements IEntity {
             this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.insertTs = null;
         }
     }
 
@@ -394,10 +375,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
+        this.insertUserId = null;
         if (o != null) {
             this.insertUserId = o.toString();
-        } else {
-            this.insertUserId = null;
         }
     }
 
@@ -413,10 +393,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o 作成者参照 */
     public void setInsertUserSei(final Object o) {
+        this.insertUserSei = null;
         if (o != null) {
             this.insertUserSei = o.toString();
-        } else {
-            this.insertUserSei = null;
         }
     }
 
@@ -437,6 +416,7 @@ public class M05Saiki implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
+        this.updateTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -448,8 +428,6 @@ public class M05Saiki implements IEntity {
             this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.updateTs = null;
         }
     }
 
@@ -464,10 +442,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
+        this.updateUserId = null;
         if (o != null) {
             this.updateUserId = o.toString();
-        } else {
-            this.updateUserId = null;
         }
     }
 
@@ -483,10 +460,9 @@ public class M05Saiki implements IEntity {
 
     /** @param o 更新者参照 */
     public void setUpdateUserSei(final Object o) {
+        this.updateUserSei = null;
         if (o != null) {
             this.updateUserSei = o.toString();
-        } else {
-            this.updateUserSei = null;
         }
     }
 
@@ -532,7 +508,6 @@ public class M05Saiki implements IEntity {
         // 再帰IDの採番処理
         numbering();
 
-        // 再帰の登録
         String sql = "INSERT INTO M05_SAIKI(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -592,8 +567,6 @@ public class M05Saiki implements IEntity {
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime at, final String by) {
-
-        // 再帰の登録
         String sql = "UPDATE M05_SAIKI\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -614,24 +587,14 @@ public class M05Saiki implements IEntity {
         return String.join("\r\n    , ", setList);
     }
 
-    /**
-     * 再帰削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public int delete() {
-
-        // 再帰の削除
         String sql = "DELETE FROM M05_SAIKI WHERE " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /**
-     * 再帰全件削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public static int truncate() {
-
-        // 再帰の削除
         String sql = "TRUNCATE TABLE M05_SAIKI";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
     }

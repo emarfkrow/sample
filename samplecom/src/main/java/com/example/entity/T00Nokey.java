@@ -39,16 +39,13 @@ public class T00Nokey implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
         // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            isNew = true;
+            return true;
         }
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -74,10 +71,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -92,10 +88,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o A_MEI */
     public void setAMei(final Object o) {
+        this.aMei = null;
         if (o != null) {
             this.aMei = o.toString();
-        } else {
-            this.aMei = null;
         }
     }
 
@@ -110,10 +105,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o B_MEI */
     public void setBMei(final Object o) {
+        this.bMei = null;
         if (o != null) {
             this.bMei = o.toString();
-        } else {
-            this.bMei = null;
         }
     }
 
@@ -128,10 +122,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o C_MEI */
     public void setCMei(final Object o) {
+        this.cMei = null;
         if (o != null) {
             this.cMei = o.toString();
-        } else {
-            this.cMei = null;
         }
     }
 
@@ -146,10 +139,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o D_MEI */
     public void setDMei(final Object o) {
+        this.dMei = null;
         if (o != null) {
             this.dMei = o.toString();
-        } else {
-            this.dMei = null;
         }
     }
 
@@ -164,10 +156,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o E_MEI */
     public void setEMei(final Object o) {
+        this.eMei = null;
         if (o != null) {
             this.eMei = o.toString();
-        } else {
-            this.eMei = null;
         }
     }
 
@@ -185,6 +176,7 @@ public class T00Nokey implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
+        this.insertTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -196,8 +188,6 @@ public class T00Nokey implements IEntity {
             this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.insertTs = null;
         }
     }
 
@@ -212,10 +202,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
+        this.insertUserId = null;
         if (o != null) {
             this.insertUserId = o.toString();
-        } else {
-            this.insertUserId = null;
         }
     }
 
@@ -231,10 +220,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o 作成者参照 */
     public void setInsertUserSei(final Object o) {
+        this.insertUserSei = null;
         if (o != null) {
             this.insertUserSei = o.toString();
-        } else {
-            this.insertUserSei = null;
         }
     }
 
@@ -255,6 +243,7 @@ public class T00Nokey implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
+        this.updateTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -266,8 +255,6 @@ public class T00Nokey implements IEntity {
             this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.updateTs = null;
         }
     }
 
@@ -282,10 +269,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
+        this.updateUserId = null;
         if (o != null) {
             this.updateUserId = o.toString();
-        } else {
-            this.updateUserId = null;
         }
     }
 
@@ -301,10 +287,9 @@ public class T00Nokey implements IEntity {
 
     /** @param o 更新者参照 */
     public void setUpdateUserSei(final Object o) {
+        this.updateUserSei = null;
         if (o != null) {
             this.updateUserSei = o.toString();
-        } else {
-            this.updateUserSei = null;
         }
     }
 }

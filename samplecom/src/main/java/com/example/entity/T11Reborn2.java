@@ -35,19 +35,16 @@ public class T11Reborn2 implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.reborn2Id)) {
-            isNew = true;
+            return true;
         }
         // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            isNew = true;
+            return true;
         }
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -70,10 +67,9 @@ public class T11Reborn2 implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -91,10 +87,9 @@ public class T11Reborn2 implements IEntity {
     /** @param o REBORN2_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setReborn2Id(final Object o) {
+        this.reborn2Id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.reborn2Id = Integer.valueOf(o.toString());
-        } else {
-            this.reborn2Id = null;
         }
     }
 
@@ -109,10 +104,9 @@ public class T11Reborn2 implements IEntity {
 
     /** @param o PREV2_INFO */
     public void setPrev2Info(final Object o) {
+        this.prev2Info = null;
         if (o != null) {
             this.prev2Info = o.toString();
-        } else {
-            this.prev2Info = null;
         }
     }
 
@@ -127,10 +121,9 @@ public class T11Reborn2 implements IEntity {
 
     /** @param o PREV2_ID */
     public void setPrev2Id(final Object o) {
+        this.prev2Id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.prev2Id = Integer.valueOf(o.toString());
-        } else {
-            this.prev2Id = null;
         }
     }
 
@@ -148,6 +141,7 @@ public class T11Reborn2 implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
+        this.insertTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -159,8 +153,6 @@ public class T11Reborn2 implements IEntity {
             this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.insertTs = null;
         }
     }
 
@@ -175,10 +167,9 @@ public class T11Reborn2 implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
+        this.insertUserId = null;
         if (o != null) {
             this.insertUserId = o.toString();
-        } else {
-            this.insertUserId = null;
         }
     }
 
@@ -194,10 +185,9 @@ public class T11Reborn2 implements IEntity {
 
     /** @param o 作成者参照 */
     public void setInsertUserSei(final Object o) {
+        this.insertUserSei = null;
         if (o != null) {
             this.insertUserSei = o.toString();
-        } else {
-            this.insertUserSei = null;
         }
     }
 
@@ -218,6 +208,7 @@ public class T11Reborn2 implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
+        this.updateTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -229,8 +220,6 @@ public class T11Reborn2 implements IEntity {
             this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.updateTs = null;
         }
     }
 
@@ -245,10 +234,9 @@ public class T11Reborn2 implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
+        this.updateUserId = null;
         if (o != null) {
             this.updateUserId = o.toString();
-        } else {
-            this.updateUserId = null;
         }
     }
 
@@ -264,10 +252,9 @@ public class T11Reborn2 implements IEntity {
 
     /** @param o 更新者参照 */
     public void setUpdateUserSei(final Object o) {
+        this.updateUserSei = null;
         if (o != null) {
             this.updateUserSei = o.toString();
-        } else {
-            this.updateUserSei = null;
         }
     }
 
@@ -308,7 +295,6 @@ public class T11Reborn2 implements IEntity {
         // 転生２IDの採番処理
         numbering();
 
-        // 転生２の登録
         String sql = "INSERT INTO T11_REBORN2(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -358,8 +344,6 @@ public class T11Reborn2 implements IEntity {
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime at, final String by) {
-
-        // 転生２の登録
         String sql = "UPDATE T11_REBORN2\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -375,24 +359,14 @@ public class T11Reborn2 implements IEntity {
         return String.join("\r\n    , ", setList);
     }
 
-    /**
-     * 転生２削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public int delete() {
-
-        // 転生２の削除
         String sql = "DELETE FROM T11_REBORN2 WHERE " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /**
-     * 転生２全件削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public static int truncate() {
-
-        // 転生２の削除
         String sql = "TRUNCATE TABLE T11_REBORN2";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
     }

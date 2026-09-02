@@ -27,12 +27,9 @@ public class V13Furiwake implements IEntity {
         this.setInfo(IgnoreCaseLinkedMap.get(map, "INFO"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -56,10 +53,9 @@ public class V13Furiwake implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -74,10 +70,9 @@ public class V13Furiwake implements IEntity {
 
     /** @param o TABLE_NAME */
     public void setTableName(final Object o) {
+        this.tableName = null;
         if (o != null) {
             this.tableName = o.toString();
-        } else {
-            this.tableName = null;
         }
     }
 
@@ -92,10 +87,9 @@ public class V13Furiwake implements IEntity {
 
     /** @param o SRC_ID$DEST_ID */
     public void setSrcIdDestId(final Object o) {
+        this.srcIdDestId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.srcIdDestId = Integer.valueOf(o.toString());
-        } else {
-            this.srcIdDestId = null;
         }
     }
 
@@ -110,10 +104,9 @@ public class V13Furiwake implements IEntity {
 
     /** @param o INFO */
     public void setInfo(final Object o) {
+        this.info = null;
         if (o != null) {
             this.info = o.toString();
-        } else {
-            this.info = null;
         }
     }
 }

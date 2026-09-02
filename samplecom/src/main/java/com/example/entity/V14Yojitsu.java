@@ -43,15 +43,12 @@ public class V14Yojitsu implements IEntity {
         this.setRoot(IgnoreCaseLinkedMap.get(map, "ROOT"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kouteiId)) {
-            isNew = true;
+            return true;
         }
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -82,10 +79,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -103,10 +99,9 @@ public class V14Yojitsu implements IEntity {
     /** @param o KOUTEI_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setKouteiId(final Object o) {
+        this.kouteiId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.kouteiId = Integer.valueOf(o.toString());
-        } else {
-            this.kouteiId = null;
         }
     }
 
@@ -121,10 +116,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o KOUTEI_TX */
     public void setKouteiTx(final Object o) {
+        this.kouteiTx = null;
         if (o != null) {
             this.kouteiTx = o.toString();
-        } else {
-            this.kouteiTx = null;
         }
     }
 
@@ -139,10 +133,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o KAISHI_YMD */
     public void setKaishiYmd(final Object o) {
+        this.kaishiYmd = null;
         if (o != null) {
             this.kaishiYmd = o.toString();
-        } else {
-            this.kaishiYmd = null;
         }
     }
 
@@ -157,10 +150,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o SHURYO_YMD */
     public void setShuryoYmd(final Object o) {
+        this.shuryoYmd = null;
         if (o != null) {
             this.shuryoYmd = o.toString();
-        } else {
-            this.shuryoYmd = null;
         }
     }
 
@@ -175,10 +167,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o SAGYOKU_CD */
     public void setSagyokuCd(final Object o) {
+        this.sagyokuCd = null;
         if (o != null) {
             this.sagyokuCd = o.toString();
-        } else {
-            this.sagyokuCd = null;
         }
     }
 
@@ -193,10 +184,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o OYA_KOUTEI_ID */
     public void setOyaKouteiId(final Object o) {
+        this.oyaKouteiId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.oyaKouteiId = Integer.valueOf(o.toString());
-        } else {
-            this.oyaKouteiId = null;
         }
     }
 
@@ -211,10 +201,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o JISSHI_YMD */
     public void setJisshiYmd(final Object o) {
+        this.jisshiYmd = null;
         if (o != null) {
             this.jisshiYmd = o.toString();
-        } else {
-            this.jisshiYmd = null;
         }
     }
 
@@ -229,10 +218,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o KANRYO_YMD */
     public void setKanryoYmd(final Object o) {
+        this.kanryoYmd = null;
         if (o != null) {
             this.kanryoYmd = o.toString();
-        } else {
-            this.kanryoYmd = null;
         }
     }
 
@@ -247,10 +235,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o DEPENDENCIES */
     public void setDependencies(final Object o) {
+        this.dependencies = null;
         if (o != null) {
             this.dependencies = o.toString();
-        } else {
-            this.dependencies = null;
         }
     }
 
@@ -265,10 +252,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o KOUTEI_PATH */
     public void setKouteiPath(final Object o) {
+        this.kouteiPath = null;
         if (o != null) {
             this.kouteiPath = o.toString();
-        } else {
-            this.kouteiPath = null;
         }
     }
 
@@ -283,10 +269,9 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o ROOT */
     public void setRoot(final Object o) {
+        this.root = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.root = Integer.valueOf(o.toString());
-        } else {
-            this.root = null;
         }
     }
 

@@ -33,19 +33,16 @@ public class M05Id implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.idrefId)) {
-            isNew = true;
+            return true;
         }
         // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            isNew = true;
+            return true;
         }
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -67,10 +64,9 @@ public class M05Id implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -88,10 +84,9 @@ public class M05Id implements IEntity {
     /** @param o IDREF_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setIdrefId(final Object o) {
+        this.idrefId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.idrefId = Integer.valueOf(o.toString());
-        } else {
-            this.idrefId = null;
         }
     }
 
@@ -106,10 +101,9 @@ public class M05Id implements IEntity {
 
     /** @param o IDREF_MEI */
     public void setIdrefMei(final Object o) {
+        this.idrefMei = null;
         if (o != null) {
             this.idrefMei = o.toString();
-        } else {
-            this.idrefMei = null;
         }
     }
 
@@ -127,6 +121,7 @@ public class M05Id implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
+        this.insertTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -138,8 +133,6 @@ public class M05Id implements IEntity {
             this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.insertTs = null;
         }
     }
 
@@ -154,10 +147,9 @@ public class M05Id implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
+        this.insertUserId = null;
         if (o != null) {
             this.insertUserId = o.toString();
-        } else {
-            this.insertUserId = null;
         }
     }
 
@@ -173,10 +165,9 @@ public class M05Id implements IEntity {
 
     /** @param o 作成者参照 */
     public void setInsertUserSei(final Object o) {
+        this.insertUserSei = null;
         if (o != null) {
             this.insertUserSei = o.toString();
-        } else {
-            this.insertUserSei = null;
         }
     }
 
@@ -197,6 +188,7 @@ public class M05Id implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
+        this.updateTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -208,8 +200,6 @@ public class M05Id implements IEntity {
             this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.updateTs = null;
         }
     }
 
@@ -224,10 +214,9 @@ public class M05Id implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
+        this.updateUserId = null;
         if (o != null) {
             this.updateUserId = o.toString();
-        } else {
-            this.updateUserId = null;
         }
     }
 
@@ -243,10 +232,9 @@ public class M05Id implements IEntity {
 
     /** @param o 更新者参照 */
     public void setUpdateUserSei(final Object o) {
+        this.updateUserSei = null;
         if (o != null) {
             this.updateUserSei = o.toString();
-        } else {
-            this.updateUserSei = null;
         }
     }
 
@@ -286,7 +274,7 @@ public class M05Id implements IEntity {
         // 参照IDの採番処理
         numbering();
 
-        // ID連番マスタの登録
+        // 子：ID連番マスタの登録
         if (this.m05Idbns != null) {
             for (M05Idbn m05Idbn : this.m05Idbns) {
                 if (m05Idbn != null) {
@@ -296,7 +284,6 @@ public class M05Id implements IEntity {
             }
         }
 
-        // IDマスタの登録
         String sql = "INSERT INTO M05_ID(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -345,7 +332,7 @@ public class M05Id implements IEntity {
      */
     public int update(final java.time.LocalDateTime at, final String by) {
 
-        // ID連番マスタの登録
+        // 子：ID連番マスタの登録
         if (this.m05Idbns != null) {
             for (M05Idbn m05Idbn : this.m05Idbns) {
                 if (m05Idbn == null) {
@@ -360,7 +347,6 @@ public class M05Id implements IEntity {
             }
         }
 
-        // IDマスタの登録
         String sql = "UPDATE M05_ID\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -375,10 +361,7 @@ public class M05Id implements IEntity {
         return String.join("\r\n    , ", setList);
     }
 
-    /**
-     * IDマスタ削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public int delete() {
 
         // ID連番マスタの削除
@@ -390,15 +373,11 @@ public class M05Id implements IEntity {
             }
         }
 
-        // IDマスタの削除
         String sql = "DELETE FROM M05_ID WHERE " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /**
-     * IDマスタ全件削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public static int truncate() {
 
         // ID連番マスタのチェック
@@ -406,7 +385,6 @@ public class M05Id implements IEntity {
             throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "M05_ID by M05_IDBN");
         }
 
-        // IDマスタの削除
         String sql = "TRUNCATE TABLE M05_ID";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
     }

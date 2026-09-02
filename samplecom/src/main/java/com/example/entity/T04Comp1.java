@@ -35,22 +35,19 @@ public class T04Comp1 implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref1Id)) {
-            isNew = true;
+            return true;
         }
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref2Id)) {
-            isNew = true;
+            return true;
         }
         // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            isNew = true;
+            return true;
         }
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -72,10 +69,9 @@ public class T04Comp1 implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -93,10 +89,9 @@ public class T04Comp1 implements IEntity {
     /** @param o REF1_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setRef1Id(final Object o) {
+        this.ref1Id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.ref1Id = Integer.valueOf(o.toString());
-        } else {
-            this.ref1Id = null;
         }
     }
 
@@ -112,10 +107,9 @@ public class T04Comp1 implements IEntity {
 
     /** @param o 参照１ID参照 */
     public void setRef1Mei(final Object o) {
+        this.ref1Mei = null;
         if (o != null) {
             this.ref1Mei = o.toString();
-        } else {
-            this.ref1Mei = null;
         }
     }
 
@@ -133,10 +127,9 @@ public class T04Comp1 implements IEntity {
     /** @param o REF2_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setRef2Id(final Object o) {
+        this.ref2Id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.ref2Id = Integer.valueOf(o.toString());
-        } else {
-            this.ref2Id = null;
         }
     }
 
@@ -152,10 +145,9 @@ public class T04Comp1 implements IEntity {
 
     /** @param o 参照２ID参照 */
     public void setRef2Mei(final Object o) {
+        this.ref2Mei = null;
         if (o != null) {
             this.ref2Mei = o.toString();
-        } else {
-            this.ref2Mei = null;
         }
     }
 
@@ -170,10 +162,9 @@ public class T04Comp1 implements IEntity {
 
     /** @param o COMP1_MEI */
     public void setComp1Mei(final Object o) {
+        this.comp1Mei = null;
         if (o != null) {
             this.comp1Mei = o.toString();
-        } else {
-            this.comp1Mei = null;
         }
     }
 
@@ -191,6 +182,7 @@ public class T04Comp1 implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
+        this.insertTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -202,8 +194,6 @@ public class T04Comp1 implements IEntity {
             this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.insertTs = null;
         }
     }
 
@@ -218,10 +208,9 @@ public class T04Comp1 implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
+        this.insertUserId = null;
         if (o != null) {
             this.insertUserId = o.toString();
-        } else {
-            this.insertUserId = null;
         }
     }
 
@@ -237,10 +226,9 @@ public class T04Comp1 implements IEntity {
 
     /** @param o 作成者参照 */
     public void setInsertUserSei(final Object o) {
+        this.insertUserSei = null;
         if (o != null) {
             this.insertUserSei = o.toString();
-        } else {
-            this.insertUserSei = null;
         }
     }
 
@@ -261,6 +249,7 @@ public class T04Comp1 implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
+        this.updateTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -272,8 +261,6 @@ public class T04Comp1 implements IEntity {
             this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.updateTs = null;
         }
     }
 
@@ -288,10 +275,9 @@ public class T04Comp1 implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
+        this.updateUserId = null;
         if (o != null) {
             this.updateUserId = o.toString();
-        } else {
-            this.updateUserId = null;
         }
     }
 
@@ -307,10 +293,9 @@ public class T04Comp1 implements IEntity {
 
     /** @param o 更新者参照 */
     public void setUpdateUserSei(final Object o) {
+        this.updateUserSei = null;
         if (o != null) {
             this.updateUserSei = o.toString();
-        } else {
-            this.updateUserSei = null;
         }
     }
 
@@ -351,7 +336,7 @@ public class T04Comp1 implements IEntity {
      */
     public int insert(final java.time.LocalDateTime at, final String by) {
 
-        // 複合２の登録
+        // 子：複合２の登録
         if (this.t04Comp2s != null) {
             for (T04Comp2 t04Comp2 : this.t04Comp2s) {
                 if (t04Comp2 != null) {
@@ -362,7 +347,6 @@ public class T04Comp1 implements IEntity {
             }
         }
 
-        // 複合１の登録
         String sql = "INSERT INTO T04_COMP1(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -401,7 +385,7 @@ public class T04Comp1 implements IEntity {
      */
     public int update(final java.time.LocalDateTime at, final String by) {
 
-        // 複合２の登録
+        // 子：複合２の登録
         if (this.t04Comp2s != null) {
             for (T04Comp2 t04Comp2 : this.t04Comp2s) {
                 if (t04Comp2 == null) {
@@ -417,7 +401,6 @@ public class T04Comp1 implements IEntity {
             }
         }
 
-        // 複合１の登録
         String sql = "UPDATE T04_COMP1\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -433,10 +416,7 @@ public class T04Comp1 implements IEntity {
         return String.join("\r\n    , ", setList);
     }
 
-    /**
-     * 複合１削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public int delete() {
 
         // 複合２の削除
@@ -448,15 +428,11 @@ public class T04Comp1 implements IEntity {
             }
         }
 
-        // 複合１の削除
         String sql = "DELETE FROM T04_COMP1 WHERE " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /**
-     * 複合１全件削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public static int truncate() {
 
         // 複合２のチェック
@@ -464,7 +440,6 @@ public class T04Comp1 implements IEntity {
             throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.truncate", "T04_COMP1 by T04_COMP2");
         }
 
-        // 複合１の削除
         String sql = "TRUNCATE TABLE T04_COMP1";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
     }

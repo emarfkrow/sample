@@ -31,12 +31,9 @@ public class V14FukaKadobi implements IEntity {
         this.setData(IgnoreCaseLinkedMap.get(map, "DATA"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -62,10 +59,9 @@ public class V14FukaKadobi implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -80,10 +76,9 @@ public class V14FukaKadobi implements IEntity {
 
     /** @param o LABELS */
     public void setLabels(final Object o) {
+        this.labels = null;
         if (o != null) {
             this.labels = o.toString();
-        } else {
-            this.labels = null;
         }
     }
 
@@ -98,10 +93,9 @@ public class V14FukaKadobi implements IEntity {
 
     /** @param o TYPE */
     public void setType(final Object o) {
+        this.type = null;
         if (o != null) {
             this.type = o.toString();
-        } else {
-            this.type = null;
         }
     }
 
@@ -116,10 +110,9 @@ public class V14FukaKadobi implements IEntity {
 
     /** @param o STACK */
     public void setStack(final Object o) {
+        this.stack = null;
         if (o != null) {
             this.stack = o.toString();
-        } else {
-            this.stack = null;
         }
     }
 
@@ -134,10 +127,9 @@ public class V14FukaKadobi implements IEntity {
 
     /** @param o LABEL */
     public void setLabel(final Object o) {
+        this.label = null;
         if (o != null) {
             this.label = o.toString();
-        } else {
-            this.label = null;
         }
     }
 
@@ -152,10 +144,9 @@ public class V14FukaKadobi implements IEntity {
 
     /** @param o DATA */
     public void setData(final Object o) {
+        this.data = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.data = Integer.valueOf(o.toString());
-        } else {
-            this.data = null;
         }
     }
 }

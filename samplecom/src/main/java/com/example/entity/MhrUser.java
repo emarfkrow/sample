@@ -43,19 +43,16 @@ public class MhrUser implements IEntity {
         this.setUpdateUserId(IgnoreCaseLinkedMap.get(map, "UPDATE_USER_ID"));
     }
 
-    /** @return boolean */
+    /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        boolean isNew = false;
-
-        // 主キーが不足していたらINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.userId)) {
-            isNew = true;
+            return true;
         }
         // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            isNew = true;
+            return true;
         }
-        return isNew;
+        return false;
     }
 
     /** @return boolean */
@@ -82,10 +79,9 @@ public class MhrUser implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
+        this.id = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.id = Integer.valueOf(o.toString());
-        } else {
-            this.id = null;
         }
     }
 
@@ -103,10 +99,9 @@ public class MhrUser implements IEntity {
     /** @param o USER_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setUserId(final Object o) {
+        this.userId = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.userId = Integer.valueOf(o.toString());
-        } else {
-            this.userId = null;
         }
     }
 
@@ -121,10 +116,9 @@ public class MhrUser implements IEntity {
 
     /** @param o USER_SEI */
     public void setUserSei(final Object o) {
+        this.userSei = null;
         if (o != null) {
             this.userSei = o.toString();
-        } else {
-            this.userSei = null;
         }
     }
 
@@ -139,10 +133,9 @@ public class MhrUser implements IEntity {
 
     /** @param o USER_MEI */
     public void setUserMei(final Object o) {
+        this.userMei = null;
         if (o != null) {
             this.userMei = o.toString();
-        } else {
-            this.userMei = null;
         }
     }
 
@@ -157,10 +150,9 @@ public class MhrUser implements IEntity {
 
     /** @param o E_MAIL */
     public void setEMail(final Object o) {
+        this.eMail = null;
         if (o != null) {
             this.eMail = o.toString();
-        } else {
-            this.eMail = null;
         }
     }
 
@@ -175,10 +167,9 @@ public class MhrUser implements IEntity {
 
     /** @param o PASSWORD */
     public void setPassword(final Object o) {
+        this.password = null;
         if (o != null) {
             this.password = o.toString();
-        } else {
-            this.password = null;
         }
     }
 
@@ -196,10 +187,9 @@ public class MhrUser implements IEntity {
 
     /** @param o TEKIYO_BI */
     public void setTekiyoBi(final Object o) {
+        this.tekiyoBi = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.tekiyoBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
-        } else {
-            this.tekiyoBi = null;
         }
     }
 
@@ -217,10 +207,9 @@ public class MhrUser implements IEntity {
 
     /** @param o HAISHI_BI */
     public void setHaishiBi(final Object o) {
+        this.haishiBi = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.haishiBi = java.time.LocalDate.parse(o.toString().substring(0, 10));
-        } else {
-            this.haishiBi = null;
         }
     }
 
@@ -238,6 +227,7 @@ public class MhrUser implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
+        this.insertTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -249,8 +239,6 @@ public class MhrUser implements IEntity {
             this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.insertTs = null;
         }
     }
 
@@ -265,10 +253,9 @@ public class MhrUser implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
+        this.insertUserId = null;
         if (o != null) {
             this.insertUserId = o.toString();
-        } else {
-            this.insertUserId = null;
         }
     }
 
@@ -284,10 +271,9 @@ public class MhrUser implements IEntity {
 
     /** @param o 作成者参照 */
     public void setInsertUserSei(final Object o) {
+        this.insertUserSei = null;
         if (o != null) {
             this.insertUserSei = o.toString();
-        } else {
-            this.insertUserSei = null;
         }
     }
 
@@ -308,6 +294,7 @@ public class MhrUser implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
+        this.updateTs = null;
         if (o != null && o instanceof Long) {
             java.util.Date d = new java.util.Date((Long) o);
             this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
@@ -319,8 +306,6 @@ public class MhrUser implements IEntity {
             this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
         } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
             this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        } else {
-            this.updateTs = null;
         }
     }
 
@@ -335,10 +320,9 @@ public class MhrUser implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
+        this.updateUserId = null;
         if (o != null) {
             this.updateUserId = o.toString();
-        } else {
-            this.updateUserId = null;
         }
     }
 
@@ -354,10 +338,9 @@ public class MhrUser implements IEntity {
 
     /** @param o 更新者参照 */
     public void setUpdateUserSei(final Object o) {
+        this.updateUserSei = null;
         if (o != null) {
             this.updateUserSei = o.toString();
-        } else {
-            this.updateUserSei = null;
         }
     }
 
@@ -402,7 +385,6 @@ public class MhrUser implements IEntity {
         // ユーザIDの採番処理
         numbering();
 
-        // ユーザマスタの登録
         String sql = "INSERT INTO MHR_USER(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -460,8 +442,6 @@ public class MhrUser implements IEntity {
      * @return 更新件数
      */
     public int update(final java.time.LocalDateTime at, final String by) {
-
-        // ユーザマスタの登録
         String sql = "UPDATE MHR_USER\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
     }
@@ -481,24 +461,14 @@ public class MhrUser implements IEntity {
         return String.join("\r\n    , ", setList);
     }
 
-    /**
-     * ユーザマスタ削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public int delete() {
-
-        // ユーザマスタの削除
         String sql = "DELETE FROM MHR_USER WHERE " + getWhere();
         return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
     }
 
-    /**
-     * ユーザマスタ全件削除
-     * @return 削除件数
-     */
+    /** @return 削除件数 */
     public static int truncate() {
-
-        // ユーザマスタの削除
         String sql = "TRUNCATE TABLE MHR_USER";
         return jp.co.golorp.emarf.sql.Queries.regist(sql, null);
     }
