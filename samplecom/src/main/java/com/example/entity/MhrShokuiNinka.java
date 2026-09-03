@@ -45,16 +45,13 @@ public class MhrShokuiNinka implements IEntity {
     public boolean isNew() {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.bushoId)) {
             return true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.shokuiId)) {
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.shokuiId)) {
+            return true;
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.tableRe)) {
             return true;
         }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.tableRe)) {
-            return true;
-        }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

@@ -39,13 +39,11 @@ public class M05Idbn implements IEntity {
     public boolean isNew() {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.idrefId)) {
             return true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.idbnBn)) {
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.idbnBn)) {
             return true;
         }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

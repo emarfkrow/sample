@@ -38,9 +38,8 @@ public class T08Kisei1 implements IEntity {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kisei1Id)) {
             return true;
         }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

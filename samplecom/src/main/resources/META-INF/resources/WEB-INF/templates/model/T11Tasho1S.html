@@ -39,9 +39,7 @@
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT11Tasho1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T11Tasho1.html(anew)}" target="dialog" id="T11Tasho1" class="anew derive" th:text="#{T11Tasho1.add}" tabindex="-1">T11_TASHO1</a>
-          <label for="T11Tasho1.deriveeReborn2Id" th:text="#{T11Tasho1.deriveeReborn2Id}">REBORN2_ID</label><input type="text" id="T11Tasho1.deriveeReborn2Id" name="T11Tasho1.deriveeReborn2Id" maxlength="10" class="" />
-          <a id="T11Tasho1.deriveeReborn2Id" th:href="@{/model/T11Reborn2S.html?action=T11Reborn2Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+        <a th:href="@{/model/T11Tasho1.html(anew)}" target="dialog" id="T11Tasho1" class="anew" th:text="#{T11Tasho1.add}" tabindex="-1">T11_TASHO1</a>
       </div>
       <div class="submits">
         <button id="SearchT11Tasho1" type="submit" class="search" data-gridId="T11Tasho1Grid" th:text="#{common.search}">search</button>

@@ -39,13 +39,11 @@ public class T04Comp1 implements IEntity {
     public boolean isNew() {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref1Id)) {
             return true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref2Id)) {
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref2Id)) {
             return true;
         }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

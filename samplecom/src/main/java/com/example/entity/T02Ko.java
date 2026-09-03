@@ -39,13 +39,11 @@ public class T02Ko implements IEntity {
     public boolean isNew() {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.oyaId)) {
             return true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.koBn)) {
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.koBn)) {
             return true;
         }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

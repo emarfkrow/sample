@@ -44,9 +44,8 @@ public class M04Ref2 implements IEntity {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref2Id)) {
             return true;
         }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

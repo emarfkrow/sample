@@ -38,9 +38,8 @@ public class T10Sum implements IEntity {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.sumId)) {
             return true;
         }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

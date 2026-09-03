@@ -39,13 +39,11 @@ public class T07Derive1Det implements IEntity {
     public boolean isNew() {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.derive1Id)) {
             return true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.derive1Bn)) {
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.derive1Bn)) {
             return true;
         }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

@@ -49,11 +49,7 @@
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT09Choice" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T09Choice.html(anew)}" target="dialog" id="T09Choice" class="anew derive" th:text="#{T09Choice.add}" tabindex="-1">T09_CHOICE</a>
-          <label for="T09Choice.deriveeKoho1Id" th:text="#{T09Choice.deriveeKoho1Id}">KOHO1_ID</label><input type="text" id="T09Choice.deriveeKoho1Id" name="T09Choice.deriveeKoho1Id" maxlength="10" class="" />
-          <a id="T09Choice.deriveeKoho1Id" th:href="@{/model/T09Koho1S.html?action=T09Koho1Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
-          <label for="T09Choice.deriveeKoho2Id" th:text="#{T09Choice.deriveeKoho2Id}">KOHO2_ID</label><input type="text" id="T09Choice.deriveeKoho2Id" name="T09Choice.deriveeKoho2Id" maxlength="10" class="" />
-          <a id="T09Choice.deriveeKoho2Id" th:href="@{/model/T09Koho2S.html?action=T09Koho2Correct.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+        <a th:href="@{/model/T09Choice.html(anew)}" target="dialog" id="T09Choice" class="anew" th:text="#{T09Choice.add}" tabindex="-1">T09_CHOICE</a>
       </div>
       <div class="submits">
         <button id="SearchT09Choice" type="submit" class="search" data-gridId="T09ChoiceGrid" th:text="#{common.search}">search</button>

@@ -40,9 +40,8 @@ public class T07Derive2 implements IEntity {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.derive2Id)) {
             return true;
         }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

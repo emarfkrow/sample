@@ -42,9 +42,7 @@
       </fieldset>
       <div class="buttons">
         <button type="button" id="ResetT07Derive1" th:text="#{common.reset}" class="reset" onClick="Dialogate.reset(event);">reset</button>
-        <a th:href="@{/model/T07Derive1.html(anew)}" target="dialog" id="T07Derive1" class="anew derive" th:text="#{T07Derive1.add}" tabindex="-1">T07_DERIVE1</a>
-          <label for="T07Derive1.deriveeOrgId" th:text="#{T07Derive1.deriveeOrgId}">ORG_ID</label><input type="text" id="T07Derive1.deriveeOrgId" name="T07Derive1.deriveeOrgId" maxlength="10" class="" />
-          <a id="T07Derive1.deriveeOrgId" th:href="@{/model/T07OrgS.html?action=T07OrgCorrect.ajax}" target="dialog" class="derivee" th:text="#{common.correct}" tabindex="-1">...</a>
+        <a th:href="@{/model/T07Derive1.html(anew)}" target="dialog" id="T07Derive1" class="anew" th:text="#{T07Derive1.add}" tabindex="-1">T07_DERIVE1</a>
       </div>
       <div class="submits">
         <button id="SearchT07Derive1" type="submit" class="search" data-gridId="T07Derive1Grid" th:text="#{common.search}">search</button>

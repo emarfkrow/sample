@@ -43,19 +43,15 @@ public class T04Comp2 implements IEntity {
     public boolean isNew() {
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref1Id)) {
             return true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref2Id)) {
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref2Id)) {
+            return true;
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref3Id)) {
+            return true;
+        } else if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.tekiyoBi)) {
             return true;
         }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.ref3Id)) {
-            return true;
-        }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.tekiyoBi)) {
-            return true;
-        }
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }

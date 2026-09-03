@@ -41,9 +41,8 @@ public class T00Nokey implements IEntity {
 
     /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        // 楽観ロック値がなくてもINSERT
         if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
-            return true;
+            return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
     }
