@@ -1,0 +1,253 @@
+#----------------------------------------------------
+# BeanGenerator.properties：ソース生成時に必要な情報
+#----------------------------------------------------
+
+#---------- テーブル名・カラム名に関する設定
+
+# 関連評価の対象外とするテーブル名の正規表現
+relation.ignore.re             (?i)^(PLAN_TABLE|SYS_IMPORT_TABLE_.+|.+\\$.+)$
+# 他テーブルの兄弟にならないテーブル名の正規表現
+relation.eldest.re             (?i)^(T01_ELDEST)$
+# 兄弟を持たないテーブル名の正規表現
+relation.youngest.re           (?i)^(T01_YOUNGEST)$
+# 兄弟を評価しないテーブル名の正規表現
+relation.foster.re             (?i)^(T01_FOSTER)$
+# 子を持たないテーブル名の正規表現
+relation.dinks.re              (?i)^(T02_DINKS)$
+# 親を持たないテーブル名の正規表現
+relation.orphans.re            (?i)^(T02_ORPHAN)$
+# 「参照キー接尾辞：参照名接尾辞」の組合せ。該当する場合は参照モデルとする。
+relation.refer.pairs           _id:_sei,_id:_mei,_cd:_mei,_no:_mei,_nm:_mei,hinban:hin_mei,_id&_bn:_no,loc_cd&hinban&zaiko_kb:rop_qt
+# 参照の対象外とするテーブル名の正規表現
+relation.nonrefer.re
+
+# 処理対象外カラム名の正規表現
+column.ignore.re               (?i)^(FILLER|ABSTRACT|PUBLIC)$
+# 有効期間開始日             ：関連の評価の際に主キーに含めない。有効期間を考慮する検索時に使用する。
+column.start                   tekiyo_bi
+# 有効期間終了日             ：削除ボタンを非表示。有効期間を考慮する検索時に使用する。
+column.until                   haishi_bi
+# 登録日時カラム名           ：登録時にシステム日時を採用。検索条件・検索結果に表示しない。
+column.insert.timestamp        insert_ts
+# 登録者カラム名             ：登録時にログインIDを採用。マスタチェックしない。検索条件・検索結果に表示しない。
+column.insert.id               insert_user_id
+# 登録者名カラム名           ：参照画面から呼出元に反映しない。
+column.insert.mei              insert_user_sei
+# 更新日時カラム名           ：登録時にシステム日時を採用。検索条件・検索結果に表示しない。楽観ロックに使用。
+column.update.timestamp        update_ts
+# 更新者カラム名             ：登録時にログインIDを採用。マスタチェックしない。検索条件・検索結果に表示しない。
+column.update.id               update_user_id
+# 更新者名カラム名           ：参照画面から呼出元に反映しない。
+column.update.mei              update_user_sei
+# 論理削除カラム名           ：指定した列があるテーブルは論理削除とする。有効検索に使用する。
+column.delete                  delete_f
+# ステータスカラム名         ：指定した列があるテーブルは承認済みでないと転生できない。
+column.status                  status_kb
+# 履歴の変更理由のカラム名   ：指定した列があるテーブルは登録時に変更理由を必須とする。
+column.reason                  riyu_tx
+# 表示順カラムサフィックスCSV：指定した列があるテーブルはグリッドでの表示順を設定する。
+column.order.suffixs           _on
+# 数値列だがカンマ・小数編集しないサフィックス
+column.int.noformat.suffixs    _id,_bn,_on,_fy,_y
+# 集約時に合計するサフィックス
+column.summary.suffixs         _qt,_am,_jpy
+# 数値の主キーだが自動採番しないカラム名の正規表現
+column.int.nonumbering.re      (?i)^.+_(fy|y)$
+# 【ホスト対応】CHARがNOTNULLでもスペースが補填される場合、ここで正規表現が指定されていれば、それに該当する項目のみ必須チェック対象とする。
+column.char.notnull.re
+# 【ホスト対応】固定長列で自動採番するカラム名の正規表現
+column.char.numbering.re
+# 【ホスト対応】数値列がNOTNULLな場合、ここで正規表現が指定されていれば、「0」で補填する
+column.number.nullable.re
+# 【ホスト対応】更新日時カラムが日付型でなく文字列化する場合のみフォーマットを指定する
+column.update.timestamp.format
+
+# VIEWの検索条件にするプレフィクス
+view.criteria.prefix           SEARCH_
+# VIEWの詳細画面用テーブル名とする列名
+view.detail                    TABLE_NAME
+
+# 決裁フローの各カラム名
+status.tableName               TABLE_NM
+status.primaryKeys             PRIMARY_KEYS
+status.kessaiTs                KESSAI_TS
+status.kessaiId                KESSAI_ID
+
+# ビューのグラフ化を判定する、X軸名・グラフタイプ・集計単位・実施日・データ名・データ のカラムサフィックス
+graph.columns                  labels:type:stack:label:data
+
+# ビューのガント化を判定する、項目名・開始日・終了日（・実施日・完了日）のカラムサフィックス
+gantt.columns                  _mei:kaishi_ymd:shuryo_ymd,_tx:kaishi_ymd:shuryo_ymd:jisshi_ymd:kanryo_ymd
+
+
+
+#---------- 自動生成に関する設定
+
+# javaファイル出力のルートパス
+dir.java                       src\\main\\java
+# グリッド列ファイル出力のルートパス
+dir.grid                       src\\main\\resources\\META-INF\\resources\\model
+# htmlファイル出力のルートパス
+dir.html                       src\\main\\resources\\META-INF\\resources\\WEB-INF\\templates\\model
+# SQLファイル出力のルートパス
+dir.sql                        src\\main\\resources\\sql
+
+# actionクラスのパッケージ
+java.package.action            com.example.action
+# entityクラスのパッケージ
+java.package.entity            com.example.entity
+# formクラスのパッケージ
+java.package.form              com.example.form
+
+
+
+#---------- 画面に関する設定
+
+# グリッド行数
+grid.rows                      1000
+
+# 読み取り専用サフィックス
+input.readonly.suffixs         _am,_jpy
+# 数値入力サフィックス
+input.number.suffixs           _fy,_y,_m,_d,_lt,_qt,_pr,_am,_jpy,receipt,payment,credit
+# 年月入力サフィックス
+input.ym.suffixs               _ym
+# 8桁日付入力サフィックス
+input.date8.suffixs            _ymd
+# タイムスタンプサフィックス
+input.timestamp.suffixs        _ts
+# 日時入力サフィックス
+input.datetime.suffixs         _dt
+# 日付入力サフィックス
+input.date.suffixs             _bi
+# 時刻入力サフィックス
+input.hour.suffixs             _hm
+# 時間入力サフィックス
+input.time.suffixs             _tm
+# 検索画面で範囲指定となるサフィックス
+input.range.suffixs            _fy,_y,_m,_d,_ym,_ymd,_ts,_dt,_bi,_hm,_tm,_qt,_pr,_am,_lt,_jpy,receipt,payment,credit,labels
+# 検索画面でnullを「0」として検索するサフィックス
+input.flag.suffixs             _f
+# ビットフラグとして扱うサフィックス
+input.bit.suffixs              _b
+# ファイル選択サフィックス
+input.file.suffixs             _file
+# 選択項目サフィックス
+input.options.suffixs          _f,_kb,_sb
+# 詳細画面でプルダウン指定にするサフィックス
+input.pulldown.suffixs         _sb
+# テキストエリアサフィックス
+input.textarea.suffixs         _tx
+
+# 選択項目取得URL
+options.json                   MsyKbnValSearch.json
+# 選択項目取得時のパラメータ名
+options.key                    kbn_nm
+# 選択項目取得時の値用カラム名
+options.value                  kbn_val
+# 選択項目取得時のラベル用カラム名
+options.label                  kbn_val_mei
+# 検索条件内でプルダウンにする要素数
+options.size.search            10
+# 詳細画面内でプルダウンにする要素数
+options.size.detail            5
+
+# 積を表示するスパンのサフィックス設定のCSV
+span.product.suffixs           _am:_qt*_pr.2,
+
+
+
+#---------- バリデータに関する設定
+
+# valid.[カラム名接尾辞]=入力チェック正規表現
+# ・messages.propertiesで入力チェック正規表現の名称を設定可能になる
+# ・接尾辞は2桁以上でないと誤爆しやすいので注意
+valid._NM                      ([ -~]+)?
+valid._CD                      ([\\\\-0-9A-Za-z]{1,10})?
+valid._NO                      ([0-9]{1,10})?
+valid._FY                      ([0-9]{1,4})?
+valid._Y                       ([0-9]{1,4})?
+valid._M                       ([0-9]{1,2})?
+valid._D                       ([0-9]{1,2})?
+valid._YM                      ([0-9]{1,4}(\\\\/|\\\\-)?[0-9]{1,2})?
+valid._YMD                     ([0-9]{8})?
+valid._TS                      ([0-9]{13}|[0-9]{1,4}(\\\\/|\\\\-)[0-9]{1,2}(\\\\/|\\\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\\\.[0-9]{3}(\\\\+\\\\d{2}:\\\\d{2})?)?)?)?
+valid._DT                      ([0-9]{13}|[0-9]{1,4}(\\\\/|\\\\-)[0-9]{1,2}(\\\\/|\\\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\\\.[0-9]{3}(\\\\+\\\\d{2}:\\\\d{2})?)?)?)?
+valid._BI                      ([0-9]{1,4}(\\\\/|\\\\-)[0-9]{1,2}(\\\\/|\\\\-)[0-9]{1,2})?
+valid._HM                      ([0-9]{1,2}:[0-9]{1,2})?
+valid._TM                      ([0-9]{1,}:[0-9]{1,2})?
+# 追加バリデータ
+valid.YY                       ([0-9]{4})?
+valid.MM                       ([0-9]{2})?
+valid.DD                       ([0-9]{2})?
+valid.YYMM                     ([0-9]{4})?
+valid.YOUBI                    ([日月火水木金土])?
+valid.BOTM                     (B)?
+valid.UBINNO                   ([0-9]{7}|[0-9]{3}\\\\-[0-9]{4})?
+valid.TELNO                    ([ \\\\-0-9]{1,15})?
+
+
+
+#---------- 業務カテゴリの設定および並び順
+
+# メニュー化しない正規表現
+nav.ignore.re
+
+# nav.order.prefix.re.[並び順]=業務区分の正規表現（messages.propertiesで業務区分の名称を設定可能になる）
+nav.order.prefix.re.01 ^.HR$
+nav.order.prefix.re.02 ^.00$
+nav.order.prefix.re.03 ^.01$
+nav.order.prefix.re.04 ^.02$
+nav.order.prefix.re.05 ^.03$
+nav.order.prefix.re.06 ^.04$
+nav.order.prefix.re.07 ^.05$
+nav.order.prefix.re.08 ^.06$
+nav.order.prefix.re.09 ^.07$
+nav.order.prefix.re.10 ^.08$
+nav.order.prefix.re.11 ^.09$
+nav.order.prefix.re.12 ^.10$
+nav.order.prefix.re.13 ^.11$
+nav.order.prefix.re.14 ^.12$
+nav.order.prefix.re.15 ^.13$
+nav.order.prefix.re.16 ^.14$
+nav.order.prefix.re.99 ^.SY$
+## 共通（CoMmon）
+#nav.order.prefix.re.01 ^.CM$
+## 販売目標（Sales Goal）
+#nav.order.prefix.re.02 ^.SG$
+## 生産計画（Production Plan）
+#nav.order.prefix.re.03 ^.PP$
+## 購買（PUrchase）
+#nav.order.prefix.re.04 ^.PU$
+## 製造（PRoduction）
+#nav.order.prefix.re.05 ^.PR$
+## 調達（ProCurement）
+#nav.order.prefix.re.06 ^.PC$
+## 販売（SaLes）
+#nav.order.prefix.re.07 ^.SL$
+## 営業（Sales Activity）
+#nav.order.prefix.re.08 ^.SA$
+## 見積（Sales Quotation）
+#nav.order.prefix.re.08 ^.SQ$
+## 受注（Sales Order）
+#nav.order.prefix.re.09 ^.SO$
+## 受注残（Sales Backlog）
+#nav.order.prefix.re.10 ^.SB$
+## 入出庫（Logistics Warehousing）
+#nav.order.prefix.re.11 ^.LW$
+## 在庫（Logistics Inventory）
+#nav.order.prefix.re.12 ^.LI$
+## 流通加工（Logistics Processing ）
+#nav.order.prefix.re.13 ^.LP$
+## 出荷（Logistics Shipping）
+#nav.order.prefix.re.14 ^.LS$
+## 売り上げ（Accounting Sales）
+#nav.order.prefix.re.15 ^.AS$
+## 仕入れ（Accounting Purchase）
+#nav.order.prefix.re.16 ^.AP$
+## 原価（Accounting Cost）
+#nav.order.prefix.re.17 ^.AC$
+## 人事（Human Resource）
+#nav.order.prefix.re.18 ^.HR$
+## システム（SYstem）
+#nav.order.prefix.re.19 ^.SY$
