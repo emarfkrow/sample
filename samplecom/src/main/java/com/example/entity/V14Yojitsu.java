@@ -259,11 +259,11 @@ public class V14Yojitsu implements IEntity {
     }
 
     /** ROOT */
-    private Integer root;
+    private java.math.BigDecimal root;
 
     /** @return ROOT */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "ROOT", index = 12)
-    public Integer getRoot() {
+    public java.math.BigDecimal getRoot() {
         return this.root;
     }
 
@@ -271,7 +271,7 @@ public class V14Yojitsu implements IEntity {
     public void setRoot(final Object o) {
         this.root = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.root = Integer.valueOf(o.toString());
+            this.root = new java.math.BigDecimal(o.toString());
         }
     }
 
@@ -282,20 +282,20 @@ public class V14Yojitsu implements IEntity {
      */
     public static V14Yojitsu get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"koutei_id\" = CAST (:koutei_id AS INTEGER)");
+        whereList.add("\"KOUTEI_ID\" = :koutei_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"koutei_id\" \n";
-        sql += "    , a.\"koutei_tx\" \n";
-        sql += "    , a.\"kaishi_ymd\" \n";
-        sql += "    , a.\"shuryo_ymd\" \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"sagyoku_cd\") AS sagyoku_cd \n";
-        sql += "    , a.\"oya_koutei_id\" \n";
-        sql += "    , a.\"jisshi_ymd\" \n";
-        sql += "    , a.\"kanryo_ymd\" \n";
-        sql += "    , a.\"dependencies\" \n";
-        sql += "    , a.\"koutei_path\" \n";
-        sql += "    , a.\"root\" \n";
+        sql += "      a.\"KOUTEI_ID\" \n";
+        sql += "    , a.\"KOUTEI_TX\" \n";
+        sql += "    , RTRIM (RTRIM (a.\"KAISHI_YMD\"), '　') AS KAISHI_YMD \n";
+        sql += "    , RTRIM (RTRIM (a.\"SHURYO_YMD\"), '　') AS SHURYO_YMD \n";
+        sql += "    , RTRIM (RTRIM (a.\"SAGYOKU_CD\"), '　') AS SAGYOKU_CD \n";
+        sql += "    , a.\"OYA_KOUTEI_ID\" \n";
+        sql += "    , RTRIM (RTRIM (a.\"JISSHI_YMD\"), '　') AS JISSHI_YMD \n";
+        sql += "    , RTRIM (RTRIM (a.\"KANRYO_YMD\"), '　') AS KANRYO_YMD \n";
+        sql += "    , a.\"DEPENDENCIES\" \n";
+        sql += "    , a.\"KOUTEI_PATH\" \n";
+        sql += "    , a.\"ROOT\" \n";
         sql += "FROM \n";
         sql += "    V14_YOJITSU a \n";
         sql += "WHERE \n";

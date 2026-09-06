@@ -108,7 +108,7 @@ public class MhrShokuiNinka implements IEntity {
     private String bushoMei;
 
     /** @return 部署ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "busho_mei", index = 3)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "BUSHO_MEI", index = 3)
     public String getBushoMei() {
         return this.bushoMei;
     }
@@ -146,7 +146,7 @@ public class MhrShokuiNinka implements IEntity {
     private String shokuiMei;
 
     /** @return 職位ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "shokui_mei", index = 5)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "SHOKUI_MEI", index = 5)
     public String getShokuiMei() {
         return this.shokuiMei;
     }
@@ -287,7 +287,7 @@ public class MhrShokuiNinka implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 12)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 12)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -354,7 +354,7 @@ public class MhrShokuiNinka implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 15)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 15)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -376,21 +376,21 @@ public class MhrShokuiNinka implements IEntity {
      */
     public static MhrShokuiNinka get(final Object param1, final Object param2, final Object param3) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"busho_id\" = CAST (:busho_id AS INTEGER)");
-        whereList.add("\"shokui_id\" = CAST (:shokui_id AS INTEGER)");
-        whereList.add("\"table_re\" = :table_re");
+        whereList.add("\"BUSHO_ID\" = :busho_id");
+        whereList.add("\"SHOKUI_ID\" = :shokui_id");
+        whereList.add("\"TABLE_RE\" = :table_re");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"busho_id\" \n";
-        sql += "    , a.\"shokui_id\" \n";
-        sql += "    , a.\"table_re\" \n";
-        sql += "    , a.\"kengen_b\" \n";
-        sql += "    , TO_CHAR (a.\"tekiyo_bi\", 'YYYY-MM-DD') AS tekiyo_bi \n";
-        sql += "    , TO_CHAR (a.\"haishi_bi\", 'YYYY-MM-DD') AS haishi_bi \n";
-        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
-        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
+        sql += "      a.\"BUSHO_ID\" \n";
+        sql += "    , a.\"SHOKUI_ID\" \n";
+        sql += "    , a.\"TABLE_RE\" \n";
+        sql += "    , a.\"KENGEN_B\" \n";
+        sql += "    , TO_CHAR (a.\"TEKIYO_BI\", 'YYYY-MM-DD') AS TEKIYO_BI \n";
+        sql += "    , TO_CHAR (a.\"HAISHI_BI\", 'YYYY-MM-DD') AS HAISHI_BI \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    MHR_SHOKUI_NINKA a \n";
         sql += "WHERE \n";
@@ -416,26 +416,26 @@ public class MhrShokuiNinka implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"busho_id\" -- :busho_id");
-        nameList.add("\"shokui_id\" -- :shokui_id");
-        nameList.add("\"table_re\" -- :table_re");
-        nameList.add("\"kengen_b\" -- :kengen_b");
-        nameList.add("\"tekiyo_bi\" -- :tekiyo_bi");
-        nameList.add("\"haishi_bi\" -- :haishi_bi");
-        nameList.add("\"insert_ts\" -- :insert_ts");
-        nameList.add("\"insert_user_id\" -- :insert_user_id");
-        nameList.add("\"update_ts\" -- :update_ts");
-        nameList.add("\"update_user_id\" -- :update_user_id");
+        nameList.add("\"BUSHO_ID\" -- :busho_id");
+        nameList.add("\"SHOKUI_ID\" -- :shokui_id");
+        nameList.add("\"TABLE_RE\" -- :table_re");
+        nameList.add("\"KENGEN_B\" -- :kengen_b");
+        nameList.add("\"TEKIYO_BI\" -- :tekiyo_bi");
+        nameList.add("\"HAISHI_BI\" -- :haishi_bi");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add("CAST (:busho_id AS INTEGER)");
-        valueList.add("CAST (:shokui_id AS INTEGER)");
+        valueList.add(":busho_id");
+        valueList.add(":shokui_id");
         valueList.add(":table_re");
-        valueList.add("CAST (:kengen_b AS INTEGER)");
+        valueList.add(":kengen_b");
         valueList.add("TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
         valueList.add("TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
         valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
@@ -459,14 +459,14 @@ public class MhrShokuiNinka implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"busho_id\" = CAST (:busho_id AS INTEGER)");
-        setList.add("\"shokui_id\" = CAST (:shokui_id AS INTEGER)");
-        setList.add("\"table_re\" = :table_re");
-        setList.add("\"kengen_b\" = CAST (:kengen_b AS INTEGER)");
-        setList.add("\"tekiyo_bi\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
-        setList.add("\"haishi_bi\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
-        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"update_user_id\" = :update_user_id");
+        setList.add("\"BUSHO_ID\" = :busho_id");
+        setList.add("\"SHOKUI_ID\" = :shokui_id");
+        setList.add("\"TABLE_RE\" = :table_re");
+        setList.add("\"KENGEN_B\" = :kengen_b");
+        setList.add("\"TEKIYO_BI\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"HAISHI_BI\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -505,10 +505,10 @@ public class MhrShokuiNinka implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"busho_id\" = CAST (:busho_id AS INTEGER)");
-        whereList.add("\"shokui_id\" = CAST (:shokui_id AS INTEGER)");
-        whereList.add("\"table_re\" = :table_re");
-        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("\"BUSHO_ID\" = :busho_id");
+        whereList.add("\"SHOKUI_ID\" = :shokui_id");
+        whereList.add("\"TABLE_RE\" = :table_re");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

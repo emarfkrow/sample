@@ -1,30 +1,30 @@
 SELECT
-      a."ref1_id" AS "ref1_id"
-    , (SELECT r0."ref1_mei" FROM M04_REF1 r0 WHERE r0."ref1_id" = a."ref1_id") AS "ref1_mei"
-    , a."ref2_id" AS "ref2_id"
-    , (SELECT r1."ref2_mei" FROM M04_REF2 r1 WHERE r1."ref2_id" = a."ref2_id") AS "ref2_mei"
-    , a."comp1_mei" AS "comp1_mei"
-    , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
-    , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
-    , (SELECT r2."user_sei" FROM MHR_USER r2 WHERE r2."user_id" = CAST (a."insert_user_id" AS INTEGER)) AS "insert_user_sei"
-    , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
-    , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
-    , (SELECT r3."user_sei" FROM MHR_USER r3 WHERE r3."user_id" = CAST (a."update_user_id" AS INTEGER)) AS "update_user_sei"
+      a."REF1_ID" AS "REF1_ID"
+    , (SELECT r0."REF1_MEI" FROM M04_REF1 r0 WHERE r0."REF1_ID" = a."REF1_ID") AS "REF1_MEI"
+    , a."REF2_ID" AS "REF2_ID"
+    , (SELECT r1."REF2_MEI" FROM M04_REF2 r1 WHERE r1."REF2_ID" = a."REF2_ID") AS "REF2_MEI"
+    , a."COMP1_MEI" AS "COMP1_MEI"
+    , TO_CHAR (a."INSERT_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "INSERT_TS"
+    , RTRIM (RTRIM (a."INSERT_USER_ID"), '　') AS "INSERT_USER_ID"
+    , (SELECT r2."USER_SEI" FROM MHR_USER r2 WHERE TO_CHAR (r2."USER_ID") = a."INSERT_USER_ID") AS "INSERT_USER_SEI"
+    , TO_CHAR (a."UPDATE_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "UPDATE_TS"
+    , RTRIM (RTRIM (a."UPDATE_USER_ID"), '　') AS "UPDATE_USER_ID"
+    , (SELECT r3."USER_SEI" FROM MHR_USER r3 WHERE TO_CHAR (r3."USER_ID") = a."UPDATE_USER_ID") AS "UPDATE_USER_SEI"
 FROM
     T04_COMP1 a 
 WHERE
     1 = 1 
-    AND a."ref1_id" = CAST (:ref_1_id AS INTEGER) 
-    AND a."ref2_id" = CAST (:ref_2_id AS INTEGER) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a."comp1_mei")) LIKE UPPER (CONCAT ('%', :comp_1_mei, '%')) 
-    AND a."insert_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
-    AND a."insert_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND a."insert_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND UPPER (TRIM(TRAILING ' ' FROM a."insert_user_id")) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
-    AND a."update_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
-    AND a."update_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND a."update_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND UPPER (TRIM(TRAILING ' ' FROM a."update_user_id")) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
+    AND a."REF1_ID" = :ref_1_id 
+    AND a."REF2_ID" = :ref_2_id 
+    AND UPPER (RTRIM (RTRIM (a."COMP1_MEI"), '　')) LIKE UPPER ('%' || :comp_1_mei || '%') 
+    AND a."INSERT_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."INSERT_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."INSERT_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (RTRIM (RTRIM (a."INSERT_USER_ID"), '　')) LIKE UPPER ('%' || :insert_user_id || '%') 
+    AND a."UPDATE_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."UPDATE_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."UPDATE_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (RTRIM (RTRIM (a."UPDATE_USER_ID"), '　')) LIKE UPPER ('%' || :update_user_id || '%') 
 ORDER BY
-    a."ref1_id"
-    , a."ref2_id"
+    a."REF1_ID"
+    , a."REF2_ID"

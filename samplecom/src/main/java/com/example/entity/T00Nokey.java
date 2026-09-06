@@ -212,7 +212,7 @@ public class T00Nokey implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 9)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 9)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -279,7 +279,7 @@ public class T00Nokey implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 12)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 12)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }

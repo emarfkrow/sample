@@ -176,7 +176,7 @@ public class T03Trans implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 7)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 7)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -243,7 +243,7 @@ public class T03Trans implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 10)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 10)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -279,16 +279,16 @@ public class T03Trans implements IEntity {
      */
     public static T03Trans get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"trans_id\" = CAST (:trans_id AS INTEGER)");
+        whereList.add("\"TRANS_ID\" = :trans_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"trans_id\" \n";
-        sql += "    , a.\"trans_info\" \n";
-        sql += "    , a.\"status_kb\" \n";
-        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
-        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
+        sql += "      a.\"TRANS_ID\" \n";
+        sql += "    , a.\"TRANS_INFO\" \n";
+        sql += "    , a.\"STATUS_KB\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    T03_TRANS a \n";
         sql += "WHERE \n";
@@ -328,20 +328,20 @@ public class T03Trans implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"trans_id\" -- :trans_id");
-        nameList.add("\"trans_info\" -- :trans_info");
-        nameList.add("\"status_kb\" -- :status_kb");
-        nameList.add("\"insert_ts\" -- :insert_ts");
-        nameList.add("\"insert_user_id\" -- :insert_user_id");
-        nameList.add("\"update_ts\" -- :update_ts");
-        nameList.add("\"update_user_id\" -- :update_user_id");
+        nameList.add("\"TRANS_ID\" -- :trans_id");
+        nameList.add("\"TRANS_INFO\" -- :trans_info");
+        nameList.add("\"STATUS_KB\" -- :status_kb");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add("CAST (:trans_id AS INTEGER)");
+        valueList.add(":trans_id");
         valueList.add(":trans_info");
         valueList.add(":status_kb");
         valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
@@ -356,7 +356,7 @@ public class T03Trans implements IEntity {
         if (this.transId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.\"trans_id\") IS NULL THEN 0 ELSE MAX(e.\"trans_id\") * 1 END + 1 AS \"trans_id\" FROM T03_TRANS e";
+        String sql = "SELECT CASE WHEN MAX(e.\"TRANS_ID\") IS NULL THEN 0 ELSE MAX(e.\"TRANS_ID\") * 1 END + 1 AS \"TRANS_ID\" FROM T03_TRANS e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("TRANS_ID");
@@ -406,11 +406,11 @@ public class T03Trans implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"trans_id\" = CAST (:trans_id AS INTEGER)");
-        setList.add("\"trans_info\" = :trans_info");
-        setList.add("\"status_kb\" = :status_kb");
-        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"update_user_id\" = :update_user_id");
+        setList.add("\"TRANS_ID\" = :trans_id");
+        setList.add("\"TRANS_INFO\" = :trans_info");
+        setList.add("\"STATUS_KB\" = :status_kb");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -446,8 +446,8 @@ public class T03Trans implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"trans_id\" = CAST (:trans_id AS INTEGER)");
-        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("\"TRANS_ID\" = :trans_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

@@ -36,21 +36,21 @@
           <label for="T14Koutei.sagyokuCd" th:text="#{T14Koutei.sagyokuCd}">SAGYOKU_CD</label><input type="text" id="T14Koutei.sagyokuCd" name="T14Koutei.sagyokuCd" maxlength="10" class=" notblank" />
         </div>
         <div id="oyaKouteiId">
-          <label for="T14Koutei.oyaKouteiId" th:text="#{T14Koutei.oyaKouteiId}">OYA_KOUTEI_ID</label><input type="text" id="T14Koutei.oyaKouteiId" name="T14Koutei.oyaKouteiId" maxlength="10" class=" refer" data-referFor="T14Koutei.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Koutei.oyaKouteiId" data-destDef="T14Koutei.oyaKouteiMei:koutei_mei" /><a id="T14Koutei.oyaKouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T14Koutei.oyaKouteiMei" class=" refer" data-referFor="T14Koutei.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Koutei.oyaKouteiId" data-destDef="T14Koutei.oyaKouteiMei:koutei_mei"></span>
+          <label for="T14Koutei.oyaKouteiId" th:text="#{T14Koutei.oyaKouteiId}">OYA_KOUTEI_ID</label><input type="text" id="T14Koutei.oyaKouteiId" name="T14Koutei.oyaKouteiId" maxlength="10" class=" refer" data-referFor="T14Koutei.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Koutei.oyaKouteiId" data-destDef="T14Koutei.oyaKouteiMei:KOUTEI_MEI" /><a id="T14Koutei.oyaKouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T14Koutei.oyaKouteiMei" class=" refer" data-referFor="T14Koutei.oyaKouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Koutei.oyaKouteiId" data-destDef="T14Koutei.oyaKouteiMei:KOUTEI_MEI"></span>
         </div>
         <div id="insertTs">
-          <label th:text="#{T14Koutei.insertTs}" class="meta">insert_ts</label><span id="T14Koutei.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Koutei.insertTs" name="T14Koutei.insertTs" class="meta" />
+          <label th:text="#{T14Koutei.insertTs}" class="meta">INSERT_TS</label><span id="T14Koutei.insertTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Koutei.insertTs" name="T14Koutei.insertTs" class="meta" />
         </div>
         <div id="insertUserId">
-          <label th:text="#{T14Koutei.insertUserId}" class="meta">insert_user_id</label><span id="T14Koutei.insertUserId" class="meta"></span><input type="hidden" id="T14Koutei.insertUserId" name="T14Koutei.insertUserId" class="meta" />
-          <span id="T14Koutei.insertUserSei" class="refer meta" data-referFor="T14Koutei.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Koutei.insertUserId" data-destDef="T14Koutei.insertUserSei:user_sei"></span>
+          <label th:text="#{T14Koutei.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T14Koutei.insertUserId" class="meta"></span><input type="hidden" id="T14Koutei.insertUserId" name="T14Koutei.insertUserId" class="meta" />
+          <span id="T14Koutei.insertUserSei" class="refer meta" data-referFor="T14Koutei.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Koutei.insertUserId" data-destDef="T14Koutei.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
-          <label th:text="#{T14Koutei.updateTs}" class="meta">update_ts</label><span id="T14Koutei.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Koutei.updateTs" name="T14Koutei.updateTs" class="meta" />
+          <label th:text="#{T14Koutei.updateTs}" class="meta">UPDATE_TS</label><span id="T14Koutei.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Koutei.updateTs" name="T14Koutei.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
-          <label th:text="#{T14Koutei.updateUserId}" class="meta">update_user_id</label><span id="T14Koutei.updateUserId" class="meta"></span><input type="hidden" id="T14Koutei.updateUserId" name="T14Koutei.updateUserId" class="meta" />
-          <span id="T14Koutei.updateUserSei" class="refer meta" data-referFor="T14Koutei.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Koutei.updateUserId" data-destDef="T14Koutei.updateUserSei:user_sei"></span>
+          <label th:text="#{T14Koutei.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T14Koutei.updateUserId" class="meta"></span><input type="hidden" id="T14Koutei.updateUserId" name="T14Koutei.updateUserId" class="meta" />
+          <span id="T14Koutei.updateUserSei" class="refer meta" data-referFor="T14Koutei.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Koutei.updateUserId" data-destDef="T14Koutei.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">

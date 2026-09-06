@@ -134,11 +134,11 @@ public class V14FukaKadobi implements IEntity {
     }
 
     /** DATA */
-    private Integer data;
+    private java.math.BigDecimal data;
 
     /** @return DATA */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "DATA", index = 6)
-    public Integer getData() {
+    public java.math.BigDecimal getData() {
         return this.data;
     }
 
@@ -146,7 +146,7 @@ public class V14FukaKadobi implements IEntity {
     public void setData(final Object o) {
         this.data = null;
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.data = Integer.valueOf(o.toString());
+            this.data = new java.math.BigDecimal(o.toString());
         }
     }
 }

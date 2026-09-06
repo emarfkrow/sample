@@ -207,7 +207,7 @@ public class MsyTax implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 8)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 8)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -274,7 +274,7 @@ public class MsyTax implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 11)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -295,18 +295,18 @@ public class MsyTax implements IEntity {
      */
     public static MsyTax get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"tax_kb\" = :tax_kb");
-        whereList.add("\"tekiyo_bi\" = :tekiyo_bi");
+        whereList.add("\"TAX_KB\" = :tax_kb");
+        whereList.add("\"TEKIYO_BI\" = :tekiyo_bi");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"tax_kb\" \n";
-        sql += "    , TO_CHAR (a.\"tekiyo_bi\", 'YYYY-MM-DD') AS tekiyo_bi \n";
-        sql += "    , TO_CHAR (a.\"haishi_bi\", 'YYYY-MM-DD') AS haishi_bi \n";
-        sql += "    , a.\"tax_rt\" \n";
-        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
-        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
+        sql += "      a.\"TAX_KB\" \n";
+        sql += "    , TO_CHAR (a.\"TEKIYO_BI\", 'YYYY-MM-DD') AS TEKIYO_BI \n";
+        sql += "    , TO_CHAR (a.\"HAISHI_BI\", 'YYYY-MM-DD') AS HAISHI_BI \n";
+        sql += "    , a.\"TAX_RT\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    MSY_TAX a \n";
         sql += "WHERE \n";
@@ -331,14 +331,14 @@ public class MsyTax implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"tax_kb\" -- :tax_kb");
-        nameList.add("\"tekiyo_bi\" -- :tekiyo_bi");
-        nameList.add("\"haishi_bi\" -- :haishi_bi");
-        nameList.add("\"tax_rt\" -- :tax_rt");
-        nameList.add("\"insert_ts\" -- :insert_ts");
-        nameList.add("\"insert_user_id\" -- :insert_user_id");
-        nameList.add("\"update_ts\" -- :update_ts");
-        nameList.add("\"update_user_id\" -- :update_user_id");
+        nameList.add("\"TAX_KB\" -- :tax_kb");
+        nameList.add("\"TEKIYO_BI\" -- :tekiyo_bi");
+        nameList.add("\"HAISHI_BI\" -- :haishi_bi");
+        nameList.add("\"TAX_RT\" -- :tax_rt");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -370,12 +370,12 @@ public class MsyTax implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"tax_kb\" = :tax_kb");
-        setList.add("\"tekiyo_bi\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
-        setList.add("\"haishi_bi\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
-        setList.add("\"tax_rt\" = :tax_rt");
-        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"update_user_id\" = :update_user_id");
+        setList.add("\"TAX_KB\" = :tax_kb");
+        setList.add("\"TEKIYO_BI\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"HAISHI_BI\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"TAX_RT\" = :tax_rt");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -412,9 +412,9 @@ public class MsyTax implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"tax_kb\" = :tax_kb");
-        whereList.add("\"tekiyo_bi\" = :tekiyo_bi");
-        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("\"TAX_KB\" = :tax_kb");
+        whereList.add("\"TEKIYO_BI\" = :tekiyo_bi");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

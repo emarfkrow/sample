@@ -1,16 +1,16 @@
 SELECT
-      a."bro_id" AS "bro_id"
-    , a."eldest_info" AS "eldest_info"
-    , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
-    , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
-    , (SELECT r0."user_sei" FROM MHR_USER r0 WHERE r0."user_id" = CAST (a."insert_user_id" AS INTEGER)) AS "insert_user_sei"
-    , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
-    , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
-    , (SELECT r1."user_sei" FROM MHR_USER r1 WHERE r1."user_id" = CAST (a."update_user_id" AS INTEGER)) AS "update_user_sei"
-    , c1."younger_info" AS "t01_younger.younger_info"
-    , TO_CHAR (c1."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "t01_younger.update_ts"
-    , c2."youngest_info" AS "t01_youngest.youngest_info"
-    , TO_CHAR (c2."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "t01_youngest.update_ts"
+      a."BRO_ID" AS "BRO_ID"
+    , a."ELDEST_INFO" AS "ELDEST_INFO"
+    , TO_CHAR (a."INSERT_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "INSERT_TS"
+    , RTRIM (RTRIM (a."INSERT_USER_ID"), '　') AS "INSERT_USER_ID"
+    , (SELECT r0."USER_SEI" FROM MHR_USER r0 WHERE TO_CHAR (r0."USER_ID") = a."INSERT_USER_ID") AS "INSERT_USER_SEI"
+    , TO_CHAR (a."UPDATE_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "UPDATE_TS"
+    , RTRIM (RTRIM (a."UPDATE_USER_ID"), '　') AS "UPDATE_USER_ID"
+    , (SELECT r1."USER_SEI" FROM MHR_USER r1 WHERE TO_CHAR (r1."USER_ID") = a."UPDATE_USER_ID") AS "UPDATE_USER_SEI"
+    , c1."YOUNGER_INFO" AS "T01_YOUNGER.YOUNGER_INFO"
+    , TO_CHAR (c1."UPDATE_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "T01_YOUNGER.UPDATE_TS"
+    , c2."YOUNGEST_INFO" AS "T01_YOUNGEST.YOUNGEST_INFO"
+    , TO_CHAR (c2."UPDATE_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "T01_YOUNGEST.UPDATE_TS"
 FROM
     T01_ELDEST a 
     LEFT OUTER JOIN T01_YOUNGER c1 
@@ -21,15 +21,15 @@ FROM
         AND c2.BRO_ID = a.BRO_ID 
 WHERE
     1 = 1 
-    AND a."bro_id" = CAST (:bro_id AS INTEGER) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a."eldest_info")) LIKE UPPER (CONCAT ('%', :eldest_info, '%')) 
-    AND a."insert_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
-    AND a."insert_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND a."insert_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND UPPER (TRIM(TRAILING ' ' FROM a."insert_user_id")) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
-    AND a."update_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
-    AND a."update_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND a."update_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND UPPER (TRIM(TRAILING ' ' FROM a."update_user_id")) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
+    AND a."BRO_ID" = :bro_id 
+    AND UPPER (RTRIM (RTRIM (a."ELDEST_INFO"), '　')) LIKE UPPER ('%' || :eldest_info || '%') 
+    AND a."INSERT_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."INSERT_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."INSERT_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (RTRIM (RTRIM (a."INSERT_USER_ID"), '　')) LIKE UPPER ('%' || :insert_user_id || '%') 
+    AND a."UPDATE_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."UPDATE_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."UPDATE_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (RTRIM (RTRIM (a."UPDATE_USER_ID"), '　')) LIKE UPPER ('%' || :update_user_id || '%') 
 ORDER BY
-    a."bro_id"
+    a."BRO_ID"

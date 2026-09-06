@@ -157,7 +157,7 @@ public class MsyKbn implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 6)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 6)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -224,7 +224,7 @@ public class MsyKbn implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 9)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 9)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -244,15 +244,15 @@ public class MsyKbn implements IEntity {
      */
     public static MsyKbn get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"kbn_nm\" = :kbn_nm");
+        whereList.add("\"KBN_NM\" = :kbn_nm");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"kbn_nm\" \n";
-        sql += "    , a.\"kbn_mei\" \n";
-        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
-        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
+        sql += "      a.\"KBN_NM\" \n";
+        sql += "    , a.\"KBN_MEI\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    MSY_KBN a \n";
         sql += "WHERE \n";
@@ -287,12 +287,12 @@ public class MsyKbn implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"kbn_nm\" -- :kbn_nm");
-        nameList.add("\"kbn_mei\" -- :kbn_mei");
-        nameList.add("\"insert_ts\" -- :insert_ts");
-        nameList.add("\"insert_user_id\" -- :insert_user_id");
-        nameList.add("\"update_ts\" -- :update_ts");
-        nameList.add("\"update_user_id\" -- :update_user_id");
+        nameList.add("\"KBN_NM\" -- :kbn_nm");
+        nameList.add("\"KBN_MEI\" -- :kbn_mei");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -338,10 +338,10 @@ public class MsyKbn implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"kbn_nm\" = :kbn_nm");
-        setList.add("\"kbn_mei\" = :kbn_mei");
-        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"update_user_id\" = :update_user_id");
+        setList.add("\"KBN_NM\" = :kbn_nm");
+        setList.add("\"KBN_MEI\" = :kbn_mei");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -392,8 +392,8 @@ public class MsyKbn implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"kbn_nm\" = :kbn_nm");
-        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("\"KBN_NM\" = :kbn_nm");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 
@@ -437,17 +437,17 @@ public class MsyKbn implements IEntity {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("KBN_NM = :kbn_nm");
         String sql = "SELECT ";
-        sql += "\"kbn_nm\"";
-        sql += ", \"kbn_val\"";
-        sql += ", \"kbn_val_mei\"";
-        sql += ", \"hyoji_on\"";
-        sql += ", \"criteria\"";
-        sql += ", TO_CHAR (\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts";
-        sql += ", \"insert_user_id\"";
-        sql += ", (SELECT r0.\"user_sei\" FROM MHR_USER r0 WHERE r0.\"user_id\" = CAST (a.\"insert_user_id\" AS INTEGER)) AS \"insert_user_sei\"";
-        sql += ", TO_CHAR (\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts";
-        sql += ", \"update_user_id\"";
-        sql += ", (SELECT r1.\"user_sei\" FROM MHR_USER r1 WHERE r1.\"user_id\" = CAST (a.\"update_user_id\" AS INTEGER)) AS \"update_user_sei\"";
+        sql += "\"KBN_NM\"";
+        sql += ", \"KBN_VAL\"";
+        sql += ", \"KBN_VAL_MEI\"";
+        sql += ", \"HYOJI_ON\"";
+        sql += ", \"CRITERIA\"";
+        sql += ", TO_CHAR (\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS";
+        sql += ", \"INSERT_USER_ID\"";
+        sql += ", (SELECT r0.\"USER_SEI\" FROM MHR_USER r0 WHERE TO_CHAR (r0.\"USER_ID\") = a.\"INSERT_USER_ID\") AS \"INSERT_USER_SEI\"";
+        sql += ", TO_CHAR (\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS";
+        sql += ", \"UPDATE_USER_ID\"";
+        sql += ", (SELECT r1.\"USER_SEI\" FROM MHR_USER r1 WHERE TO_CHAR (r1.\"USER_ID\") = a.\"UPDATE_USER_ID\") AS \"UPDATE_USER_SEI\"";
         sql += " FROM MSY_KBN_VAL a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "KBN_NM, KBN_VAL";

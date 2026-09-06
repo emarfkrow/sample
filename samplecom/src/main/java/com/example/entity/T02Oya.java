@@ -157,7 +157,7 @@ public class T02Oya implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "insert_user_sei", index = 6)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 6)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -224,7 +224,7 @@ public class T02Oya implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "update_user_sei", index = 9)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 9)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -244,15 +244,15 @@ public class T02Oya implements IEntity {
      */
     public static T02Oya get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"oya_id\" = CAST (:oya_id AS INTEGER)");
+        whereList.add("\"OYA_ID\" = :oya_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"oya_id\" \n";
-        sql += "    , a.\"oya_info\" \n";
-        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
-        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
+        sql += "      a.\"OYA_ID\" \n";
+        sql += "    , a.\"OYA_INFO\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    T02_OYA a \n";
         sql += "WHERE \n";
@@ -300,19 +300,19 @@ public class T02Oya implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"oya_id\" -- :oya_id");
-        nameList.add("\"oya_info\" -- :oya_info");
-        nameList.add("\"insert_ts\" -- :insert_ts");
-        nameList.add("\"insert_user_id\" -- :insert_user_id");
-        nameList.add("\"update_ts\" -- :update_ts");
-        nameList.add("\"update_user_id\" -- :update_user_id");
+        nameList.add("\"OYA_ID\" -- :oya_id");
+        nameList.add("\"OYA_INFO\" -- :oya_info");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add("CAST (:oya_id AS INTEGER)");
+        valueList.add(":oya_id");
         valueList.add(":oya_info");
         valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
@@ -326,7 +326,7 @@ public class T02Oya implements IEntity {
         if (this.oyaId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.\"oya_id\") IS NULL THEN 0 ELSE MAX(e.\"oya_id\") * 1 END + 1 AS \"oya_id\" FROM T02_OYA e";
+        String sql = "SELECT CASE WHEN MAX(e.\"OYA_ID\") IS NULL THEN 0 ELSE MAX(e.\"OYA_ID\") * 1 END + 1 AS \"OYA_ID\" FROM T02_OYA e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("OYA_ID");
@@ -378,10 +378,10 @@ public class T02Oya implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"oya_id\" = CAST (:oya_id AS INTEGER)");
-        setList.add("\"oya_info\" = :oya_info");
-        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"update_user_id\" = :update_user_id");
+        setList.add("\"OYA_ID\" = :oya_id");
+        setList.add("\"OYA_INFO\" = :oya_info");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -446,8 +446,8 @@ public class T02Oya implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"oya_id\" = CAST (:oya_id AS INTEGER)");
-        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("\"OYA_ID\" = :oya_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 
@@ -491,15 +491,15 @@ public class T02Oya implements IEntity {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("OYA_ID = :oya_id");
         String sql = "SELECT ";
-        sql += "\"oya_id\"";
-        sql += ", \"ko_bn\"";
-        sql += ", \"dinks_info\"";
-        sql += ", TO_CHAR (\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts";
-        sql += ", \"insert_user_id\"";
-        sql += ", (SELECT r0.\"user_sei\" FROM MHR_USER r0 WHERE r0.\"user_id\" = CAST (a.\"insert_user_id\" AS INTEGER)) AS \"insert_user_sei\"";
-        sql += ", TO_CHAR (\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts";
-        sql += ", \"update_user_id\"";
-        sql += ", (SELECT r1.\"user_sei\" FROM MHR_USER r1 WHERE r1.\"user_id\" = CAST (a.\"update_user_id\" AS INTEGER)) AS \"update_user_sei\"";
+        sql += "\"OYA_ID\"";
+        sql += ", \"KO_BN\"";
+        sql += ", \"DINKS_INFO\"";
+        sql += ", TO_CHAR (\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS";
+        sql += ", \"INSERT_USER_ID\"";
+        sql += ", (SELECT r0.\"USER_SEI\" FROM MHR_USER r0 WHERE TO_CHAR (r0.\"USER_ID\") = a.\"INSERT_USER_ID\") AS \"INSERT_USER_SEI\"";
+        sql += ", TO_CHAR (\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS";
+        sql += ", \"UPDATE_USER_ID\"";
+        sql += ", (SELECT r1.\"USER_SEI\" FROM MHR_USER r1 WHERE TO_CHAR (r1.\"USER_ID\") = a.\"UPDATE_USER_ID\") AS \"UPDATE_USER_SEI\"";
         sql += " FROM T02_DINKS a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "OYA_ID, KO_BN";
@@ -552,15 +552,15 @@ public class T02Oya implements IEntity {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
         whereList.add("OYA_ID = :oya_id");
         String sql = "SELECT ";
-        sql += "\"oya_id\"";
-        sql += ", \"ko_bn\"";
-        sql += ", \"ko_info\"";
-        sql += ", TO_CHAR (\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts";
-        sql += ", \"insert_user_id\"";
-        sql += ", (SELECT r0.\"user_sei\" FROM MHR_USER r0 WHERE r0.\"user_id\" = CAST (a.\"insert_user_id\" AS INTEGER)) AS \"insert_user_sei\"";
-        sql += ", TO_CHAR (\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts";
-        sql += ", \"update_user_id\"";
-        sql += ", (SELECT r1.\"user_sei\" FROM MHR_USER r1 WHERE r1.\"user_id\" = CAST (a.\"update_user_id\" AS INTEGER)) AS \"update_user_sei\"";
+        sql += "\"OYA_ID\"";
+        sql += ", \"KO_BN\"";
+        sql += ", \"KO_INFO\"";
+        sql += ", TO_CHAR (\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS";
+        sql += ", \"INSERT_USER_ID\"";
+        sql += ", (SELECT r0.\"USER_SEI\" FROM MHR_USER r0 WHERE TO_CHAR (r0.\"USER_ID\") = a.\"INSERT_USER_ID\") AS \"INSERT_USER_SEI\"";
+        sql += ", TO_CHAR (\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS";
+        sql += ", \"UPDATE_USER_ID\"";
+        sql += ", (SELECT r1.\"USER_SEI\" FROM MHR_USER r1 WHERE TO_CHAR (r1.\"USER_ID\") = a.\"UPDATE_USER_ID\") AS \"UPDATE_USER_SEI\"";
         sql += " FROM T02_KO a WHERE " + String.join(" AND ", whereList);
         sql += " ORDER BY ";
         sql += "OYA_ID, KO_BN";

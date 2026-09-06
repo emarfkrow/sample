@@ -1,43 +1,43 @@
 SELECT
-      a."saiki_id" AS "saiki_id"
-    , a."saiki_mei" AS "saiki_mei"
-    , a."idref_id" AS "idref_id"
-    , (SELECT r0."idref_mei" FROM M05_ID r0 WHERE r0."idref_id" = a."idref_id") AS "idref_mei"
-    , TRIM(TRAILING ' ' FROM a."cdref_cd") AS "cdref_cd"
-    , (SELECT r1."cdref_mei" FROM M05_CD r1 WHERE r1."cdref_cd" = a."cdref_cd") AS "cdref_mei"
-    , TRIM(TRAILING ' ' FROM a."noref_no") AS "noref_no"
-    , (SELECT r2."noref_mei" FROM M05_NO r2 WHERE r2."noref_no" = a."noref_no") AS "noref_mei"
-    , a."ex_idref_id" AS "ex_idref_id"
-    , (SELECT r3."idref_mei" FROM M05_ID r3 WHERE r3."idref_id" = a."ex_idref_id") AS "ex_idref_mei"
-    , a."ex_idbn_bn" AS "ex_idbn_bn"
-    , (SELECT r4."idbn_no" FROM M05_IDBN r4 WHERE r4."idref_id" = a."ex_idref_id" AND r4."idbn_bn" = a."ex_idbn_bn") AS "ex_idbn_no"
-    , a."oya_saiki_id" AS "oya_saiki_id"
-    , (SELECT r5."saiki_mei" FROM M05_SAIKI r5 WHERE r5."saiki_id" = a."oya_saiki_id") AS "oya_saiki_mei"
-    , TO_CHAR (a."insert_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "insert_ts"
-    , TRIM(TRAILING ' ' FROM a."insert_user_id") AS "insert_user_id"
-    , (SELECT r6."user_sei" FROM MHR_USER r6 WHERE r6."user_id" = CAST (a."insert_user_id" AS INTEGER)) AS "insert_user_sei"
-    , TO_CHAR (a."update_ts", 'YYYY-MM-DD HH24:MI:SS.MS') AS "update_ts"
-    , TRIM(TRAILING ' ' FROM a."update_user_id") AS "update_user_id"
-    , (SELECT r7."user_sei" FROM MHR_USER r7 WHERE r7."user_id" = CAST (a."update_user_id" AS INTEGER)) AS "update_user_sei"
+      a."SAIKI_ID" AS "SAIKI_ID"
+    , a."SAIKI_MEI" AS "SAIKI_MEI"
+    , a."IDREF_ID" AS "IDREF_ID"
+    , (SELECT r0."IDREF_MEI" FROM M05_ID r0 WHERE r0."IDREF_ID" = a."IDREF_ID") AS "IDREF_MEI"
+    , RTRIM (RTRIM (a."CDREF_CD"), '　') AS "CDREF_CD"
+    , (SELECT r1."CDREF_MEI" FROM M05_CD r1 WHERE r1."CDREF_CD" = a."CDREF_CD") AS "CDREF_MEI"
+    , RTRIM (RTRIM (a."NOREF_NO"), '　') AS "NOREF_NO"
+    , (SELECT r2."NOREF_MEI" FROM M05_NO r2 WHERE r2."NOREF_NO" = a."NOREF_NO") AS "NOREF_MEI"
+    , a."EX_IDREF_ID" AS "EX_IDREF_ID"
+    , (SELECT r3."IDREF_MEI" FROM M05_ID r3 WHERE r3."IDREF_ID" = a."EX_IDREF_ID") AS "EX_IDREF_MEI"
+    , a."EX_IDBN_BN" AS "EX_IDBN_BN"
+    , (SELECT r4."IDBN_NO" FROM M05_IDBN r4 WHERE r4."IDREF_ID" = a."EX_IDREF_ID" AND r4."IDBN_BN" = a."EX_IDBN_BN") AS "EX_IDBN_NO"
+    , a."OYA_SAIKI_ID" AS "OYA_SAIKI_ID"
+    , (SELECT r5."SAIKI_MEI" FROM M05_SAIKI r5 WHERE r5."SAIKI_ID" = a."OYA_SAIKI_ID") AS "OYA_SAIKI_MEI"
+    , TO_CHAR (a."INSERT_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "INSERT_TS"
+    , RTRIM (RTRIM (a."INSERT_USER_ID"), '　') AS "INSERT_USER_ID"
+    , (SELECT r6."USER_SEI" FROM MHR_USER r6 WHERE TO_CHAR (r6."USER_ID") = a."INSERT_USER_ID") AS "INSERT_USER_SEI"
+    , TO_CHAR (a."UPDATE_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "UPDATE_TS"
+    , RTRIM (RTRIM (a."UPDATE_USER_ID"), '　') AS "UPDATE_USER_ID"
+    , (SELECT r7."USER_SEI" FROM MHR_USER r7 WHERE TO_CHAR (r7."USER_ID") = a."UPDATE_USER_ID") AS "UPDATE_USER_SEI"
 FROM
     M05_SAIKI a 
 WHERE
     1 = 1 
-    AND a."saiki_id" = CAST (:saiki_id AS INTEGER) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a."saiki_mei")) LIKE UPPER (CONCAT ('%', :saiki_mei, '%')) 
-    AND a."idref_id" = CAST (:idref_id AS INTEGER) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a."cdref_cd")) LIKE UPPER (CONCAT ('%', :cdref_cd, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a."noref_no")) LIKE UPPER (CONCAT ('%', :noref_no, '%')) 
-    AND a."ex_idref_id" = CAST (:ex_idref_id AS INTEGER) 
-    AND a."ex_idbn_bn" = CAST (:ex_idbn_bn AS INTEGER) 
-    AND a."oya_saiki_id" = CAST (:oya_saiki_id AS INTEGER) 
-    AND a."insert_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
-    AND a."insert_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND a."insert_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND UPPER (TRIM(TRAILING ' ' FROM a."insert_user_id")) LIKE UPPER (CONCAT ('%', :insert_user_id, '%')) 
-    AND a."update_ts" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
-    AND a."update_ts" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND a."update_ts" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
-    AND UPPER (TRIM(TRAILING ' ' FROM a."update_user_id")) LIKE UPPER (CONCAT ('%', :update_user_id, '%')) 
+    AND a."SAIKI_ID" = :saiki_id 
+    AND UPPER (RTRIM (RTRIM (a."SAIKI_MEI"), '　')) LIKE UPPER ('%' || :saiki_mei || '%') 
+    AND a."IDREF_ID" = :idref_id 
+    AND UPPER (RTRIM (RTRIM (a."CDREF_CD"), '　')) LIKE UPPER ('%' || :cdref_cd || '%') 
+    AND UPPER (RTRIM (RTRIM (a."NOREF_NO"), '　')) LIKE UPPER ('%' || :noref_no || '%') 
+    AND a."EX_IDREF_ID" = :ex_idref_id 
+    AND a."EX_IDBN_BN" = :ex_idbn_bn 
+    AND a."OYA_SAIKI_ID" = :oya_saiki_id 
+    AND a."INSERT_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."INSERT_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."INSERT_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (RTRIM (RTRIM (a."INSERT_USER_ID"), '　')) LIKE UPPER ('%' || :insert_user_id || '%') 
+    AND a."UPDATE_TS" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3') 
+    AND a."UPDATE_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND a."UPDATE_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
+    AND UPPER (RTRIM (RTRIM (a."UPDATE_USER_ID"), '　')) LIKE UPPER ('%' || :update_user_id || '%') 
 ORDER BY
-    a."saiki_id"
+    a."SAIKI_ID"
