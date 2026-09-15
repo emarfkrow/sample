@@ -30,11 +30,12 @@
           <label for="V14FukaSagyoku.label" th:text="#{V14FukaSagyoku.label}">LABEL</label><input type="text" id="V14FukaSagyoku.label" name="V14FukaSagyoku.label" maxlength="10" class="" />
         </div>
         <div id="data">
-          <label for="V14FukaSagyoku.data" th:text="#{V14FukaSagyoku.data}">DATA</label><input type="text" id="V14FukaSagyoku.data" name="V14FukaSagyoku.data" maxlength="19" class="" />
+          <label for="V14FukaSagyoku.data" th:text="#{V14FukaSagyoku.data}">DATA</label><input type="text" id="V14FukaSagyoku.data" name="V14FukaSagyoku.data" maxlength="11" class="" />
         </div>
       </fieldset>
       <div class="buttons">
         <a th:href="@{V14FukaSagyokuGet.xlsx(baseMei=#{V14FukaSagyoku.h2})}" id="V14FukaSagyokuGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{V14FukaSagyokuGet.pdf(baseMei=#{V14FukaSagyoku.h2})}" id="V14FukaSagyokuGet.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
       </div>
       <div class="submits">
       </div>

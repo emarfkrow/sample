@@ -50,6 +50,7 @@
       <div class="buttons">
         <button type="button" id="RefreshT11Prev2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T11Prev2Get.xlsx(baseMei=#{T11Prev2.h2})}" id="T11Prev2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T11Prev2Get.pdf(baseMei=#{T11Prev2.h2})}" id="T11Prev2Get.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
         <a th:href="@{/model/T11Reborn2.html}" id="T11Reborn2" target="dialog" th:text="#{T11Reborn2.add}" class="reborner" tabindex="-1">T11_REBORN2</a>
       </div>
       <div class="submits">

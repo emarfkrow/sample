@@ -280,19 +280,19 @@ public class MsyKbnVal implements IEntity {
      */
     public static MsyKbnVal get(final Object param1, final Object param2) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"kbn_nm\" = :kbn_nm");
-        whereList.add("\"kbn_val\" = :kbn_val");
+        whereList.add("\"KBN_NM\" = :kbn_nm");
+        whereList.add("\"KBN_VAL\" = :kbn_val");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"kbn_nm\" \n";
-        sql += "    , a.\"kbn_val\" \n";
-        sql += "    , a.\"kbn_val_mei\" \n";
-        sql += "    , a.\"hyoji_on\" \n";
-        sql += "    , a.\"criteria\" \n";
-        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
-        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
+        sql += "      a.\"KBN_NM\" \n";
+        sql += "    , a.\"KBN_VAL\" \n";
+        sql += "    , a.\"KBN_VAL_MEI\" \n";
+        sql += "    , a.\"HYOJI_ON\" \n";
+        sql += "    , a.\"CRITERIA\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    MSY_KBN_VAL a \n";
         sql += "WHERE \n";
@@ -317,15 +317,15 @@ public class MsyKbnVal implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"kbn_nm\" -- :kbn_nm");
-        nameList.add("\"kbn_val\" -- :kbn_val");
-        nameList.add("\"kbn_val_mei\" -- :kbn_val_mei");
-        nameList.add("\"hyoji_on\" -- :hyoji_on");
-        nameList.add("\"criteria\" -- :criteria");
-        nameList.add("\"insert_ts\" -- :insert_ts");
-        nameList.add("\"insert_user_id\" -- :insert_user_id");
-        nameList.add("\"update_ts\" -- :update_ts");
-        nameList.add("\"update_user_id\" -- :update_user_id");
+        nameList.add("\"KBN_NM\" -- :kbn_nm");
+        nameList.add("\"KBN_VAL\" -- :kbn_val");
+        nameList.add("\"KBN_VAL_MEI\" -- :kbn_val_mei");
+        nameList.add("\"HYOJI_ON\" -- :hyoji_on");
+        nameList.add("\"CRITERIA\" -- :criteria");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
@@ -335,7 +335,7 @@ public class MsyKbnVal implements IEntity {
         valueList.add(":kbn_nm");
         valueList.add(":kbn_val");
         valueList.add(":kbn_val_mei");
-        valueList.add("CAST (:hyoji_on AS INTEGER)");
+        valueList.add(":hyoji_on");
         valueList.add(":criteria");
         valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
@@ -358,13 +358,13 @@ public class MsyKbnVal implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"kbn_nm\" = :kbn_nm");
-        setList.add("\"kbn_val\" = :kbn_val");
-        setList.add("\"kbn_val_mei\" = :kbn_val_mei");
-        setList.add("\"hyoji_on\" = CAST (:hyoji_on AS INTEGER)");
-        setList.add("\"criteria\" = :criteria");
-        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"update_user_id\" = :update_user_id");
+        setList.add("\"KBN_NM\" = :kbn_nm");
+        setList.add("\"KBN_VAL\" = :kbn_val");
+        setList.add("\"KBN_VAL_MEI\" = :kbn_val_mei");
+        setList.add("\"HYOJI_ON\" = :hyoji_on");
+        setList.add("\"CRITERIA\" = :criteria");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -402,9 +402,9 @@ public class MsyKbnVal implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"kbn_nm\" = :kbn_nm");
-        whereList.add("\"kbn_val\" = :kbn_val");
-        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("\"KBN_NM\" = :kbn_nm");
+        whereList.add("\"KBN_VAL\" = :kbn_val");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

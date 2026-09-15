@@ -49,6 +49,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetM05IdS" th:text="#{common.reset}" onClick="Base.listReset('M05Id');">reset</button>
         <a th:href="@{M05IdSearch.xlsx(baseMei=#{M05IdS.h2})}" id="M05IdSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{M05IdSearch.pdf(baseMei=#{M05IdS.h2})}" id="M05IdSearch.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
       </div>
       <div class="submits">
       </div>

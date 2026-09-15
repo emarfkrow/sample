@@ -62,6 +62,7 @@
       <div class="buttons">
         <button type="button" id="RefreshT07Org" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T07OrgGet.xlsx(baseMei=#{T07Org.h2})}" id="T07OrgGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T07OrgGet.pdf(baseMei=#{T07Org.h2})}" id="T07OrgGet.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
         <a th:href="@{/model/T07Derive1.html}" id="T07Derive1" target="dialog" th:text="#{T07Derive1.add}" class="deriveTo" tabindex="-1">T07_DERIVE1</a>
         <a th:href="@{/model/T07Derive2.html}" id="T07Derive2" target="dialog" th:text="#{T07Derive2.add}" class="deriveTo" tabindex="-1">T07_DERIVE2</a>
       </div>

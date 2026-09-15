@@ -44,6 +44,7 @@
       <div class="buttons">
         <button type="button" id="RefreshT13Dest" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T13DestGet.xlsx(baseMei=#{T13Dest.h2})}" id="T13DestGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T13DestGet.pdf(baseMei=#{T13Dest.h2})}" id="T13DestGet.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
       </div>
       <div class="submits">
         <button id="DeleteT13Dest" type="submit" class="delete" data-action="T13DestDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>

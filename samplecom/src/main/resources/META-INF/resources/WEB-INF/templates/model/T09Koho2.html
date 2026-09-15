@@ -50,6 +50,7 @@
       <div class="buttons">
         <button type="button" id="RefreshT09Koho2" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T09Koho2Get.xlsx(baseMei=#{T09Koho2.h2})}" id="T09Koho2Get.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T09Koho2Get.pdf(baseMei=#{T09Koho2.h2})}" id="T09Koho2Get.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
         <a th:href="@{/model/T09Choice.html}" id="T09Choice" target="dialog" th:text="#{T09Choice.add}" class="deriveTo" tabindex="-1">T09_CHOICE</a>
       </div>
       <div class="submits">

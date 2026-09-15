@@ -66,6 +66,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT04Comp2S" th:text="#{common.reset}" onClick="Base.listReset('T04Comp2');">reset</button>
         <a th:href="@{T04Comp2Search.xlsx(baseMei=#{T04Comp2S.h2})}" id="T04Comp2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T04Comp2Search.pdf(baseMei=#{T04Comp2S.h2})}" id="T04Comp2Search.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
         <a id="T04Comp2Grid.ref1Id" th:href="@{/model/M04Ref1S.html}" target="dialog" class="refer gridRefer" th:text="#{M04Ref1S.title} + #{common.refer}" tabindex="-1">...</a>
         <a id="T04Comp2Grid.ref2Id" th:href="@{/model/M04Ref2S.html?action=M04Ref2Correct.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M04Ref2S.title} + #{common.refer}" tabindex="-1">...</a>
         <a id="T04Comp2Grid.ref3Id" th:href="@{/model/M04Ref3S.html}" target="dialog" class="refer gridRefer" th:text="#{M04Ref3S.title} + #{common.refer}" tabindex="-1">...</a>

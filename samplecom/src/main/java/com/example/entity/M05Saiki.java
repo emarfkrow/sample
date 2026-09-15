@@ -416,21 +416,21 @@ public class M05Saiki implements IEntity {
      */
     public static M05Saiki get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"saiki_id\" = CAST (:saiki_id AS INTEGER)");
+        whereList.add("\"SAIKI_ID\" = :saiki_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"saiki_id\" \n";
-        sql += "    , a.\"saiki_mei\" \n";
-        sql += "    , a.\"idref_id\" \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"cdref_cd\") AS cdref_cd \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"noref_no\") AS noref_no \n";
-        sql += "    , a.\"ex_idref_id\" \n";
-        sql += "    , a.\"ex_idbn_bn\" \n";
-        sql += "    , a.\"oya_saiki_id\" \n";
-        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
-        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
+        sql += "      a.\"SAIKI_ID\" \n";
+        sql += "    , a.\"SAIKI_MEI\" \n";
+        sql += "    , a.\"IDREF_ID\" \n";
+        sql += "    , RTRIM (RTRIM (a.\"CDREF_CD\"), '　') AS CDREF_CD \n";
+        sql += "    , RTRIM (RTRIM (a.\"NOREF_NO\"), '　') AS NOREF_NO \n";
+        sql += "    , a.\"EX_IDREF_ID\" \n";
+        sql += "    , a.\"EX_IDBN_BN\" \n";
+        sql += "    , a.\"OYA_SAIKI_ID\" \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    M05_SAIKI a \n";
         sql += "WHERE \n";
@@ -458,32 +458,32 @@ public class M05Saiki implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"saiki_id\" -- :saiki_id");
-        nameList.add("\"saiki_mei\" -- :saiki_mei");
-        nameList.add("\"idref_id\" -- :idref_id");
-        nameList.add("\"cdref_cd\" -- :cdref_cd");
-        nameList.add("\"noref_no\" -- :noref_no");
-        nameList.add("\"ex_idref_id\" -- :ex_idref_id");
-        nameList.add("\"ex_idbn_bn\" -- :ex_idbn_bn");
-        nameList.add("\"oya_saiki_id\" -- :oya_saiki_id");
-        nameList.add("\"insert_ts\" -- :insert_ts");
-        nameList.add("\"insert_user_id\" -- :insert_user_id");
-        nameList.add("\"update_ts\" -- :update_ts");
-        nameList.add("\"update_user_id\" -- :update_user_id");
+        nameList.add("\"SAIKI_ID\" -- :saiki_id");
+        nameList.add("\"SAIKI_MEI\" -- :saiki_mei");
+        nameList.add("\"IDREF_ID\" -- :idref_id");
+        nameList.add("\"CDREF_CD\" -- :cdref_cd");
+        nameList.add("\"NOREF_NO\" -- :noref_no");
+        nameList.add("\"EX_IDREF_ID\" -- :ex_idref_id");
+        nameList.add("\"EX_IDBN_BN\" -- :ex_idbn_bn");
+        nameList.add("\"OYA_SAIKI_ID\" -- :oya_saiki_id");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add("CAST (:saiki_id AS INTEGER)");
+        valueList.add(":saiki_id");
         valueList.add(":saiki_mei");
-        valueList.add("CAST (:idref_id AS INTEGER)");
+        valueList.add(":idref_id");
         valueList.add(":cdref_cd");
         valueList.add(":noref_no");
-        valueList.add("CAST (:ex_idref_id AS INTEGER)");
-        valueList.add("CAST (:ex_idbn_bn AS INTEGER)");
-        valueList.add("CAST (:oya_saiki_id AS INTEGER)");
+        valueList.add(":ex_idref_id");
+        valueList.add(":ex_idbn_bn");
+        valueList.add(":oya_saiki_id");
         valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         valueList.add(":insert_user_id");
         valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
@@ -496,7 +496,7 @@ public class M05Saiki implements IEntity {
         if (this.saikiId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.\"saiki_id\") IS NULL THEN 0 ELSE MAX(e.\"saiki_id\") * 1 END + 1 AS \"saiki_id\" FROM M05_SAIKI e";
+        String sql = "SELECT CASE WHEN MAX(e.\"SAIKI_ID\") IS NULL THEN 0 ELSE MAX(e.\"SAIKI_ID\") * 1 END + 1 AS \"SAIKI_ID\" FROM M05_SAIKI e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("SAIKI_ID");
@@ -517,16 +517,16 @@ public class M05Saiki implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"saiki_id\" = CAST (:saiki_id AS INTEGER)");
-        setList.add("\"saiki_mei\" = :saiki_mei");
-        setList.add("\"idref_id\" = CAST (:idref_id AS INTEGER)");
-        setList.add("\"cdref_cd\" = :cdref_cd");
-        setList.add("\"noref_no\" = :noref_no");
-        setList.add("\"ex_idref_id\" = CAST (:ex_idref_id AS INTEGER)");
-        setList.add("\"ex_idbn_bn\" = CAST (:ex_idbn_bn AS INTEGER)");
-        setList.add("\"oya_saiki_id\" = CAST (:oya_saiki_id AS INTEGER)");
-        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"update_user_id\" = :update_user_id");
+        setList.add("\"SAIKI_ID\" = :saiki_id");
+        setList.add("\"SAIKI_MEI\" = :saiki_mei");
+        setList.add("\"IDREF_ID\" = :idref_id");
+        setList.add("\"CDREF_CD\" = :cdref_cd");
+        setList.add("\"NOREF_NO\" = :noref_no");
+        setList.add("\"EX_IDREF_ID\" = :ex_idref_id");
+        setList.add("\"EX_IDBN_BN\" = :ex_idbn_bn");
+        setList.add("\"OYA_SAIKI_ID\" = :oya_saiki_id");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -567,8 +567,8 @@ public class M05Saiki implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"saiki_id\" = CAST (:saiki_id AS INTEGER)");
-        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("\"SAIKI_ID\" = :saiki_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

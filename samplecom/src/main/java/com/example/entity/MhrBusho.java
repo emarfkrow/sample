@@ -287,18 +287,18 @@ public class MhrBusho implements IEntity {
      */
     public static MhrBusho get(final Object param1) {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"busho_id\" = CAST (:busho_id AS INTEGER)");
+        whereList.add("\"BUSHO_ID\" = :busho_id");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.\"busho_id\" \n";
-        sql += "    , a.\"busho_mei\" \n";
-        sql += "    , a.\"oya_busho_id\" \n";
-        sql += "    , TO_CHAR (a.\"tekiyo_bi\", 'YYYY-MM-DD') AS tekiyo_bi \n";
-        sql += "    , TO_CHAR (a.\"haishi_bi\", 'YYYY-MM-DD') AS haishi_bi \n";
-        sql += "    , TO_CHAR (a.\"insert_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS insert_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"insert_user_id\") AS insert_user_id \n";
-        sql += "    , TO_CHAR (a.\"update_ts\", 'YYYY-MM-DD HH24:MI:SS.MS') AS update_ts \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.\"update_user_id\") AS update_user_id \n";
+        sql += "      a.\"BUSHO_ID\" \n";
+        sql += "    , a.\"BUSHO_MEI\" \n";
+        sql += "    , a.\"OYA_BUSHO_ID\" \n";
+        sql += "    , TO_CHAR (a.\"TEKIYO_BI\", 'YYYY-MM-DD') AS TEKIYO_BI \n";
+        sql += "    , TO_CHAR (a.\"HAISHI_BI\", 'YYYY-MM-DD') AS HAISHI_BI \n";
+        sql += "    , TO_CHAR (a.\"INSERT_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS INSERT_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"INSERT_USER_ID\"), '　') AS INSERT_USER_ID \n";
+        sql += "    , TO_CHAR (a.\"UPDATE_TS\", 'YYYY-MM-DD HH24:MI:SS.FF3') AS UPDATE_TS \n";
+        sql += "    , RTRIM (RTRIM (a.\"UPDATE_USER_ID\"), '　') AS UPDATE_USER_ID \n";
         sql += "FROM \n";
         sql += "    MHR_BUSHO a \n";
         sql += "WHERE \n";
@@ -326,24 +326,24 @@ public class MhrBusho implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         java.util.List<String> nameList = new java.util.ArrayList<String>();
-        nameList.add("\"busho_id\" -- :busho_id");
-        nameList.add("\"busho_mei\" -- :busho_mei");
-        nameList.add("\"oya_busho_id\" -- :oya_busho_id");
-        nameList.add("\"tekiyo_bi\" -- :tekiyo_bi");
-        nameList.add("\"haishi_bi\" -- :haishi_bi");
-        nameList.add("\"insert_ts\" -- :insert_ts");
-        nameList.add("\"insert_user_id\" -- :insert_user_id");
-        nameList.add("\"update_ts\" -- :update_ts");
-        nameList.add("\"update_user_id\" -- :update_user_id");
+        nameList.add("\"BUSHO_ID\" -- :busho_id");
+        nameList.add("\"BUSHO_MEI\" -- :busho_mei");
+        nameList.add("\"OYA_BUSHO_ID\" -- :oya_busho_id");
+        nameList.add("\"TEKIYO_BI\" -- :tekiyo_bi");
+        nameList.add("\"HAISHI_BI\" -- :haishi_bi");
+        nameList.add("\"INSERT_TS\" -- :insert_ts");
+        nameList.add("\"INSERT_USER_ID\" -- :insert_user_id");
+        nameList.add("\"UPDATE_TS\" -- :update_ts");
+        nameList.add("\"UPDATE_USER_ID\" -- :update_user_id");
         return String.join("\r\n    , ", nameList);
     }
 
     /** @return insert用のvalue句 */
     private String values() {
         java.util.List<String> valueList = new java.util.ArrayList<String>();
-        valueList.add("CAST (:busho_id AS INTEGER)");
+        valueList.add(":busho_id");
         valueList.add(":busho_mei");
-        valueList.add("CAST (:oya_busho_id AS INTEGER)");
+        valueList.add(":oya_busho_id");
         valueList.add("TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
         valueList.add("TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
         valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:insert_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
@@ -358,7 +358,7 @@ public class MhrBusho implements IEntity {
         if (this.bushoId != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.\"busho_id\") IS NULL THEN 0 ELSE MAX(e.\"busho_id\") * 1 END + 1 AS \"busho_id\" FROM MHR_BUSHO e";
+        String sql = "SELECT CASE WHEN MAX(e.\"BUSHO_ID\") IS NULL THEN 0 ELSE MAX(e.\"BUSHO_ID\") * 1 END + 1 AS \"BUSHO_ID\" FROM MHR_BUSHO e";
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         jp.co.golorp.emarf.util.MapList mapList = jp.co.golorp.emarf.sql.Queries.select(sql, map, null, null);
         Object o = mapList.get(0).get("BUSHO_ID");
@@ -379,13 +379,13 @@ public class MhrBusho implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         java.util.List<String> setList = new java.util.ArrayList<String>();
-        setList.add("\"busho_id\" = CAST (:busho_id AS INTEGER)");
-        setList.add("\"busho_mei\" = :busho_mei");
-        setList.add("\"oya_busho_id\" = CAST (:oya_busho_id AS INTEGER)");
-        setList.add("\"tekiyo_bi\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
-        setList.add("\"haishi_bi\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
-        setList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
-        setList.add("\"update_user_id\" = :update_user_id");
+        setList.add("\"BUSHO_ID\" = :busho_id");
+        setList.add("\"BUSHO_MEI\" = :busho_mei");
+        setList.add("\"OYA_BUSHO_ID\" = :oya_busho_id");
+        setList.add("\"TEKIYO_BI\" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"HAISHI_BI\" = TO_DATE (SUBSTR (:haishi_bi, 0, 10), 'YYYY-MM-DD')");
+        setList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts, 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        setList.add("\"UPDATE_USER_ID\" = :update_user_id");
         return String.join("\r\n    , ", setList);
     }
 
@@ -423,8 +423,8 @@ public class MhrBusho implements IEntity {
     /** @return where句 */
     private String getWhere() {
         java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"busho_id\" = CAST (:busho_id AS INTEGER)");
-        whereList.add("\"update_ts\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
+        whereList.add("\"BUSHO_ID\" = :busho_id");
+        whereList.add("\"UPDATE_TS\" = TO_TIMESTAMP (REPLACE (SUBSTR ('" + this.updateTs + "', 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')");
         return String.join(" AND ", whereList);
     }
 }

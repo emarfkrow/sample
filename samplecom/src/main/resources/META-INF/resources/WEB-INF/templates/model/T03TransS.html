@@ -51,6 +51,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT03TransS" th:text="#{common.reset}" onClick="Base.listReset('T03Trans');">reset</button>
         <a th:href="@{T03TransSearch.xlsx(baseMei=#{T03TransS.h2})}" id="T03TransSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T03TransSearch.pdf(baseMei=#{T03TransS.h2})}" id="T03TransSearch.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
         <button type="submit" id="DeleteT03TransS" data-action="T03TransSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
         <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="PermitT03TransS" data-action="T03TransSPermit.ajax" class="permit selectRows" th:text="#{common.permit}" tabindex="-1">permit</button>
         <button type="submit" onclick="if (!Base.kessaiTx(this)) { return false; }" id="ForbidT03TransS" data-action="T03TransSForbid.ajax" class="forbid selectRows" th:text="#{common.forbid}" tabindex="-1">forbid</button>

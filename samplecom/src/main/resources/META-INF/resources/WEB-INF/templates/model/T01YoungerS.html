@@ -46,6 +46,7 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetT01YoungerS" th:text="#{common.reset}" onClick="Base.listReset('T01Younger');">reset</button>
         <a th:href="@{T01YoungerSearch.xlsx(baseMei=#{T01YoungerS.h2})}" id="T01YoungerSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T01YoungerSearch.pdf(baseMei=#{T01YoungerS.h2})}" id="T01YoungerSearch.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
         <button type="submit" id="DeleteT01YoungerS" data-action="T01YoungerSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

@@ -44,6 +44,7 @@
       <div class="buttons">
         <button type="button" id="RefreshT10Sum" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T10SumGet.xlsx(baseMei=#{T10Sum.h2})}" id="T10SumGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T10SumGet.pdf(baseMei=#{T10Sum.h2})}" id="T10SumGet.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
         <div class="summary T10Grp1s">
           <label>GRP1_ID: </label>
           <span id="T10Grp1.grp1Id"></span>

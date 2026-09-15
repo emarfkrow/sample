@@ -55,11 +55,12 @@
           <label for="V14Yojitsu.kouteiPath" th:text="#{V14Yojitsu.kouteiPath}">KOUTEI_PATH</label><input type="text" id="V14Yojitsu.kouteiPath" name="V14Yojitsu.kouteiPath" maxlength="4000" class="" />
         </div>
         <div id="root">
-          <label for="V14Yojitsu.root" th:text="#{V14Yojitsu.root}">ROOT</label><input type="text" id="V14Yojitsu.root" name="V14Yojitsu.root" maxlength="10" class="" />
+          <label for="V14Yojitsu.root" th:text="#{V14Yojitsu.root}">ROOT</label><input type="text" id="V14Yojitsu.root" name="V14Yojitsu.root" maxlength="11" class="" />
         </div>
       </fieldset>
       <div class="buttons">
         <a th:href="@{V14YojitsuGet.xlsx(baseMei=#{V14Yojitsu.h2})}" id="V14YojitsuGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{V14YojitsuGet.pdf(baseMei=#{V14Yojitsu.h2})}" id="V14YojitsuGet.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
       </div>
       <div class="submits">
       </div>

@@ -96,6 +96,7 @@
       <div class="buttons">
         <button type="button" id="RefreshT02Ko" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T02KoGet.xlsx(baseMei=#{T02Ko.h2})}" id="T02KoGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{T02KoGet.pdf(baseMei=#{T02Ko.h2})}" id="T02KoGet.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
       </div>
       <div class="submits">
         <button id="DeleteT02Ko" type="submit" class="delete" data-action="T02KoDelete.ajax" th:text="#{common.delete}" tabindex="-1">delete</button>
