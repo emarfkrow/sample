@@ -227,17 +227,17 @@ public class V14Yojitsu implements IEntity {
     }
 
     /** ROOT */
-    private java.math.BigDecimal root;
+    private Integer root;
 
     /** @return ROOT */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "ROOT", index = 12)
-    public java.math.BigDecimal getRoot() {
+    public Integer getRoot() {
         return this.root;
     }
 
     /** @param o ROOT */
     public void setRoot(final Object o) {
-        this.root = StringUtil.ifNullBigDecimal(o);
+        this.root = StringUtil.ifNullInteger(o);
     }
 
     /**
