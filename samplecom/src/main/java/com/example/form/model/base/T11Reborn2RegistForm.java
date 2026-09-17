@@ -89,6 +89,6 @@ public class T11Reborn2RegistForm implements IForm {
         // 前世２ の転生元チェック
         Map<String, Object> t11Prev2Params = new java.util.HashMap<String, Object>();
         t11Prev2Params.put("prev2Id", this.getPrev2Id());
-        baseProcess.masterCheck(errors, "T11Prev2Search", "prev2Id", t11Prev2Params, jp.co.golorp.emarf.util.Messages.get("T11Reborn2"));
+        baseProcess.masterCheck(errors, "T11Prev2Search", "prev2Id", t11Prev2Params, jp.co.golorp.emarf.util.Messages.get("T11Reborn2.prev2Id"));
     }
 }

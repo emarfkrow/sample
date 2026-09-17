@@ -74,6 +74,6 @@ public class T10Grp1RegistForm implements IForm {
         // 集約 の集約先チェック
         Map<String, Object> t10SumParams = new java.util.HashMap<String, Object>();
         t10SumParams.put("sumId", this.getSumId());
-        baseProcess.masterCheck(errors, "T10SumSearch", "sumId", t10SumParams, jp.co.golorp.emarf.util.Messages.get("T10Grp1"));
+        baseProcess.masterCheck(errors, "T10SumSearch", "sumId", t10SumParams, jp.co.golorp.emarf.util.Messages.get("T10Grp1.sumId"));
     }
 }

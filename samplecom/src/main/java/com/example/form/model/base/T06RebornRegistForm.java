@@ -107,6 +107,6 @@ public class T06RebornRegistForm implements IForm {
         // 前世 の転生元チェック
         Map<String, Object> t06PrevParams = new java.util.HashMap<String, Object>();
         t06PrevParams.put("prevId", this.getPrevId());
-        baseProcess.masterCheck(errors, "T06PrevSearch", "prevId", t06PrevParams, jp.co.golorp.emarf.util.Messages.get("T06Reborn"));
+        baseProcess.masterCheck(errors, "T06PrevSearch", "prevId", t06PrevParams, jp.co.golorp.emarf.util.Messages.get("T06Reborn.prevId"));
     }
 }

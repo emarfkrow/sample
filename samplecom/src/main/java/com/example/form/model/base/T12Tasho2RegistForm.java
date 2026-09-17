@@ -74,6 +74,6 @@ public class T12Tasho2RegistForm implements IForm {
         // 候補３ の派生元チェック
         Map<String, Object> t12Koho3Params = new java.util.HashMap<String, Object>();
         t12Koho3Params.put("koho3Id", this.getKoho3Id());
-        baseProcess.masterCheck(errors, "T12Koho3Search", "koho3Id", t12Koho3Params, jp.co.golorp.emarf.util.Messages.get("T12Tasho2"));
+        baseProcess.masterCheck(errors, "T12Koho3Search", "koho3Id", t12Koho3Params, jp.co.golorp.emarf.util.Messages.get("T12Tasho2.koho3Id"));
     }
 }

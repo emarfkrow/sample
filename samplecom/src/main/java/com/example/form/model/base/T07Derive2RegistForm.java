@@ -107,6 +107,6 @@ public class T07Derive2RegistForm implements IForm {
         // 起源 の派生元チェック
         Map<String, Object> t07OrgParams = new java.util.HashMap<String, Object>();
         t07OrgParams.put("orgId", this.getOrgId());
-        baseProcess.masterCheck(errors, "T07OrgSearch", "orgId", t07OrgParams, jp.co.golorp.emarf.util.Messages.get("T07Derive2"));
+        baseProcess.masterCheck(errors, "T07OrgSearch", "orgId", t07OrgParams, jp.co.golorp.emarf.util.Messages.get("T07Derive2.orgId"));
     }
 }

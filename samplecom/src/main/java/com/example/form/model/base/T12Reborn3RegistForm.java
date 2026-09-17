@@ -75,6 +75,6 @@ public class T12Reborn3RegistForm implements IForm {
         // 他生２ の転生元チェック
         Map<String, Object> t12Tasho2Params = new java.util.HashMap<String, Object>();
         t12Tasho2Params.put("tasho2Id", this.getTasho2Id());
-        baseProcess.masterCheck(errors, "T12Tasho2Search", "tasho2Id", t12Tasho2Params, jp.co.golorp.emarf.util.Messages.get("T12Reborn3"));
+        baseProcess.masterCheck(errors, "T12Tasho2Search", "tasho2Id", t12Tasho2Params, jp.co.golorp.emarf.util.Messages.get("T12Reborn3.tasho2Id"));
     }
 }
