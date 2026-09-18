@@ -20,6 +20,14 @@
       <input type="hidden" name="page" value="0" />
       <fieldset>
         <legend th:text="#{MhrUserS.legend}">legend</legend>
+        <div id="bushoId" class="stint">
+          <label th:text="#{MhrBusho.bushoId}">BUSHO_ID</label><span id="MhrBusho.bushoId" class="stint"></span><input type="hidden" id="MhrBusho.bushoId" name="MhrBusho.bushoId" class="stint" />
+          <span id="MhrUser.bushoMei" class="refer" data-referFor="MhrUser.bushoId" data-json="MhrBushoSearch.json" data-srcDef="BUSHO_ID:MhrUser.bushoId" data-destDef="MhrUser.bushoMei:BUSHO_MEI"></span>
+        </div>
+        <div id="shokuiId" class="stint">
+          <label th:text="#{MhrShokui.shokuiId}">SHOKUI_ID</label><span id="MhrShokui.shokuiId" class="stint"></span><input type="hidden" id="MhrShokui.shokuiId" name="MhrShokui.shokuiId" class="stint" />
+          <span id="MhrUser.shokuiMei" class="refer" data-referFor="MhrUser.shokuiId" data-json="MhrShokuiSearch.json" data-srcDef="SHOKUI_ID:MhrUser.shokuiId" data-destDef="MhrUser.shokuiMei:SHOKUI_MEI"></span>
+        </div>
         <div id="userId">
           <label for="MhrUser.userId" th:text="#{MhrUser.userId}">USER_ID</label><input type="text" id="MhrUser.userId" name="MhrUser.userId" maxlength="10" class=" primaryKey" />
         </div>

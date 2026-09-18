@@ -37,5 +37,19 @@ WHERE
     AND a."UPDATE_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
     AND a."UPDATE_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
     AND UPPER (RTRIM (RTRIM (a."UPDATE_USER_ID"), '　')) LIKE UPPER ('%' || :update_user_id || '%') 
+    AND EXISTS ( 
+        SELECT
+              * 
+        FROM
+            MHR_USER_POS p 
+        WHERE
+            1 = 1 
+            AND NVL (p.tekiyo_bi, SYSDATE) <= SYSDATE 
+            AND NVL (p.haishi_bi, SYSDATE) + 1 > SYSDATE
+            AND p.BUSHO_ID = :busho_id 
+            AND p.SHOKUI_ID = :shokui_id 
+            AND p.USER_ID = :user_id 
+            AND p.TEKIYO_BI = a.TEKIYO_BI 
+    ) 
 ORDER BY
     a."USER_ID"
