@@ -44,8 +44,7 @@ WHERE
             AND NVL (p.tekiyo_bi, SYSDATE) <= SYSDATE 
             AND p.REF1_ID = :ref_1_id 
             AND p.REF2_ID = :ref_2_id 
-            AND p.REF3_ID = :ref_3_id 
-            AND p.TEKIYO_BI = a.TEKIYO_BI 
+            AND p.REF3_ID = a.REF3_ID 
     ) 
 ORDER BY
     a."REF3_ID"

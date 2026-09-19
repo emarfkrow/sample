@@ -77,12 +77,12 @@
         <button type="button" class="reset" id="ResetM05SaikiS" th:text="#{common.reset}" onClick="Base.listReset('M05Saiki');">reset</button>
         <a th:href="@{M05SaikiSearch.xlsx(baseMei=#{M05SaikiS.h2})}" id="M05SaikiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
         <a th:href="@{M05SaikiSearch.pdf(baseMei=#{M05SaikiS.h2})}" id="M05SaikiSearch.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
-        <a id="M05SaikiGrid.idrefId" th:href="@{/model/M05IdS.html}" target="dialog" class="refer gridRefer" th:text="#{M05IdS.title} + #{common.refer}" tabindex="-1">...</a>
-        <a id="M05SaikiGrid.cdrefCd" th:href="@{/model/M05CdS.html}" target="dialog" class="refer gridRefer" th:text="#{M05CdS.title} + #{common.refer}" tabindex="-1">...</a>
-        <a id="M05SaikiGrid.norefNo" th:href="@{/model/M05NoS.html}" target="dialog" class="refer gridRefer" th:text="#{M05NoS.title} + #{common.refer}" tabindex="-1">...</a>
-        <a id="M05SaikiGrid.exIdrefId" th:href="@{/model/M05IdS.html}" target="dialog" class="refer gridRefer" th:text="#{M05IdS.title} + #{common.refer}" tabindex="-1">...</a>
-        <a id="M05SaikiGrid.exIdbnBn" th:href="@{/model/M05IdbnS.html}" target="dialog" class="refer gridRefer" th:text="#{M05IdbnS.title} + #{common.refer}" tabindex="-1">...</a>
-        <a id="M05SaikiGrid.oyaSaikiId" th:href="@{/model/M05SaikiS.html}" target="dialog" class="refer gridRefer" th:text="#{M05SaikiS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M05SaikiGrid.idrefId" th:href="@{/model/M05IdS.html?action=M05IdCorrect.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M05IdS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M05SaikiGrid.cdrefCd" th:href="@{/model/M05CdS.html?action=M05CdCorrect.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M05CdS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M05SaikiGrid.norefNo" th:href="@{/model/M05NoS.html?action=M05NoCorrect.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M05NoS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M05SaikiGrid.exIdrefId" th:href="@{/model/M05IdS.html?action=M05IdCorrect.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M05IdS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M05SaikiGrid.exIdbnBn" th:href="@{/model/M05IdbnS.html?action=M05IdbnCorrect.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M05IdbnS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="M05SaikiGrid.oyaSaikiId" th:href="@{/model/M05SaikiS.html?action=M05SaikiCorrect.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M05SaikiS.title} + #{common.refer}" tabindex="-1">...</a>
         <button type="submit" id="DeleteM05SaikiS" data-action="M05SaikiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">delete</button>
       </div>
       <div class="submits">

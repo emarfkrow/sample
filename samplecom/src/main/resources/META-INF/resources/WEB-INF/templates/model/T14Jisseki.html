@@ -24,7 +24,7 @@
       <fieldset>
         <legend th:text="#{T14Jisseki.legend}">legend</legend>
         <div id="kouteiId">
-          <label for="T14Jisseki.kouteiId" th:text="#{T14Jisseki.kouteiId}">KOUTEI_ID</label><input type="text" id="T14Jisseki.kouteiId" name="T14Jisseki.kouteiId" maxlength="10" class=" primaryKey numbering refer notblank" data-referFor="T14Jisseki.kouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Jisseki.kouteiId" data-destDef="T14Jisseki.kouteiMei:KOUTEI_MEI" /><a id="T14Jisseki.kouteiId" th:href="@{/model/T14KouteiS.html}" target="dialog" class=" primaryKey numbering refer" th:text="#{common.refer}" tabindex="-1">...</a><span id="T14Jisseki.kouteiMei" class=" primaryKey numbering refer" data-referFor="T14Jisseki.kouteiId" data-json="T14KouteiSearch.json" data-srcDef="KOUTEI_ID:T14Jisseki.kouteiId" data-destDef="T14Jisseki.kouteiMei:KOUTEI_MEI"></span>
+          <label for="T14Jisseki.kouteiId" th:text="#{T14Jisseki.kouteiId}">KOUTEI_ID</label><input type="text" id="T14Jisseki.kouteiId" name="T14Jisseki.kouteiId" maxlength="10" class=" primaryKey numbering refer notblank" data-referFor="T14Jisseki.kouteiId" data-json="T14KouteiCorrect.json" data-srcDef="KOUTEI_ID:T14Jisseki.kouteiId" data-destDef="T14Jisseki.kouteiMei:KOUTEI_MEI" /><a id="T14Jisseki.kouteiId" th:href="@{/model/T14KouteiS.html?action=T14KouteiCorrect.ajax}" target="dialog" class=" primaryKey numbering refer correct" th:text="#{common.correct}" tabindex="-1">...</a><span id="T14Jisseki.kouteiMei" class=" primaryKey numbering refer correct" data-referFor="T14Jisseki.kouteiId" data-json="T14KouteiCorrect.json" data-srcDef="KOUTEI_ID:T14Jisseki.kouteiId" data-destDef="T14Jisseki.kouteiMei:KOUTEI_MEI"></span>
         </div>
         <div id="jissekiBn">
           <label for="T14Jisseki.jissekiBn" th:text="#{T14Jisseki.jissekiBn}">JISSEKI_BN</label><input type="text" id="T14Jisseki.jissekiBn" name="T14Jisseki.jissekiBn" maxlength="10" class=" primaryKey numbering notblank" />
@@ -40,14 +40,14 @@
         </div>
         <div id="insertUserId">
           <label th:text="#{T14Jisseki.insertUserId}" class="meta">INSERT_USER_ID</label><span id="T14Jisseki.insertUserId" class="meta"></span><input type="hidden" id="T14Jisseki.insertUserId" name="T14Jisseki.insertUserId" class="meta" />
-          <span id="T14Jisseki.insertUserSei" class="refer meta" data-referFor="T14Jisseki.insertUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Jisseki.insertUserId" data-destDef="T14Jisseki.insertUserSei:USER_SEI"></span>
+          <span id="T14Jisseki.insertUserSei" class="refer meta" data-referFor="T14Jisseki.insertUserId" data-json="MhrUserCorrect.json" data-srcDef="USER_ID:T14Jisseki.insertUserId" data-destDef="T14Jisseki.insertUserSei:USER_SEI"></span>
         </div>
         <div id="updateTs">
           <label th:text="#{T14Jisseki.updateTs}" class="meta">UPDATE_TS</label><span id="T14Jisseki.updateTs" class="meta YmdHmsS"></span><input type="hidden" id="T14Jisseki.updateTs" name="T14Jisseki.updateTs" class="meta" />
         </div>
         <div id="updateUserId">
           <label th:text="#{T14Jisseki.updateUserId}" class="meta">UPDATE_USER_ID</label><span id="T14Jisseki.updateUserId" class="meta"></span><input type="hidden" id="T14Jisseki.updateUserId" name="T14Jisseki.updateUserId" class="meta" />
-          <span id="T14Jisseki.updateUserSei" class="refer meta" data-referFor="T14Jisseki.updateUserId" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T14Jisseki.updateUserId" data-destDef="T14Jisseki.updateUserSei:USER_SEI"></span>
+          <span id="T14Jisseki.updateUserSei" class="refer meta" data-referFor="T14Jisseki.updateUserId" data-json="MhrUserCorrect.json" data-srcDef="USER_ID:T14Jisseki.updateUserId" data-destDef="T14Jisseki.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
       <div class="buttons">

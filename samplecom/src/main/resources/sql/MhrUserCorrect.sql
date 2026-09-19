@@ -48,8 +48,7 @@ WHERE
             AND NVL (p.haishi_bi, SYSDATE) + 1 > SYSDATE
             AND p.BUSHO_ID = :busho_id 
             AND p.SHOKUI_ID = :shokui_id 
-            AND p.USER_ID = :user_id 
-            AND p.TEKIYO_BI = a.TEKIYO_BI 
+            AND p.USER_ID = a.USER_ID 
     ) 
 ORDER BY
     a."USER_ID"

@@ -66,8 +66,8 @@
         <button type="button" class="reset" id="ResetMhrShokuiNinkaS" th:text="#{common.reset}" onClick="Base.listReset('MhrShokuiNinka');">reset</button>
         <a th:href="@{MhrShokuiNinkaSearch.xlsx(baseMei=#{MhrShokuiNinkaS.h2})}" id="MhrShokuiNinkaSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
         <a th:href="@{MhrShokuiNinkaSearch.pdf(baseMei=#{MhrShokuiNinkaS.h2})}" id="MhrShokuiNinkaSearch.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
-        <a id="MhrShokuiNinkaGrid.bushoId" th:href="@{/model/MhrBushoS.html}" target="dialog" class="refer gridRefer" th:text="#{MhrBushoS.title} + #{common.refer}" tabindex="-1">...</a>
-        <a id="MhrShokuiNinkaGrid.shokuiId" th:href="@{/model/MhrShokuiS.html}" target="dialog" class="refer gridRefer" th:text="#{MhrShokuiS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="MhrShokuiNinkaGrid.bushoId" th:href="@{/model/MhrBushoS.html?action=MhrBushoCorrect.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{MhrBushoS.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="MhrShokuiNinkaGrid.shokuiId" th:href="@{/model/MhrShokuiS.html?action=MhrShokuiCorrect.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{MhrShokuiS.title} + #{common.refer}" tabindex="-1">...</a>
       </div>
       <div class="submits">
         <button id="RegistMhrShokuiNinkaS" type="submit" class="regist" th:text="#{common.regist}">regist</button>

@@ -62,8 +62,8 @@
         <button type="button" class="reset" id="ResetT04Comp1S" th:text="#{common.reset}" onClick="Base.listReset('T04Comp1');">reset</button>
         <a th:href="@{T04Comp1Search.xlsx(baseMei=#{T04Comp1S.h2})}" id="T04Comp1Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
         <a th:href="@{T04Comp1Search.pdf(baseMei=#{T04Comp1S.h2})}" id="T04Comp1Search.pdf" th:text="#{common.pdf}" class="output" tabindex="-1" target="blank">pdf</a>
-        <a id="T04Comp1Grid.ref1Id" th:href="@{/model/M04Ref1S.html}" target="dialog" class="refer gridRefer" th:text="#{M04Ref1S.title} + #{common.refer}" tabindex="-1">...</a>
-        <a id="T04Comp1Grid.ref2Id" th:href="@{/model/M04Ref2S.html}" target="dialog" class="refer gridRefer" th:text="#{M04Ref2S.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="T04Comp1Grid.ref1Id" th:href="@{/model/M04Ref1S.html?action=M04Ref1Correct.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M04Ref1S.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="T04Comp1Grid.ref2Id" th:href="@{/model/M04Ref2S.html?action=M04Ref2Correct.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M04Ref2S.title} + #{common.refer}" tabindex="-1">...</a>
       </div>
       <div class="submits">
       </div>
