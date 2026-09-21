@@ -1084,9 +1084,9 @@ Field="参照３ID","REF3_ID","*ID",,2,"","",$000028FF,""
 Field="適用日","TEKIYO_BI","*BI",,3,"","",$00808080,""
 Field="複合２情報","COMP2_INFO","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
-Color=$000000
+Color=$0000FF
 BkColor=$FFFFFF
-ModifiedDateTime=20260725183638
+ModifiedDateTime=20260921084726
 Position="MAIN",1350,1900
 ZOrder=50
 
@@ -1906,9 +1906,9 @@ Field="削除フラグ","DELETE_F","*F",,,"","",$00808080,""
 Field="適用日","TEKIYO_BI","*BI",,,"","",$00808080,""
 Field="廃止日","HAISHI_BI","*BI",,,"","",$00808080,""
 EffectMode=None
-Color=$000000
+Color=$0000FF
 BkColor=$C0DCC0
-ModifiedDateTime=20260725183619
+ModifiedDateTime=20260921084705
 Position="MAIN",1100,1650
 ZOrder=133
 
@@ -1925,9 +1925,9 @@ Field="参照１ID","REF1_ID","*ID",,0,"","",$000028FF,""
 Field="参照２ID","REF2_ID","*ID",,1,"","",$000028FF,""
 Field="複合１名","COMP1_MEI","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
-Color=$000000
+Color=$0000FF
 BkColor=$FFFFFF
-ModifiedDateTime=20260725183635
+ModifiedDateTime=20260921084720
 Position="MAIN",850,1900
 ZOrder=136
 
