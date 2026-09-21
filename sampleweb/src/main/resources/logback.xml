@@ -27,7 +27,7 @@
     </encoder>
   </appender>
 
-  <root level="all">
+  <root level="debug">
     <appender-ref ref="STDOUT" />
     <appender-ref ref="EXTOUT" />
   </root>
