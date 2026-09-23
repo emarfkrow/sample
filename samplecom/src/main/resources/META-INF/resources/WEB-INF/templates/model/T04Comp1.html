@@ -60,7 +60,7 @@
       <a th:href="@{/model/T04Comp2.html(anew)}" id="T04Comp2" target="dialog" th:text="#{T04Comp2.add}" class="addChild" tabindex="-1">T04_COMP2</a>
       <div id="T04Comp2Grid" data-selectionMode="link" data-addRow="true" data-frozenColumn="2" th:data-href="@{/model/T04Comp2.html}" class="childs"></div>
         <a id="T04Comp2Grid.ref1Id" th:href="@{/model/M04Ref1S.html?action=M04Ref1Correct.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M04Ref1S.title} + #{common.refer}" tabindex="-1">...</a>
-        <a id="T04Comp2Grid.ref2Id" th:href="@{/model/M04Ref2S.html?action=M04Ref2Correct.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M04Ref2S.title} + #{common.refer}" tabindex="-1">...</a>
+        <a id="T04Comp2Grid.ref2Id" th:href="@{/model/M04Ref2S.html?action=M04Ref2Correct.ajax&isStint=1}" target="dialog" class="refer gridRefer correct" th:text="#{M04Ref2S.title} + #{common.refer}" tabindex="-1">...</a>
         <a id="T04Comp2Grid.ref3Id" th:href="@{/model/M04Ref3S.html?action=M04Ref3Correct.ajax}" target="dialog" class="refer gridRefer correct" th:text="#{M04Ref3S.title} + #{common.refer}" tabindex="-1">...</a>
       <div class="buttons">
         <button type="button" id="RefreshT04Comp1" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>

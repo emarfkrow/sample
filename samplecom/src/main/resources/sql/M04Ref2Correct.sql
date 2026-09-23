@@ -34,6 +34,7 @@ WHERE
     AND a."UPDATE_TS" >= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_1 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
     AND a."UPDATE_TS" <= TO_TIMESTAMP (REPLACE (SUBSTR (:update_ts_2 , 0, 23), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS.FF3')
     AND UPPER (RTRIM (RTRIM (a."UPDATE_USER_ID"), '　')) LIKE UPPER ('%' || :update_user_id || '%') 
+    /*:is_stint*/ 
     AND EXISTS ( 
         SELECT
               * 
@@ -44,5 +45,6 @@ WHERE
             AND p.REF1_ID = :ref_1_id 
             AND p.REF2_ID = a.REF2_ID 
     ) 
+    /*:is_stint*/ 
 ORDER BY
     a."REF2_ID"
