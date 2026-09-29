@@ -2,9 +2,6 @@ package com.example.form.model.base;
 
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
@@ -14,9 +11,6 @@ import jp.co.golorp.emarf.validation.IForm;
  * @author emarfkrow
  */
 public class T06RebornRegistForm implements IForm {
-
-    /** logger */
-    private static final Logger LOG = LoggerFactory.getLogger(T06RebornRegistForm.class);
 
     /** 転生ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
@@ -102,7 +96,11 @@ public class T06RebornRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        LOG.trace("validate() not overridden in subclasses.");
+
+        // 転生明細 の子モデル整合性チェック
+        for (IForm t06RebornDetForm : this.t06RebornDetGrid) {
+            t06RebornDetForm.validate(errors, baseProcess);
+        }
 
         // 前世 の転生元チェック
         Map<String, Object> t06PrevParams = new java.util.HashMap<String, Object>();

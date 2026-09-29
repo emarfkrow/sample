@@ -2,9 +2,6 @@ package com.example.form.model.base;
 
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
@@ -14,9 +11,6 @@ import jp.co.golorp.emarf.validation.IForm;
  * @author emarfkrow
  */
 public class MsyKbnRegistForm implements IForm {
-
-    /** logger */
-    private static final Logger LOG = LoggerFactory.getLogger(MsyKbnRegistForm.class);
 
     /** 区分名称 */
     @jakarta.validation.constraints.NotBlank(groups = { jp.co.golorp.emarf.validation.Regist.class, jp.co.golorp.emarf.validation.Delete.class })
@@ -90,6 +84,10 @@ public class MsyKbnRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        LOG.trace("validate() not overridden in subclasses.");
+
+        // 区分値マスタ の子モデル整合性チェック
+        for (IForm msyKbnValForm : this.msyKbnValGrid) {
+            msyKbnValForm.validate(errors, baseProcess);
+        }
     }
 }

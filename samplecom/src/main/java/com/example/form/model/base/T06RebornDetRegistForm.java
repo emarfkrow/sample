@@ -2,9 +2,6 @@ package com.example.form.model.base;
 
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import jp.co.golorp.emarf.process.BaseProcess;
 import jp.co.golorp.emarf.validation.IForm;
 
@@ -14,9 +11,6 @@ import jp.co.golorp.emarf.validation.IForm;
  * @author emarfkrow
  */
 public class T06RebornDetRegistForm implements IForm {
-
-    /** logger */
-    private static final Logger LOG = LoggerFactory.getLogger(T06RebornDetRegistForm.class);
 
     /** 転生ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
@@ -86,6 +80,5 @@ public class T06RebornDetRegistForm implements IForm {
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        LOG.trace("validate() not overridden in subclasses.");
     }
 }
