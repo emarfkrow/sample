@@ -101,18 +101,21 @@ public class T04Comp1RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 複合２ の子モデル整合性チェック
-        for (IForm t04Comp2Form : this.t04Comp2Grid) {
-            t04Comp2Form.validate(errors, baseProcess);
+        for (int i = 0; i < this.t04Comp2Grid.size(); i++) {
+            T04Comp2RegistForm t04Comp2Form = this.t04Comp2Grid.get(i);
+            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+            t04Comp2Form.validate(gridErrors, baseProcess);
+            BaseProcess.copyGridErrors(errors, "T04Comp2Grid", i, gridErrors);
         }
 
         // 参照１ID のマスタチェック
         Map<String, Object> ref1IdParams = new java.util.HashMap<String, Object>();
-        ref1IdParams.put("ref1Id", this.getRef1Id());
+        ref1IdParams.put("ref1Id", this.ref1Id);
         baseProcess.masterCheck(errors, "M04Ref1Search", "ref1Id", ref1IdParams, jp.co.golorp.emarf.util.Messages.get("T04Comp1.ref1Id"));
 
         // 参照２ID のマスタチェック
         Map<String, Object> ref2IdParams = new java.util.HashMap<String, Object>();
-        ref2IdParams.put("ref2Id", this.getRef2Id());
+        ref2IdParams.put("ref2Id", this.ref2Id);
         baseProcess.masterCheck(errors, "M04Ref2Search", "ref2Id", ref2IdParams, jp.co.golorp.emarf.util.Messages.get("T04Comp1.ref2Id"));
     }
 }

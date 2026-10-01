@@ -109,7 +109,7 @@ public class MhrBushoRegistForm implements IForm {
 
         // 親部署ID のマスタチェック
         Map<String, Object> oyaBushoIdParams = new java.util.HashMap<String, Object>();
-        oyaBushoIdParams.put("bushoId", this.getOyaBushoId());
+        oyaBushoIdParams.put("bushoId", this.oyaBushoId);
         baseProcess.masterCheck(errors, "MhrBushoSearch", "oyaBushoId", oyaBushoIdParams, jp.co.golorp.emarf.util.Messages.get("MhrBusho.oyaBushoId"));
     }
 }

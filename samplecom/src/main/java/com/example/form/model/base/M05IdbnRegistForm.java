@@ -85,7 +85,7 @@ public class M05IdbnRegistForm implements IForm {
 
         // 参照ID のマスタチェック
         Map<String, Object> idrefIdParams = new java.util.HashMap<String, Object>();
-        idrefIdParams.put("idrefId", this.getIdrefId());
+        idrefIdParams.put("idrefId", this.idrefId);
         baseProcess.masterCheck(errors, "M05IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("M05Idbn.idrefId"));
     }
 }

@@ -100,7 +100,7 @@ public class MsyKadobiRegistForm implements IForm {
 
         // 部署ID のマスタチェック
         Map<String, Object> bushoIdParams = new java.util.HashMap<String, Object>();
-        bushoIdParams.put("bushoId", this.getBushoId());
+        bushoIdParams.put("bushoId", this.bushoId);
         baseProcess.masterCheck(errors, "MhrBushoSearch", "bushoId", bushoIdParams, jp.co.golorp.emarf.util.Messages.get("MsyKadobi.bushoId"));
     }
 }

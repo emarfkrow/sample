@@ -153,33 +153,33 @@ public class M05SaikiRegistForm implements IForm {
 
         // 参照ID のマスタチェック
         Map<String, Object> idrefIdParams = new java.util.HashMap<String, Object>();
-        idrefIdParams.put("idrefId", this.getIdrefId());
+        idrefIdParams.put("idrefId", this.idrefId);
         baseProcess.masterCheck(errors, "M05IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.idrefId"));
 
         // 参照CD のマスタチェック
         Map<String, Object> cdrefCdParams = new java.util.HashMap<String, Object>();
-        cdrefCdParams.put("cdrefCdFull", this.getCdrefCd());
+        cdrefCdParams.put("cdrefCdFull", this.cdrefCd);
         baseProcess.masterCheck(errors, "M05CdSearch", "cdrefCd", cdrefCdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.cdrefCd"));
 
         // 参照NO のマスタチェック
         Map<String, Object> norefNoParams = new java.util.HashMap<String, Object>();
-        norefNoParams.put("norefNoFull", this.getNorefNo());
+        norefNoParams.put("norefNoFull", this.norefNo);
         baseProcess.masterCheck(errors, "M05NoSearch", "norefNo", norefNoParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.norefNo"));
 
         // ID連番ID のマスタチェック
         Map<String, Object> exIdrefIdParams = new java.util.HashMap<String, Object>();
-        exIdrefIdParams.put("idrefId", this.getExIdrefId());
+        exIdrefIdParams.put("idrefId", this.exIdrefId);
         baseProcess.masterCheck(errors, "M05IdSearch", "exIdrefId", exIdrefIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.exIdrefId"));
 
         // ID連番 のマスタチェック
         Map<String, Object> exIdbnBnParams = new java.util.HashMap<String, Object>();
-        exIdbnBnParams.put("idrefId", this.getExIdrefId());
-        exIdbnBnParams.put("idbnBn", this.getExIdbnBn());
+        exIdbnBnParams.put("idrefId", this.exIdrefId);
+        exIdbnBnParams.put("idbnBn", this.exIdbnBn);
         baseProcess.masterCheck(errors, "M05IdbnSearch", "exIdbnBn", exIdbnBnParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.exIdbnBn"));
 
         // 親再帰ID のマスタチェック
         Map<String, Object> oyaSaikiIdParams = new java.util.HashMap<String, Object>();
-        oyaSaikiIdParams.put("saikiId", this.getOyaSaikiId());
+        oyaSaikiIdParams.put("saikiId", this.oyaSaikiId);
         baseProcess.masterCheck(errors, "M05SaikiSearch", "oyaSaikiId", oyaSaikiIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.oyaSaikiId"));
     }
 }

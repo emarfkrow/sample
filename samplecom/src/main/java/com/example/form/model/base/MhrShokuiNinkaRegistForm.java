@@ -130,12 +130,12 @@ public class MhrShokuiNinkaRegistForm implements IForm {
 
         // 部署ID のマスタチェック
         Map<String, Object> bushoIdParams = new java.util.HashMap<String, Object>();
-        bushoIdParams.put("bushoId", this.getBushoId());
+        bushoIdParams.put("bushoId", this.bushoId);
         baseProcess.masterCheck(errors, "MhrBushoSearch", "bushoId", bushoIdParams, jp.co.golorp.emarf.util.Messages.get("MhrShokuiNinka.bushoId"));
 
         // 職位ID のマスタチェック
         Map<String, Object> shokuiIdParams = new java.util.HashMap<String, Object>();
-        shokuiIdParams.put("shokuiId", this.getShokuiId());
+        shokuiIdParams.put("shokuiId", this.shokuiId);
         baseProcess.masterCheck(errors, "MhrShokuiSearch", "shokuiId", shokuiIdParams, jp.co.golorp.emarf.util.Messages.get("MhrShokuiNinka.shokuiId"));
     }
 }

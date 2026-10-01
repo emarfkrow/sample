@@ -114,7 +114,7 @@ public class MsyKbnValRegistForm implements IForm {
 
         // 区分名称 のマスタチェック
         Map<String, Object> kbnNmParams = new java.util.HashMap<String, Object>();
-        kbnNmParams.put("kbnNmFull", this.getKbnNm());
+        kbnNmParams.put("kbnNmFull", this.kbnNm);
         baseProcess.masterCheck(errors, "MsyKbnSearch", "kbnNm", kbnNmParams, jp.co.golorp.emarf.util.Messages.get("MsyKbnVal.kbnNm"));
     }
 }

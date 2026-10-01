@@ -129,7 +129,7 @@ public class T14KouteiRegistForm implements IForm {
 
         // 親工程ID のマスタチェック
         Map<String, Object> oyaKouteiIdParams = new java.util.HashMap<String, Object>();
-        oyaKouteiIdParams.put("kouteiId", this.getOyaKouteiId());
+        oyaKouteiIdParams.put("kouteiId", this.oyaKouteiId);
         baseProcess.masterCheck(errors, "T14KouteiSearch", "oyaKouteiId", oyaKouteiIdParams, jp.co.golorp.emarf.util.Messages.get("T14Koutei.oyaKouteiId"));
     }
 }

@@ -86,8 +86,11 @@ public class MsyKbnRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 区分値マスタ の子モデル整合性チェック
-        for (IForm msyKbnValForm : this.msyKbnValGrid) {
-            msyKbnValForm.validate(errors, baseProcess);
+        for (int i = 0; i < this.msyKbnValGrid.size(); i++) {
+            MsyKbnValRegistForm msyKbnValForm = this.msyKbnValGrid.get(i);
+            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+            msyKbnValForm.validate(gridErrors, baseProcess);
+            BaseProcess.copyGridErrors(errors, "MsyKbnValGrid", i, gridErrors);
         }
     }
 }

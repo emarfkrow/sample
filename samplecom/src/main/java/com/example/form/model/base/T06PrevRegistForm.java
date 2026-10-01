@@ -83,8 +83,11 @@ public class T06PrevRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 前世明細 の子モデル整合性チェック
-        for (IForm t06PrevDetForm : this.t06PrevDetGrid) {
-            t06PrevDetForm.validate(errors, baseProcess);
+        for (int i = 0; i < this.t06PrevDetGrid.size(); i++) {
+            T06PrevDetRegistForm t06PrevDetForm = this.t06PrevDetGrid.get(i);
+            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+            t06PrevDetForm.validate(gridErrors, baseProcess);
+            BaseProcess.copyGridErrors(errors, "T06PrevDetGrid", i, gridErrors);
         }
     }
 }

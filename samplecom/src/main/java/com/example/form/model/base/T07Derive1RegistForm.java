@@ -98,13 +98,16 @@ public class T07Derive1RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 派生１明細 の子モデル整合性チェック
-        for (IForm t07Derive1DetForm : this.t07Derive1DetGrid) {
-            t07Derive1DetForm.validate(errors, baseProcess);
+        for (int i = 0; i < this.t07Derive1DetGrid.size(); i++) {
+            T07Derive1DetRegistForm t07Derive1DetForm = this.t07Derive1DetGrid.get(i);
+            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+            t07Derive1DetForm.validate(gridErrors, baseProcess);
+            BaseProcess.copyGridErrors(errors, "T07Derive1DetGrid", i, gridErrors);
         }
 
         // 起源 の派生元チェック
         Map<String, Object> t07OrgParams = new java.util.HashMap<String, Object>();
-        t07OrgParams.put("orgId", this.getOrgId());
+        t07OrgParams.put("orgId", this.orgId);
         baseProcess.masterCheck(errors, "T07OrgSearch", "orgId", t07OrgParams, jp.co.golorp.emarf.util.Messages.get("T07Derive1.orgId"));
     }
 }

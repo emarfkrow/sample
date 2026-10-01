@@ -101,7 +101,7 @@ public class T14JissekiRegistForm implements IForm {
 
         // 工程ID のマスタチェック
         Map<String, Object> kouteiIdParams = new java.util.HashMap<String, Object>();
-        kouteiIdParams.put("kouteiId", this.getKouteiId());
+        kouteiIdParams.put("kouteiId", this.kouteiId);
         baseProcess.masterCheck(errors, "T14KouteiSearch", "kouteiId", kouteiIdParams, jp.co.golorp.emarf.util.Messages.get("T14Jisseki.kouteiId"));
     }
 }

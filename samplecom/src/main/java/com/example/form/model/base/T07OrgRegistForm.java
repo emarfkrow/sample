@@ -83,8 +83,11 @@ public class T07OrgRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 起源明細 の子モデル整合性チェック
-        for (IForm t07OrgDetForm : this.t07OrgDetGrid) {
-            t07OrgDetForm.validate(errors, baseProcess);
+        for (int i = 0; i < this.t07OrgDetGrid.size(); i++) {
+            T07OrgDetRegistForm t07OrgDetForm = this.t07OrgDetGrid.get(i);
+            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+            t07OrgDetForm.validate(gridErrors, baseProcess);
+            BaseProcess.copyGridErrors(errors, "T07OrgDetGrid", i, gridErrors);
         }
     }
 }

@@ -119,17 +119,17 @@ public class MhrUserPosRegistForm implements IForm {
 
         // 部署ID のマスタチェック
         Map<String, Object> bushoIdParams = new java.util.HashMap<String, Object>();
-        bushoIdParams.put("bushoId", this.getBushoId());
+        bushoIdParams.put("bushoId", this.bushoId);
         baseProcess.masterCheck(errors, "MhrBushoSearch", "bushoId", bushoIdParams, jp.co.golorp.emarf.util.Messages.get("MhrUserPos.bushoId"));
 
         // 職位ID のマスタチェック
         Map<String, Object> shokuiIdParams = new java.util.HashMap<String, Object>();
-        shokuiIdParams.put("shokuiId", this.getShokuiId());
+        shokuiIdParams.put("shokuiId", this.shokuiId);
         baseProcess.masterCheck(errors, "MhrShokuiSearch", "shokuiId", shokuiIdParams, jp.co.golorp.emarf.util.Messages.get("MhrUserPos.shokuiId"));
 
         // ユーザID のマスタチェック
         Map<String, Object> userIdParams = new java.util.HashMap<String, Object>();
-        userIdParams.put("userId", this.getUserId());
+        userIdParams.put("userId", this.userId);
         baseProcess.masterCheck(errors, "MhrUserSearch", "userId", userIdParams, jp.co.golorp.emarf.util.Messages.get("MhrUserPos.userId"));
     }
 }

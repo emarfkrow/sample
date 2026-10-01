@@ -101,13 +101,19 @@ public class T02OyaRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 子なし の子モデル整合性チェック
-        for (IForm t02DinksForm : this.t02DinksGrid) {
-            t02DinksForm.validate(errors, baseProcess);
+        for (int i = 0; i < this.t02DinksGrid.size(); i++) {
+            T02DinksRegistForm t02DinksForm = this.t02DinksGrid.get(i);
+            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+            t02DinksForm.validate(gridErrors, baseProcess);
+            BaseProcess.copyGridErrors(errors, "T02DinksGrid", i, gridErrors);
         }
 
         // 子 の子モデル整合性チェック
-        for (IForm t02KoForm : this.t02KoGrid) {
-            t02KoForm.validate(errors, baseProcess);
+        for (int i = 0; i < this.t02KoGrid.size(); i++) {
+            T02KoRegistForm t02KoForm = this.t02KoGrid.get(i);
+            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+            t02KoForm.validate(gridErrors, baseProcess);
+            BaseProcess.copyGridErrors(errors, "T02KoGrid", i, gridErrors);
         }
     }
 }
