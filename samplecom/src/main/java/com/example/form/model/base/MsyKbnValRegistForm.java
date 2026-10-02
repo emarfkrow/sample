@@ -64,7 +64,7 @@ public class MsyKbnValRegistForm implements IForm {
     }
 
     /** 表示順 */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     private String hyojiOn;
 
     /** @return 表示順 */

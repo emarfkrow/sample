@@ -13,7 +13,7 @@ import jp.co.golorp.emarf.validation.IForm;
 public class T11Tasho1RegistForm implements IForm {
 
     /** 他生１ID */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String tasho1Id;
 
@@ -30,7 +30,7 @@ public class T11Tasho1RegistForm implements IForm {
     }
 
     /** 転生２ID */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     private String reborn2Id;
 
     /** @return 転生２ID */

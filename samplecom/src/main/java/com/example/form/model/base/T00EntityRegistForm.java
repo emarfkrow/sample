@@ -13,7 +13,7 @@ import jp.co.golorp.emarf.validation.IForm;
 public class T00EntityRegistForm implements IForm {
 
     /** エンティティID */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String entityId;
 
@@ -62,7 +62,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** ビットフラグ */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     private String bitB;
 
     /** @return ビットフラグ */
@@ -348,7 +348,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** 受注数量 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,8}\\.?[0-9]{0,3}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,8}\\.?[0-9]{0,3}?)?")
     private String juchuQt;
 
     /** @return 受注数量 */
@@ -363,7 +363,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** 受注単価 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,9}\\.?[0-9]{0,2}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,9}\\.?[0-9]{0,2}?)?")
     private String juchuPr;
 
     /** @return 受注単価 */
@@ -378,7 +378,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** 受注金額 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,9}\\.?[0-9]{0,2}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,9}\\.?[0-9]{0,2}?)?")
     private String juchuAm;
 
     /** @return 受注金額 */
@@ -393,7 +393,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** 発注数量 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,8}\\.?[0-9]{0,3}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,8}\\.?[0-9]{0,3}?)?")
     private String hacchuQt;
 
     /** @return 発注数量 */
@@ -408,7 +408,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** 発注単価 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,9}\\.?[0-9]{0,2}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,9}\\.?[0-9]{0,2}?)?")
     private String hacchuPr;
 
     /** @return 発注単価 */
@@ -423,7 +423,7 @@ public class T00EntityRegistForm implements IForm {
 
     /** 発注金額 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,9}\\.?[0-9]{0,2}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,9}\\.?[0-9]{0,2}?)?")
     private String hacchuAm;
 
     /** @return 発注金額 */

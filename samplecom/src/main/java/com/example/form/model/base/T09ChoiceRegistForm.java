@@ -13,7 +13,7 @@ import jp.co.golorp.emarf.validation.IForm;
 public class T09ChoiceRegistForm implements IForm {
 
     /** 選択ID */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String choiceId;
 
@@ -30,7 +30,7 @@ public class T09ChoiceRegistForm implements IForm {
     }
 
     /** 候補１ID */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     private String koho1Id;
 
     /** @return 候補１ID */
@@ -58,7 +58,7 @@ public class T09ChoiceRegistForm implements IForm {
     }
 
     /** 候補２ID */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     private String koho2Id;
 
     /** @return 候補２ID */

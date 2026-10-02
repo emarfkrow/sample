@@ -64,7 +64,7 @@ public class MsyTaxRegistForm implements IForm {
 
     /** 税率 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,3}\\.?[0-9]{0,2}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,3}\\.?[0-9]{0,2}?)?")
     private String taxRt;
 
     /** @return 税率 */

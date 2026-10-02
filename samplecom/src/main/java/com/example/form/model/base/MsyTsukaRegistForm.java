@@ -50,7 +50,7 @@ public class MsyTsukaRegistForm implements IForm {
 
     /** 販売レート */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,3}\\.?[0-9]{0,2}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,3}\\.?[0-9]{0,2}?)?")
     private String tts;
 
     /** @return 販売レート */
@@ -65,7 +65,7 @@ public class MsyTsukaRegistForm implements IForm {
 
     /** 買取レート */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,3}\\.?[0-9]{0,2}?)?")
+    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,3}\\.?[0-9]{0,2}?)?")
     private String ttb;
 
     /** @return 買取レート */
