@@ -98,11 +98,16 @@ public class T06RebornRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 転生明細 の子モデル整合性チェック
-        for (int i = 0; i < this.t06RebornDetGrid.size(); i++) {
-            T06RebornDetRegistForm t06RebornDetForm = this.t06RebornDetGrid.get(i);
-            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-            t06RebornDetForm.validate(gridErrors, baseProcess);
-            BaseProcess.copyGridErrors(errors, "T06RebornDetGrid", i, gridErrors);
+        if (this.t06RebornDetGrid != null) {
+            for (int i = 0; i < this.t06RebornDetGrid.size(); i++) {
+                T06RebornDetRegistForm t06RebornDetForm = this.t06RebornDetGrid.get(i);
+                if (t06RebornDetForm == null) {
+                    continue;
+                }
+                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                t06RebornDetForm.validate(gridErrors, baseProcess);
+                BaseProcess.copyGridErrors(errors, "T06RebornDetGrid", i, gridErrors);
+            }
         }
 
         // 前世 の転生元チェック

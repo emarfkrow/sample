@@ -128,11 +128,16 @@ public class T02KoRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 孫 の子モデル整合性チェック
-        for (int i = 0; i < this.t02MagoGrid.size(); i++) {
-            T02MagoRegistForm t02MagoForm = this.t02MagoGrid.get(i);
-            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-            t02MagoForm.validate(gridErrors, baseProcess);
-            BaseProcess.copyGridErrors(errors, "T02MagoGrid", i, gridErrors);
+        if (this.t02MagoGrid != null) {
+            for (int i = 0; i < this.t02MagoGrid.size(); i++) {
+                T02MagoRegistForm t02MagoForm = this.t02MagoGrid.get(i);
+                if (t02MagoForm == null) {
+                    continue;
+                }
+                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                t02MagoForm.validate(gridErrors, baseProcess);
+                BaseProcess.copyGridErrors(errors, "T02MagoGrid", i, gridErrors);
+            }
         }
     }
 }

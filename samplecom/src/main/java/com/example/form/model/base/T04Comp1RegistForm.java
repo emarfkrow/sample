@@ -101,11 +101,16 @@ public class T04Comp1RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // 複合２ の子モデル整合性チェック
-        for (int i = 0; i < this.t04Comp2Grid.size(); i++) {
-            T04Comp2RegistForm t04Comp2Form = this.t04Comp2Grid.get(i);
-            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-            t04Comp2Form.validate(gridErrors, baseProcess);
-            BaseProcess.copyGridErrors(errors, "T04Comp2Grid", i, gridErrors);
+        if (this.t04Comp2Grid != null) {
+            for (int i = 0; i < this.t04Comp2Grid.size(); i++) {
+                T04Comp2RegistForm t04Comp2Form = this.t04Comp2Grid.get(i);
+                if (t04Comp2Form == null) {
+                    continue;
+                }
+                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                t04Comp2Form.validate(gridErrors, baseProcess);
+                BaseProcess.copyGridErrors(errors, "T04Comp2Grid", i, gridErrors);
+            }
         }
 
         // 参照１ID のマスタチェック

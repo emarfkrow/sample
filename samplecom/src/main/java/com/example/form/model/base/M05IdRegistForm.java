@@ -84,11 +84,16 @@ public class M05IdRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
 
         // ID連番マスタ の子モデル整合性チェック
-        for (int i = 0; i < this.m05IdbnGrid.size(); i++) {
-            M05IdbnRegistForm m05IdbnForm = this.m05IdbnGrid.get(i);
-            Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
-            m05IdbnForm.validate(gridErrors, baseProcess);
-            BaseProcess.copyGridErrors(errors, "M05IdbnGrid", i, gridErrors);
+        if (this.m05IdbnGrid != null) {
+            for (int i = 0; i < this.m05IdbnGrid.size(); i++) {
+                M05IdbnRegistForm m05IdbnForm = this.m05IdbnGrid.get(i);
+                if (m05IdbnForm == null) {
+                    continue;
+                }
+                Map<String, String> gridErrors = new java.util.LinkedHashMap<String, String>();
+                m05IdbnForm.validate(gridErrors, baseProcess);
+                BaseProcess.copyGridErrors(errors, "M05IdbnGrid", i, gridErrors);
+            }
         }
     }
 }
