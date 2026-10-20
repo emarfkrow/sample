@@ -1851,7 +1851,7 @@ ZOrder=128
 
 [Entity]
 PName=T09_CHOICE
-LName=選択
+LName=選抜
 Comment=
 TableInnerOption=
 TableOption=
@@ -1866,7 +1866,7 @@ Field="候補２情報","KOHO2_INFO","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260725200216
+ModifiedDateTime=20261019105210
 Position="MAIN",3150,1500
 ZOrder=129
 
