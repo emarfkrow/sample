@@ -6,7 +6,7 @@ import com.example.entity.MhrUser;
 
 import jp.co.golorp.emarf.action.base.PassresetActionBase;
 import jp.co.golorp.emarf.exception.AppError;
-import jp.co.golorp.emarf.lang.StringUtil;
+import jp.co.golorp.emarf.util.PasswordHasher;
 
 /**
  * パスワードリセット
@@ -23,7 +23,7 @@ public class PassresetAction extends PassresetActionBase {
 
         if (mUser != null) {
 
-            mUser.setPassword(StringUtil.hash(passwd));
+            mUser.setPassword(PasswordHasher.hash(passwd));
 
             if (mUser.update(now, id) != 1) {
                 throw new AppError("error.cant.update");
