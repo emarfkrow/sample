@@ -969,7 +969,7 @@ TermPos2=R
 ZOrder=33
 
 [Entity]
-PName=MSY_KADOBI
+PName=MCM_KADOBI
 LName=稼働日マスタ
 Comment=
 TableInnerOption=
@@ -984,7 +984,7 @@ Field="メモ","MEMO","*TX",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$C0DCC0
-ModifiedDateTime=20260816115018
+ModifiedDateTime=20261117090700
 Position="MAIN",1300,50
 ZOrder=40
 
@@ -1830,7 +1830,7 @@ ZOrder=127
 
 [Relation]
 Entity1=MHR_BUSHO
-Entity2=MSY_KADOBI
+Entity2=MCM_KADOBI
 RelationType1=1
 RelationType2=3
 Fields1=BUSHO_ID
@@ -2470,10 +2470,10 @@ Query=SELECT\n      b.kado_ymd                   AS labels\n    , CAST (\qbar\q 
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="予実",600,100
+Position="予実",700,100
 ZOrder=182
 Page=予実
-Left=600
+Left=700
 Top=100
 
 [Entity]
@@ -2540,10 +2540,10 @@ Query=SELECT\n      b.kado_ymd                   AS labels\n    , CAST (\qline\q
 LNameByComment=1
 Color=$000000
 BkColor=$FFFFFF
-Position="予実",600,300
+Position="予実",700,300
 ZOrder=181
 Page=予実
-Left=600
+Left=700
 Top=300
 
 [Comment]
@@ -2562,20 +2562,6 @@ Top=296
 ZOrder=183
 Width=1452
 Height=66
-
-[View]
-PName=V14_YOJITSU
-LName=予実
-Comment=oracle
-Query=SELECT\n      * \nFROM\n    ( \n        SELECT\n              a.koutei_id\n            , a.koutei_mei                                       AS koutei_tx\n            , TO_CHAR ( \n                TO_DATE (a.kaishi_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS kaishi_ymd\n            , TO_CHAR ( \n                TO_DATE (a.shuryo_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS shuryo_ymd\n            , a.sagyoku_cd\n            , a.oya_koutei_id\n            , TO_CHAR ( \n                TO_DATE (j.jisshi_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS jisshi_ymd\n            , TO_CHAR ( \n                TO_DATE (j.kanryo_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS kanryo_ymd\n            , b.dependencies                    --前工程\n            , SUBSTR (SYS_CONNECT_BY_PATH (a.koutei_id, \q,\q), 2) AS koutei_path\n            , CAST(CONNECT_BY_ROOT a.koutei_id AS NUMBER(9))     AS root \n        FROM\n            t14_koutei a \n            LEFT OUTER JOIN t14_jisseki j \n                ON j.koutei_id = a.koutei_id \n            LEFT OUTER JOIN ( \n                SELECT\n                      oya_koutei_id\n                    , LISTAGG (koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies \n                FROM\n                    t14_koutei \n                WHERE\n                    oya_koutei_id IS NOT NULL \n                GROUP BY\n                    oya_koutei_id\n            ) b \n                ON b.oya_koutei_id = a.koutei_id \n        START WITH\n            a.oya_koutei_id IS NULL \n        CONNECT BY\n            PRIOR a.koutei_id = a.oya_koutei_id\n    ) a \nORDER BY\n    a.koutei_path DESC\n
-LNameByComment=1
-Color=$000000
-BkColor=$FFFFFF
-Position="予実",1000,600
-ZOrder=184
-Page=予実
-Left=1000
-Top=600
 
 [View]
 PName=V14_YOJITSU
@@ -2603,4 +2589,60 @@ Position="予実",1800,600
 ZOrder=186
 Page=予実
 Left=1800
+Top=600
+
+[Relation]
+Entity1=T14_KOUTEI
+Entity2=T14_KOUTEI
+RelationType1=1
+RelationType2=3
+Fields1=KOUTEI_ID
+Fields2=OYA_KOUTEI_ID
+Cardinarity1=
+Cardinarity2=
+Position="予実",0,7500,2500,9500,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=750
+Bar2=250
+Bar3=950
+TermPos1=R
+TermPos2=R
+ZOrder=187
+
+[Relation]
+Entity1=T14_KOUTEI
+Entity2=T14_JISSEKI
+RelationType1=1
+RelationType2=3
+Fields1=KOUTEI_ID
+Fields2=KOUTEI_ID
+Cardinarity1=
+Cardinarity2=
+Position="予実",0,751,9249,848,R,R,""
+Dependence=1
+Caption=
+PName=
+LineMode=0
+Bar1=75
+Bar2=925
+Bar3=85
+TermPos1=R
+TermPos2=R
+ZOrder=188
+
+[View]
+PName=V14_YOJITSU
+LName=予実
+Comment=oracle
+Query=SELECT\n      \qT14_KOUTEI\q AS table_name\n    , a.koutei_id                               --工程ID\n    , a.task_id                                 --タスクID\n    , a.task_mei                                --タスク名\n    , a.task_start                              --開始予定日\n    , a.task_until                              --終了予定日\n    , a.dependencies                            --前工程\n    , a.task_beg                                --着手日\n    , a.task_end                                --完了日\nFROM\n    ( \n        SELECT\n              a.koutei_id\n            , a.koutei_id                                        AS task_id\n            , a.koutei_mei                                       AS task_mei\n            , TO_CHAR ( \n                TO_DATE (a.kaishi_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS task_start\n            , TO_CHAR ( \n                TO_DATE (a.shuryo_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS task_until\n            , b.dependencies\n            , TO_CHAR ( \n                TO_DATE (j.jisshi_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS task_beg\n            , TO_CHAR ( \n                TO_DATE (j.kanryo_ymd, \qyyyymmdd\q)\n                , \qyyyy-mm-dd\q\n            )                                                    AS task_end\n            , a.sagyoku_cd\n            , a.oya_koutei_id\n            , SUBSTR (SYS_CONNECT_BY_PATH (a.koutei_id, \q,\q), 2) AS koutei_path\n            , CAST(CONNECT_BY_ROOT a.koutei_id AS NUMBER (9))    AS root \n        FROM\n            t14_koutei a                        --工程\n            LEFT OUTER JOIN t14_jisseki j       --実績（１対多）\n                ON j.koutei_id = a.koutei_id \n            LEFT OUTER JOIN ( \n                /*親工程がある工程ごとに、子の工程を昇順に取得*/\n                SELECT\n                      oya_koutei_id\n                    , LISTAGG (koutei_id, \q,\q) WITHIN GROUP (ORDER BY koutei_id) AS dependencies \n                FROM\n                    t14_koutei \n                WHERE\n                    oya_koutei_id IS NOT NULL \n                GROUP BY\n                    oya_koutei_id\n            ) b \n                ON b.oya_koutei_id = a.koutei_id \n        START WITH\n            a.oya_koutei_id IS NULL \n        CONNECT BY\n            PRIOR a.koutei_id = a.oya_koutei_id\n    ) a \nORDER BY\n    a.koutei_path DESC\n
+LNameByComment=1
+Color=$000000
+BkColor=$FFFFFF
+Position="予実",1000,600
+ZOrder=189
+Page=予実
+Left=1000
 Top=600

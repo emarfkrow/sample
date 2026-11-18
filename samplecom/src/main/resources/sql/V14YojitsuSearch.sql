@@ -1,35 +1,22 @@
 SELECT
-      a."KOUTEI_ID" AS "KOUTEI_ID"
-    , a."KOUTEI_TX" AS "KOUTEI_TX"
-    , a."KAISHI_YMD" AS "KAISHI_YMD"
-    , a."SHURYO_YMD" AS "SHURYO_YMD"
-    , RTRIM (RTRIM (a."SAGYOKU_CD"), '　') AS "SAGYOKU_CD"
-    , a."OYA_KOUTEI_ID" AS "OYA_KOUTEI_ID"
-    , a."JISSHI_YMD" AS "JISSHI_YMD"
-    , a."KANRYO_YMD" AS "KANRYO_YMD"
+      RTRIM (RTRIM (a."TABLE_NAME"), '　') AS "TABLE_NAME"
+    , a."KOUTEI_ID" AS "KOUTEI_ID"
+    , a."TASK_ID" AS "TASK_ID"
+    , a."TASK_MEI" AS "TASK_MEI"
+    , a."TASK_START" AS "TASK_START"
+    , a."TASK_UNTIL" AS "TASK_UNTIL"
     , a."DEPENDENCIES" AS "DEPENDENCIES"
-    , a."KOUTEI_PATH" AS "KOUTEI_PATH"
-    , a."ROOT" AS "ROOT"
+    , a."TASK_BEG" AS "TASK_BEG"
+    , a."TASK_END" AS "TASK_END"
 FROM
     V14_YOJITSU a 
 WHERE
     1 = 1 
     AND a."KOUTEI_ID" = :koutei_id 
-    AND UPPER (RTRIM (RTRIM (a."KOUTEI_TX"), '　')) LIKE UPPER ('%' || :koutei_tx || '%') 
-    AND UPPER (RTRIM (RTRIM (a."KAISHI_YMD"), '　')) LIKE UPPER ('%' || :kaishi_ymd || '%') 
-    AND a."KAISHI_YMD" >= :kaishi_ymd_1 
-    AND a."KAISHI_YMD" <= :kaishi_ymd_2 
-    AND UPPER (RTRIM (RTRIM (a."SHURYO_YMD"), '　')) LIKE UPPER ('%' || :shuryo_ymd || '%') 
-    AND a."SHURYO_YMD" >= :shuryo_ymd_1 
-    AND a."SHURYO_YMD" <= :shuryo_ymd_2 
-    AND UPPER (RTRIM (RTRIM (a."SAGYOKU_CD"), '　')) LIKE UPPER ('%' || :sagyoku_cd || '%') 
-    AND a."OYA_KOUTEI_ID" = :oya_koutei_id 
-    AND UPPER (RTRIM (RTRIM (a."JISSHI_YMD"), '　')) LIKE UPPER ('%' || :jisshi_ymd || '%') 
-    AND a."JISSHI_YMD" >= :jisshi_ymd_1 
-    AND a."JISSHI_YMD" <= :jisshi_ymd_2 
-    AND UPPER (RTRIM (RTRIM (a."KANRYO_YMD"), '　')) LIKE UPPER ('%' || :kanryo_ymd || '%') 
-    AND a."KANRYO_YMD" >= :kanryo_ymd_1 
-    AND a."KANRYO_YMD" <= :kanryo_ymd_2 
+    AND a."TASK_ID" = :task_id 
+    AND UPPER (RTRIM (RTRIM (a."TASK_MEI"), '　')) LIKE UPPER ('%' || :task_mei || '%') 
+    AND UPPER (RTRIM (RTRIM (a."TASK_START"), '　')) LIKE UPPER ('%' || :task_start || '%') 
+    AND UPPER (RTRIM (RTRIM (a."TASK_UNTIL"), '　')) LIKE UPPER ('%' || :task_until || '%') 
     AND UPPER (RTRIM (RTRIM (a."DEPENDENCIES"), '　')) LIKE UPPER ('%' || :dependencies || '%') 
-    AND UPPER (RTRIM (RTRIM (a."KOUTEI_PATH"), '　')) LIKE UPPER ('%' || :koutei_path || '%') 
-    AND a."ROOT" = :root 
+    AND UPPER (RTRIM (RTRIM (a."TASK_BEG"), '　')) LIKE UPPER ('%' || :task_beg || '%') 
+    AND UPPER (RTRIM (RTRIM (a."TASK_END"), '　')) LIKE UPPER ('%' || :task_end || '%') 

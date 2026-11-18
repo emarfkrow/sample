@@ -7,15 +7,13 @@ let V14YojitsuGridColumns = [];
 $(function() {
     V14YojitsuGridColumns = [
         Column.text('KOUTEI_ID', Messages['V14YojitsuGrid.kouteiId'], 100, '', null),
-        Column.longText('KOUTEI_TX', Messages['V14YojitsuGrid.kouteiTx'], 300, '', null),
-        Column.text('KAISHI_YMD', Messages['V14YojitsuGrid.kaishiYmd'], 100, '', null),
-        Column.text('SHURYO_YMD', Messages['V14YojitsuGrid.shuryoYmd'], 100, '', null),
-        Column.text('SAGYOKU_CD', Messages['V14YojitsuGrid.sagyokuCd'], 100, '', null),
-        Column.text('OYA_KOUTEI_ID', Messages['V14YojitsuGrid.oyaKouteiId'], 100, '', null),
-        Column.text('JISSHI_YMD', Messages['V14YojitsuGrid.jisshiYmd'], 100, '', null),
-        Column.text('KANRYO_YMD', Messages['V14YojitsuGrid.kanryoYmd'], 100, '', null),
+        Column.text('TASK_ID', Messages['V14YojitsuGrid.taskId'], 100, '', null),
+        Column.text('TASK_MEI', Messages['V14YojitsuGrid.taskMei'], 300, '', null),
+        Column.text('TASK_START', Messages['V14YojitsuGrid.taskStart'], 100, '', null),
+        Column.text('TASK_UNTIL', Messages['V14YojitsuGrid.taskUntil'], 100, '', null),
         Column.text('DEPENDENCIES', Messages['V14YojitsuGrid.dependencies'], 300, '', null),
-        Column.text('KOUTEI_PATH', Messages['V14YojitsuGrid.kouteiPath'], 300, '', null),
-        Column.dec0('ROOT', Messages['V14YojitsuGrid.root'], 90, '', null),
+        Column.text('TASK_BEG', Messages['V14YojitsuGrid.taskBeg'], 100, '', null),
+        Column.text('TASK_END', Messages['V14YojitsuGrid.taskEnd'], 100, '', null),
     ];
+    V14YojitsuGridColumns.hasViewDetail = true;
 });

@@ -16,55 +16,47 @@ public class V14Yojitsu implements IEntity {
 
     /** @param values */
     public V14Yojitsu(final String[] values) {
-        this.setKouteiId(values[0]);
-        this.setKouteiTx(values[1]);
-        this.setKaishiYmd(values[2]);
-        this.setShuryoYmd(values[3]);
-        this.setSagyokuCd(values[4]);
-        this.setOyaKouteiId(values[5]);
-        this.setJisshiYmd(values[6]);
-        this.setKanryoYmd(values[7]);
-        this.setDependencies(values[8]);
-        this.setKouteiPath(values[9]);
-        this.setRoot(values[10]);
+        this.setTableName(values[0]);
+        this.setKouteiId(values[1]);
+        this.setTaskId(values[2]);
+        this.setTaskMei(values[3]);
+        this.setTaskStart(values[4]);
+        this.setTaskUntil(values[5]);
+        this.setDependencies(values[6]);
+        this.setTaskBeg(values[7]);
+        this.setTaskEnd(values[8]);
     }
 
     /** @param map */
     public V14Yojitsu(final java.util.Map<String, Object> map) {
+        this.setTableName(IgnoreCaseLinkedMap.get(map, "TABLE_NAME"));
         this.setKouteiId(IgnoreCaseLinkedMap.get(map, "KOUTEI_ID"));
-        this.setKouteiTx(IgnoreCaseLinkedMap.get(map, "KOUTEI_TX"));
-        this.setKaishiYmd(IgnoreCaseLinkedMap.get(map, "KAISHI_YMD"));
-        this.setShuryoYmd(IgnoreCaseLinkedMap.get(map, "SHURYO_YMD"));
-        this.setSagyokuCd(IgnoreCaseLinkedMap.get(map, "SAGYOKU_CD"));
-        this.setOyaKouteiId(IgnoreCaseLinkedMap.get(map, "OYA_KOUTEI_ID"));
-        this.setJisshiYmd(IgnoreCaseLinkedMap.get(map, "JISSHI_YMD"));
-        this.setKanryoYmd(IgnoreCaseLinkedMap.get(map, "KANRYO_YMD"));
+        this.setTaskId(IgnoreCaseLinkedMap.get(map, "TASK_ID"));
+        this.setTaskMei(IgnoreCaseLinkedMap.get(map, "TASK_MEI"));
+        this.setTaskStart(IgnoreCaseLinkedMap.get(map, "TASK_START"));
+        this.setTaskUntil(IgnoreCaseLinkedMap.get(map, "TASK_UNTIL"));
         this.setDependencies(IgnoreCaseLinkedMap.get(map, "DEPENDENCIES"));
-        this.setKouteiPath(IgnoreCaseLinkedMap.get(map, "KOUTEI_PATH"));
-        this.setRoot(IgnoreCaseLinkedMap.get(map, "ROOT"));
+        this.setTaskBeg(IgnoreCaseLinkedMap.get(map, "TASK_BEG"));
+        this.setTaskEnd(IgnoreCaseLinkedMap.get(map, "TASK_END"));
     }
 
     /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        if (StringUtil.isNullOrWhiteSpace(this.kouteiId)) {
-            return true;
-        }
         return false;
     }
 
     /** @return boolean */
     public boolean isEmpty() {
         boolean isEmpty = true;
-        isEmpty &= this.kouteiTx == null || this.kouteiTx.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.kaishiYmd == null || this.kaishiYmd.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.shuryoYmd == null || this.shuryoYmd.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.sagyokuCd == null || this.sagyokuCd.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.oyaKouteiId == null || this.oyaKouteiId.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.jisshiYmd == null || this.jisshiYmd.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.kanryoYmd == null || this.kanryoYmd.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.tableName == null || this.tableName.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.kouteiId == null || this.kouteiId.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.taskId == null || this.taskId.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.taskMei == null || this.taskMei.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.taskStart == null || this.taskStart.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.taskUntil == null || this.taskUntil.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.dependencies == null || this.dependencies.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.kouteiPath == null || this.kouteiPath.toString().replaceAll("　| ", "").equals("");
-        isEmpty &= this.root == null || this.root.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.taskBeg == null || this.taskBeg.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.taskEnd == null || this.taskEnd.toString().replaceAll("　| ", "").equals("");
         return isEmpty;
     }
 
@@ -83,126 +75,95 @@ public class V14Yojitsu implements IEntity {
         this.id = StringUtil.ifNullInteger(o);
     }
 
+    /** TABLE_NAME */
+    private String tableName;
+
+    /** @return TABLE_NAME */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TABLE_NAME", index = 2)
+    public String getTableName() {
+        return this.tableName;
+    }
+
+    /** @param o TABLE_NAME */
+    public void setTableName(final Object o) {
+        this.tableName = StringUtil.ifNull(o);
+    }
+
     /** KOUTEI_ID */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
     private Integer kouteiId;
 
     /** @return KOUTEI_ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KOUTEI_ID", index = 2)
-    @jp.co.golorp.emarf.validation.PrimaryKeys
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "KOUTEI_ID", index = 3)
     public Integer getKouteiId() {
         return this.kouteiId;
     }
 
     /** @param o KOUTEI_ID */
-    @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setKouteiId(final Object o) {
         this.kouteiId = StringUtil.ifNullInteger(o);
     }
 
-    /** KOUTEI_TX */
-    private String kouteiTx;
+    /** TASK_ID */
+    private Integer taskId;
 
-    /** @return KOUTEI_TX */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KOUTEI_TX", index = 3)
-    public String getKouteiTx() {
-        return this.kouteiTx;
+    /** @return TASK_ID */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TASK_ID", index = 4)
+    public Integer getTaskId() {
+        return this.taskId;
     }
 
-    /** @param o KOUTEI_TX */
-    public void setKouteiTx(final Object o) {
-        this.kouteiTx = StringUtil.ifNull(o);
+    /** @param o TASK_ID */
+    public void setTaskId(final Object o) {
+        this.taskId = StringUtil.ifNullInteger(o);
     }
 
-    /** KAISHI_YMD */
-    private String kaishiYmd;
+    /** TASK_MEI */
+    private String taskMei;
 
-    /** @return KAISHI_YMD */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KAISHI_YMD", index = 4)
-    public String getKaishiYmd() {
-        return this.kaishiYmd;
+    /** @return TASK_MEI */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TASK_MEI", index = 5)
+    public String getTaskMei() {
+        return this.taskMei;
     }
 
-    /** @param o KAISHI_YMD */
-    public void setKaishiYmd(final Object o) {
-        this.kaishiYmd = StringUtil.ifNull(o);
+    /** @param o TASK_MEI */
+    public void setTaskMei(final Object o) {
+        this.taskMei = StringUtil.ifNull(o);
     }
 
-    /** SHURYO_YMD */
-    private String shuryoYmd;
+    /** TASK_START */
+    private String taskStart;
 
-    /** @return SHURYO_YMD */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "SHURYO_YMD", index = 5)
-    public String getShuryoYmd() {
-        return this.shuryoYmd;
+    /** @return TASK_START */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TASK_START", index = 6)
+    public String getTaskStart() {
+        return this.taskStart;
     }
 
-    /** @param o SHURYO_YMD */
-    public void setShuryoYmd(final Object o) {
-        this.shuryoYmd = StringUtil.ifNull(o);
+    /** @param o TASK_START */
+    public void setTaskStart(final Object o) {
+        this.taskStart = StringUtil.ifNull(o);
     }
 
-    /** SAGYOKU_CD */
-    private String sagyokuCd;
+    /** TASK_UNTIL */
+    private String taskUntil;
 
-    /** @return SAGYOKU_CD */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "SAGYOKU_CD", index = 6)
-    public String getSagyokuCd() {
-        return this.sagyokuCd;
+    /** @return TASK_UNTIL */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TASK_UNTIL", index = 7)
+    public String getTaskUntil() {
+        return this.taskUntil;
     }
 
-    /** @param o SAGYOKU_CD */
-    public void setSagyokuCd(final Object o) {
-        this.sagyokuCd = StringUtil.ifNull(o);
-    }
-
-    /** OYA_KOUTEI_ID */
-    private Integer oyaKouteiId;
-
-    /** @return OYA_KOUTEI_ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_KOUTEI_ID", index = 7)
-    public Integer getOyaKouteiId() {
-        return this.oyaKouteiId;
-    }
-
-    /** @param o OYA_KOUTEI_ID */
-    public void setOyaKouteiId(final Object o) {
-        this.oyaKouteiId = StringUtil.ifNullInteger(o);
-    }
-
-    /** JISSHI_YMD */
-    private String jisshiYmd;
-
-    /** @return JISSHI_YMD */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "JISSHI_YMD", index = 8)
-    public String getJisshiYmd() {
-        return this.jisshiYmd;
-    }
-
-    /** @param o JISSHI_YMD */
-    public void setJisshiYmd(final Object o) {
-        this.jisshiYmd = StringUtil.ifNull(o);
-    }
-
-    /** KANRYO_YMD */
-    private String kanryoYmd;
-
-    /** @return KANRYO_YMD */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KANRYO_YMD", index = 9)
-    public String getKanryoYmd() {
-        return this.kanryoYmd;
-    }
-
-    /** @param o KANRYO_YMD */
-    public void setKanryoYmd(final Object o) {
-        this.kanryoYmd = StringUtil.ifNull(o);
+    /** @param o TASK_UNTIL */
+    public void setTaskUntil(final Object o) {
+        this.taskUntil = StringUtil.ifNull(o);
     }
 
     /** DEPENDENCIES */
     private String dependencies;
 
     /** @return DEPENDENCIES */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEPENDENCIES", index = 10)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "DEPENDENCIES", index = 8)
     public String getDependencies() {
         return this.dependencies;
     }
@@ -212,61 +173,31 @@ public class V14Yojitsu implements IEntity {
         this.dependencies = StringUtil.ifNull(o);
     }
 
-    /** KOUTEI_PATH */
-    private String kouteiPath;
+    /** TASK_BEG */
+    private String taskBeg;
 
-    /** @return KOUTEI_PATH */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "KOUTEI_PATH", index = 11)
-    public String getKouteiPath() {
-        return this.kouteiPath;
+    /** @return TASK_BEG */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TASK_BEG", index = 9)
+    public String getTaskBeg() {
+        return this.taskBeg;
     }
 
-    /** @param o KOUTEI_PATH */
-    public void setKouteiPath(final Object o) {
-        this.kouteiPath = StringUtil.ifNull(o);
+    /** @param o TASK_BEG */
+    public void setTaskBeg(final Object o) {
+        this.taskBeg = StringUtil.ifNull(o);
     }
 
-    /** ROOT */
-    private Integer root;
+    /** TASK_END */
+    private String taskEnd;
 
-    /** @return ROOT */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "ROOT", index = 12)
-    public Integer getRoot() {
-        return this.root;
+    /** @return TASK_END */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TASK_END", index = 10)
+    public String getTaskEnd() {
+        return this.taskEnd;
     }
 
-    /** @param o ROOT */
-    public void setRoot(final Object o) {
-        this.root = StringUtil.ifNullInteger(o);
-    }
-
-    /**
-     * 予実照会
-     * @param param1 koutei_id
-     * @return 予実
-     */
-    public static V14Yojitsu get(final Object param1) {
-        java.util.List<String> whereList = new java.util.ArrayList<String>();
-        whereList.add("\"KOUTEI_ID\" = :koutei_id");
-        String sql = "";
-        sql += "SELECT \n";
-        sql += "      a.\"KOUTEI_ID\" \n";
-        sql += "    , a.\"KOUTEI_TX\" \n";
-        sql += "    , a.\"KAISHI_YMD\" \n";
-        sql += "    , a.\"SHURYO_YMD\" \n";
-        sql += "    , RTRIM (RTRIM (a.\"SAGYOKU_CD\"), '　') AS SAGYOKU_CD \n";
-        sql += "    , a.\"OYA_KOUTEI_ID\" \n";
-        sql += "    , a.\"JISSHI_YMD\" \n";
-        sql += "    , a.\"KANRYO_YMD\" \n";
-        sql += "    , a.\"DEPENDENCIES\" \n";
-        sql += "    , a.\"KOUTEI_PATH\" \n";
-        sql += "    , a.\"ROOT\" \n";
-        sql += "FROM \n";
-        sql += "    V14_YOJITSU a \n";
-        sql += "WHERE \n";
-        sql += String.join(" AND \n", whereList);
-        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
-        map.put("koutei_id", param1);
-        return jp.co.golorp.emarf.sql.Queries.get(sql, map, V14Yojitsu.class);
+    /** @param o TASK_END */
+    public void setTaskEnd(final Object o) {
+        this.taskEnd = StringUtil.ifNull(o);
     }
 }

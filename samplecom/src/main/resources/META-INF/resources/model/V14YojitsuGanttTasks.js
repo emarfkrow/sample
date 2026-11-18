@@ -12,25 +12,24 @@ let V14YojitsuGanttTasks = {
             let row = data[r];
 
             let task = {};
-            task.id = row.KOUTEI_ID;
-            task.name = row.KOUTEI_TX;
-            task.start = row.KAISHI_YMD;
-            task.end = row.SHURYO_YMD;
+            task.id = row.TASK_ID;
+            task.name = row.TASK_MEI;
+            task.start = row.TASK_START;
+            task.end = row.TASK_UNTIL;
             task.dependencies = row.DEPENDENCIES ? row.DEPENDENCIES + '' : '';
+            task.description = row.DESCRIPTION ? row.DESCRIPTION + '' : '';
 
-            task.since = row.JISSHI_YMD;
-            task.until = row.KANRYO_YMD;
+            task.since = row.TASK_BEG;
+            task.until = row.TASK_END;
 
+            task.tableName = row.TABLE_NAME;
             task.kouteiId = row.KOUTEI_ID;
-            task.kouteiTx = row.KOUTEI_TX;
-            task.kaishiYmd = row.KAISHI_YMD;
-            task.shuryoYmd = row.SHURYO_YMD;
-            task.sagyokuCd = row.SAGYOKU_CD;
-            task.oyaKouteiId = row.OYA_KOUTEI_ID;
-            task.jisshiYmd = row.JISSHI_YMD;
-            task.kanryoYmd = row.KANRYO_YMD;
-            task.kouteiPath = row.KOUTEI_PATH;
-            task.root = row.ROOT;
+            task.taskId = row.TASK_ID;
+            task.taskMei = row.TASK_MEI;
+            task.taskStart = row.TASK_START;
+            task.taskUntil = row.TASK_UNTIL;
+            task.taskBeg = row.TASK_BEG;
+            task.taskEnd = row.TASK_END;
 
             tasks.push(task);
         }
