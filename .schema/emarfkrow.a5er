@@ -49,10 +49,14 @@ Domain=DT=@DATETIME
 DomainInfo="DT","@DATETIME","日時","_DT"
 Domain=BI=@DATE
 DomainInfo="BI","@DATE","日付","_BI"
-Domain=HM=@TIME
-DomainInfo="HM","@TIME","時刻・00:00:00～23:59:00","_HM"
-Domain=TM=@VARCHAR(9)
-DomainInfo="TM","@VARCHAR(9)","時間・[H]MMSS（00:00:00～999:59:59）","_TM"
+Domain=HM=@VARCHAR(5)
+DomainInfo="HM","@VARCHAR(5)","時刻・00:00～23:59","_HM"
+Domain=HMS=@TIME
+DomainInfo="HMS","@TIME","時刻・00:00:00～23:59:00","_HMS"
+Domain=TM=@VARCHAR(6)
+DomainInfo="TM","@VARCHAR(6)","時間・[H]MM（00:00～999:59）","_TM"
+Domain=TMS=@VARCHAR(9)
+DomainInfo="TMS","@VARCHAR(9)","時間・[H]MMSS（00:00:00～999:59:59）","_TMS"
 Domain=QT=@DECIMAL(11,3)
 DomainInfo="QT","@DECIMAL(11,3)","数量・整数８桁・小数３桁","_QT"
 Domain=PR=@DECIMAL(11,2)
@@ -828,7 +832,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
-Top=1450
+Top=1500
 Field="列Ａ","A_MEI","*MEI",,,"","",$FFFFFFFF,""
 Field="列Ｂ","B_MEI","*MEI",,,"","",$FFFFFFFF,""
 Field="列Ｃ","C_MEI","*MEI",,,"","",$FFFFFFFF,""
@@ -840,7 +844,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260305093508
-Position="MAIN",50,1450
+Position="MAIN",50,1500
 ZOrder=15
 
 [Entity]
@@ -911,7 +915,9 @@ Field="タイムスタンプ","TIMESTAMP_TS","*TS","NOT NULL",,"CURRENT_TIMESTAM
 Field="日時","NICHIJI_DT","*DT","NOT NULL",,"","",$FFFFFFFF,""
 Field="日付","HIDUKE_BI","*BI","NOT NULL",,"","",$FFFFFFFF,""
 Field="時刻","JIKOKU_HM","*HM","NOT NULL",,"","",$FFFFFFFF,""
+Field="時分秒","JIKOKU_HMS","*HMS","NOT NULL",,"","",$FFFFFFFF,""
 Field="時間","JIKAN_TM","*TM","NOT NULL",,"","",$FFFFFFFF,""
+Field="秒時間","JIKAN_TMS","*TMS","NOT NULL",,"","",$FFFFFFFF,""
 Field="通貨区分","TSUKA_KB","*KB","NOT NULL",,"","",$FFFFFFFF,""
 Field="受注数量","JUCHU_QT","*QT","NOT NULL",,"","",$FFFFFFFF,""
 Field="受注単価","JUCHU_PR","*PR","NOT NULL",,"","",$FFFFFFFF,""
@@ -924,7 +930,7 @@ Field="ステータス区分","STATUS_KB","*KB",,,"","必須チェックにか�
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20260324080330
+ModifiedDateTime=20261119092802
 Position="MAIN",50,500
 ZOrder=25
 
@@ -2366,7 +2372,7 @@ TableInnerOption=
 TableOption=
 Page=MAIN
 Left=50
-Top=1650
+Top=1700
 Field="列Ａ","A_MEI","*MEI",,,"","",$FFFFFFFF,""
 Field="列Ｂ","B_MEI","*MEI",,,"","",$FFFFFFFF,""
 Field="列Ｃ","C_MEI","*MEI",,,"","",$FFFFFFFF,""
@@ -2376,7 +2382,7 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20260305093518
-Position="MAIN",50,1650
+Position="MAIN",50,1700
 ZOrder=171
 
 [Entity]

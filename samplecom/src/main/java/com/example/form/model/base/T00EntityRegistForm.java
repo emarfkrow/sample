@@ -315,10 +315,25 @@ public class T00EntityRegistForm implements IForm {
         this.jikokuHm = p;
     }
 
+    /** 時分秒 */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 7)
+    private String jikokuHms;
+
+    /** @return 時分秒 */
+    public String getJikokuHms() {
+        return jikokuHms;
+    }
+
+    /** @param p 時分秒 */
+    public void setJikokuHms(final String p) {
+        this.jikokuHms = p;
+    }
+
     /** 時間 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,}:[0-9]{1,2})?")
-    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 9)
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 6)
     private String jikanTm;
 
     /** @return 時間 */
@@ -329,6 +344,21 @@ public class T00EntityRegistForm implements IForm {
     /** @param p 時間 */
     public void setJikanTm(final String p) {
         this.jikanTm = p;
+    }
+
+    /** 秒時間 */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
+    @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 9)
+    private String jikanTms;
+
+    /** @return 秒時間 */
+    public String getJikanTms() {
+        return jikanTms;
+    }
+
+    /** @param p 秒時間 */
+    public void setJikanTms(final String p) {
+        this.jikanTms = p;
     }
 
     /** 通貨区分 */

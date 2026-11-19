@@ -36,20 +36,22 @@ public class T00Entity implements IEntity {
         this.setNichijiDt(values[17]);
         this.setHidukeBi(values[18]);
         this.setJikokuHm(values[19]);
-        this.setJikanTm(values[20]);
-        this.setTsukaKb(values[21]);
-        this.setJuchuQt(values[22]);
-        this.setJuchuPr(values[23]);
-        this.setJuchuAm(values[24]);
-        this.setHacchuQt(values[25]);
-        this.setHacchuPr(values[26]);
-        this.setHacchuAm(values[27]);
-        this.setDeleteF(values[28]);
-        this.setStatusKb(values[29]);
-        this.setInsertTs(values[30]);
-        this.setInsertUserId(values[31]);
-        this.setUpdateTs(values[32]);
-        this.setUpdateUserId(values[33]);
+        this.setJikokuHms(values[20]);
+        this.setJikanTm(values[21]);
+        this.setJikanTms(values[22]);
+        this.setTsukaKb(values[23]);
+        this.setJuchuQt(values[24]);
+        this.setJuchuPr(values[25]);
+        this.setJuchuAm(values[26]);
+        this.setHacchuQt(values[27]);
+        this.setHacchuPr(values[28]);
+        this.setHacchuAm(values[29]);
+        this.setDeleteF(values[30]);
+        this.setStatusKb(values[31]);
+        this.setInsertTs(values[32]);
+        this.setInsertUserId(values[33]);
+        this.setUpdateTs(values[34]);
+        this.setUpdateUserId(values[35]);
     }
 
     /** @param map */
@@ -74,7 +76,9 @@ public class T00Entity implements IEntity {
         this.setNichijiDt(IgnoreCaseLinkedMap.get(map, "NICHIJI_DT"));
         this.setHidukeBi(IgnoreCaseLinkedMap.get(map, "HIDUKE_BI"));
         this.setJikokuHm(IgnoreCaseLinkedMap.get(map, "JIKOKU_HM"));
+        this.setJikokuHms(IgnoreCaseLinkedMap.get(map, "JIKOKU_HMS"));
         this.setJikanTm(IgnoreCaseLinkedMap.get(map, "JIKAN_TM"));
+        this.setJikanTms(IgnoreCaseLinkedMap.get(map, "JIKAN_TMS"));
         this.setTsukaKb(IgnoreCaseLinkedMap.get(map, "TSUKA_KB"));
         this.setJuchuQt(IgnoreCaseLinkedMap.get(map, "JUCHU_QT"));
         this.setJuchuPr(IgnoreCaseLinkedMap.get(map, "JUCHU_PR"));
@@ -123,7 +127,9 @@ public class T00Entity implements IEntity {
         isEmpty &= this.nichijiDt == null || this.nichijiDt.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.hidukeBi == null || this.hidukeBi.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.jikokuHm == null || this.jikokuHm.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.jikokuHms == null || this.jikokuHms.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.jikanTm == null || this.jikanTm.toString().replaceAll("　| ", "").equals("");
+        isEmpty &= this.jikanTms == null || this.jikanTms.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.tsukaKb == null || this.tsukaKb.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.juchuQt == null || this.juchuQt.toString().replaceAll("　| ", "").equals("");
         isEmpty &= this.juchuPr == null || this.juchuPr.toString().replaceAll("　| ", "").equals("");
@@ -437,23 +443,37 @@ public class T00Entity implements IEntity {
     }
 
     /** JIKOKU_HM */
-    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "hh:mm")
-    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer.class)
-    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer.class)
-    private java.time.LocalTime jikokuHm;
+    private String jikokuHm;
 
     /** @return JIKOKU_HM */
     @com.fasterxml.jackson.annotation.JsonProperty(value = "JIKOKU_HM", index = 21)
-    public java.time.LocalTime getJikokuHm() {
+    public String getJikokuHm() {
         return this.jikokuHm;
     }
 
     /** @param o JIKOKU_HM */
     public void setJikokuHm(final Object o) {
-        this.jikokuHm = null;
+        this.jikokuHm = StringUtil.ifNull(o);
+    }
+
+    /** JIKOKU_HMS */
+    @com.fasterxml.jackson.annotation.JsonFormat(pattern = "hh:mm")
+    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer.class)
+    @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer.class)
+    private java.time.LocalTime jikokuHms;
+
+    /** @return JIKOKU_HMS */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JIKOKU_HMS", index = 22)
+    public java.time.LocalTime getJikokuHms() {
+        return this.jikokuHms;
+    }
+
+    /** @param o JIKOKU_HMS */
+    public void setJikokuHms(final Object o) {
+        this.jikokuHms = null;
         if (!StringUtil.isNullOrWhiteSpace(o)) {
             String text = o.toString().replaceFirst("^\\d+[\\/|\\-]\\d+[\\/|\\-]\\d+ ", "");
-            this.jikokuHm = java.time.LocalTime.parse(text);
+            this.jikokuHms = java.time.LocalTime.parse(text);
         }
     }
 
@@ -461,7 +481,7 @@ public class T00Entity implements IEntity {
     private String jikanTm;
 
     /** @return JIKAN_TM */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "JIKAN_TM", index = 22)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JIKAN_TM", index = 23)
     public String getJikanTm() {
         return this.jikanTm;
     }
@@ -471,11 +491,25 @@ public class T00Entity implements IEntity {
         this.jikanTm = StringUtil.ifNull(o);
     }
 
+    /** JIKAN_TMS */
+    private String jikanTms;
+
+    /** @return JIKAN_TMS */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JIKAN_TMS", index = 24)
+    public String getJikanTms() {
+        return this.jikanTms;
+    }
+
+    /** @param o JIKAN_TMS */
+    public void setJikanTms(final Object o) {
+        this.jikanTms = StringUtil.ifNull(o);
+    }
+
     /** TSUKA_KB */
     private String tsukaKb;
 
     /** @return TSUKA_KB */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "TSUKA_KB", index = 23)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "TSUKA_KB", index = 25)
     public String getTsukaKb() {
         return this.tsukaKb;
     }
@@ -489,7 +523,7 @@ public class T00Entity implements IEntity {
     private java.math.BigDecimal juchuQt;
 
     /** @return JUCHU_QT */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_QT", index = 24)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_QT", index = 26)
     public java.math.BigDecimal getJuchuQt() {
         return this.juchuQt;
     }
@@ -503,7 +537,7 @@ public class T00Entity implements IEntity {
     private java.math.BigDecimal juchuPr;
 
     /** @return JUCHU_PR */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_PR", index = 25)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_PR", index = 27)
     public java.math.BigDecimal getJuchuPr() {
         return this.juchuPr;
     }
@@ -517,7 +551,7 @@ public class T00Entity implements IEntity {
     private java.math.BigDecimal juchuAm;
 
     /** @return JUCHU_AM */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_AM", index = 26)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "JUCHU_AM", index = 28)
     public java.math.BigDecimal getJuchuAm() {
         return this.juchuAm;
     }
@@ -531,7 +565,7 @@ public class T00Entity implements IEntity {
     private java.math.BigDecimal hacchuQt;
 
     /** @return HACCHU_QT */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_QT", index = 27)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_QT", index = 29)
     public java.math.BigDecimal getHacchuQt() {
         return this.hacchuQt;
     }
@@ -545,7 +579,7 @@ public class T00Entity implements IEntity {
     private java.math.BigDecimal hacchuPr;
 
     /** @return HACCHU_PR */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_PR", index = 28)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_PR", index = 30)
     public java.math.BigDecimal getHacchuPr() {
         return this.hacchuPr;
     }
@@ -559,7 +593,7 @@ public class T00Entity implements IEntity {
     private java.math.BigDecimal hacchuAm;
 
     /** @return HACCHU_AM */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_AM", index = 29)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "HACCHU_AM", index = 31)
     public java.math.BigDecimal getHacchuAm() {
         return this.hacchuAm;
     }
@@ -573,7 +607,7 @@ public class T00Entity implements IEntity {
     private String deleteF = "0";
 
     /** @return DELETE_F */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "DELETE_F", index = 30)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "DELETE_F", index = 32)
     public String getDeleteF() {
         return this.deleteF;
     }
@@ -587,7 +621,7 @@ public class T00Entity implements IEntity {
     private String statusKb;
 
     /** @return STATUS_KB */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "STATUS_KB", index = 31)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "STATUS_KB", index = 33)
     public String getStatusKb() {
         return this.statusKb;
     }
@@ -604,7 +638,7 @@ public class T00Entity implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return INSERT_TS */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 32)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 34)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -618,7 +652,7 @@ public class T00Entity implements IEntity {
     private String insertUserId;
 
     /** @return INSERT_USER_ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 33)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 35)
     public String getInsertUserId() {
         return this.insertUserId;
     }
@@ -633,7 +667,7 @@ public class T00Entity implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 34)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 36)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -654,7 +688,7 @@ public class T00Entity implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return UPDATE_TS */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 35)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 37)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -670,7 +704,7 @@ public class T00Entity implements IEntity {
     private String updateUserId;
 
     /** @return UPDATE_USER_ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 36)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 38)
     public String getUpdateUserId() {
         return this.updateUserId;
     }
@@ -685,7 +719,7 @@ public class T00Entity implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 37)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 39)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -702,7 +736,7 @@ public class T00Entity implements IEntity {
     private String riyuTx;
 
     /** @return riyuTx */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "riyu_tx", index = 38)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "riyu_tx", index = 40)
     public String getRiyuTx() {
         return this.riyuTx;
     }
@@ -744,7 +778,9 @@ public class T00Entity implements IEntity {
         sql += "    , TO_CHAR (a.\"NICHIJI_DT\", 'YYYY-MM-DD HH24:MI:SS') AS NICHIJI_DT \n";
         sql += "    , TO_CHAR (a.\"HIDUKE_BI\", 'YYYY-MM-DD') AS HIDUKE_BI \n";
         sql += "    , a.\"JIKOKU_HM\" \n";
+        sql += "    , a.\"JIKOKU_HMS\" \n";
         sql += "    , a.\"JIKAN_TM\" \n";
+        sql += "    , a.\"JIKAN_TMS\" \n";
         sql += "    , a.\"TSUKA_KB\" \n";
         sql += "    , a.\"JUCHU_QT\" \n";
         sql += "    , a.\"JUCHU_PR\" \n";
@@ -805,7 +841,9 @@ public class T00Entity implements IEntity {
         nameList.add("\"NICHIJI_DT\" -- :nichiji_dt");
         nameList.add("\"HIDUKE_BI\" -- :hiduke_bi");
         nameList.add("\"JIKOKU_HM\" -- :jikoku_hm");
+        nameList.add("\"JIKOKU_HMS\" -- :jikoku_hms");
         nameList.add("\"JIKAN_TM\" -- :jikan_tm");
+        nameList.add("\"JIKAN_TMS\" -- :jikan_tms");
         nameList.add("\"TSUKA_KB\" -- :tsuka_kb");
         nameList.add("\"JUCHU_QT\" -- :juchu_qt");
         nameList.add("\"JUCHU_PR\" -- :juchu_pr");
@@ -845,7 +883,9 @@ public class T00Entity implements IEntity {
         valueList.add("TO_TIMESTAMP (REPLACE (SUBSTR (:nichiji_dt, 0, 19), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS')");
         valueList.add("TO_DATE (SUBSTR (:hiduke_bi, 0, 10), 'YYYY-MM-DD')");
         valueList.add(":jikoku_hm");
+        valueList.add("TO_DATE (:jikoku_hms, 'HH24:MI')");
         valueList.add(":jikan_tm");
+        valueList.add(":jikan_tms");
         valueList.add(":tsuka_kb");
         valueList.add(":juchu_qt");
         valueList.add(":juchu_pr");
@@ -925,7 +965,9 @@ public class T00Entity implements IEntity {
         setList.add("\"NICHIJI_DT\" = TO_TIMESTAMP (REPLACE (SUBSTR (:nichiji_dt, 0, 19), 'T', ' '), 'YYYY-MM-DD HH24:MI:SS')");
         setList.add("\"HIDUKE_BI\" = TO_DATE (SUBSTR (:hiduke_bi, 0, 10), 'YYYY-MM-DD')");
         setList.add("\"JIKOKU_HM\" = :jikoku_hm");
+        setList.add("\"JIKOKU_HMS\" = TO_DATE (:jikoku_hms, 'HH24:MI')");
         setList.add("\"JIKAN_TM\" = :jikan_tm");
+        setList.add("\"JIKAN_TMS\" = :jikan_tms");
         setList.add("\"TSUKA_KB\" = :tsuka_kb");
         setList.add("\"JUCHU_QT\" = :juchu_qt");
         setList.add("\"JUCHU_PR\" = :juchu_pr");
@@ -973,7 +1015,9 @@ public class T00Entity implements IEntity {
         map.put("nichiji_dt", this.nichijiDt);
         map.put("hiduke_bi", this.hidukeBi);
         map.put("jikoku_hm", this.jikokuHm);
+        map.put("jikoku_hms", this.jikokuHms);
         map.put("jikan_tm", this.jikanTm);
+        map.put("jikan_tms", this.jikanTms);
         map.put("tsuka_kb", this.tsukaKb);
         map.put("juchu_qt", this.juchuQt);
         map.put("juchu_pr", this.juchuPr);

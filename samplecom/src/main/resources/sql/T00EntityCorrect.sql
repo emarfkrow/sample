@@ -18,8 +18,10 @@ SELECT
     , TO_CHAR (a."TIMESTAMP_TS", 'YYYY-MM-DD HH24:MI:SS.FF3') AS "TIMESTAMP_TS"
     , TO_CHAR (a."NICHIJI_DT", 'YYYY-MM-DD HH24:MI:SS') AS "NICHIJI_DT"
     , TO_CHAR (a."HIDUKE_BI", 'YYYY-MM-DD') AS "HIDUKE_BI"
-    , TO_CHAR (a."JIKOKU_HM", 'HH24:MI') AS "JIKOKU_HM"
+    , a."JIKOKU_HM" AS "JIKOKU_HM"
+    , TO_CHAR (a."JIKOKU_HMS", 'HH24:MI') AS "JIKOKU_HMS"
     , a."JIKAN_TM" AS "JIKAN_TM"
+    , a."JIKAN_TMS" AS "JIKAN_TMS"
     , a."TSUKA_KB" AS "TSUKA_KB"
     , a."JUCHU_QT" AS "JUCHU_QT"
     , a."JUCHU_PR" AS "JUCHU_PR"
@@ -75,12 +77,14 @@ WHERE
     AND a."HIDUKE_BI" = TO_DATE (SUBSTR (:hiduke_bi, 0, 10), 'YYYY-MM-DD') 
     AND a."HIDUKE_BI" >= TO_DATE (SUBSTR (:hiduke_bi_1 , 0, 10), 'YYYY-MM-DD')
     AND a."HIDUKE_BI" <= TO_DATE (SUBSTR (:hiduke_bi_2 , 0, 10), 'YYYY-MM-DD')
-    AND a."JIKOKU_HM" = :jikoku_hm 
+    AND UPPER (RTRIM (RTRIM (a."JIKOKU_HM"), '　')) LIKE UPPER ('%' || :jikoku_hm || '%') 
     AND a."JIKOKU_HM" >= :jikoku_hm_1 
     AND a."JIKOKU_HM" <= :jikoku_hm_2 
+    AND a."JIKOKU_HMS" = TO_DATE (:jikoku_hms, 'HH24:MI') 
     AND UPPER (RTRIM (RTRIM (a."JIKAN_TM"), '　')) LIKE UPPER ('%' || :jikan_tm || '%') 
     AND a."JIKAN_TM" >= :jikan_tm_1 
     AND a."JIKAN_TM" <= :jikan_tm_2 
+    AND UPPER (RTRIM (RTRIM (a."JIKAN_TMS"), '　')) LIKE UPPER ('%' || :jikan_tms || '%') 
     AND RTRIM (RTRIM (a."TSUKA_KB"), '　') IN (:tsuka_kb) 
     AND a."JUCHU_QT" = :juchu_qt 
     AND a."JUCHU_QT" >= :juchu_qt_1 
